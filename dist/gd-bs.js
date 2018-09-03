@@ -393,7 +393,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar 
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nfunction __export(m) {\n    for (var p in m) {\n        if (!exports.hasOwnProperty(p)) exports[p] = m[p];\n    }\n}\nObject.defineProperty(exports, \"__esModule\", { value: true });\n__export(__webpack_require__(/*! ./components */ \"./src/components/index.ts\"));\n\n//# sourceURL=webpack:///./src/index.ts?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar jQuery = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\nexports.jQuery = jQuery;\nvar Components = __webpack_require__(/*! ./components */ \"./src/components/index.ts\");\nexports.Components = Components;\n\n//# sourceURL=webpack:///./src/index.ts?");
 
 /***/ })
 
