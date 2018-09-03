@@ -1,0 +1,46 @@
+{
+  "name": "gd-bs",
+  "version": "0.0.1",
+  "description": "Bootstrap JavaScript, TypeScript and Web Components library.",
+  "main": "dist/gd-bs.js",
+  "typings": "dist/gd-bs.d.ts",
+  "scripts": {
+    "all": "npm run build && npm run prod && npm run typings && npm run wc",
+    "build": "webpack --mode=development",
+    "prod": "webpack --mode=production",
+    "typings": "dts-bundle --out ../dist/gd-bs.d.ts --name gd-bs --main ./src/typings.d.ts",
+    "wc": "cd wc && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gunjandatta/gd-bs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gunjandatta/gd-bs/issues"
+  },
+  "homepage": "https://github.com/gunjandatta/gd-bs#readme",
+  "dependencies": {
+    "gd-sprest": "^4.2.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.1.3",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "bootstrap": "^4.1.3",
+    "css-loader": "^1.0.0",
+    "dts-bundle": "^0.7.3",
+    "jquery": "^3.3.1",
+    "node-sass": "^4.9.3",
+    "popper.js": "^1.14.4",
+    "postcss-loader": "^3.0.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.0",
+    "ts-loader": "^4.5.0",
+    "webpack": "^4.17.1",
+    "webpack-cli": "^3.1.0"
+  }
+}

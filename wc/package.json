@@ -1,0 +1,23 @@
+{
+  "name": "wc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/types/index.d.ts",
+  "collection": "dist/collection/collection-manifest.json",
+  "files": [
+    "dist/"
+  ],
+  "module": "dist/esm/index.js",
+  "scripts": {
+    "build": "stencil build --prerender",
+    "start": "stencil build --dev --watch --serve"
+  },
+  "author": "Gunjan Datta <gunjandatta.github.io>",
+  "license": "ISC",
+  "dependencies": {
+    "@stencil/core": "^0.12.2",
+    "stencil": "^0.0.5"
+  },
+  "devDependencies": {}
+}
