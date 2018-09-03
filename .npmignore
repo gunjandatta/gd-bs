@@ -1,8 +1,4 @@
 src
-wc/.stencil
-wc/node_modules
-wc/*.json
-wc/*.ts
 *.log*
 package-lock.json
 tsconfig.json

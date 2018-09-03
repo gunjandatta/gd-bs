@@ -6,7 +6,8 @@
   "types": "dist/types/index.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "files": [
-    "dist/"
+    "dist/",
+    "src/"
   ],
   "module": "dist/esm/index.js",
   "scripts": {
