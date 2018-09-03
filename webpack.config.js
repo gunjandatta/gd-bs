@@ -5,10 +5,7 @@ module.exports = (env, argv) => {
 
     // Return the configuration
     return {
-        entry: [
-            "./node_modules/gd-sprest/dist/gd-sprest.min.js",
-            "./src/index.ts"
-        ],
+        entry: "./src/index.ts",
         output: {
             path: path.resolve(__dirname, "dist"),
             filename: "gd-bs" + (isDev ? "" : ".min") + ".js"

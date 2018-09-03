@@ -1,6 +1,6 @@
 {
   "name": "gd-bs",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Bootstrap JavaScript, TypeScript and Web Components library.",
   "main": "dist/gd-bs.js",
   "typings": "dist/gd-bs.d.ts",
@@ -22,9 +22,7 @@
     "url": "https://github.com/gunjandatta/gd-bs/issues"
   },
   "homepage": "https://github.com/gunjandatta/gd-bs#readme",
-  "dependencies": {
-    "gd-sprest": "^4.2.1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "autoprefixer": "^9.1.3",
     "babel-core": "^6.26.3",
