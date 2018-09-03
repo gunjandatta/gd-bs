@@ -17,7 +17,7 @@ export class Accordion {
             }
         }
         // Render the accordion
-        return $REST.Components.Accordion({
+        return GD.Components.Accordion({
             className: this.className,
             el: this.el.children[0],
             id: this.id,

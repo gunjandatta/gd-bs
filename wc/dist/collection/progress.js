@@ -2,7 +2,7 @@ export class Progress {
     // Component loaded event
     componentDidLoad() {
         // Render the progress
-        return $REST.Components.Progress({
+        return GD.Components.Progress({
             className: this.className,
             el: this.el.children[0],
             isAnimated: this.isAnimated,

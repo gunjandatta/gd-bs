@@ -15,7 +15,7 @@ export class Card {
             }
         }
         // Render the card
-        return $REST.Components.Card({
+        return GD.Components.Card({
             body: body,
             className: this.className,
             el: this.el.children[0],

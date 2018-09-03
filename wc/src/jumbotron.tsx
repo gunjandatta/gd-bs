@@ -1,6 +1,5 @@
 import { Component, Element, Prop } from "@stencil/core";
-//import { $REST } from "../../src/rest.d";
-declare var $REST;
+declare var GD;
 
 @Component({
     tag: "bs-jumbotron"
@@ -20,7 +19,7 @@ export class Jumbotron {
         let onRenderContent = this.el.getAttribute("onRenderContent");
 
         // Render the jumbotron
-        return $REST.Components.Jumbotron({
+        return GD.Components.Jumbotron({
             className: this.className,
             content: this.content,
             el: this.el.children[0],

@@ -17,7 +17,7 @@ export class ButtonGroup {
             }
         }
         // Render the button group
-        return $REST.Components.ButtonGroup({
+        return GD.Components.ButtonGroup({
             buttons: buttons,
             buttonType: this.buttonType,
             className: this.className,

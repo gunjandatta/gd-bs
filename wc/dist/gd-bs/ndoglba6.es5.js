@@ -1,2 +1,0 @@
-/*! Built with http://stenciljs.com */
-GdBs.loadBundle("ndoglba6",["exports","./chunk-53fb5111.js"],function(e,d){window.GdBs.h,e.BsCollapse=d.Collapse,Object.defineProperty(e,"__esModule",{value:!0})});

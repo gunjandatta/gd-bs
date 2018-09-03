@@ -1,6 +1,5 @@
 import { Component, Element, Prop } from "@stencil/core";
-//import { $REST } from "../../src/rest.d";
-declare var $REST;
+declare var GD;
 
 @Component({
     tag: "bs-collapse"
@@ -34,7 +33,7 @@ export class Collapse {
         }
 
         // Render the collapse
-        return $REST.Components.Collapse({
+        return GD.Components.Collapse({
             className: this.className,
             content: this.content,
             el: this.el.children[0],

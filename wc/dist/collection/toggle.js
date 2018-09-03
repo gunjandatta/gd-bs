@@ -28,7 +28,7 @@ export class Tooltip {
             }
         }
         // Render the tooltip
-        return $REST.Components.Tooltip({
+        return GD.Components.Tooltip({
             btnProps,
             className: this.className,
             el: this.el.children[0],

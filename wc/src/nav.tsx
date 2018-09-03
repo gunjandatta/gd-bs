@@ -1,6 +1,5 @@
 import { Component, Element, Prop } from "@stencil/core";
-//import { $REST } from "../../src/rest.d";
-declare var $REST;
+declare var GD;
 
 @Component({
     tag: "bs-nav"
@@ -38,7 +37,7 @@ export class Nav {
         }
 
         // Render the navigation
-        return $REST.Components.Nav({
+        return GD.Components.Nav({
             className: this.className,
             el: this.el.children[0],
             enableFade: this.enableFade,

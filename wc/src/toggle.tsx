@@ -1,6 +1,5 @@
 import { Component, Element, Prop } from "@stencil/core";
-//import { $REST } from "../../src/rest.d";
-declare var $REST;
+declare var GD;
 
 @Component({
     tag: "bs-tooltip"
@@ -43,7 +42,7 @@ export class Tooltip {
         }
 
         // Render the tooltip
-        return $REST.Components.Tooltip({
+        return GD.Components.Tooltip({
             btnProps,
             className: this.className,
             el: this.el.children[0],

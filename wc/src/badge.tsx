@@ -1,6 +1,5 @@
 import { Component, Element, Prop } from "@stencil/core";
-//import { $REST } from "../../src/rest.d";
-declare var $REST;
+declare var GD;
 
 @Component({
     tag: "bs-badge"
@@ -19,7 +18,7 @@ export class Badge {
     // Component loaded event
     componentDidLoad() {
         // Render the badge
-        return $REST.Components.Badge({
+        return GD.Components.Badge({
             className: this.className,
             content: this.content,
             el: this.el.children[0],

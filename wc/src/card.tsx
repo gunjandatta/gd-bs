@@ -1,6 +1,5 @@
 import { Component, Element, Prop } from "@stencil/core";
-//import { $REST } from "../../src/rest.d";
-declare var $REST;
+declare var GD;
 
 @Component({
     tag: "bs-card"
@@ -32,7 +31,7 @@ export class Card {
         }
 
         // Render the card
-        return $REST.Components.Card({
+        return GD.Components.Card({
             body: body,
             className: this.className,
             el: this.el.children[0],

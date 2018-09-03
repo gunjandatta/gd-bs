@@ -30,7 +30,7 @@ export class Carousel {
             }
         }
         // Render the carousel
-        return $REST.Components.Carousel({
+        return GD.Components.Carousel({
             className: this.className,
             el: this.el.children[0],
             enableControls: this.enableControls,

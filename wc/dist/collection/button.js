@@ -6,7 +6,7 @@ export class Button {
         // Remove the id attribute
         this.el.removeAttribute("id");
         // Render the button
-        return $REST.Components.Button({
+        return GD.Components.Button({
             badgeType: this.badgeType,
             badgeValue: this.badgeValue,
             className: this.className,

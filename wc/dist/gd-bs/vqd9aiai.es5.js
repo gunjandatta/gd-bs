@@ -1,2 +1,0 @@
-/*! Built with http://stenciljs.com */
-GdBs.loadBundle("vqd9aiai",["exports","./chunk-f510fdb4.js"],function(e,d){window.GdBs.h,e.BsProgress=d.Progress,Object.defineProperty(e,"__esModule",{value:!0})});

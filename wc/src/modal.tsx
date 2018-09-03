@@ -1,6 +1,5 @@
 import { Component, Element, Prop } from "@stencil/core";
-//import { $REST } from "../../src/rest.d";
-declare var $REST;
+declare var GD;
 
 @Component({
     tag: "bs-modal"
@@ -41,7 +40,7 @@ export class Modal {
         }
 
         // Render the modal
-        return $REST.Components.Modal({
+        return GD.Components.Modal({
             body: this.body,
             button: buttonProps,
             className: this.className,

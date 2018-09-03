@@ -48,7 +48,7 @@ export class Navbar {
             }
         }
         // Render the navbar
-        return $REST.Components.Navbar({
+        return GD.Components.Navbar({
             brand: this.brand,
             brandUrl: this.brandUrl,
             className: this.className,

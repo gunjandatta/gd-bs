@@ -28,7 +28,7 @@ export class Popover {
             }
         }
         // Render the popover
-        return $REST.Components.Popover({
+        return GD.Components.Popover({
             btnProps,
             className: this.className,
             el: this.el.children[0],

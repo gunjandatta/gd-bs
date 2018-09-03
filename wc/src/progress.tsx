@@ -1,6 +1,5 @@
 import { Component, Element, Prop } from "@stencil/core";
-//import { $REST } from "../../src/rest.d";
-declare var $REST;
+declare var GD;
 
 @Component({
     tag: "bs-progress"
@@ -20,7 +19,7 @@ export class Progress {
     // Component loaded event
     componentDidLoad() {
         // Render the progress
-        return $REST.Components.Progress({
+        return GD.Components.Progress({
             className: this.className,
             el: this.el.children[0],
             isAnimated: this.isAnimated,

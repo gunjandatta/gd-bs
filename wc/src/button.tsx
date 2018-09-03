@@ -1,6 +1,5 @@
 import { Component, Element, Prop } from "@stencil/core";
-//import { $REST } from "../../src/rest.d";
-declare var $REST;
+declare var GD;
 
 @Component({
     tag: "bs-button"
@@ -34,7 +33,7 @@ export class Button {
         this.el.removeAttribute("id");
 
         // Render the button
-        return $REST.Components.Button({
+        return GD.Components.Button({
             badgeType: this.badgeType,
             badgeValue: this.badgeValue,
             className: this.className,

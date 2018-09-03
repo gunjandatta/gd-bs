@@ -1,0 +1,2 @@
+/*! Built with http://stenciljs.com */
+GdBs.loadBundle("rjcrun2m",["exports","./chunk-8880b850.js"],function(n,e){window.GdBs.h,n.BsPagination=e.Pagination,Object.defineProperty(n,"__esModule",{value:!0})});

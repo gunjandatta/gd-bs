@@ -1,6 +1,5 @@
 import { Component, Element, Prop } from "@stencil/core";
-//import { $REST } from "../../src/rest.d";
-declare var $REST;
+declare var GD;
 
 @Component({
     tag: "bs-progressGroup"
@@ -29,7 +28,7 @@ export class ProgressGroup {
         }
 
         // Render the progress group
-        return $REST.Components.ProgressGroup({
+        return GD.Components.ProgressGroup({
             className: this.className,
             el: this.el.children[0],
             isMultiple: this.isMultiple,

@@ -1,6 +1,5 @@
 import { Component, Element, Prop } from "@stencil/core";
-//import { $REST } from "../../src/rest.d";
-declare var $REST;
+declare var GD;
 
 @Component({
     tag: "bs-alert"
@@ -18,7 +17,7 @@ export class Alert {
     // Component loaded event
     componentDidLoad() {
         // Render the alert
-        return $REST.Components.Alert({
+        return GD.Components.Alert({
             className: this.className,
             content: this.content,
             el: this.el,

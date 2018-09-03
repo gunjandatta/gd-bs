@@ -4,7 +4,7 @@ export class Pagination {
         // Get the onclick attribute
         let onClick = this.el.getAttribute("onClick");
         // Render the pagination
-        return $REST.Components.Pagination({
+        return GD.Components.Pagination({
             alignment: this.alignment,
             className: this.className,
             el: this.el.children[0],

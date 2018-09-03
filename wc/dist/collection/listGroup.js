@@ -15,7 +15,7 @@ export class ListGroup {
             }
         }
         // Render the list group
-        return $REST.Components.ListGroup({
+        return GD.Components.ListGroup({
             className: this.className,
             colWidth: this.colWidth,
             el: this.el.children[0],

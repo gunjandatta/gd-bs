@@ -1,6 +1,5 @@
 import { Component, Element, Prop } from "@stencil/core";
-//import { $REST } from "../../src/rest.d";
-declare var $REST;
+declare var GD;
 
 @Component({
     tag: "bs-buttonGroup"
@@ -37,7 +36,7 @@ export class ButtonGroup {
         }
 
         // Render the button group
-        return $REST.Components.ButtonGroup({
+        return GD.Components.ButtonGroup({
             buttons: buttons,
             buttonType: this.buttonType,
             className: this.className,

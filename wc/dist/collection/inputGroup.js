@@ -6,7 +6,7 @@ export class InputGroup {
         // Remove the id attribute
         this.el.removeAttribute("id");
         // Render the inputGroup
-        return $REST.Components.InputGroup({
+        return GD.Components.InputGroup({
             appendedLabel: this.appendedLabel,
             className: this.className,
             description: this.description,

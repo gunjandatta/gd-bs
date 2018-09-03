@@ -1,6 +1,5 @@
 import { Component, Element, Prop } from "@stencil/core";
-//import { $REST } from "../../src/rest.d";
-declare var $REST;
+declare var GD;
 
 @Component({
     tag: "bs-listGroup"
@@ -32,7 +31,7 @@ export class ListGroup {
         }
 
         // Render the list group
-        return $REST.Components.ListGroup({
+        return GD.Components.ListGroup({
             className: this.className,
             colWidth: this.colWidth,
             el: this.el.children[0],

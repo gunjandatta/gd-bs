@@ -1,6 +1,5 @@
 import { Component, Element, Prop } from "@stencil/core";
-//import { $REST } from "../../src/rest.d";
-declare var $REST;
+declare var GD;
 
 @Component({
     tag: "bs-popover"
@@ -44,7 +43,7 @@ export class Popover {
         }
 
         // Render the popover
-        return $REST.Components.Popover({
+        return GD.Components.Popover({
             btnProps,
             className: this.className,
             el: this.el.children[0],

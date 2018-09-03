@@ -15,7 +15,7 @@ export class CardGroup {
             }
         }
         // Render the card group
-        return $REST.Components.CardGroup({
+        return GD.Components.CardGroup({
             cards: cards,
             className: this.className,
             el: this.el.children[0]

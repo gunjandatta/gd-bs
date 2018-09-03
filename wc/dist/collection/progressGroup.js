@@ -15,7 +15,7 @@ export class ProgressGroup {
             }
         }
         // Render the progress group
-        return $REST.Components.ProgressGroup({
+        return GD.Components.ProgressGroup({
             className: this.className,
             el: this.el.children[0],
             isMultiple: this.isMultiple,

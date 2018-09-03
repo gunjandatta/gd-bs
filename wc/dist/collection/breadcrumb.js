@@ -15,7 +15,7 @@ export class Breadcrumb {
             }
         }
         // Render the breadcrumb
-        return $REST.Components.Breadcrumb({
+        return GD.Components.Breadcrumb({
             className: this.className,
             el: this.el.children[0],
             items: items

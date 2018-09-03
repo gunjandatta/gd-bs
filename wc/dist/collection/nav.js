@@ -17,7 +17,7 @@ export class Nav {
             }
         }
         // Render the navigation
-        return $REST.Components.Nav({
+        return GD.Components.Nav({
             className: this.className,
             el: this.el.children[0],
             enableFade: this.enableFade,

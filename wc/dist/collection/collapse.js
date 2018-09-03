@@ -17,7 +17,7 @@ export class Collapse {
             }
         }
         // Render the collapse
-        return $REST.Components.Collapse({
+        return GD.Components.Collapse({
             className: this.className,
             content: this.content,
             el: this.el.children[0],

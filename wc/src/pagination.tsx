@@ -1,6 +1,5 @@
 import { Component, Element, Prop } from "@stencil/core";
-//import { $REST } from "../../src/rest.d";
-declare var $REST;
+declare var GD;
 
 @Component({
     tag: "bs-pagination"
@@ -23,7 +22,7 @@ export class Pagination {
         let onClick = this.el.getAttribute("onClick");
 
         // Render the pagination
-        return $REST.Components.Pagination({
+        return GD.Components.Pagination({
             alignment: this.alignment,
             className: this.className,
             el: this.el.children[0],

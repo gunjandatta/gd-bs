@@ -1,6 +1,5 @@
 import { Component, Element, Prop } from "@stencil/core";
-//import { $REST } from "../../src/rest.d";
-declare var $REST;
+declare var GD;
 
 @Component({
     tag: "bs-breadcrumb"
@@ -28,7 +27,7 @@ export class Breadcrumb {
         }
 
         // Render the breadcrumb
-        return $REST.Components.Breadcrumb({
+        return GD.Components.Breadcrumb({
             className: this.className,
             el: this.el.children[0],
             items: items

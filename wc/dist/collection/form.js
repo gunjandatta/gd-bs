@@ -28,7 +28,7 @@ export class Form {
             }
         }
         // Render the form
-        return $REST.Components.Form({
+        return GD.Components.Form({
             el: this.el.children[0],
             rows: rows,
             value: value

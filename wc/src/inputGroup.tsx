@@ -1,6 +1,5 @@
 import { Component, Element, Prop } from "@stencil/core";
-//import { $REST } from "../../src/rest.d";
-declare var $REST;
+declare var GD;
 
 @Component({
     tag: "bs-inputGroup"
@@ -30,7 +29,7 @@ export class InputGroup {
         this.el.removeAttribute("id");
 
         // Render the inputGroup
-        return $REST.Components.InputGroup({
+        return GD.Components.InputGroup({
             appendedLabel: this.appendedLabel,
             className: this.className,
             description: this.description,

@@ -1,6 +1,5 @@
 import { Component, Element, Prop } from "@stencil/core";
-//import { $REST } from "../../src/rest.d";
-declare var $REST;
+declare var GD;
 
 @Component({
     tag: "bs-carousel"
@@ -49,7 +48,7 @@ export class Carousel {
         }
 
         // Render the carousel
-        return $REST.Components.Carousel({
+        return GD.Components.Carousel({
             className: this.className,
             el: this.el.children[0],
             enableControls: this.enableControls,

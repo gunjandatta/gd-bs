@@ -1,2 +1,0 @@
-/*! Built with http://stenciljs.com */
-GdBs.loadBundle("dhihmf2r",["exports","./chunk-d8ea7841.js"],function(e,d){window.GdBs.h,e.BsCarousel=d.Carousel,Object.defineProperty(e,"__esModule",{value:!0})});

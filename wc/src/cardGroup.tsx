@@ -1,6 +1,5 @@
 import { Component, Element, Prop } from "@stencil/core";
-//import { $REST } from "../../src/rest.d";
-declare var $REST;
+declare var GD;
 
 @Component({
     tag: "bs-cardGroup"
@@ -28,7 +27,7 @@ export class CardGroup {
         }
 
         // Render the card group
-        return $REST.Components.CardGroup({
+        return GD.Components.CardGroup({
             cards: cards,
             className: this.className,
             el: this.el.children[0]

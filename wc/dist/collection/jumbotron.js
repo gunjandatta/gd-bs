@@ -4,7 +4,7 @@ export class Jumbotron {
         // Get the onRenderContent attribute
         let onRenderContent = this.el.getAttribute("onRenderContent");
         // Render the jumbotron
-        return $REST.Components.Jumbotron({
+        return GD.Components.Jumbotron({
             className: this.className,
             content: this.content,
             el: this.el.children[0],

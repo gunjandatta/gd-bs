@@ -1,6 +1,5 @@
 import { Component, Element, Prop } from "@stencil/core";
-//import { $REST } from "../../src/rest.d";
-declare var $REST;
+declare var GD;
 
 @Component({
     tag: "bs-accordion"
@@ -32,7 +31,7 @@ export class Accordion {
         }
 
         // Render the accordion
-        return $REST.Components.Accordion({
+        return GD.Components.Accordion({
             className: this.className,
             el: this.el.children[0],
             id: this.id,

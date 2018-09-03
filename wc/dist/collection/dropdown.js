@@ -19,7 +19,7 @@ export class Dropdown {
             }
         }
         // Render the dropdown
-        return $REST.Components.Dropdown({
+        return GD.Components.Dropdown({
             className: this.className,
             dropLeft: this.dropLeft,
             dropRight: this.dropRight,

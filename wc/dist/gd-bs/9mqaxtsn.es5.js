@@ -1,0 +1,2 @@
+/*! Built with http://stenciljs.com */
+GdBs.loadBundle("9mqaxtsn",["exports","./chunk-71a18128.js"],function(d,e){window.GdBs.h,d.BsCardgroup=e.CardGroup,Object.defineProperty(d,"__esModule",{value:!0})});
