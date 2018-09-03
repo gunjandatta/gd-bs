@@ -87,7 +87,7 @@ export const Button = (props: IButtonProps): IButton => {
     let html = [
         '<' + (props.isLink ? 'a' : 'button') + ' ' + attributes + '>',
         props.text || "",
-        props.badgeValue ? Badge({ content: props.badgeValue, type: props.badgeType || BadgeTypes.Light }) : '',
+        props.badgeValue ? Badge({ content: props.badgeValue, type: props.badgeType || BadgeTypes.Light }).el.innerHTML : '',
         '</' + (props.isLink ? 'a' : 'button') + '>'
     ].join('\n');
 

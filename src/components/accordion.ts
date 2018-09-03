@@ -23,7 +23,7 @@ export const Accordion = (props: IAccordionProps): IAccordion => {
 
         // Set the button properties
         let btnProps = item.btnProps || {};
-        typeof (btnProps.type) == null ? btnProps.type = ButtonTypes.Link : null;
+        typeof (btnProps.type) === "number" ? null : btnProps.type = ButtonTypes.Link;
 
         //btnProps.isLink = true;
         btnProps.target = '#collapse_' + itemId;
@@ -33,7 +33,7 @@ export const Accordion = (props: IAccordionProps): IAccordion => {
         html.push([
             '<div class="card">',
             '<div class="card-header" id="' + itemId + '">',
-            Button(btnProps),
+            Button(btnProps).el.innerHTML,
             '</div>',
             '<div id="' + ('collapse_' + itemId) + '" class="collapse" aria-labelledby="' + itemId + '" data-parent="#' + id + '">',
             '<div class="card-body">' + (item.content || "") + '</div>',

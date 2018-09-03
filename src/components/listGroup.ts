@@ -114,7 +114,7 @@ export const ListGroup = (props: IListGroupProps): IListGroup => {
             html.push([
                 '<a ' + attributes + '>',
                 (props.isTabs ? item.tabName : item.content) || "",
-                item.badge ? Badge(item.badge) : "",
+                item.badge ? Badge(item.badge).el.innerHTML : "",
                 '</a>'
             ].join('\n'));
         } else {
