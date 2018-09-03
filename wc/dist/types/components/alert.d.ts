@@ -1,11 +1,10 @@
-import './stencil.core';
-export declare class Badge {
+import '../stencil.core';
+export declare class Alert {
     private el;
     className: string;
     content: string;
     header: string;
-    href: string;
-    isPill: boolean;
+    isDismissible: boolean;
     type: number;
     componentDidLoad(): any;
     render(): JSX.Element;

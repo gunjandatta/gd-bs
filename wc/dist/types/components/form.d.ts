@@ -1,4 +1,4 @@
-import './stencil.core';
+import '../stencil.core';
 export declare class Form {
     private el;
     rows: string;

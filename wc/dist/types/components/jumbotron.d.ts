@@ -1,4 +1,4 @@
-import './stencil.core';
+import '../stencil.core';
 export declare class Jumbotron {
     private el;
     className: string;

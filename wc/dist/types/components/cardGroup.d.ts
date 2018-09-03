@@ -1,9 +1,8 @@
-import './stencil.core';
-export declare class Accordion {
+import '../stencil.core';
+export declare class CardGroup {
     private el;
+    cards: string;
     className: string;
-    id: string;
-    items: string;
     componentDidLoad(): any;
     render(): JSX.Element;
 }

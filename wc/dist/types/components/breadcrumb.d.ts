@@ -1,8 +1,8 @@
-import './stencil.core';
-export declare class CardGroup {
+import '../stencil.core';
+export declare class Breadcrumb {
     private el;
-    cards: string;
     className: string;
+    items: string;
     componentDidLoad(): any;
     render(): JSX.Element;
 }
