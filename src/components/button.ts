@@ -89,16 +89,31 @@ export const Button = (props: IButtonProps): IButton => {
         props.text || "",
         props.badgeValue ? Badge({ content: props.badgeValue, type: props.badgeType || BadgeTypes.Light }).el.innerHTML : '',
         '</' + (props.isLink ? 'a' : 'button') + '>'
-    ].join('\n');
+    ];
 
-    // Get the element to render to
-    let el = props.el || document.createElement("div");
+    // Create the element
+    let el = document.createElement("div");
+    el.innerHTML = html.join('\n');
 
-    // Set the boostrap class
-    el.classList.contains("bs") ? null : el.classList.add("bs");
+    // See if are rendering it to an element
+    if (props.el) {
+        // Ensure the parent element exists
+        if (props.el.parentElement && props.el.parentElement.classList) {
+            // Set the bootstrap class
+            props.el.parentElement.classList.contains("bs") ? null : props.el.parentElement.classList.add("bs");
+        }
 
-    // Set the html
-    el.innerHTML = html;
+        // Append the elements
+        while (el.children.length > 0) {
+            props.el.appendChild(el.children[0]);
+        }
+
+        // Update the element
+        el = props.el as any;
+    } else {
+        // Set the bootstrap class
+        el.classList.add("bs");
+    }
 
     // See if there is a click event
     if (props.onClick) {

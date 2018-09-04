@@ -13,7 +13,7 @@
 
 <body>
     <h1>Library</h1>
-    <div class="bs">
+    <form class="bs">
         <div id="ddl"></div>
         <div id="button"></div>
         <div id="modal"></div>
@@ -29,277 +29,277 @@
         <div id="progress"></div>
         <div id="progressGroup"></div>
         <div id="navbar"></div>
-        <script type="text/javascript">
-            window.addEventListener("load", function () {
-                GD.Components.Dropdown({
-                    el: document.querySelector("#ddl"),
-                    label: "My Dropdown",
-                    type: GD.Components.DropdownTypes.Secondary,
-                    onChange: ddlOnChange,
-                    isSplit: "true",
-                    items: [
-                        { text: "Item 1" },
-                        { text: "Item 2" },
-                        { text: "Item 3" },
-                        { text: "Item 4" },
-                        { text: "Item 5" },
-                        { text: "Item 6" },
-                        { text: "Item 7" },
-                        { text: "Item 8" },
-                        { text: "Item 9" },
-                        { text: "Item 10" }
-                    ]
-                });
-                GD.Components.Button({
-                    el: document.querySelector("#button"),
-                    text: "Modal",
-                    toggle: "modal",
-                    target: "#myModal"
-                });
-                GD.Components.Modal({
-                    el: document.querySelector("#modal"),
-                    id: "myModal",
-                    title: "My Modal",
-                    onRenderBody: function (el) {
-                        // Render a form
-                        GD.Components.Form({
-                            el: el,
-                            rows: [
-                                {
-                                    control: {
-                                        label: "First Name",
-                                        name: "FName",
-                                        type: GD.Components.FormControlTypes.TextField,
-                                        onChange: function (value) {
-                                            console.log("New First Name: " + value);
-                                        }
-                                    }
-                                },
-                                {
-                                    control: {
-                                        label: "Last Name",
-                                        name: "LName",
-                                        type: GD.Components.FormControlTypes.TextField,
-                                    }
-                                },
-                                {
-                                    control: {
-                                        label: "EMail",
-                                        name: "Email",
-                                        type: GD.Components.FormControlTypes.Email,
-                                    }
-                                },
-                                {
-                                    control: {
-                                        label: "Password",
-                                        name: "Password",
-                                        type: GD.Components.FormControlTypes.Password,
-                                    }
-                                },
-                                {
-                                    control: {
-                                        label: "Jobs",
-                                        name: "Jobs",
-                                        type: GD.Components.FormControlTypes.Dropdown,
-                                        items: [
-                                            { text: "Job 1" },
-                                            { text: "Job 2" },
-                                            { text: "Job 3" },
-                                            { text: "Job 4" },
-                                            { text: "Job 5" },
-                                            { text: "Job 6" },
-                                            { text: "Job 7" },
-                                            { text: "Job 8" },
-                                            { text: "Job 9" }
-                                        ],
-                                        onChange: function (item) {
-                                            console.log("Selected Item: " + (item ? item.text : ""));
-                                        }
-                                    }
-                                },
-                                {
-                                    control: {
-                                        label: "Multi Jobs",
-                                        name: "Jobs",
-                                        type: GD.Components.FormControlTypes.MultiDropdown,
-                                        items: [
-                                            { text: "Job 1" },
-                                            { text: "Job 2" },
-                                            { text: "Job 3" },
-                                            { text: "Job 4" },
-                                            { text: "Job 5" },
-                                            { text: "Job 6" },
-                                            { text: "Job 7" },
-                                            { text: "Job 8" },
-                                            { text: "Job 9" }
-                                        ],
-                                        onChange: function (items) {
-                                            console.log("Selected Items: ");
-                                            console.log(items)
-                                        }
+    </form>
+    <script type="text/javascript">
+        window.addEventListener("load", function () {
+            GD.Components.Dropdown({
+                el: document.querySelector("#ddl"),
+                label: "My Dropdown",
+                type: GD.Components.DropdownTypes.Secondary,
+                onChange: ddlOnChange,
+                isSplit: "true",
+                items: [
+                    { text: "Item 1" },
+                    { text: "Item 2" },
+                    { text: "Item 3" },
+                    { text: "Item 4" },
+                    { text: "Item 5" },
+                    { text: "Item 6" },
+                    { text: "Item 7" },
+                    { text: "Item 8" },
+                    { text: "Item 9" },
+                    { text: "Item 10" }
+                ]
+            });
+            GD.Components.Button({
+                el: document.querySelector("#button"),
+                text: "Modal",
+                toggle: "modal",
+                target: "#myModal"
+            });
+            GD.Components.Modal({
+                el: document.querySelector("#modal"),
+                id: "myModal",
+                title: "My Modal",
+                onRenderBody: function (el) {
+                    // Render a form
+                    GD.Components.Form({
+                        el: el,
+                        rows: [
+                            {
+                                control: {
+                                    label: "First Name",
+                                    name: "FName",
+                                    type: GD.Components.FormControlTypes.TextField,
+                                    onChange: function (value) {
+                                        console.log("New First Name: " + value);
                                     }
                                 }
-                            ],
-                            value: {
-                                FName: "Gunjan",
-                                LName: "Datta",
-                                Email: "gunjan@datta.com",
-                                Password: "Password123456"
+                            },
+                            {
+                                control: {
+                                    label: "Last Name",
+                                    name: "LName",
+                                    type: GD.Components.FormControlTypes.TextField,
+                                }
+                            },
+                            {
+                                control: {
+                                    label: "EMail",
+                                    name: "Email",
+                                    type: GD.Components.FormControlTypes.Email,
+                                }
+                            },
+                            {
+                                control: {
+                                    label: "Password",
+                                    name: "Password",
+                                    type: GD.Components.FormControlTypes.Password,
+                                }
+                            },
+                            {
+                                control: {
+                                    label: "Jobs",
+                                    name: "Jobs",
+                                    type: GD.Components.FormControlTypes.Dropdown,
+                                    items: [
+                                        { text: "Job 1" },
+                                        { text: "Job 2" },
+                                        { text: "Job 3" },
+                                        { text: "Job 4" },
+                                        { text: "Job 5" },
+                                        { text: "Job 6" },
+                                        { text: "Job 7" },
+                                        { text: "Job 8" },
+                                        { text: "Job 9" }
+                                    ],
+                                    onChange: function (item) {
+                                        console.log("Selected Item: " + (item ? item.text : ""));
+                                    }
+                                }
+                            },
+                            {
+                                control: {
+                                    label: "Multi Jobs",
+                                    name: "Jobs",
+                                    type: GD.Components.FormControlTypes.MultiDropdown,
+                                    items: [
+                                        { text: "Job 1" },
+                                        { text: "Job 2" },
+                                        { text: "Job 3" },
+                                        { text: "Job 4" },
+                                        { text: "Job 5" },
+                                        { text: "Job 6" },
+                                        { text: "Job 7" },
+                                        { text: "Job 8" },
+                                        { text: "Job 9" }
+                                    ],
+                                    onChange: function (items) {
+                                        console.log("Selected Items: ");
+                                        console.log(items)
+                                    }
+                                }
                             }
-                        })
-                    }
-                });
-                GD.Components.InputGroup({
-                    el: document.querySelector("#textbox"),
-                    description: "This is a single line textbox.",
-                    prependedLabel: "First Name",
-                    value: "Test Value",
-                    onChange: function (val) {
-                        console.log("Value changed to: " + val);
-                    }
-                });
-                GD.Components.InputGroup({
-                    appendedLabel: "Optional",
-                    el: document.querySelector("#multi-textbox"),
-                    description: "This is a multi-line textbox.",
-                    label: "Address:",
-                    type: GD.Components.InputGroupTypes.TextArea,
-                    value: "This is a long value. It's supposed to go in a text area.\n\nHopefully this will be on a new line...",
-                    onChange: function (val) {
-                        console.log("Multi value changed to: " + val);
-                    }
-                });
-                GD.Components.ListGroup({
-                    el: document.querySelector("#tabs"),
-                    colWidth: 4,
-                    isTabs: true,
-                    items: [
-                        { tabName: "Tab 1", content: "This is the content for tab 1.", isActive: true },
-                        { tabName: "Tab 2", content: "This is the content for tab 2.", badge: { content: "10", type: 4 } },
-                        { tabName: "Tab 3", content: "This is the content for tab 3." },
-                        { tabName: "Tab 4", content: "This is the content for tab 4." },
-                        { tabName: "Tab 5", content: "This is the content for tab 5." }
-                    ]
-                });
-                GD.Components.Popover({
-                    el: document.querySelector("#popover"),
-                    btnProps: { text: "Popover Demo" },
-                    isDismissible: true,
-                    options: {
-                        container: "body",
-                        content: "This is the popover content.",
-                        title: "My Popover",
-                    }
-                });
-                GD.Components.Carousel({
-                    el: document.querySelector("#carousel"),
-                    enableControls: true,
-                    enableIndicators: true,
-                    id: "demoCarousel",
-                    items: [
-                        {
-                            captions: "<h5>First Slide</h5>",
-                            imageUrl: "https://via.placeholder.com/400x200",
-                            imageAlt: "First Slide",
-                            isActive: true
-                        },
-                        {
-                            captions: "<h5>Second Slide</h5>",
-                            imageUrl: "https://via.placeholder.com/400x200",
-                            imageAlt: "Second Slide"
-                        },
-                        {
-                            captions: "<h5>Third Slide</h5>",
-                            imageUrl: "https://via.placeholder.com/400x200",
-                            imageAlt: "Third Slide"
+                        ],
+                        value: {
+                            FName: "Gunjan",
+                            LName: "Datta",
+                            Email: "gunjan@datta.com",
+                            Password: "Password123456"
                         }
-                    ]
-                });
-                GD.Components.Button({
-                    el: document.querySelector("#btnCollapse"),
-                    target: "#collapseDemo",
-                    toggle: "collapse",
-                    text: "Collapse Demo"
-                });
-                GD.Components.Collapse({
-                    el: document.querySelector("#collapse"),
-                    id: "collapseDemo",
-                    content: "This is the content to be collapsed."
-                });
-                GD.Components.Accordion({
-                    el: document.querySelector("#accordion"),
-                    id: "accordionDemo",
-                    items: [
-                        {
-                            btnProps: { text: "Item 1" },
-                            content: "This is the content for item 1."
-                        },
-                        {
-                            btnProps: { text: "Item 2" },
-                            content: "This is the content for item 2."
-                        },
-                        {
-                            btnProps: { text: "Item 3" },
-                            content: "This is the content for item 3."
-                        }
-                    ]
-                });
-                GD.Components.Pagination({
-                    el: document.querySelector("#paging"),
-                    numberOfPages: 5
-                });
-                GD.Components.Progress({
-                    el: document.querySelector("#progress"),
-                    size: 25,
-                    label: "25%"
-                });
-                GD.Components.ProgressGroup({
-                    el: document.querySelector("#progressGroup"),
-                    progressbars: [
-                        {
-                            size: 25,
-                            isStriped: true,
-                            label: "25%"
-                        },
-                        {
-                            size: 50,
-                            isAnimated: true,
-                            isStriped: true,
-                            label: "50%"
-                        }
-                    ]
-                });
-                GD.Components.Navbar({
-                    el: document.querySelector("#navbar"),
-                    brand: "Navbar",
-                    enableSearch: true,
-                    items: [
-                        {
-                            text: "Home",
-                            isActive: true
-                        },
-                        {
-                            text: "Link"
-                        },
-                        {
-                            text: "Disabled Link",
-                            isDisabled: true
-                        },
-                        {
-                            text: "Dropdown Link",
-                            items: [
-                                { text: "Link 1" },
-                                { text: "Link 2" },
-                                { text: "Link 3" },
-                                { text: "Link 4" },
-                                { text: "Link 5" }
-                            ]
-                        }
-                    ]
-                });
+                    })
+                }
             });
-        </script>
-    </div>
+            GD.Components.InputGroup({
+                el: document.querySelector("#textbox"),
+                description: "This is a single line textbox.",
+                prependedLabel: "First Name",
+                value: "Test Value",
+                onChange: function (val) {
+                    console.log("Value changed to: " + val);
+                }
+            });
+            GD.Components.InputGroup({
+                appendedLabel: "Optional",
+                el: document.querySelector("#multi-textbox"),
+                description: "This is a multi-line textbox.",
+                label: "Address:",
+                type: GD.Components.InputGroupTypes.TextArea,
+                value: "This is a long value. It's supposed to go in a text area.\n\nHopefully this will be on a new line...",
+                onChange: function (val) {
+                    console.log("Multi value changed to: " + val);
+                }
+            });
+            GD.Components.ListGroup({
+                el: document.querySelector("#tabs"),
+                colWidth: 4,
+                isTabs: true,
+                items: [
+                    { tabName: "Tab 1", content: "This is the content for tab 1.", isActive: true },
+                    { tabName: "Tab 2", content: "This is the content for tab 2.", badge: { content: "10", type: 4 } },
+                    { tabName: "Tab 3", content: "This is the content for tab 3." },
+                    { tabName: "Tab 4", content: "This is the content for tab 4." },
+                    { tabName: "Tab 5", content: "This is the content for tab 5." }
+                ]
+            });
+            GD.Components.Popover({
+                el: document.querySelector("#popover"),
+                btnProps: { text: "Popover Demo" },
+                isDismissible: true,
+                options: {
+                    container: "body",
+                    content: "This is the popover content.",
+                    title: "My Popover",
+                }
+            });
+            GD.Components.Carousel({
+                el: document.querySelector("#carousel"),
+                enableControls: true,
+                enableIndicators: true,
+                id: "demoCarousel",
+                items: [
+                    {
+                        captions: "<h5>First Slide</h5>",
+                        imageUrl: "https://via.placeholder.com/400x200",
+                        imageAlt: "First Slide",
+                        isActive: true
+                    },
+                    {
+                        captions: "<h5>Second Slide</h5>",
+                        imageUrl: "https://via.placeholder.com/400x200",
+                        imageAlt: "Second Slide"
+                    },
+                    {
+                        captions: "<h5>Third Slide</h5>",
+                        imageUrl: "https://via.placeholder.com/400x200",
+                        imageAlt: "Third Slide"
+                    }
+                ]
+            });
+            GD.Components.Button({
+                el: document.querySelector("#btnCollapse"),
+                target: "#collapseDemo",
+                toggle: "collapse",
+                text: "Collapse Demo"
+            });
+            GD.Components.Collapse({
+                el: document.querySelector("#collapse"),
+                id: "collapseDemo",
+                content: "This is the content to be collapsed."
+            });
+            GD.Components.Accordion({
+                el: document.querySelector("#accordion"),
+                id: "accordionDemo",
+                items: [
+                    {
+                        btnProps: { text: "Item 1" },
+                        content: "This is the content for item 1."
+                    },
+                    {
+                        btnProps: { text: "Item 2" },
+                        content: "This is the content for item 2."
+                    },
+                    {
+                        btnProps: { text: "Item 3" },
+                        content: "This is the content for item 3."
+                    }
+                ]
+            });
+            GD.Components.Pagination({
+                el: document.querySelector("#paging"),
+                numberOfPages: 5
+            });
+            GD.Components.Progress({
+                el: document.querySelector("#progress"),
+                size: 25,
+                label: "25%"
+            });
+            GD.Components.ProgressGroup({
+                el: document.querySelector("#progressGroup"),
+                progressbars: [
+                    {
+                        size: 25,
+                        isStriped: true,
+                        label: "25%"
+                    },
+                    {
+                        size: 50,
+                        isAnimated: true,
+                        isStriped: true,
+                        label: "50%"
+                    }
+                ]
+            });
+            GD.Components.Navbar({
+                el: document.querySelector("#navbar"),
+                brand: "Navbar",
+                enableSearch: true,
+                items: [
+                    {
+                        text: "Home",
+                        isActive: true
+                    },
+                    {
+                        text: "Link"
+                    },
+                    {
+                        text: "Disabled Link",
+                        isDisabled: true
+                    },
+                    {
+                        text: "Dropdown Link",
+                        items: [
+                            { text: "Link 1" },
+                            { text: "Link 2" },
+                            { text: "Link 3" },
+                            { text: "Link 4" },
+                            { text: "Link 5" }
+                        ]
+                    }
+                ]
+            });
+        });
+    </script>
 
     <h1>Web Components</h1>
     <h3>Accordion</h3>
@@ -453,9 +453,9 @@
     ]'></bs-nav>
     <h3>Navbar</h3>
     <script type="text/javascript">
-    function logSearch(value) {
-        console.log("The search value is: " + value);
-    }
+        function logSearch(value) {
+            console.log("The search value is: " + value);
+        }
     </script>
     <bs-navbar brand="Navbar" search-box='{
             "onChange": "logSearch",

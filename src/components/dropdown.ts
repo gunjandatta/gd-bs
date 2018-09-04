@@ -250,14 +250,29 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
         html.push("</div>");
     }
 
-    // Get the element to render to
-    let el = props.el || document.createElement("div");
-
-    // Set the boostrap class
-    el.classList.contains("bs") ? null : el.classList.add("bs");
-
-    // Set the html
+    // Create the element
+    let el = document.createElement("div");
     el.innerHTML = props.menuOnly ? menu.join('\n') : html.join('\n');
+
+    // See if are rendering it to an element
+    if (props.el) {
+        // Ensure the parent element exists
+        if (props.el.parentElement && props.el.parentElement.classList) {
+            // Set the bootstrap class
+            props.el.parentElement.classList.contains("bs") ? null : props.el.parentElement.classList.add("bs");
+        }
+
+        // Append the elements
+        while (el.children.length > 0) {
+            props.el.appendChild(el.children[0]);
+        }
+
+        // Update the element
+        el = props.el as any;
+    } else {
+        // Set the bootstrap class
+        el.classList.add("bs");
+    }
 
     // Parse the items
     let elItems = el.querySelectorAll(props.formFl ? "option" : ".dropdown-item");
