@@ -990,7 +990,7 @@ declare module 'gd-bs/components/types/navbar' {
             brandUrl?: string;
             className?: string;
             el?: Element | HTMLElement;
-            enableSearch?: string;
+            enableSearch?: boolean;
             id?: string;
             items?: Array<INavbarItem>;
             searchBox?: INavbarSearchBox;

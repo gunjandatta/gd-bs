@@ -11,6 +11,7 @@ export class Navbar {
     @Prop() brand: string;
     @Prop() brandUrl: string;
     @Prop() className: string;
+    @Prop() enableSearch: boolean;
     @Prop() id: string;
     @Prop() items: string;
     @Prop() searchBox: string;
@@ -75,6 +76,7 @@ export class Navbar {
             brandUrl: this.brandUrl,
             className: this.className,
             el: this.el.children[0],
+            enableSearch: this.enableSearch,
             id: this.id,
             items,
             searchBox,
