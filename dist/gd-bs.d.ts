@@ -951,7 +951,7 @@ declare module 'gd-bs/components/types/nav' {
             isDisabled?: boolean;
             href?: string;
             onClick?: (item?: INavLink, ev?: Event) => void;
-            onRenderTab?: (el: HTMLDivElement) => void;
+            onRenderTab?: (item?: INavLink, el?: HTMLDivElement) => void;
             tabContent?: string;
             title?: string;
     }

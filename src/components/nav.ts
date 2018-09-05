@@ -39,7 +39,7 @@ export const Nav = (props: INavProps): INav => {
         item.isDisabled ? linkClassNames.push("disabled") : null;
 
         // See if tab content exists
-        if (item.tabContent) {
+        if (item.onRenderTab || item.tabContent) {
             // Set the flag
             renderTabContent = true;
         }
@@ -154,14 +154,14 @@ export const Nav = (props: INavProps): INav => {
         let item = props.items[i];
 
         // Call the event
-        item.onRenderTab ? item.onRenderTab(elTabContent[i] as any) : null;
+        item.onRenderTab ? item.onRenderTab(item, elTabContent[i] as any) : null;
     }
 
     // Return the element
-    let nav = jQuery(el.children[0]);
+    let $nav = jQuery(el.children[0]);
     return {
-        dispose: () => { nav.tab("dispose"); },
+        dispose: () => { $nav.tab("dispose"); },
         el,
-        show: (selector: string) => { nav.querySelector(selector).tab("show"); }
+        show: (selector: string) => { $nav.querySelector(selector).tab("show"); }
     };
 }
