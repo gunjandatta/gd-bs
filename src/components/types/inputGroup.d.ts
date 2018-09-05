@@ -24,6 +24,7 @@ export interface IInputGroupProps {
     className?: string;
     description?: string;
     el?: Element | HTMLElement;
+    formFl?: boolean;
     id?: string;
     isLarge?: boolean;
     isSmall?: boolean;
@@ -43,6 +44,7 @@ export type IInputGroupTypes = {
     Email: number;
     File: number;
     Password: number;
+    Search: number;
     TextArea: number;
     TextField: number;
 }

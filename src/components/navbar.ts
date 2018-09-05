@@ -1,6 +1,7 @@
 import * as jQuery from "jquery";
 import { Button } from "./button";
 import { Dropdown } from "./dropdown";
+import { InputGroup, InputGroupTypes } from "./inputGroup";
 import { INavbar, INavbarProps, INavbarItem } from "./types/navbar";
 
 /**
@@ -173,11 +174,19 @@ export const Navbar = (props: INavbarProps): INavbar => {
         form.classList.add("form-inline");
 
         // Render the searchbox
-        let searchbox = document.createElement("input");
-        searchbox.classList.add("form-control");
-        searchbox.setAttribute("type", "search");
-        searchbox.setAttribute("placeholder", text);
-        searchbox.setAttribute("aria-label", "Search");
+        let searchbox = InputGroup({
+            formFl: true,
+            placeholder: text,
+            type: InputGroupTypes.Search,
+            onChange: (value) => {
+                // Call the event
+                props.searchBox && props.searchBox.onChange ? props.searchBox.onChange(value) : null;
+            },
+            onClear: () => {
+                // Call the event
+                props.searchBox && props.searchBox.onChange ? props.searchBox.onChange("") : null;
+            }
+        }).el as HTMLInputElement;
         form.appendChild(searchbox);
 
         // Set the key down event, to catch the "Enter" key being pressed
@@ -194,15 +203,6 @@ export const Navbar = (props: INavbarProps): INavbar => {
                 }
             }
         });
-
-        // Get the search box and see if a change event exists
-        if (props.searchBox && props.searchBox.onChange) {
-            // Set the change event
-            searchbox.addEventListener("input", ev => {
-                // Call the event
-                props.searchBox.onChange((ev.currentTarget as HTMLInputElement).value);
-            });
-        }
 
         // See if we are rendering a button
         let hideButton = props.searchBox && props.searchBox.hideButton ? true : false;

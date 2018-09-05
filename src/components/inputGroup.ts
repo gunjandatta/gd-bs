@@ -8,8 +8,9 @@ export enum InputGroupTypes {
     Email = 1,
     File = 2,
     Password = 3,
-    TextArea = 4,
-    TextField = 5
+    Search = 4,
+    TextArea = 5,
+    TextField = 6
 }
 
 /**
@@ -59,6 +60,9 @@ export const InputGroup = (props: IInputGroupProps): IInputGroup => {
         case InputGroupTypes.Password:
             inputType = "password";
             break;
+        case InputGroupTypes.Search:
+            inputType = "search";
+            break;
         default:
             inputType = "text";
             break;
@@ -78,6 +82,7 @@ export const InputGroup = (props: IInputGroupProps): IInputGroup => {
             props.placeholder ? 'placeholder="' + props.placeholder + '"' : '',
             props.id ? 'id="' + props.id + '"' : '',
             props.value ? 'value="' + props.value + '"' : '',
+            props.type == InputGroupTypes.Search ? 'aria-label="Search"' : '',
             '></input>'
         ].join(' ')
     );
@@ -164,7 +169,6 @@ export const InputGroup = (props: IInputGroupProps): IInputGroup => {
                     if (callbackValue != currentValue) {
                         // Set the value
                         callbackValue = currentValue;
-                        console.log("Textbox cleared...");
 
                         // Call the events
                         props.onChange ? props.onChange(callbackValue, ev) : null;
@@ -176,6 +180,5 @@ export const InputGroup = (props: IInputGroupProps): IInputGroup => {
     }
 
     // Return the input group
-    let inputGroup = jQuery(el.children[0]);
-    return { el };
+    return { el: props.formFl ? elInput : el };
 }

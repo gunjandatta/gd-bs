@@ -281,6 +281,10 @@
                     // Log
                     console.log("Nav Item Clicked: " + item.text);
                 },
+                searchBox: {
+                    onChange: function(val) { console.log("Searching for: " + val); },
+                    onSearch: function(val) { console.log("Search for: " + val); }
+                },
                 items: [
                     {
                         text: "Home",
