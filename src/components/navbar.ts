@@ -58,66 +58,10 @@ export const Navbar = (props: INavbarProps): INavbar => {
         '</button>'
     ].join('\n'));
 
-    // Set the list starting tag
+    // Render the nav bar nav and add the ending tag
     html.push([
         '<div class="collapse navbar-collapse" id="' + navId + '">',
-        '<ul class="navbar-nav">'
-    ].join('\n'));
-
-    // Parse the items
-    let items = props.items || [];
-    for (let i = 0; i < items.length; i++) {
-        let item = items[i];
-
-        // See if this is a dropdown
-        if (item.items) {
-            // Render a dropdown
-            html.push(Dropdown({
-                items: item.items,
-                label: item.text,
-                navFl: true
-            }).el.innerHTML);
-        }
-        // Else, ensure there is text
-        else if (item.text) {
-            // Set the class names
-            let classNames = ["nav-link"];
-            item.isActive ? classNames.push("active") : null;
-            item.isDisabled ? classNames.push("disabled") : null;
-
-            // Render the item
-            html.push([
-                '<li class="nav-item">',
-                '<a class="' + classNames.join(' ') + '" href="' + (item.href ? item.href : '#') + '">',
-                item.text,
-                item.isActive ? '<span class="sr-only">(current)</span>' : '',
-                '</a>',
-                '</li>'
-            ].join('\n'));
-        }
-    }
-
-    // Set the ending tag
-    html.push('</ul>');
-
-    // See if we are rendering a search box
-    if (props.enableSearch || props.searchBox) {
-        let text = (props.searchBox ? props.searchBox.btnText : null) || "Search";
-
-        // Render the search box
-        html.push([
-            '<form class="form-inline">',
-            '<input class="form-control" type="search" placeholder="' + text + '" aria-label="Search"></input>',
-            props.enableSearch || props.searchBox ? Button({
-                text,
-                type: props.searchBox ? props.searchBox.btnType : null
-            }).el.innerHTML : '',
-            '</form>'
-        ].join('\n'));
-    }
-
-    // Set the ending tag
-    html.push([
+        '<ul class="navbar-nav"></ul>',
         '</div>',
         '</nav>'
     ].join('\n'));
@@ -146,50 +90,126 @@ export const Navbar = (props: INavbarProps): INavbar => {
         el.classList.add("bs");
     }
 
-    // Get the items
-    let elItems = el.querySelectorAll(".nav-link");
-    for (let i = 0; i < elItems.length; i++) {
-        // Add a click event
-        elItems[i].addEventListener("click", ev => {
-            let itemId = (ev.currentTarget as HTMLElement).getAttribute('data-idx');
-            let item: INavbarItem = props.items[itemId];
-            if (item) {
-                // See if no href exists
-                if (item.href == null || item.href == "#") {
-                    // Prevent the page from moving to the top
-                    ev.preventDefault();
-                }
+    // Parse the items and generate the nav items
+    let navItems = el.querySelector("ul.navbar-nav");
+    let items = props.items || [];
+    for (let i = 0; i < items.length; i++) {
+        let navItem = null;
+        let item = items[i];
 
-                // See if a click event exists
-                item.onClick ? item.onClick(item, ev) : null;
-            }
-        });
+        // See if this is a dropdown
+        if (item.items) {
+            // Render a dropdown
+            navItem = Dropdown({
+                items: item.items,
+                label: item.text,
+                navFl: true,
+                onChange: (item, ev) => {
+                    // Remove the active class
+                    (ev.currentTarget as HTMLElement).classList.remove("active");
+                }
+            }).el.children[0];
+        }
+        // Else, ensure there is text
+        else if (item.text) {
+            // Set the class names
+            let classNames = ["nav-link"];
+            item.isActive ? classNames.push("active") : null;
+            item.isDisabled ? classNames.push("disabled") : null;
+
+            // Create the nav item
+            navItem = document.createElement("li");
+            navItem.classList.add("nav-item");
+
+            // Render the item
+            navItem.innerHTML = [
+                '<a class="' + classNames.join(' ') + '" href="' + (item.href ? item.href : '#') + '">',
+                item.text,
+                item.isActive ? '<span class="sr-only">(current)</span>' : '',
+                '</a>'
+            ].join('\n');
+        }
+
+        // Set the data attribute
+        navItem.setAttribute("data-idx", i.toString());
+
+        // See if there is a click event
+        if (props.onClick || item.onClick) {
+            // Add a click event
+            navItem.addEventListener("click", ev => {
+                let navLink = ev.currentTarget as HTMLElement;
+                let itemId = (navLink).getAttribute('data-idx');
+                let item: INavbarItem = props.items[itemId];
+
+                // Ensure the item exists
+                if (item) {
+                    // See if it's disabled or has no link, and is not a dropdown
+                    if ((item.isDisabled || item.href == null || item.href == "#") && !navLink.classList.contains("dropdown")) {
+                        // Prevent the page from moving to the top
+                        ev.preventDefault();
+                    }
+
+                    // Do nothing if it's disabled
+                    if (item.isDisabled) { return; }
+
+                    // Call the events
+                    item.onClick ? item.onClick(item, ev) : null;
+                    props.onClick ? props.onClick(item, ev) : null;
+                }
+            });
+        }
+
+        // Add the nav item
+        navItems.appendChild(navItem);
     }
 
-    // See if a searchbox exists and events exist
-    if (props.searchBox) {
+    // See if we are rendering a search box
+    let navbar = el.querySelector("#" + navId);
+    if ((props.enableSearch || props.searchBox) && navbar) {
+        let text = (props.searchBox ? props.searchBox.btnText : null) || "Search";
+
+        // Render the form
+        let form = document.createElement("form");
+        form.classList.add("form-inline");
+
+        // Render the searchbox
+        let searchbox = document.createElement("input");
+        searchbox.classList.add("form-control");
+        searchbox.setAttribute("type", "search");
+        searchbox.setAttribute("placeholder", text);
+        searchbox.setAttribute("aria-label", "Search");
+        form.appendChild(searchbox);
+
         // Get the search box and see if a change event exists
-        let elSearchBox = el.querySelector('input[type="search"]') as HTMLInputElement;
-        if (props.searchBox.onChange && elSearchBox) {
+        if (props.searchBox && props.searchBox.onChange) {
             // Set the change event
-            elSearchBox.addEventListener("input", ev => {
+            searchbox.addEventListener("input", ev => {
                 // Call the event
                 props.searchBox.onChange((ev.currentTarget as HTMLInputElement).value);
             });
         }
 
-        // Get the search box button and see if a search event exists
-        let elSearchBoxButton = elSearchBox && elSearchBox.nextElementSibling;
-        if (props.searchBox.onSearch && elSearchBoxButton) {
-            // Add a click event
-            elSearchBoxButton.addEventListener("click", ev => {
-                // Call the event
-                props.searchBox.onSearch(elSearchBox.value, ev);
+        // See if we are rendering a button
+        let hideButton = props.searchBox && props.searchBox.hideButton ? true : false;
+        if (!hideButton) {
+            let btnSearch = Button({
+                text,
+                type: props.searchBox ? props.searchBox.btnType : null,
+                onClick: () => {
+                    // See if a search event exists
+                    if (props.searchBox && props.searchBox.onSearch) {
+                        // Call the event
+                        props.searchBox.onSearch(searchbox.value);
+                    }
+                }
             });
+            form.appendChild(btnSearch.el);
         }
+
+        // Append the search box
+        navbar.appendChild(form);
     }
 
     // Return the navbar
-    let navbar = jQuery(el.children[0]);
     return { el };
 }

@@ -42,6 +42,7 @@ export interface INavbarProps {
     enableSearch?: boolean;
     id?: string;
     items?: Array<INavbarItem>;
+    onClick?: (item?: INavbarItem, ev?: Event) => void;
     searchBox?: INavbarSearchBox;
     type?: number;
 }
@@ -61,7 +62,8 @@ export type INavbarTypes = {
 export interface INavbarSearchBox {
     btnType?: number;
     btnText?: string;
-    onChange?: (value?: string, ev?: Event) => void;
-    onSearch?: (value?: string, ev?: Event) => void;
+    hideButton?: boolean;
+    onChange?: (value?: string) => void;
+    onSearch?: (value?: string) => void;
     placeholder?: string;
 }

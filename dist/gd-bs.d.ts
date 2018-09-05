@@ -993,6 +993,7 @@ declare module 'gd-bs/components/types/navbar' {
             enableSearch?: boolean;
             id?: string;
             items?: Array<INavbarItem>;
+            onClick?: (item?: INavbarItem, ev?: Event) => void;
             searchBox?: INavbarSearchBox;
             type?: number;
     }
@@ -1012,8 +1013,9 @@ declare module 'gd-bs/components/types/navbar' {
     export interface INavbarSearchBox {
             btnType?: number;
             btnText?: string;
-            onChange?: (value?: string, ev?: Event) => void;
-            onSearch?: (value?: string, ev?: Event) => void;
+            hideButton?: boolean;
+            onChange?: (value?: string) => void;
+            onSearch?: (value?: string) => void;
             placeholder?: string;
     }
 }

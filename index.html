@@ -274,6 +274,10 @@
                 el: document.querySelector("#navbar"),
                 brand: "Navbar",
                 enableSearch: true,
+                onClick: function(item) {
+                    // Log
+                    console.log("Nav Item Clicked: " + item.text);
+                },
                 items: [
                     {
                         text: "Home",
@@ -289,7 +293,7 @@
                     {
                         text: "Dropdown Link",
                         items: [
-                            { text: "Link 1" },
+                            { text: "Link 1", onChange: function(item) { console.log("Nav DDL Item Clicked: " + item.text); } },
                             { text: "Link 2" },
                             { text: "Link 3" },
                             { text: "Link 4" },
