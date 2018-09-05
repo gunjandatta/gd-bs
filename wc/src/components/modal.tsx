@@ -18,11 +18,14 @@ export class Modal {
     @Prop() isCentered: boolean;
     @Prop() isLarge: boolean;
     @Prop() isSmall: boolean;
-    @Prop() onRenderBody: string;
-    @Prop() onRenderFooter: string;
 
     // Component loaded event
     componentDidLoad() {
+        // Get the events attribute
+        let onClose = this.el.getAttribute("onClose");
+        let onRenderBody = this.el.getAttribute("onRenderBody");
+        let onRenderFooter = this.el.getAttribute("onRenderFooter");
+
         // Remove the id attribute
         this.el.removeAttribute("id");
 
@@ -53,18 +56,25 @@ export class Modal {
             isLarge: this.isLarge,
             isSmall: this.isSmall,
             title: this.el.getAttribute("title"),
+            onClose: (...args) => {
+                // See if a render body event exists
+                if (onClose && window[onClose]) {
+                    // Call the event
+                    window[onClose].apply(this, args);
+                }
+            },
             onRenderBody: (...args) => {
                 // See if a render body event exists
-                if (this.onRenderBody && window[this.onRenderBody]) {
+                if (onRenderBody && window[onRenderBody]) {
                     // Call the event
-                    window[this.onRenderBody].apply(this, args);
+                    window[onRenderBody].apply(this, args);
                 }
             },
             onRenderFooter: (...args) => {
                 // See if a render footer event exists
-                if (this.onRenderFooter && window[this.onRenderFooter]) {
+                if (onRenderFooter && window[onRenderFooter]) {
                     // Call the event
-                    window[this.onRenderFooter].apply(this, args);
+                    window[onRenderFooter].apply(this, args);
                 }
             }
         });

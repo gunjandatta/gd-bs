@@ -287,8 +287,6 @@ export namespace Components {
     'isCentered': boolean;
     'isLarge': boolean;
     'isSmall': boolean;
-    'onRenderBody': string;
-    'onRenderFooter': string;
   }
   interface BsModalAttributes extends StencilHTMLAttributes {
     'body'?: string;
@@ -301,8 +299,6 @@ export namespace Components {
     'isCentered'?: boolean;
     'isLarge'?: boolean;
     'isSmall'?: boolean;
-    'onRenderBody'?: string;
-    'onRenderFooter'?: string;
   }
 
   interface BsNav {

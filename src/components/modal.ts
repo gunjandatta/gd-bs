@@ -87,14 +87,26 @@ export const Modal = (props: IModalProps): IModal => {
     props.onRenderBody ? props.onRenderBody(el.querySelector(".modal-body")) : null;
     props.onRenderFooter ? props.onRenderFooter(el.querySelector(".modal-footer")) : null;
 
-    // Return the element
-    let modal = jQuery(el.children[0]);
-    return {
-        dispose: () => { modal.modal("dispose"); },
+    // Create the modal
+    let $modal = jQuery(el.children[0]);
+    let modal = {
+        dispose: () => { $modal.modal("dispose"); },
         el,
-        handleUpdate: () => { modal.modal("handleUpdate"); },
-        hide: () => { modal.modal("hide"); },
-        show: () => { modal.modal("show"); },
-        toggle: () => { modal.modal("toggle"); }
+        handleUpdate: () => { $modal.modal("handleUpdate"); },
+        hide: () => { $modal.modal("hide"); },
+        show: () => { $modal.modal("show"); },
+        toggle: () => { $modal.modal("toggle"); }
     };
+
+    // See if there is a close event
+    if (props.onClose) {
+        // Add a hidden event
+        $modal.on("hidden.bs.modal", () => {
+            // Call the event
+            props.onClose(modal);
+        });
+    }
+
+    // Return the element
+    return modal;
 }

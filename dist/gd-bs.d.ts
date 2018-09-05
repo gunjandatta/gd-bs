@@ -895,6 +895,7 @@ declare module 'gd-bs/components/types/modal' {
             isCentered?: boolean;
             isLarge?: boolean;
             isSmall?: boolean;
+            onClose?: (modal: IModal) => void;
             onRenderBody?: (el: HTMLDivElement) => void;
             onRenderFooter?: (el: HTMLDivElement) => void;
             title?: string;

@@ -61,6 +61,10 @@
                 el: document.querySelector("#modal"),
                 id: "myModal",
                 title: "My Modal",
+                onClose: function(modal) {
+                    console.log("The modal was closed.");
+                    console.log(modal);
+                },
                 onRenderBody: function (el) {
                     // Render a form
                     GD.Components.Form({

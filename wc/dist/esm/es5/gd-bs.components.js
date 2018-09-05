@@ -30,7 +30,7 @@ export var Jumbotron = ["bs-jumbotron",function(){return(import("./abqxeldy.js")
 
 export var ListGroup = ["bs-listGroup",function(){return(import("./rmzx8vll.js")).then(function(m){return m.BsListgroup})},0,[["className",1,0,"class-name",2],["colWidth",1,0,"col-width",4],["el",7],["enableFade",1,0,"enable-fade",3],["isFlush",1,0,"is-flush",3],["isTabs",1,0,"is-tabs",3],["items",1,0,1,2]]];
 
-export var Modal = ["bs-modal",function(){return(import("./7jmfnbu9.js")).then(function(m){return m.BsModal})},0,[["body",1,0,1,2],["button",1,0,1,2],["className",1,0,"class-name",2],["disableFade",1,0,"disable-fade",3],["el",7],["footer",1,0,1,2],["hideCloseButton",1,0,"hide-close-button",3],["id",1,0,1,2],["isCentered",1,0,"is-centered",3],["isLarge",1,0,"is-large",3],["isSmall",1,0,"is-small",3],["onRenderBody",1,0,"on-render-body",2],["onRenderFooter",1,0,"on-render-footer",2]]];
+export var Modal = ["bs-modal",function(){return(import("./jwqk5rfr.js")).then(function(m){return m.BsModal})},0,[["body",1,0,1,2],["button",1,0,1,2],["className",1,0,"class-name",2],["disableFade",1,0,"disable-fade",3],["el",7],["footer",1,0,1,2],["hideCloseButton",1,0,"hide-close-button",3],["id",1,0,1,2],["isCentered",1,0,"is-centered",3],["isLarge",1,0,"is-large",3],["isSmall",1,0,"is-small",3]]];
 
 export var Nav = ["bs-nav",function(){return(import("./tmofm4ya.js")).then(function(m){return m.BsNav})},0,[["className",1,0,"class-name",2],["el",7],["enableFade",1,0,"enable-fade",3],["enableFill",1,0,"enable-fill",3],["id",1,0,1,2],["isJustified",1,0,"is-justified",3],["isPills",1,0,"is-pills",3],["isTabs",1,0,"is-tabs",3],["isVertical",1,0,"is-vertical",3],["items",1,0,1,2]]];
 
