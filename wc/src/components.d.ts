@@ -225,6 +225,7 @@ export namespace Components {
     'description': string;
     'id': string;
     'isLarge': boolean;
+    'isPlainText': boolean;
     'isSmall': boolean;
     'label': string;
     'placeholder': string;
@@ -238,6 +239,7 @@ export namespace Components {
     'description'?: string;
     'id'?: string;
     'isLarge'?: boolean;
+    'isPlainText'?: boolean;
     'isSmall'?: boolean;
     'label'?: string;
     'placeholder'?: string;

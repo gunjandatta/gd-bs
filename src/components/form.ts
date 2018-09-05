@@ -101,6 +101,14 @@ export const Form = (props: IFormProps): IForm => {
                 break;
             // Readonly
             case FormControlTypes.Readonly:
+                // Add the input
+                InputGroup({
+                    el,
+                    label: control.label,
+                    placeholder: (control as IFormControlTextField).placeholder,
+                    type: InputGroupTypes.Readonly,
+                    value: value[control.name]
+                });
                 break;
             // Text Area
             case FormControlTypes.TextArea:

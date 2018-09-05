@@ -13,6 +13,7 @@ export class InputGroup {
     @Prop() description: string;
     @Prop() id: string;
     @Prop() isLarge: boolean;
+    @Prop() isPlainText: boolean;
     @Prop() isSmall: boolean;
     @Prop() label: string;
     @Prop() placeholder: string;
@@ -37,6 +38,7 @@ export class InputGroup {
             el: this.el.children[0],
             id: this.id,
             isLarge: this.isLarge,
+            isPlainText: this.isPlainText,
             isSmall: this.isSmall,
             label: this.label,
             placeholder: this.placeholder,

@@ -27,6 +27,7 @@ export interface IInputGroupProps {
     formFl?: boolean;
     id?: string;
     isLarge?: boolean;
+    isPlainText?: boolean;
     isSmall?: boolean;
     label?: string;
     onClear?: () => void;
@@ -44,6 +45,7 @@ export type IInputGroupTypes = {
     Email: number;
     File: number;
     Password: number;
+    Readonly: number;
     Search: number;
     TextArea: number;
     TextField: number;

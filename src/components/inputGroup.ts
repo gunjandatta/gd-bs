@@ -8,9 +8,10 @@ export enum InputGroupTypes {
     Email = 1,
     File = 2,
     Password = 3,
-    Search = 4,
-    TextArea = 5,
-    TextField = 6
+    Readonly = 4,
+    Search = 5,
+    TextArea = 6,
+    TextField = 7
 }
 
 /**
@@ -77,11 +78,12 @@ export const InputGroup = (props: IInputGroupProps): IInputGroup => {
         ].join(' ')
         :
         [
-            '<input class="form-control"',
+            '<input class="' + (props.isPlainText ? 'form-control-plaintext' : 'form-control') + '"',
             'type="' + inputType + '"',
             props.placeholder ? 'placeholder="' + props.placeholder + '"' : '',
             props.id ? 'id="' + props.id + '"' : '',
             props.value ? 'value="' + props.value + '"' : '',
+            props.type == InputGroupTypes.Readonly ? 'readonly' : '',
             props.type == InputGroupTypes.Search ? 'aria-label="Search"' : '',
             '></input>'
         ].join(' ')

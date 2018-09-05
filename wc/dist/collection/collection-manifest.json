@@ -544,6 +544,11 @@
           "attr": "is-large"
         },
         {
+          "name": "isPlainText",
+          "type": "Boolean",
+          "attr": "is-plain-text"
+        },
+        {
           "name": "isSmall",
           "type": "Boolean",
           "attr": "is-small"
