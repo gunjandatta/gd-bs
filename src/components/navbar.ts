@@ -60,7 +60,7 @@ export const Navbar = (props: INavbarProps): INavbar => {
 
     // Render the nav bar nav and add the ending tag
     html.push([
-        '<div class="collapse navbar-collapse" id="' + navId + '">',
+        '<div class="collapse navbar-collapse d-flex justify-content-between" id="' + navId + '">',
         '<ul class="navbar-nav"></ul>',
         '</div>',
         '</nav>'
