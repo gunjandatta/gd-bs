@@ -22,8 +22,9 @@ export class InputGroup {
 
     // Component loaded event
     componentDidLoad() {
-        // Get the onclick attribute
+        // Get the events
         let onChange = this.el.getAttribute("onChange");
+        let onClear = this.el.getAttribute("onClear");
 
         // Remove the id attribute
         this.el.removeAttribute("id");
@@ -47,6 +48,13 @@ export class InputGroup {
                 if (onChange && window[onChange]) {
                     // Call the event
                     window[onChange].apply(this, args);
+                }
+            },
+            onClear: (...args) => {
+                // See if a clear event exists
+                if (onClear && window[onClear]) {
+                    // Call the event
+                    window[onClear].apply(this, args);
                 }
             }
         });

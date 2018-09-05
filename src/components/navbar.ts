@@ -182,7 +182,6 @@ export const Navbar = (props: INavbarProps): INavbar => {
 
         // Set the key down event, to catch the "Enter" key being pressed
         searchbox.addEventListener("keydown", ev => {
-            debugger;
             // See if the "Enter" key was pressed
             if (ev.keyCode == 13) {
                 // Disable the postback

@@ -597,7 +597,7 @@ declare module 'gd-bs/components/types/form' {
     /**
         * Form Control Types
         */
-    export const FormControlTypes:IFormControlTypes;
+    export const FormControlTypes: IFormControlTypes;
     
     /**
         * Form
@@ -614,13 +614,16 @@ declare module 'gd-bs/components/types/form' {
             description?: string;
             label?: string;
             name?: string;
+            required?: boolean;
             type?: number;
     }
     
     /**
         * Form Control - Checkbox
         */
-    export interface IFormControlCheckbox extends IFormControl { }
+    export interface IFormControlCheckbox extends IFormControl {
+            onChange?: (checked?: boolean) => void;
+    }
     
     /**
         * Form Control - Dropdown
@@ -710,6 +713,7 @@ declare module 'gd-bs/components/types/inputGroup' {
             isLarge?: boolean;
             isSmall?: boolean;
             label?: string;
+            onClear?: () => void;
             onChange?: (value?: string, ev?: Event) => void;
             placeholder?: string;
             prependedLabel?: string;

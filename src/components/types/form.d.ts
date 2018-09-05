@@ -8,7 +8,7 @@ export const Form: (props: IFormProps) => IForm;
 /**
  * Form Control Types
  */
-export const FormControlTypes:IFormControlTypes;
+export const FormControlTypes: IFormControlTypes;
 
 /**
  * Form
@@ -25,13 +25,16 @@ export interface IFormControl {
     description?: string;
     label?: string;
     name?: string;
+    required?: boolean;
     type?: number;
 }
 
 /**
  * Form Control - Checkbox
  */
-export interface IFormControlCheckbox extends IFormControl { }
+export interface IFormControlCheckbox extends IFormControl {
+    onChange?: (checked?: boolean) => void;
+}
 
 /**
  * Form Control - Dropdown

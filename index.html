@@ -155,6 +155,9 @@
                 description: "This is a single line textbox.",
                 prependedLabel: "First Name",
                 value: "Test Value",
+                onClear: function() {
+                    console.log("The value was cleared.");
+                },
                 onChange: function (val) {
                     console.log("Value changed to: " + val);
                 }
