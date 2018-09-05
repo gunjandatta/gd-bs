@@ -118,20 +118,36 @@ export const Nav = (props: INavProps): INav => {
         if (props.isPills || props.isTabs) {
             // Add a click event
             elNavItem.addEventListener("click", ev => {
-                // Parse the selected tabs
+                // Parse the selected tab links
                 let selectedTabs = el.querySelectorAll(".nav-link.active");
                 for (let i = 0; i < selectedTabs.length; i++) {
-                    let selectedTab = selectedTabs[i];
-
                     // Unselect this tab
-                    selectedTab.classList.remove("active");
+                    selectedTabs[i].classList.remove("active");
                 }
 
-                // Get the navigation link
+                // Parse the active tab content
+                selectedTabs = el.querySelectorAll(".tab-pane.active")
+                for (let i = 0; i < selectedTabs.length; i++) {
+                    // Hide the tab content
+                    selectedTabs[i].classList.remove("active");
+                    selectedTabs[i].classList.remove("show");
+                }
+
+                // Get the tab element
                 let elTab = (ev.currentTarget as HTMLElement).querySelector(".nav-link");
                 if (elTab) {
                     // Select this tab
                     elTab.classList.add("active");
+
+                    // Get the tab content
+                    let tabIdx = (ev.currentTarget as HTMLElement).getAttribute("data-idx");
+                    let tabs = el.querySelectorAll(".tab-content > .tab-pane");
+                    let elTabContent = tabs[tabIdx] as HTMLElement;
+                    if (elTabContent) {
+                        // Show the tab content
+                        elTabContent.classList.add("active");
+                        elTabContent.classList.add("show");
+                    }
                 }
             });
         }

@@ -20,6 +20,7 @@
         <div id="textbox"></div>
         <div id="multi-textbox"></div>
         <div id="tabs"></div>
+        <div id="navTabs"></div>
         <div id="popover"></div>
         <div id="carousel"></div>
         <div id="btnCollapse"></div>
@@ -187,6 +188,17 @@
                     { tabName: "Tab 3", content: "This is the content for tab 3." },
                     { tabName: "Tab 4", content: "This is the content for tab 4." },
                     { tabName: "Tab 5", content: "This is the content for tab 5." }
+                ]
+            });
+            GD.Components.Nav({
+                el: document.querySelector("#navTabs"),
+                isTabs: true,
+                items: [
+                    { title: "Tab 1", tabContent: "This is the content for tab 1.", isActive: true },
+                    { title: "Tab 2", tabContent: "This is the content for tab 2." },
+                    { title: "Tab 3", tabContent: "This is the content for tab 3." },
+                    { title: "Tab 4", tabContent: "This is the content for tab 4." },
+                    { title: "Tab 5", tabContent: "This is the content for tab 5." }
                 ]
             });
             GD.Components.Popover({
