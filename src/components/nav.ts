@@ -118,36 +118,37 @@ export const Nav = (props: INavProps): INav => {
         if (props.isPills || props.isTabs) {
             // Add a click event
             elNavItem.addEventListener("click", ev => {
+                let elTab = ev.currentTarget as HTMLElement;
+
                 // Parse the selected tab links
-                let selectedTabs = el.querySelectorAll(".nav-link.active");
-                for (let i = 0; i < selectedTabs.length; i++) {
+                let tabs = elTab.parentElement.querySelectorAll(".active");
+                for (let i = 0; i < tabs.length; i++) {
                     // Unselect this tab
-                    selectedTabs[i].classList.remove("active");
+                    tabs[i].classList.remove("active");
                 }
 
-                // Parse the active tab content
-                selectedTabs = el.querySelectorAll(".tab-pane.active")
-                for (let i = 0; i < selectedTabs.length; i++) {
-                    // Hide the tab content
-                    selectedTabs[i].classList.remove("active");
-                    selectedTabs[i].classList.remove("show");
-                }
+                // Parse the selected tab content
+                let elTabContent = elTab.parentElement.nextElementSibling;
+                for (let i = 0; i < elTabContent.children.length; i++) {
+                    let elSelectedTab = elTabContent.children[i] as HTMLElement;
 
-                // Get the tab element
-                let elTab = (ev.currentTarget as HTMLElement).querySelector(".nav-link");
-                if (elTab) {
-                    // Select this tab
-                    elTab.classList.add("active");
-
-                    // Get the tab content
-                    let tabIdx = (ev.currentTarget as HTMLElement).getAttribute("data-idx");
-                    let tabs = el.querySelectorAll(".tab-content > .tab-pane");
-                    let elTabContent = tabs[tabIdx] as HTMLElement;
-                    if (elTabContent) {
-                        // Show the tab content
-                        elTabContent.classList.add("active");
-                        elTabContent.classList.add("show");
+                    // See if this tab is visible
+                    if (elSelectedTab.classList.contains("active")) {
+                        // Hide this tab
+                        elSelectedTab.classList.remove("active");
+                        elSelectedTab.classList.remove("show");
                     }
+                }
+
+                // Select this tab
+                elTab.children[0].classList.add("active");
+
+                // Get the tab content
+                elTabContent = elTabContent.children[elTab.getAttribute("data-idx")];
+                if (elTabContent) {
+                    // Show the tab content
+                    elTabContent.classList.add("active");
+                    elTabContent.classList.add("show");
                 }
             });
         }
