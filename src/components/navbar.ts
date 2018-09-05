@@ -180,6 +180,22 @@ export const Navbar = (props: INavbarProps): INavbar => {
         searchbox.setAttribute("aria-label", "Search");
         form.appendChild(searchbox);
 
+        // Set the key down event, to catch the "Enter" key being pressed
+        searchbox.addEventListener("keydown", ev => {
+            debugger;
+            // See if the "Enter" key was pressed
+            if (ev.keyCode == 13) {
+                // Disable the postback
+                ev.preventDefault();
+
+                // See if there is a search event
+                if (props.searchBox && props.searchBox.onSearch) {
+                    // Call the event
+                    props.searchBox.onSearch(searchbox.value);
+                }
+            }
+        });
+
         // Get the search box and see if a change event exists
         if (props.searchBox && props.searchBox.onChange) {
             // Set the change event
