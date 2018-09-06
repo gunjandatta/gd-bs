@@ -650,8 +650,8 @@ declare module 'gd-bs/components/types/form' {
         * Form Properties
         */
     export interface IFormProps {
-            el: Element | HTMLElement,
-            rows: Array<IFormRow>;
+            el?: Element | HTMLElement,
+            rows?: Array<IFormRow>;
             value?: any;
     }
     

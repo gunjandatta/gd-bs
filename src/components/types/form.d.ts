@@ -61,8 +61,8 @@ export interface IFormControlTextField extends IFormControl {
  * Form Properties
  */
 export interface IFormProps {
-    el: Element | HTMLElement,
-    rows: Array<IFormRow>;
+    el?: Element | HTMLElement,
+    rows?: Array<IFormRow>;
     value?: any;
 }
 

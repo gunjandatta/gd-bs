@@ -127,28 +127,31 @@ export const Nav = (props: INavProps): INav => {
                     tabs[i].classList.remove("active");
                 }
 
-                // Parse the selected tab content
-                let elTabContent = elTab.parentElement.nextElementSibling;
-                for (let i = 0; i < elTabContent.children.length; i++) {
-                    let elSelectedTab = elTabContent.children[i] as HTMLElement;
-
-                    // See if this tab is visible
-                    if (elSelectedTab.classList.contains("active")) {
-                        // Hide this tab
-                        elSelectedTab.classList.remove("active");
-                        elSelectedTab.classList.remove("show");
-                    }
-                }
-
                 // Select this tab
                 elTab.children[0].classList.add("active");
 
                 // Get the tab content
-                elTabContent = elTabContent.children[elTab.getAttribute("data-idx")];
+                let elTabContent = elTab.parentElement.nextElementSibling;
                 if (elTabContent) {
-                    // Show the tab content
-                    elTabContent.classList.add("active");
-                    elTabContent.classList.add("show");
+                    // Parse the selected tab content
+                    for (let i = 0; i < elTabContent.children.length; i++) {
+                        let elSelectedTab = elTabContent.children[i] as HTMLElement;
+
+                        // See if this tab is visible
+                        if (elSelectedTab.classList.contains("active")) {
+                            // Hide this tab
+                            elSelectedTab.classList.remove("active");
+                            elSelectedTab.classList.remove("show");
+                        }
+                    }
+
+                    // Get the tab content
+                    elTabContent = elTabContent.children[elTab.getAttribute("data-idx")];
+                    if (elTabContent) {
+                        // Show the tab content
+                        elTabContent.classList.add("active");
+                        elTabContent.classList.add("show");
+                    }
                 }
             });
         }
