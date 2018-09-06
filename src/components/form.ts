@@ -35,7 +35,7 @@ export const Form = (props: IFormProps): IForm => {
         // See if html is set
         if (control.html) {
             // Set the html
-            el.innerHTML = control.html;
+            el.innerHTML += control.html;
         } else {
             // Render the control based on the type
             switch (control.type) {
@@ -49,7 +49,6 @@ export const Form = (props: IFormProps): IForm => {
                         el,
                         formFl: true,
                         items: (control as IFormControlDropdown).items,
-                        label: (control as IFormControlDropdown).label,
                         onChange: (control as IFormControlDropdown).onChange,
                         value: value[control.name]
                     });
@@ -61,7 +60,6 @@ export const Form = (props: IFormProps): IForm => {
                         className: control.className,
                         el,
                         isReadonly: control.isReadonly,
-                        label: control.label,
                         onChange: (control as IFormControlTextField).onChange,
                         placeholder: (control as IFormControlTextField).placeholder,
                         type: InputGroupTypes.Email,
@@ -75,7 +73,6 @@ export const Form = (props: IFormProps): IForm => {
                         className: control.className,
                         el,
                         isReadonly: control.isReadonly,
-                        label: control.label,
                         onChange: (control as IFormControlTextField).onChange,
                         placeholder: (control as IFormControlTextField).placeholder,
                         type: InputGroupTypes.File,
@@ -89,7 +86,6 @@ export const Form = (props: IFormProps): IForm => {
                         el,
                         formFl: true,
                         items: (control as IFormControlDropdown).items,
-                        label: (control as IFormControlDropdown).label,
                         multi: true,
                         onChange: (control as IFormControlDropdown).onChange,
                         value: value[control.name]
@@ -102,7 +98,6 @@ export const Form = (props: IFormProps): IForm => {
                         className: control.className,
                         el,
                         isReadonly: control.isReadonly,
-                        label: control.label,
                         onChange: (control as IFormControlTextField).onChange,
                         placeholder: (control as IFormControlTextField).placeholder,
                         type: InputGroupTypes.Password,
@@ -119,7 +114,6 @@ export const Form = (props: IFormProps): IForm => {
                         className: control.className,
                         el,
                         isReadonly: control.isReadonly,
-                        label: control.label,
                         onChange: (control as IFormControlTextField).onChange,
                         placeholder: (control as IFormControlTextField).placeholder,
                         type: InputGroupTypes.TextArea,
@@ -133,7 +127,6 @@ export const Form = (props: IFormProps): IForm => {
                         className: control.className,
                         el,
                         isReadonly: control.isReadonly,
-                        label: control.label,
                         onChange: (control as IFormControlTextField).onChange,
                         placeholder: (control as IFormControlTextField).placeholder,
                         type: InputGroupTypes.TextField,
@@ -164,6 +157,7 @@ export const Form = (props: IFormProps): IForm => {
                 for (let j = 0; j < columns.length; j++) {
                     let column = columns[j];
                     let elCol = document.createElement("div");
+                    let colSize = column.size > 0 && column.size < 13 ? column.size : 0;
 
                     // Set the row class name based on the properties
                     elCol.classList.add("form-group");
@@ -172,7 +166,7 @@ export const Form = (props: IFormProps): IForm => {
                         elCol.classList.add("col-auto");
                     } else {
                         // Add the class name based on the size
-                        elCol.classList.add(column.size > 0 && column.size < 13 ? "col-" + column.size : "col");
+                        elCol.classList.add(colSize > 0 ? "col-" + colSize : "col");
                     }
 
                     // Render the control
@@ -187,11 +181,29 @@ export const Form = (props: IFormProps): IForm => {
             }
             // Else, see if a control is defined
             else if (row.control) {
+                let colSize = row.colSize > 0 && row.colSize < 13 ? row.colSize : 0;
+
+                // Create the row
                 let elRow = document.createElement("div");
                 elRow.classList.add("form-group");
 
-                // Render the control
-                renderControl(elRow, row.control);
+                // See if a column size is defined, and there is a label
+                if (row.control.label && colSize > 0) {
+                    // Add the row class
+                    elRow.classList.add("row");
+
+                    // Add the columns
+                    elRow.innerHTML = [
+                        '<label class="col-' + colSize + ' col-form-label">' + row.control.label + '</label>',
+                        '<div class="col-' + (12 - colSize) + '"></div>'
+                    ].join('\n');
+
+                    // Render the control
+                    renderControl(elRow.children[1] as any, row.control);
+                } else {
+                    // Render the control
+                    renderControl(elRow, row.control);
+                }
 
                 // Add the row to the form
                 elForm.appendChild(elRow);

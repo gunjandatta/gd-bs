@@ -677,10 +677,11 @@ declare module 'gd-bs/components/types/form' {
             isAutoSized?: boolean;
             isCentered?: boolean;
             control?: IFormControl;
+            colSize?: number;
             columns?: Array<{
                     control: IFormControl;
                     size?: number;
-            }>
+            }>;
     }
 }
 

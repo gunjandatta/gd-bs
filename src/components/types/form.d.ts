@@ -88,8 +88,9 @@ export interface IFormRow {
     isAutoSized?: boolean;
     isCentered?: boolean;
     control?: IFormControl;
+    colSize?: number;
     columns?: Array<{
         control: IFormControl;
         size?: number;
-    }>
+    }>;
 }

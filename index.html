@@ -62,7 +62,7 @@
                 el: document.querySelector("#modal"),
                 id: "myModal",
                 title: "My Modal",
-                onClose: function(modal) {
+                onClose: function (modal) {
                     console.log("The modal was closed.");
                     console.log(modal);
                 },
@@ -72,6 +72,7 @@
                         el: el,
                         rows: [
                             {
+                                colSize: 3,
                                 control: {
                                     label: "First Name",
                                     name: "FName",
@@ -82,6 +83,7 @@
                                 }
                             },
                             {
+                                colSize: 3,
                                 control: {
                                     label: "Last Name",
                                     name: "LName",
@@ -89,6 +91,7 @@
                                 }
                             },
                             {
+                                colSize: 3,
                                 control: {
                                     label: "EMail",
                                     name: "Email",
@@ -162,7 +165,7 @@
                 prependedLabel: "First Name",
                 appendedButtons: [{ text: "Run" }],
                 value: "Test Value",
-                onClear: function() {
+                onClear: function () {
                     console.log("The value was cleared.");
                 },
                 onChange: function (val) {
@@ -295,13 +298,13 @@
                 el: document.querySelector("#navbar"),
                 brand: "Navbar",
                 enableSearch: true,
-                onClick: function(item) {
+                onClick: function (item) {
                     // Log
                     console.log("Nav Item Clicked: " + item.text);
                 },
                 searchBox: {
-                    onChange: function(val) { console.log("Searching for: " + val); },
-                    onSearch: function(val) { console.log("Search for: " + val); }
+                    onChange: function (val) { console.log("Searching for: " + val); },
+                    onSearch: function (val) { console.log("Search for: " + val); }
                 },
                 items: [
                     {
@@ -318,7 +321,7 @@
                     {
                         text: "Dropdown Link",
                         items: [
-                            { text: "Link 1", onChange: function(item) { console.log("Nav DDL Item Clicked: " + item.text); } },
+                            { text: "Link 1", onChange: function (item) { console.log("Nav DDL Item Clicked: " + item.text); } },
                             { text: "Link 2" },
                             { text: "Link 3" },
                             { text: "Link 4" },
@@ -451,7 +454,8 @@
                 ]
             }
         }
-    ]' value='{
+    ]'
+        value='{
         "FName": "Gunjan",
         "LName": "Datta",
         "Choice": "3"
@@ -489,7 +493,8 @@
     <bs-navbar brand="Navbar" search-box='{
             "onChange": "logSearch",
             "onSearch": "logSearch"
-        }' items='[
+        }'
+        items='[
         {
             "text": "Home",
             "isActive": true

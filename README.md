@@ -7,3 +7,7 @@ This library extends the [Bootstrap Library](https://getbootstrap.com/), to help
 ### Web Components
 
 This library is using [Stencil](https://stenciljs.com/) to build the web components.
+
+### Issues/Requests
+
+Please report any bugs/issues/requests [here](https://github.com/gunjandatta/sprest-bs).
