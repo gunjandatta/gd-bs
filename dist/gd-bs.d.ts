@@ -611,7 +611,9 @@ declare module 'gd-bs/components/types/form' {
         * Form Control
         */
     export interface IFormControl {
+            className?: string;
             description?: string;
+            html?: string;
             isReadonly?: boolean;
             label?: string;
             name?: string;

@@ -32,102 +32,115 @@ export const Form = (props: IFormProps): IForm => {
     let renderControl = (el: HTMLElement, control: IFormControl) => {
         let value = props.value || {};
 
-        // Return the html based on the type
-        switch (control.type) {
-            // Checkbox
-            case FormControlTypes.CheckBox:
-                break;
-            // Dropdown
-            case FormControlTypes.Dropdown:
-                Dropdown({
-                    el,
-                    formFl: true,
-                    items: (control as IFormControlDropdown).items,
-                    label: (control as IFormControlDropdown).label,
-                    onChange: (control as IFormControlDropdown).onChange,
-                    value: value[control.name]
-                });
-                break;
-            // Email
-            case FormControlTypes.Email:
-                // Add the input
-                InputGroup({
-                    el,
-                    isReadonly: control.isReadonly,
-                    label: control.label,
-                    onChange: (control as IFormControlTextField).onChange,
-                    placeholder: (control as IFormControlTextField).placeholder,
-                    type: InputGroupTypes.Email,
-                    value: value[control.name]
-                });
-                break;
-            // File
-            case FormControlTypes.File:
-                // Add the input
-                InputGroup({
-                    el,
-                    isReadonly: control.isReadonly,
-                    label: control.label,
-                    onChange: (control as IFormControlTextField).onChange,
-                    placeholder: (control as IFormControlTextField).placeholder,
-                    type: InputGroupTypes.File,
-                    value: value[control.name]
-                });
-                break;
-            // Multi-Dropdown
-            case FormControlTypes.MultiDropdown:
-                Dropdown({
-                    el,
-                    formFl: true,
-                    items: (control as IFormControlDropdown).items,
-                    label: (control as IFormControlDropdown).label,
-                    multi: true,
-                    onChange: (control as IFormControlDropdown).onChange,
-                    value: value[control.name]
-                });
-                break;
-            // Password
-            case FormControlTypes.Password:
-                // Add the input
-                InputGroup({
-                    el,
-                    isReadonly: control.isReadonly,
-                    label: control.label,
-                    onChange: (control as IFormControlTextField).onChange,
-                    placeholder: (control as IFormControlTextField).placeholder,
-                    type: InputGroupTypes.Password,
-                    value: value[control.name]
-                });
-                break;
-            // Range
-            case FormControlTypes.Range:
-                break;
-            // Text Area
-            case FormControlTypes.TextArea:
-                // Add the input
-                InputGroup({
-                    el,
-                    isReadonly: control.isReadonly,
-                    label: control.label,
-                    onChange: (control as IFormControlTextField).onChange,
-                    placeholder: (control as IFormControlTextField).placeholder,
-                    type: InputGroupTypes.TextArea,
-                    value: value[control.name]
-                });
-                break;
-            // Text Field
-            case FormControlTypes.TextField:
-                // Add the input
-                InputGroup({
-                    el,
-                    isReadonly: control.isReadonly,
-                    label: control.label,
-                    onChange: (control as IFormControlTextField).onChange,
-                    placeholder: (control as IFormControlTextField).placeholder,
-                    type: InputGroupTypes.TextField,
-                    value: value[control.name]
-                });
-                break;
+        // See if html is set
+        if (control.html) {
+            // Set the html
+            el.innerHTML = control.html;
+        } else {
+            // Render the control based on the type
+            switch (control.type) {
+                // Checkbox
+                case FormControlTypes.CheckBox:
+                    break;
+                // Dropdown
+                case FormControlTypes.Dropdown:
+                    Dropdown({
+                        className: control.className,
+                        el,
+                        formFl: true,
+                        items: (control as IFormControlDropdown).items,
+                        label: (control as IFormControlDropdown).label,
+                        onChange: (control as IFormControlDropdown).onChange,
+                        value: value[control.name]
+                    });
+                    break;
+                // Email
+                case FormControlTypes.Email:
+                    // Add the input
+                    InputGroup({
+                        className: control.className,
+                        el,
+                        isReadonly: control.isReadonly,
+                        label: control.label,
+                        onChange: (control as IFormControlTextField).onChange,
+                        placeholder: (control as IFormControlTextField).placeholder,
+                        type: InputGroupTypes.Email,
+                        value: value[control.name]
+                    });
+                    break;
+                // File
+                case FormControlTypes.File:
+                    // Add the input
+                    InputGroup({
+                        className: control.className,
+                        el,
+                        isReadonly: control.isReadonly,
+                        label: control.label,
+                        onChange: (control as IFormControlTextField).onChange,
+                        placeholder: (control as IFormControlTextField).placeholder,
+                        type: InputGroupTypes.File,
+                        value: value[control.name]
+                    });
+                    break;
+                // Multi-Dropdown
+                case FormControlTypes.MultiDropdown:
+                    Dropdown({
+                        className: control.className,
+                        el,
+                        formFl: true,
+                        items: (control as IFormControlDropdown).items,
+                        label: (control as IFormControlDropdown).label,
+                        multi: true,
+                        onChange: (control as IFormControlDropdown).onChange,
+                        value: value[control.name]
+                    });
+                    break;
+                // Password
+                case FormControlTypes.Password:
+                    // Add the input
+                    InputGroup({
+                        className: control.className,
+                        el,
+                        isReadonly: control.isReadonly,
+                        label: control.label,
+                        onChange: (control as IFormControlTextField).onChange,
+                        placeholder: (control as IFormControlTextField).placeholder,
+                        type: InputGroupTypes.Password,
+                        value: value[control.name]
+                    });
+                    break;
+                // Range
+                case FormControlTypes.Range:
+                    break;
+                // Text Area
+                case FormControlTypes.TextArea:
+                    // Add the input
+                    InputGroup({
+                        className: control.className,
+                        el,
+                        isReadonly: control.isReadonly,
+                        label: control.label,
+                        onChange: (control as IFormControlTextField).onChange,
+                        placeholder: (control as IFormControlTextField).placeholder,
+                        type: InputGroupTypes.TextArea,
+                        value: value[control.name]
+                    });
+                    break;
+                // Text Field
+                case FormControlTypes.TextField:
+                    // Add the input
+                    InputGroup({
+                        className: control.className,
+                        el,
+                        isReadonly: control.isReadonly,
+                        label: control.label,
+                        onChange: (control as IFormControlTextField).onChange,
+                        placeholder: (control as IFormControlTextField).placeholder,
+                        type: InputGroupTypes.TextField,
+                        value: value[control.name]
+                    });
+                    break;
+            }
         }
     }
 

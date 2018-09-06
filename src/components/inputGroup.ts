@@ -37,7 +37,7 @@ export const InputGroup = (props: IInputGroupProps): IInputGroup => {
     }
 
     // Set the input group starting tag
-    html.push('<div class="input-group">');
+    html.push('<div class="' + classNames.join(' ') + '">');
 
     // See if we are pre-pending a label or buttons
     if (props.prependedButtons || props.prependedLabel) {
