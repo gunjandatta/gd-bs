@@ -612,6 +612,7 @@ declare module 'gd-bs/components/types/form' {
         */
     export interface IFormControl {
             description?: string;
+            isReadonly?: boolean;
             label?: string;
             name?: string;
             required?: boolean;
@@ -663,7 +664,6 @@ declare module 'gd-bs/components/types/form' {
             MultiDropdown: number;
             Password: number;
             Range: number;
-            Readonly: number;
             TextArea: number;
             TextField: number;
     }
@@ -713,6 +713,7 @@ declare module 'gd-bs/components/types/inputGroup' {
             id?: string;
             isLarge?: boolean;
             isPlainText?: boolean;
+            isReadonly?: boolean;
             isSmall?: boolean;
             label?: string;
             onClear?: () => void;
@@ -730,7 +731,6 @@ declare module 'gd-bs/components/types/inputGroup' {
             Email: number;
             File: number;
             Password: number;
-            Readonly: number;
             Search: number;
             TextArea: number;
             TextField: number;

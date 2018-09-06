@@ -15,6 +15,7 @@ export class InputGroup {
             id: this.id,
             isLarge: this.isLarge,
             isPlainText: this.isPlainText,
+            isReadonly: this.isReadonly,
             isSmall: this.isSmall,
             label: this.label,
             placeholder: this.placeholder,
@@ -69,6 +70,10 @@ export class InputGroup {
         "isPlainText": {
             "type": Boolean,
             "attr": "is-plain-text"
+        },
+        "isReadonly": {
+            "type": Boolean,
+            "attr": "is-readonly"
         },
         "isSmall": {
             "type": Boolean,

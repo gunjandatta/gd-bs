@@ -7,6 +7,7 @@ export declare class InputGroup {
     id: string;
     isLarge: boolean;
     isPlainText: boolean;
+    isReadonly: boolean;
     isSmall: boolean;
     label: string;
     placeholder: string;

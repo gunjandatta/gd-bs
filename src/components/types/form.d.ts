@@ -23,6 +23,7 @@ export interface IForm {
  */
 export interface IFormControl {
     description?: string;
+    isReadonly?: boolean;
     label?: string;
     name?: string;
     required?: boolean;
@@ -74,7 +75,6 @@ export type IFormControlTypes = {
     MultiDropdown: number;
     Password: number;
     Range: number;
-    Readonly: number;
     TextArea: number;
     TextField: number;
 }

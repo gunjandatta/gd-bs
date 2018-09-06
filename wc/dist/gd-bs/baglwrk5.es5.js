@@ -1,2 +1,0 @@
-/*! Built with http://stenciljs.com */
-GdBs.loadBundle("baglwrk5",["exports","./chunk-e3683d95.js"],function(e,d){window.GdBs.h,e.BsInputgroup=d.InputGroup,Object.defineProperty(e,"__esModule",{value:!0})});

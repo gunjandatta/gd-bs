@@ -14,6 +14,7 @@ export class InputGroup {
     @Prop() id: string;
     @Prop() isLarge: boolean;
     @Prop() isPlainText: boolean;
+    @Prop() isReadonly: boolean;
     @Prop() isSmall: boolean;
     @Prop() label: string;
     @Prop() placeholder: string;
@@ -39,6 +40,7 @@ export class InputGroup {
             id: this.id,
             isLarge: this.isLarge,
             isPlainText: this.isPlainText,
+            isReadonly: this.isReadonly,
             isSmall: this.isSmall,
             label: this.label,
             placeholder: this.placeholder,

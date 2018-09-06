@@ -226,6 +226,7 @@ export namespace Components {
     'id': string;
     'isLarge': boolean;
     'isPlainText': boolean;
+    'isReadonly': boolean;
     'isSmall': boolean;
     'label': string;
     'placeholder': string;
@@ -240,6 +241,7 @@ export namespace Components {
     'id'?: string;
     'isLarge'?: boolean;
     'isPlainText'?: boolean;
+    'isReadonly'?: boolean;
     'isSmall'?: boolean;
     'label'?: string;
     'placeholder'?: string;

@@ -549,6 +549,11 @@
           "attr": "is-plain-text"
         },
         {
+          "name": "isReadonly",
+          "type": "Boolean",
+          "attr": "is-readonly"
+        },
+        {
           "name": "isSmall",
           "type": "Boolean",
           "attr": "is-small"

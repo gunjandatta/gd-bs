@@ -53,6 +53,7 @@ export const Form = (props: IFormProps): IForm => {
                 // Add the input
                 InputGroup({
                     el,
+                    isReadonly: control.isReadonly,
                     label: control.label,
                     onChange: (control as IFormControlTextField).onChange,
                     placeholder: (control as IFormControlTextField).placeholder,
@@ -65,6 +66,7 @@ export const Form = (props: IFormProps): IForm => {
                 // Add the input
                 InputGroup({
                     el,
+                    isReadonly: control.isReadonly,
                     label: control.label,
                     onChange: (control as IFormControlTextField).onChange,
                     placeholder: (control as IFormControlTextField).placeholder,
@@ -89,6 +91,7 @@ export const Form = (props: IFormProps): IForm => {
                 // Add the input
                 InputGroup({
                     el,
+                    isReadonly: control.isReadonly,
                     label: control.label,
                     onChange: (control as IFormControlTextField).onChange,
                     placeholder: (control as IFormControlTextField).placeholder,
@@ -99,22 +102,12 @@ export const Form = (props: IFormProps): IForm => {
             // Range
             case FormControlTypes.Range:
                 break;
-            // Readonly
-            case FormControlTypes.Readonly:
-                // Add the input
-                InputGroup({
-                    el,
-                    label: control.label,
-                    placeholder: (control as IFormControlTextField).placeholder,
-                    type: InputGroupTypes.Readonly,
-                    value: value[control.name]
-                });
-                break;
             // Text Area
             case FormControlTypes.TextArea:
                 // Add the input
                 InputGroup({
                     el,
+                    isReadonly: control.isReadonly,
                     label: control.label,
                     onChange: (control as IFormControlTextField).onChange,
                     placeholder: (control as IFormControlTextField).placeholder,
@@ -127,6 +120,7 @@ export const Form = (props: IFormProps): IForm => {
                 // Add the input
                 InputGroup({
                     el,
+                    isReadonly: control.isReadonly,
                     label: control.label,
                     onChange: (control as IFormControlTextField).onChange,
                     placeholder: (control as IFormControlTextField).placeholder,

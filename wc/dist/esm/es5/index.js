@@ -10,7 +10,7 @@ import "./chunk-0d914292.js";
 import "./chunk-73dcfc2c.js";
 import "./chunk-0e2064dd.js";
 import "./chunk-862221bb.js";
-import "./chunk-3b22883c.js";
+import "./chunk-b72cc19e.js";
 import "./chunk-ba96d80e.js";
 import "./chunk-870318d8.js";
 import "./chunk-7da78a08.js";

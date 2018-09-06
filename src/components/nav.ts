@@ -47,7 +47,7 @@ export const Nav = (props: INavProps): INav => {
         // Add the navigation item
         html.push([
             '<li class="nav-item">',
-            '<a class="' + linkClassNames.join(' ') + '">' + (item.title || '') + '</a>',
+            '<a class="' + linkClassNames.join(' ') + '" href="' + (item.href || '#') + '">' + (item.title || '') + '</a>',
             '</li>'
         ].join('\n'));
     }
