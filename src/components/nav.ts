@@ -165,7 +165,6 @@ export const Nav = (props: INavProps): INav => {
         }
 
         // See if there is no href
-        debugger;
         if (item.href == null || item.href != "#") {
             // Add a click event
             elNavItem.addEventListener("click", ev => {
