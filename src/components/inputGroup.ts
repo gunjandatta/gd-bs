@@ -1,4 +1,5 @@
 import * as jQuery from "jquery";
+import { Button } from "./button";
 import { IInputGroup, IInputGroupProps } from "./types/inputGroup";
 
 /**
@@ -38,12 +39,12 @@ export const InputGroup = (props: IInputGroupProps): IInputGroup => {
     // Set the input group starting tag
     html.push('<div class="input-group">');
 
-    // See if we are pre-pending a label
-    if (props.prependedLabel) {
+    // See if we are pre-pending a label or buttons
+    if (props.prependedButtons || props.prependedLabel) {
         // Add the label
         html.push([
             '<div class="input-group-prepend">',
-            '<span class="input-group-text">' + props.prependedLabel + '</span>',
+            props.prependedLabel ? '<span class="input-group-text">' + props.prependedLabel + '</span>' : '',
             '</div>'
         ].join('\n'));
     }
@@ -89,12 +90,12 @@ export const InputGroup = (props: IInputGroupProps): IInputGroup => {
         ].join(' ')
     );
 
-    // See if we are appending a label
-    if (props.appendedLabel) {
+    // See if we are appending a label or buttons
+    if (props.appendedLabel || props.appendedButtons) {
         // Add the label
         html.push([
             '<div class="input-group-append">',
-            '<span class="input-group-text">' + props.appendedLabel + '</span>',
+            props.appendedLabel ? '<span class="input-group-text">' + props.appendedLabel + '</span>' : '',
             '</div>'
         ].join('\n'));
     }
@@ -130,6 +131,30 @@ export const InputGroup = (props: IInputGroupProps): IInputGroup => {
     } else {
         // Set the bootstrap class
         el.classList.add("bs");
+    }
+
+    // See if we are pre-pending buttons
+    if (props.prependedButtons) {
+        let elPrependGroup = el.querySelector(".input-group-prepend");
+        if (elPrependGroup) {
+            // Parse the buttons
+            for (let i = 0; i < props.prependedButtons.length; i++) {
+                // Add the button
+                elPrependGroup.appendChild(Button(props.prependedButtons[i]).el);
+            }
+        }
+    }
+
+    // See if we are appending buttons
+    if (props.appendedButtons) {
+        let elAppendGroup = el.querySelector(".input-group-append");
+        if (elAppendGroup) {
+            // Parse the buttons
+            for (let i = 0; i < props.appendedButtons.length; i++) {
+                // Add the button
+                elAppendGroup.appendChild(Button(props.appendedButtons[i]).el);
+            }
+        }
     }
 
     // See if a change event exists

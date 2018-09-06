@@ -683,6 +683,8 @@ declare module 'gd-bs/components/types/form' {
 }
 
 declare module 'gd-bs/components/types/inputGroup' {
+    import { IButtonProps } from "gd-bs/components/types/button";
+    
     /**
         * Input Group
         */
@@ -705,6 +707,7 @@ declare module 'gd-bs/components/types/inputGroup' {
         * Input Group Properties
         */
     export interface IInputGroupProps {
+            appendedButtons?: Array<IButtonProps>;
             appendedLabel?: string;
             className?: string;
             description?: string;
@@ -719,6 +722,7 @@ declare module 'gd-bs/components/types/inputGroup' {
             onClear?: () => void;
             onChange?: (value?: string, ev?: Event) => void;
             placeholder?: string;
+            prependedButtons?: Array<IButtonProps>;
             prependedLabel?: string;
             type?: number;
             value?: string;

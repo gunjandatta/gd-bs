@@ -1,3 +1,5 @@
+import { IButtonProps } from "./button";
+
 /**
  * Input Group
  */
@@ -20,6 +22,7 @@ export const InputGroupTypes: IInputGroupTypes;
  * Input Group Properties
  */
 export interface IInputGroupProps {
+    appendedButtons?: Array<IButtonProps>;
     appendedLabel?: string;
     className?: string;
     description?: string;
@@ -34,6 +37,7 @@ export interface IInputGroupProps {
     onClear?: () => void;
     onChange?: (value?: string, ev?: Event) => void;
     placeholder?: string;
+    prependedButtons?: Array<IButtonProps>;
     prependedLabel?: string;
     type?: number;
     value?: string;

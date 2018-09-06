@@ -519,6 +519,11 @@
       "styles": {},
       "props": [
         {
+          "name": "appendedButtons",
+          "type": "String",
+          "attr": "appended-buttons"
+        },
+        {
           "name": "appendedLabel",
           "type": "String",
           "attr": "appended-label"
@@ -567,6 +572,11 @@
           "name": "placeholder",
           "type": "String",
           "attr": "placeholder"
+        },
+        {
+          "name": "prependedButtons",
+          "type": "String",
+          "attr": "prepended-buttons"
         },
         {
           "name": "prependedLabel",

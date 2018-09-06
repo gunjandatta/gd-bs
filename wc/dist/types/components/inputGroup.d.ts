@@ -1,6 +1,7 @@
 import '../stencil.core';
 export declare class InputGroup {
     private el;
+    appendedButtons: string;
     appendedLabel: string;
     className: string;
     description: string;
@@ -11,6 +12,7 @@ export declare class InputGroup {
     isSmall: boolean;
     label: string;
     placeholder: string;
+    prependedButtons: string;
     prependedLabel: string;
     type: number;
     value: string;

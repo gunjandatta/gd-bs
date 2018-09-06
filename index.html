@@ -158,7 +158,9 @@
             GD.Components.InputGroup({
                 el: document.querySelector("#textbox"),
                 description: "This is a single line textbox.",
+                prependedButtons: [{ text: "Save" }],
                 prependedLabel: "First Name",
+                appendedButtons: [{ text: "Run" }],
                 value: "Test Value",
                 onClear: function() {
                     console.log("The value was cleared.");

@@ -6,8 +6,35 @@ export class InputGroup {
         let onClear = this.el.getAttribute("onClear");
         // Remove the id attribute
         this.el.removeAttribute("id");
+        // Get the appended buttons
+        let appendedButtons = [];
+        if (this.appendedButtons) {
+            try {
+                appendedButtons = JSON.parse(this.appendedButtons);
+            }
+            catch (_a) {
+                appendedButtons = [];
+                // Log an error
+                console.log("Error parsing the JSON string.");
+                console.log(this.appendedButtons);
+            }
+        }
+        // Get the prepended buttons
+        let prependedButtons = [];
+        if (this.prependedButtons) {
+            try {
+                prependedButtons = JSON.parse(this.prependedButtons);
+            }
+            catch (_b) {
+                prependedButtons = [];
+                // Log an error
+                console.log("Error parsing the JSON string.");
+                console.log(this.prependedButtons);
+            }
+        }
         // Render the inputGroup
         return GD.Components.InputGroup({
+            appendedButtons,
             appendedLabel: this.appendedLabel,
             className: this.className,
             description: this.description,
@@ -19,6 +46,7 @@ export class InputGroup {
             isSmall: this.isSmall,
             label: this.label,
             placeholder: this.placeholder,
+            prependedButtons,
             prependedLabel: this.prependedLabel,
             type: this.type,
             value: this.value,
@@ -44,6 +72,10 @@ export class InputGroup {
     }
     static get is() { return "bs-inputGroup"; }
     static get properties() { return {
+        "appendedButtons": {
+            "type": String,
+            "attr": "appended-buttons"
+        },
         "appendedLabel": {
             "type": String,
             "attr": "appended-label"
@@ -86,6 +118,10 @@ export class InputGroup {
         "placeholder": {
             "type": String,
             "attr": "placeholder"
+        },
+        "prependedButtons": {
+            "type": String,
+            "attr": "prepended-buttons"
         },
         "prependedLabel": {
             "type": String,

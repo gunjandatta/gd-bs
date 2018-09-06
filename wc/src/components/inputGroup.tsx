@@ -8,6 +8,7 @@ export class InputGroup {
     @Element() private el: HTMLElement;
 
     // InputGroup Properties
+    @Prop() appendedButtons: string;
     @Prop() appendedLabel: string;
     @Prop() className: string;
     @Prop() description: string;
@@ -18,6 +19,7 @@ export class InputGroup {
     @Prop() isSmall: boolean;
     @Prop() label: string;
     @Prop() placeholder: string;
+    @Prop() prependedButtons: string;
     @Prop() prependedLabel: string;
     @Prop() type: number;
     @Prop() value: string;
@@ -31,8 +33,35 @@ export class InputGroup {
         // Remove the id attribute
         this.el.removeAttribute("id");
 
+        // Get the appended buttons
+        let appendedButtons = [];
+        if (this.appendedButtons) {
+            try { appendedButtons = JSON.parse(this.appendedButtons); }
+            catch {
+                appendedButtons = [];
+
+                // Log an error
+                console.log("Error parsing the JSON string.");
+                console.log(this.appendedButtons);
+            }
+        }
+
+        // Get the prepended buttons
+        let prependedButtons = [];
+        if (this.prependedButtons) {
+            try { prependedButtons = JSON.parse(this.prependedButtons); }
+            catch {
+                prependedButtons = [];
+
+                // Log an error
+                console.log("Error parsing the JSON string.");
+                console.log(this.prependedButtons);
+            }
+        }
+
         // Render the inputGroup
         return GD.Components.InputGroup({
+            appendedButtons,
             appendedLabel: this.appendedLabel,
             className: this.className,
             description: this.description,
@@ -44,6 +73,7 @@ export class InputGroup {
             isSmall: this.isSmall,
             label: this.label,
             placeholder: this.placeholder,
+            prependedButtons,
             prependedLabel: this.prependedLabel,
             type: this.type,
             value: this.value,

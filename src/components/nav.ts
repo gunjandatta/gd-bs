@@ -163,6 +163,16 @@ export const Nav = (props: INavProps): INav => {
                 item.onClick(props.items[elItem.getAttribute("data-idx")], ev);
             });
         }
+
+        // See if there is no href
+        debugger;
+        if (item.href == null || item.href != "#") {
+            // Add a click event
+            elNavItem.addEventListener("click", ev => {
+                // Cancel the page from moving to the top
+                ev.preventDefault();
+            });
+        }
     }
 
     // Get the tab content elements
