@@ -1,3 +1,4 @@
+import { ICheckboxGroupItem } from "./checkboxGroup";
 import { IDropdownItem } from "./dropdown";
 
 /**
@@ -26,6 +27,7 @@ export interface IFormControl {
  * Form Control - Checkbox
  */
 export interface IFormControlCheckbox extends IFormControl {
+    items?: Array<ICheckboxGroupItem>;
     onChange?: (checked?: boolean) => void;
 }
 
@@ -51,7 +53,7 @@ export interface IFormControlTextField extends IFormControl {
  * Form Control Types
  */
 export type IFormControlTypes = {
-    CheckBox: number;
+    Checkbox: number;
     Email: number;
     Dropdown: number;
     File: number;

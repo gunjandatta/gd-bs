@@ -544,8 +544,8 @@ declare module 'gd-bs/components/types/dropdown' {
     export interface IDropdownItem {
             data?: any;
             href?: string;
-            isDivider?: string;
-            isHeader?: string;
+            isDivider?: boolean;
+            isHeader?: boolean;
             isSelected?: boolean;
             onChange?: (item?: IDropdownItem | Array<IDropdownItem>, ev?: Event) => void;
             text?: string;

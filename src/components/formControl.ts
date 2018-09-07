@@ -1,12 +1,13 @@
+import { CheckboxGroup } from "./checkboxGroup";
 import { Dropdown } from "./dropdown";
 import { InputGroup, InputGroupTypes } from "./inputGroup";
-import { IFormControl, IFormControlDropdown, IFormControlTextField } from "./types/formControl";
+import { IFormControl, IFormControlCheckbox, IFormControlDropdown, IFormControlTextField } from "./types/formControl";
 
 /**
  * Form Control Types
  */
 export enum FormControlTypes {
-    CheckBox = 1,
+    Checkbox = 1,
     Email = 2,
     Dropdown = 3,
     File = 4,
@@ -32,10 +33,19 @@ export const FormControl = (control: IFormControl) => {
         // Render the control based on the type
         switch (control.type) {
             // Checkbox
-            case FormControlTypes.CheckBox:
+            case FormControlTypes.Checkbox:
+                // Add the checkbox group
+                CheckboxGroup({
+                    className: control.className,
+                    el,
+                    formFl: true,
+                    items: (control as IFormControlCheckbox).items,
+                    value: control.value
+                });
                 break;
             // Dropdown
             case FormControlTypes.Dropdown:
+                // Add the dropdown
                 Dropdown({
                     className: control.className,
                     el,

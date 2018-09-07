@@ -7,6 +7,7 @@ export * from "./buttonGroup";
 export * from "./card";
 export * from "./cardGroup";
 export * from "./carousel";
+export * from "./checkboxGroup";
 export * from "./collapse";
 export * from "./dropdown";
 export * from "./form";
