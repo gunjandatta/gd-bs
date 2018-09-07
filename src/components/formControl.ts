@@ -184,7 +184,7 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
                 // See if this is a textbox
                 if (tb) {
                     // Return the value
-                    return (cb.el as HTMLInputElement).value;
+                    return (tb.el as HTMLInputElement).value;
                 }
             },
             props
