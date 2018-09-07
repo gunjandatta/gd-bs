@@ -180,6 +180,9 @@ export const Form = (props: IFormProps): IForm => {
 
                     // Add the column to the row
                     elRow.appendChild(elCol);
+
+                    // Call the render event
+                    column.control.onRenderControl ? column.control.onRenderControl(elCol) : null;
                 }
 
                 // Add the row to the form
@@ -213,6 +216,9 @@ export const Form = (props: IFormProps): IForm => {
 
                 // Add the row to the form
                 elForm.appendChild(elRow);
+
+                // Call the render event
+                row.control.onRenderControl ? row.control.onRenderControl(elRow) : null;
             }
         }
     }

@@ -36,6 +36,7 @@ export interface IFormControl {
     isReadonly?: boolean;
     label?: string;
     name?: string;
+    onRenderControl?: (el: HTMLElement) => void;
     required?: boolean;
     type?: number;
 }

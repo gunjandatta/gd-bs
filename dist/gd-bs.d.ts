@@ -625,6 +625,7 @@ declare module 'gd-bs/components/types/form' {
             isReadonly?: boolean;
             label?: string;
             name?: string;
+            onRenderControl?: (el: HTMLElement) => void;
             required?: boolean;
             type?: number;
     }
