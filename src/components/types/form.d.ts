@@ -19,6 +19,14 @@ export interface IForm {
 }
 
 /**
+ * Form Column
+ */
+export interface IFormColumn {
+    control: IFormControl;
+    size?: number;
+}
+
+/**
  * Form Control
  */
 export interface IFormControl {
@@ -58,15 +66,6 @@ export interface IFormControlTextField extends IFormControl {
 }
 
 /**
- * Form Properties
- */
-export interface IFormProps {
-    el?: Element | HTMLElement,
-    rows?: Array<IFormRow>;
-    value?: any;
-}
-
-/**
  * Form Control Types
  */
 export type IFormControlTypes = {
@@ -82,6 +81,15 @@ export type IFormControlTypes = {
 }
 
 /**
+ * Form Properties
+ */
+export interface IFormProps {
+    el?: Element | HTMLElement,
+    rows?: Array<IFormRow>;
+    value?: any;
+}
+
+/**
  * Form Row
  */
 export interface IFormRow {
@@ -89,8 +97,5 @@ export interface IFormRow {
     isCentered?: boolean;
     control?: IFormControl;
     colSize?: number;
-    columns?: Array<{
-        control: IFormControl;
-        size?: number;
-    }>;
+    columns?: Array<IFormColumn>;
 }

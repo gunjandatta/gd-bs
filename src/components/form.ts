@@ -169,6 +169,12 @@ export const Form = (props: IFormProps): IForm => {
                         elCol.classList.add(colSize > 0 ? "col-" + colSize : "col");
                     }
 
+                    // See if there is a label
+                    if (column.control.label) {
+                        // Set the label
+                        elCol.innerHTML = "<label>" + column.control.label + "</label>";
+                    }
+
                     // Render the control
                     renderControl(elCol, column.control);
 

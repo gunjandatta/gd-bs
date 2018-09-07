@@ -72,23 +72,30 @@
                         el: el,
                         rows: [
                             {
-                                colSize: 3,
-                                control: {
-                                    label: "First Name",
-                                    name: "FName",
-                                    type: GD.Components.FormControlTypes.TextField,
-                                    onChange: function (value) {
-                                        console.log("New First Name: " + value);
+                                columns: [
+                                    {
+                                        size: 6,
+                                        control: {
+                                            label: "First Name",
+                                            name: "FName",
+                                            type: GD.Components.FormControlTypes.TextField,
+                                            onChange: function (value) {
+                                                console.log("New First Name: " + value);
+                                            }
+                                        }
+                                    },
+                                    {
+                                        size: 6,
+                                        control: {
+                                            label: "Last Name",
+                                            name: "LName",
+                                            type: GD.Components.FormControlTypes.TextField,
+                                            onChange: function (value) {
+                                                console.log("New Last Name: " + value);
+                                            }
+                                        }
                                     }
-                                }
-                            },
-                            {
-                                colSize: 3,
-                                control: {
-                                    label: "Last Name",
-                                    name: "LName",
-                                    type: GD.Components.FormControlTypes.TextField,
-                                }
+                                ]
                             },
                             {
                                 colSize: 3,

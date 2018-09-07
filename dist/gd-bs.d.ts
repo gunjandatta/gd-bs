@@ -608,6 +608,14 @@ declare module 'gd-bs/components/types/form' {
     }
     
     /**
+        * Form Column
+        */
+    export interface IFormColumn {
+            control: IFormControl;
+            size?: number;
+    }
+    
+    /**
         * Form Control
         */
     export interface IFormControl {
@@ -647,15 +655,6 @@ declare module 'gd-bs/components/types/form' {
     }
     
     /**
-        * Form Properties
-        */
-    export interface IFormProps {
-            el?: Element | HTMLElement,
-            rows?: Array<IFormRow>;
-            value?: any;
-    }
-    
-    /**
         * Form Control Types
         */
     export type IFormControlTypes = {
@@ -671,6 +670,15 @@ declare module 'gd-bs/components/types/form' {
     }
     
     /**
+        * Form Properties
+        */
+    export interface IFormProps {
+            el?: Element | HTMLElement,
+            rows?: Array<IFormRow>;
+            value?: any;
+    }
+    
+    /**
         * Form Row
         */
     export interface IFormRow {
@@ -678,10 +686,7 @@ declare module 'gd-bs/components/types/form' {
             isCentered?: boolean;
             control?: IFormControl;
             colSize?: number;
-            columns?: Array<{
-                    control: IFormControl;
-                    size?: number;
-            }>;
+            columns?: Array<IFormColumn>;
     }
 }
 
