@@ -496,8 +496,9 @@ declare module 'gd-bs/components/types/checkboxGroup' {
         */
     export interface ICheckboxGroupProps {
             className?: string;
+            colSize?: number;
             el?: Element | HTMLElement;
-            formFl?: boolean;
+            label?: string;
             items?: Array<ICheckboxGroupItem>;
             multi?: boolean;
             //onChange?: (value: Array<ICheckboxGroupItem>) => void;

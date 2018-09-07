@@ -12,14 +12,30 @@ export enum CheckboxGroupTypes {
  * Checkbox Group
  */
 export const CheckboxGroup = (props: ICheckboxGroupProps): ICheckboxGroup => {
+    let colSize = props.colSize > 0 && props.colSize < 13 ? props.colSize : (props.label ? 10 : 12);
     let isMulti = props.multi ? true : false;
+
+    // Create the row
+    let row = document.createElement("div");
+
+    // Set the class names
+    row.classList.add("row");
+    props.className ? row.className = props.className : null;
+
+    // See if the label exists
+    if (props.label) {
+        // Add the label
+        let elLabel = document.createElement("legend");
+        elLabel.classList.add("col-form-label");
+        elLabel.classList.add("col-" + (12 - colSize));
+        elLabel.innerHTML = props.label;
+        row.appendChild(elLabel);
+    }
 
     // Create the checkbox group
     let cbGroup = document.createElement("div");
-
-    // Set the class names
-    props.className ? cbGroup.className = props.className : null;
-    props.formFl ? cbGroup.classList.add("form-control") : null;
+    cbGroup.classList.add("col-" + colSize);
+    row.appendChild(cbGroup);
 
     // Parse the items
     let items = props.items || [];
@@ -32,12 +48,12 @@ export const CheckboxGroup = (props: ICheckboxGroupProps): ICheckboxGroup => {
         cbGroup.appendChild(elCheckbox);
 
         // Create the checkbox
-        let checkbox = document.createElement("input");
-        checkbox.classList.add("form-check-input");
-        checkbox.type = "checkbox";
-        checkbox.checked = item.checked ? true : false;
-        checkbox.setAttribute("data-idx", i.toString());
-        elCheckbox.appendChild(checkbox);
+        let cb = document.createElement("input");
+        cb.classList.add("form-check-input");
+        cb.type = "checkbox";
+        cb.checked = item.checked ? true : false;
+        cb.setAttribute("data-idx", i.toString());
+        elCheckbox.appendChild(cb);
 
         // See if there is a label
         if (item.label) {
@@ -49,8 +65,8 @@ export const CheckboxGroup = (props: ICheckboxGroupProps): ICheckboxGroup => {
         }
 
         // Set the event
-        checkbox.addEventListener("click", ev => {
-            let el = ev.currentTarget as HTMLInputElement;
+        cb.addEventListener("click", ev => {
+            let idx = (ev.currentTarget as HTMLInputElement).getAttribute("data-idx");
 
             // See if we aren't allow multiple selections
             if (!isMulti) {
@@ -59,19 +75,20 @@ export const CheckboxGroup = (props: ICheckboxGroupProps): ICheckboxGroup => {
                 for (let i = 0; i < elCheckboxes.length; i++) {
                     let elCheckbox = elCheckboxes[i] as HTMLInputElement;
 
+                    // Skip this item
+                    if (elCheckbox.getAttribute("data-idx") == idx) { continue; }
+
                     // See if it's checked
                     if (elCheckbox.checked) {
                         // Uncheck it
                         elCheckbox.checked = false;
+                        elCheckbox.value = "";
                     }
                 }
-
-                // Check this checkbox
-                el.checked = true;
             }
 
             // Get the item
-            let item = items[el.getAttribute("data-idx")];
+            let item = items[idx];
             if (item) {
                 // See if there is a change event
                 if (item.onChange) {
@@ -84,7 +101,7 @@ export const CheckboxGroup = (props: ICheckboxGroupProps): ICheckboxGroup => {
 
     // Create the element
     let el = document.createElement("div");
-    el.appendChild(cbGroup);
+    el.appendChild(row);
 
     // See if are rendering it to an element
     if (props.el) {

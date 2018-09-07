@@ -38,8 +38,8 @@ export const FormControl = (control: IFormControl) => {
                 CheckboxGroup({
                     className: control.className,
                     el,
-                    formFl: true,
-                    items: (control as IFormControlCheckbox).items
+                    items: (control as IFormControlCheckbox).items,
+                    label: control.label
                 });
                 break;
             // Dropdown
