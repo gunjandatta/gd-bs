@@ -11,7 +11,7 @@ export interface IFormControl {
     isReadonly?: boolean;
     label?: string;
     name?: string;
-    onRenderControl?: (el: HTMLElement) => void;
+    onRenderControl?: (control: IFormControl) => void;
     required?: boolean;
     type?: number;
     value?: any;

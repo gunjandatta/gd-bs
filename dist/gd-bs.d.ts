@@ -651,7 +651,7 @@ declare module 'gd-bs/components/types/formControl' {
             isReadonly?: boolean;
             label?: string;
             name?: string;
-            onRenderControl?: (el: HTMLElement) => void;
+            onRenderControl?: (control: IFormControl) => void;
             required?: boolean;
             type?: number;
             value?: any;

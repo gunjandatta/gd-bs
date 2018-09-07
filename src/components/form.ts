@@ -57,7 +57,7 @@ export const Form = (props: IFormProps): IForm => {
                     elRow.appendChild(elCol);
 
                     // Call the render event
-                    column.control.onRenderControl ? column.control.onRenderControl(elCol) : null;
+                    column.control.onRenderControl ? column.control.onRenderControl(column.control) : null;
                 }
 
                 // Add the row to the form
@@ -99,7 +99,7 @@ export const Form = (props: IFormProps): IForm => {
                 elForm.appendChild(elRow);
 
                 // Call the render event
-                row.control.onRenderControl ? row.control.onRenderControl(elRow) : null;
+                row.control.onRenderControl ? row.control.onRenderControl(row.control) : null;
             }
         }
     }
