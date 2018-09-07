@@ -9,6 +9,9 @@ export const CheckboxGroup: (props: ICheckboxGroupProps) => ICheckboxGroup;
 export interface ICheckboxGroup {
     /** The checkbox element. */
     el: HTMLElement;
+
+    /** Gets the values. */
+    getValues: () => Array<ICheckboxGroupItem>;
 }
 
 /**
@@ -17,7 +20,8 @@ export interface ICheckboxGroup {
 export interface ICheckboxGroupItem {
     checked?: boolean;
     label?: string;
-    onChange?: (checked?: boolean) => void;
+    name?: string;
+    onChange?: (value: ICheckboxGroupItem) => void;
 }
 
 /**
@@ -28,5 +32,6 @@ export interface ICheckboxGroupProps {
     el?: Element | HTMLElement;
     formFl?: boolean;
     items?: Array<ICheckboxGroupItem>;
-    value?: boolean | Array<boolean>;
+    multi?: boolean;
+    //onChange?: (value: Array<ICheckboxGroupItem>) => void;
 }

@@ -1,4 +1,4 @@
-import { ICheckboxGroup, ICheckboxGroupProps } from "./types/checkboxGroup";
+import { ICheckboxGroup, ICheckboxGroupItem, ICheckboxGroupProps } from "./types/checkboxGroup";
 
 /**
  * Checkbox Group Types
@@ -12,6 +12,8 @@ export enum CheckboxGroupTypes {
  * Checkbox Group
  */
 export const CheckboxGroup = (props: ICheckboxGroupProps): ICheckboxGroup => {
+    let isMulti = props.multi ? true : false;
+
     // Create the checkbox group
     let cbGroup = document.createElement("div");
 
@@ -46,20 +48,38 @@ export const CheckboxGroup = (props: ICheckboxGroupProps): ICheckboxGroup => {
             elCheckbox.appendChild(label);
         }
 
-        // See if there is an event
-        if (item.onChange) {
-            // Set the event
-            checkbox.addEventListener("click", ev => {
-                let el = ev.currentTarget as HTMLInputElement;
+        // Set the event
+        checkbox.addEventListener("click", ev => {
+            let el = ev.currentTarget as HTMLInputElement;
 
-                // Get the checkbox
-                let cb = items[el.getAttribute("data-idx")];
-                if (cb && cb.onChange) {
-                    // Call the event
-                    cb.onChange(el.checked);
+            // See if we aren't allow multiple selections
+            if (!isMulti) {
+                // Get the check boxes
+                let elCheckboxes = el.querySelectorAll("input[type='checkbox']");
+                for (let i = 0; i < elCheckboxes.length; i++) {
+                    let elCheckbox = elCheckboxes[i] as HTMLInputElement;
+
+                    // See if it's checked
+                    if (elCheckbox.checked) {
+                        // Uncheck it
+                        elCheckbox.checked = false;
+                    }
                 }
-            });
-        }
+
+                // Check this checkbox
+                el.checked = true;
+            }
+
+            // Get the item
+            let item = items[el.getAttribute("data-idx")];
+            if (item) {
+                // See if there is a change event
+                if (item.onChange) {
+                    // Call the event
+                    item.onChange(item);
+                }
+            }
+        });
     }
 
     // Create the element
@@ -87,5 +107,26 @@ export const CheckboxGroup = (props: ICheckboxGroupProps): ICheckboxGroup => {
     }
 
     // Return the checkbox
-    return { el };
+    return {
+        el,
+        getValues: () => {
+            let values: Array<ICheckboxGroupItem> = [];
+
+            // Parse the checkboxes
+            let cbs = el.querySelectorAll("input[type='checkbox']");
+            for (let i = 0; i < cbs.length; i++) {
+                let cb = cbs[i] as HTMLInputElement;
+                let item = props.items[i];
+
+                // See if this is checked and the item exists
+                if (item && cb.checked) {
+                    // Add the value
+                    values.push();
+                }
+            }
+
+            // Return the values
+            return values;
+        }
+    };
 }

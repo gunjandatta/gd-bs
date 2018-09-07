@@ -39,8 +39,7 @@ export const FormControl = (control: IFormControl) => {
                     className: control.className,
                     el,
                     formFl: true,
-                    items: (control as IFormControlCheckbox).items,
-                    value: control.value
+                    items: (control as IFormControlCheckbox).items
                 });
                 break;
             // Dropdown

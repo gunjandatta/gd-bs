@@ -21,6 +21,7 @@ declare module 'gd-bs/components/types' {
     export * from "gd-bs/components/types/card";
     export * from "gd-bs/components/types/cardGroup";
     export * from "gd-bs/components/types/carousel";
+    export * from "gd-bs/components/types/checkboxGroup";
     export * from "gd-bs/components/types/collapse";
     export * from "gd-bs/components/types/dropdown";
     export * from "gd-bs/components/types/form";
@@ -463,6 +464,46 @@ declare module 'gd-bs/components/types/carousel' {
     }
 }
 
+declare module 'gd-bs/components/types/checkboxGroup' {
+    /**
+        * Checkbox Group
+        */
+    export const CheckboxGroup: (props: ICheckboxGroupProps) => ICheckboxGroup;
+    
+    /**
+        * Checkbox Group
+        */
+    export interface ICheckboxGroup {
+            /** The checkbox element. */
+            el: HTMLElement;
+    
+            /** Gets the values. */
+            getValues: () => Array<ICheckboxGroupItem>;
+    }
+    
+    /**
+        * Checkbox Group Item
+        */
+    export interface ICheckboxGroupItem {
+            checked?: boolean;
+            label?: string;
+            name?: string;
+            onChange?: (value: ICheckboxGroupItem) => void;
+    }
+    
+    /**
+        * Checkbox Group Properties
+        */
+    export interface ICheckboxGroupProps {
+            className?: string;
+            el?: Element | HTMLElement;
+            formFl?: boolean;
+            items?: Array<ICheckboxGroupItem>;
+            multi?: boolean;
+            //onChange?: (value: Array<ICheckboxGroupItem>) => void;
+    }
+}
+
 declare module 'gd-bs/components/types/collapse' {
     /**
         * Collapse
@@ -638,6 +679,7 @@ declare module 'gd-bs/components/types/form' {
 }
 
 declare module 'gd-bs/components/types/formControl' {
+    import { ICheckboxGroupItem } from "gd-bs/components/types/checkboxGroup";
     import { IDropdownItem } from "gd-bs/components/types/dropdown";
     
     /**
@@ -666,6 +708,7 @@ declare module 'gd-bs/components/types/formControl' {
         * Form Control - Checkbox
         */
     export interface IFormControlCheckbox extends IFormControl {
+            items?: Array<ICheckboxGroupItem>;
             onChange?: (checked?: boolean) => void;
     }
     
@@ -691,7 +734,7 @@ declare module 'gd-bs/components/types/formControl' {
         * Form Control Types
         */
     export type IFormControlTypes = {
-            CheckBox: number;
+            Checkbox: number;
             Email: number;
             Dropdown: number;
             File: number;
