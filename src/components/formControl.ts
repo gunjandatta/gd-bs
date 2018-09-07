@@ -152,7 +152,8 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
                 // See if this is a checkbox
                 if (cb) {
                     // Return the value
-                    return (cb.el as HTMLInputElement).checked;
+                    let elCheckbox = cb.el.querySelector("input");
+                    return elCheckbox ? elCheckbox.checked : null;
                 }
 
                 // See if this is a dropdown
@@ -184,7 +185,8 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
                 // See if this is a textbox
                 if (tb) {
                     // Return the value
-                    return (tb.el as HTMLInputElement).value;
+                    let elTextbox = tb.el.querySelector("input");
+                    return elTextbox ? elTextbox.value : null;
                 }
             },
             props
