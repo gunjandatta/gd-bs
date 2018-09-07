@@ -38,6 +38,7 @@ export const FormControl = (control: IFormControl) => {
                 CheckboxGroup({
                     className: control.className,
                     el,
+                    hideLabel: (control as IFormControlCheckbox).hideLabel,
                     items: (control as IFormControlCheckbox).items,
                     label: control.label
                 });

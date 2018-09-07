@@ -37,6 +37,7 @@ export interface ICheckboxGroupProps {
     className?: string;
     colSize?: number;
     el?: Element | HTMLElement;
+    hideLabel?: boolean;
     label?: string;
     items?: Array<ICheckboxGroupItem>;
     multi?: boolean;

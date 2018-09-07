@@ -12,7 +12,6 @@ export enum CheckboxGroupTypes {
  * Checkbox Group
  */
 export const CheckboxGroup = (props: ICheckboxGroupProps): ICheckboxGroup => {
-    debugger;
     let colSize = props.colSize > 0 && props.colSize < 13 ? props.colSize : (props.label ? 10 : 12);
     let isMulti = props.multi ? true : false;
 
@@ -30,7 +29,7 @@ export const CheckboxGroup = (props: ICheckboxGroupProps): ICheckboxGroup => {
         elLabel.classList.add("col-form-label");
         elLabel.classList.add("col-" + (12 - colSize));
         elLabel.innerHTML = props.label;
-        row.appendChild(elLabel);
+        props.hideLabel ? null : row.appendChild(elLabel);
     }
 
     // Create the checkbox group

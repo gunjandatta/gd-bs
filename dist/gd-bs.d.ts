@@ -504,6 +504,7 @@ declare module 'gd-bs/components/types/checkboxGroup' {
             className?: string;
             colSize?: number;
             el?: Element | HTMLElement;
+            hideLabel?: boolean;
             label?: string;
             items?: Array<ICheckboxGroupItem>;
             multi?: boolean;
@@ -724,6 +725,7 @@ declare module 'gd-bs/components/types/formControl' {
         * Form Control - Checkbox
         */
     export interface IFormControlCheckbox extends IFormControl {
+            hideLabel?: boolean;
             items?: Array<ICheckboxGroupItem>;
             onChange?: (checked?: boolean) => void;
     }

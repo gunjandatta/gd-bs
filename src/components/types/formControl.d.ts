@@ -27,6 +27,7 @@ export interface IFormControl {
  * Form Control - Checkbox
  */
 export interface IFormControlCheckbox extends IFormControl {
+    hideLabel?: boolean;
     items?: Array<ICheckboxGroupItem>;
     onChange?: (checked?: boolean) => void;
 }
