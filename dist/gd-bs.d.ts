@@ -24,6 +24,7 @@ declare module 'gd-bs/components/types' {
     export * from "gd-bs/components/types/collapse";
     export * from "gd-bs/components/types/dropdown";
     export * from "gd-bs/components/types/form";
+    export * from "gd-bs/components/types/formControl";
     export * from "gd-bs/components/types/inputGroup";
     export * from "gd-bs/components/types/jumbotron";
     export * from "gd-bs/components/types/listGroup";
@@ -587,7 +588,7 @@ declare module 'gd-bs/components/types/dropdown' {
 }
 
 declare module 'gd-bs/components/types/form' {
-    import { IDropdownItem } from "gd-bs/components/types/dropdown";
+    import { IFormControl, IFormControlTypes } from "gd-bs/components/types/formControl";
     
     /**
         * Form
@@ -616,11 +617,36 @@ declare module 'gd-bs/components/types/form' {
     }
     
     /**
+        * Form Properties
+        */
+    export interface IFormProps {
+            el?: Element | HTMLElement,
+            rows?: Array<IFormRow>;
+            value?: any;
+    }
+    
+    /**
+        * Form Row
+        */
+    export interface IFormRow {
+            isAutoSized?: boolean;
+            isCentered?: boolean;
+            control?: IFormControl;
+            colSize?: number;
+            columns?: Array<IFormColumn>;
+    }
+}
+
+declare module 'gd-bs/components/types/formControl' {
+    import { IDropdownItem } from "gd-bs/components/types/dropdown";
+    
+    /**
         * Form Control
         */
     export interface IFormControl {
             className?: string;
             description?: string;
+            el?: HTMLElement;
             html?: string;
             isReadonly?: boolean;
             label?: string;
@@ -628,6 +654,7 @@ declare module 'gd-bs/components/types/form' {
             onRenderControl?: (el: HTMLElement) => void;
             required?: boolean;
             type?: number;
+            value?: any;
     }
     
     /**
@@ -668,26 +695,6 @@ declare module 'gd-bs/components/types/form' {
             Range: number;
             TextArea: number;
             TextField: number;
-    }
-    
-    /**
-        * Form Properties
-        */
-    export interface IFormProps {
-            el?: Element | HTMLElement,
-            rows?: Array<IFormRow>;
-            value?: any;
-    }
-    
-    /**
-        * Form Row
-        */
-    export interface IFormRow {
-            isAutoSized?: boolean;
-            isCentered?: boolean;
-            control?: IFormControl;
-            colSize?: number;
-            columns?: Array<IFormColumn>;
     }
 }
 

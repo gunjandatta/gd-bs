@@ -1,24 +1,5 @@
-import { Dropdown, InputGroup, InputGroupTypes } from ".";
-import {
-    IForm, IFormProps,
-    IFormControl, IFormControlDropdown, IFormControlTextField
-} from "./types/form";
-
-/**
- * Form Control Type
- */
-export enum FormControlTypes {
-    CheckBox = 1,
-    Email = 2,
-    Dropdown = 3,
-    File = 4,
-    MultiDropdown = 5,
-    Password = 6,
-    Range = 7,
-    Readonly = 8,
-    TextArea = 9,
-    TextField = 10
-}
+import { IForm, IFormProps } from "./types/form";
+import { FormControl } from "./formControl";
 
 /**
  * Form
@@ -27,115 +8,6 @@ export enum FormControlTypes {
 export const Form = (props: IFormProps): IForm => {
     // Create the form element
     let elForm = document.createElement("form");
-
-    // Method to render the control
-    let renderControl = (el: HTMLElement, control: IFormControl) => {
-        let value = props.value || {};
-
-        // See if html is set
-        if (control.html) {
-            // Set the html
-            el.innerHTML += control.html;
-        } else {
-            // Render the control based on the type
-            switch (control.type) {
-                // Checkbox
-                case FormControlTypes.CheckBox:
-                    break;
-                // Dropdown
-                case FormControlTypes.Dropdown:
-                    Dropdown({
-                        className: control.className,
-                        el,
-                        formFl: true,
-                        items: (control as IFormControlDropdown).items,
-                        onChange: (control as IFormControlDropdown).onChange,
-                        value: value[control.name]
-                    });
-                    break;
-                // Email
-                case FormControlTypes.Email:
-                    // Add the input
-                    InputGroup({
-                        className: control.className,
-                        el,
-                        isReadonly: control.isReadonly,
-                        onChange: (control as IFormControlTextField).onChange,
-                        placeholder: (control as IFormControlTextField).placeholder,
-                        type: InputGroupTypes.Email,
-                        value: value[control.name]
-                    });
-                    break;
-                // File
-                case FormControlTypes.File:
-                    // Add the input
-                    InputGroup({
-                        className: control.className,
-                        el,
-                        isReadonly: control.isReadonly,
-                        onChange: (control as IFormControlTextField).onChange,
-                        placeholder: (control as IFormControlTextField).placeholder,
-                        type: InputGroupTypes.File,
-                        value: value[control.name]
-                    });
-                    break;
-                // Multi-Dropdown
-                case FormControlTypes.MultiDropdown:
-                    Dropdown({
-                        className: control.className,
-                        el,
-                        formFl: true,
-                        items: (control as IFormControlDropdown).items,
-                        multi: true,
-                        onChange: (control as IFormControlDropdown).onChange,
-                        value: value[control.name]
-                    });
-                    break;
-                // Password
-                case FormControlTypes.Password:
-                    // Add the input
-                    InputGroup({
-                        className: control.className,
-                        el,
-                        isReadonly: control.isReadonly,
-                        onChange: (control as IFormControlTextField).onChange,
-                        placeholder: (control as IFormControlTextField).placeholder,
-                        type: InputGroupTypes.Password,
-                        value: value[control.name]
-                    });
-                    break;
-                // Range
-                case FormControlTypes.Range:
-                    break;
-                // Text Area
-                case FormControlTypes.TextArea:
-                    // Add the input
-                    InputGroup({
-                        className: control.className,
-                        el,
-                        isReadonly: control.isReadonly,
-                        onChange: (control as IFormControlTextField).onChange,
-                        placeholder: (control as IFormControlTextField).placeholder,
-                        type: InputGroupTypes.TextArea,
-                        value: value[control.name]
-                    });
-                    break;
-                // Text Field
-                case FormControlTypes.TextField:
-                    // Add the input
-                    InputGroup({
-                        className: control.className,
-                        el,
-                        isReadonly: control.isReadonly,
-                        onChange: (control as IFormControlTextField).onChange,
-                        placeholder: (control as IFormControlTextField).placeholder,
-                        type: InputGroupTypes.TextField,
-                        value: value[control.name]
-                    });
-                    break;
-            }
-        }
-    }
 
     // Method to render the form
     let renderForm = () => {
@@ -175,8 +47,11 @@ export const Form = (props: IFormProps): IForm => {
                         elCol.innerHTML = "<label>" + column.control.label + "</label>";
                     }
 
+                    // Set the element
+                    column.control.el = elCol;
+
                     // Render the control
-                    renderControl(elCol, column.control);
+                    FormControl(column.control);
 
                     // Add the column to the row
                     elRow.appendChild(elCol);
@@ -207,11 +82,17 @@ export const Form = (props: IFormProps): IForm => {
                         '<div class="col-' + (12 - colSize) + '"></div>'
                     ].join('\n');
 
+                    // Set the element
+                    row.control.el = elRow.children[1] as any;
+
                     // Render the control
-                    renderControl(elRow.children[1] as any, row.control);
+                    FormControl(row.control);
                 } else {
+                    // Set the element
+                    row.control.el = elRow;
+
                     // Render the control
-                    renderControl(elRow, row.control);
+                    FormControl(row.control);
                 }
 
                 // Add the row to the form
