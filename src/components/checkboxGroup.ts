@@ -12,6 +12,7 @@ export enum CheckboxGroupTypes {
  * Checkbox Group
  */
 export const CheckboxGroup = (props: ICheckboxGroupProps): ICheckboxGroup => {
+    debugger;
     let colSize = props.colSize > 0 && props.colSize < 13 ? props.colSize : (props.label ? 10 : 12);
     let isMulti = props.multi ? true : false;
 
@@ -55,14 +56,11 @@ export const CheckboxGroup = (props: ICheckboxGroupProps): ICheckboxGroup => {
         cb.setAttribute("data-idx", i.toString());
         elCheckbox.appendChild(cb);
 
-        // See if there is a label
-        if (item.label) {
-            // Append a label
-            let label = document.createElement("label");
-            label.classList.add("form-check-label");
-            label.innerHTML = item.label;
-            elCheckbox.appendChild(label);
-        }
+        // Append a label
+        let label = document.createElement("label");
+        label.classList.add("form-check-label");
+        label.innerHTML = item.label || "&nbsp;";
+        elCheckbox.appendChild(label);
 
         // Set the event
         cb.addEventListener("click", ev => {
