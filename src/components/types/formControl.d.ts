@@ -3,6 +3,11 @@ import { IDropdownItem } from "./dropdown";
 /**
  * Form Control
  */
+export const FormControl: (control: IFormControl) => void;
+
+/**
+ * Form Control
+ */
 export interface IFormControl {
     className?: string;
     description?: string;

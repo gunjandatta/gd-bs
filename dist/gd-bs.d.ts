@@ -643,6 +643,11 @@ declare module 'gd-bs/components/types/formControl' {
     /**
         * Form Control
         */
+    export const FormControl: (control: IFormControl) => void;
+    
+    /**
+        * Form Control
+        */
     export interface IFormControl {
             className?: string;
             description?: string;
