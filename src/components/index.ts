@@ -23,3 +23,4 @@ export * from "./popover";
 export * from "./progress";
 export * from "./progressGroup";
 export * from "./tooltip";
+export * from "./toolbar";

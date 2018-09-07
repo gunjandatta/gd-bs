@@ -14,6 +14,7 @@
 <body>
     <h1>Library</h1>
     <form class="bs">
+        <div id="toolbar"></div>
         <div id="ddl"></div>
         <div id="button"></div>
         <div id="modal"></div>
@@ -33,6 +34,24 @@
     </form>
     <script type="text/javascript">
         window.addEventListener("load", function () {
+            GD.Components.Toolbar({
+                el: document.getElementById("toolbar"),
+                spacing: 3,
+                items: [
+                    {
+                        buttons: [
+                            { text: "Button 1" },
+                            { text: "Button 2" },
+                            { text: "Button 3" }
+                        ]
+                    },
+                    {
+                        inputGroup: {
+                            placeholder: "Textbox Example"
+                        }
+                    }
+                ]
+            })
             GD.Components.Dropdown({
                 el: document.querySelector("#ddl"),
                 label: "My Dropdown",

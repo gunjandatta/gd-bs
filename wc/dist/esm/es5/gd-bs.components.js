@@ -44,4 +44,6 @@ export var Progress = ["bs-progress",function(){return(import("./qvgpzrry.js")).
 
 export var ProgressGroup = ["bs-progressGroup",function(){return(import("./ram7fmg5.js")).then(function(m){return m.BsProgressgroup})},0,[["className",1,0,"class-name",2],["el",7],["isMultiple",1,0,"is-multiple",3],["progressbars",1,0,1,2]]];
 
+export var Toolbar = ["bs-toolbar",function(){return(import("./51kojyhs.js")).then(function(m){return m.BsToolbar})},0,[["className",1,0,"class-name",2],["el",7],["items",1,0,1,2],["spacing",1,0,1,4]]];
+
 export var Tooltip = ["bs-tooltip",function(){return(import("./4mvvhk2m.js")).then(function(m){return m.BsTooltip})},0,[["btnProps",1,0,"btn-props",2],["className",1,0,"class-name",2],["el",7],["options",1,0,1,2],["type",1,0,1,4]]];

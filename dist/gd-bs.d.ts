@@ -36,6 +36,7 @@ declare module 'gd-bs/components/types' {
     export * from "gd-bs/components/types/popover";
     export * from "gd-bs/components/types/progress";
     export * from "gd-bs/components/types/progressGroup";
+    export * from "gd-bs/components/types/toolbar";
     export * from "gd-bs/components/types/tooltip";
 }
 
@@ -1311,6 +1312,43 @@ declare module 'gd-bs/components/types/progressGroup' {
             el?: Element | HTMLElement;
             isMultiple?: boolean;
             progressbars?: Array<IProgressProps>;
+    }
+}
+
+declare module 'gd-bs/components/types/toolbar' {
+    import { IButtonProps } from "gd-bs/components/types/button";
+    import { IInputGroupProps } from "gd-bs/components/types/inputGroup";
+    
+    /**
+        * Toolbar
+        */
+    export const Toolbar: (props: IToolbarProps) => IToolbar;
+    
+    /**
+        * Toolbar
+        */
+    export interface IToolbar {
+            /** The element. */
+            el: Element;
+    }
+    
+    /**
+        * Toolbar Item
+        */
+    export interface IToolbarItem {
+            buttons?: Array<IButtonProps>;
+            buttonType?: number;
+            inputGroup?: IInputGroupProps;
+    }
+    
+    /**
+        * Toolbar Properties
+        */
+    export interface IToolbarProps {
+            className?: string;
+            el?: Element | HTMLElement;
+            items?: Array<IToolbarItem>;
+            spacing?: number;
     }
 }
 
