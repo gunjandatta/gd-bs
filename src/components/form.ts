@@ -50,6 +50,9 @@ export const Form = (props: IFormProps): IForm => {
                     // Set the element
                     column.control.el = elCol;
 
+                    // Set the value
+                    column.control.value = column.control.value || props.value[column.control.name];
+
                     // Render the control
                     FormControl(column.control);
 
@@ -70,6 +73,9 @@ export const Form = (props: IFormProps): IForm => {
                 // Create the row
                 let elRow = document.createElement("div");
                 elRow.classList.add("form-group");
+
+                // Set the value
+                row.control.value = row.control.value || props.value[row.control.name];
 
                 // See if a column size is defined, and there is a label
                 if (row.control.label && colSize > 0) {
