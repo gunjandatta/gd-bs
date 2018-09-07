@@ -68,16 +68,15 @@ export const ButtonGroup = (props: IButtonGroupProps): IButtonGroup => {
     // Parse the buttons
     let elButtons = el.querySelectorAll(".btn-group > .btn");
     for (let i = 0; i < elButtons.length; i++) {
-        let button = props.buttons[i];
+        let button = buttons[i];
 
         // See if there is a click event
-        if (button.onClick) {
+        if (button && button.onClick) {
             // Set the click event
             elButtons[i].addEventListener("click", button.onClick);
         }
     }
 
     // Return the button group
-    let buttonGroup = jQuery(el.children[0]);
     return { el };
 }

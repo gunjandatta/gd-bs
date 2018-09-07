@@ -24,19 +24,13 @@ export const Toolbar = (props: IToolbarProps): IToolbar => {
         // See if this is a button group
         if (item.buttons) {
             // Render an button group
-            ButtonGroup({
-                buttons: item.buttons,
-                el: toolbar
-            }).el;
+            toolbar.appendChild(ButtonGroup({ buttons: item.buttons }).el);
         }
 
         // See if this is an input group
         if (item.inputGroup) {
-            // Set the element
-            item.inputGroup.el = toolbar;
-
             // Render an input group
-            InputGroup(item.inputGroup).el;
+            toolbar.appendChild(InputGroup(item.inputGroup).el);
         }
 
         // See if there is a spacing value defined, and this is not the last element
