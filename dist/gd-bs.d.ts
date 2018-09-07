@@ -589,6 +589,12 @@ declare module 'gd-bs/components/types/dropdown' {
             /** The element. */
             el: Element;
     
+            /** Gets the selected dropdown item(s). */
+            getValue: () => IDropdownItem | Array<IDropdownItem>;
+    
+            /** True if the dropdown is a multi-select. */
+            isMulti: boolean;
+    
             /** Toggles the dropdown menu of a given navbar or tabbed navigation. */
             toggle: () => void;
     
@@ -646,7 +652,7 @@ declare module 'gd-bs/components/types/dropdown' {
 }
 
 declare module 'gd-bs/components/types/form' {
-    import { IFormControl, IFormControlTypes } from "gd-bs/components/types/formControl";
+    import { IFormControlProps, IFormControlTypes } from "gd-bs/components/types/formControl";
     
     /**
         * Form
@@ -670,7 +676,7 @@ declare module 'gd-bs/components/types/form' {
         * Form Column
         */
     export interface IFormColumn {
-            control: IFormControl;
+            control: IFormControlProps;
             size?: number;
     }
     
@@ -689,7 +695,7 @@ declare module 'gd-bs/components/types/form' {
     export interface IFormRow {
             isAutoSized?: boolean;
             isCentered?: boolean;
-            control?: IFormControl;
+            control?: IFormControlProps;
             colSize?: number;
             columns?: Array<IFormColumn>;
     }
@@ -708,6 +714,15 @@ declare module 'gd-bs/components/types/formControl' {
         * Form Control
         */
     export interface IFormControl {
+            el: HTMLElement;
+            getValue: () => any;
+            props: IFormControlProps;
+    }
+    
+    /**
+        * Form Control Properties
+        */
+    export interface IFormControlProps {
             className?: string;
             description?: string;
             el?: HTMLElement;
@@ -715,25 +730,26 @@ declare module 'gd-bs/components/types/formControl' {
             isReadonly?: boolean;
             label?: string;
             name?: string;
-            onRenderControl?: (control: IFormControl) => void;
+            onRenderControl?: (control: IFormControlProps) => void;
             required?: boolean;
             type?: number;
             value?: any;
     }
     
     /**
-        * Form Control - Checkbox
+        * Form Control Properties - Checkbox
         */
-    export interface IFormControlCheckbox extends IFormControl {
+    export interface IFormControlPropsCheckbox extends IFormControlProps {
+            el?: HTMLInputElement;
             hideLabel?: boolean;
             items?: Array<ICheckboxGroupItem>;
             onChange?: (checked?: boolean) => void;
     }
     
     /**
-        * Form Control - Dropdown
+        * Form Control Properties - Dropdown
         */
-    export interface IFormControlDropdown extends IFormControl {
+    export interface IFormControlPropsDropdown extends IFormControlProps {
             items?: Array<IDropdownItem>;
             onChange?: (item: IDropdownItem | Array<IDropdownItem>) => void;
             placeholder?: string;
@@ -741,9 +757,10 @@ declare module 'gd-bs/components/types/formControl' {
     }
     
     /**
-        * Form Control - TextField
+        * Form Control Properties - TextField
         */
-    export interface IFormControlTextField extends IFormControl {
+    export interface IFormControlPropsTextField extends IFormControlProps {
+            el?: HTMLInputElement;
             onChange?: (value: string) => void;
             placeholder?: string;
     }

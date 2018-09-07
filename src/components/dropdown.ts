@@ -349,6 +349,24 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
     return {
         dispose: () => { ddl.dropdown ? ddl.dropdown("dispose") : null; },
         el,
+        getValue: () => {
+            let values = [];
+
+            // Parse the selected items
+            let items = el.querySelectorAll(".dropdown-item.active");
+            for (let i = 0; i < items.length; i++) {
+                // Get the item
+                let item = props.items[items[i].getAttribute("data-idx")];
+                if (item) {
+                    // Append the value
+                    values.push(item);
+                }
+            }
+
+            // Return the value
+            return isMulti ? values : values[0];
+        },
+        isMulti,
         toggle: () => {
             // See if we are only rendering a menu
             if (props.menuOnly) {

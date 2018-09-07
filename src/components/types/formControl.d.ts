@@ -10,6 +10,15 @@ export const FormControl: (control: IFormControl) => void;
  * Form Control
  */
 export interface IFormControl {
+    el: HTMLElement;
+    getValue: () => any;
+    props: IFormControlProps;
+}
+
+/**
+ * Form Control Properties
+ */
+export interface IFormControlProps {
     className?: string;
     description?: string;
     el?: HTMLElement;
@@ -17,25 +26,26 @@ export interface IFormControl {
     isReadonly?: boolean;
     label?: string;
     name?: string;
-    onRenderControl?: (control: IFormControl) => void;
+    onRenderControl?: (control: IFormControlProps) => void;
     required?: boolean;
     type?: number;
     value?: any;
 }
 
 /**
- * Form Control - Checkbox
+ * Form Control Properties - Checkbox
  */
-export interface IFormControlCheckbox extends IFormControl {
+export interface IFormControlPropsCheckbox extends IFormControlProps {
+    el?: HTMLInputElement;
     hideLabel?: boolean;
     items?: Array<ICheckboxGroupItem>;
     onChange?: (checked?: boolean) => void;
 }
 
 /**
- * Form Control - Dropdown
+ * Form Control Properties - Dropdown
  */
-export interface IFormControlDropdown extends IFormControl {
+export interface IFormControlPropsDropdown extends IFormControlProps {
     items?: Array<IDropdownItem>;
     onChange?: (item: IDropdownItem | Array<IDropdownItem>) => void;
     placeholder?: string;
@@ -43,9 +53,10 @@ export interface IFormControlDropdown extends IFormControl {
 }
 
 /**
- * Form Control - TextField
+ * Form Control Properties - TextField
  */
-export interface IFormControlTextField extends IFormControl {
+export interface IFormControlPropsTextField extends IFormControlProps {
+    el?: HTMLInputElement;
     onChange?: (value: string) => void;
     placeholder?: string;
 }

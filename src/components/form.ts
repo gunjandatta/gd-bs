@@ -1,4 +1,5 @@
 import { IForm, IFormProps } from "./types/form";
+import { IFormControl } from "./types/formControl";
 import { FormControl } from "./formControl";
 
 /**
@@ -6,6 +7,8 @@ import { FormControl } from "./formControl";
  * @property props - The form properties.
  */
 export const Form = (props: IFormProps): IForm => {
+    let controls: Array<IFormControl> = [];
+
     // Create the form element
     let elForm = document.createElement("form");
 
@@ -54,7 +57,7 @@ export const Form = (props: IFormProps): IForm => {
                     column.control.value = column.control.value || props.value[column.control.name];
 
                     // Render the control
-                    FormControl(column.control);
+                    controls.push(FormControl(column.control));
 
                     // Add the column to the row
                     elRow.appendChild(elCol);
@@ -92,13 +95,13 @@ export const Form = (props: IFormProps): IForm => {
                     row.control.el = elRow.children[1] as any;
 
                     // Render the control
-                    FormControl(row.control);
+                    controls.push(FormControl(row.control));
                 } else {
                     // Set the element
                     row.control.el = elRow;
 
                     // Render the control
-                    FormControl(row.control);
+                    controls.push(FormControl(row.control));
                 }
 
                 // Add the row to the form
@@ -142,6 +145,15 @@ export const Form = (props: IFormProps): IForm => {
         el: elForm,
         getValues: () => {
             let values = {};
+
+            // Parse the controls
+            for (let i = 0; i < controls.length; i++) {
+                let control = controls[i];
+                if (control && control.props.name) {
+                    // Set the value
+                    values[control.props.name] = control.getValue();
+                }
+            }
 
             // Return the values
             return values;

@@ -1,4 +1,4 @@
-import { IFormControl, IFormControlTypes } from "./formControl";
+import { IFormControlProps, IFormControlTypes } from "./formControl";
 
 /**
  * Form
@@ -22,7 +22,7 @@ export interface IForm {
  * Form Column
  */
 export interface IFormColumn {
-    control: IFormControl;
+    control: IFormControlProps;
     size?: number;
 }
 
@@ -41,7 +41,7 @@ export interface IFormProps {
 export interface IFormRow {
     isAutoSized?: boolean;
     isCentered?: boolean;
-    control?: IFormControl;
+    control?: IFormControlProps;
     colSize?: number;
     columns?: Array<IFormColumn>;
 }
