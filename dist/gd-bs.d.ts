@@ -708,7 +708,7 @@ declare module 'gd-bs/components/types/formControl' {
     /**
         * Form Control
         */
-    export const FormControl: (control: IFormControl) => void;
+    export const FormControl: (control: IFormControlProps) => IFormControl;
     
     /**
         * Form Control

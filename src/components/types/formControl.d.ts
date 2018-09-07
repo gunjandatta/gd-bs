@@ -4,7 +4,7 @@ import { IDropdownItem } from "./dropdown";
 /**
  * Form Control
  */
-export const FormControl: (control: IFormControl) => void;
+export const FormControl: (control: IFormControlProps) => IFormControl;
 
 /**
  * Form Control
