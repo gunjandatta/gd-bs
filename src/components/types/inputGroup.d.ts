@@ -6,17 +6,17 @@ import { IButtonProps } from "./button";
 export const InputGroup: (props: IInputGroupProps) => IInputGroup;
 
 /**
+ * Input Group Types
+ */
+export const InputGroupTypes: IInputGroupTypes;
+
+/**
  * Button Group
  */
 export interface IInputGroup {
     /** The element. */
     el: Element;
 }
-
-/**
- * Input Group Types
- */
-export const InputGroupTypes: IInputGroupTypes;
 
 /**
  * Input Group Properties

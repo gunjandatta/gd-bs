@@ -471,6 +471,11 @@ declare module 'gd-bs/components/types/checkboxGroup' {
     export const CheckboxGroup: (props: ICheckboxGroupProps) => ICheckboxGroup;
     
     /**
+        * Checkbox Group Types
+        */
+    export const CheckboxGroupTypes: ICheckboxTypes;
+    
+    /**
         * Checkbox Group
         */
     export interface ICheckboxGroup {
@@ -486,6 +491,7 @@ declare module 'gd-bs/components/types/checkboxGroup' {
         */
     export interface ICheckboxGroupItem {
             checked?: boolean;
+            isDisabled?: boolean;
             label?: string;
             name?: string;
             onChange?: (value: ICheckboxGroupItem) => void;
@@ -502,6 +508,15 @@ declare module 'gd-bs/components/types/checkboxGroup' {
             items?: Array<ICheckboxGroupItem>;
             multi?: boolean;
             //onChange?: (value: Array<ICheckboxGroupItem>) => void;
+            type?: number;
+    }
+    
+    /**
+        * Checkbox Group Types
+        */
+    export type ICheckboxTypes = {
+            Checkbox: number;
+            Radio: number;
     }
 }
 
@@ -756,17 +771,17 @@ declare module 'gd-bs/components/types/inputGroup' {
     export const InputGroup: (props: IInputGroupProps) => IInputGroup;
     
     /**
+        * Input Group Types
+        */
+    export const InputGroupTypes: IInputGroupTypes;
+    
+    /**
         * Button Group
         */
     export interface IInputGroup {
             /** The element. */
             el: Element;
     }
-    
-    /**
-        * Input Group Types
-        */
-    export const InputGroupTypes: IInputGroupTypes;
     
     /**
         * Input Group Properties

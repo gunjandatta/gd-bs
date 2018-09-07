@@ -4,6 +4,11 @@
 export const CheckboxGroup: (props: ICheckboxGroupProps) => ICheckboxGroup;
 
 /**
+ * Checkbox Group Types
+ */
+export const CheckboxGroupTypes: ICheckboxTypes;
+
+/**
  * Checkbox Group
  */
 export interface ICheckboxGroup {
@@ -19,6 +24,7 @@ export interface ICheckboxGroup {
  */
 export interface ICheckboxGroupItem {
     checked?: boolean;
+    isDisabled?: boolean;
     label?: string;
     name?: string;
     onChange?: (value: ICheckboxGroupItem) => void;
@@ -35,4 +41,13 @@ export interface ICheckboxGroupProps {
     items?: Array<ICheckboxGroupItem>;
     multi?: boolean;
     //onChange?: (value: Array<ICheckboxGroupItem>) => void;
+    type?: number;
+}
+
+/**
+ * Checkbox Group Types
+ */
+export type ICheckboxTypes = {
+    Checkbox: number;
+    Radio: number;
 }

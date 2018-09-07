@@ -5,7 +5,7 @@ import { ICheckboxGroup, ICheckboxGroupItem, ICheckboxGroupProps } from "./types
  */
 export enum CheckboxGroupTypes {
     Checkbox = 1,
-    RadioButton = 2
+    Radio = 2
 }
 
 /**
@@ -50,7 +50,7 @@ export const CheckboxGroup = (props: ICheckboxGroupProps): ICheckboxGroup => {
         // Create the checkbox
         let cb = document.createElement("input");
         cb.classList.add("form-check-input");
-        cb.type = "checkbox";
+        cb.type = props.type == CheckboxGroupTypes.Radio ? "radio" : "checkbox";
         cb.checked = item.checked ? true : false;
         cb.setAttribute("data-idx", i.toString());
         elCheckbox.appendChild(cb);
