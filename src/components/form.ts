@@ -70,7 +70,7 @@ export const Form = (props: IFormProps): IForm => {
                             let control = FormControl(controlProps || column.control);
 
                             // Call the rendered event
-                            control.props.onControlRendering ? control.props.onControlRendering(control) : null;
+                            control.props.onControlRendered ? control.props.onControlRendered(control) : null;
 
                             // Render the control
                             controls.push(control);
@@ -80,7 +80,7 @@ export const Form = (props: IFormProps): IForm => {
                         let control = FormControl(column.control);
 
                         // Call the rendered event
-                        control.props.onControlRendering ? control.props.onControlRendering(control) : null;
+                        control.props.onControlRendered ? control.props.onControlRendered(control) : null;
 
                         // Render the control
                         controls.push(control);
@@ -133,7 +133,7 @@ export const Form = (props: IFormProps): IForm => {
                         let control = FormControl(controlProps || row.control);
 
                         // Call the rendered event
-                        control.props.onControlRendering ? control.props.onControlRendering(control) : null;
+                        control.props.onControlRendered ? control.props.onControlRendered(control) : null;
 
                         // Render the control
                         controls.push(control);
@@ -143,7 +143,7 @@ export const Form = (props: IFormProps): IForm => {
                     let control = FormControl(row.control);
 
                     // Call the rendered event
-                    control.props.onControlRendering ? control.props.onControlRendering(control) : null;
+                    control.props.onControlRendered ? control.props.onControlRendered(control) : null;
 
                     // Render the control
                     controls.push(control);
