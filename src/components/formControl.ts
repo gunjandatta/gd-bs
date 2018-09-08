@@ -169,7 +169,7 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
                             let value = values[i];
 
                             // Add the value
-                            ddlValues.push(value.value || value.text);
+                            ddlValues.push(value);
                         }
 
                         // Return the values
@@ -180,7 +180,7 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
                     let value = ddl.getValue() as IDropdownItem;
 
                     // Return the value
-                    return value ? value.value || value.text : null;
+                    return value ? value : null;
                 }
 
                 // See if this is a textbox
