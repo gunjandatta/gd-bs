@@ -72,7 +72,7 @@ export const Form = (props: IFormProps): IForm => {
                             // Call the rendered event
                             control.props.onControlRendered ? control.props.onControlRendered(control) : null;
 
-                            // Render the control
+                            // Save the control
                             controls.push(control);
                         });
                     } else {
@@ -82,7 +82,7 @@ export const Form = (props: IFormProps): IForm => {
                         // Call the rendered event
                         control.props.onControlRendered ? control.props.onControlRendered(control) : null;
 
-                        // Render the control
+                        // Save the control
                         controls.push(control);
                     }
                 }
@@ -135,7 +135,7 @@ export const Form = (props: IFormProps): IForm => {
                         // Call the rendered event
                         control.props.onControlRendered ? control.props.onControlRendered(control) : null;
 
-                        // Render the control
+                        // Save the control
                         controls.push(control);
                     });
                 } else {
@@ -145,7 +145,7 @@ export const Form = (props: IFormProps): IForm => {
                     // Call the rendered event
                     control.props.onControlRendered ? control.props.onControlRendered(control) : null;
 
-                    // Render the control
+                    // Save the control
                     controls.push(control);
                 }
             }
