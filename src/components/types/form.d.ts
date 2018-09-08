@@ -1,4 +1,4 @@
-import { IFormControlProps, IFormControlTypes } from "./formControl";
+import { IFormControl, IFormControlProps, IFormControlTypes } from "./formControl";
 
 /**
  * Form
@@ -14,6 +14,7 @@ export const FormControlTypes: IFormControlTypes;
  * Form
  */
 export interface IForm {
+    controls: Array<IFormControl>;
     el: HTMLFormElement,
     getValues: () => { [key: string]: any };
 }

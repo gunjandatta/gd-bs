@@ -90,7 +90,8 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
                 break;
             // Multi-Dropdown
             case FormControlTypes.MultiDropdown:
-                tb = Dropdown({
+                // Add the dropdown
+                ddl = Dropdown({
                     className: props.className,
                     el,
                     formFl: true,

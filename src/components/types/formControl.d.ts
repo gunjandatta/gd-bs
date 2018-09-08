@@ -26,7 +26,7 @@ export interface IFormControlProps {
     isReadonly?: boolean;
     label?: string;
     name?: string;
-    onRenderControl?: (control: IFormControlProps) => void;
+    onRenderControl?: (control: IFormControlProps) => void | Promise<IFormControlProps>;
     required?: boolean;
     type?: number;
     value?: any;

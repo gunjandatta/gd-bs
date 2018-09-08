@@ -47,7 +47,7 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
             // Set the attributes
             let attributes = [
                 'data-idx="' + i + '"',
-                item.value ? 'data-value="' + JSON.stringify(item.value) + '"' : ''
+                item.value ? 'data-value="' + item.value + '"' : ''
             ];
 
             // See if the item is selected
@@ -233,7 +233,7 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
                 'class="' + classNames.join(' ') + '"',
                 'href="' + (item.href || '#') + '"',
                 'data-idx="' + i + '"',
-                item.value ? 'data-value="' + JSON.stringify(item.value) + '"' : ''
+                item.value ? 'data-value="' + item.value + '"' : ''
             ].join(' ');
 
             // Add the button html
@@ -353,7 +353,7 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
             let values = [];
 
             // Parse the selected items
-            let items = el.querySelectorAll(".dropdown-item.active");
+            let items = el.querySelectorAll(props.formFl ? "option[selected]" : ".dropdown-item.active");
             for (let i = 0; i < items.length; i++) {
                 // Get the item
                 let item = props.items[items[i].getAttribute("data-idx")];

@@ -614,7 +614,7 @@ declare module 'gd-bs/components/types/dropdown' {
             isSelected?: boolean;
             onChange?: (item?: IDropdownItem | Array<IDropdownItem>, ev?: Event) => void;
             text?: string;
-            value?: any;
+            value?: string | number;
     }
     
     /**
@@ -653,7 +653,7 @@ declare module 'gd-bs/components/types/dropdown' {
 }
 
 declare module 'gd-bs/components/types/form' {
-    import { IFormControlProps, IFormControlTypes } from "gd-bs/components/types/formControl";
+    import { IFormControl, IFormControlProps, IFormControlTypes } from "gd-bs/components/types/formControl";
     
     /**
         * Form
@@ -669,6 +669,7 @@ declare module 'gd-bs/components/types/form' {
         * Form
         */
     export interface IForm {
+            controls: Array<IFormControl>;
             el: HTMLFormElement,
             getValues: () => { [key: string]: any };
     }
@@ -731,7 +732,7 @@ declare module 'gd-bs/components/types/formControl' {
             isReadonly?: boolean;
             label?: string;
             name?: string;
-            onRenderControl?: (control: IFormControlProps) => void;
+            onRenderControl?: (control: IFormControlProps) => void | Promise<IFormControlProps>;
             required?: boolean;
             type?: number;
             value?: any;
