@@ -59,19 +59,31 @@ export const Form = (props: IFormProps): IForm => {
                     // Add the column to the row
                     elRow.appendChild(elCol);
 
-                    // Call the render event
-                    let returnVal = column.control.onRenderControl ? column.control.onRenderControl(column.control) : null;
+                    // Call the rendering event
+                    let returnVal = column.control.onControlRendering ? column.control.onControlRendering(column.control) : null;
 
                     // See if this is a promise
                     if (returnVal && returnVal.then) {
                         // Wait for the promise to be completed
-                        returnVal.then(control => {
+                        returnVal.then(controlProps => {
+                            // Create the control
+                            let control = FormControl(controlProps || column.control);
+
+                            // Call the rendered event
+                            control.props.onControlRendering ? control.props.onControlRendering(control) : null;
+
                             // Render the control
-                            controls.push(FormControl(control || column.control));
+                            controls.push(control);
                         });
                     } else {
+                        // Create the control
+                        let control = FormControl(column.control);
+
+                        // Call the rendered event
+                        control.props.onControlRendering ? control.props.onControlRendering(control) : null;
+
                         // Render the control
-                        controls.push(FormControl(column.control));
+                        controls.push(control);
                     }
                 }
 
@@ -110,19 +122,31 @@ export const Form = (props: IFormProps): IForm => {
                 // Add the row to the form
                 elForm.appendChild(elRow);
 
-                // Call the render event
-                let returnVal = row.control.onRenderControl ? row.control.onRenderControl(row.control) : null;
+                // Call the rendering event
+                let returnVal = row.control.onControlRendering ? row.control.onControlRendering(row.control) : null;
 
                 // See if this is a promise
                 if (returnVal && returnVal.then) {
                     // Wait for the promise to be completed
-                    returnVal.then(control => {
+                    returnVal.then(controlProps => {
+                        // Create the control
+                        let control = FormControl(controlProps || row.control);
+
+                        // Call the rendered event
+                        control.props.onControlRendering ? control.props.onControlRendering(control) : null;
+
                         // Render the control
-                        controls.push(FormControl(control || row.control));
+                        controls.push(control);
                     });
                 } else {
+                    // Create the control
+                    let control = FormControl(row.control);
+
+                    // Call the rendered event
+                    control.props.onControlRendering ? control.props.onControlRendering(control) : null;
+
                     // Render the control
-                    controls.push(FormControl(row.control));
+                    controls.push(control);
                 }
             }
         }
