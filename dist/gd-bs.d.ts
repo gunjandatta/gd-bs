@@ -614,7 +614,7 @@ declare module 'gd-bs/components/types/dropdown' {
             isSelected?: boolean;
             onChange?: (item?: IDropdownItem | Array<IDropdownItem>, ev?: Event) => void;
             text?: string;
-            value?: string | number;
+            value?: string;
     }
     
     /**
