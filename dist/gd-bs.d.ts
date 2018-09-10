@@ -821,6 +821,8 @@ declare module 'gd-bs/components/types/inputGroup' {
             isReadonly?: boolean;
             isSmall?: boolean;
             label?: string;
+            max?: number;
+            min?: number;
             onClear?: () => void;
             onChange?: (value?: string, ev?: Event) => void;
             placeholder?: string;
@@ -837,6 +839,7 @@ declare module 'gd-bs/components/types/inputGroup' {
             Email: number;
             File: number;
             Password: number;
+            Range: number;
             Search: number;
             TextArea: number;
             TextField: number;

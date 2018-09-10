@@ -9,9 +9,10 @@ export enum InputGroupTypes {
     Email = 1,
     File = 2,
     Password = 3,
-    Search = 4,
-    TextArea = 5,
-    TextField = 6
+    Range = 4,
+    Search = 5,
+    TextArea = 6,
+    TextField = 7
 }
 
 /**
@@ -61,6 +62,9 @@ export const InputGroup = (props: IInputGroupProps): IInputGroup => {
         case InputGroupTypes.Password:
             inputType = "password";
             break;
+        case InputGroupTypes.Range:
+            inputType = "range";
+            break;
         case InputGroupTypes.Search:
             inputType = "search";
             break;
@@ -83,6 +87,8 @@ export const InputGroup = (props: IInputGroupProps): IInputGroup => {
             'type="' + inputType + '"',
             props.placeholder ? 'placeholder="' + props.placeholder + '"' : '',
             props.id ? 'id="' + props.id + '"' : '',
+            props.min ? 'min="' + props.min + '"' : '',
+            props.max ? 'max="' + props.max + '"' : '',
             props.value ? 'value="' + props.value + '"' : '',
             props.isReadonly ? 'readonly' : '',
             props.type == InputGroupTypes.Search ? 'aria-label="Search"' : '',

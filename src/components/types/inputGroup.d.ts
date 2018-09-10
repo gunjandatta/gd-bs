@@ -34,6 +34,8 @@ export interface IInputGroupProps {
     isReadonly?: boolean;
     isSmall?: boolean;
     label?: string;
+    max?: number;
+    min?: number;
     onClear?: () => void;
     onChange?: (value?: string, ev?: Event) => void;
     placeholder?: string;
@@ -50,6 +52,7 @@ export type IInputGroupTypes = {
     Email: number;
     File: number;
     Password: number;
+    Range: number;
     Search: number;
     TextArea: number;
     TextField: number;

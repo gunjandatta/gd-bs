@@ -1,6 +1,6 @@
 import { IForm, IFormProps } from "./types/form";
 import { IFormControl } from "./types/formControl";
-import { FormControl } from "./formControl";
+import { FormControl, FormControlTypes } from "./formControl";
 
 /**
  * Form
@@ -101,19 +101,27 @@ export const Form = (props: IFormProps): IForm => {
                 // Set the value
                 row.control.value = row.control.value || props.value[row.control.name];
 
-                // See if a column size is defined, and there is a label
-                if (row.control.label && colSize > 0) {
-                    // Add the row class
-                    elRow.classList.add("row");
+                // See if there is a label
+                if (row.control.label) {
+                    // See if a column size is defined
+                    if (colSize > 0) {
+                        // Add the row class
+                        elRow.classList.add("row");
 
-                    // Add the columns
-                    elRow.innerHTML = [
-                        '<label class="col-' + colSize + ' col-form-label">' + row.control.label + '</label>',
-                        '<div class="col-' + (12 - colSize) + '"></div>'
-                    ].join('\n');
+                        // Add the columns
+                        elRow.innerHTML = [
+                            '<label class="col-' + colSize + ' col-form-label">' + row.control.label + '</label>',
+                            '<div class="col-' + (12 - colSize) + '"></div>'
+                        ].join('\n');
+                    }
+                    // Else, ensure this isn't a checkbox
+                    else if (row.control.type != FormControlTypes.Checkbox) {
+                        // Add the label
+                        elRow.innerHTML = '<label>' + row.control.label + '</label>';
+                    }
 
                     // Set the element
-                    row.control.el = elRow.children[1] as any;
+                    row.control.el = colSize > 0 ? elRow.children[1] as any : elRow;
                 } else {
                     // Set the element
                     row.control.el = elRow;

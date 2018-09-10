@@ -116,6 +116,18 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
                 break;
             // Range
             case FormControlTypes.Range:
+                // Add the input
+                tb = InputGroup({
+                    className: props.className,
+                    el,
+                    isReadonly: props.isReadonly,
+                    min: 0,
+                    max: 100,
+                    onChange: (props as IFormControlPropsTextField).onChange,
+                    placeholder: (props as IFormControlPropsTextField).placeholder,
+                    type: InputGroupTypes.Range,
+                    value: props.value
+                });
                 break;
             // Text Area
             case FormControlTypes.TextArea:
