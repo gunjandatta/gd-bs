@@ -19,58 +19,60 @@ export enum AlertTypes {
  * Alert
  */
 export const Alert = (props: IAlertProps): IAlert => {
-    // Set the class names
-    let classNames = ["alert"];
-    props.className ? classNames.push(props.className) : null;
-    props.isDismissible ? classNames.push("alert-dismissible") : null;
+    // Create the alert
+    let alert = document.createElement("div");
+    alert.setAttribute("role", "alert");
+
+    // Set the class name
+    alert.className = props.className || "";
+    alert.classList.add("alert");
+    props.isDismissible ? alert.classList.add("alert-dismissible") : null;
 
     // Read the type
     switch (props.type) {
         // Danger
         case AlertTypes.Danger:
-            classNames.push("btn-danger");
+            alert.classList.add("btn-danger");
             break;
         // Dark
         case AlertTypes.Dark:
-            classNames.push("btn-dark");
+            alert.classList.add("btn-dark");
             break;
         // Info
         case AlertTypes.Info:
-            classNames.push("btn-info");
+            alert.classList.add("btn-info");
             break;
         // Light
         case AlertTypes.Light:
-            classNames.push("btn-light");
+            alert.classList.add("btn-light");
             break;
         // Secondary
         case AlertTypes.Secondary:
-            classNames.push("btn-secondary");
+            alert.classList.add("btn-secondary");
             break;
         // Success
         case AlertTypes.Success:
-            classNames.push("btn-success");
+            alert.classList.add("btn-success");
             break;
         // Warning
         case AlertTypes.Warning:
-            classNames.push("btn-warning");
+            alert.classList.add("btn-warning");
             break;
         // Default - Primary
         default:
-            classNames.push("btn-primary");
+            alert.classList.add("btn-primary");
             break;
     }
 
-    // Generate the html
-    let html = [
-        '<div class="' + classNames.join(' ') + '" role="alert">',
-        props.header ? '<h4 class="alert-heading">' + props.header + '</h4>' : '',
-        props.content || '',
-        '</div>'
-    ];
+    // Add the header
+    props.header ? alert.innerHTML = '<h4 class="alert-heading">' + props.header + '</h4>' : '';
+
+    // Add the content
+    alert.innerHTML += props.content || "";
 
     // Create the element
     let el = document.createElement("div");
-    el.innerHTML = html.join('\n');
+    el.appendChild(alert);
 
     // See if are rendering it to an element
     if (props.el) {
@@ -93,10 +95,9 @@ export const Alert = (props: IAlertProps): IAlert => {
     }
 
     // Return the alert
-    let alert = jQuery(el.children[0]);
     return {
-        close: () => { alert.alert("toggle"); },
-        dispose: () => { alert.alert("dispose"); },
-        el
+        close: () => { jQuery(alert).alert("toggle"); },
+        dispose: () => { jQuery(alert).alert("dispose"); },
+        el: alert
     };
 }

@@ -1,4 +1,3 @@
-import * as jQuery from "jquery";
 import { Button } from "./button";
 import { Dropdown } from "./dropdown";
 import { InputGroup, InputGroupTypes } from "./inputGroup";
@@ -17,59 +16,63 @@ export enum NavbarTypes {
  * Navbar
  */
 export const Navbar = (props: INavbarProps): INavbar => {
+    // Create the nav bar
+    let navbar = document.createElement("nav");
+
     // Set the class name
-    let classNames = ["navbar navbar-expand-lg"]
-    props.className ? classNames.push(props.className) : null;
+    navbar.className = props.className || "";
+    navbar.classList.add("navbar");
+    navbar.classList.add("navbar-expand-lg");
 
     // Check the type
     switch (props.type) {
         // Dark
         case NavbarTypes.Dark:
             // Add the class
-            classNames.push("navbar-dark bg-dark");
+            navbar.classList.add("navbar-dark");
+            navbar.classList.add("bg-dark");
             break;
         // Primary
         case NavbarTypes.Primary:
             // Add the class
-            classNames.push("navbar-primary bg-primary");
+            navbar.classList.add("navbar-primary");
+            navbar.classList.add("bg-primary");
             break;
         // Default - Light
         default:
             // Add the class
-            classNames.push("navbar-light bg-light");
+            navbar.classList.add("navbar-light");
+            navbar.classList.add("bg-light");
             break;
     }
-
-    // Set the starting tag
-    let html = ['<nav class="' + classNames.join(' ') + '">'];
 
     // See if there is a brand
     if (props.brand) {
         // Add the brand
-        html.push('<a class="navbar-brand"' + (props.brandUrl ? ' href="' + props.brandUrl + '"' : '') + '>' + props.brand + '</a>');
+        navbar.innerHTML += '<a class="navbar-brand"' + (props.brandUrl ? ' href="' + props.brandUrl + '"' : '') + '>' + props.brand + '</a>';
     }
 
     // Set the nav id
     let navId = props.id || "navbar_content";
 
     // Render the toggler
-    html.push([
+    navbar.innerHTML += [
         '<button class="navbar-toggler" type="button" data-target="#' + navId + '" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">',
         '<span class="navbar-toggler-icon"></span>',
         '</button>'
-    ].join('\n'));
+    ].join('\n');
 
     // Render the nav bar nav and add the ending tag
-    html.push([
+    navbar.innerHTML += [
         '<div class="collapse navbar-collapse d-flex justify-content-between" id="' + navId + '">',
         '<ul class="navbar-nav"></ul>',
         '</div>',
         '</nav>'
-    ].join('\n'));
+    ].join('\n');
 
     // Create the element
     let el = document.createElement("div");
-    el.innerHTML = html.join('\n');
+    el.appendChild(navbar);
 
     // See if are rendering it to an element
     if (props.el) {
@@ -115,8 +118,8 @@ export const Navbar = (props: INavbarProps): INavbar => {
         else if (item.text) {
             // Set the class names
             let classNames = ["nav-link"];
-            item.isActive ? classNames.push("active") : null;
-            item.isDisabled ? classNames.push("disabled") : null;
+            item.isActive ? navbar.classList.add("active") : null;
+            item.isDisabled ? navbar.classList.add("disabled") : null;
 
             // Create the nav item
             navItem = document.createElement("li");
@@ -165,8 +168,8 @@ export const Navbar = (props: INavbarProps): INavbar => {
     }
 
     // See if we are rendering a search box
-    let navbar = el.querySelector("#" + navId);
-    if ((props.enableSearch || props.searchBox) && navbar) {
+    let elNavbar = el.querySelector("#" + navId);
+    if ((props.enableSearch || props.searchBox) && elNavbar) {
         let text = (props.searchBox ? props.searchBox.btnText : null) || "Search";
 
         // Render the form
@@ -222,9 +225,9 @@ export const Navbar = (props: INavbarProps): INavbar => {
         }
 
         // Append the search box
-        navbar.appendChild(form);
+        elNavbar.appendChild(form);
     }
 
     // Return the navbar
-    return { el };
+    return { el: navbar };
 }

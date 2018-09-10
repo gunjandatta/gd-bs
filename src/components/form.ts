@@ -10,7 +10,7 @@ export const Form = (props: IFormProps): IForm => {
     let controls: Array<IFormControl> = [];
 
     // Create the form element
-    let elForm = document.createElement("form");
+    let form = document.createElement("form");
 
     // Method to render the form
     let renderForm = () => {
@@ -88,7 +88,7 @@ export const Form = (props: IFormProps): IForm => {
                 }
 
                 // Add the row to the form
-                elForm.appendChild(elRow);
+                form.appendChild(elRow);
             }
             // Else, see if a control is defined
             else if (row.control) {
@@ -128,7 +128,7 @@ export const Form = (props: IFormProps): IForm => {
                 }
 
                 // Add the row to the form
-                elForm.appendChild(elRow);
+                form.appendChild(elRow);
 
                 // Call the rendering event
                 let returnVal = row.control.onControlRendering ? row.control.onControlRendering(row.control) : null;
@@ -165,7 +165,7 @@ export const Form = (props: IFormProps): IForm => {
 
     // Create the element
     let el = document.createElement("div");
-    el.appendChild(elForm);
+    el.appendChild(form);
 
     // See if are rendering it to an element
     if (props.el) {
@@ -190,7 +190,7 @@ export const Form = (props: IFormProps): IForm => {
     // Return the form
     return {
         controls,
-        el: elForm,
+        el: form,
         getValues: () => {
             let values = {};
 

@@ -1,4 +1,3 @@
-import * as jQuery from "jquery";
 import { Card } from "./card";
 import { ICardGroup, ICardGroupProps } from "./types/cardGroup";
 
@@ -7,14 +6,12 @@ import { ICardGroup, ICardGroupProps } from "./types/cardGroup";
  * @property props - The button group properties.
  */
 export const CardGroup = (props: ICardGroupProps): ICardGroup => {
-    let html = [];
+    // Create the card group
+    let cardGroup = document.createElement("div");
 
     // Set the class names
-    let classNames = ["card-group"];
-    props.className ? classNames.push(props.className) : null;
-
-    // Set the starting tag
-    html.push('<div class="' + classNames.join(' ') + '">');
+    cardGroup.className = props.className || "";
+    cardGroup.classList.add("card-group");
 
     // Parse the cards
     let cards = props.cards || [];
@@ -22,15 +19,12 @@ export const CardGroup = (props: ICardGroupProps): ICardGroup => {
         let card = cards[i];
 
         // Add the button html
-        html.push(Card(card).el.innerHTML);
+        cardGroup.appendChild(Card(card).el);
     }
-
-    // Add the closing tag
-    html.push("</div>");
 
     // Create the element
     let el = document.createElement("div");
-    el.innerHTML = html.join('\n');
+    el.appendChild(cardGroup);
 
     // See if are rendering it to an element
     if (props.el) {
@@ -53,6 +47,5 @@ export const CardGroup = (props: ICardGroupProps): ICardGroup => {
     }
 
     // Return the card group
-    let cardGroup = jQuery(el.children[0]);
-    return { el };
+    return { el: cardGroup };
 }

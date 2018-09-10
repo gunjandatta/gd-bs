@@ -22,78 +22,92 @@ export enum ButtonTypes {
  * @param props The button properties.
  */
 export const Button = (props: IButtonProps): IButton => {
+    // Create the button
+    let button: HTMLElement = null;
+
+    // See if this is a link
+    if (props.isLink) {
+        // Create the button
+        button = document.createElement("a");
+    } else {
+        // Create the button
+        button = document.createElement("button");
+    }
+
+    // Set the attributes
+    button.setAttribute("type", "button");
+    props.id ? button.id = props.id : null;
+    props.isDisabled ? button.setAttribute("disabled", "disabled") : null;
+    props.isLink ? button.setAttribute("role", "button") : null;
+    props.target ? button.setAttribute("data-target", props.target) : null;
+    props.toggle ? button.setAttribute("data-toggle", props.toggle) : null;
+    props.trigger ? button.setAttribute("data-trigger", props.trigger) : null;
+    typeof (props.isExpanded) === "boolean" ? button.setAttribute("aria-expanded", props.isExpanded ? "true" : "false") : null;
+    props.controls ? button.setAttribute("aria-controls", props.controls.join(' ')) : null;
+
     // Set the class names
-    let classNames = ["btn"];
-    props.className ? classNames.push(props.className) : null;
-    props.isBlock ? classNames.push("btn-block") : null;
-    props.isLarge ? classNames.push("btn-lg") : null;
-    props.isSmall ? classNames.push("btn-sm") : null;
+    button.className = props.className || "";
+    button.classList.add("btn");
+    props.className ? button.classList.add(props.className) : null;
+    props.isBlock ? button.classList.add("btn-block") : null;
+    props.isLarge ? button.classList.add("btn-lg") : null;
+    props.isSmall ? button.classList.add("btn-sm") : null;
 
     // Read the type
     switch (props.type) {
         // Danger
         case ButtonTypes.Danger:
-            classNames.push("btn" + (props.isOutline ? "-outline" : "") + "-danger");
+            button.classList.add("btn" + (props.isOutline ? "-outline" : "") + "-danger");
             break;
         // Dark
         case ButtonTypes.Dark:
-            classNames.push("btn" + (props.isOutline ? "-outline" : "") + "-dark");
+            button.classList.add("btn" + (props.isOutline ? "-outline" : "") + "-dark");
             break;
         // Info
         case ButtonTypes.Info:
-            classNames.push("btn" + (props.isOutline ? "-outline" : "") + "-info");
+            button.classList.add("btn" + (props.isOutline ? "-outline" : "") + "-info");
             break;
         // Light
         case ButtonTypes.Light:
-            classNames.push("btn" + (props.isOutline ? "-outline" : "") + "-light");
+            button.classList.add("btn" + (props.isOutline ? "-outline" : "") + "-light");
             break;
         // Link
         case ButtonTypes.Link:
-            classNames.push("btn" + (props.isOutline ? "-outline" : "") + "-link");
+            button.classList.add("btn" + (props.isOutline ? "-outline" : "") + "-link");
             break;
         // Secondary
         case ButtonTypes.Secondary:
-            classNames.push("btn" + (props.isOutline ? "-outline" : "") + "-secondary");
+            button.classList.add("btn" + (props.isOutline ? "-outline" : "") + "-secondary");
             break;
         // Success
         case ButtonTypes.Success:
-            classNames.push("btn" + (props.isOutline ? "-outline" : "") + "-success");
+            button.classList.add("btn" + (props.isOutline ? "-outline" : "") + "-success");
             break;
         // Warning
         case ButtonTypes.Warning:
-            classNames.push("btn" + (props.isOutline ? "-outline" : "") + "-warning");
+            button.classList.add("btn" + (props.isOutline ? "-outline" : "") + "-warning");
             break;
         // Default - Primary
         default:
-            classNames.push("btn" + (props.isOutline ? "-outline" : "") + "-primary");
+            button.classList.add("btn" + (props.isOutline ? "-outline" : "") + "-primary");
             break;
     }
 
-    // Set the attributes
-    let attributes = [
-        props.id ? 'id="' + props.id + '"' : '',
-        'type="button"',
-        'class="' + classNames.join(' ') + '"',
-        props.isDisabled ? "disabled" : "",
-        props.isLink ? 'role="button"' : "",
-        props.target ? 'data-target="' + props.target + '"' : "",
-        props.toggle ? 'data-toggle="' + props.toggle + '"' : "",
-        props.trigger ? 'data-trigger="' + props.trigger + '"' : "",
-        typeof (props.isExpanded) === "boolean" ? 'aria-expanded="' + (props.isExpanded ? "true" : "false") + '"' : '',
-        props.controls ? 'aria-controls="' + props.controls.join(' ') + '"' : ''
-    ].join(' ').replace(/  /g, " ");
-
-    // Generate the html
-    let html = [
-        '<' + (props.isLink ? 'a' : 'button') + ' ' + attributes + '>',
+    // Set the text
+    button.innerHTML = [
         props.text || "",
-        props.badgeValue ? Badge({ content: props.badgeValue, type: props.badgeType || BadgeTypes.Light }).el.innerHTML : '',
-        '</' + (props.isLink ? 'a' : 'button') + '>'
-    ];
+        props.badgeValue ? Badge({ content: props.badgeValue, type: props.badgeType || BadgeTypes.Light }).el.outerHTML : ''
+    ].join('\n');
+
+    // See if there is a click event
+    if (props.onClick) {
+        // Add a click event
+        button.addEventListener("click", props.onClick);
+    }
 
     // Create the element
     let el = document.createElement("div");
-    el.innerHTML = html.join('\n');
+    el.appendChild(button);
 
     // See if are rendering it to an element
     if (props.el) {
@@ -115,17 +129,10 @@ export const Button = (props: IButtonProps): IButton => {
         el.classList.add("bs");
     }
 
-    // See if there is a click event
-    if (props.onClick) {
-        // Add a click event
-        el.querySelector(".btn").addEventListener("click", props.onClick);
-    }
-
     // Return the button
-    let btn = jQuery(el.children[0]);
     return {
-        dispose: () => { btn.button("dispose"); },
-        el,
-        toggle: () => { btn.button("toggle"); }
+        dispose: () => { jQuery(button).button("dispose"); },
+        el: button,
+        toggle: () => { jQuery(button).button("toggle"); }
     };
 }

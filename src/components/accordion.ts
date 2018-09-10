@@ -6,20 +6,19 @@ import { Button, ButtonTypes } from "./button";
  * Accordion
  */
 export const Accordion = (props: IAccordionProps): IAccordion => {
-    let id = props.id || "accordion";
+    // Create the accordion
+    let accordion = document.createElement("div");
 
-    // Set the class names
-    let classNames = ["accordion"];
-    props.className ? classNames.push(props.className) : null;
-
-    // Add the starting tag
-    let html = ['<div id="' + id + '" class="' + classNames.join(' ') + '">'];
+    // Set the properties
+    accordion.id = props.id || "accordion"
+    accordion.className = props.className || "";
+    accordion.classList.add("accordion");
 
     // Parse the items
     let items = props.items || [];
     for (let i = 0; i < items.length; i++) {
         let item = items[i];
-        let itemId = id + "_" + i;
+        let itemId = accordion.id + "_" + i;
 
         // Set the button properties
         let btnProps = item.btnProps || {};
@@ -30,24 +29,21 @@ export const Accordion = (props: IAccordionProps): IAccordion => {
         btnProps.toggle = "collapse";
 
         // Add the collapse
-        html.push([
+        accordion.innerHTML += [
             '<div class="card">',
             '<div class="card-header" id="' + itemId + '">',
-            Button(btnProps).el.innerHTML,
+            Button(btnProps).el.outerHTML,
             '</div>',
-            '<div id="' + ('collapse_' + itemId) + '" class="collapse" aria-labelledby="' + itemId + '" data-parent="#' + id + '">',
+            '<div id="' + ('collapse_' + itemId) + '" class="collapse" aria-labelledby="' + itemId + '" data-parent="#' + accordion.id + '">',
             '<div class="card-body">' + (item.content || "") + '</div>',
             '</div>',
             '</div>'
-        ].join('\n'));
+        ].join('\n');
     }
-
-    // Add the closing tag
-    html.push('</div>');
 
     // Create the element
     let el = document.createElement("div");
-    el.innerHTML = html.join('\n');
+    el.appendChild(accordion);
 
     // See if are rendering it to an element
     if (props.el) {
@@ -70,9 +66,8 @@ export const Accordion = (props: IAccordionProps): IAccordion => {
     }
 
     // Initialize the collapse items
-    jQuery(el.children[0].querySelectorAll(".collapse")).collapse();
+    jQuery(accordion.querySelectorAll(".collapse")).collapse();
 
     // Return the accordion
-    let accordion = jQuery(props.el.children[0]);
-    return { el };
+    return { el: accordion };
 }

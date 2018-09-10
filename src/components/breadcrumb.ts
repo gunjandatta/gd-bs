@@ -1,19 +1,20 @@
-import * as jQuery from "jquery";
 import { IBreadcrumb, IBreadcrumbProps } from "./types/breadcrumb";
 
 /**
  * Breadcrumb
  */
 export const Breadcrumb = (props: IBreadcrumbProps): IBreadcrumb => {
-    // Set the class names
-    let classNames = ["breadcrumb"];
-    props.className ? classNames.push(props.className) : null;
+    // Create the breadcrumb
+    let breadcrumb = document.createElement("nav");
+    breadcrumb.setAttribute("aria-label", "breadcrumb");
 
-    // Set the starting tag
-    let html = [
-        '<nav aria-label="breadcrumb">',
-        '<ol class="' + classNames.join(' ') + '">'
-    ];
+    // Create the list
+    let list = document.createElement("ol");
+    breadcrumb.appendChild(list);
+
+    // Set the class names
+    list.className = props.className || "";
+    list.classList.add("breadcrumb");
 
     // Parse the items
     let items = props.items || [];
@@ -32,24 +33,18 @@ export const Breadcrumb = (props: IBreadcrumbProps): IBreadcrumb => {
         ].join(' ');
 
         // Add the item
-        html.push([
+        list.innerHTML += [
             '<li ' + attributes + '>',
             item.href ? '<a href="' + item.href + '">' : '',
             item.text || "",
             item.href ? '</a>' : '',
             '</li>'
-        ].join('\n'));
+        ].join('\n');
     }
-
-    // Add the closing tag
-    html.push([
-        '</ol>',
-        '</nav>'
-    ].join('\n'));
 
     // Create the element
     let el = document.createElement("div");
-    el.innerHTML = html.join('\n');
+    el.appendChild(breadcrumb);
 
     // See if are rendering it to an element
     if (props.el) {
@@ -72,6 +67,5 @@ export const Breadcrumb = (props: IBreadcrumbProps): IBreadcrumb => {
     }
 
     // Return the breadcrumb
-    let breadcrumb = jQuery(el.children[0]);
-    return { el };
+    return { el: breadcrumb };
 }

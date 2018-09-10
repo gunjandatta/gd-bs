@@ -1,4 +1,3 @@
-import * as jQuery from "jquery";
 import { IBadge, IBadgeProps } from "./types/badge";
 
 /**
@@ -19,56 +18,64 @@ export enum BadgeTypes {
  * Badge
  */
 export const Badge = (props: IBadgeProps): IBadge => {
+    let badge: HTMLElement = null;
+
+    // See if this is a link
+    if (props.href) {
+        // Create the badge
+        badge = document.createElement("a");
+    } else {
+        // Create the badge
+        badge = document.createElement("span");
+    }
+
+    // Set the content
+    badge.innerHTML = props.content || "";
+
     // Set the class names
-    let classNames = ["badge"];
-    props.className ? classNames.push(props.className) : null;
-    props.isPill ? classNames.push("badge-pill") : null;
+    badge.className = props.className || "";
+    badge.classList.add("badge");
+    props.isPill ? badge.classList.add("badge-pill") : null;
 
     // Read the type
     switch (props.type) {
         // Danger
         case BadgeTypes.Danger:
-            classNames.push("badge-danger");
+            badge.classList.add("badge-danger");
             break;
         // Dark
         case BadgeTypes.Dark:
-            classNames.push("badge-dark");
+            badge.classList.add("badge-dark");
             break;
         // Info
         case BadgeTypes.Info:
-            classNames.push("badge-info");
+            badge.classList.add("badge-info");
             break;
         // Light
         case BadgeTypes.Light:
-            classNames.push("badge-light");
+            badge.classList.add("badge-light");
             break;
         // Secondary
         case BadgeTypes.Secondary:
-            classNames.push("badge-secondary");
+            badge.classList.add("badge-secondary");
             break;
         // Success
         case BadgeTypes.Success:
-            classNames.push("badge-success");
+            badge.classList.add("badge-success");
             break;
         // Warning
         case BadgeTypes.Warning:
-            classNames.push("badge-warning");
+            badge.classList.add("badge-warning");
             break;
         // Default - Primary
         default:
-            classNames.push("badge-primary");
+            badge.classList.add("badge-primary");
             break;
     }
 
-    // Generate the html
-    let html = props.href ?
-        '<a href="' + props.href + '" class="' + classNames.join(' ') + '">' + (props.content || "") + '</a>'
-        :
-        '<span class="' + classNames.join(' ') + '">' + (props.content || "") + '</span>';
-
     // Create the element
     let el = document.createElement("div");
-    el.innerHTML = html;
+    el.appendChild(badge);
 
     // See if are rendering it to an element
     if (props.el) {
@@ -91,6 +98,5 @@ export const Badge = (props: IBadgeProps): IBadge => {
     }
 
     // Return the badge
-    let badge = jQuery(el.children[0]);
-    return { el };
+    return { el: badge };
 }

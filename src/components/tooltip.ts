@@ -17,10 +17,10 @@ export enum TooltipTypes {
  * Tooltip
  */
 export const Tooltip = (props: ITooltipProps): ITooltip => {
-    // Create the button
+    // Create the tooltip
     let btnProps = props.btnProps || {};
     btnProps.toggle = "tooltip";
-    let elBtn = Button(btnProps).el;
+    let tooltip = Button(btnProps).el;
 
     // Set the tooltip options
     let options = props.options || {};
@@ -50,8 +50,8 @@ export const Tooltip = (props: ITooltipProps): ITooltip => {
     }
 
     // Set the attributes
-    elBtn.children[0].setAttribute("title", options.title || "");
-    elBtn.children[0].setAttribute("data-placement", options.placement as string || "");
+    tooltip.setAttribute("title", options.title || "");
+    tooltip.setAttribute("data-placement", options.placement as string || "");
 
     // Ensure the main tooltip element exists
     // This will ensure the tooltips are wrapped with a parent element with the "bs" class applied to it.
@@ -71,7 +71,7 @@ export const Tooltip = (props: ITooltipProps): ITooltip => {
 
     // Create the element
     let el = document.createElement("div");
-    el.appendChild(elBtn);
+    el.appendChild(tooltip);
 
     // See if are rendering it to an element
     if (props.el) {
@@ -94,17 +94,18 @@ export const Tooltip = (props: ITooltipProps): ITooltip => {
     }
 
     // Create the tooltip
-    let tooltip = jQuery(el.children[0]).tooltip(options);
+    let $tooltip = jQuery(tooltip);
+    $tooltip.tooltip(options);
 
     // Return the tooltip
     return {
-        dispose: () => { tooltip.tooltip("dispose"); },
-        el,
-        enable: () => { tooltip.tooltip("enable"); },
-        hide: () => { tooltip.tooltip("hide"); },
-        show: () => { tooltip.tooltip("show"); },
-        toggle: () => { tooltip.tooltip("toggle"); },
-        toggleEnabled: () => { tooltip.tooltip("toggleEnabled"); },
-        update: () => { tooltip.tooltip("update"); }
+        dispose: () => { $tooltip.tooltip("dispose"); },
+        el: tooltip,
+        enable: () => { $tooltip.tooltip("enable"); },
+        hide: () => { $tooltip.tooltip("hide"); },
+        show: () => { $tooltip.tooltip("show"); },
+        toggle: () => { $tooltip.tooltip("toggle"); },
+        toggleEnabled: () => { $tooltip.tooltip("toggleEnabled"); },
+        update: () => { $tooltip.tooltip("update"); }
     };
 }

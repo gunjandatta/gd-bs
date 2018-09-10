@@ -1,4 +1,3 @@
-import * as jQuery from "jquery";
 import { IProgressGroup, IProgressGroupProps } from "./types/progressGroup";
 import { Progress } from "./progress";
 
@@ -7,26 +6,20 @@ import { Progress } from "./progress";
  * @param props The progress group properties.
  */
 export const ProgressGroup = (props: IProgressGroupProps): IProgressGroup => {
-    // Set the class names
-    let classNames = [];
-    props.className ? classNames.push(props.className) : null;
-
-    // Set the starting tag
-    let html = ['<div class="' + classNames.join(' ') + '">'];
+    // Create the progress group
+    let progressGroup = document.createElement("div");
+    progressGroup.className = props.className || "";
 
     // Parse the progress bars
     let progressbars = props.progressbars || [];
     for (let i = 0; i < progressbars.length; i++) {
         // Add the progress bar
-        html.push(Progress(progressbars[i]).el.innerHTML);
+        progressGroup.appendChild(Progress(progressbars[i]).el);
     }
-
-    // Add the closing tag
-    html.push('</div>');
 
     // Create the element
     let el = document.createElement("div");
-    el.innerHTML = html.join('\n');
+    el.appendChild(progressGroup);
 
     // See if are rendering it to an element
     if (props.el) {
@@ -49,6 +42,5 @@ export const ProgressGroup = (props: IProgressGroupProps): IProgressGroup => {
     }
 
     // Return the progress group
-    let progressGroup = jQuery(el.children[0]);
-    return { el };
+    return { el: progressGroup };
 }

@@ -5,29 +5,25 @@ import { ICollapse, ICollapseProps } from "./types/collapse";
  * Collapse
  */
 export const Collapse = (props: ICollapseProps): ICollapse => {
+    // Create the collapse
+    let collapse = document.createElement("div");
+    props.id ? collapse.id = props.id : null;
+
     // Set the class names
-    let classNames = ["collapse"];
-    props.className ? classNames.push(props.className) : null;
-    props.isMulti ? classNames.push("multi-collapse") : null;
+    collapse.className = props.className || "";
+    collapse.classList.add("collapse");
+    props.isMulti ? collapse.classList.add("multi-collapse") : null;
 
-    // Set the attributes
-    let attributes = [
-        'class="' + classNames.join(' ') + '"',
-        props.id ? 'id="' + props.id + '"' : ''
-    ].join(' ');
-
-    // Generate the html
-    let html = [
-        '<div ' + attributes + '>',
+    // Set the content
+    collapse.innerHTML = [
         '<div class="card card-body">',
         props.content || "",
-        '</div>',
         '</div>'
-    ];
+    ].join('\n');
 
     // Create the element
     let el = document.createElement("div");
-    el.innerHTML = html.join('\n');
+    el.appendChild(collapse);
 
     // See if are rendering it to an element
     if (props.el) {
@@ -50,12 +46,12 @@ export const Collapse = (props: ICollapseProps): ICollapse => {
     }
 
     // Return the collapse
-    let collapse = jQuery(el.children[0]);
+    let $collapse = jQuery(el.children[0]);
     return {
-        dispose: () => { collapse.collapse("dispose"); },
-        el,
-        hide: () => { collapse.collapse("hide"); },
-        show: () => { collapse.collapse("show"); },
-        toggle: () => { collapse.collapse("toggle"); }
+        dispose: () => { $collapse.collapse("dispose"); },
+        el: collapse,
+        hide: () => { $collapse.collapse("hide"); },
+        show: () => { $collapse.collapse("show"); },
+        toggle: () => { $collapse.collapse("toggle"); }
     };
 }

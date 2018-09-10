@@ -1,4 +1,3 @@
-import * as jQuery from "jquery";
 import { Button } from "./button";
 import { IButtonGroup, IButtonGroupProps } from "./types/buttonGroup";
 
@@ -7,24 +6,17 @@ import { IButtonGroup, IButtonGroupProps } from "./types/buttonGroup";
  * @property props - The button group properties.
  */
 export const ButtonGroup = (props: IButtonGroupProps): IButtonGroup => {
-    let html = [];
+    // Create the button group
+    let buttonGroup = document.createElement("div");
+    buttonGroup.setAttribute("role", "group");
+    props.id ? buttonGroup.id = props.id : null;
+    props.label ? buttonGroup.setAttribute("aria-label", props.label) : null;
 
     // Set the class names
-    let classNames = [props.isVertical ? "btn-group-vertical" : "btn-group"];
-    props.className ? classNames.push(props.className) : null;
-    props.isLarge ? classNames.push("btn-group-lg") : null;
-    props.isSmall ? classNames.push("btn-group-sm") : null;
-
-    // Set the attributes
-    let attributes = [
-        props.id ? 'id="' + props.id + '"' : '',
-        'role="group"',
-        'class="' + classNames.join(' ') + '"',
-        props.label ? "aria-label='" + props.label + "'" : ""
-    ].join(' ').replace(/  /g, " ");
-
-    // Set the starting tag
-    html.push("<div " + attributes + ">");
+    buttonGroup.className = props.className || "";
+    buttonGroup.classList.add(props.isVertical ? "btn-group-vertical" : "btn-group");
+    props.isLarge ? buttonGroup.classList.add("btn-group-lg") : null;
+    props.isSmall ? buttonGroup.classList.add("btn-group-sm") : null;
 
     // Parse the buttons
     let buttons = props.buttons || [];
@@ -35,15 +27,12 @@ export const ButtonGroup = (props: IButtonGroupProps): IButtonGroup => {
         buttonProps.type = buttonProps.type || props.buttonType;
 
         // Add the button html
-        html.push(Button(buttonProps).el.innerHTML);
+        buttonGroup.appendChild(Button(buttonProps).el);
     }
-
-    // Add the closing tag
-    html.push("</div>");
 
     // Create the element
     let el = document.createElement("div");
-    el.innerHTML = html.join('\n');
+    el.appendChild(buttonGroup);
 
     // See if are rendering it to an element
     if (props.el) {
@@ -65,18 +54,6 @@ export const ButtonGroup = (props: IButtonGroupProps): IButtonGroup => {
         el.classList.add("bs");
     }
 
-    // Parse the buttons
-    let elButtons = el.querySelectorAll(".btn-group > .btn");
-    for (let i = 0; i < elButtons.length; i++) {
-        let button = buttons[i];
-
-        // See if there is a click event
-        if (button && button.onClick) {
-            // Set the click event
-            elButtons[i].addEventListener("click", button.onClick);
-        }
-    }
-
     // Return the button group
-    return { el };
+    return { el: buttonGroup };
 }

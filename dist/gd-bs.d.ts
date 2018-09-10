@@ -629,7 +629,7 @@ declare module 'gd-bs/components/types/dropdown' {
             formFl?: boolean;
             id?: string;
             isSplit?: boolean;
-            items: Array<IDropdownItem>;
+            items?: Array<IDropdownItem>;
             label?: string;
             menuOnly?: boolean;
             multi?: boolean;
@@ -1006,7 +1006,7 @@ declare module 'gd-bs/components/types/modal' {
             isCentered?: boolean;
             isLarge?: boolean;
             isSmall?: boolean;
-            onClose?: (modal: IModal) => void;
+            onClose?: (el: HTMLDivElement) => void;
             onRenderBody?: (el: HTMLDivElement) => void;
             onRenderFooter?: (el: HTMLDivElement) => void;
             title?: string;

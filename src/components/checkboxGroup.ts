@@ -15,12 +15,12 @@ export const CheckboxGroup = (props: ICheckboxGroupProps): ICheckboxGroup => {
     let colSize = props.colSize > 0 && props.colSize < 13 ? props.colSize : (props.label ? 10 : 12);
     let isMulti = props.multi ? true : false;
 
-    // Create the row
-    let row = document.createElement("div");
+    // Create the checkbox group
+    let cbGroup = document.createElement("div");
 
     // Set the class names
-    row.classList.add("row");
-    props.className ? row.className = props.className : null;
+    cbGroup.className = props.className || "";
+    cbGroup.classList.add("row");
 
     // See if the label exists
     if (props.label) {
@@ -29,13 +29,13 @@ export const CheckboxGroup = (props: ICheckboxGroupProps): ICheckboxGroup => {
         elLabel.classList.add("col-form-label");
         elLabel.classList.add("col-" + (12 - colSize));
         elLabel.innerHTML = props.label;
-        props.hideLabel ? null : row.appendChild(elLabel);
+        props.hideLabel ? null : cbGroup.appendChild(elLabel);
     }
 
-    // Create the checkbox group
-    let cbGroup = document.createElement("div");
-    cbGroup.classList.add("col-" + colSize);
-    row.appendChild(cbGroup);
+    // Create the checkbox group element
+    let cbGroupElement = document.createElement("div");
+    cbGroupElement.classList.add("col-" + colSize);
+    cbGroup.appendChild(cbGroupElement);
 
     // Parse the items
     let items = props.items || [];
@@ -45,7 +45,7 @@ export const CheckboxGroup = (props: ICheckboxGroupProps): ICheckboxGroup => {
         // Create the checkbox
         let elCheckbox = document.createElement("div");
         elCheckbox.classList.add("form-check");
-        cbGroup.appendChild(elCheckbox);
+        cbGroupElement.appendChild(elCheckbox);
 
         // Create the checkbox
         let cb = document.createElement("input");
@@ -98,7 +98,7 @@ export const CheckboxGroup = (props: ICheckboxGroupProps): ICheckboxGroup => {
 
     // Create the element
     let el = document.createElement("div");
-    el.appendChild(row);
+    el.appendChild(cbGroup);
 
     // See if are rendering it to an element
     if (props.el) {
@@ -122,12 +122,12 @@ export const CheckboxGroup = (props: ICheckboxGroupProps): ICheckboxGroup => {
 
     // Return the checkbox
     return {
-        el,
+        el: cbGroup,
         getValues: () => {
             let values: Array<ICheckboxGroupItem> = [];
 
             // Parse the checkboxes
-            let cbs = el.querySelectorAll("input[type='checkbox']");
+            let cbs = cbGroup.querySelectorAll("input[type='checkbox']");
             for (let i = 0; i < cbs.length; i++) {
                 let cb = cbs[i] as HTMLInputElement;
                 let item = props.items[i];

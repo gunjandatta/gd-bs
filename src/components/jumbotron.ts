@@ -1,27 +1,27 @@
-import * as jQuery from "jquery";
 import { IJumbotron, IJumbotronProps } from "./types/jumbotron";
 
 /**
  * Jumbotron
  */
 export const Jumbotron = (props: IJumbotronProps): IJumbotron => {
-    // Set the class names
-    let classNames = ["jumbotron"];
-    props.className ? classNames.push(props.className) : null;
-    props.isFluid ? classNames.push("jumbotron-fluid") : null;
+    // Create the jumbotron
+    let jumbotron = document.createElement("div");
 
-    // Generate the html
-    let html = [
-        '<div class="' + classNames.join(' ') + '">',
+    // Set the class names
+    jumbotron.className = props.className || "";
+    jumbotron.classList.add("jumbotron");
+    props.isFluid ? jumbotron.classList.add("jumbotron-fluid") : null;
+
+    // Set the content
+    jumbotron.innerHTML = [
         props.title ? '<h1 class="display-4">' + props.title + '</h1>' : '',
         props.lead ? '<p class="lead">' + props.lead + '</p>' : '',
-        props.content || '',
-        '</div>'
-    ];
+        props.content || ''
+    ].join('\n');
 
     // Create the element
     let el = document.createElement("div");
-    el.innerHTML = html.join('\n');
+    el.appendChild(jumbotron);
 
     // See if are rendering it to an element
     if (props.el) {
@@ -44,9 +44,8 @@ export const Jumbotron = (props: IJumbotronProps): IJumbotron => {
     }
 
     // Call the render event
-    props.onRenderContent ? props.onRenderContent(el.children[0] as any) : null;
+    props.onRenderContent ? props.onRenderContent(jumbotron) : null;
 
     // Return the jumbotron
-    let jumbotron = jQuery(el.children[0]);
-    return { el };
+    return { el: jumbotron };
 }

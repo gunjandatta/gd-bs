@@ -7,22 +7,22 @@ import { Nav } from "./nav";
  * Card
  */
 export const Card = (props: ICardProps): ICard => {
-    // Set the class names
-    let classNames = ["card"];
-    props.className ? classNames.push(props.className) : null;
+    // Create the card
+    let card = document.createElement("div");
 
-    // Set the starting tag
-    let html = ['<div class="' + classNames.join(' ') + '">'];
+    // Set the class names
+    card.className = props.className || "";
+    card.classList.add("card");
 
     // See if the top image exists
     if (props.imgTop) {
         // Add the top image
-        html.push([
+        card.innerHTML += [
             '<img',
             'class="card-img-top"',
             'src="' + (props.imgTop.src || "") + '"',
             'alt="' + (props.imgTop.alt || "") + '">'
-        ].join(' '));
+        ].join(' ');
     }
 
     // See if the header exists
@@ -30,7 +30,7 @@ export const Card = (props: ICardProps): ICard => {
         // See if the content exists
         if (props.header.content) {
             // Render the content
-            html.push('<div class="card-header">' + props.header.content + '</div>');
+            card.innerHTML += '<div class="card-header">' + props.header.content + '</div>';
         }
         // Else, see if the navigation exists
         else if (props.header.nav) {
@@ -43,7 +43,7 @@ export const Card = (props: ICardProps): ICard => {
             ].join(' ');
 
             // Render the navigation
-            html.push(Nav(navProps).el.innerHTML);
+            card.appendChild(Nav(navProps).el);
         }
     }
 
@@ -116,7 +116,7 @@ export const Card = (props: ICardProps): ICard => {
         }
 
         // Add the body
-        html.push([
+        card.innerHTML += [
             '<div class="' + classNames + '">',
             item.title ? '<h5 class="card-title">' + item.title + '</h5>' : '',
             item.subTitle ? '<h5 class="card-subtitle"' + item.subTitle + '</h6>' : '',
@@ -124,32 +124,29 @@ export const Card = (props: ICardProps): ICard => {
             item.content || '',
             buttons.join(''),
             '</div>'
-        ].join('\n'));
+        ].join('\n');
     }
 
     // See if the footer exists
     if (props.footer) {
         // Add the footer
-        html.push('<div class="card-footer">' + props.footer + '</div>');
+        card.innerHTML += '<div class="card-footer">' + props.footer + '</div>';
     }
 
     // See if the bottom image exists
     if (props.imgBottom) {
         // Add the bottom image
-        html.push([
+        card.innerHTML += [
             '<img',
             'class="card-img-bottom"',
             'src="' + (props.imgBottom.src || "") + '"',
             'alt="' + (props.imgBottom.alt || "") + '">'
-        ].join(' '));
+        ].join(' ');
     }
-
-    // Set the closing tag
-    html.push("</div>");
 
     // Create the element
     let el = document.createElement("div");
-    el.innerHTML = html.join('\n');
+    el.appendChild(card);
 
     // See if are rendering it to an element
     if (props.el) {
@@ -172,9 +169,8 @@ export const Card = (props: ICardProps): ICard => {
     }
 
     // Return the alert
-    let card = jQuery(el.children[0]);
     return {
-        dispose: () => { card.card("dispose"); },
-        el
+        dispose: () => { jQuery(card).card("dispose"); },
+        el: card
     };
 }

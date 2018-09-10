@@ -1,4 +1,3 @@
-import * as jQuery from "jquery";
 import { Button } from "./button";
 import { IInputGroup, IInputGroupProps } from "./types/inputGroup";
 
@@ -20,34 +19,40 @@ export enum InputGroupTypes {
  * @param props The input group properties.
  */
 export const InputGroup = (props: IInputGroupProps): IInputGroup => {
-    let html = [];
+    // Create the input group
+    let inputGroup = document.createElement("div");
 
     // Set the class names
-    let classNames = ["input-group"];
-    props.className ? classNames.push(props.className) : null;
-    props.isLarge ? classNames.push("input-group-lg") : null;
-    props.isSmall ? classNames.push("input-group-sm") : null;
+    inputGroup.className = props.className || "";
+    inputGroup.classList.add("input-group");
+    props.isLarge ? inputGroup.classList.add("input-group-lg") : null;
+    props.isSmall ? inputGroup.classList.add("input-group-sm") : null;
 
     // See if a label exists
     if (props.label) {
-        html.push([
+        inputGroup.innerHTML += [
             '<label' + (props.id ? ' for="' + props.id + '"' : '') + '>',
             props.label,
             '</label>'
-        ].join(''));
+        ].join('');
     }
-
-    // Set the input group starting tag
-    html.push('<div class="' + classNames.join(' ') + '">');
 
     // See if we are pre-pending a label or buttons
     if (props.prependedButtons || props.prependedLabel) {
+        // Create the group
+        let elPrependGroup = document.createElement("div");
+        elPrependGroup.className = "input-group-prepend";
+        inputGroup.appendChild(elPrependGroup);
+
         // Add the label
-        html.push([
-            '<div class="input-group-prepend">',
-            props.prependedLabel ? '<span class="input-group-text">' + props.prependedLabel + '</span>' : '',
-            '</div>'
-        ].join('\n'));
+        props.prependedLabel ? elPrependGroup.innerHTML += '<span class="input-group-text">' + props.prependedLabel + '</span>' : null;
+
+        // Parse the buttons
+        let buttons = props.prependedButtons || [];
+        for (let i = 0; i < buttons.length; i++) {
+            // Add the button
+            elPrependGroup.appendChild(Button(buttons[i]).el);
+        }
     }
 
     // Set the input type
@@ -74,7 +79,7 @@ export const InputGroup = (props: IInputGroupProps): IInputGroup => {
     }
 
     // Add the textbox
-    html.push(props.type == InputGroupTypes.TextArea ?
+    inputGroup.innerHTML += props.type == InputGroupTypes.TextArea ?
         [
             '<textarea class="form-control"',
             props.placeholder ? 'placeholder="' + props.placeholder + '"' : '',
@@ -93,79 +98,35 @@ export const InputGroup = (props: IInputGroupProps): IInputGroup => {
             props.isReadonly ? 'readonly' : '',
             props.type == InputGroupTypes.Search ? 'aria-label="Search"' : '',
             '></input>'
-        ].join(' ')
-    );
+        ].join(' ');
 
     // See if we are appending a label or buttons
     if (props.appendedLabel || props.appendedButtons) {
-        // Add the label
-        html.push([
-            '<div class="input-group-append">',
-            props.appendedLabel ? '<span class="input-group-text">' + props.appendedLabel + '</span>' : '',
-            '</div>'
-        ].join('\n'));
-    }
+        // Create the group
+        let elAppendGroup = document.createElement("div");
+        elAppendGroup.className = "input-group-append";
+        inputGroup.appendChild(elAppendGroup);
 
-    // Add the input group closing tag
-    html.push("</div>");
+        // Add the label
+        props.appendedLabel ? elAppendGroup.innerHTML += '<span class="input-group-text">' + props.appendedLabel + '</span>' : null;
+
+        // Parse the buttons
+        let buttons = props.appendedButtons || [];
+        for (let i = 0; i < buttons.length; i++) {
+            // Add the button
+            elAppendGroup.appendChild(Button(buttons[i]).el);
+        }
+    }
 
     // See if there is a description
     if (props.description) {
         // Add the description
-        html.push('<small class="text-muted">' + props.description + '</small>');
-    }
-
-    // Create the element
-    let el = document.createElement("div");
-    el.innerHTML = html.join('\n');
-
-    // See if are rendering it to an element
-    if (props.el) {
-        // Ensure the parent element exists
-        if (props.el.parentElement && props.el.parentElement.classList) {
-            // Set the bootstrap class
-            props.el.parentElement.classList.contains("bs") ? null : props.el.parentElement.classList.add("bs");
-        }
-
-        // Append the elements
-        while (el.children.length > 0) {
-            props.el.appendChild(el.children[0]);
-        }
-
-        // Update the element
-        el = props.el as any;
-    } else {
-        // Set the bootstrap class
-        el.classList.add("bs");
-    }
-
-    // See if we are pre-pending buttons
-    if (props.prependedButtons) {
-        let elPrependGroup = el.querySelector(".input-group-prepend");
-        if (elPrependGroup) {
-            // Parse the buttons
-            for (let i = 0; i < props.prependedButtons.length; i++) {
-                // Add the button
-                elPrependGroup.appendChild(Button(props.prependedButtons[i]).el);
-            }
-        }
-    }
-
-    // See if we are appending buttons
-    if (props.appendedButtons) {
-        let elAppendGroup = el.querySelector(".input-group-append");
-        if (elAppendGroup) {
-            // Parse the buttons
-            for (let i = 0; i < props.appendedButtons.length; i++) {
-                // Add the button
-                elAppendGroup.appendChild(Button(props.appendedButtons[i]).el);
-            }
-        }
+        inputGroup.innerHTML += '<small class="text-muted">' + props.description + '</small>';
     }
 
     // See if a change event exists
     let isMulti = props.type == InputGroupTypes.TextArea;
-    let elInput = el.querySelector(isMulti ? "textarea" : "input");
+    let elInput = inputGroup.querySelector(isMulti ? "textarea" : "input");
     let callbackValue = null;
     if (props.onChange) {
         // Add a input event
@@ -212,6 +173,30 @@ export const InputGroup = (props: IInputGroupProps): IInputGroup => {
         });
     }
 
+    // Create the element
+    let el = document.createElement("div");
+    el.appendChild(inputGroup);
+
+    // See if are rendering it to an element
+    if (props.el) {
+        // Ensure the parent element exists
+        if (props.el.parentElement && props.el.parentElement.classList) {
+            // Set the bootstrap class
+            props.el.parentElement.classList.contains("bs") ? null : props.el.parentElement.classList.add("bs");
+        }
+
+        // Append the elements
+        while (el.children.length > 0) {
+            props.el.appendChild(el.children[0]);
+        }
+
+        // Update the element
+        el = props.el as any;
+    } else {
+        // Set the bootstrap class
+        el.classList.add("bs");
+    }
+
     // Return the input group
-    return { el: props.formFl ? elInput : el };
+    return { el: props.formFl ? elInput : inputGroup };
 }

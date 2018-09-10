@@ -57,7 +57,7 @@ export interface IDropdownProps {
     formFl?: boolean;
     id?: string;
     isSplit?: boolean;
-    items: Array<IDropdownItem>;
+    items?: Array<IDropdownItem>;
     label?: string;
     menuOnly?: boolean;
     multi?: boolean;

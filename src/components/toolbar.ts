@@ -1,5 +1,3 @@
-import { IButtonProps } from "./types/button";
-import { IInputGroupProps } from "./types/inputGroup";
 import { IToolbar, IToolbarProps } from "./types/toolbar";
 import { ButtonGroup } from "./buttonGroup";
 import { InputGroup } from "./inputGroup";

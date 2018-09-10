@@ -1,4 +1,3 @@
-import * as jQuery from "jquery";
 import { IPagination, IPaginationProps } from "./types/pagination";
 
 /**
@@ -14,70 +13,66 @@ export enum PaginationAlignment {
  * Pagination
  */
 export const Pagination = (props: IPaginationProps): IPagination => {
+    // Create the pagination
+    let pagination = document.createElement("nav");
+    props.label ? pagination.setAttribute("aria-label", props.label) : null;
+
+    // Create the list
+    let list = document.createElement("ul");
+    pagination.appendChild(list);
+
     // Set the class names
-    let classNames = ["pagination"];
-    props.className ? classNames.push(props.className) : null;
-    props.isLarge ? classNames.push("pagination-lg") : null;
-    props.isSmall ? classNames.push("pagination-sm") : null;
+    list.className = props.className || "";
+    list.classList.add("pagination");
+    props.isLarge ? list.classList.add("pagination-lg") : null;
+    props.isSmall ? list.classList.add("pagination-sm") : null;
 
     // Read the alignment
     switch (props.alignment) {
         // Danger
         case PaginationAlignment.Center:
-            classNames.push("justify-content-center");
+            list.classList.add("justify-content-center");
             break;
         // Dark
         case PaginationAlignment.Right:
-            classNames.push("justify-content-end");
+            list.classList.add("justify-content-end");
             break;
     }
 
-    // Set the starting tag
-    let html = [
-        '<nav aria-label="' + (props.label || "") + '">',
-        '<ul class="' + classNames.join(' ') + '">'
-    ];
-
     // Render the previous button
-    html.push([
+    list.innerHTML += [
         '<li class="page-item" data-idx="0">',
         '<a class="page-link" href="#"' + (props.icon ? ' aria-label="Previous"' : '') + '>',
         props.icon ? '<span aria-hidden="true">' + props.icon + '</span>' : "Previous",
         props.icon ? '<span class="sr-only">Previous</span>' : '',
         '</a>',
         '</li>'
-    ].join('\n'));
+    ].join('\n');
 
     // Parse the number of pages
     let pages = props.numberOfPages || 1;
     for (let i = 1; i <= pages; i++) {
         // Add the item
-        html.push([
+        list.innerHTML += [
             '<li class="page-item' + (i == 1 ? ' active' : '') + '" data-idx="' + i + '">',
             '<a class="page-link" href="#">' + i + '</a>',
             '</li>'
-        ].join('\n'));
+        ].join('\n');
     }
 
     // Render the next button
-    html.push([
+    list.innerHTML += [
         '<li class="page-item" data-idx="' + (pages + 1) + '">',
         '<a class="page-link" href="#"' + (props.icon ? ' aria-label="Next"' : '') + '>',
         props.icon ? '<span aria-hidden="true">' + props.icon + '</span>' : "Next",
         props.icon ? '<span class="sr-only">Next</span>' : '',
         '</a>',
         '</li>'
-    ].join('\n'));
-
-    // Set the closing tag
-    html.push([
-        '</ul>',
-        '</nav>'
-    ].join('\n'));
+    ].join('\n');
 
     // Create the element
     let el = document.createElement("div");
-    el.innerHTML = html.join('\n');
+    el.appendChild(pagination);
 
     // See if are rendering it to an element
     if (props.el) {
@@ -146,6 +141,5 @@ export const Pagination = (props: IPaginationProps): IPagination => {
     }
 
     // Return the pagination
-    let pagination = jQuery(el.children[0]);
-    return { el };
+    return { el: pagination };
 }

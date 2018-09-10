@@ -1,4 +1,3 @@
-import * as jQuery from "jquery";
 import { IProgress, IProgressProps } from "./types/progress";
 
 /**
@@ -9,35 +8,30 @@ export const Progress = (props: IProgressProps): IProgress => {
     let minValue = typeof (props.min) === "number" ? props.min : 0;
     let size = typeof (props.size) === "number" ? props.size : 0;
 
+    // Create the progress
+    let progress = document.createElement("div");
+
     // Set the class names
-    let classNames = ["progress"];
-    props.className ? classNames.push(props.className) : null;
+    progress.className = props.className || "";
+    progress.classList.add("progress");
 
-    // Set the bar class names
-    let barClassNames = ["progress-bar"];
-    props.isAnimated ? barClassNames.push("progress-bar-animated") : null;
-    props.isStriped ? barClassNames.push("progress-bar-striped") : null;
+    // Create the progress bar
+    let progressBar = document.createElement("div");
+    progressBar.setAttribute("role", "progressbar")
+    progressBar.style.width = size + "%";
+    progressBar.setAttribute("aria-valuenow", size.toString());
+    progressBar.setAttribute("aria-valuemin", minValue.toString());
+    progressBar.setAttribute("aria-valuemax", maxValue.toString());
+    progress.appendChild(progressBar);
 
-    // Set the attributes
-    let attributes = [
-        'class="' + barClassNames.join(' ') + '"',
-        'role="progressbar"',
-        'style="width: ' + size + '%"',
-        'aria-valuenow="' + size + '"',
-        'aria-valuemin="' + minValue + '"',
-        'aria-valuemax="' + maxValue + '"'
-    ].join(' ');
-
-    // Set the starting tag
-    let html = [
-        '<div class="' + classNames.join(' ') + '">',
-        '<div ' + attributes + '>' + (props.label || '') + '</div>',
-        '</div>'
-    ];
+    // Set the class names
+    progressBar.className = "progress-bar";
+    props.isAnimated ? progressBar.classList.add("progress-bar-animated") : null;
+    props.isStriped ? progressBar.classList.add("progress-bar-striped") : null;
 
     // Create the element
     let el = document.createElement("div");
-    el.innerHTML = html.join('\n');
+    el.appendChild(progress);
 
     // See if are rendering it to an element
     if (props.el) {
@@ -60,6 +54,5 @@ export const Progress = (props: IProgressProps): IProgress => {
     }
 
     // Return the progress
-    let progress = jQuery(el.children[0]);
-    return { el };
+    return { el: progress };
 }
