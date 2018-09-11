@@ -28,6 +28,7 @@ export interface IFormControlProps {
     name?: string;
     onControlRendering?: (control: IFormControlProps) => void | Promise<IFormControlProps>;
     onControlRendered?: (control: IFormControl) => void;
+    onGetValue?: (control: IFormControlProps) => any;
     required?: boolean;
     type?: number;
     value?: any;

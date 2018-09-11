@@ -734,6 +734,7 @@ declare module 'gd-bs/components/types/formControl' {
             name?: string;
             onControlRendering?: (control: IFormControlProps) => void | Promise<IFormControlProps>;
             onControlRendered?: (control: IFormControl) => void;
+            onGetValue?: (control: IFormControlProps) => any;
             required?: boolean;
             type?: number;
             value?: any;

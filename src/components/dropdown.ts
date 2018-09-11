@@ -254,7 +254,7 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
     let el = document.createElement("div");
     el.innerHTML = props.menuOnly ? menu.join('\n') : html.join('\n');
 
-    // See if are rendering it to an element
+    // See if we are rendering it to an element
     if (props.el) {
         // Ensure the parent element exists
         if (props.el.parentElement && props.el.parentElement.classList) {

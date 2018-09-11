@@ -169,7 +169,7 @@ export const ListGroup = (props: IListGroupProps): IListGroup => {
     let el = document.createElement("div");
     el.innerHTML = html.join('\n');
 
-    // See if are rendering it to an element
+    // See if we are rendering it to an element
     if (props.el) {
         // Ensure the parent element exists
         if (props.el.parentElement && props.el.parentElement.classList) {

@@ -54,7 +54,7 @@ export const Form = (props: IFormProps): IForm => {
                     column.control.el = elCol;
 
                     // Set the value
-                    column.control.value = column.control.value || props.value[column.control.name];
+                    column.control.value = column.control.value || (props.value ? props.value[column.control.name] : null);
 
                     // Add the column to the row
                     elRow.appendChild(elCol);
@@ -99,7 +99,7 @@ export const Form = (props: IFormProps): IForm => {
                 elRow.classList.add("form-group");
 
                 // Set the value
-                row.control.value = row.control.value || props.value[row.control.name];
+                row.control.value = row.control.value || (props.value ? props.value[row.control.name] : null);
 
                 // See if there is a label
                 if (row.control.label) {
@@ -167,7 +167,7 @@ export const Form = (props: IFormProps): IForm => {
     let el = document.createElement("div");
     el.appendChild(form);
 
-    // See if are rendering it to an element
+    // See if we are rendering it to an element
     if (props.el) {
         // Ensure the parent element exists
         if (props.el.parentElement && props.el.parentElement.classList) {

@@ -162,6 +162,11 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
             el,
             // Set the getValue method
             getValue: () => {
+                // See if there is an override event
+                if (props.onGetValue) {
+                    return props.onGetValue(props);
+                }
+
                 // See if this is a checkbox
                 if (cb) {
                     // Return the value

@@ -45,7 +45,7 @@ export const Accordion = (props: IAccordionProps): IAccordion => {
     let el = document.createElement("div");
     el.appendChild(accordion);
 
-    // See if are rendering it to an element
+    // See if we are rendering it to an element
     if (props.el) {
         // Ensure the parent element exists
         if (props.el.parentElement && props.el.parentElement.classList) {
