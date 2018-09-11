@@ -27,7 +27,7 @@ export interface IFormControlProps {
     label?: string;
     name?: string;
     onControlRendering?: (control: IFormControlProps) => void | Promise<IFormControlProps>;
-    onControlRendered?: (control: IFormControl) => void;
+    onControlRendered?: (control: IFormControl) => void | Promise<IFormControl>;
     onGetValue?: (control: IFormControlProps) => any;
     required?: boolean;
     type?: number;
@@ -52,6 +52,15 @@ export interface IFormControlPropsDropdown extends IFormControlProps {
     onChange?: (item: IDropdownItem | Array<IDropdownItem>) => void;
     placeholder?: string;
     type?: number;
+}
+
+/**
+ * Form Control Properties - Number Field
+ */
+export interface IFormControlPropsNumberField extends IFormControlPropsTextField {
+    max?: number;
+    min?: number;
+    step?: number;
 }
 
 /**

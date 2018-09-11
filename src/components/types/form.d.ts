@@ -33,6 +33,8 @@ export interface IFormColumn {
 export interface IFormProps {
     el?: Element | HTMLElement,
     rows?: Array<IFormRow>;
+    onControlRendering?: (control: IFormControlProps) => void | Promise<IFormControlProps>;
+    onControlRendered?: (control: IFormControl) => void | Promise<IFormControlProps>;
     value?: any;
 }
 

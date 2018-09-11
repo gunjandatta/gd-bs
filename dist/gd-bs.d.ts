@@ -688,6 +688,8 @@ declare module 'gd-bs/components/types/form' {
     export interface IFormProps {
             el?: Element | HTMLElement,
             rows?: Array<IFormRow>;
+            onControlRendering?: (control: IFormControlProps) => void | Promise<IFormControlProps>;
+            onControlRendered?: (control: IFormControl) => void | Promise<IFormControlProps>;
             value?: any;
     }
     
@@ -733,7 +735,7 @@ declare module 'gd-bs/components/types/formControl' {
             label?: string;
             name?: string;
             onControlRendering?: (control: IFormControlProps) => void | Promise<IFormControlProps>;
-            onControlRendered?: (control: IFormControl) => void;
+            onControlRendered?: (control: IFormControl) => void | Promise<IFormControl>;
             onGetValue?: (control: IFormControlProps) => any;
             required?: boolean;
             type?: number;
@@ -758,6 +760,15 @@ declare module 'gd-bs/components/types/formControl' {
             onChange?: (item: IDropdownItem | Array<IDropdownItem>) => void;
             placeholder?: string;
             type?: number;
+    }
+    
+    /**
+        * Form Control Properties - Number Field
+        */
+    export interface IFormControlPropsNumberField extends IFormControlPropsTextField {
+            max?: number;
+            min?: number;
+            step?: number;
     }
     
     /**
@@ -829,6 +840,7 @@ declare module 'gd-bs/components/types/inputGroup' {
             placeholder?: string;
             prependedButtons?: Array<IButtonProps>;
             prependedLabel?: string;
+            step?: number;
             type?: number;
             value?: string;
     }

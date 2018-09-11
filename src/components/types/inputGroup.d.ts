@@ -41,6 +41,7 @@ export interface IInputGroupProps {
     placeholder?: string;
     prependedButtons?: Array<IButtonProps>;
     prependedLabel?: string;
+    step?: number;
     type?: number;
     value?: string;
 }

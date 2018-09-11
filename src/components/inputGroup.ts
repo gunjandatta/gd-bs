@@ -94,14 +94,25 @@ export const InputGroup = (props: IInputGroupProps): IInputGroup => {
             props.id ? 'id="' + props.id + '"' : '',
             props.min ? 'min="' + props.min + '"' : '',
             props.max ? 'max="' + props.max + '"' : '',
+            props.step ? 'step="' + props.step + '"' : '',
             props.value ? 'value="' + props.value + '"' : '',
             props.isReadonly ? 'readonly' : '',
             props.type == InputGroupTypes.Search ? 'aria-label="Search"' : '',
             '></input>'
         ].join(' ');
 
+    // Default the appended buttons
+    let appendedButtons = props.appendedButtons || [];
+    if (props.type == InputGroupTypes.Range) {
+        // Add the button
+        appendedButtons.push({
+            id: "range-value",
+            text: props.value || "0"
+        });
+    }
+
     // See if we are appending a label or buttons
-    if (props.appendedLabel || props.appendedButtons) {
+    if (props.appendedLabel || appendedButtons.length > 0) {
         // Create the group
         let elAppendGroup = document.createElement("div");
         elAppendGroup.className = "input-group-append";
@@ -111,10 +122,9 @@ export const InputGroup = (props: IInputGroupProps): IInputGroup => {
         props.appendedLabel ? elAppendGroup.innerHTML += '<span class="input-group-text">' + props.appendedLabel + '</span>' : null;
 
         // Parse the buttons
-        let buttons = props.appendedButtons || [];
-        for (let i = 0; i < buttons.length; i++) {
+        for (let i = 0; i < appendedButtons.length; i++) {
             // Add the button
-            elAppendGroup.appendChild(Button(buttons[i]).el);
+            elAppendGroup.appendChild(Button(appendedButtons[i]).el);
         }
     }
 
@@ -142,6 +152,19 @@ export const InputGroup = (props: IInputGroupProps): IInputGroup => {
                 props.onChange(callbackValue, ev);
             }
         });
+    }
+
+    // See if this is a range
+    if (props.type == InputGroupTypes.Range) {
+        // Add a change event
+        elInput.addEventListener("input", () => {
+            // Get the button
+            let btn = el.querySelector("#range-value");
+            if (btn) {
+                // Update the value
+                btn.innerHTML = elInput.value;
+            }
+        })
     }
 
     // See if this is not a multi-line
