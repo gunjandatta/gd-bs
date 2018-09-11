@@ -16,6 +16,9 @@ export class Collapse {
 
     // Component loaded event
     componentDidLoad() {
+        // Get the onRender attribute
+        let onRender = this.el.getAttribute("onRender");
+
         // Remove the id attribute
         this.el.removeAttribute("id");
 
@@ -39,7 +42,14 @@ export class Collapse {
             el: this.el.children[0],
             id: this.id,
             isMulti: this.isMulti,
-            options
+            options,
+            onRender: (...args) => {
+                // See if a render event exists
+                if (onRender && window[onRender]) {
+                    // Call the event
+                    window[onRender].apply(this, args);
+                }
+            }
         });
     }
 

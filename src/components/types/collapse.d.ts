@@ -40,5 +40,6 @@ export interface ICollapseProps {
     el?: Element | HTMLElement;
     id?: string;
     isMulti?: boolean;
+    onRender?: (el: HTMLElement) => void;
     options?: ICollapseOptions;
 }

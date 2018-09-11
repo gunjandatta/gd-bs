@@ -18,7 +18,7 @@ export var CardGroup = ["bs-cardGroup",function(){return(import("./9mqaxtsn.js")
 
 export var Carousel = ["bs-carousel",function(){return(import("./bpv28qo4.js")).then(function(m){return m.BsCarousel})},0,[["className",1,0,"class-name",2],["el",7],["enableControls",1,0,"enable-controls",3],["enableCrossfade",1,0,"enable-crossfade",3],["enableIndicators",1,0,"enable-indicators",3],["id",1,0,1,2],["items",1,0,1,2],["options",1,0,1,2]]];
 
-export var Collapse = ["bs-collapse",function(){return(import("./zs8tw8fe.js")).then(function(m){return m.BsCollapse})},0,[["className",1,0,"class-name",2],["content",1,0,1,2],["el",7],["id",1,0,1,2],["isMulti",1,0,"is-multi",3],["options",1,0,1,2]]];
+export var Collapse = ["bs-collapse",function(){return(import("./twe30etn.js")).then(function(m){return m.BsCollapse})},0,[["className",1,0,"class-name",2],["content",1,0,1,2],["el",7],["id",1,0,1,2],["isMulti",1,0,"is-multi",3],["options",1,0,1,2]]];
 
 export var Dropdown = ["bs-dropdown",function(){return(import("./ecqqx3a0.js")).then(function(m){return m.BsDropdown})},0,[["className",1,0,"class-name",2],["dropLeft",1,0,"drop-left",3],["dropRight",1,0,"drop-right",3],["dropUp",1,0,"drop-up",3],["el",7],["formFl",1,0,"form-fl",3],["id",1,0,1,2],["isSplit",1,0,"is-split",3],["items",1,0,1,2],["label",1,0,1,2],["menuOnly",1,0,"menu-only",3],["multi",1,0,1,3],["type",1,0,1,4],["value",1,0,1,2]]];
 

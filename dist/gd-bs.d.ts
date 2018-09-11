@@ -565,6 +565,7 @@ declare module 'gd-bs/components/types/collapse' {
             el?: Element | HTMLElement;
             id?: string;
             isMulti?: boolean;
+            onRender?: (el: HTMLElement) => void;
             options?: ICollapseOptions;
     }
 }

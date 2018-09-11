@@ -21,6 +21,9 @@ export const Collapse = (props: ICollapseProps): ICollapse => {
         '</div>'
     ].join('\n');
 
+    // Execute the render event
+    props.onRender ? props.onRender(collapse.children[0] as any) : null;
+
     // Create the element
     let el = document.createElement("div");
     el.appendChild(collapse);
