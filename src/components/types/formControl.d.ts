@@ -70,6 +70,7 @@ export interface IFormControlPropsTextField extends IFormControlProps {
     el?: HTMLInputElement;
     onChange?: (value: string) => void;
     placeholder?: string;
+    rows?: number;
 }
 
 /**

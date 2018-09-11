@@ -689,7 +689,7 @@ declare module 'gd-bs/components/types/form' {
             el?: Element | HTMLElement,
             rows?: Array<IFormRow>;
             onControlRendering?: (control: IFormControlProps) => void | Promise<IFormControlProps>;
-            onControlRendered?: (control: IFormControl) => void | Promise<IFormControlProps>;
+            onControlRendered?: (control: IFormControl) => void | Promise<IFormControl>;
             value?: any;
     }
     
@@ -778,6 +778,7 @@ declare module 'gd-bs/components/types/formControl' {
             el?: HTMLInputElement;
             onChange?: (value: string) => void;
             placeholder?: string;
+            rows?: number;
     }
     
     /**
@@ -840,6 +841,7 @@ declare module 'gd-bs/components/types/inputGroup' {
             placeholder?: string;
             prependedButtons?: Array<IButtonProps>;
             prependedLabel?: string;
+            rows?: number;
             step?: number;
             type?: number;
             value?: string;

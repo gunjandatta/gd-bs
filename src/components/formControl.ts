@@ -139,6 +139,7 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
                     isReadonly: props.isReadonly,
                     onChange: (props as IFormControlPropsTextField).onChange,
                     placeholder: (props as IFormControlPropsTextField).placeholder,
+                    rows: (props as IFormControlPropsTextField).rows,
                     type: InputGroupTypes.TextArea,
                     value: props.value
                 });

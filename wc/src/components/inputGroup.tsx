@@ -21,6 +21,7 @@ export class InputGroup {
     @Prop() placeholder: string;
     @Prop() prependedButtons: string;
     @Prop() prependedLabel: string;
+    @Prop() rows: number;
     @Prop() type: number;
     @Prop() value: string;
 
@@ -75,6 +76,7 @@ export class InputGroup {
             placeholder: this.placeholder,
             prependedButtons,
             prependedLabel: this.prependedLabel,
+            rows: this.rows,
             type: this.type,
             value: this.value,
             onChange: (...args) => {

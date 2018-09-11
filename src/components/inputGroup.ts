@@ -84,6 +84,7 @@ export const InputGroup = (props: IInputGroupProps): IInputGroup => {
             '<textarea class="form-control"',
             props.placeholder ? 'placeholder="' + props.placeholder + '"' : '',
             props.isReadonly ? 'readonly' : '',
+            props.rows ? 'rows="' + props.rows + '"' : '',
             '>' + (props.value || "") + '</textarea>'
         ].join(' ')
         :
