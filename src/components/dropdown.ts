@@ -353,7 +353,7 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
             let values = [];
 
             // Parse the selected items
-            let items = el.querySelectorAll(props.formFl ? "option[selected]" : ".dropdown-item.active");
+            let items = el.querySelectorAll(props.formFl ? "option.active" : ".dropdown-item.active");
             for (let i = 0; i < items.length; i++) {
                 // Get the item
                 let item = props.items[items[i].getAttribute("data-idx")];
