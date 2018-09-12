@@ -205,7 +205,7 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
                 // See if this is a textbox
                 if (tb) {
                     // Return the value
-                    let elTextbox = tb.el.querySelector("input");
+                    let elTextbox = tb.el.querySelector("input") || tb.el.querySelector("textarea");
                     return elTextbox ? elTextbox.value : null;
                 }
             },
