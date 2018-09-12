@@ -26,6 +26,7 @@ export interface IBadgeProps {
     header?: string;
     href?: string;
     isPill?: boolean;
+    onClick?: (badge?: IBadgeProps, ev?: Event) => void;
     type?: number;
 }
 

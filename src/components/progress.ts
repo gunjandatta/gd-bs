@@ -22,6 +22,7 @@ export const Progress = (props: IProgressProps): IProgress => {
     progressBar.setAttribute("aria-valuenow", size.toString());
     progressBar.setAttribute("aria-valuemin", minValue.toString());
     progressBar.setAttribute("aria-valuemax", maxValue.toString());
+    props.label ? progress.innerHTML = props.label : null;
     progress.appendChild(progressBar);
 
     // Set the class names

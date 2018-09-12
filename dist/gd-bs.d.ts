@@ -156,6 +156,7 @@ declare module 'gd-bs/components/types/badge' {
             header?: string;
             href?: string;
             isPill?: boolean;
+            onClick?: (badge?: IBadgeProps, ev?: Event) => void;
             type?: number;
     }
     

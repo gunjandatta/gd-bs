@@ -73,6 +73,12 @@ export const Badge = (props: IBadgeProps): IBadge => {
             break;
     }
 
+    // Set the click event
+    props.onClick ? badge.addEventListener("click", ev => {
+        // Call the event
+        props.onClick(badge, ev);
+    }) : null;
+
     // Create the element
     let el = document.createElement("div");
     el.appendChild(badge);
