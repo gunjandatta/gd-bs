@@ -53,12 +53,13 @@
                     }
                 ]
             })
-            GD.Components.Dropdown({
+            var dll = GD.Components.Dropdown({
                 el: document.querySelector("#ddl"),
-                label: "My Dropdown",
-                type: GD.Components.DropdownTypes.Secondary,
-                onChange: ddlOnChange,
                 isSplit: "true",
+                label: "My Dropdown",
+                multi: true,
+                onChange: ddlOnChange,
+                type: GD.Components.DropdownTypes.Secondary,
                 items: [
                     { text: "Item 1" },
                     { text: "Item 2" },
@@ -478,7 +479,7 @@
     <bs-button target="#wcCollapseDemo" toggle="collapse" text="Collapse Demo"></bs-button>
     <bs-collapse id="wcCollapseDemo" content="This is the content to be collapsed."></bs-collapse>
     <h3>Dropdown</h3>
-    <script>function ddlOnChange(item, ev) { alert("Selected Item: " + item.text); }</script>
+    <script>function ddlOnChange(item, ev) { alert("Selected Item: " + (item.length >= 0 ? item[0] : item).text); }</script>
     <bs-dropdown is-split="true" label="Select a Choice" onChange="ddlOnChange" items='[
         { "text": "Choice 1", "value": "1" },
         { "text": "Choice 2", "value": "2" },

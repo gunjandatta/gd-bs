@@ -18,42 +18,49 @@ export enum DropdownTypes {
  * @property props - The dropdown properties.
  */
 export const Dropdown = (props: IDropdownProps): IDropdown => {
-    let html = [];
     let isMulti = props.multi || false;
     let items = props.items || [];
-    let menu = [];
+    let elMenu: HTMLElement = null;
+
+    // Create the dropdown
+    let elDropdown: HTMLDivElement = null;
+    let elForm: HTMLDivElement = null;
+    let elNav: HTMLLIElement = null;
 
     // See if we are rendering this in a form
     if (props.formFl) {
+        // Create the form element
+        elForm = document.createElement("div");
+
         // See if there is a label
         if (props.label) {
             // Add the label
-            html.push("<label>" + props.label + "</label>");
+            elForm.innerHTML = "<label>" + props.label + "</label>";
         }
 
-        // Set the attributes
-        let attributes = [
-            'class="form-control"',
-            props.multi ? "multiple" : ""
-        ];
-
-        // Add the select starting tag
-        html.push('<select ' + attributes.join(' ') + '>');
+        // Create the select
+        let elSelect = document.createElement("select");
+        elSelect.className = "form-control";
+        elSelect.multiple = props.multi ? true : false;
+        elForm.appendChild(elSelect);
 
         // Parse the items
         for (let i = 0; i < items.length; i++) {
             let item = items[i];
 
-            // Set the attributes
-            let attributes = [
-                'data-idx="' + i + '"',
-                item.value ? 'data-value="' + item.value + '"' : ''
-            ];
+            // Create the option
+            let option = document.createElement("option");
+            option.setAttribute("data-idx", i.toString());
+            item.value ? option.setAttribute("data-value", item.value) : null;
+            elSelect.appendChild(option);
+
+            // Set the text
+            option.innerHTML = item.text || "";
 
             // See if the item is selected
             if (item.isSelected) {
-                // Add the selected attribute
-                attributes.push('class="active"');
+                // Select the option
+                option.selected = true;
             }
             // Else, see if a value exists
             else if (props.value) {
@@ -64,45 +71,39 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
                 for (let j = 0; j < values.length; j++) {
                     // See if this item is selected
                     if (item.value == values[j]) {
-                        // Add the selected attribute
-                        attributes.push('class="active"');
+                        // Select the option
+                        option.selected = true;
                         break;
                     }
                 }
             }
-
-            // Add the option
-            html.push("<option " + attributes.join(' ') + ">" + item.text + "</option>");
         }
-
-        // Add the select ending tag
-        html.push("</select>");
     }
     // Else, see if we are rendering this in a nav bar
     else if (props.navFl) {
-        // Set the class names
-        let classNames = ["nav-item dropdown"];
-        props.className ? classNames.push(props.className) : null;
+        // Create the nav
+        elNav = document.createElement("li");
+        elNav.className = props.className || "";
+        elNav.classList.add("nav-item");
+        elNav.classList.add("dropdown");
 
-        // Set the starting tag
-        html.push('<li class="' + classNames.join(' ') + '">');
-
-        // Set the attributes
-        let attributes = [
-            'class="nav-link dropdown-toggle"',
-            'href="#"',
-            'id="navbarDDL_' + (props.label || "") + '"',
-            'role="button"',
-            'data-toggle="dropdown"',
-            'aria-haspopup="true"',
-            'aria-expanded="false"'
-        ];
-
-        // Render the label
-        html.push('<a ' + attributes.join(' ') + '>' + (props.label || "") + '</a>');
+        // Add the link
+        let link = document.createElement("a");
+        link.className = "nav-link dropdown-toggle";
+        link.href = "#";
+        link.id = "navbarDDL_" + (props.label || "");
+        link.setAttribute("role", "button");
+        link.setAttribute("data-toggle", "dropdown");
+        link.setAttribute("aria-haspopup", "true");
+        link.setAttribute("aria-expanded", "false");
+        link.innerHTML = props.label || "";
+        elNav.appendChild(link);
 
         // Create the menu
-        menu = ['<div class="dropdown-menu" aria-labelledby="navbarDDL_' + (props.label || "") + '">']
+        elMenu = document.createElement("div");
+        elMenu.className = "dropdown-menu";
+        elMenu.setAttribute("aria-labelledby", "navbarDDL_" + (props.label || ""));
+        elNav.appendChild(elMenu);
 
         // Parse the items
         let items = props.items || [];
@@ -112,33 +113,33 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
             // See if this is a divider
             if (item.isDivider) {
                 // Add the divider
-                menu.push('<div class="dropdown-divider"></div>');
+                let elDivider = document.createElement("div");
+                elDivider.className = "dropdown-divider";
+                elMenu.appendChild(elDivider);
             } else {
-                // Set the class names
-                let itemClassNames = ["dropdown-item"];
-                item.isHeader ? itemClassNames.push("dropdown-header") : null;
+                // Add the item
+                let elItem = document.createElement("a");
+                elItem.className = "dropdown-item";
+                item.isHeader ? elItem.classList.add("dropdown-header") : null;
+                elItem.href = item.href || "#";
+                elItem.setAttribute("data-idx", i.toString());
+                elItem.innerHTML = item.text || "";
+                elMenu.appendChild(elItem);
 
                 // Add the item
-                menu.push('<a class="' + itemClassNames.join(' ') + '" href="' + (item.href || '#') + '" data-idx="' + i + '">' + item.text + '</a>');
+                elMenu.appendChild(elItem);
             }
         }
-
-        // Set the ending tag
-        menu.push('</div>');
-
-        // Render the menu
-        html.push(menu.join('\n'));
-
-        // Set the ending tag
-        html.push('</div>');
     } else {
-        // Set the class names
-        let classNames = [props.isSplit ? "btn-group" : "dropdown"];
-        props.className ? classNames.push(props.className) : null;
-        props.dropLeft ? classNames.push("dropleft") : null;
-        props.dropRight ? classNames.push("dropright") : null;
-        props.dropUp ? classNames.push("dropup") : null;
+        // Create the button
+        elDropdown = document.createElement("div");
+        elDropdown.className = props.className || "";
+        elDropdown.classList.add(props.isSplit ? "btn-group" : "dropdown");
+        props.dropLeft ? elDropdown.classList.add("dropleft") : null;
+        props.dropRight ? elDropdown.classList.add("dropright") : null;
+        props.dropUp ? elDropdown.classList.add("dropup") : null;
 
+        // Set the type
         let btnType = "";
         switch (props.type) {
             // Danger
@@ -167,30 +168,35 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
                 break;
         }
 
-        // Set the button class names
-        let btnClassNames = ["btn", "dropdown-toggle", btnType];
-        props.isSplit ? btnClassNames.push("dropdown-toggle-split") : null;
-
-        // Set the starting tag
-        html.push('<div class="' + classNames.join(' ') + '">');
-
         // See if this is a split button
         if (props.isSplit) {
-            // Add a button
-            html.push([
-                '<button class="button ' + btnType + '">' + (props.label || "") + '</button>'
-            ]);
+            // Add a label
+            let label = document.createElement("button");
+            label.className = "button";
+            label.classList.add(btnType);
+            label.innerHTML = props.label || "";
+            elDropdown.appendChild(label);
+
+            // Set the click event to disable the postback
+            label.addEventListener("click", ev => { ev.preventDefault(); });
         }
 
-        // Add the button
-        html.push([
-            '<button class="' + btnClassNames.join(' ') + '" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">',
-            props.isSplit ? '<span class="sr-only">Toggle Dropdown</span>' : props.label || "",
-            '</button>'
-        ].join('\n'));
+        // Create the button
+        let elButton = document.createElement("button");
+        elButton.className = "btn dropdown-toggle";
+        elButton.classList.add(btnType);
+        props.isSplit ? elButton.classList.add("dropdown-toggle-split") : null;
+        elButton.setAttribute("data-toggle", "dropdown");
+        elButton.setAttribute("aria-haspopup", "true");
+        elButton.setAttribute("aria-expanded", "false");
+        elButton.innerHTML = props.isSplit ? '<span class="sr-only">Toggle Dropdown</span>' : props.label || "";
+        elDropdown.appendChild(elButton);
 
         // Create the menu
-        menu = ['<div class="dropdown-menu"' + (props.id ? 'aria-labelledby="' + props.id + '"' : '') + '>'];
+        elMenu = document.createElement("div");
+        elMenu.className = "dropdown-menu";
+        props.id ? elMenu.setAttribute("aria-labelledby", props.id) : null;
+        elDropdown.appendChild(elMenu);
 
         // Parse the items
         for (let i = 0; i < items.length; i++) {
@@ -199,18 +205,26 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
             // See if this is a divider
             if (item.isDivider) {
                 // Add the divider
-                menu.push('<div class="dropdown-divider"></div>');
+                let elDivider = document.createElement("div");
+                elDivider.className = "dropdown-divider";
+                elMenu.appendChild(elDivider);
                 continue;
             }
 
-            // Set the class names
-            let classNames = ["dropdown-item"];
-            item.isHeader ? classNames.push("dropdown-header") : null;
+            // Create the item
+            let elItem = document.createElement("a");
+            elItem.className = "dropdown-item";
+            item.isHeader ? elItem.classList.add("dropdown-header") : null;
+            elItem.href = item.href || "#";
+            elItem.setAttribute("data-idx", i.toString());
+            item.value ? elItem.setAttribute("data-value", item.value) : null;
+            elItem.innerHTML = item.text || "";
+            elMenu.appendChild(elItem);
 
             // See if this item is selected
             if (item.isSelected) {
                 // Select the item
-                classNames.push("active");
+                elItem.classList.add("active");
             }
             // Else, see if a value exists
             else if (props.value) {
@@ -221,38 +235,18 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
                 for (let j = 0; j < values.length; j++) {
                     // See if this item is selected
                     if (item.value == values[j]) {
-                        // Select this item
-                        classNames.push("active");
+                        // Select the item
+                        elItem.classList.add("active");
                         break;
                     }
                 }
             }
-
-            // Set the item attributes
-            let attributes = [
-                'class="' + classNames.join(' ') + '"',
-                'href="' + (item.href || '#') + '"',
-                'data-idx="' + i + '"',
-                item.value ? 'data-value="' + item.value + '"' : ''
-            ].join(' ');
-
-            // Add the button html
-            menu.push('<a ' + attributes + '>' + item.text + '</a>');
         }
-
-        // Add the menu closing tag
-        menu.push("</div>");
-
-        // Add the menu
-        html.push(menu.join('\n'));
-
-        // Add the closing tag
-        html.push("</div>");
     }
 
     // Create the element
     let el = document.createElement("div");
-    el.innerHTML = props.menuOnly ? menu.join('\n') : html.join('\n');
+    el.appendChild(props.menuOnly ? elMenu : elDropdown || elForm || elNav);
 
     // See if we are rendering it to an element
     if (props.el) {
@@ -274,74 +268,120 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
         el.classList.add("bs");
     }
 
-    // Parse the items
-    let elItems = el.querySelectorAll(props.formFl ? "option" : ".dropdown-item");
-    for (let i = 0; i < elItems.length; i++) {
-        // Set the click event for selecting the item
-        elItems[i].addEventListener("click", ev => {
-            let elItem = ev.currentTarget as HTMLElement;
-            let item: IDropdownItem = props.items[elItem.getAttribute("data-idx")];
-            let items: Array<IDropdownItem> = [];
+    // See if this is a form
+    if (props.formFl) {
+        // Parse the items
+        let elItems = el.querySelectorAll("option");
+        for (let i = 0; i < elItems.length; i++) {
+            // Set the click event for the custom events
+            elItems[i].addEventListener("click", ev => {
+                let elItem = ev.currentTarget as HTMLElement;
+                let itemIdx = elItem.getAttribute("data-idx");
+                let item: IDropdownItem = props.items[itemIdx];
+                let items: Array<IDropdownItem> = [];
 
-            // See if this is a menu only
-            if (props.menuOnly) {
-                // Set the location
-                item.href ? document.location.href = item.href : null;
-            } else {
-                // Cancel the events, if this isn't a link
-                item && item.href ? null : ev.preventDefault();
-            }
+                // Parse the selected items
+                let elSelectedItems = el.querySelectorAll("option");
+                for (let i = 0; i < elSelectedItems.length; i++) {
+                    let elSelectedItem = elSelectedItems[i] as HTMLOptionElement;
+                    let selectedIdx = elSelectedItem.getAttribute("data-idx");
 
-            // Parse the selected items
-            let elSelectedItems = el.querySelectorAll(".dropdown-item.active");
-            for (let i = 0; i < elSelectedItems.length; i++) {
-                let elSelectedItem = elSelectedItems[i] as HTMLElement;
-                let selectedItem = props.items[elSelectedItem.getAttribute("data-idx")];
-
-                // Skip this item
-                if (item.text == selectedItem.text) { continue; }
-
-                // See if this is a multi-select
-                if (isMulti) {
-                    // Add the item
-                    items.push(selectedItem);
-                } else {
-                    // Unselect the item
-                    elSelectedItem.classList.remove("active")
+                    // See if the item is selected
+                    if (elSelectedItem.selected) {
+                        // Add the item
+                        items.push(props.items[selectedIdx]);
+                    }
                 }
-            }
 
-            // See if this item is selected
-            if (elItem.classList.contains("active")) {
-                // Unselect this item
-                elItem.classList.remove("active");
-            } else {
-                // Select this item
-                elItem.classList.add("active");
+                // Sort the items
+                items = items.sort((a, b) => {
+                    if (a.text < b.text) { return -1; }
+                    if (a.text > b.text) { return 1; }
+                    return 0;
+                });
 
-                // Add the item
-                items.push(item);
-            }
+                // See if a change event exists
+                if (item.onChange) {
+                    // Call the change event
+                    item.onChange(isMulti ? items : items[0], ev);
+                }
 
-            // Sort the items
-            items = items.sort((a, b) => {
-                if (a.text < b.text) { return -1; }
-                if (a.text > b.text) { return 1; }
-                return 0;
+                // See if a global change event exists
+                if (props.onChange) {
+                    // Call the change event
+                    props.onChange(isMulti ? items : items[0], ev);
+                }
             });
+        }
+    } else {
+        // Parse the items
+        let elItems = el.querySelectorAll(".dropdown-item");
+        for (let i = 0; i < elItems.length; i++) {
+            // Set the click event for the custom events
+            elItems[i].addEventListener("click", ev => {
+                let elItem = ev.currentTarget as HTMLElement;
+                let itemIdx = elItem.getAttribute("data-idx");
+                let item: IDropdownItem = props.items[itemIdx];
+                let items: Array<IDropdownItem> = [];
 
-            // See if a change event exists
-            if (item.onChange) {
-                // Call the change event
-                item.onChange(isMulti ? items : items[0], ev);
-            }
+                // See if this is a menu only
+                if (props.menuOnly) {
+                    // Set the location
+                    item.href && item.href != "#" ? document.location.href = item.href : null;
+                }
 
-            // See if a global change event exists
-            if (props.onChange) {
-                // Call the change event
-                props.onChange(isMulti ? items : items[0], ev);
-            }
-        });
+                // Parse the selected items
+                let elSelectedItems = el.querySelectorAll(".dropdown-item.active");
+                for (let i = 0; i < elSelectedItems.length; i++) {
+                    let elSelectedItem = elSelectedItems[i] as HTMLElement;
+                    let selectedIdx = elSelectedItem.getAttribute("data-idx");
+                    let selectedItem = props.items[selectedIdx];
+
+                    // Skip this item
+                    if (itemIdx == selectedIdx) { continue; }
+
+                    // See if this is a multi-select
+                    if (isMulti) {
+                        // Add the item
+                        items.push(selectedItem);
+                    } else {
+                        // Unselect the item
+                        elSelectedItem.classList.remove("active");
+                    }
+                }
+
+                // See if this item is selected
+                if (elItem.classList.contains("active")) {
+                    // Unselect this item
+                    elItem.classList.remove("active");
+                } else {
+                    // Select this item
+                    elItem.classList.add("active");
+
+                    // Add the item
+                    items.push(item);
+                }
+
+                // Sort the items
+                items = items.sort((a, b) => {
+                    if (a.text < b.text) { return -1; }
+                    if (a.text > b.text) { return 1; }
+                    return 0;
+                });
+
+                // See if a change event exists
+                if (item.onChange) {
+                    // Call the change event
+                    item.onChange(isMulti ? items : items[0], ev);
+                }
+
+                // See if a global change event exists
+                if (props.onChange) {
+                    // Call the change event
+                    props.onChange(isMulti ? items : items[0], ev);
+                }
+            });
+        }
     }
 
     // Return the dropdown
@@ -352,14 +392,30 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
         getValue: () => {
             let values = [];
 
-            // Parse the selected items
-            let items = el.querySelectorAll(props.formFl ? "option.active" : ".dropdown-item.active");
-            for (let i = 0; i < items.length; i++) {
-                // Get the item
-                let item = props.items[items[i].getAttribute("data-idx")];
-                if (item) {
-                    // Append the value
-                    values.push(item);
+            // Get the select
+            let select = el.querySelector("select") as HTMLSelectElement;
+            if (select) {
+                // Parse the selected items
+                let selectedItems = select.querySelectorAll("option");
+                for (let i = 0; i < selectedItems.length; i++) {
+                    let selectedItem = selectedItems[i];
+
+                    // See if this item is selected
+                    if (selectedItem.selected) {
+                        // Add the value
+                        values.push(props.items[selectedItem.getAttribute("data-idx")]);
+                    }
+                }
+            } else {
+                // Parse the selected items
+                let items = el.querySelectorAll(".dropdown-item.active");
+                for (let i = 0; i < items.length; i++) {
+                    // Get the item
+                    let item = props.items[items[i].getAttribute("data-idx")];
+                    if (item) {
+                        // Append the value
+                        values.push(item);
+                    }
                 }
             }
 
