@@ -53,7 +53,7 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
             // See if the item is selected
             if (item.isSelected) {
                 // Add the selected attribute
-                attributes.push("selected");
+                attributes.push('class="active"');
             }
             // Else, see if a value exists
             else if (props.value) {
@@ -65,7 +65,7 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
                     // See if this item is selected
                     if (item.value == values[j]) {
                         // Add the selected attribute
-                        attributes.push("selected");
+                        attributes.push('class="active"');
                         break;
                     }
                 }
