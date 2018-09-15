@@ -117,9 +117,9 @@ export const Card = (props: ICardProps): ICard => {
 
         // Add the body
         card.innerHTML += [
-            '<div class="' + classNames + '">',
+            '<div class="' + classNames + '" data-idx="' + i + '">',
             item.title ? '<h5 class="card-title">' + item.title + '</h5>' : '',
-            item.subTitle ? '<h5 class="card-subtitle"' + item.subTitle + '</h6>' : '',
+            item.subTitle ? '<h6 class="card-subtitle">' + item.subTitle + '</h6>' : '',
             item.text ? '<p class="card-text">' + item.text + '</p>' : '',
             item.content || '',
             buttons.join(''),
@@ -142,6 +142,28 @@ export const Card = (props: ICardProps): ICard => {
             'src="' + (props.imgBottom.src || "") + '"',
             'alt="' + (props.imgBottom.alt || "") + '">'
         ].join(' ');
+    }
+
+    // Get the card items
+    let cardItems = card.querySelectorAll(".card-body");
+    for (let i = 0; i < cardItems.length && i < items.length; i++) {
+        let cardItem = cardItems[i];
+        let item = items[i];
+
+        // See if there is a click event
+        if (props.onClick || item.onClick) {
+            // Set the click event
+            cardItem.addEventListener("click", ev => {
+                let elCard = ev.currentTarget as HTMLElement;
+
+                // Get the item
+                let item = items[elCard.getAttribute("data-idx")];
+
+                // Execute the events
+                item ? item.onClick(item, ev) : null;
+                props.onClick ? props.onClick(item, ev) : null;
+            });
+        }
     }
 
     // Create the element

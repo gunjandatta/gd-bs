@@ -29,6 +29,7 @@ export interface ICardProps {
         }>;
         className?: string;
         content?: string;
+        onClick?: (card?: ICardProps, ev?: Event) => void;
         subTitle?: string;
         text?: string;
         title?: string;
@@ -40,12 +41,13 @@ export interface ICardProps {
         content?: string;
         nav?: INavProps;
     };
-    imgBottom: {
+    imgBottom?: {
         alt?: string;
         src?: string;
     }
-    imgTop: {
+    imgTop?: {
         alt?: string;
         src?: string;
     };
+    onClick?: (card?: ICardProps, ev?: Event) => void;
 }

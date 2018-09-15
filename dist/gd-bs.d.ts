@@ -337,6 +337,7 @@ declare module 'gd-bs/components/types/card' {
                     }>;
                     className?: string;
                     content?: string;
+                    onClick?: (card?: ICardProps, ev?: Event) => void;
                     subTitle?: string;
                     text?: string;
                     title?: string;
@@ -348,14 +349,15 @@ declare module 'gd-bs/components/types/card' {
                     content?: string;
                     nav?: INavProps;
             };
-            imgBottom: {
+            imgBottom?: {
                     alt?: string;
                     src?: string;
             }
-            imgTop: {
+            imgTop?: {
                     alt?: string;
                     src?: string;
             };
+            onClick?: (card?: ICardProps, ev?: Event) => void;
     }
 }
 
