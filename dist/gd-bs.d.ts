@@ -614,7 +614,7 @@ declare module 'gd-bs/components/types/dropdown' {
             isDivider?: boolean;
             isHeader?: boolean;
             isSelected?: boolean;
-            onChange?: (item?: IDropdownItem | Array<IDropdownItem>, ev?: Event) => void;
+            onClick?: (item?: IDropdownItem | Array<IDropdownItem>, ev?: Event) => void;
             text?: string;
             value?: string;
     }

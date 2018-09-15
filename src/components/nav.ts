@@ -20,7 +20,6 @@ export const Nav = (props: INavProps): INav => {
     // Set the class names
     navLinks.className = props.className || "";
     navLinks.classList.add("nav");
-    props.className ? navLinks.classList.add(props.className) : null;
     props.enableFill ? navLinks.classList.add("nav-fill") : null;
     props.isJustified ? navLinks.classList.add("nav-justified") : null;
     props.isPills ? navLinks.classList.add("nav-pills") : null;

@@ -48,7 +48,6 @@ export const Button = (props: IButtonProps): IButton => {
     // Set the class names
     button.className = props.className || "";
     button.classList.add("btn");
-    props.className ? button.classList.add(props.className) : null;
     props.isBlock ? button.classList.add("btn-block") : null;
     props.isLarge ? button.classList.add("btn-lg") : null;
     props.isSmall ? button.classList.add("btn-sm") : null;

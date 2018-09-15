@@ -300,10 +300,10 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
                     return 0;
                 });
 
-                // See if a change event exists
-                if (item.onChange) {
-                    // Call the change event
-                    item.onChange(isMulti ? items : items[0], ev);
+                // See if a click event exists
+                if (item.onClick) {
+                    // Call the click event
+                    item.onClick(isMulti ? items : items[0], ev);
                 }
 
                 // See if a global change event exists
@@ -369,10 +369,10 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
                     return 0;
                 });
 
-                // See if a change event exists
-                if (item.onChange) {
-                    // Call the change event
-                    item.onChange(isMulti ? items : items[0], ev);
+                // See if a click event exists
+                if (item.onClick) {
+                    // Call the click event
+                    item.onClick(isMulti ? items : items[0], ev);
                 }
 
                 // See if a global change event exists
