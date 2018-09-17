@@ -70,6 +70,7 @@ export const Card = (props: ICardProps): ICard => {
             item.text ? '<p class="card-text">' + item.text + '</p>' : '',
             item.content || '',
         ].join('\n');
+        card.appendChild(body);
 
         // See if there is a click event
         if (props.onClick || item.onClick) {
