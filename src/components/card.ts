@@ -1,6 +1,6 @@
 import * as jQuery from "jquery";
 import { ButtonTypes } from "./button";
-import { ICard, ICardProps } from "./types/card";
+import { ICard, ICardAction, ICardBody, ICardProps } from "./types/card";
 import { Nav } from "./nav";
 
 /**
@@ -17,12 +17,11 @@ export const Card = (props: ICardProps): ICard => {
     // See if the top image exists
     if (props.imgTop) {
         // Add the top image
-        card.innerHTML += [
-            '<img',
-            'class="card-img-top"',
-            'src="' + (props.imgTop.src || "") + '"',
-            'alt="' + (props.imgTop.alt || "") + '">'
-        ].join(' ');
+        let img = document.createElement("img");
+        img.alt = props.imgTop.alt || "";
+        img.className = "card-img-top";
+        img.src = props.imgTop.src || "";
+        card.appendChild(img);
     }
 
     // See if the header exists
@@ -30,7 +29,10 @@ export const Card = (props: ICardProps): ICard => {
         // See if the content exists
         if (props.header.content) {
             // Render the content
-            card.innerHTML += '<div class="card-header">' + props.header.content + '</div>';
+            let header = document.createElement("div");
+            header.className = "card-header";
+            header.innerHTML = props.header.content;
+            card.appendChild(header);
         }
         // Else, see if the navigation exists
         else if (props.header.nav) {
@@ -48,7 +50,7 @@ export const Card = (props: ICardProps): ICard => {
     }
 
     // Parse the body items
-    let items = props.body || [];
+    let items: Array<ICardBody> = props.body || [];
     for (let i = 0; i < items.length; i++) {
         let item = items[i];
 
@@ -58,9 +60,34 @@ export const Card = (props: ICardProps): ICard => {
             item.className || ""
         ].join(' ');
 
+        // Create the body
+        let body = document.createElement("div");
+        body.className = classNames;
+        body.setAttribute("data-idx", i.toString());
+        body.innerHTML = [
+            item.title ? '<h5 class="card-title">' + item.title + '</h5>' : '',
+            item.subTitle ? '<h6 class="card-subtitle">' + item.subTitle + '</h6>' : '',
+            item.text ? '<p class="card-text">' + item.text + '</p>' : '',
+            item.content || '',
+        ].join('\n');
+
+        // See if there is a click event
+        if (props.onClick || item.onClick) {
+            // Set the click event
+            body.addEventListener("click", ev => {
+                let elCard = ev.currentTarget as HTMLElement;
+
+                // Get the item
+                let item = items[elCard.getAttribute("data-idx")];
+
+                // Execute the events
+                item ? item.onClick(item, ev) : null;
+                props.onClick ? props.onClick(item, ev) : null;
+            });
+        }
+
         // Parse the actions
-        let actions = item.actions || [];
-        let buttons = [];
+        let actions: Array<ICardAction> = item.actions || [];
         for (let j = 0; j < actions.length; j++) {
             let action = actions[j];
 
@@ -109,61 +136,52 @@ export const Card = (props: ICardProps): ICard => {
                     break;
             }
 
-            // Add the button
-            buttons.push(
-                '<a href="' + (action.href || "#") + '" class="' + className + '">' + action.text + '</a>'
-            );
-        }
+            // Create the button
+            let button = document.createElement("a");
+            button.className = className || "";
+            button.href = action.href || "#";
+            button.innerHTML = action.text || "";
+            button.setAttribute("data-body-idx", i.toString());
+            button.setAttribute("data-action-idx", j.toString());
 
-        // Add the body
-        card.innerHTML += [
-            '<div class="' + classNames + '" data-idx="' + i + '">',
-            item.title ? '<h5 class="card-title">' + item.title + '</h5>' : '',
-            item.subTitle ? '<h6 class="card-subtitle">' + item.subTitle + '</h6>' : '',
-            item.text ? '<p class="card-text">' + item.text + '</p>' : '',
-            item.content || '',
-            buttons.join(''),
-            '</div>'
-        ].join('\n');
+            // See if there is a click event
+            if (action.onClick) {
+                // Add a click event
+                button.addEventListener("click", ev => {
+                    let elButton = ev.currentTarget as HTMLElement;
+
+                    // Get the action
+                    let item: ICardBody = items[elButton.getAttribute("data-body-idx")];
+                    let action: ICardAction = item ? item.actions[elButton.getAttribute("data-action-idx")] : null;
+                    if (action) {
+                        // Execute the event
+                        action.onClick ? action.onClick(action, item, ev) : null;
+                    }
+                });
+            }
+
+            // Add the button
+            body.appendChild(button);
+        }
     }
 
     // See if the footer exists
     if (props.footer) {
         // Add the footer
-        card.innerHTML += '<div class="card-footer">' + props.footer + '</div>';
+        let footer = document.createElement("div");
+        footer.className = "card-footer";
+        footer.innerHTML = props.footer;
+        card.appendChild(footer);
     }
 
     // See if the bottom image exists
     if (props.imgBottom) {
         // Add the bottom image
-        card.innerHTML += [
-            '<img',
-            'class="card-img-bottom"',
-            'src="' + (props.imgBottom.src || "") + '"',
-            'alt="' + (props.imgBottom.alt || "") + '">'
-        ].join(' ');
-    }
-
-    // Get the card items
-    let cardItems = card.querySelectorAll(".card-body");
-    for (let i = 0; i < cardItems.length && i < items.length; i++) {
-        let cardItem = cardItems[i];
-        let item = items[i];
-
-        // See if there is a click event
-        if (props.onClick || item.onClick) {
-            // Set the click event
-            cardItem.addEventListener("click", ev => {
-                let elCard = ev.currentTarget as HTMLElement;
-
-                // Get the item
-                let item = items[elCard.getAttribute("data-idx")];
-
-                // Execute the events
-                item ? item.onClick(item, ev) : null;
-                props.onClick ? props.onClick(item, ev) : null;
-            });
-        }
+        let img = document.createElement("img");
+        img.alt = props.imgBottom.alt || "";
+        img.className = "card-img-bottom";
+        img.src = props.imgBottom.src || "";
+        card.appendChild(img);
     }
 
     // Create the element
