@@ -14,6 +14,7 @@
 <body>
     <h1>Library</h1>
     <form class="bs">
+        <div id="badge"></div>
         <div id="toolbar"></div>
         <div id="ddl"></div>
         <div id="button"></div>
@@ -35,6 +36,16 @@
     </form>
     <script type="text/javascript">
         window.addEventListener("load", function () {
+            GD.Components.Badge({
+                el: document.getElementById("badge"),
+                content: "My Badge",
+                isPill: true,
+                data: { title: "My Custom Data" },
+                onClick: function(badge) {
+                    debugger;
+                    alert(badge.data.title);
+                }
+            });
             GD.Components.Toolbar({
                 el: document.getElementById("toolbar"),
                 spacing: 3,

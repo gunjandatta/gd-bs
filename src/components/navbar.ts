@@ -22,7 +22,12 @@ export const Navbar = (props: INavbarProps): INavbar => {
     // Set the class name
     navbar.className = props.className || "";
     navbar.classList.add("navbar");
-    navbar.classList.add("navbar-expand-lg");
+
+    // See if the class names contain the "expand"
+    if (navbar.className.indexOf("navbar-expand") < 0) {
+        // Add the default class
+        navbar.classList.add("navbar-expand-lg");
+    }
 
     // Check the type
     switch (props.type) {
@@ -49,53 +54,40 @@ export const Navbar = (props: INavbarProps): INavbar => {
     // See if there is a brand
     if (props.brand) {
         // Add the brand
-        navbar.innerHTML += '<a class="navbar-brand"' + (props.brandUrl ? ' href="' + props.brandUrl + '"' : '') + '>' + props.brand + '</a>';
+        let brand = document.createElement("a");
+        brand.className = "navbar-brand";
+        props.brandUrl ? brand.href = props.brandUrl : null;
+        brand.innerHTML = props.brand;
+        navbar.appendChild(brand);
     }
 
     // Set the nav id
     let navId = props.id || "navbar_content";
 
-    // Render the toggler
-    navbar.innerHTML += [
-        '<button class="navbar-toggler" type="button" data-target="#' + navId + '" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">',
-        '<span class="navbar-toggler-icon"></span>',
-        '</button>'
-    ].join('\n');
+    // Add the toggler
+    let toggler = document.createElement("button");
+    toggler.className = "navbar-toggler";
+    toggler.type = "button";
+    toggler.setAttribute("aria-controls", navId);
+    toggler.setAttribute("aria-expanded", "false");
+    toggler.setAttribute("aria-label", "Toggle navigation");
+    toggler.setAttribute("data-target", "#" + navId);
+    toggler.setAttribute("data-toggle", "collapse");
+    toggler.innerHTML = '<span class="navbar-toggler-icon"></span>';
+    navbar.appendChild(toggler);
 
-    // Render the nav bar nav and add the ending tag
-    navbar.innerHTML += [
-        '<div class="collapse navbar-collapse d-flex justify-content-between" id="' + navId + '">',
-        '<ul class="navbar-nav"></ul>',
-        '</div>',
-        '</nav>'
-    ].join('\n');
+    // Create the navbar nav
+    let nav = document.createElement("div");
+    nav.className = "collapse navbar-collapse mr-auto";
+    nav.id = navId;
+    navbar.appendChild(nav);
 
-    // Create the element
-    let el = document.createElement("div");
-    el.appendChild(navbar);
-
-    // See if we are rendering it to an element
-    if (props.el) {
-        // Ensure the parent element exists
-        if (props.el.parentElement && props.el.parentElement.classList) {
-            // Set the bootstrap class
-            props.el.parentElement.classList.contains("bs") ? null : props.el.parentElement.classList.add("bs");
-        }
-
-        // Append the elements
-        while (el.children.length > 0) {
-            props.el.appendChild(el.children[0]);
-        }
-
-        // Update the element
-        el = props.el as any;
-    } else {
-        // Set the bootstrap class
-        el.classList.add("bs");
-    }
+    // Create the navbar list
+    let navbarList = document.createElement("ul");
+    navbarList.className = "navbar-nav";
+    nav.appendChild(navbarList);
 
     // Parse the items and generate the nav items
-    let navItems = el.querySelector("ul.navbar-nav");
     let items = props.items || [];
     for (let i = 0; i < items.length; i++) {
         let navItem = null;
@@ -164,12 +156,11 @@ export const Navbar = (props: INavbarProps): INavbar => {
         }
 
         // Add the nav item
-        navItems.appendChild(navItem);
+        navbarList.appendChild(navItem);
     }
 
     // See if we are rendering a search box
-    let elNavbar = el.querySelector("#" + navId);
-    if ((props.enableSearch || props.searchBox) && elNavbar) {
+    if (props.enableSearch || props.searchBox) {
         let text = (props.searchBox ? props.searchBox.btnText : null) || "Search";
 
         // Render the form
@@ -210,7 +201,8 @@ export const Navbar = (props: INavbarProps): INavbar => {
         // See if we are rendering a button
         let hideButton = props.searchBox && props.searchBox.hideButton ? true : false;
         if (!hideButton) {
-            let btnSearch = Button({
+            // Create the search button
+            form.appendChild(Button({
                 text,
                 type: props.searchBox ? props.searchBox.btnType : null,
                 onClick: () => {
@@ -220,12 +212,35 @@ export const Navbar = (props: INavbarProps): INavbar => {
                         props.searchBox.onSearch(searchbox.value);
                     }
                 }
-            });
-            form.appendChild(btnSearch.el);
+            }).el);
         }
 
         // Append the search box
-        elNavbar.appendChild(form);
+        nav.appendChild(form);
+    }
+
+    // Create the element
+    let el = document.createElement("div");
+    el.appendChild(navbar);
+
+    // See if we are rendering it to an element
+    if (props.el) {
+        // Ensure the parent element exists
+        if (props.el.parentElement && props.el.parentElement.classList) {
+            // Set the bootstrap class
+            props.el.parentElement.classList.contains("bs") ? null : props.el.parentElement.classList.add("bs");
+        }
+
+        // Append the elements
+        while (el.children.length > 0) {
+            props.el.appendChild(el.children[0]);
+        }
+
+        // Update the element
+        el = props.el as any;
+    } else {
+        // Set the bootstrap class
+        el.classList.add("bs");
     }
 
     // Return the navbar
