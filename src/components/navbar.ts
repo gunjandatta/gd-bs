@@ -78,13 +78,13 @@ export const Navbar = (props: INavbarProps): INavbar => {
 
     // Create the navbar nav
     let nav = document.createElement("div");
-    nav.className = "collapse navbar-collapse mr-auto";
+    nav.className = "collapse navbar-collapse";
     nav.id = navId;
     navbar.appendChild(nav);
 
     // Create the navbar list
     let navbarList = document.createElement("ul");
-    navbarList.className = "navbar-nav";
+    navbarList.className = "navbar-nav mr-auto";
     nav.appendChild(navbarList);
 
     // Parse the items and generate the nav items
