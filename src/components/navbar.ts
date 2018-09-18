@@ -165,10 +165,11 @@ export const Navbar = (props: INavbarProps): INavbar => {
 
         // Render the form
         let form = document.createElement("form");
-        form.classList.add("form-inline");
+        form.className = "form-inline my-2 my-lg-0";
 
         // Render the searchbox
         let searchbox = InputGroup({
+            className: "mr-sm-2",
             formFl: true,
             placeholder: text,
             type: InputGroupTypes.Search,
@@ -203,6 +204,7 @@ export const Navbar = (props: INavbarProps): INavbar => {
         if (!hideButton) {
             // Create the search button
             form.appendChild(Button({
+                className: "my-2 my-sm-0",
                 text,
                 type: props.searchBox ? props.searchBox.btnType : null,
                 onClick: () => {
