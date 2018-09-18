@@ -152,6 +152,7 @@ declare module 'gd-bs/components/types/badge' {
     export interface IBadgeProps {
             className?: string;
             content?: string;
+            data?: any;
             el?: Element | HTMLElement;
             header?: string;
             href?: string;
@@ -240,6 +241,7 @@ declare module 'gd-bs/components/types/button' {
             badgeValue?: string;
             className?: string;
             controls?: Array<string>;
+            data?: any;
             el?: Element | HTMLElement;
             id?: string;
             isBlock?: boolean;
@@ -249,7 +251,7 @@ declare module 'gd-bs/components/types/button' {
             isLink?: boolean;
             isOutline?: boolean;
             isSmall?: boolean;
-            onClick?: (ev?: Event) => void;
+            onClick?: (button?: IButtonProps, ev?: Event) => void;
             target?: string;
             text?: string;
             toggle?: string;
@@ -330,6 +332,7 @@ declare module 'gd-bs/components/types/card' {
         */
     export interface ICardAction {
             buttonType?: number;
+            data?: any;
             onClick?: (action?: ICardAction, card?: ICardProps, ev?: Event) => void;
             href?: string;
             text?: string;
@@ -342,6 +345,7 @@ declare module 'gd-bs/components/types/card' {
             actions?: Array<ICardAction>;
             className?: string;
             content?: string;
+            data?: any;
             onClick?: (card?: ICardProps, ev?: Event) => void;
             subTitle?: string;
             text?: string;
@@ -511,6 +515,7 @@ declare module 'gd-bs/components/types/checkboxGroup' {
         */
     export interface ICheckboxGroupItem {
             checked?: boolean;
+            data?: any;
             isDisabled?: boolean;
             label?: string;
             name?: string;
@@ -748,6 +753,7 @@ declare module 'gd-bs/components/types/formControl' {
         */
     export interface IFormControlProps {
             className?: string;
+            data?: any;
             description?: string;
             el?: HTMLElement;
             html?: string;

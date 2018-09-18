@@ -24,6 +24,7 @@ export interface ICheckboxGroup {
  */
 export interface ICheckboxGroupItem {
     checked?: boolean;
+    data?: any;
     isDisabled?: boolean;
     label?: string;
     name?: string;

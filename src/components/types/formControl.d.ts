@@ -20,6 +20,7 @@ export interface IFormControl {
  */
 export interface IFormControlProps {
     className?: string;
+    data?: any;
     description?: string;
     el?: HTMLElement;
     html?: string;

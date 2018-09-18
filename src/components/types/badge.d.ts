@@ -22,6 +22,7 @@ export interface IBadge {
 export interface IBadgeProps {
     className?: string;
     content?: string;
+    data?: any;
     el?: Element | HTMLElement;
     header?: string;
     href?: string;

@@ -22,6 +22,7 @@ export interface ICard {
  */
 export interface ICardAction {
     buttonType?: number;
+    data?: any;
     onClick?: (action?: ICardAction, card?: ICardProps, ev?: Event) => void;
     href?: string;
     text?: string;
@@ -34,6 +35,7 @@ export interface ICardBody {
     actions?: Array<ICardAction>;
     className?: string;
     content?: string;
+    data?: any;
     onClick?: (card?: ICardProps, ev?: Event) => void;
     subTitle?: string;
     text?: string;

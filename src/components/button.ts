@@ -101,7 +101,10 @@ export const Button = (props: IButtonProps): IButton => {
     // See if there is a click event
     if (props.onClick) {
         // Add a click event
-        button.addEventListener("click", props.onClick);
+        button.addEventListener("click", ev => {
+            // Call the click event
+            props.onClick(props, ev);
+        });
     }
 
     // Create the element

@@ -30,6 +30,7 @@ export interface IButtonProps {
     badgeValue?: string;
     className?: string;
     controls?: Array<string>;
+    data?: any;
     el?: Element | HTMLElement;
     id?: string;
     isBlock?: boolean;
@@ -39,7 +40,7 @@ export interface IButtonProps {
     isLink?: boolean;
     isOutline?: boolean;
     isSmall?: boolean;
-    onClick?: (ev?: Event) => void;
+    onClick?: (button?: IButtonProps, ev?: Event) => void;
     target?: string;
     text?: string;
     toggle?: string;

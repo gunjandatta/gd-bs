@@ -51,7 +51,6 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
             // Create the option
             let option = document.createElement("option");
             option.setAttribute("data-idx", i.toString());
-            item.value ? option.setAttribute("data-value", item.value) : null;
             elSelect.appendChild(option);
 
             // Set the text
@@ -217,7 +216,6 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
             item.isHeader ? elItem.classList.add("dropdown-header") : null;
             elItem.href = item.href || "#";
             elItem.setAttribute("data-idx", i.toString());
-            item.value ? elItem.setAttribute("data-value", item.value) : null;
             elItem.innerHTML = item.text || "";
             elMenu.appendChild(elItem);
 
