@@ -758,6 +758,7 @@ declare module 'gd-bs/components/types/formControl' {
             el?: HTMLElement;
             html?: string;
             isReadonly?: boolean;
+            isPlainText?: boolean;
             label?: string;
             name?: string;
             onControlRendering?: (control: IFormControlProps) => void | Promise<IFormControlProps>;

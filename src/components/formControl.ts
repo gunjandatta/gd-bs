@@ -68,6 +68,7 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
                 tb = InputGroup({
                     className: props.className,
                     el,
+                    isPlainText: props.isPlainText,
                     isReadonly: props.isReadonly,
                     onChange: (props as IFormControlPropsTextField).onChange,
                     placeholder: (props as IFormControlPropsTextField).placeholder,
@@ -81,6 +82,7 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
                 tb = InputGroup({
                     className: props.className,
                     el,
+                    isPlainText: props.isPlainText,
                     isReadonly: props.isReadonly,
                     onChange: (props as IFormControlPropsTextField).onChange,
                     placeholder: (props as IFormControlPropsTextField).placeholder,
@@ -107,6 +109,7 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
                 tb = InputGroup({
                     className: props.className,
                     el,
+                    isPlainText: props.isPlainText,
                     isReadonly: props.isReadonly,
                     onChange: (props as IFormControlPropsTextField).onChange,
                     placeholder: (props as IFormControlPropsTextField).placeholder,
@@ -120,6 +123,7 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
                 tb = InputGroup({
                     className: props.className,
                     el,
+                    isPlainText: props.isPlainText,
                     isReadonly: props.isReadonly,
                     min: (props as IFormControlPropsNumberField).min || 0,
                     max: (props as IFormControlPropsNumberField).max || 100,
@@ -136,6 +140,7 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
                 tb = InputGroup({
                     className: props.className,
                     el,
+                    isPlainText: props.isPlainText,
                     isReadonly: props.isReadonly,
                     onChange: (props as IFormControlPropsTextField).onChange,
                     placeholder: (props as IFormControlPropsTextField).placeholder,
@@ -150,6 +155,7 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
                 tb = InputGroup({
                     className: props.className,
                     el,
+                    isPlainText: props.isPlainText,
                     isReadonly: props.isReadonly,
                     onChange: (props as IFormControlPropsTextField).onChange,
                     placeholder: (props as IFormControlPropsTextField).placeholder,

@@ -25,6 +25,7 @@ export interface IFormControlProps {
     el?: HTMLElement;
     html?: string;
     isReadonly?: boolean;
+    isPlainText?: boolean;
     label?: string;
     name?: string;
     onControlRendering?: (control: IFormControlProps) => void | Promise<IFormControlProps>;
