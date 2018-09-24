@@ -90,12 +90,6 @@ export const Form = (props: IFormProps): IForm => {
                         elCol.classList.add(colSize > 0 ? "col-" + colSize : "col");
                     }
 
-                    // See if there is a label
-                    if (column.control.label) {
-                        // Set the label
-                        elCol.innerHTML = "<label>" + column.control.label + "</label>";
-                    }
-
                     // Set the element
                     column.control.el = elCol;
 
@@ -107,6 +101,12 @@ export const Form = (props: IFormProps): IForm => {
 
                     // Call the rendering event
                     onRendering(column.control).then(controlProps => {
+                        // See if there is a label
+                        if (controlProps.label) {
+                            // Set the label element
+                            elCol.innerHTML = "<label>" + controlProps.label + "</label>";
+                        }
+
                         // Create the control
                         let control = FormControl(controlProps || column.control);
 
@@ -133,26 +133,37 @@ export const Form = (props: IFormProps): IForm => {
                 row.control.value = row.control.value || (props.value ? props.value[row.control.name] : null);
 
                 // See if there is a label
+                let elLabel: HTMLLabelElement = null;
                 if (row.control.label) {
+                    let elNewRow = null;
+
+                    // Create the label element
+                    elLabel = document.createElement("label");
+
                     // See if a column size is defined
                     if (colSize > 0) {
                         // Add the row class
                         elRow.classList.add("row");
 
-                        // Add the columns
-                        elRow.innerHTML = [
-                            '<label class="col-' + colSize + ' col-form-label">' + row.control.label + '</label>',
-                            '<div class="col-' + (12 - colSize) + '"></div>'
-                        ].join('\n');
+                        // Set the class name
+                        elLabel.className = "col-" + colSize + " col-form-label";
+
+                        // Add the label element
+                        elRow.appendChild(elLabel);
+
+                        // Create the new row element
+                        elNewRow = document.createElement("div");
+                        elNewRow.className = "col-" + (12 - colSize);
+                        elRow.appendChild(elNewRow);
                     }
                     // Else, ensure this isn't a checkbox
                     else if (row.control.type != FormControlTypes.Checkbox) {
-                        // Add the label
-                        elRow.innerHTML = '<label>' + row.control.label + '</label>';
+                        // Add the label element
+                        elRow.appendChild(elLabel);
                     }
 
                     // Set the element
-                    row.control.el = colSize > 0 ? elRow.children[1] as any : elRow;
+                    row.control.el = elNewRow || elRow;;
                 } else {
                     // Set the element
                     row.control.el = elRow;
@@ -163,6 +174,12 @@ export const Form = (props: IFormProps): IForm => {
 
                 // Call the rendering event
                 onRendering(row.control).then(controlProps => {
+                    // See if a label exists
+                    if (elLabel && controlProps.label) {
+                        // Set the label
+                        elLabel.innerHTML = controlProps.label;
+                    }
+
                     // Create the control
                     let control = FormControl(controlProps || row.control);
 
