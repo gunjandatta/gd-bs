@@ -56,7 +56,7 @@ export const Navbar = (props: INavbarProps): INavbar => {
         // Add the brand
         let brand = document.createElement("a");
         brand.className = "navbar-brand";
-        props.brandUrl ? brand.href = props.brandUrl : null;
+        brand.href = props.brandUrl || "#";
         brand.innerHTML = props.brand;
         navbar.appendChild(brand);
     }
