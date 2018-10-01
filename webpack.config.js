@@ -13,9 +13,6 @@ module.exports = (env, argv) => {
         resolve: {
             extensions: [".scss", ".css", ".ts", ".js"]
         },
-        externals: {
-            "gd-sprest": "$REST"
-        },
         module: {
             rules: [
                 {
@@ -47,7 +44,7 @@ module.exports = (env, argv) => {
                         {
                             loader: "babel-loader",
                             options: {
-                                presets: ["env"]
+                                presets: ["@babel/preset-env"]
                             }
                         },
                         {

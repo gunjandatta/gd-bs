@@ -32,14 +32,20 @@ export const Form = (props: IFormProps): IForm => {
     let onRendered = (control: IFormControl): Promise<IFormControl> => {
         // Return a promise
         return new Promise((resolve, reject) => {
-            // Execute the control event
-            executeEvent(control.props.onControlRendered, control).then(control => {
-                // Execute the component event
-                executeEvent(props.onControlRendered, control).then(control => {
-                    // Resolve the promise
-                    resolve(control);
+            // Ensure a control exists
+            if (control) {
+                // Execute the control event
+                executeEvent(control.props.onControlRendered, control).then(control => {
+                    // Execute the component event
+                    executeEvent(props.onControlRendered, control).then(control => {
+                        // Resolve the promise
+                        resolve(control);
+                    });
                 });
-            });
+            } else {
+                // Resolve the promise
+                resolve();
+            }
         });
     }
 
@@ -47,14 +53,20 @@ export const Form = (props: IFormProps): IForm => {
     let onRendering = (controlProps: IFormControlProps): Promise<IFormControlProps> => {
         // Return a promise
         return new Promise((resolve, reject) => {
-            // Execute the control event
-            executeEvent(controlProps.onControlRendering, controlProps).then(controlProps => {
-                // Execute the component event
-                executeEvent(props.onControlRendering, controlProps).then(controlProps => {
-                    // Resolve the promise
-                    resolve(controlProps);
+            // Ensure properties exist
+            if (controlProps) {
+                // Execute the control event
+                executeEvent(controlProps.onControlRendering, controlProps).then(controlProps => {
+                    // Execute the component event
+                    executeEvent(props.onControlRendering, controlProps).then(controlProps => {
+                        // Resolve the promise
+                        resolve(controlProps);
+                    });
                 });
-            });
+            } else {
+                // Resolve the promise
+                resolve();
+            }
         });
     }
 
