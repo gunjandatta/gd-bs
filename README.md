@@ -2,7 +2,7 @@
 
 ## [Bootstrap Library](https://gunjandatta.github.io/bs)
 
-This library extends the [Bootstrap Library](https://getbootstrap.com/), to help create modern components using JavaScript/TypeScript/Web Components. Reference the [SharePoint REST Framework](https://gunjandatta.github.io/bs) for documentation and code references of this library.
+This library extends the [Bootstrap Library](https://getbootstrap.com/), to help create modern components using JavaScript/TypeScript/Web Components. Reference the [SharePoint REST Framework](https://gunjandatta.github.io/extras/bs) for documentation and code references of this library.
 
 ### Web Components
 
