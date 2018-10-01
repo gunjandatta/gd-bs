@@ -14,6 +14,7 @@
 <body>
     <h1>Library</h1>
     <form class="bs">
+        <div id="panel"></div>
         <div id="badge"></div>
         <div id="toolbar"></div>
         <div id="ddl"></div>
@@ -36,6 +37,20 @@
     </form>
     <script type="text/javascript">
         window.addEventListener("load", function () {
+            var panel = GD.Components.Panel({
+                el: document.getElementById("panel"),
+                modalProps: {
+                    button: {
+                        text: "Show Panel",
+                        onClick: function() {
+                            // Show the panel
+                            panel.show();
+                        }
+                    },
+                    title: "Panel Example"
+                },
+                type: 5
+            });
             GD.Components.Badge({
                 el: document.getElementById("badge"),
                 content: "My Badge",

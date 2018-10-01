@@ -33,6 +33,7 @@ declare module 'gd-bs/components/types' {
     export * from "gd-bs/components/types/nav";
     export * from "gd-bs/components/types/navbar";
     export * from "gd-bs/components/types/pagination";
+    export * from "gd-bs/components/types/panel";
     export * from "gd-bs/components/types/popover";
     export * from "gd-bs/components/types/progress";
     export * from "gd-bs/components/types/progressGroup";
@@ -1221,6 +1222,58 @@ declare module 'gd-bs/components/types/pagination' {
             Centered: number;
             Left: number;
             Right: number;
+    }
+}
+
+declare module 'gd-bs/components/types/panel' {
+    import { IModal, IModalProps } from "gd-bs/components/types/modal";
+    
+    /**
+        * Panel
+        */
+    export const Panel: (props: IPanelProps) => IPanel;
+    
+    /**
+        * Panel Types
+        */
+    export const PanelTypes: IPanelTypes;
+    
+    /**
+        * Panel
+        */
+    export interface IPanel {
+            /** The element. */
+            el: Element;
+    
+            /** The modal. */
+            modal: IModal;
+    
+            /** Hides the panel. */
+            hide: () => void;
+    
+            /** Shows the panel. */
+            show: () => void;
+    }
+    
+    /**
+        * Panel Properties
+        */
+    export interface IPanelProps {
+            className?: string;
+            el?: Element | HTMLElement;
+            modalProps?: IModalProps;
+            type?: number;
+    }
+    
+    /**
+        * Panel Types
+        */
+    export type IPanelTypes = {
+            Small: number;
+            Medium: number;
+            Large: number;
+            XLarge: number;
+            Full: number;
     }
 }
 
