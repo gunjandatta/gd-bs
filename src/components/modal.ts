@@ -98,7 +98,8 @@ export const Modal = (props: IModalProps): IModal => {
         dispose: () => { $modal.modal("dispose"); },
         el: modal,
         handleUpdate: () => { $modal.modal("handleUpdate"); },
-        hide: () => { $modal.modal("hide"); },
+        // Don't use the "hide" method, it will not remove the other customizations from the page.
+        hide: () => { if (modal.classList.contains("show")) { $modal.modal("toggle"); } },
         show: () => { $modal.modal("show"); },
         toggle: () => { $modal.modal("toggle"); }
     };
