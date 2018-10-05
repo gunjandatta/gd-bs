@@ -1,2 +1,0 @@
-/*! Built with http://stenciljs.com */
-GdBs.loadBundle("bsjyld5y",["exports","./chunk-508920d4.js"],function(d,e){window.GdBs.h,d.BsAccordion=e.Accordion,Object.defineProperty(d,"__esModule",{value:!0})});

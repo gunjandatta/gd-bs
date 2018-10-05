@@ -1,4 +1,6 @@
-// GdBs: Custom Elements Define Library, ES Module/ES5 Target
+
+// GdBs: Custom Elements Define Library, ES Module/es5 Target
+
 import { defineCustomElement } from './gd-bs.core.js';
 import {
   Accordion,
@@ -28,8 +30,8 @@ import {
   Tooltip
 } from './gd-bs.components.js';
 
-export function defineCustomElements(window, opts) {
-  defineCustomElement(window, [
+export function defineCustomElements(win, opts) {
+  return defineCustomElement(win, [
     Accordion,
     Alert,
     Badge,

@@ -17,7 +17,7 @@
   "author": "Gunjan Datta <gunjandatta.github.io>",
   "license": "ISC",
   "dependencies": {
-    "@stencil/core": "^0.12.2",
+    "@stencil/core": "^0.13.2",
     "stencil": "^0.0.5"
   },
   "devDependencies": {}

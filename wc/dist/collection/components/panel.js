@@ -1,7 +1,5 @@
 export class Panel {
-    // Component loaded event
     componentDidLoad() {
-        // Get the modal properties
         let modalProps = {};
         if (this.modalProps) {
             try {
@@ -9,12 +7,10 @@ export class Panel {
             }
             catch (_a) {
                 modalProps = {};
-                // Log an error
                 console.log("Error parsing the JSON string.");
                 console.log(this.modalProps);
             }
         }
-        // Render the panel
         return GD.Components.Panel({
             className: this.className,
             el: this.el.children[0],
@@ -22,7 +18,6 @@ export class Panel {
             type: this.type
         });
     }
-    // Render the panel
     render() {
         return (h("div", null));
     }

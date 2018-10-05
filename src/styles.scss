@@ -4,6 +4,20 @@
     @import "~bootstrap/scss/bootstrap";
 }
 
+// Bootstrap Modal - The modal-open class is applied to the body element
+.modal-open {
+    // Kill the scroll on the body
+    overflow: hidden;
+
+    // Modal overflow
+    .bs {
+        .modal {
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+    }
+}
+
 .bs {
     @extend %bootstrap
 }

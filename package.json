@@ -22,12 +22,10 @@
     "url": "https://github.com/gunjandatta/gd-bs/issues"
   },
   "homepage": "https://github.com/gunjandatta/gd-bs#readme",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "@babel/core": "^7.1.2",
     "@babel/preset-env": "^7.1.0",
-    "@stencil/core": "^0.13.2"
-  },
-  "devDependencies": {
     "autoprefixer": "^9.1.5",
     "babel-loader": "^8.0.4",
     "bootstrap": "^4.1.3",

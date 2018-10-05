@@ -1,51 +1,26 @@
-// GdBs: Host Data, ES Module/ES5 Target
-
-export var Accordion = ["bs-accordion",function(){return(import("./bsjyld5y.js")).then(function(m){return m.BsAccordion})},0,[["className",1,0,"class-name",2],["el",7],["id",1,0,1,2],["items",1,0,1,2]]];
-
-export var Alert = ["bs-alert",function(){return(import("./2uzhenmb.js")).then(function(m){return m.BsAlert})},0,[["className",1,0,"class-name",2],["content",1,0,1,2],["el",7],["header",1,0,1,2],["isDismissible",1,0,"is-dismissible",3],["type",1,0,1,4]]];
-
-export var Badge = ["bs-badge",function(){return(import("./pe1q46kq.js")).then(function(m){return m.BsBadge})},0,[["className",1,0,"class-name",2],["content",1,0,1,2],["el",7],["header",1,0,1,2],["href",1,0,1,2],["isPill",1,0,"is-pill",3],["type",1,0,1,4]]];
-
-export var Breadcrumb = ["bs-breadcrumb",function(){return(import("./6llzba3j.js")).then(function(m){return m.BsBreadcrumb})},0,[["className",1,0,"class-name",2],["el",7],["items",1,0,1,2]]];
-
-export var Button = ["bs-button",function(){return(import("./zweplx73.js")).then(function(m){return m.BsButton})},0,[["badgeType",1,0,"badge-type",4],["badgeValue",1,0,"badge-value",2],["className",1,0,"class-name",2],["controls",1],["el",7],["id",1,0,1,2],["isBlock",1,0,"is-block",3],["isDisabled",1,0,"is-disabled",3],["isExpanded",1,0,"is-expanded",3],["isLarge",1,0,"is-large",3],["isOutline",1,0,"is-outline",3],["isSmall",1,0,"is-small",3],["target",1,0,1,2],["text",1,0,1,2],["toggle",1,0,1,2],["type",1,0,1,4]]];
-
-export var ButtonGroup = ["bs-buttonGroup",function(){return(import("./9axoyh33.js")).then(function(m){return m.BsButtongroup})},0,[["buttonType",1,0,"button-type",4],["buttons",1,0,1,2],["className",1,0,"class-name",2],["el",7],["id",1,0,1,2],["isLarge",1,0,"is-large",3],["isSmall",1,0,"is-small",3],["isVertical",1,0,"is-vertical",3],["label",1,0,1,2]]];
-
-export var Card = ["bs-card",function(){return(import("./48ior1hs.js")).then(function(m){return m.BsCard})},0,[["body",1,0,1,2],["className",1,0,"class-name",2],["el",7],["footer",1,0,1,2],["header",1,0,1,2],["imgBottom",1],["imgTop",1]]];
-
-export var CardGroup = ["bs-cardGroup",function(){return(import("./9mqaxtsn.js")).then(function(m){return m.BsCardgroup})},0,[["cards",1,0,1,2],["className",1,0,"class-name",2],["el",7]]];
-
-export var Carousel = ["bs-carousel",function(){return(import("./bpv28qo4.js")).then(function(m){return m.BsCarousel})},0,[["className",1,0,"class-name",2],["el",7],["enableControls",1,0,"enable-controls",3],["enableCrossfade",1,0,"enable-crossfade",3],["enableIndicators",1,0,"enable-indicators",3],["id",1,0,1,2],["items",1,0,1,2],["options",1,0,1,2]]];
-
-export var Collapse = ["bs-collapse",function(){return(import("./twe30etn.js")).then(function(m){return m.BsCollapse})},0,[["className",1,0,"class-name",2],["content",1,0,1,2],["el",7],["id",1,0,1,2],["isMulti",1,0,"is-multi",3],["options",1,0,1,2]]];
-
-export var Dropdown = ["bs-dropdown",function(){return(import("./ecqqx3a0.js")).then(function(m){return m.BsDropdown})},0,[["className",1,0,"class-name",2],["dropLeft",1,0,"drop-left",3],["dropRight",1,0,"drop-right",3],["dropUp",1,0,"drop-up",3],["el",7],["formFl",1,0,"form-fl",3],["id",1,0,1,2],["isSplit",1,0,"is-split",3],["items",1,0,1,2],["label",1,0,1,2],["menuOnly",1,0,"menu-only",3],["multi",1,0,1,3],["type",1,0,1,4],["value",1,0,1,2]]];
-
-export var Form = ["bs-form",function(){return(import("./dhbxmiol.js")).then(function(m){return m.BsForm})},0,[["el",7],["rows",1,0,1,2],["value",1,0,1,2]]];
-
-export var InputGroup = ["bs-inputGroup",function(){return(import("./w1vmffbb.js")).then(function(m){return m.BsInputgroup})},0,[["appendedButtons",1,0,"appended-buttons",2],["appendedLabel",1,0,"appended-label",2],["className",1,0,"class-name",2],["description",1,0,1,2],["el",7],["id",1,0,1,2],["isLarge",1,0,"is-large",3],["isPlainText",1,0,"is-plain-text",3],["isReadonly",1,0,"is-readonly",3],["isSmall",1,0,"is-small",3],["label",1,0,1,2],["placeholder",1,0,1,2],["prependedButtons",1,0,"prepended-buttons",2],["prependedLabel",1,0,"prepended-label",2],["rows",1,0,1,4],["type",1,0,1,4],["value",1,0,1,2]]];
-
-export var Jumbotron = ["bs-jumbotron",function(){return(import("./abqxeldy.js")).then(function(m){return m.BsJumbotron})},0,[["className",1,0,"class-name",2],["content",1,0,1,2],["el",7],["isFluid",1,0,"is-fluid",3],["lead",1,0,1,2]]];
-
-export var ListGroup = ["bs-listGroup",function(){return(import("./rmzx8vll.js")).then(function(m){return m.BsListgroup})},0,[["className",1,0,"class-name",2],["colWidth",1,0,"col-width",4],["el",7],["enableFade",1,0,"enable-fade",3],["isFlush",1,0,"is-flush",3],["isTabs",1,0,"is-tabs",3],["items",1,0,1,2]]];
-
-export var Modal = ["bs-modal",function(){return(import("./jwqk5rfr.js")).then(function(m){return m.BsModal})},0,[["body",1,0,1,2],["button",1,0,1,2],["className",1,0,"class-name",2],["disableFade",1,0,"disable-fade",3],["el",7],["footer",1,0,1,2],["hideCloseButton",1,0,"hide-close-button",3],["id",1,0,1,2],["isCentered",1,0,"is-centered",3],["isLarge",1,0,"is-large",3],["isSmall",1,0,"is-small",3]]];
-
-export var Nav = ["bs-nav",function(){return(import("./tmofm4ya.js")).then(function(m){return m.BsNav})},0,[["className",1,0,"class-name",2],["el",7],["enableFade",1,0,"enable-fade",3],["enableFill",1,0,"enable-fill",3],["id",1,0,1,2],["isJustified",1,0,"is-justified",3],["isPills",1,0,"is-pills",3],["isTabs",1,0,"is-tabs",3],["isVertical",1,0,"is-vertical",3],["items",1,0,1,2]]];
-
-export var Navbar = ["bs-navbar",function(){return(import("./gi9tfwub.js")).then(function(m){return m.BsNavbar})},0,[["brand",1,0,1,2],["brandUrl",1,0,"brand-url",2],["className",1,0,"class-name",2],["el",7],["enableSearch",1,0,"enable-search",3],["id",1,0,1,2],["items",1,0,1,2],["searchBox",1,0,"search-box",2],["type",1,0,1,4]]];
-
-export var Pagination = ["bs-pagination",function(){return(import("./rjcrun2m.js")).then(function(m){return m.BsPagination})},0,[["alignment",1,0,1,4],["className",1,0,"class-name",2],["el",7],["icon",1,0,1,2],["isLarge",1,0,"is-large",3],["isSmall",1,0,"is-small",3],["label",1,0,1,2],["numberOfPages",1,0,"number-of-pages",4]]];
-
-export var Panel = ["bs-panel",function(){return(import("./u4xzdpp5.js")).then(function(m){return m.BsPanel})},0,[["className",1,0,"class-name",2],["el",7],["modalProps",1,0,"modal-props",2],["type",1,0,1,4]]];
-
-export var Popover = ["bs-popover",function(){return(import("./okgwkhfh.js")).then(function(m){return m.BsPopover})},0,[["btnProps",1,0,"btn-props",2],["className",1,0,"class-name",2],["el",7],["isDismissible",1,0,"is-dismissible",3],["options",1,0,1,2],["type",1,0,1,4]]];
-
-export var Progress = ["bs-progress",function(){return(import("./qvgpzrry.js")).then(function(m){return m.BsProgress})},0,[["className",1,0,"class-name",2],["el",7],["isAnimated",1,0,"is-animated",3],["isStriped",1,0,"is-striped",3],["label",1,0,1,2],["max",1,0,1,4],["min",1,0,1,4],["size",1,0,1,4]]];
-
-export var ProgressGroup = ["bs-progressGroup",function(){return(import("./ram7fmg5.js")).then(function(m){return m.BsProgressgroup})},0,[["className",1,0,"class-name",2],["el",7],["isMultiple",1,0,"is-multiple",3],["progressbars",1,0,1,2]]];
-
-export var Toolbar = ["bs-toolbar",function(){return(import("./51kojyhs.js")).then(function(m){return m.BsToolbar})},0,[["className",1,0,"class-name",2],["el",7],["items",1,0,1,2],["spacing",1,0,1,4]]];
-
-export var Tooltip = ["bs-tooltip",function(){return(import("./4mvvhk2m.js")).then(function(m){return m.BsTooltip})},0,[["btnProps",1,0,"btn-props",2],["className",1,0,"class-name",2],["el",7],["options",1,0,1,2],["type",1,0,1,4]]];
+// GdBs: Host Data, ES Module/es5 Target
+export var Accordion = ["bs-accordion","cnmiibpj",0,[["className",1,0,"class-name",2],["el",64],["id",1,0,1,2],["items",1,0,1,2]]];
+export var Alert = ["bs-alert","0jmxweb6",0,[["className",1,0,"class-name",2],["content",1,0,1,2],["el",64],["header",1,0,1,2],["isDismissible",1,0,"is-dismissible",4],["type",1,0,1,8]]];
+export var Badge = ["bs-badge","tysldlh3",0,[["className",1,0,"class-name",2],["content",1,0,1,2],["el",64],["header",1,0,1,2],["href",1,0,1,2],["isPill",1,0,"is-pill",4],["type",1,0,1,8]]];
+export var Breadcrumb = ["bs-breadcrumb","yo5s98vb",0,[["className",1,0,"class-name",2],["el",64],["items",1,0,1,2]]];
+export var Button = ["bs-button","wa1aykac",0,[["badgeType",1,0,"badge-type",8],["badgeValue",1,0,"badge-value",2],["className",1,0,"class-name",2],["controls",1],["el",64],["id",1,0,1,2],["isBlock",1,0,"is-block",4],["isDisabled",1,0,"is-disabled",4],["isExpanded",1,0,"is-expanded",4],["isLarge",1,0,"is-large",4],["isOutline",1,0,"is-outline",4],["isSmall",1,0,"is-small",4],["target",1,0,1,2],["text",1,0,1,2],["toggle",1,0,1,2],["type",1,0,1,8]]];
+export var ButtonGroup = ["bs-buttonGroup","f2xcbins",0,[["buttonType",1,0,"button-type",8],["buttons",1,0,1,2],["className",1,0,"class-name",2],["el",64],["id",1,0,1,2],["isLarge",1,0,"is-large",4],["isSmall",1,0,"is-small",4],["isVertical",1,0,"is-vertical",4],["label",1,0,1,2]]];
+export var Card = ["bs-card","uzinqdqt",0,[["body",1,0,1,2],["className",1,0,"class-name",2],["el",64],["footer",1,0,1,2],["header",1,0,1,2],["imgBottom",1],["imgTop",1]]];
+export var CardGroup = ["bs-cardGroup","zif7jmdt",0,[["cards",1,0,1,2],["className",1,0,"class-name",2],["el",64]]];
+export var Carousel = ["bs-carousel","ouo16sy8",0,[["className",1,0,"class-name",2],["el",64],["enableControls",1,0,"enable-controls",4],["enableCrossfade",1,0,"enable-crossfade",4],["enableIndicators",1,0,"enable-indicators",4],["id",1,0,1,2],["items",1,0,1,2],["options",1,0,1,2]]];
+export var Collapse = ["bs-collapse","wqf0m82v",0,[["className",1,0,"class-name",2],["content",1,0,1,2],["el",64],["id",1,0,1,2],["isMulti",1,0,"is-multi",4],["options",1,0,1,2]]];
+export var Dropdown = ["bs-dropdown","lry9tzql",0,[["className",1,0,"class-name",2],["dropLeft",1,0,"drop-left",4],["dropRight",1,0,"drop-right",4],["dropUp",1,0,"drop-up",4],["el",64],["formFl",1,0,"form-fl",4],["id",1,0,1,2],["isSplit",1,0,"is-split",4],["items",1,0,1,2],["label",1,0,1,2],["menuOnly",1,0,"menu-only",4],["multi",1,0,1,4],["type",1,0,1,8],["value",1,0,1,2]]];
+export var Form = ["bs-form","jyh2qwnq",0,[["el",64],["rows",1,0,1,2],["value",1,0,1,2]]];
+export var InputGroup = ["bs-inputGroup","yupcsupc",0,[["appendedButtons",1,0,"appended-buttons",2],["appendedLabel",1,0,"appended-label",2],["className",1,0,"class-name",2],["description",1,0,1,2],["el",64],["id",1,0,1,2],["isLarge",1,0,"is-large",4],["isPlainText",1,0,"is-plain-text",4],["isReadonly",1,0,"is-readonly",4],["isSmall",1,0,"is-small",4],["label",1,0,1,2],["placeholder",1,0,1,2],["prependedButtons",1,0,"prepended-buttons",2],["prependedLabel",1,0,"prepended-label",2],["rows",1,0,1,8],["type",1,0,1,8],["value",1,0,1,2]]];
+export var Jumbotron = ["bs-jumbotron","ktgnpmji",0,[["className",1,0,"class-name",2],["content",1,0,1,2],["el",64],["isFluid",1,0,"is-fluid",4],["lead",1,0,1,2]]];
+export var ListGroup = ["bs-listGroup","yplvhgva",0,[["className",1,0,"class-name",2],["colWidth",1,0,"col-width",8],["el",64],["enableFade",1,0,"enable-fade",4],["isFlush",1,0,"is-flush",4],["isTabs",1,0,"is-tabs",4],["items",1,0,1,2]]];
+export var Modal = ["bs-modal","jdizpbsm",0,[["body",1,0,1,2],["button",1,0,1,2],["className",1,0,"class-name",2],["disableFade",1,0,"disable-fade",4],["el",64],["footer",1,0,1,2],["hideCloseButton",1,0,"hide-close-button",4],["id",1,0,1,2],["isCentered",1,0,"is-centered",4],["isLarge",1,0,"is-large",4],["isSmall",1,0,"is-small",4]]];
+export var Nav = ["bs-nav","nbv5xw95",0,[["className",1,0,"class-name",2],["el",64],["enableFade",1,0,"enable-fade",4],["enableFill",1,0,"enable-fill",4],["id",1,0,1,2],["isJustified",1,0,"is-justified",4],["isPills",1,0,"is-pills",4],["isTabs",1,0,"is-tabs",4],["isVertical",1,0,"is-vertical",4],["items",1,0,1,2]]];
+export var Navbar = ["bs-navbar","e1nf1xhf",0,[["brand",1,0,1,2],["brandUrl",1,0,"brand-url",2],["className",1,0,"class-name",2],["el",64],["enableSearch",1,0,"enable-search",4],["id",1,0,1,2],["items",1,0,1,2],["searchBox",1,0,"search-box",2],["type",1,0,1,8]]];
+export var Pagination = ["bs-pagination","s40s8d1q",0,[["alignment",1,0,1,8],["className",1,0,"class-name",2],["el",64],["icon",1,0,1,2],["isLarge",1,0,"is-large",4],["isSmall",1,0,"is-small",4],["label",1,0,1,2],["numberOfPages",1,0,"number-of-pages",8]]];
+export var Panel = ["bs-panel","u4xzdpp5",0,[["className",1,0,"class-name",2],["el",64],["modalProps",1,0,"modal-props",2],["type",1,0,1,8]]];
+export var Popover = ["bs-popover","fhkof5co",0,[["btnProps",1,0,"btn-props",2],["className",1,0,"class-name",2],["el",64],["isDismissible",1,0,"is-dismissible",4],["options",1,0,1,2],["type",1,0,1,8]]];
+export var Progress = ["bs-progress","5vbla6dj",0,[["className",1,0,"class-name",2],["el",64],["isAnimated",1,0,"is-animated",4],["isStriped",1,0,"is-striped",4],["label",1,0,1,2],["max",1,0,1,8],["min",1,0,1,8],["size",1,0,1,8]]];
+export var ProgressGroup = ["bs-progressGroup","dzxvr1nd",0,[["className",1,0,"class-name",2],["el",64],["isMultiple",1,0,"is-multiple",4],["progressbars",1,0,1,2]]];
+export var Toolbar = ["bs-toolbar","th9bigjw",0,[["className",1,0,"class-name",2],["el",64],["items",1,0,1,2],["spacing",1,0,1,8]]];
+export var Tooltip = ["bs-tooltip","wu704rz7",0,[["btnProps",1,0,"btn-props",2],["className",1,0,"class-name",2],["el",64],["options",1,0,1,2],["type",1,0,1,8]]];
