@@ -31,7 +31,7 @@ export const Collapse = (props: ICollapseProps): ICollapse => {
     // See if we are rendering it to an element
     if (props.el) {
         // Ensure the parent element exists
-        if (props.el.parentElement && props.el.parentElement.classList) {
+        if (props.el.parentElement && props.el.parentElement.classList && props.el.parentElement.tagName != "BODY") {
             // Set the bootstrap class
             props.el.parentElement.classList.contains("bs") ? null : props.el.parentElement.classList.add("bs");
         }
