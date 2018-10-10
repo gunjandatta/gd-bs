@@ -15,7 +15,9 @@
     "type": "git",
     "url": "git+https://github.com/gunjandatta/gd-bs.git"
   },
-  "keywords": [],
+  "keywords": [
+    "Bootstrap", "Web Components"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {
