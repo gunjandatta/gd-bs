@@ -1,5 +1,5 @@
-import "bootstrap";
 import * as jQuery from "jquery";
+import "bootstrap";
 import * as Components from "./components";
 import "./styles.scss";
 
