@@ -1,6 +1,6 @@
 {
   "name": "gd-bs",
-  "version": "0.6.8",
+  "version": "0.6.9",
   "description": "Bootstrap JavaScript, TypeScript and Web Components library.",
   "main": "dist/gd-bs.js",
   "typings": "src/typings.d.ts",
@@ -16,7 +16,8 @@
     "url": "git+https://github.com/gunjandatta/gd-bs.git"
   },
   "keywords": [
-    "Bootstrap", "Web Components"
+    "Bootstrap",
+    "Web Components"
   ],
   "author": "Gunjan Datta <me@dattabase.com> (https://gunjandatta.github.io)",
   "license": "MIT",

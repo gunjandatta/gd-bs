@@ -129,26 +129,6 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
                 elMenu.appendChild(elItem);
             }
         }
-
-        // Set the menu click event to toggle the menu
-        link.addEventListener("click", () => {
-            // See if it's currently visible
-            if (elNav.classList.contains("show")) {
-                // Hide the menu
-                elNav.classList.remove("show");
-                elMenu.classList.remove("show");
-
-                // Update the link
-                link.setAttribute("aria-expanded", "false");
-            } else {
-                // Hide the menu
-                elNav.classList.add("show");
-                elMenu.classList.add("show");
-
-                // Update the link
-                link.setAttribute("aria-expanded", "true");
-            }
-        });
     } else {
         // Create the button
         elDropdown = document.createElement("div");
