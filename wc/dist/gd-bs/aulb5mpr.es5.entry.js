@@ -1,0 +1,2 @@
+/*! Built with http://stenciljs.com */
+GdBs.loadBundle("aulb5mpr",["exports","./chunk-03f32b90.js","./chunk-ddddf6a4.js"],function(d,e,l){window,d.BsCollapse=e.Collapse,Object.defineProperty(d,"__esModule",{value:!0})});

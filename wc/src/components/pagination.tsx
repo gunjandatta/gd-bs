@@ -1,4 +1,5 @@
 import { Component, Element, Prop } from "@stencil/core";
+import { getProps } from "../common";
 declare var GD;
 
 @Component({
@@ -16,35 +17,21 @@ export class Pagination {
     @Prop() label: string;
     @Prop() numberOfPages: number;
 
-    // Component loaded event
-    componentDidLoad() {
-        // Get the onclick attribute
-        let onClick = this.el.getAttribute("onClick");
-
-        // Render the pagination
-        return GD.Components.Pagination({
+    // Render the pagination
+    render() {
+        // Get the properties
+        let props = getProps(this.el, {
             alignment: this.alignment,
             className: this.className,
-            el: this.el.children[0],
+            el: this.el,
             icon: this.icon,
             isLarge: this.isLarge,
             isSmall: this.isSmall,
             label: this.label,
-            numberOfPages: this.numberOfPages,
-            onClick: (...args) => {
-                // See if a click event exists
-                if (onClick && window[onClick]) {
-                    // Call the event
-                    window[onClick].apply(this, args);
-                }
-            }
+            numberOfPages: this.numberOfPages
         });
-    }
 
-    // Render the pagination
-    render() {
-        return (
-            <div />
-        );
+        // Render the pagination
+        return GD.Components.Pagination(props);
     }
 }

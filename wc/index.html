@@ -1,0 +1,301 @@
+<html>
+
+<head>
+    <title>Web Components</title>
+    <style>
+        .carousel {
+            max-width: 400px;
+        }
+    </style>
+    <script src="dist/gd-bs.js"></script>
+</head>
+
+<body>
+    <h3>Accordion</h3>
+    <bs-accordion id="wcAccordionDemo">
+        // Return the properties
+        return {
+            items: [
+                {
+                    "btnProps": { "text": "Item 1" },
+                    "content": "This is the content for item 1."
+                },
+                {
+                    "btnProps": { "text": "Item 2" },
+                    "content": "This is the content for item 2."
+                },
+                {
+                    "btnProps": { "text": "Item 3" },
+                    "content": "This is the content for item 3."
+                }
+            ]
+        };
+    </bs-accordion>
+    <h3>Alert</h3>
+    <bs-alert content="This is an alert"></bs-alert>
+    <h3>Badge</h3>
+    <bs-badge class-name="badge-secondary" content="Badge"></bs-badge>
+    <h3>Breadcrumb</h3>
+    <bs-breadcrumb>
+        return {
+            items: [
+                { "text": "Root", "href": "/" }, 
+                { "text": "Web 1", "href": "/web" }, 
+                { "text": "Web 1-1", "href": "/web/1"}
+            ]
+        };
+    </bs-breadcrumb>
+    <h3>Button</h3>
+    <script>function btnClickEvent() { alert("You clicked the web component button."); }</script>
+    <bs-button text="My Button" onClick="btnClickEvent"></bs-button>
+    <h3>Button Group</h3>
+    <bs-buttonGroup button-type='7'>
+        return {
+            buttons: [
+                { "text": "Left" },
+                { "text": "Middle" },
+                { "text": "Right" }
+            ]
+        };
+    </bs-buttonGroup>
+    <h3>Card</h3>
+    <bs-card>
+        return {
+            body: [
+                {
+                    "title": "Card Title",
+                    "text": "This is the card contents.",
+                    "actions": [
+                        { "text": "Card Action", "buttonType": 7 }
+                    ]
+                }
+            ]
+        }
+    </bs-card>
+    <h3>Card Group</h3>
+    <bs-cardGroup>
+        return {
+            cards: [
+                { "body": [{
+                    "title": "Card 1",
+                    "text": "This is the first card."
+                }]},
+                { "body": [{
+                    "title": "Card 2",
+                    "text": "This is the second card."
+                }]},
+                { "body": [{
+                    "title": "Card 3",
+                    "text": "This is the third card."
+                }]}
+            ]
+        }
+    </bs-cardGroup>
+    <h3>Carousel</h3>
+    <bs-carousel id="wcCarouselDemo" enable-controls="true" enable-indicators="true">
+        return {
+            items: [
+                {
+                    "captions": "<h5>First Slide</h5>",
+                    "imageUrl": "https://via.placeholder.com/400x200",
+                    "imageAlt": "First Slide",
+                    "isActive": true
+                },
+                {
+                    "captions": "<h5>Second Slide</h5>",
+                    "imageUrl": "https://via.placeholder.com/400x200",
+                    "imageAlt": "Second Slide"
+                },
+                {
+                    "captions": "<h5>Third Slide</h5>",
+                    "imageUrl": "https://via.placeholder.com/400x200",
+                    "imageAlt": "Third Slide"
+                }
+            ]
+        }
+    </bs-carousel>
+    <h3>Collapse</h3>
+    <bs-button target="#wcCollapseDemo" toggle="collapse" text="Collapse Demo"></bs-button>
+    <bs-collapse id="wcCollapseDemo" content="This is the content to be collapsed."></bs-collapse>
+    <h3>Dropdown</h3>
+    <bs-dropdown is-split="true" label="Select a Choice">
+        return {
+            items: [
+                { "text": "Choice 1", "value": "1" },
+                { "text": "Choice 2", "value": "2" },
+                { "text": "Choice 3", "value": "3" },
+                { "text": "Choice 4", "value": "4" },
+                { "text": "Choice 5", "value": "5" }
+            ],
+            onChange: function(item, ev) {
+                item ? alert("Selected Item: " + item.text) : null;
+            }
+        };
+    </bs-dropdown>
+    <h3>Form</h3>
+    <bs-form>
+        return {
+            rows: [
+                {
+                    "control": {
+                        "label": "First Name:",
+                        "name": "FName",
+                        "type": 10
+                    }
+                },
+                {
+                    "control": {
+                        "label": "Last Name:",
+                        "name": "LName",
+                        "type": 10
+                    }
+                },
+                {
+                    "control": {
+                        "label": "Choices:",
+                        "name": "Choice",
+                        "type": 3,
+                        "items": [
+                            { "text": "Choice 1", "value": "1" },
+                            { "text": "Choice 2", "value": "2" },
+                            { "text": "Choice 3", "value": "3" },
+                            { "text": "Choice 4", "value": "4" },
+                            { "text": "Choice 5", "value": "5" }
+                        ]
+                    }
+                }
+            ],
+            value: {
+                "FName": "Gunjan",
+                "LName": "Datta",
+                "Choice": "3"
+            }
+        }
+    </bs-form>
+    <h3>Input Group</h3>
+    <bs-inputGroup label="Text Field:"></bs-inputGroup>
+    <bs-inputGroup label="Multi-Line Text Field:" type="6"></bs-inputGroup>
+    <h3>Jumbotron</h3>
+    <bs-jumbotron title="Web Components" lead="These are easy to use."></bs-jumbotron>
+    <h3>List Group</h3>
+    <bs-listGroup is-tabs="true" col-width="3">
+        return {
+            items: [
+                { "tabName": "Tab 1", "content": "This is the content for tab 1.", "isActive": true },
+                { "tabName": "Tab 2", "content": "This is the content for tab 2.", "badge": { "content": "10", "type": 4 } },
+                { "tabName": "Tab 3", "content": "This is the content for tab 3." },
+                { "tabName": "Tab 4", "content": "This is the content for tab 4." },
+                { "tabName": "Tab 5", "content": "This is the content for tab 5." }
+            ]
+        };
+    </bs-listGroup>
+    <h3>Modal</h3>
+    <bs-modal id="wcModalDemo" title="Modal Demo" body="This is the body of the modal.">
+        return {
+            button: { "text": "Open Modal" }
+        };
+    </bs-modal>
+    <h3>Navigation</h3>
+    <bs-nav is-pills="true">
+        return {
+            items: [
+                { "title": "Nav 1", "isActive": true },
+                { "title": "Nav 2" },
+                { "title": "Nav 3" },
+                { "title": "Nav 4" },
+                { "title": "Nav 5" }
+            ]
+        };
+    </bs-nav>
+    <h3>Navbar</h3>
+    <bs-navbar brand="Navbar">
+        return {
+            items: [
+                {
+                    text: "Home",
+                    isActive: true
+                },
+                {
+                    text: "Link"
+                },
+                {
+                    text: "Disabled Link",
+                    isDisabled: true
+                },
+                {
+                    text: "Dropdown Link",
+                    items: [
+                        { "text": "Link 1" },
+                        { "text": "Link 2" },
+                        { "text": "Link 3" },
+                        { "text": "Link 4" },
+                        { "text": "Link 5" }
+                    ]
+                }
+            ],
+            searchBox: {
+                onChange: function(value) {
+                    console.log("[Change Event] The search value is: " + value);
+                },
+                onSearch: function(value) {
+                    console.log("[Search Event] The search value is: " + value);
+                }
+            }
+        }
+    </bs-navbar>
+    <h3>Pagination</h3>
+    <bs-pagination number-of-pages="5">
+        return {
+            onClick: function(index, ev) {
+                // Log the index
+                console.log("The page number selected is: " + index);
+            }
+        }
+    </bs-pagination>
+    <h3>Popover</h3>
+    <bs-popover is-dismissible="true">
+        return {
+            btnProps: {
+                "text": "Popover Demo"
+            },
+            options: {
+                "container": "body",
+                "content": "This is the popover content.",
+                "title": "My Popover"
+            }
+        }
+    </bs-popover>
+    <h3>Progress</h3>
+    <bs-progress is-striped="true" label="25%" size="25"></bs-progress>
+    <h3>Progress Group</h3>
+    <bs-progressGroup>
+        return {
+            progressbars: [
+                {
+                    "size": 25,
+                    "isStriped": true,
+                    "label": "25%"
+                },
+                {
+                    "size": 50,
+                    "isAnimated": true,
+                    "isStriped": true,
+                    "label": "50%"
+                }
+            ]
+        }
+    </bs-progressGroup>
+    <h3>Tooltip</h3>
+    <bs-tooltip>
+        return {
+            btnProps: {
+                "text": "Tooltip Demo"
+            },
+            options: {
+                "title": "This is the tooltip."
+            }
+        }
+    </bs-tooltip>
+</body>
+
+</html>

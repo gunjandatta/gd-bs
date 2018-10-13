@@ -1,4 +1,5 @@
 import { Component, Element, Prop } from "@stencil/core";
+import { getProps } from "../common";
 declare var GD;
 
 @Component({
@@ -10,36 +11,17 @@ export class ProgressGroup {
     // Progress Properties
     @Prop() className: string;
     @Prop() isMultiple: boolean;
-    @Prop() progressbars: string;
 
-    // Component loaded event
-    componentDidLoad() {
-        // Set the progress bars
-        let progressbars = [];
-        if (this.progressbars) {
-            try { progressbars = JSON.parse(this.progressbars); }
-            catch {
-                progressbars = [];
-
-                // Log an error
-                console.log("Error parsing the JSON string.");
-                console.log(this.progressbars);
-            }
-        }
+    // Render the progress group
+    render() {
+        // Get the properties
+        let props = getProps(this.el, {
+            className: this.className,
+            el: this.el,
+            isMultiple: this.isMultiple
+        });
 
         // Render the progress group
-        return GD.Components.ProgressGroup({
-            className: this.className,
-            el: this.el.children[0],
-            isMultiple: this.isMultiple,
-            progressbars
-        });
-    }
-
-    // Render the progress
-    render() {
-        return (
-            <div />
-        );
+        return GD.Components.ProgressGroup(props);
     }
 }

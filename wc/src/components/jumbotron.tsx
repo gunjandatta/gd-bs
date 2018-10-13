@@ -1,4 +1,5 @@
 import { Component, Element, Prop } from "@stencil/core";
+import { getProps } from "../common";
 declare var GD;
 
 @Component({
@@ -13,33 +14,19 @@ export class Jumbotron {
     @Prop() isFluid: boolean;
     @Prop() lead: string;
 
-    // Component loaded event
-    componentDidLoad() {
-        // Get the onRenderContent attribute
-        let onRenderContent = this.el.getAttribute("onRenderContent");
-
-        // Render the jumbotron
-        return GD.Components.Jumbotron({
-            className: this.className,
-            content: this.content,
-            el: this.el.children[0],
-            isFluid: this.isFluid,
-            lead: this.lead,
-            title: this.el.getAttribute("title"),
-            onRenderContent: (...args) => {
-                // See if a render event exists
-                if (onRenderContent && window[onRenderContent]) {
-                    // Call the event
-                    window[onRenderContent].apply(this, args);
-                }
-            }
-        });
-    }
-
     // Render the jumbotron
     render() {
-        return (
-            <div />
-        );
+        // Get the properties
+        let props = getProps(this.el, {
+            className: this.className,
+            content: this.content,
+            el: this.el,
+            isFluid: this.isFluid,
+            lead: this.lead,
+            title: this.el.getAttribute("title")
+        });
+
+        // Render the jumbotron
+        return GD.Components.Jumbotron(props);
     }
 }

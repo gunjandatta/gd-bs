@@ -1,4 +1,5 @@
 import { Component, Element, Prop } from "@stencil/core";
+import { getProps } from "../common";
 declare var GD;
 
 @Component({
@@ -14,10 +15,10 @@ export class Alert {
     @Prop() isDismissible: boolean;
     @Prop() type: number;
 
-    // Component loaded event
-    componentDidLoad() {
-        // Render the alert
-        return GD.Components.Alert({
+    // Render the alert
+    render() {
+        // Get the properties
+        let props = getProps(this.el, {
             className: this.className,
             content: this.content,
             el: this.el,
@@ -25,12 +26,8 @@ export class Alert {
             isDismissible: this.isDismissible,
             type: this.type
         });
-    }
 
-    // Render the alert
-    render() {
-        return (
-            <div />
-        );
+        // Render the alert
+        return GD.Components.Alert(props);
     }
 }

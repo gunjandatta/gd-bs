@@ -1,4 +1,5 @@
 import { Component, Element, Prop } from "@stencil/core";
+import { getProps } from "../common";
 declare var GD;
 
 @Component({
@@ -16,12 +17,12 @@ export class Progress {
     @Prop() min: number;
     @Prop() size: number;
 
-    // Component loaded event
-    componentDidLoad() {
-        // Render the progress
-        return GD.Components.Progress({
+    // Render the progress
+    render() {
+        // Get the properties
+        let props = getProps(this.el, {
             className: this.className,
-            el: this.el.children[0],
+            el: this.el,
             isAnimated: this.isAnimated,
             isStriped: this.isStriped,
             label: this.label,
@@ -29,12 +30,8 @@ export class Progress {
             min: this.min,
             size: this.size
         });
-    }
 
-    // Render the progress
-    render() {
-        return (
-            <div />
-        );
+        // Render the progress
+        return GD.Components.Progress(props);
     }
 }

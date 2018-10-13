@@ -1,4 +1,5 @@
 import { Component, Element, Prop } from "@stencil/core";
+import { getProps } from "../common";
 declare var GD;
 
 @Component({
@@ -12,51 +13,22 @@ export class Collapse {
     @Prop() content: string;
     @Prop() id: string;
     @Prop() isMulti: boolean;
-    @Prop() options: string;
 
-    // Component loaded event
-    componentDidLoad() {
-        // Get the onRender attribute
-        let onRender = this.el.getAttribute("onRender");
+    // Render the collapse
+    render() {
+        // Get the properties
+        let props = getProps(this.el, {
+            className: this.className,
+            content: this.content,
+            el: this.el,
+            id: this.id,
+            isMulti: this.isMulti
+        });
 
         // Remove the id attribute
         this.el.removeAttribute("id");
 
-        // Get the options
-        let options = [];
-        if (this.options) {
-            try { options = JSON.parse(this.options); }
-            catch {
-                options = [];
-
-                // Log an error
-                console.log("Error parsing the JSON string.");
-                console.log(this.options);
-            }
-        }
-
         // Render the collapse
-        return GD.Components.Collapse({
-            className: this.className,
-            content: this.content,
-            el: this.el.children[0],
-            id: this.id,
-            isMulti: this.isMulti,
-            options,
-            onRender: (...args) => {
-                // See if a render event exists
-                if (onRender && window[onRender]) {
-                    // Call the event
-                    window[onRender].apply(this, args);
-                }
-            }
-        });
-    }
-
-    // Render the collapse
-    render() {
-        return (
-            <div />
-        );
+        return GD.Components.Collapse(props);
     }
 }

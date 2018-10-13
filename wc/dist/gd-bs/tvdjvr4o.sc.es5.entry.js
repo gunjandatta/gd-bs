@@ -1,0 +1,2 @@
+/*! Built with http://stenciljs.com */
+GdBs.loadBundle("tvdjvr4o",["exports","./chunk-7e33a0db.js","./chunk-ddddf6a4.js"],function(d,e,n){window,d.BsCard=e.Card,Object.defineProperty(d,"__esModule",{value:!0})});

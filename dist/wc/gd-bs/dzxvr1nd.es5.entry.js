@@ -1,2 +1,0 @@
-/*! Built with http://stenciljs.com */
-GdBs.loadBundle("dzxvr1nd",["exports","./chunk-3c6c9662.js"],function(e,o){window,e.BsProgressgroup=o.ProgressGroup,Object.defineProperty(e,"__esModule",{value:!0})});

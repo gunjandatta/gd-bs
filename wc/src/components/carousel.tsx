@@ -1,4 +1,5 @@
 import { Component, Element, Prop } from "@stencil/core";
+import { getProps } from "../common";
 declare var GD;
 
 @Component({
@@ -13,57 +14,23 @@ export class Carousel {
     @Prop() enableCrossfade: boolean;
     @Prop() enableIndicators: boolean;
     @Prop() id: string;
-    @Prop() items: string;
-    @Prop() options: string;
-
-    // Component loaded event
-    componentDidLoad() {
-        // Remove the id attribute
-        this.el.removeAttribute("id");
-
-        // Get the items
-        let items = [];
-        if (this.items) {
-            try { items = JSON.parse(this.items); }
-            catch {
-                items = [];
-
-                // Log an error
-                console.log("Error parsing the JSON string.");
-                console.log(this.items);
-            }
-        }
-
-        // Get the options
-        let options = {};
-        if (this.options) {
-            try { options = JSON.parse(this.options); }
-            catch {
-                options = {};
-
-                // Log an error
-                console.log("Error parsing the JSON string.");
-                console.log(this.options);
-            }
-        }
-
-        // Render the carousel
-        return GD.Components.Carousel({
-            className: this.className,
-            el: this.el.children[0],
-            enableControls: this.enableControls,
-            enableCrossfade: this.enableCrossfade,
-            enableIndicators: this.enableIndicators,
-            id: this.id,
-            items,
-            options
-        });
-    }
 
     // Render the carousel
     render() {
-        return (
-            <div />
-        );
+        // Get the properties
+        let props = getProps(this.el, {
+            className: this.className,
+            el: this.el,
+            enableControls: this.enableControls,
+            enableCrossfade: this.enableCrossfade,
+            enableIndicators: this.enableIndicators,
+            id: this.id
+        });
+
+        // Remove the id attribute
+        this.el.removeAttribute("id");
+
+        // Render the carousel
+        return GD.Components.Carousel(props);
     }
 }

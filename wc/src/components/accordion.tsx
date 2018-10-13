@@ -1,4 +1,5 @@
 import { Component, Element, Prop } from "@stencil/core";
+import { getProps } from "../common";
 declare var GD;
 
 @Component({
@@ -10,39 +11,20 @@ export class Accordion {
     // Accordion Properties
     @Prop() className: string;
     @Prop() id: string;
-    @Prop() items: string;
-
-    // Component loaded event
-    componentDidLoad() {
-        // Remove the id attribute
-        this.el.removeAttribute("id");
-
-        // Get the items
-        let items = [];
-        if (this.items) {
-            try { items = JSON.parse(this.items); }
-            catch {
-                items = [];
-
-                // Log an error
-                console.log("Error parsing the JSON string.");
-                console.log(this.items);
-            }
-        }
-
-        // Render the accordion
-        return GD.Components.Accordion({
-            className: this.className,
-            el: this.el.children[0],
-            id: this.id,
-            items
-        });
-    }
 
     // Render the accordion
     render() {
-        return (
-            <div />
-        );
+        // Get the properties
+        let props = getProps(this.el, {
+            className: this.className,
+            el: this.el,
+            id: this.id
+        });
+
+        // Remove the id attribute
+        this.el.removeAttribute("id");
+
+        // Return the accordion
+        return GD.Components.Accordion(props);
     }
 }

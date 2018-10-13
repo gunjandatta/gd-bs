@@ -1,4 +1,5 @@
 import { Component, Element, Prop } from "@stencil/core";
+import { getProps } from "../common";
 declare var GD;
 
 @Component({
@@ -24,21 +25,15 @@ export class Button {
     @Prop() toggle: string;
     @Prop() type: number;
 
-    // Component loaded event
-    componentDidLoad() {
-        // Get the onclick attribute
-        let onClick = this.el.getAttribute("onClick");
-
-        // Remove the id attribute
-        this.el.removeAttribute("id");
-
-        // Render the button
-        return GD.Components.Button({
+    // Render the button
+    render() {
+        // Get the properties
+        let props = getProps(this.el, {
             badgeType: this.badgeType,
             badgeValue: this.badgeValue,
             className: this.className,
             controls: this.controls,
-            el: this.el.children[0],
+            el: this.el,
             id: this.id,
             isBlock: this.isBlock,
             isDisabled: this.isDisabled,
@@ -49,21 +44,13 @@ export class Button {
             target: this.target,
             text: this.text,
             toggle: this.toggle,
-            type: this.type,
-            onClick: (...args) => {
-                // See if a click event exists
-                if(onClick && window[onClick]) {
-                    // Call the event
-                    window[onClick].apply(this, args);
-                }
-            }
+            type: this.type
         });
-    }
 
-    // Render the button
-    render() {
-        return (
-            <div />
-        );
+        // Remove the id attribute
+        this.el.removeAttribute("id");
+
+        // Render the button
+        return GD.Components.Button(props);
     }
 }

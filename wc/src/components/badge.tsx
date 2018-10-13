@@ -1,4 +1,5 @@
 import { Component, Element, Prop } from "@stencil/core";
+import { getProps } from "../common";
 declare var GD;
 
 @Component({
@@ -15,34 +16,20 @@ export class Badge {
     @Prop() isPill: boolean;
     @Prop() type: number;
 
-    // Component loaded event
-    componentDidLoad() {
-        // Get the onclick attribute
-        let onClick = this.el.getAttribute("onClick");
-
-        // Render the badge
-        return GD.Components.Badge({
+    // Render the badge
+    render() {
+        // Get the properties
+        let props = getProps(this.el, {
             className: this.className,
             content: this.content,
-            el: this.el.children[0],
+            el: this.el,
             header: this.header,
             href: this.href,
             isPill: this.isPill,
-            type: this.type,
-            onClick: (...args) => {
-                // See if a click event exists
-                if (onClick && window[onClick]) {
-                    // Call the event
-                    window[onClick].apply(this, args);
-                }
-            }
+            type: this.type
         });
-    }
 
-    // Render the badge
-    render() {
-        return (
-            <div />
-        );
+        // Render the badge
+        return GD.Components.Badge(props);
     }
 }

@@ -9,7 +9,8 @@
     "build": "webpack --mode=development",
     "prod": "webpack --mode=production",
     "typings": "dts-bundle --out ../dist/gd-bs.d.ts --name gd-bs --main ./src/typings.d.ts",
-    "wc": "cd wc && npm run build"
+    "wc": "cd wc && npm run build",
+    "wc-serve": "cd wc && npm run start"
   },
   "repository": {
     "type": "git",

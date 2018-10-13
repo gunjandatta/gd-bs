@@ -2,8 +2,8 @@
 
 <head>
     <!--script src="https://rawgit.com/gunjandatta/gd-bs/master/wc/dist/gd-bs.js"></script-->
-    <script src="dist/gd-bs.js"></script>
-    <!--script src="wc/dist/gd-bs.js"></script-->
+    <!--script src="dist/gd-bs.js"></script-->
+    <script src="dist/wc/gd-bs.js"></script>
     <style>
         .carousel {
             max-width: 400px;
@@ -51,7 +51,7 @@
                 content: "My Badge",
                 isPill: true,
                 data: { title: "My Custom Data" },
-                onClick: function(badge) {
+                onClick: function (badge) {
                     alert(badge.data.title);
                 }
             });
@@ -418,20 +418,26 @@
 
     <h1>Web Components</h1>
     <h3>Accordion</h3>
-    <bs-accordion id="wcAccordionDemo" items='[
-        {
-            "btnProps": { "text": "Item 1" },
-            "content": "This is the content for item 1."
-        },
-        {
-            "btnProps": { "text": "Item 2" },
-            "content": "This is the content for item 2."
-        },
-        {
-            "btnProps": { "text": "Item 3" },
-            "content": "This is the content for item 3."
+    <bs-accordion id="wcAccordionDemo">
+        function getProps() {
+            return {
+                items: [
+                    {
+                        "btnProps": { "text": "Item 1" },
+                        "content": "This is the content for item 1."
+                    },
+                    {
+                        "btnProps": { "text": "Item 2" },
+                        "content": "This is the content for item 2."
+                    },
+                    {
+                        "btnProps": { "text": "Item 3" },
+                        "content": "This is the content for item 3."
+                    }
+                ]
+            };
         }
-    ]'></bs-accordion>
+    </bs-accordion>
     <h3>Alert</h3>
     <bs-alert content="This is an alert"></bs-alert>
     <h3>Badge</h3>
