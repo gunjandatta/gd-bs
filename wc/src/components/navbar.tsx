@@ -18,6 +18,10 @@ export class Navbar {
 
     // Render the navbar
     render() {
+        // Ensure it hasn't been initialized
+        // This seems to be an issue w/ IE & Edge
+        if (this.el.hasAttribute("data-init")) { return; }
+
         // Get the properties
         let props = getProps(this.el, {
             brand: this.brand,
@@ -33,6 +37,10 @@ export class Navbar {
         this.el.removeAttribute("id");
 
         // Render the navbar
-        return GD.Components.Navbar(props);
+        GD.Components.Navbar(props);
+
+        // Set the init attribute
+        // This seems to be an issue w/ IE & Edge
+        this.el.setAttribute("data-init", "true");
     }
 }

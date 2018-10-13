@@ -19,6 +19,10 @@ export class Pagination {
 
     // Render the pagination
     render() {
+        // Ensure it hasn't been initialized
+        // This seems to be an issue w/ IE & Edge
+        if (this.el.hasAttribute("data-init")) { return; }
+
         // Get the properties
         let props = getProps(this.el, {
             alignment: this.alignment,
@@ -32,6 +36,10 @@ export class Pagination {
         });
 
         // Render the pagination
-        return GD.Components.Pagination(props);
+        GD.Components.Pagination(props);
+
+        // Set the init attribute
+        // This seems to be an issue w/ IE & Edge
+        this.el.setAttribute("data-init", "true");
     }
 }

@@ -14,6 +14,10 @@ export class Tooltip {
 
     // Render the tooltip
     render() {
+        // Ensure it hasn't been initialized
+        // This seems to be an issue w/ IE & Edge
+        if (this.el.hasAttribute("data-init")) { return; }
+
         // Get the properties
         let props = getProps(this.el, {
             className: this.className,
@@ -22,6 +26,10 @@ export class Tooltip {
         });
 
         // Render the tooltip
-        return GD.Components.Tooltip(props);
+        GD.Components.Tooltip(props);
+
+        // Set the init attribute
+        // This seems to be an issue w/ IE & Edge
+        this.el.setAttribute("data-init", "true");
     }
 }

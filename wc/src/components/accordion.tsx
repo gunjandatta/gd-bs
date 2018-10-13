@@ -14,6 +14,10 @@ export class Accordion {
 
     // Render the accordion
     render() {
+        // Ensure it hasn't been initialized
+        // This seems to be an issue w/ IE & Edge
+        if (this.el.hasAttribute("data-init")) { return; }
+
         // Get the properties
         let props = getProps(this.el, {
             className: this.className,
@@ -24,7 +28,11 @@ export class Accordion {
         // Remove the id attribute
         this.el.removeAttribute("id");
 
-        // Return the accordion
-        return GD.Components.Accordion(props);
+        // Render the accordion
+        GD.Components.Accordion(props);
+
+        // Set the init attribute
+        // This seems to be an issue w/ IE & Edge
+        this.el.setAttribute("data-init", "true");
     }
 }

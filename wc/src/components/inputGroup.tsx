@@ -26,6 +26,10 @@ export class InputGroup {
 
     // Render the inputGroup
     render() {
+        // Ensure it hasn't been initialized
+        // This seems to be an issue w/ IE & Edge
+        if (this.el.hasAttribute("data-init")) { return; }
+
         // Get the properties
         let props = getProps(this.el, {
             appendedLabel: this.appendedLabel,
@@ -49,6 +53,10 @@ export class InputGroup {
         this.el.removeAttribute("id");
 
         // Render the inputGroup
-        return GD.Components.InputGroup(props);
+        GD.Components.InputGroup(props);
+
+        // Set the init attribute
+        // This seems to be an issue w/ IE & Edge
+        this.el.setAttribute("data-init", "true");
     }
 }

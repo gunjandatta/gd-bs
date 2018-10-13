@@ -46,8 +46,13 @@
         };
     </bs-breadcrumb>
     <h3>Button</h3>
-    <script>function btnClickEvent() { alert("You clicked the web component button."); }</script>
-    <bs-button text="My Button" onClick="btnClickEvent"></bs-button>
+    <bs-button text="My Button">
+        return {
+            onClick: function() {
+                alert("You clicked the web component button.");
+            }
+        }
+    </bs-button>
     <h3>Button Group</h3>
     <bs-buttonGroup button-type='7'>
         return {

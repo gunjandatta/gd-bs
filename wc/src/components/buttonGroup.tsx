@@ -19,6 +19,10 @@ export class ButtonGroup {
 
     // Render the button group
     render() {
+        // Ensure it hasn't been initialized
+        // This seems to be an issue w/ IE & Edge
+        if (this.el.hasAttribute("data-init")) { return; }
+
         // Get the properties
         let props = getProps(this.el, {
             buttonType: this.buttonType,
@@ -35,6 +39,10 @@ export class ButtonGroup {
         this.el.removeAttribute("id");
 
         // Render the button group
-        return GD.Components.ButtonGroup(props);
+        GD.Components.ButtonGroup(props);
+
+        // Set the init attribute
+        // This seems to be an issue w/ IE & Edge
+        this.el.setAttribute("data-init", "true");
     }
 }

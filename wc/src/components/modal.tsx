@@ -21,6 +21,10 @@ export class Modal {
 
     // Render the modal
     render() {
+        // Ensure it hasn't been initialized
+        // This seems to be an issue w/ IE & Edge
+        if (this.el.hasAttribute("data-init")) { return; }
+
         // Get the properties
         let props = getProps(this.el, {
             body: this.body,
@@ -40,6 +44,10 @@ export class Modal {
         this.el.removeAttribute("id");
 
         // Render the modal
-        return GD.Components.Modal(props);
+        GD.Components.Modal(props);
+
+        // Set the init attribute
+        // This seems to be an issue w/ IE & Edge
+        this.el.setAttribute("data-init", "true");
     }
 }
