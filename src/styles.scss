@@ -50,9 +50,10 @@
             max-width: 25%;
             width: 25%;
 
-            @media screen and (max-width: 540px) {
-                max-width: 100%;
-                width: 100%;
+            @media screen and (max-width: 575px) {
+                margin: 0px;
+                max-width: 100% !important;
+                width: 100% !important;
             }
 
             .modal-content {

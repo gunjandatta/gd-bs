@@ -5,6 +5,7 @@ export const config: Config = {
     namespace: "gd-bs",
     outputTargets: [
         {
+            dir: "../dist/wc",
             type: "dist"
         }
     ]
