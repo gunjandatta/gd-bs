@@ -1,3 +1,4 @@
+const copyFile = require("copy-webpack-plugin");
 const path = require("path");
 
 module.exports = (env, argv) => {
@@ -13,6 +14,11 @@ module.exports = (env, argv) => {
         resolve: {
             extensions: [".scss", ".css", ".ts", ".js"]
         },
+        plugins: [
+            new copyFile([
+                { from: "node_modules/bootstrap/scss", to: "../scss" }
+            ])
+        ],
         module: {
             rules: [
                 {
