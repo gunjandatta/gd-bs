@@ -1,0 +1,16 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+
+// Bootstrap Styles
+%bootstrap {
+    // Bootstrap Framework
+    @import "~bootstrap/scss/bootstrap";
+
+    // Panel
+    @import "panel";
+}
+
+// Contain the styles under a bootstrap class
+.bs {
+    @extend %bootstrap
+}

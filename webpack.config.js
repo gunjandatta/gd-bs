@@ -1,11 +1,12 @@
 const copyFile = require("copy-webpack-plugin");
 const path = require("path");
+const replace = require("replace-in-file-webpack-plugin");
 
 module.exports = (env, argv) => {
     var isDev = argv.mode === "development";
 
     // Return the configuration
-    return {
+    var config = {
         entry: "./src/index.ts",
         output: {
             path: path.resolve(__dirname, "dist"),
@@ -14,11 +15,6 @@ module.exports = (env, argv) => {
         resolve: {
             extensions: [".scss", ".css", ".ts", ".js"]
         },
-        plugins: [
-            new copyFile([
-                { from: "node_modules/bootstrap/scss", to: "../scss" }
-            ])
-        ],
         module: {
             rules: [
                 {
@@ -61,4 +57,30 @@ module.exports = (env, argv) => {
             ]
         }
     };
+
+    // See if this is production
+    if (!isDev) {
+        // Set the plugins
+        config.plugins = [
+            // Copy the bootstrap library
+            new copyFile([
+                { from: "node_modules/bootstrap/scss", to: "../scss" },
+                { from: "src/sass/bootstrap.scss", to: "../scss/_gd.scss" }
+            ]),
+            // Replace the reference to bootstrap
+            new replace([
+                {
+                    dir: "scss",
+                    files: ["_gd.scss"],
+                    rules: [{
+                        search: /~bootstrap\/scss\//g,
+                        replace: ""
+                    }]
+                }
+            ])
+        ];
+    }
+
+    // Return the configuration
+    return config;
 }

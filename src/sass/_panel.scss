@@ -1,0 +1,63 @@
+// Panel
+.panel {
+    .modal-dialog {
+        height: 100%;
+        margin-right: 0px;
+        margin-top: 0px;
+        max-width: 25%;
+        width: 25%;
+
+        @media screen and (max-width: 575px) {
+            margin: 0px;
+            max-width: 100% !important;
+            width: 100% !important;
+        }
+
+        .modal-content {
+            height: auto;
+            min-height: 100%;
+        }
+    }
+}
+
+/* Panel Sizes */
+
+// Small
+.panel-sm {
+    .modal-dialog {
+        max-width: 15%;
+        width: 15%;
+    }
+}
+
+// Medium
+.panel-md {
+    .modal-dialog {
+        max-width: 25%;
+        width: 25%;
+    }
+}
+
+// Large
+.panel-lg {
+    .modal-dialog {
+        max-width: 50%;
+        width: 50%;
+    }
+}
+
+// Extra Large
+.panel-xl {
+    .modal-dialog {
+        max-width: 75%;
+        width: 75%;
+    }
+}
+
+// Full
+.panel-full {
+    .modal-dialog {
+        max-width: 100%;
+        width: 100%;
+    }
+}

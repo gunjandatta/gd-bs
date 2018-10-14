@@ -1,6 +1,6 @@
 {
   "name": "gd-bs",
-  "version": "0.7.2",
+  "version": "0.7.3",
   "description": "Bootstrap JavaScript, TypeScript and Web Components library.",
   "main": "dist/gd-bs.js",
   "typings": "src/typings.d.ts",
@@ -40,6 +40,7 @@
     "node-sass": "^4.9.3",
     "popper.js": "^1.14.4",
     "postcss-loader": "^3.0.0",
+    "replace-in-file-webpack-plugin": "^1.0.6",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.0",
     "ts-loader": "^5.2.1",
