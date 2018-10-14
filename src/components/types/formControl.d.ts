@@ -12,6 +12,7 @@ export const FormControl: (control: IFormControlProps) => IFormControl;
 export interface IFormControl {
     el: HTMLElement;
     getValue: () => any;
+    isValid: () => boolean;
     props: IFormControlProps;
 }
 
@@ -23,7 +24,7 @@ export interface IFormControlProps {
     data?: any;
     description?: string;
     el?: HTMLElement;
-    html?: string;
+    errorMessage?: string;
     isReadonly?: boolean;
     isPlainText?: boolean;
     label?: string;
@@ -31,6 +32,7 @@ export interface IFormControlProps {
     onControlRendering?: (control: IFormControlProps) => void | Promise<IFormControlProps>;
     onControlRendered?: (control: IFormControl) => void | Promise<IFormControl>;
     onGetValue?: (control: IFormControlProps) => any;
+    onValidate?: (control: IFormControlProps, value: any) => boolean;
     required?: boolean;
     type?: number;
     value?: any;

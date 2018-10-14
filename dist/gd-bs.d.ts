@@ -698,6 +698,7 @@ declare module 'gd-bs/components/types/form' {
             controls: Array<IFormControl>;
             el: HTMLFormElement,
             getValues: () => { [key: string]: any };
+            isValid: () => boolean;
     }
     
     /**
@@ -746,6 +747,7 @@ declare module 'gd-bs/components/types/formControl' {
     export interface IFormControl {
             el: HTMLElement;
             getValue: () => any;
+            isValid: () => boolean;
             props: IFormControlProps;
     }
     
@@ -757,7 +759,7 @@ declare module 'gd-bs/components/types/formControl' {
             data?: any;
             description?: string;
             el?: HTMLElement;
-            html?: string;
+            errorMessage?: string;
             isReadonly?: boolean;
             isPlainText?: boolean;
             label?: string;
@@ -765,6 +767,7 @@ declare module 'gd-bs/components/types/formControl' {
             onControlRendering?: (control: IFormControlProps) => void | Promise<IFormControlProps>;
             onControlRendered?: (control: IFormControl) => void | Promise<IFormControl>;
             onGetValue?: (control: IFormControlProps) => any;
+            onValidate?: (control: IFormControlProps, value: any) => boolean;
             required?: boolean;
             type?: number;
             value?: any;

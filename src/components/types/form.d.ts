@@ -17,6 +17,7 @@ export interface IForm {
     controls: Array<IFormControl>;
     el: HTMLFormElement,
     getValues: () => { [key: string]: any };
+    isValid: () => boolean;
 }
 
 /**
