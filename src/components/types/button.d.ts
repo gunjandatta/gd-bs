@@ -32,6 +32,7 @@ export interface IButtonProps {
     controls?: Array<string>;
     data?: any;
     el?: Element | HTMLElement;
+    href?: string;
     id?: string;
     isBlock?: boolean;
     isDisabled?: boolean;

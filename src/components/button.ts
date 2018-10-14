@@ -23,22 +23,27 @@ export enum ButtonTypes {
  */
 export const Button = (props: IButtonProps): IButton => {
     // Create the button
-    let button: HTMLElement = null;
+    let button: HTMLAnchorElement | HTMLButtonElement = null;
 
     // See if this is a link
-    if (props.isLink) {
+    if (props.href || props.isLink) {
         // Create the button
-        button = document.createElement("a");
+        button = document.createElement("a") as HTMLAnchorElement;
+
+        // Set the attributes
+        button.href = props.href || "#";
+        button.setAttribute("role", "button");
     } else {
         // Create the button
-        button = document.createElement("button");
+        button = document.createElement("button") as HTMLButtonElement;
+
+        // Set the attributes
+        button.setAttribute("type", "button");
     }
 
     // Set the attributes
-    button.setAttribute("type", "button");
     props.id ? button.id = props.id : null;
     props.isDisabled ? button.setAttribute("disabled", "disabled") : null;
-    props.isLink ? button.setAttribute("role", "button") : null;
     props.target ? button.setAttribute("data-target", props.target) : null;
     props.toggle ? button.setAttribute("data-toggle", props.toggle) : null;
     props.trigger ? button.setAttribute("data-trigger", props.trigger) : null;

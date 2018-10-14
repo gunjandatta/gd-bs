@@ -11,17 +11,21 @@ var Button = /** @class */ (function () {
             badgeValue: this.badgeValue,
             className: this.className,
             controls: this.controls,
+            data: this.data,
             el: this.el,
+            href: this.href,
             id: this.id,
             isBlock: this.isBlock,
             isDisabled: this.isDisabled,
             isExpanded: this.isExpanded,
             isLarge: this.isLarge,
+            isLink: this.isLink,
             isOutline: this.isOutline,
             isSmall: this.isSmall,
             target: this.target,
             text: this.text,
             toggle: this.toggle,
+            trigger: this.trigger,
             type: this.type
         });
         this.el.removeAttribute("id");
@@ -52,8 +56,16 @@ var Button = /** @class */ (function () {
                     "type": "Any",
                     "attr": "controls"
                 },
+                "data": {
+                    "type": "Any",
+                    "attr": "data"
+                },
                 "el": {
                     "elementRef": true
+                },
+                "href": {
+                    "type": String,
+                    "attr": "href"
                 },
                 "id": {
                     "type": String,
@@ -75,6 +87,10 @@ var Button = /** @class */ (function () {
                     "type": Boolean,
                     "attr": "is-large"
                 },
+                "isLink": {
+                    "type": Boolean,
+                    "attr": "is-link"
+                },
                 "isOutline": {
                     "type": Boolean,
                     "attr": "is-outline"
@@ -94,6 +110,10 @@ var Button = /** @class */ (function () {
                 "toggle": {
                     "type": String,
                     "attr": "toggle"
+                },
+                "trigger": {
+                    "type": String,
+                    "attr": "trigger"
                 },
                 "type": {
                     "type": Number,

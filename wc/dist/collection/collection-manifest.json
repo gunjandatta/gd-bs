@@ -145,6 +145,16 @@
           "attr": "controls"
         },
         {
+          "name": "data",
+          "type": "Any",
+          "attr": "data"
+        },
+        {
+          "name": "href",
+          "type": "String",
+          "attr": "href"
+        },
+        {
           "name": "id",
           "type": "String",
           "attr": "id"
@@ -170,6 +180,11 @@
           "attr": "is-large"
         },
         {
+          "name": "isLink",
+          "type": "Boolean",
+          "attr": "is-link"
+        },
+        {
           "name": "isOutline",
           "type": "Boolean",
           "attr": "is-outline"
@@ -193,6 +208,11 @@
           "name": "toggle",
           "type": "String",
           "attr": "toggle"
+        },
+        {
+          "name": "trigger",
+          "type": "String",
+          "attr": "trigger"
         },
         {
           "name": "type",

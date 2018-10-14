@@ -244,6 +244,7 @@ declare module 'gd-bs/components/types/button' {
             controls?: Array<string>;
             data?: any;
             el?: Element | HTMLElement;
+            href?: string;
             id?: string;
             isBlock?: boolean;
             isDisabled?: boolean;
