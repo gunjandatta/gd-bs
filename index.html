@@ -17,6 +17,7 @@
         <div id="toolbar"></div>
         <div id="ddl"></div>
         <div id="button"></div>
+        <div id="buttonGroup"></div>
         <div id="modal"></div>
         <div id="textbox"></div>
         <div id="multi-textbox"></div>
@@ -57,18 +58,31 @@
                 el: document.getElementById("toolbar"),
                 spacing: 3,
                 items: [
-                    {
-                        buttons: [
-                            { text: "Button 1" },
-                            { text: "Button 2" },
-                            { text: "Button 3" }
-                        ]
-                    },
-                    {
-                        inputGroup: {
-                            placeholder: "Textbox Example"
-                        }
-                    }
+                    { buttons: [{ text: "Button 1" }] },
+                    { buttons: [{ text: "Button 2" }] },
+                    { buttons: [{ text: "Button 3" }] },
+                    { buttons: [{ text: "Button 4" }] },
+                    { buttons: [{ text: "Button 5" }] },
+                    { buttons: [{ text: "Button 6" }] },
+                    { buttons: [{ text: "Button 7" }] },
+                    { buttons: [{ text: "Button 8" }] },
+                    { buttons: [{ text: "Button 9" }] },
+                    { buttons: [{ text: "Button 10" }] },
+                    { buttons: [{ text: "Button 11" }] },
+                    { buttons: [{ text: "Button 12" }] },
+                    { buttons: [{ text: "Button 13" }] },
+                    { buttons: [{ text: "Button 14" }] },
+                    { buttons: [{ text: "Button 15" }] },
+                    { buttons: [{ text: "Button 16" }] },
+                    { buttons: [{ text: "Button 17" }] },
+                    { buttons: [{ text: "Button 18" }] },
+                    { buttons: [{ text: "Button 19" }] },
+                    { buttons: [{ text: "Button 20" }] },
+                    { buttons: [{ text: "Button 21" }] },
+                    { buttons: [{ text: "Button 22" }] },
+                    { buttons: [{ text: "Button 23" }] },
+                    { buttons: [{ text: "Button 24" }] },
+                    { buttons: [{ text: "Button 25" }] }
                 ]
             })
             var dll = GD.Components.Dropdown({
@@ -98,6 +112,17 @@
                 text: "Modal",
                 toggle: "modal",
                 target: "#myModal"
+            });
+            GD.Components.ButtonGroup({
+                el: document.querySelector("#buttonGroup"),
+                isVertical: true,
+                buttons: [
+                    { text: "File 1.docx", url: "#" },
+                    { text: "File 2.docx", url: "#" },
+                    { text: "File 3.docx", url: "#" },
+                    { text: "File 4.docx", url: "#" },
+                    { text: "File 5.docx", url: "#" },
+                ]
             });
             GD.Components.Modal({
                 el: document.querySelector("#modal"),
