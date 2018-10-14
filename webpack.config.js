@@ -72,10 +72,16 @@ module.exports = (env, argv) => {
                 {
                     dir: "scss",
                     files: ["_gd.scss"],
-                    rules: [{
-                        search: /~bootstrap\/scss\//g,
-                        replace: ""
-                    }]
+                    rules: [
+                        {
+                            search: /~bootstrap\/scss\//g,
+                            replace: ""
+                        },
+                        {
+                            search: /"panel"/,
+                            replace: '"../src/sass/panel"'
+                        }
+                    ]
                 }
             ])
         ];
