@@ -1326,9 +1326,9 @@ declare module 'gd-bs/components/types/popover' {
         */
     export interface IPopoverOptions {
             animation?: boolean;
-            boundary?: string;
-            container?: string;
-            content?: string;
+            boundary?: string | Element;
+            container?: string | Element | Function;
+            content?: string | Element;
             delay?: number | object;
             fallbackPlacement?: string | Array<string>;
             html?: boolean;
@@ -1336,7 +1336,7 @@ declare module 'gd-bs/components/types/popover' {
             placement?: string | Function;
             selector?: string;
             template?: string;
-            title?: string;
+            title?: string | Element | Function;
             trigger?: string;
     }
     

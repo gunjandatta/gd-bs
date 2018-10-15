@@ -335,9 +335,9 @@
                 btnProps: { text: "Popover Demo" },
                 isDismissible: true,
                 options: {
-                    container: "body",
-                    content: "This is the popover content.",
-                    title: "My Popover",
+                    html: true,
+                    content: GD.Components.Button({ text: "Action", onClick: function() { alert("Take Action"); } }).el,
+                    title: (function () { var el = document.createElement("div"); el.innerText = "Title"; return el; })(),
                 }
             });
             GD.Components.Carousel({

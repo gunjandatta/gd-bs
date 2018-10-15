@@ -41,9 +41,9 @@ export interface IPopover {
  */
 export interface IPopoverOptions {
     animation?: boolean;
-    boundary?: string;
-    container?: string;
-    content?: string;
+    boundary?: string | Element;
+    container?: string | Element | Function;
+    content?: string | Element;
     delay?: number | object;
     fallbackPlacement?: string | Array<string>;
     html?: boolean;
@@ -51,7 +51,7 @@ export interface IPopoverOptions {
     placement?: string | Function;
     selector?: string;
     template?: string;
-    title?: string;
+    title?: string | Element | Function;
     trigger?: string;
 }
 

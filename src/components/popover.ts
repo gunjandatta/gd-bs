@@ -27,34 +27,37 @@ export const Popover = (props: IPopoverProps): IPopover => {
     // Set the popover options
     let options = props.options || {};
 
-    // Set the type
-    switch (props.type) {
-        // Auto
-        case PopoverTypes.Auto:
-            options.placement = "auto";
-            break;
-        // Bottom
-        case PopoverTypes.Bottom:
-            options.placement = "bottom";
-            break;
-        // Left
-        case PopoverTypes.Left:
-            options.placement = "left";
-            break;
-        // Right
-        case PopoverTypes.Right:
-            options.placement = "right";
-            break;
-        // Top
-        case PopoverTypes.Top:
-            options.placement = "top";
-            break;
+    // See if the placement needs to be set
+    if (options.placement == null) {
+        // Set the type
+        switch (props.type) {
+            // Auto
+            case PopoverTypes.Auto:
+                options.placement = "auto";
+                break;
+            // Bottom
+            case PopoverTypes.Bottom:
+                options.placement = "bottom";
+                break;
+            // Left
+            case PopoverTypes.Left:
+                options.placement = "left";
+                break;
+            // Right
+            case PopoverTypes.Right:
+                options.placement = "right";
+                break;
+            // Top
+            case PopoverTypes.Top:
+                options.placement = "top";
+                break;
+        }
     }
 
     // Set the attributes
     popover.setAttribute("tabindex", "0");
-    popover.setAttribute("title", options.title || "");
-    popover.setAttribute("data-content", options.content || "");
+    typeof (options.title) === "string" ? popover.setAttribute("title", options.title) : null;
+    typeof (options.content) === "string" ? popover.setAttribute("data-content", options.content) : null;
 
     // Set the options to target the main popover element
     options.container = "#bs-popovers";
