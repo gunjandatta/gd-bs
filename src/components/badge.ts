@@ -18,12 +18,15 @@ export enum BadgeTypes {
  * Badge
  */
 export const Badge = (props: IBadgeProps): IBadge => {
-    let badge: HTMLElement = null;
+    let badge: HTMLAnchorElement | HTMLSpanElement = null;
 
-    // See if this is a link
-    if (props.href) {
+    // See if this is a link or has a click event
+    if (props.href || props.onClick) {
         // Create the badge
-        badge = document.createElement("a");
+        badge = document.createElement("a") as HTMLAnchorElement;
+
+        // Set the properties
+        badge.setAttribute("href", props.href || "#");
     } else {
         // Create the badge
         badge = document.createElement("span");
