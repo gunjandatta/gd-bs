@@ -5,8 +5,6 @@ export class Button {
             return;
         }
         let props = getProps(this.el, {
-            badgeType: this.badgeType,
-            badgeValue: this.badgeValue,
             className: this.className,
             controls: this.controls,
             data: this.data,
@@ -32,14 +30,6 @@ export class Button {
     }
     static get is() { return "bs-button"; }
     static get properties() { return {
-        "badgeType": {
-            "type": Number,
-            "attr": "badge-type"
-        },
-        "badgeValue": {
-            "type": String,
-            "attr": "badge-value"
-        },
         "className": {
             "type": String,
             "attr": "class-name"

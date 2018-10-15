@@ -210,6 +210,8 @@ declare module 'gd-bs/components/types/breadcrumb' {
 }
 
 declare module 'gd-bs/components/types/button' {
+    import { IBadgeProps } from "gd-bs/components/types/badge";
+    
     /**
         * Button
         */
@@ -238,8 +240,7 @@ declare module 'gd-bs/components/types/button' {
         * Button Properties
         */
     export interface IButtonProps {
-            badgeType?: number;
-            badgeValue?: string;
+            badge?: IBadgeProps;
             className?: string;
             controls?: Array<string>;
             data?: any;

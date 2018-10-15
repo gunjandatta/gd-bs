@@ -98,10 +98,16 @@ export const Button = (props: IButtonProps): IButton => {
     }
 
     // Set the text
-    button.innerHTML = [
-        props.text || "",
-        props.badgeValue ? Badge({ content: props.badgeValue, type: props.badgeType || BadgeTypes.Light }).el.outerHTML : ''
-    ].join('\n');
+    button.innerHTML = props.text || "";
+
+    // See if there is a badge
+    if (props.badge) {
+        // Default the type
+        props.badge.type = props.badge.type || BadgeTypes.Light;
+
+        // Render the badge
+        button.appendChild(Badge(props.badge).el);
+    }
 
     // See if there is a click event
     if (props.onClick) {

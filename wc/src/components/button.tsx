@@ -9,8 +9,6 @@ export class Button {
     @Element() private el: HTMLElement;
 
     // Button Properties
-    @Prop() badgeType: number;
-    @Prop() badgeValue: string;
     @Prop() className: string;
     @Prop() controls: Array<string>;
     @Prop() data: any;
@@ -37,8 +35,6 @@ export class Button {
 
         // Get the properties
         let props = getProps(this.el, {
-            badgeType: this.badgeType,
-            badgeValue: this.badgeValue,
             className: this.className,
             controls: this.controls,
             data: this.data,

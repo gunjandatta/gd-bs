@@ -1,3 +1,5 @@
+import { IBadgeProps } from "./badge";
+
 /**
  * Button
  */
@@ -26,8 +28,7 @@ export interface IButton {
  * Button Properties
  */
 export interface IButtonProps {
-    badgeType?: number;
-    badgeValue?: string;
+    badge?: IBadgeProps;
     className?: string;
     controls?: Array<string>;
     data?: any;

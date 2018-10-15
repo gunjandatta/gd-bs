@@ -7,8 +7,6 @@ var Button = /** @class */ (function () {
             return;
         }
         var props = getProps(this.el, {
-            badgeType: this.badgeType,
-            badgeValue: this.badgeValue,
             className: this.className,
             controls: this.controls,
             data: this.data,
@@ -40,14 +38,6 @@ var Button = /** @class */ (function () {
     Object.defineProperty(Button, "properties", {
         get: function () {
             return {
-                "badgeType": {
-                    "type": Number,
-                    "attr": "badge-type"
-                },
-                "badgeValue": {
-                    "type": String,
-                    "attr": "badge-value"
-                },
                 "className": {
                     "type": String,
                     "attr": "class-name"

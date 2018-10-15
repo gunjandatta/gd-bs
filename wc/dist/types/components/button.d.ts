@@ -1,7 +1,5 @@
 export declare class Button {
     private el;
-    badgeType: number;
-    badgeValue: string;
     className: string;
     controls: Array<string>;
     data: any;

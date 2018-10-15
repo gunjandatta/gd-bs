@@ -126,16 +126,6 @@
       "styles": {},
       "props": [
         {
-          "name": "badgeType",
-          "type": "Number",
-          "attr": "badge-type"
-        },
-        {
-          "name": "badgeValue",
-          "type": "String",
-          "attr": "badge-value"
-        },
-        {
           "name": "className",
           "type": "String",
           "attr": "class-name"

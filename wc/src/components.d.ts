@@ -61,8 +61,6 @@ export namespace Components {
   }
 
   interface BsButton {
-    'badgeType': number;
-    'badgeValue': string;
     'className': string;
     'controls': Array<string>;
     'data': any;
@@ -82,8 +80,6 @@ export namespace Components {
     'type': number;
   }
   interface BsButtonAttributes extends StencilHTMLAttributes {
-    'badgeType'?: number;
-    'badgeValue'?: string;
     'className'?: string;
     'controls'?: Array<string>;
     'data'?: any;
