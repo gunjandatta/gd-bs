@@ -12,6 +12,7 @@
 <body>
     <h1>Library</h1>
     <form>
+        <div id="myForm"></div>
         <div id="panel"></div>
         <div id="badge"></div>
         <div id="toolbar"></div>
@@ -36,6 +37,30 @@
     </form>
     <script type="text/javascript">
         window.addEventListener("load", function () {
+            GD.Components.Form({
+                el: document.getElementById("myForm"),
+                rows: [
+                    {
+                        control: {
+                            label: "Post:",
+                            name: "PostName",
+                            type: GD.Components.FormControlTypes.Dropdown,
+                            items: [
+                                { text: "Item 1" },
+                                { text: "Item 2" }
+                            ],
+                            onChange: (item) => {
+                                debugger;
+                                alert("working");
+                            },
+                            onValidate: function (something) {
+                                return true;
+                            },
+                            placeholder: "Select Post..."
+                        }
+                    }
+                ]
+            })
             var panel = GD.Components.Panel({
                 el: document.getElementById("panel"),
                 modalProps: {
@@ -336,7 +361,7 @@
                 isDismissible: true,
                 options: {
                     html: true,
-                    content: GD.Components.Button({ text: "Action", onClick: function() { alert("Take Action"); } }).el,
+                    content: GD.Components.Button({ text: "Action", onClick: function () { alert("Take Action"); } }).el,
                     title: (function () { var el = document.createElement("div"); el.innerText = "Title"; return el; })(),
                 }
             });

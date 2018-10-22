@@ -54,7 +54,6 @@ export interface IFormControlPropsCheckbox extends IFormControlProps {
 export interface IFormControlPropsDropdown extends IFormControlProps {
     items?: Array<IDropdownItem>;
     onChange?: (item: IDropdownItem | Array<IDropdownItem>) => void;
-    placeholder?: string;
     type?: number;
 }
 
