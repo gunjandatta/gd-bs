@@ -24,6 +24,9 @@ export interface IDropdown {
     /** True if the dropdown is a multi-select. */
     isMulti: boolean;
 
+    /** Updates the dropdown items. */
+    setItems: (items:Array<IDropdownItem>) => void;
+
     /** Toggles the dropdown menu of a given navbar or tabbed navigation. */
     toggle: () => void;
 

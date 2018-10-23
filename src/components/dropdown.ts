@@ -421,6 +421,87 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
             return isMulti ? values : values[0];
         },
         isMulti,
+        setItems: (items: Array<IDropdownItem> = []) => {
+            // See if we are rendering this in a form
+            if (props.formFl) {
+                // Get the select and clear it
+                let elSelect = el.querySelector("select.form-control") as HTMLSelectElement;
+                elSelect.innerHTML = "";
+                elSelect.value = "";
+
+                // Parse the items
+                for (let i = 0; i < items.length; i++) {
+                    let item = items[i];
+
+                    // Create the option
+                    let option = document.createElement("option");
+                    option.setAttribute("data-idx", i.toString());
+                    option.selected = item.isSelected ? true : false;
+                    option.innerHTML = item.text || "";
+                    elSelect.appendChild(option);
+                }
+            }
+            // Else, see if we are rendering this in a nav bar
+            else if (props.navFl) {
+                // Get the menu and clear it
+                elMenu = el.querySelector(".dropdown-menu");
+                elMenu.innerHTML = "";
+
+                // Parse the items
+                let items = props.items || [];
+                for (let i = 0; i < items.length; i++) {
+                    let item = items[i];
+
+                    // See if this is a divider
+                    if (item.isDivider) {
+                        // Add the divider
+                        let elDivider = document.createElement("div");
+                        elDivider.className = "dropdown-divider";
+                        elMenu.appendChild(elDivider);
+                    } else {
+                        // Add the item
+                        let elItem = document.createElement("a");
+                        elItem.className = "dropdown-item";
+                        item.isHeader ? elItem.classList.add("dropdown-header") : null;
+                        elItem.href = item.href || "#";
+                        elItem.setAttribute("data-idx", i.toString());
+                        elItem.innerHTML = item.text || "";
+                        elMenu.appendChild(elItem);
+
+                        // Add the item
+                        elMenu.appendChild(elItem);
+                    }
+                }
+            } else {
+                // Get the menu and clear it
+                elMenu = el.querySelector(".dropdown-menu");
+                elMenu.innerHTML = "";
+
+                // Parse the items
+                for (let i = 0; i < items.length; i++) {
+                    let item = items[i];
+
+                    // See if this is a divider
+                    if (item.isDivider) {
+                        // Add the divider
+                        let elDivider = document.createElement("div");
+                        elDivider.className = "dropdown-divider";
+                        elMenu.appendChild(elDivider);
+                        continue;
+                    }
+
+                    // Create the item
+                    let elItem = document.createElement("a");
+                    elItem.className = "dropdown-item";
+                    item.isHeader ? elItem.classList.add("dropdown-header") : null;
+                    elItem.href = item.href || "#";
+                    elItem.setAttribute("data-idx", i.toString());
+                    elItem.innerHTML = item.text || "";
+                    item.isSelected ? elItem.classList.add("active") : null;
+                    elMenu.appendChild(elItem);
+                }
+            }
+        },
         toggle: () => {
             // See if we are only rendering a menu
             if (props.menuOnly) {
