@@ -224,7 +224,9 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
     // Return the control
     return {
         el,
-        // Set the getValue method
+        // Get the control
+        get: () => { return cb || ddl || tb },
+        // Get the value
         getValue,
         isValid: () => {
             let isValid = true;

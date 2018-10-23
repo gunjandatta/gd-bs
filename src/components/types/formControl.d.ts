@@ -1,5 +1,6 @@
-import { ICheckboxGroupItem } from "./checkboxGroup";
-import { IDropdownItem } from "./dropdown";
+import { ICheckboxGroup, ICheckboxGroupItem } from "./checkboxGroup";
+import { IDropdown, IDropdownItem } from "./dropdown";
+import { IInputGroup } from "./inputGroup";
 
 /**
  * Form Control
@@ -11,6 +12,7 @@ export const FormControl: (control: IFormControlProps) => IFormControl;
  */
 export interface IFormControl {
     el: HTMLElement;
+    get: () => ICheckboxGroup | IDropdown | IInputGroup;
     getValue: () => any;
     isValid: () => boolean;
     props: IFormControlProps;

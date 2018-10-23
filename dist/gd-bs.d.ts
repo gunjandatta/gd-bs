@@ -738,8 +738,9 @@ declare module 'gd-bs/components/types/form' {
 }
 
 declare module 'gd-bs/components/types/formControl' {
-    import { ICheckboxGroupItem } from "gd-bs/components/types/checkboxGroup";
-    import { IDropdownItem } from "gd-bs/components/types/dropdown";
+    import { ICheckboxGroup, ICheckboxGroupItem } from "gd-bs/components/types/checkboxGroup";
+    import { IDropdown, IDropdownItem } from "gd-bs/components/types/dropdown";
+    import { IInputGroup } from "gd-bs/components/types/inputGroup";
     
     /**
         * Form Control
@@ -751,6 +752,7 @@ declare module 'gd-bs/components/types/formControl' {
         */
     export interface IFormControl {
             el: HTMLElement;
+            get: () => ICheckboxGroup | IDropdown | IInputGroup;
             getValue: () => any;
             isValid: () => boolean;
             props: IFormControlProps;
