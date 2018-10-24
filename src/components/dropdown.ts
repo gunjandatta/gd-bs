@@ -105,7 +105,6 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
         elNav.appendChild(elMenu);
 
         // Parse the items
-        let items = props.items || [];
         for (let i = 0; i < items.length; i++) {
             let item = items[i];
 
@@ -275,8 +274,8 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
             elItems[i].addEventListener("click", ev => {
                 let elItem = ev.currentTarget as HTMLElement;
                 let itemIdx = elItem.getAttribute("data-idx");
-                let item: IDropdownItem = props.items[itemIdx];
-                let items: Array<IDropdownItem> = [];
+                let item: IDropdownItem = items[itemIdx];
+                let selectedItems: Array<IDropdownItem> = [];
 
                 // Parse the selected items
                 let elSelectedItems = el.querySelectorAll("option");
@@ -287,12 +286,12 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
                     // See if the item is selected
                     if (elSelectedItem.selected) {
                         // Add the item
-                        items.push(props.items[selectedIdx]);
+                        selectedItems.push(items[selectedIdx]);
                     }
                 }
 
                 // Sort the items
-                items = items.sort((a, b) => {
+                selectedItems = selectedItems.sort((a, b) => {
                     if (a.text < b.text) { return -1; }
                     if (a.text > b.text) { return 1; }
                     return 0;
@@ -301,13 +300,13 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
                 // See if a click event exists
                 if (item.onClick) {
                     // Call the click event
-                    item.onClick(isMulti ? items : items[0], ev);
+                    item.onClick(isMulti ? selectedItems : selectedItems[0], ev);
                 }
 
                 // See if a global change event exists
                 if (props.onChange) {
                     // Call the change event
-                    props.onChange(isMulti ? items : items[0], ev);
+                    props.onChange(isMulti ? selectedItems : selectedItems[0], ev);
                 }
             });
         }
@@ -319,8 +318,8 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
             elItems[i].addEventListener("click", ev => {
                 let elItem = ev.currentTarget as HTMLElement;
                 let itemIdx = elItem.getAttribute("data-idx");
-                let item: IDropdownItem = props.items[itemIdx];
-                let items: Array<IDropdownItem> = [];
+                let item: IDropdownItem = items[itemIdx];
+                let selectedItems: Array<IDropdownItem> = [];
 
                 // See if this is a menu only
                 if (props.menuOnly) {
@@ -333,7 +332,7 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
                 for (let i = 0; i < elSelectedItems.length; i++) {
                     let elSelectedItem = elSelectedItems[i] as HTMLElement;
                     let selectedIdx = elSelectedItem.getAttribute("data-idx");
-                    let selectedItem = props.items[selectedIdx];
+                    let selectedItem = items[selectedIdx];
 
                     // Skip this item
                     if (itemIdx == selectedIdx) { continue; }
@@ -341,7 +340,7 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
                     // See if this is a multi-select
                     if (isMulti) {
                         // Add the item
-                        items.push(selectedItem);
+                        selectedItems.push(selectedItem);
                     } else {
                         // Unselect the item
                         elSelectedItem.classList.remove("active");
@@ -357,11 +356,11 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
                     elItem.classList.add("active");
 
                     // Add the item
-                    items.push(item);
+                    selectedItems.push(item);
                 }
 
                 // Sort the items
-                items = items.sort((a, b) => {
+                selectedItems = selectedItems.sort((a, b) => {
                     if (a.text < b.text) { return -1; }
                     if (a.text > b.text) { return 1; }
                     return 0;
@@ -370,13 +369,13 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
                 // See if a click event exists
                 if (item.onClick) {
                     // Call the click event
-                    item.onClick(isMulti ? items : items[0], ev);
+                    item.onClick(isMulti ? selectedItems : selectedItems[0], ev);
                 }
 
                 // See if a global change event exists
                 if (props.onChange) {
                     // Call the change event
-                    props.onChange(isMulti ? items : items[0], ev);
+                    props.onChange(isMulti ? selectedItems : selectedItems[0], ev);
                 }
             });
         }
@@ -401,15 +400,15 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
                     // See if this item is selected
                     if (selectedItem.selected) {
                         // Add the value
-                        values.push(props.items[selectedItem.getAttribute("data-idx")]);
+                        values.push(items[selectedItem.getAttribute("data-idx")]);
                     }
                 }
             } else {
                 // Parse the selected items
-                let items = el.querySelectorAll(".dropdown-item.active");
-                for (let i = 0; i < items.length; i++) {
+                let elItems = el.querySelectorAll(".dropdown-item.active");
+                for (let i = 0; i < elItems.length; i++) {
                     // Get the item
-                    let item = props.items[items[i].getAttribute("data-idx")];
+                    let item = items[elItems[i].getAttribute("data-idx")];
                     if (item) {
                         // Append the value
                         values.push(item);
@@ -421,7 +420,10 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
             return isMulti ? values : values[0];
         },
         isMulti,
-        setItems: (items: Array<IDropdownItem> = []) => {
+        setItems: (newItems: Array<IDropdownItem> = []) => {
+            // Set the items
+            items = newItems;
+
             // See if we are rendering this in a form
             if (props.formFl) {
                 // Get the select and clear it
@@ -448,7 +450,6 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
                 elMenu.innerHTML = "";
 
                 // Parse the items
-                let items = props.items || [];
                 for (let i = 0; i < items.length; i++) {
                     let item = items[i];
 
