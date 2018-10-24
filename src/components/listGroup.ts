@@ -101,28 +101,20 @@ export const ListGroup = (props: IListGroupProps): IListGroup => {
         // Set the href
         let href = item.tabName ? "#" + item.tabName.replace(/[^a-zA-Z0-9]/, "") : item.href;
 
-        // See if this is a link
-        if (href) {
-            // Set the attributes
-            let attributes = [
-                'class="' + itemClassNames.join(' ') + '"',
-                'href="' + href + '"',
-                item.tabName ? 'data-toggle="list" aria-controls="' + item.tabName + '"' : ''
-            ].join(' ');
+        // Set the attributes
+        let attributes = [
+            'class="' + itemClassNames.join(' ') + '"',
+            'href="' + href + '"',
+            item.tabName ? 'data-toggle="list" aria-controls="' + item.tabName + '"' : ''
+        ].join(' ');
 
-            // Add the link
-            html.push([
-                '<a ' + attributes + '>',
-                (props.isTabs ? item.tabName : item.content) || "",
-                item.badge ? Badge(item.badge).el.outerHTML : "",
-                '</a>'
-            ].join('\n'));
-        } else {
-            // Add the button
-            html.push([
-                '<button'
-            ].join('\n'));
-        }
+        // Add the link
+        html.push([
+            '<a ' + attributes + '>',
+            (props.isTabs ? item.tabName : item.content) || "",
+            item.badge ? Badge(item.badge).el.outerHTML : "",
+            '</a>'
+        ].join('\n'));
     }
 
     // Add the list group closing tag
