@@ -15,7 +15,7 @@ export const InputGroupTypes: IInputGroupTypes;
  */
 export interface IInputGroup {
     /** The element. */
-    el: Element;
+    el: HTMLElement;
 }
 
 /**
