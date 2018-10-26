@@ -43,7 +43,7 @@ export interface IPopoverOptions {
     animation?: boolean;
     boundary?: string | Element;
     container?: string | Element | Function;
-    content?: string | Element;
+    content?: string | Element | Function;
     delay?: number | object;
     fallbackPlacement?: string | Array<string>;
     html?: boolean;
@@ -64,6 +64,7 @@ export interface IPopoverProps {
     el?: Element | HTMLElement;
     isDismissible?: boolean;
     options?: IPopoverOptions;
+    target?: Element,
     type?: number;
 }
 

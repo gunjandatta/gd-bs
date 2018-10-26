@@ -1332,7 +1332,7 @@ declare module 'gd-bs/components/types/popover' {
             animation?: boolean;
             boundary?: string | Element;
             container?: string | Element | Function;
-            content?: string | Element;
+            content?: string | Element | Function;
             delay?: number | object;
             fallbackPlacement?: string | Array<string>;
             html?: boolean;
@@ -1353,6 +1353,7 @@ declare module 'gd-bs/components/types/popover' {
             el?: Element | HTMLElement;
             isDismissible?: boolean;
             options?: IPopoverOptions;
+            target?: Element,
             type?: number;
     }
     

@@ -12,6 +12,7 @@
 <body>
     <h1>Library</h1>
     <form>
+        <span id="myPopover">Menu</span>
         <div id="myForm"></div>
         <div id="panel"></div>
         <div id="badge"></div>
@@ -37,6 +38,18 @@
     </form>
     <script type="text/javascript">
         window.addEventListener("load", function () {
+            GD.Components.Popover({
+                target: document.getElementById("myPopover"),
+                options: {
+                    content: function () {
+                        let el = document.createElement("h1");
+                        el.innerText = "This is a popover";
+                        return el;
+                    },
+                    html: true,
+                    trigger: "focus"
+                }
+            });
             GD.Components.Form({
                 el: document.getElementById("myForm"),
                 rows: [
@@ -49,9 +62,8 @@
                                 { text: "Item 1" },
                                 { text: "Item 2" }
                             ],
-                            onControlRendered: (control) => {window.myFormControl = control;},
+                            onControlRendered: (control) => { window.myFormControl = control; },
                             onChange: (item) => {
-                                debugger;
                                 alert("working");
                             },
                             onValidate: function (something) {
