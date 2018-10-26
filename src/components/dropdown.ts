@@ -100,7 +100,8 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
 
         // Create the menu
         elMenu = document.createElement("div");
-        elMenu.className = "dropdown-menu";
+        props.menuOnly && props.className ? props.className : "";
+        elMenu.classList.add("dropdown-menu");
         elMenu.setAttribute("aria-labelledby", "navbarDDL_" + (props.label || ""));
         elNav.appendChild(elMenu);
 
