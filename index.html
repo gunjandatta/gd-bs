@@ -62,9 +62,16 @@
                                 { text: "Item 1" },
                                 { text: "Item 2" }
                             ],
-                            onControlRendered: (control) => { window.myFormControl = control; },
+                            onControlRendered: (control) => {
+                                window.myFormControl = control;
+                                control.get().setItems([
+                                    { text: "Update Item 1" },
+                                    { text: "Update Item 2" },
+                                    { text: "Update Item 3" },
+                                ]);
+                            },
                             onChange: (item) => {
-                                alert("working");
+                                alert("Selected Item: " + item.text);
                             },
                             onValidate: function (something) {
                                 return true;

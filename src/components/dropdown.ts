@@ -22,6 +22,226 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
     let items = props.items || [];
     let elMenu: HTMLElement = null;
 
+    // Method to generate the items
+    let generateItems = (elParent: HTMLElement, value?: any) => {
+        // See if we are rendering this in a form
+        if (props.formFl) {
+            // Parse the items
+            for (let i = 0; i < items.length; i++) {
+                let item = items[i];
+
+                // Create the option
+                let option = document.createElement("option");
+                option.setAttribute("data-idx", i.toString());
+                elParent.appendChild(option);
+
+                // Set the text
+                option.innerHTML = item.text || "";
+
+                // See if the item is selected
+                if (item.isSelected) {
+                    // Select the option
+                    option.selected = true;
+                }
+                // Else, see if a value exists
+                else if (value) {
+                    // Ensure it's an array
+                    let values = value.length && typeof (value) !== "string" ? value : [value];
+
+                    // Parse the values
+                    for (let j = 0; j < values.length; j++) {
+                        // See if this item is selected
+                        if (item.value == values[j]) {
+                            // Select the option
+                            option.selected = true;
+                            break;
+                        }
+                    }
+                }
+                // Set the click event for the custom events
+                option.addEventListener("click", ev => {
+                    let elItem = ev.currentTarget as HTMLElement;
+                    let itemIdx = elItem.getAttribute("data-idx");
+                    let item: IDropdownItem = items[itemIdx];
+                    let selectedItems: Array<IDropdownItem> = [];
+
+                    // Parse the selected items
+                    let elSelectedItems = el.querySelectorAll("option");
+                    for (let i = 0; i < elSelectedItems.length; i++) {
+                        let elSelectedItem = elSelectedItems[i] as HTMLOptionElement;
+                        let selectedIdx = elSelectedItem.getAttribute("data-idx");
+
+                        // See if the item is selected
+                        if (elSelectedItem.selected) {
+                            // Add the item
+                            selectedItems.push(items[selectedIdx]);
+                        }
+                    }
+
+                    // Sort the items
+                    selectedItems = selectedItems.sort((a, b) => {
+                        if (a.text < b.text) { return -1; }
+                        if (a.text > b.text) { return 1; }
+                        return 0;
+                    });
+
+                    // See if a click event exists
+                    if (item.onClick) {
+                        // Call the click event
+                        item.onClick(isMulti ? selectedItems : selectedItems[0], ev);
+                    }
+
+                    // See if a global change event exists
+                    if (props.onChange) {
+                        // Call the change event
+                        props.onChange(isMulti ? selectedItems : selectedItems[0], ev);
+                    }
+                });
+            }
+        }
+        else {
+            // Set the click event for the custom events
+            let onItemClick = (ev: Event) => {
+                let elItem = ev.currentTarget as HTMLElement;
+                let itemIdx = elItem.getAttribute("data-idx");
+                let item: IDropdownItem = items[itemIdx];
+                let selectedItems: Array<IDropdownItem> = [];
+
+                // See if this is a menu only
+                if (props.menuOnly) {
+                    // Set the location
+                    item.href && item.href != "#" ? document.location.href = item.href : null;
+                }
+
+                // Parse the selected items
+                let elSelectedItems = el.querySelectorAll(".dropdown-item.active");
+                for (let i = 0; i < elSelectedItems.length; i++) {
+                    let elSelectedItem = elSelectedItems[i] as HTMLElement;
+                    let selectedIdx = elSelectedItem.getAttribute("data-idx");
+                    let selectedItem = items[selectedIdx];
+
+                    // Skip this item
+                    if (itemIdx == selectedIdx) { continue; }
+
+                    // See if this is a multi-select
+                    if (isMulti) {
+                        // Add the item
+                        selectedItems.push(selectedItem);
+                    } else {
+                        // Unselect the item
+                        elSelectedItem.classList.remove("active");
+                    }
+                }
+
+                // See if this item is selected
+                if (elItem.classList.contains("active")) {
+                    // Unselect this item
+                    elItem.classList.remove("active");
+                } else {
+                    // Select this item
+                    elItem.classList.add("active");
+
+                    // Add the item
+                    selectedItems.push(item);
+                }
+
+                // Sort the items
+                selectedItems = selectedItems.sort((a, b) => {
+                    if (a.text < b.text) { return -1; }
+                    if (a.text > b.text) { return 1; }
+                    return 0;
+                });
+
+                // See if a click event exists
+                if (item.onClick) {
+                    // Call the click event
+                    item.onClick(isMulti ? selectedItems : selectedItems[0], ev);
+                }
+
+                // See if a global change event exists
+                if (props.onChange) {
+                    // Call the change event
+                    props.onChange(isMulti ? selectedItems : selectedItems[0], ev);
+                }
+            };
+
+            // See if we are rendering this in a nav bar
+            if (props.navFl) {
+                // Parse the items
+                for (let i = 0; i < items.length; i++) {
+                    let item = items[i];
+
+                    // See if this is a divider
+                    if (item.isDivider) {
+                        // Add the divider
+                        let elDivider = document.createElement("div");
+                        elDivider.className = "dropdown-divider";
+                        elParent.appendChild(elDivider);
+                    } else {
+                        // Add the item
+                        let elItem = document.createElement("a");
+                        elItem.className = "dropdown-item";
+                        item.isHeader ? elItem.classList.add("dropdown-header") : null;
+                        elItem.href = item.href || "#";
+                        elItem.setAttribute("data-idx", i.toString());
+                        elItem.innerHTML = item.text || "";
+                        elParent.appendChild(elItem);
+
+                        // Set the click event
+                        elItem.addEventListener("click", onItemClick);
+                    }
+                }
+            } else {
+                // Parse the items
+                for (let i = 0; i < items.length; i++) {
+                    let item = items[i];
+
+                    // See if this is a divider
+                    if (item.isDivider) {
+                        // Add the divider
+                        let elDivider = document.createElement("div");
+                        elDivider.className = "dropdown-divider";
+                        elParent.appendChild(elDivider);
+                        continue;
+                    }
+
+                    // Create the item
+                    let elItem = document.createElement("a");
+                    elItem.className = "dropdown-item";
+                    item.isHeader ? elItem.classList.add("dropdown-header") : null;
+                    elItem.href = item.href || "#";
+                    elItem.setAttribute("data-idx", i.toString());
+                    elItem.innerHTML = item.text || "";
+                    elParent.appendChild(elItem);
+
+                    // Set the click event
+                    elItem.addEventListener("click", onItemClick);
+
+                    // See if this item is selected
+                    if (item.isSelected) {
+                        // Select the item
+                        elItem.classList.add("active");
+                    }
+                    // Else, see if a value exists
+                    else if (value) {
+                        // Ensure it's an array
+                        let values = value.length && typeof (value) !== "string" ? value : [value];
+
+                        // Parse the values
+                        for (let j = 0; j < values.length; j++) {
+                            // See if this item is selected
+                            if (item.value == values[j]) {
+                                // Select the item
+                                elItem.classList.add("active");
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     // Create the dropdown
     let elDropdown: HTMLDivElement = null;
     let elForm: HTMLDivElement = null;
@@ -44,39 +264,8 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
         elSelect.multiple = props.multi ? true : false;
         elForm.appendChild(elSelect);
 
-        // Parse the items
-        for (let i = 0; i < items.length; i++) {
-            let item = items[i];
-
-            // Create the option
-            let option = document.createElement("option");
-            option.setAttribute("data-idx", i.toString());
-            elSelect.appendChild(option);
-
-            // Set the text
-            option.innerHTML = item.text || "";
-
-            // See if the item is selected
-            if (item.isSelected) {
-                // Select the option
-                option.selected = true;
-            }
-            // Else, see if a value exists
-            else if (props.value) {
-                // Ensure it's an array
-                let values = props.value.length && typeof (props.value) !== "string" ? props.value : [props.value];
-
-                // Parse the values
-                for (let j = 0; j < values.length; j++) {
-                    // See if this item is selected
-                    if (item.value == values[j]) {
-                        // Select the option
-                        option.selected = true;
-                        break;
-                    }
-                }
-            }
-        }
+        // Generate the items
+        generateItems(elSelect, props.value);
     }
     // Else, see if we are rendering this in a nav bar
     else if (props.navFl) {
@@ -105,30 +294,8 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
         elMenu.setAttribute("aria-labelledby", "navbarDDL_" + (props.label || ""));
         elNav.appendChild(elMenu);
 
-        // Parse the items
-        for (let i = 0; i < items.length; i++) {
-            let item = items[i];
-
-            // See if this is a divider
-            if (item.isDivider) {
-                // Add the divider
-                let elDivider = document.createElement("div");
-                elDivider.className = "dropdown-divider";
-                elMenu.appendChild(elDivider);
-            } else {
-                // Add the item
-                let elItem = document.createElement("a");
-                elItem.className = "dropdown-item";
-                item.isHeader ? elItem.classList.add("dropdown-header") : null;
-                elItem.href = item.href || "#";
-                elItem.setAttribute("data-idx", i.toString());
-                elItem.innerHTML = item.text || "";
-                elMenu.appendChild(elItem);
-
-                // Add the item
-                elMenu.appendChild(elItem);
-            }
-        }
+        // Generate the items
+        generateItems(elMenu, props.value);
     } else {
         // Create the button
         elDropdown = document.createElement("div");
@@ -197,49 +364,8 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
         props.id ? elMenu.setAttribute("aria-labelledby", props.id) : null;
         elDropdown.appendChild(elMenu);
 
-        // Parse the items
-        for (let i = 0; i < items.length; i++) {
-            let item = items[i];
-
-            // See if this is a divider
-            if (item.isDivider) {
-                // Add the divider
-                let elDivider = document.createElement("div");
-                elDivider.className = "dropdown-divider";
-                elMenu.appendChild(elDivider);
-                continue;
-            }
-
-            // Create the item
-            let elItem = document.createElement("a");
-            elItem.className = "dropdown-item";
-            item.isHeader ? elItem.classList.add("dropdown-header") : null;
-            elItem.href = item.href || "#";
-            elItem.setAttribute("data-idx", i.toString());
-            elItem.innerHTML = item.text || "";
-            elMenu.appendChild(elItem);
-
-            // See if this item is selected
-            if (item.isSelected) {
-                // Select the item
-                elItem.classList.add("active");
-            }
-            // Else, see if a value exists
-            else if (props.value) {
-                // Ensure it's an array
-                let values = props.value.length && typeof (props.value) !== "string" ? props.value : [props.value];
-
-                // Parse the values
-                for (let j = 0; j < values.length; j++) {
-                    // See if this item is selected
-                    if (item.value == values[j]) {
-                        // Select the item
-                        elItem.classList.add("active");
-                        break;
-                    }
-                }
-            }
-        }
+        // Generate the items
+        generateItems(elMenu, props.value);
     }
 
     // Create the element
@@ -264,122 +390,6 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
     } else {
         // Set the bootstrap class
         el.classList.add("bs");
-    }
-
-    // See if this is a form
-    if (props.formFl) {
-        // Parse the items
-        let elItems = el.querySelectorAll("option");
-        for (let i = 0; i < elItems.length; i++) {
-            // Set the click event for the custom events
-            elItems[i].addEventListener("click", ev => {
-                let elItem = ev.currentTarget as HTMLElement;
-                let itemIdx = elItem.getAttribute("data-idx");
-                let item: IDropdownItem = items[itemIdx];
-                let selectedItems: Array<IDropdownItem> = [];
-
-                // Parse the selected items
-                let elSelectedItems = el.querySelectorAll("option");
-                for (let i = 0; i < elSelectedItems.length; i++) {
-                    let elSelectedItem = elSelectedItems[i] as HTMLOptionElement;
-                    let selectedIdx = elSelectedItem.getAttribute("data-idx");
-
-                    // See if the item is selected
-                    if (elSelectedItem.selected) {
-                        // Add the item
-                        selectedItems.push(items[selectedIdx]);
-                    }
-                }
-
-                // Sort the items
-                selectedItems = selectedItems.sort((a, b) => {
-                    if (a.text < b.text) { return -1; }
-                    if (a.text > b.text) { return 1; }
-                    return 0;
-                });
-
-                // See if a click event exists
-                if (item.onClick) {
-                    // Call the click event
-                    item.onClick(isMulti ? selectedItems : selectedItems[0], ev);
-                }
-
-                // See if a global change event exists
-                if (props.onChange) {
-                    // Call the change event
-                    props.onChange(isMulti ? selectedItems : selectedItems[0], ev);
-                }
-            });
-        }
-    } else {
-        // Parse the items
-        let elItems = el.querySelectorAll(".dropdown-item");
-        for (let i = 0; i < elItems.length; i++) {
-            // Set the click event for the custom events
-            elItems[i].addEventListener("click", ev => {
-                let elItem = ev.currentTarget as HTMLElement;
-                let itemIdx = elItem.getAttribute("data-idx");
-                let item: IDropdownItem = items[itemIdx];
-                let selectedItems: Array<IDropdownItem> = [];
-
-                // See if this is a menu only
-                if (props.menuOnly) {
-                    // Set the location
-                    item.href && item.href != "#" ? document.location.href = item.href : null;
-                }
-
-                // Parse the selected items
-                let elSelectedItems = el.querySelectorAll(".dropdown-item.active");
-                for (let i = 0; i < elSelectedItems.length; i++) {
-                    let elSelectedItem = elSelectedItems[i] as HTMLElement;
-                    let selectedIdx = elSelectedItem.getAttribute("data-idx");
-                    let selectedItem = items[selectedIdx];
-
-                    // Skip this item
-                    if (itemIdx == selectedIdx) { continue; }
-
-                    // See if this is a multi-select
-                    if (isMulti) {
-                        // Add the item
-                        selectedItems.push(selectedItem);
-                    } else {
-                        // Unselect the item
-                        elSelectedItem.classList.remove("active");
-                    }
-                }
-
-                // See if this item is selected
-                if (elItem.classList.contains("active")) {
-                    // Unselect this item
-                    elItem.classList.remove("active");
-                } else {
-                    // Select this item
-                    elItem.classList.add("active");
-
-                    // Add the item
-                    selectedItems.push(item);
-                }
-
-                // Sort the items
-                selectedItems = selectedItems.sort((a, b) => {
-                    if (a.text < b.text) { return -1; }
-                    if (a.text > b.text) { return 1; }
-                    return 0;
-                });
-
-                // See if a click event exists
-                if (item.onClick) {
-                    // Call the click event
-                    item.onClick(isMulti ? selectedItems : selectedItems[0], ev);
-                }
-
-                // See if a global change event exists
-                if (props.onChange) {
-                    // Call the change event
-                    props.onChange(isMulti ? selectedItems : selectedItems[0], ev);
-                }
-            });
-        }
     }
 
     // Return the dropdown
@@ -432,76 +442,15 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
                 elSelect.innerHTML = "";
                 elSelect.value = "";
 
-                // Parse the items
-                for (let i = 0; i < items.length; i++) {
-                    let item = items[i];
-
-                    // Create the option
-                    let option = document.createElement("option");
-                    option.setAttribute("data-idx", i.toString());
-                    option.selected = item.isSelected ? true : false;
-                    option.innerHTML = item.text || "";
-                    elSelect.appendChild(option);
-                }
-            }
-            // Else, see if we are rendering this in a nav bar
-            else if (props.navFl) {
-                // Get the menu and clear it
-                elMenu = el.querySelector(".dropdown-menu");
-                elMenu.innerHTML = "";
-
-                // Parse the items
-                for (let i = 0; i < items.length; i++) {
-                    let item = items[i];
-
-                    // See if this is a divider
-                    if (item.isDivider) {
-                        // Add the divider
-                        let elDivider = document.createElement("div");
-                        elDivider.className = "dropdown-divider";
-                        elMenu.appendChild(elDivider);
-                    } else {
-                        // Add the item
-                        let elItem = document.createElement("a");
-                        elItem.className = "dropdown-item";
-                        item.isHeader ? elItem.classList.add("dropdown-header") : null;
-                        elItem.href = item.href || "#";
-                        elItem.setAttribute("data-idx", i.toString());
-                        elItem.innerHTML = item.text || "";
-                        elMenu.appendChild(elItem);
-
-                        // Add the item
-                        elMenu.appendChild(elItem);
-                    }
-                }
+                // Generate the items
+                generateItems(elSelect);
             } else {
                 // Get the menu and clear it
                 elMenu = el.querySelector(".dropdown-menu");
                 elMenu.innerHTML = "";
 
-                // Parse the items
-                for (let i = 0; i < items.length; i++) {
-                    let item = items[i];
-
-                    // See if this is a divider
-                    if (item.isDivider) {
-                        // Add the divider
-                        let elDivider = document.createElement("div");
-                        elDivider.className = "dropdown-divider";
-                        elMenu.appendChild(elDivider);
-                        continue;
-                    }
-
-                    // Create the item
-                    let elItem = document.createElement("a");
-                    elItem.className = "dropdown-item";
-                    item.isHeader ? elItem.classList.add("dropdown-header") : null;
-                    elItem.href = item.href || "#";
-                    elItem.setAttribute("data-idx", i.toString());
-                    elItem.innerHTML = item.text || "";
-                    item.isSelected ? elItem.classList.add("active") : null;
-                    elMenu.appendChild(elItem);
-                }
+                // Generate the items
+                generateItems(elMenu);
             }
         },
         toggle: () => {
