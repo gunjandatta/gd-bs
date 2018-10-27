@@ -852,7 +852,7 @@ declare module 'gd-bs/components/types/inputGroup' {
         */
     export interface IInputGroup {
             /** The element. */
-            el: Element;
+            el: HTMLElement;
     }
     
     /**

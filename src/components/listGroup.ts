@@ -103,10 +103,13 @@ export const ListGroup = (props: IListGroupProps): IListGroup => {
         }
 
         // Set the content
-        elItem.innerHTML = [
-            (props.isTabs ? item.tabName : item.content) || "",
-            item.badge ? Badge(item.badge).el.outerHTML : ""
-        ].join('\n');
+        elItem.innerHTML = (props.isTabs ? item.tabName : item.content) || "";
+
+        // See if there is a badge
+        if (item.badge) {
+            // Append a badge
+            elItem.appendChild(Badge(item.badge).el);
+        }
 
         // See if we are rendering tabs
         if (props.isTabs) {
