@@ -26,11 +26,13 @@ export enum FormControlTypes {
  * Form Control
  */
 export const FormControl = (props: IFormControlProps): IFormControl => {
-    let el = props.el || document.createElement("div");
-
     let cb: ICheckboxGroup = null;
     let ddl: IDropdown = null;
     let tb: IInputGroup = null;
+
+    // Create the element
+    let el = props.el || document.createElement("div");
+    el.className = props.controlClassName || "";
 
     // Render the control based on the type
     switch (props.type) {

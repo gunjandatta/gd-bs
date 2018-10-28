@@ -763,6 +763,7 @@ declare module 'gd-bs/components/types/formControl' {
         */
     export interface IFormControlProps {
             className?: string;
+            controlClassName?: string;
             data?: any;
             description?: string;
             el?: HTMLElement;

@@ -260,7 +260,8 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
 
         // Create the select
         let elSelect = document.createElement("select");
-        elSelect.className = "form-control";
+        elSelect.className = props.className || "";
+        elSelect.classList.add("form-control");
         elSelect.multiple = props.multi ? true : false;
         elForm.appendChild(elSelect);
 
