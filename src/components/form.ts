@@ -11,6 +11,7 @@ export const Form = (props: IFormProps): IForm => {
 
     // Create the form element
     let form = document.createElement("form");
+    form.className = props.className || "";
 
     // Helper method for the events
     let executeEvent = (event: any, props: any): PromiseLike<any> => {

@@ -32,6 +32,7 @@ export interface IFormColumn {
  * Form Properties
  */
 export interface IFormProps {
+    className?: string;
     el?: Element | HTMLElement,
     rows?: Array<IFormRow>;
     onControlRendering?: (control: IFormControlProps) => void | Promise<IFormControlProps>;
