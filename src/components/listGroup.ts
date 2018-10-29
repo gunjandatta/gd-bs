@@ -71,7 +71,7 @@ export const ListGroup = (props: IListGroupProps): IListGroup => {
             elItem.setAttribute("aria-controls", item.tabName);
         } else {
             // Set the properties
-            elItem.href = item.href;
+            elItem.href = item.href || "#";
         }
 
         // Add the class, based on the item type
