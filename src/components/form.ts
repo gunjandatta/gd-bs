@@ -122,7 +122,7 @@ export const Form = (props: IFormProps): IForm => {
 
                         // Append the control to the column
                         let elControl = control.get();
-                        elCol.appendChild(elControl.el || control.el);
+                        elCol.appendChild(elControl ? elControl.el : control.el);
 
                         // Call the rendered event
                         onRendered(control).then(control => {
@@ -177,7 +177,7 @@ export const Form = (props: IFormProps): IForm => {
                     }
 
                     // Set the element
-                    row.control.el = elNewRow || elRow;;
+                    row.control.el = elNewRow || elRow;
                 } else {
                     // Set the element
                     row.control.el = elRow;

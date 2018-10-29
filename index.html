@@ -85,6 +85,35 @@
                             },
                             placeholder: "Select Post..."
                         }
+                    },
+                    {
+                        columns: [
+                        {
+                                size: 5,
+                                control: {
+                                    label: "First Name",
+                                    type: GD.Components.FormControlTypes.TextField
+                                }
+                            },
+                            {
+                                size: 5,
+                                control: {
+                                    label: "Last Name",
+                                    type: GD.Components.FormControlTypes.TextField
+                                }
+                            },
+                            {
+                                size: 2,
+                                control: {
+                                    onControlRendered: function(control) {
+                                        GD.Components.Button({
+                                            el: control.el,
+                                            text: "Save"
+                                        });
+                                    }
+                                }
+                            },
+                        ]
                     }
                 ]
             })
