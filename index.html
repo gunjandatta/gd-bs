@@ -159,12 +159,6 @@
                     { text: "Item 10" }
                 ]
             });
-            GD.Components.Button({
-                el: document.querySelector("#button"),
-                text: "Modal",
-                toggle: "modal",
-                target: "#myModal"
-            });
             GD.Components.ButtonGroup({
                 el: document.querySelector("#buttonGroup"),
                 isVertical: true,
@@ -177,8 +171,9 @@
                 ]
             });
             GD.Components.Modal({
+                button: { text: "Modal" },
                 el: document.querySelector("#modal"),
-                id: "myModal",
+                id: "my-modal",
                 title: "My Modal",
                 onClose: function (modal) {
                     console.log("The modal was closed.");

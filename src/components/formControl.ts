@@ -32,7 +32,7 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
 
     // Create the element
     let el = props.el || document.createElement("div");
-    el.className = props.controlClassName || "";
+    el.className = props.controlClassName || el.className;
 
     // Render the control based on the type
     switch (props.type) {

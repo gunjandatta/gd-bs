@@ -71,8 +71,8 @@ export const Form = (props: IFormProps): IForm => {
         });
     }
 
-    // Method to render the form
-    let renderForm = () => {
+    // Method to render the form rows
+    let renderFormRows = () => {
         // Parse the rows
         let rows = props.rows || [];
         for (let i = 0; i < rows.length; i++) {
@@ -90,8 +90,11 @@ export const Form = (props: IFormProps): IForm => {
                 let columns = row.columns || [];
                 for (let j = 0; j < columns.length; j++) {
                     let column = columns[j];
-                    let elCol = document.createElement("div");
                     let colSize = column.size > 0 && column.size < 13 ? column.size : 0;
+
+                    // Create the column
+                    let elCol = document.createElement("div");
+                    elRow.appendChild(elCol);
 
                     // Set the row class name based on the properties
                     elCol.classList.add("form-group");
@@ -103,14 +106,8 @@ export const Form = (props: IFormProps): IForm => {
                         elCol.classList.add(colSize > 0 ? "col-" + colSize : "col");
                     }
 
-                    // Set the element
-                    column.control.el = elCol;
-
                     // Set the value
                     column.control.value = column.control.value || (props.value ? props.value[column.control.name] : null);
-
-                    // Add the column to the row
-                    elRow.appendChild(elCol);
 
                     // Call the rendering event
                     onRendering(column.control).then(controlProps => {
@@ -122,6 +119,9 @@ export const Form = (props: IFormProps): IForm => {
 
                         // Create the control
                         let control = FormControl(controlProps || column.control);
+
+                        // Append the control to the column
+                        elCol.appendChild(control.get().el);
 
                         // Call the rendered event
                         onRendered(control).then(control => {
@@ -206,8 +206,8 @@ export const Form = (props: IFormProps): IForm => {
         }
     }
 
-    // Render the form
-    renderForm();
+    // Render the form rows
+    renderFormRows();
 
     // Create the element
     let el = document.createElement("div");
