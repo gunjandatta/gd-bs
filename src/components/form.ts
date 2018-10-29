@@ -121,7 +121,8 @@ export const Form = (props: IFormProps): IForm => {
                         let control = FormControl(controlProps || column.control);
 
                         // Append the control to the column
-                        elCol.appendChild(control.get().el);
+                        let elControl = control.get();
+                        elCol.appendChild(elControl.el || control.el);
 
                         // Call the rendered event
                         onRendered(control).then(control => {
