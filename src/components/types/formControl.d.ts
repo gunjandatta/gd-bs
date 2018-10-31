@@ -35,7 +35,7 @@ export interface IFormControlProps {
     onControlRendering?: (control: IFormControlProps) => void | Promise<IFormControlProps>;
     onControlRendered?: (control: IFormControl) => void | Promise<IFormControl>;
     onGetValue?: (control: IFormControlProps) => any;
-    onValidate?: (control: IFormControlProps, value: any) => boolean;
+    onValidate?: (control: IFormControlProps, value: any) => boolean | IFormControlValidationResult;
     required?: boolean;
     type?: number;
     value?: any;
@@ -92,4 +92,13 @@ export type IFormControlTypes = {
     Range: number;
     TextArea: number;
     TextField: number;
+}
+
+/**
+ * Form Control Validation Result
+ */
+export interface IFormControlValidationResult {
+    invalidMessage?: string;
+    isValid?: boolean;
+    validMessage?: string;
 }

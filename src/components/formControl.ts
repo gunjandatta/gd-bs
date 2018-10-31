@@ -4,7 +4,7 @@ import { Dropdown } from "./dropdown";
 import { IDropdown, IDropdownItem } from "./types/dropdown";
 import { InputGroup, InputGroupTypes } from "./inputGroup";
 import { IInputGroup } from "./types/inputGroup";
-import { IFormControl, IFormControlProps, IFormControlPropsCheckbox, IFormControlPropsDropdown, IFormControlPropsNumberField, IFormControlPropsTextField } from "./types/formControl";
+import { IFormControl, IFormControlProps, IFormControlPropsCheckbox, IFormControlPropsDropdown, IFormControlPropsNumberField, IFormControlPropsTextField, IFormControlValidationResult } from "./types/formControl";
 
 /**
  * Form Control Types
@@ -231,7 +231,7 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
         // Get the value
         getValue,
         isValid: () => {
-            let isValid = true;
+            let validation: IFormControlValidationResult = { isValid: true };
 
             // Get the value
             let value = getValue();
@@ -241,19 +241,28 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
                 // See if a value doesn't exists
                 if (typeof (value) === "undefined") {
                     // Set the flag
-                    isValid = false;
+                    validation.isValid = false;
                 }
                 // Else, see if the value is an array
-                else if (value.length >= 0) {
+                else if (typeof (value.length) === "number") {
                     // Set the flag
-                    isValid = value.length > 0;
+                    validation.isValid = value.length > 0;
                 }
             }
 
             // See if an event exists
             if (props.onValidate) {
                 // Call the event
-                isValid = props.onValidate(props, value);
+                let returnValue = props.onValidate(props, value);
+                if (typeof (returnValue) === "boolean") {
+                    // Set the flag
+                    validation.isValid = returnValue;
+                }
+                // Else, ensure it exists
+                else if (returnValue) {
+                    // Set the validation
+                    validation = returnValue;
+                }
             }
 
             // Get the form control
@@ -264,11 +273,41 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
                 elFormControl.classList.remove("is-valid");
 
                 // Set the class
-                elFormControl.classList.add(isValid ? "is-valid" : "is-invalid");
+                elFormControl.classList.add(validation.isValid ? "is-valid" : "is-invalid");
+
+                // See if there is invalid feedback
+                if (validation.invalidMessage) {
+                    // Get the element
+                    let elMessage = el.querySelector(".invalid-feedback");
+                    if (elMessage == null) {
+                        // Create the element
+                        elMessage = document.createElement("div");
+                        elMessage.className = "invalid-feedback";
+                        elFormControl.parentElement.appendChild(elMessage);
+                    }
+
+                    // Set the message
+                    elMessage.innerHTML = validation.invalidMessage;
+                }
+
+                // See if there is valid feedback
+                if (validation.validMessage) {
+                    // Get the element
+                    let elMessage = el.querySelector(".valid-feedback");
+                    if (elMessage == null) {
+                        // Create the element
+                        elMessage = document.createElement("div");
+                        elMessage.className = "valid-feedback";
+                        elFormControl.parentElement.appendChild(elMessage);
+                    }
+
+                    // Set the message
+                    elMessage.innerHTML = validation.validMessage;
+                }
             }
 
             // Return the flag
-            return isValid;
+            return validation.isValid;
         },
         props
     }

@@ -50,7 +50,7 @@
                     trigger: "focus"
                 }
             });
-            GD.Components.Form({
+            var myForm = GD.Components.Form({
                 el: document.getElementById("myForm"),
                 rows: [
                     {
@@ -72,6 +72,7 @@
                             onControlRendered: (control) => {
                                 window.myFormControl = control;
                                 control.get().setItems([
+                                    { text: "" },
                                     { text: "Update Item 1" },
                                     { text: "Update Item 2" },
                                     { text: "Update Item 3" },
@@ -80,15 +81,19 @@
                             onChange: (item) => {
                                 alert("Selected Item: " + item.text);
                             },
-                            onValidate: function (something) {
-                                return true;
+                            onValidate: function (props, item) {
+                                return {
+                                    invalidMessage: "This is invalid.",
+                                    isValid: item.text ? true : false,
+                                    validMessage: "This is valid"
+                                };
                             },
                             placeholder: "Select Post..."
                         }
                     },
                     {
                         columns: [
-                        {
+                            {
                                 size: 5,
                                 control: {
                                     label: "First Name",
@@ -105,10 +110,11 @@
                             {
                                 size: 2,
                                 control: {
-                                    onControlRendered: function(control) {
+                                    onControlRendered: function (control) {
                                         GD.Components.Button({
                                             el: control.el,
-                                            text: "Save"
+                                            text: "Save",
+                                            onClick: function () { myForm.isValid(); }
                                         });
                                     }
                                 }
