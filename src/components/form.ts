@@ -1,6 +1,7 @@
 import { IForm, IFormProps } from "./types/form";
 import { IFormControl, IFormControlProps } from "./types/formControl";
 import { FormControl, FormControlTypes } from "./formControl";
+import { Progress } from "./progress";
 
 /**
  * Form
@@ -54,17 +55,32 @@ export const Form = (props: IFormProps): IForm => {
     let onRendering = (controlProps: IFormControlProps): Promise<IFormControlProps> => {
         // Return a promise
         return new Promise((resolve, reject) => {
+            // Render a loading message
+            let loadingMessage = Progress({
+                el: controlProps.el,
+                isAnimated: true,
+                isStriped: true,
+                size: 100,
+                label: controlProps.loadingMessage || "Loading the Data..."
+            });
+
             // Ensure properties exist
             if (controlProps) {
                 // Execute the control event
                 executeEvent(controlProps.onControlRendering, controlProps).then(controlProps => {
                     // Execute the component event
                     executeEvent(props.onControlRendering, controlProps).then(controlProps => {
+                        // Remove the loading message
+                        loadingMessage.el.parentElement ? loadingMessage.el.parentElement.removeChild(loadingMessage.el) : null;
+
                         // Resolve the promise
                         resolve(controlProps);
                     });
                 });
             } else {
+                // Remove the loading message
+                loadingMessage.el.parentElement ? loadingMessage.el.parentElement.removeChild(loadingMessage.el) : null;
+
                 // Resolve the promise
                 resolve();
             }
