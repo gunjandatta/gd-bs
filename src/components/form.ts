@@ -238,13 +238,29 @@ export const Form = (props: IFormProps): IForm => {
     return {
         controls,
         el: form,
+        getControl: (name: string) => {
+            let control = null;
+
+            // Parse the controls
+            for (let i = 0; i < controls.length; i++) {
+                let control = controls[i];
+                if (control.props.name) {
+                    // Set the control
+                    control = control;
+                    break;
+                }
+            }
+
+            // Return the control
+            return control;
+        },
         getValues: () => {
             let values = {};
 
             // Parse the controls
             for (let i = 0; i < controls.length; i++) {
                 let control = controls[i];
-                if (control && control.props.name) {
+                if (control.props.name) {
                     // Set the value
                     values[control.props.name] = control.getValue();
                 }

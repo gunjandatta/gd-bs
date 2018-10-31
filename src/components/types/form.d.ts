@@ -15,7 +15,8 @@ export const FormControlTypes: IFormControlTypes;
  */
 export interface IForm {
     controls: Array<IFormControl>;
-    el: HTMLFormElement,
+    el: HTMLFormElement;
+    getControl: (name: string) => IFormControl;
     getValues: () => { [key: string]: any };
     isValid: () => boolean;
 }
