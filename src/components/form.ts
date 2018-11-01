@@ -52,16 +52,16 @@ export const Form = (props: IFormProps): IForm => {
     }
 
     // The on rendering event
-    let onRendering = (controlProps: IFormControlProps): Promise<IFormControlProps> => {
+    let onRendering = (el: HTMLElement, controlProps: IFormControlProps): Promise<IFormControlProps> => {
         // Return a promise
         return new Promise((resolve, reject) => {
             // Render a loading message
             let loadingMessage = Progress({
-                el: controlProps.el,
+                el,
                 isAnimated: true,
                 isStriped: true,
                 size: 100,
-                label: controlProps.loadingMessage || "Loading the Data..."
+                label: controlProps.loadingMessage ? controlProps.loadingMessage : "Loading the Data..."
             });
 
             // Ensure properties exist
@@ -126,7 +126,7 @@ export const Form = (props: IFormProps): IForm => {
                     column.control.value = column.control.value || (props.value ? props.value[column.control.name] : null);
 
                     // Call the rendering event
-                    onRendering(column.control).then(controlProps => {
+                    onRendering(elCol, column.control).then(controlProps => {
                         // See if there is a label
                         if (controlProps.label) {
                             // Set the label element
@@ -203,7 +203,7 @@ export const Form = (props: IFormProps): IForm => {
                 form.appendChild(elRow);
 
                 // Call the rendering event
-                onRendering(row.control).then(controlProps => {
+                onRendering(elRow, row.control).then(controlProps => {
                     // See if a label exists
                     if (elLabel && controlProps.label) {
                         // Set the label

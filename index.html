@@ -108,6 +108,19 @@
                                 }
                             },
                             {
+                                size: 5,
+                                control: {
+                                    label: "Delayed Textbox",
+                                    type: GD.Components.FormControlTypes.TextField,
+                                    loadingMessage: "Loading...",
+                                    onControlRendering: function(props) {
+                                        return { then: function (resolve) {
+                                            setTimeout(function() { resolve(props); }, 5000);
+                                        } }
+                                    }
+                                }
+                            },
+                            {
                                 size: 2,
                                 control: {
                                     onControlRendered: function (control) {
