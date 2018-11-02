@@ -49,7 +49,9 @@ export interface IFormControlPropsCheckbox extends IFormControlProps {
     el?: HTMLInputElement;
     hideLabel?: boolean;
     items?: Array<ICheckboxGroupItem>;
+    multi?: boolean;
     onChange?: (item: Array<ICheckboxGroupItem>) => void;
+    type?: number;
 }
 
 /**

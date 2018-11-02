@@ -45,7 +45,9 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
                 hideLabel: (props as IFormControlPropsCheckbox).hideLabel,
                 items: (props as IFormControlPropsCheckbox).items,
                 label: props.label,
-                onChange: (props as IFormControlPropsCheckbox).onChange
+                multi: (props as IFormControlPropsCheckbox).multi,
+                onChange: (props as IFormControlPropsCheckbox).onChange,
+                type: (props as IFormControlPropsCheckbox).type
             });
             break;
         // Dropdown

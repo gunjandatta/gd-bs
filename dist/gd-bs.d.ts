@@ -791,7 +791,9 @@ declare module 'gd-bs/components/types/formControl' {
             el?: HTMLInputElement;
             hideLabel?: boolean;
             items?: Array<ICheckboxGroupItem>;
+            multi?: boolean;
             onChange?: (item: Array<ICheckboxGroupItem>) => void;
+            type?: number;
     }
     
     /**
