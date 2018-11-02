@@ -42,7 +42,7 @@ export interface ICheckboxGroupProps {
     label?: string;
     items?: Array<ICheckboxGroupItem>;
     multi?: boolean;
-    //onChange?: (value: Array<ICheckboxGroupItem>) => void;
+    onChange?: (value: Array<ICheckboxGroupItem>) => void;
     type?: number;
 }
 

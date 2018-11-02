@@ -64,10 +64,11 @@ export const CheckboxGroup = (props: ICheckboxGroupProps): ICheckboxGroup => {
         // Set the event
         cb.addEventListener("click", ev => {
             let idx = (ev.currentTarget as HTMLInputElement).getAttribute("data-idx");
+            let selectedItems: Array<ICheckboxGroupItem> = [];
 
             // See if we aren't allow multiple selections
             if (!isMulti) {
-                // Get the check boxes
+                // Parse the check boxes
                 let elCheckboxes = el.querySelectorAll("input[type='checkbox']");
                 for (let i = 0; i < elCheckboxes.length; i++) {
                     let elCheckbox = elCheckboxes[i] as HTMLInputElement;
@@ -84,14 +85,32 @@ export const CheckboxGroup = (props: ICheckboxGroupProps): ICheckboxGroup => {
                 }
             }
 
-            // Get the item
-            let item = items[idx];
-            if (item) {
-                // See if there is a change event
-                if (item.onChange) {
-                    // Call the event
-                    item.onChange(item);
+            // Parse the selected items
+            let elCheckboxes = el.querySelectorAll("input[type='checkbox']:checked");
+            for (let i = 0; i < elCheckboxes.length; i++) {
+                let elCheckbox = elCheckboxes[i];
+
+                // Get the item
+                let item = props.items[elCheckbox.getAttribute("data-idx")];
+                if (item) {
+                    // Add the selected item
+                    selectedItems.push(item);
+
+                    // See if this is the target item
+                    if (idx == i.toString()) {
+                        // See if there is a change event
+                        if (item.onChange) {
+                            // Call the event
+                            item.onChange(item);
+                        }
+                    }
                 }
+            }
+
+            // See if there is a change event
+            if (props.onChange) {
+                // Call the event
+                props.onChange(selectedItems);
             }
         });
     }

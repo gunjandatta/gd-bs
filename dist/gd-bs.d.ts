@@ -536,7 +536,7 @@ declare module 'gd-bs/components/types/checkboxGroup' {
             label?: string;
             items?: Array<ICheckboxGroupItem>;
             multi?: boolean;
-            //onChange?: (value: Array<ICheckboxGroupItem>) => void;
+            onChange?: (value: Array<ICheckboxGroupItem>) => void;
             type?: number;
     }
     
@@ -791,7 +791,7 @@ declare module 'gd-bs/components/types/formControl' {
             el?: HTMLInputElement;
             hideLabel?: boolean;
             items?: Array<ICheckboxGroupItem>;
-            onChange?: (checked?: boolean) => void;
+            onChange?: (item: Array<ICheckboxGroupItem>) => void;
     }
     
     /**
