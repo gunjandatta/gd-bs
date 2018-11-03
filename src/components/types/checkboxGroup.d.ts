@@ -16,7 +16,7 @@ export interface ICheckboxGroup {
     el: HTMLElement;
 
     /** Gets the values. */
-    getValues: () => Array<ICheckboxGroupItem>;
+    getValues: () => ICheckboxGroupItem | Array<ICheckboxGroupItem>;
 }
 
 /**

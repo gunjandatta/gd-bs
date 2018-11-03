@@ -510,7 +510,7 @@ declare module 'gd-bs/components/types/checkboxGroup' {
             el: HTMLElement;
     
             /** Gets the values. */
-            getValues: () => Array<ICheckboxGroupItem>;
+            getValues: () => ICheckboxGroupItem | Array<ICheckboxGroupItem>;
     }
     
     /**
@@ -873,6 +873,9 @@ declare module 'gd-bs/components/types/inputGroup' {
     export interface IInputGroup {
             /** The element. */
             el: HTMLElement;
+    
+            /** Method to return the value. */
+            getValue: () => string;
     }
     
     /**

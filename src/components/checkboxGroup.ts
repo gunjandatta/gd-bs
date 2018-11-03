@@ -153,12 +153,12 @@ export const CheckboxGroup = (props: ICheckboxGroupProps): ICheckboxGroup => {
                 // See if this is checked and the item exists
                 if (item && cb.checked) {
                     // Add the value
-                    values.push();
+                    values.push(item);
                 }
             }
 
             // Return the values
-            return values;
+            return props.multi ? values : values[0];
         }
     };
 }

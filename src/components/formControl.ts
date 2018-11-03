@@ -202,42 +202,20 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
 
         // See if this is a checkbox
         if (cb) {
-            // Return the value
-            let elCheckbox = cb.el.querySelector("input");
-            return elCheckbox ? elCheckbox.checked : null;
+            // Return the value(s)
+            return cb.getValues();
         }
 
         // See if this is a dropdown
         if (ddl) {
-            // See if this is a multi-select
-            if (ddl.isMulti) {
-                let ddlValues = [];
-
-                // Parse the values
-                let values = ddl.getValue() as Array<IDropdownItem>;
-                for (let i = 0; i < values.length; i++) {
-                    let value = values[i];
-
-                    // Add the value
-                    ddlValues.push(value);
-                }
-
-                // Return the values
-                return ddlValues;
-            }
-
-            // Get the value
-            let value = ddl.getValue() as IDropdownItem;
-
             // Return the value
-            return value ? value : null;
+            return ddl.getValue();
         }
 
         // See if this is a textbox
         if (tb) {
             // Return the value
-            let elTextbox = tb.el.querySelector("input") || tb.el.querySelector("textarea");
-            return elTextbox ? elTextbox.value : null;
+            return tb.getValue();
         }
     }
 

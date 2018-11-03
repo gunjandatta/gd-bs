@@ -222,5 +222,13 @@ export const InputGroup = (props: IInputGroupProps): IInputGroup => {
     }
 
     // Return the input group
-    return { el: props.formFl ? elInput : inputGroup };
+    return {
+        el: props.formFl ? elInput : inputGroup,
+        getValue: () => {
+            // Return the value
+            let elTextbox: HTMLInputElement = elInput || inputGroup as any;
+            elTextbox = elTextbox.querySelector("input") || elTextbox.querySelector("textarea") as any;
+            return elTextbox ? elTextbox.value : null;
+        }
+    };
 }

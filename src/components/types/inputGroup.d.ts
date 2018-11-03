@@ -16,6 +16,9 @@ export const InputGroupTypes: IInputGroupTypes;
 export interface IInputGroup {
     /** The element. */
     el: HTMLElement;
+
+    /** Method to return the value. */
+    getValue: () => string;
 }
 
 /**
