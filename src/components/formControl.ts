@@ -1,4 +1,4 @@
-import { CheckboxGroup } from "./checkboxGroup";
+import { CheckboxGroup, CheckboxGroupTypes } from "./checkboxGroup";
 import { ICheckboxGroup } from "./types/checkboxGroup";
 import { Dropdown } from "./dropdown";
 import { IDropdown, IDropdownItem } from "./types/dropdown";
@@ -16,10 +16,11 @@ export enum FormControlTypes {
     File = 4,
     MultiDropdown = 5,
     Password = 6,
-    Range = 7,
-    Readonly = 8,
-    TextArea = 9,
-    TextField = 10
+    Radio = 7,
+    Range = 8,
+    Readonly = 9,
+    TextArea = 10,
+    TextField = 11
 }
 
 /**
@@ -47,7 +48,7 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
                 label: props.label,
                 multi: (props as IFormControlPropsCheckbox).multi,
                 onChange: (props as IFormControlPropsCheckbox).onChange,
-                type: (props as IFormControlPropsCheckbox).type
+                type: CheckboxGroupTypes.Checkbox
             });
             break;
         // Dropdown
@@ -115,6 +116,20 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
                 placeholder: (props as IFormControlPropsTextField).placeholder,
                 type: InputGroupTypes.Password,
                 value: props.value
+            });
+            break;
+        // Radio
+        case FormControlTypes.Radio:
+            // Add the checkbox group
+            cb = CheckboxGroup({
+                className: props.className,
+                el,
+                hideLabel: (props as IFormControlPropsCheckbox).hideLabel,
+                items: (props as IFormControlPropsCheckbox).items,
+                label: props.label,
+                multi: (props as IFormControlPropsCheckbox).multi,
+                onChange: (props as IFormControlPropsCheckbox).onChange,
+                type: CheckboxGroupTypes.Radio
             });
             break;
         // Range
@@ -279,7 +294,7 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
                 elFormControl.classList.add(validation.isValid ? "is-valid" : "is-invalid");
 
                 // See if there is invalid feedback
-                if (validation.invalidMessage) {
+                if (validation.invalidMessage || props.errorMessage) {
                     // Get the element
                     let elMessage = el.querySelector(".invalid-feedback");
                     if (elMessage == null) {
@@ -290,7 +305,7 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
                     }
 
                     // Set the message
-                    elMessage.innerHTML = validation.invalidMessage;
+                    elMessage.innerHTML = validation.invalidMessage || props.errorMessage;
                 }
 
                 // See if there is valid feedback
