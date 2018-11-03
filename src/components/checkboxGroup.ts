@@ -63,35 +63,34 @@ export const CheckboxGroup = (props: ICheckboxGroupProps): ICheckboxGroup => {
 
         // Set the event
         cb.addEventListener("click", ev => {
-            let idx = (ev.currentTarget as HTMLInputElement).getAttribute("data-idx");
+            let el = ev.currentTarget as HTMLElement;
+            let idx = el.getAttribute("data-idx");
             let selectedItems: Array<ICheckboxGroupItem> = [];
+
+            // Get the selected items
+            let elSelectedItems = el.parentElement.parentElement.querySelectorAll("input:checked");
 
             // See if we aren't allow multiple selections
             if (!isMulti) {
-                // Parse the check boxes
-                let elCheckboxes = el.querySelectorAll("input[type='checkbox']");
-                for (let i = 0; i < elCheckboxes.length; i++) {
-                    let elCheckbox = elCheckboxes[i] as HTMLInputElement;
+                // Parse the selected items
+                for (let i = 0; i < elSelectedItems.length; i++) {
+                    let elSelectedItem = elSelectedItems[i] as HTMLInputElement;
 
                     // Skip this item
-                    if (elCheckbox.getAttribute("data-idx") == idx) { continue; }
+                    if (elSelectedItem.getAttribute("data-idx") == idx) { continue; }
 
-                    // See if it's checked
-                    if (elCheckbox.checked) {
-                        // Uncheck it
-                        elCheckbox.checked = false;
-                        elCheckbox.value = "";
-                    }
+                    // Uncheck it
+                    elSelectedItem.checked = false;
+                    elSelectedItem.value = "";
                 }
             }
 
             // Parse the selected items
-            let elCheckboxes = el.querySelectorAll("input[type='checkbox']:checked");
-            for (let i = 0; i < elCheckboxes.length; i++) {
-                let elCheckbox = elCheckboxes[i];
+            for (let i = 0; i < elSelectedItems.length; i++) {
+                let elSelectedItem = elSelectedItems[i] as HTMLInputElement;
 
                 // Get the item
-                let item = props.items[elCheckbox.getAttribute("data-idx")];
+                let item = props.items[elSelectedItem.getAttribute("data-idx")];
                 if (item) {
                     // Add the selected item
                     selectedItems.push(item);

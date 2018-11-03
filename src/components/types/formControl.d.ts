@@ -8,6 +8,11 @@ import { IInputGroup } from "./inputGroup";
 export const FormControl: (control: IFormControlProps) => IFormControl;
 
 /**
+ * Form Control Types
+ */
+export const FormControlTypes: IFormControlTypes;
+
+/**
  * Form Control
  */
 export interface IFormControl {
@@ -51,7 +56,6 @@ export interface IFormControlPropsCheckbox extends IFormControlProps {
     items?: Array<ICheckboxGroupItem>;
     multi?: boolean;
     onChange?: (item: Array<ICheckboxGroupItem>) => void;
-    type?: number;
 }
 
 /**
@@ -60,7 +64,6 @@ export interface IFormControlPropsCheckbox extends IFormControlProps {
 export interface IFormControlPropsDropdown extends IFormControlProps {
     items?: Array<IDropdownItem>;
     onChange?: (item: IDropdownItem | Array<IDropdownItem>) => void;
-    type?: number;
 }
 
 /**
@@ -92,7 +95,9 @@ export type IFormControlTypes = {
     File: number;
     MultiDropdown: number;
     Password: number;
+    Radio; number;
     Range: number;
+    Readonly: number;
     TextArea: number;
     TextField: number;
 }
