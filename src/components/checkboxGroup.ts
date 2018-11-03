@@ -141,7 +141,7 @@ export const CheckboxGroup = (props: ICheckboxGroupProps): ICheckboxGroup => {
     // Return the checkbox
     return {
         el: cbGroup,
-        getValues: () => {
+        getValue: () => {
             let values: Array<ICheckboxGroupItem> = [];
 
             // Parse the checkboxes

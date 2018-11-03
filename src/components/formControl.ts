@@ -203,7 +203,7 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
         // See if this is a checkbox
         if (cb) {
             // Return the value(s)
-            return cb.getValues();
+            return cb.getValue();
         }
 
         // See if this is a dropdown
