@@ -291,7 +291,10 @@ export const Form = (props: IFormProps): IForm => {
             // Parse the controls
             for (let i = 0; i < controls.length; i++) {
                 // See if this control is valid
-                isValid = isValid && controls[i].isValid();
+                if (controls[i].isValid() == false) {
+                    // Set the flag
+                    isValid = false;
+                }
             }
 
             // Return the flag

@@ -43,7 +43,7 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
             cb = CheckboxGroup({
                 className: props.className,
                 el,
-                hideLabel: (props as IFormControlPropsCheckbox).hideLabel,
+                hideLabel: true,
                 items: (props as IFormControlPropsCheckbox).items,
                 label: props.label,
                 multi: (props as IFormControlPropsCheckbox).multi,
@@ -124,7 +124,7 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
             cb = CheckboxGroup({
                 className: props.className,
                 el,
-                hideLabel: (props as IFormControlPropsCheckbox).hideLabel,
+                hideLabel: true,
                 items: (props as IFormControlPropsCheckbox).items,
                 label: props.label,
                 multi: (props as IFormControlPropsCheckbox).multi,
@@ -251,7 +251,8 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
         isValid: () => {
             let validation: IFormControlValidationResult = { isValid: true };
 
-            // Get the value
+            // Get the element and value
+            let elControl = (cb || ddl || tb) ? (cb || ddl || tb).el : el;
             let value = getValue();
 
             // See if this control is required
@@ -284,7 +285,7 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
             }
 
             // Get the form control
-            let elFormControl = el.querySelector(".form-control") as HTMLElement;
+            let elFormControl = elControl.querySelector(".form-control") as HTMLElement;
             if (elFormControl) {
                 // Clear the invalid/valid classes
                 elFormControl.classList.remove("is-invalid");
@@ -296,7 +297,7 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
                 // See if there is invalid feedback
                 if (validation.invalidMessage || props.errorMessage) {
                     // Get the element
-                    let elMessage = el.querySelector(".invalid-feedback");
+                    let elMessage = elControl.querySelector(".invalid-feedback");
                     if (elMessage == null) {
                         // Create the element
                         elMessage = document.createElement("div");
@@ -311,7 +312,7 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
                 // See if there is valid feedback
                 if (validation.validMessage) {
                     // Get the element
-                    let elMessage = el.querySelector(".valid-feedback");
+                    let elMessage = elControl.querySelector(".valid-feedback");
                     if (elMessage == null) {
                         // Create the element
                         elMessage = document.createElement("div");
