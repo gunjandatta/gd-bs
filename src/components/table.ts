@@ -29,6 +29,7 @@ export const Table = (props: ITableProps): ITable => {
             let elCol = document.createElement("th");
             elCol.className = col.className || "";
             elCol.innerHTML = col.isHidden ? "" : col.title || col.name;
+            elCol.setAttribute("data-idx", i.toString());
             elCol.setAttribute("scope", "col");
             elRow.appendChild(elCol);
 
@@ -42,6 +43,22 @@ export const Table = (props: ITableProps): ITable => {
             if (props.onRenderHeaderCell) {
                 // Call the event
                 props.onRenderHeaderCell(elCol, col);
+            }
+
+            // See if there is a click event
+            if (col.onClickHeader || props.onClickHeader) {
+                // Add the click event
+                elCol.addEventListener("click", ev => {
+                    let elCol = ev.currentTarget as HTMLTableHeaderCellElement;
+
+                    // Get the column
+                    let col = props.columns[parseInt(elCol.getAttribute("data-idx"))];
+                    if (col) {
+                        // Call the event
+                        col.onClickHeader ? col.onClickHeader(elCol, col) : null;
+                        props.onClickHeader ? props.onClickHeader(elCol, col) : null;
+                    }
+                });
             }
         }
 
@@ -74,6 +91,8 @@ export const Table = (props: ITableProps): ITable => {
             let elCell = document.createElement("td");
             elCell.className = col.className || "";
             elCell.innerHTML = value;
+            elCell.setAttribute("data-row", i.toString());
+            elCell.setAttribute("data-idx", j.toString());
             elRow.appendChild(elCell);
 
             // See if there is a scope
@@ -92,6 +111,23 @@ export const Table = (props: ITableProps): ITable => {
             if (props.onRenderCell) {
                 // Call the event
                 props.onRenderCell(elCell, col, value);
+            }
+
+            // See if there is a click event
+            if (col.onClickCell || props.onClickCell) {
+                // Add the click event
+                elCell.addEventListener("click", ev => {
+                    let elCell = ev.currentTarget as HTMLTableHeaderCellElement;
+
+                    // Get the column
+                    let col = props.columns[parseInt(elCell.getAttribute("data-idx"))];
+                    let row = props.rows[parseInt(elCell.getAttribute("data-row"))] || {};
+                    if (col) {
+                        // Call the event
+                        col.onClickCell ? col.onClickCell(elCell, col) : null;
+                        props.onClickCell ? props.onClickCell(elCell, col, row[col.name]) : null;
+                    }
+                });
             }
         }
 

@@ -17,6 +17,8 @@ export interface ITableProps {
     className?: string;
     columns?: Array<ITableColumn>;
     el?: Element | HTMLElement;
+    onClickCell?: (el: HTMLTableDataCellElement, column?: ITableColumn, value?: string) => void;
+    onClickHeader?: (el: HTMLTableHeaderCellElement, column?: ITableColumn) => void;
     onRenderCell?: (el?: HTMLTableDataCellElement, column?: ITableColumn, value?: string) => void;
     onRenderHeaderCell?: (el?: HTMLTableDataCellElement, column?: ITableColumn) => void;
     onRenderHeaderRow?: (el?: HTMLTableRowElement) => void;
@@ -32,6 +34,8 @@ export interface ITableColumn {
     data?: any;
     isHidden?: boolean;
     name: string;
+    onClickCell?: (el: HTMLTableDataCellElement, column?: ITableColumn, value?: string) => void;
+    onClickHeader?: (el: HTMLTableHeaderCellElement, column?: ITableColumn) => void;
     onRenderCell?: (el: HTMLTableDataCellElement, column?: ITableColumn, value?: string) => void;
     onRenderHeader?: (el?: HTMLTableDataCellElement, column?: ITableColumn) => void;
     scope?: string;
