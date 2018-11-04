@@ -43,7 +43,7 @@ export interface IDropdownItem {
     isDivider?: boolean;
     isHeader?: boolean;
     isSelected?: boolean;
-    onClick?: (item?: IDropdownItem | Array<IDropdownItem>, ev?: Event) => void;
+    onClick?: (item?: IDropdownItem, ev?: Event) => void;
     text?: string;
     value?: string;
 }

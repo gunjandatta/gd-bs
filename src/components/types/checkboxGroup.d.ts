@@ -23,12 +23,12 @@ export interface ICheckboxGroup {
  * Checkbox Group Item
  */
 export interface ICheckboxGroupItem {
-    checked?: boolean;
     data?: any;
     isDisabled?: boolean;
+    isSelected?: boolean;
     label?: string;
     name?: string;
-    onChange?: (value: ICheckboxGroupItem) => void;
+    onChange?: (item: ICheckboxGroupItem) => void;
 }
 
 /**
@@ -42,7 +42,7 @@ export interface ICheckboxGroupProps {
     label?: string;
     items?: Array<ICheckboxGroupItem>;
     multi?: boolean;
-    onChange?: (value: Array<ICheckboxGroupItem>) => void;
+    onChange?: (items: ICheckboxGroupItem | Array<ICheckboxGroupItem>) => void;
     type?: number;
 }
 

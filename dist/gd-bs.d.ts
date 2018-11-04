@@ -517,12 +517,12 @@ declare module 'gd-bs/components/types/checkboxGroup' {
         * Checkbox Group Item
         */
     export interface ICheckboxGroupItem {
-            checked?: boolean;
             data?: any;
             isDisabled?: boolean;
+            isSelected?: boolean;
             label?: string;
             name?: string;
-            onChange?: (value: ICheckboxGroupItem) => void;
+            onChange?: (item: ICheckboxGroupItem) => void;
     }
     
     /**
@@ -536,7 +536,7 @@ declare module 'gd-bs/components/types/checkboxGroup' {
             label?: string;
             items?: Array<ICheckboxGroupItem>;
             multi?: boolean;
-            onChange?: (value: Array<ICheckboxGroupItem>) => void;
+            onChange?: (items: ICheckboxGroupItem | Array<ICheckboxGroupItem>) => void;
             type?: number;
     }
     
@@ -643,7 +643,7 @@ declare module 'gd-bs/components/types/dropdown' {
             isDivider?: boolean;
             isHeader?: boolean;
             isSelected?: boolean;
-            onClick?: (item?: IDropdownItem | Array<IDropdownItem>, ev?: Event) => void;
+            onClick?: (item?: IDropdownItem, ev?: Event) => void;
             text?: string;
             value?: string;
     }

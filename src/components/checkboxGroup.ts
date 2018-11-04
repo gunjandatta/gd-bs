@@ -51,7 +51,7 @@ export const CheckboxGroup = (props: ICheckboxGroupProps): ICheckboxGroup => {
         let cb = document.createElement("input");
         cb.classList.add("form-check-input");
         cb.type = props.type == CheckboxGroupTypes.Radio ? "radio" : "checkbox";
-        cb.checked = item.checked ? true : false;
+        cb.checked = item.isSelected ? true : false;
         cb.setAttribute("data-idx", i.toString());
         elCheckbox.appendChild(cb);
 
@@ -112,7 +112,7 @@ export const CheckboxGroup = (props: ICheckboxGroupProps): ICheckboxGroup => {
             // See if there is a change event
             if (props.onChange) {
                 // Call the event
-                props.onChange(selectedItems);
+                props.onChange(props.multi ? selectedItems : selectedItems[0]);
             }
         });
     }
