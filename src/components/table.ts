@@ -84,7 +84,6 @@ export const Table = (props: ITableProps): ITable => {
 
             // Append the column
             let elCol = document.createElement("th");
-            elCol.className = col.className || "";
             elCol.innerHTML = col.isHidden ? "" : col.title || col.name;
             elCol.setAttribute("data-idx", i.toString());
             elCol.setAttribute("scope", "col");
