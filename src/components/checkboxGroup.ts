@@ -92,8 +92,11 @@ export const CheckboxGroup = (props: ICheckboxGroupProps): ICheckboxGroup => {
                 // Get the item
                 let item = props.items[elSelectedItem.getAttribute("data-idx")];
                 if (item) {
-                    // Add the selected item
-                    selectedItems.push(item);
+                    // Ensure this item is checked
+                    if (elSelectedItem.checked) {
+                        // Add the selected item
+                        selectedItems.push(item);
+                    }
 
                     // See if this is the target item
                     if (idx == i.toString()) {
@@ -145,16 +148,10 @@ export const CheckboxGroup = (props: ICheckboxGroupProps): ICheckboxGroup => {
             let values: Array<ICheckboxGroupItem> = [];
 
             // Parse the checkboxes
-            let cbs = cbGroup.querySelectorAll("input[type='checkbox']");
+            let cbs = cbGroup.querySelectorAll("input:checked");
             for (let i = 0; i < cbs.length; i++) {
-                let cb = cbs[i] as HTMLInputElement;
-                let item = props.items[i];
-
-                // See if this is checked and the item exists
-                if (item && cb.checked) {
-                    // Add the value
-                    values.push(item);
-                }
+                // Add the value
+                values.push(props.items[i]);
             }
 
             // Return the values
