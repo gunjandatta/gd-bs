@@ -76,7 +76,7 @@ export const Table = (props: ITableProps): ITable => {
 
         // Append the row
         let elRow = document.createElement("tr");
-        elHead.append(elRow);
+        elHead.appendChild(elRow);
 
         // Parse the columns
         for (let i = 0; i < props.columns.length; i++) {
