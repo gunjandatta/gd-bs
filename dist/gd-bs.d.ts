@@ -37,6 +37,7 @@ declare module 'gd-bs/components/types' {
     export * from "gd-bs/components/types/popover";
     export * from "gd-bs/components/types/progress";
     export * from "gd-bs/components/types/progressGroup";
+    export * from "gd-bs/components/types/table";
     export * from "gd-bs/components/types/toolbar";
     export * from "gd-bs/components/types/tooltip";
 }
@@ -690,11 +691,6 @@ declare module 'gd-bs/components/types/form' {
         * Form
         */
     export const Form: (props: IFormProps) => IForm;
-    
-    /**
-        * Form Control Types
-        */
-    export const FormControlTypes: IFormControlTypes;
     
     /**
         * Form
@@ -1445,6 +1441,48 @@ declare module 'gd-bs/components/types/progressGroup' {
             el?: Element | HTMLElement;
             isMultiple?: boolean;
             progressbars?: Array<IProgressProps>;
+    }
+}
+
+declare module 'gd-bs/components/types/table' {
+    /**
+        * Table
+        */
+    export const Table: (props: ITableProps) => ITable
+    
+    /**
+        * Table
+        */
+    export interface ITable {
+            el: HTMLTableElement;
+    }
+    
+    /**
+        * Table Properties
+        */
+    export interface ITableProps {
+            className?: string;
+            columns?: Array<ITableColumn>;
+            el?: Element | HTMLElement;
+            onRenderCell?: (el?: HTMLTableDataCellElement, column?: ITableColumn, value?: string) => void;
+            onRenderHeaderCell?: (el?: HTMLTableDataCellElement, column?: ITableColumn) => void;
+            onRenderHeaderRow?: (el?: HTMLTableRowElement) => void;
+            onRenderRow?: (el?: HTMLTableRowElement, data?: any) => void;
+            rows?: Array<{ [key: string]: string }>;
+    }
+    
+    /**
+        * Table Column
+        */
+    export interface ITableColumn {
+            className?: string;
+            data?: any;
+            isHidden?: boolean;
+            name: string;
+            onRenderCell?: (el: HTMLTableDataCellElement, column?: ITableColumn, value?: string) => void;
+            onRenderHeader?: (el?: HTMLTableDataCellElement, column?: ITableColumn) => void;
+            scope?: string;
+            title?: string;
     }
 }
 

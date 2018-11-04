@@ -35,6 +35,7 @@
         <div id="progress"></div>
         <div id="progressGroup"></div>
         <div id="navbar"></div>
+        <div id="table"></div>
     </form>
     <script type="text/javascript">
         window.addEventListener("load", function () {
@@ -120,10 +121,12 @@
                                     name: "TestDelay",
                                     type: GD.Components.FormControlTypes.TextField,
                                     loadingMessage: "Loading...",
-                                    onControlRendering: function(props) {
-                                        return { then: function (resolve) {
-                                            setTimeout(function() { resolve(props); }, 5000);
-                                        } }
+                                    onControlRendering: function (props) {
+                                        return {
+                                            then: function (resolve) {
+                                                setTimeout(function () { resolve(props); }, 5000);
+                                            }
+                                        }
                                     }
                                 }
                             },
@@ -136,7 +139,7 @@
                                     name: "RadioTest",
                                     required: true,
                                     type: GD.Components.FormControlTypes.Radio,
-                                    items: [ { label: "Choice 1" }, { label: "Choice 2" }, { label: "Choice 3" } ]
+                                    items: [{ label: "Choice 1" }, { label: "Choice 2" }, { label: "Choice 3" }]
                                 }
                             },
                             {
@@ -317,7 +320,7 @@
                                     label: "Boolean",
                                     name: "Boolean",
                                     type: GD.Components.FormControlTypes.Checkbox,
-                                    onChange: function(items) { alert(items.length + " selected items"); },
+                                    onChange: function (items) { alert(items.length + " selected items"); },
                                     items: [
                                         {
                                             label: "Checkbox 1"
@@ -571,6 +574,27 @@
                             { text: "Link 5", href: "#" }
                         ]
                     }
+                ]
+            });
+            GD.Components.Table({
+                el: document.querySelector("#table"),
+                className: "is-striped",
+                columns: [
+                    { name: "a0", title: "Actions", isHidden: true },
+                    { name: "a1", title: "Col 1" },
+                    { name: "a2", title: "Col 2" },
+                    { name: "a3", title: "Col 3" }
+                ],
+                rows: [
+                    { a0: "1", a1: "1.1", a2: "1.2", a3: "1.3" },
+                    { a0: "2", a1: "2.1", a2: "2.2", a3: "2.3" },
+                    { a0: "3", a1: "3.1", a2: "3.2", a3: "3.3" },
+                    { a0: "4", a1: "4.1", a2: "4.2", a3: "4.3" },
+                    { a0: "5", a1: "5.1", a2: "5.2", a3: "5.3" },
+                    { a0: "6", a1: "6.1", a2: "6.2", a3: "6.3" },
+                    { a0: "7", a1: "7.1", a2: "7.2", a3: "7.3" },
+                    { a0: "8", a1: "8.1", a2: "8.2", a3: "8.3" },
+                    { a0: "9", a1: "9.1", a2: "9.2", a3: "9.3" }
                 ]
             });
         });

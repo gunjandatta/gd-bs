@@ -23,5 +23,6 @@ export * from "./panel";
 export * from "./popover";
 export * from "./progress";
 export * from "./progressGroup";
+export * from "./table";
 export * from "./tooltip";
 export * from "./toolbar";

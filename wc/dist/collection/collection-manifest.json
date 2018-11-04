@@ -974,6 +974,23 @@
       }
     },
     {
+      "tag": "bs-table",
+      "dependencies": [],
+      "componentClass": "Table",
+      "componentPath": "components/table.js",
+      "styles": {},
+      "props": [
+        {
+          "name": "className",
+          "type": "String",
+          "attr": "class-name"
+        }
+      ],
+      "hostElement": {
+        "name": "el"
+      }
+    },
+    {
       "tag": "bs-toolbar",
       "dependencies": [],
       "componentClass": "Toolbar",

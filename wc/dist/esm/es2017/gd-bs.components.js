@@ -23,5 +23,6 @@ export const Panel = ["bs-panel","3ciohsfj",0,[["className",1,0,"class-name",2],
 export const Popover = ["bs-popover","vogy1rl2",0,[["className",1,0,"class-name",2],["el",64],["isDismissible",1,0,"is-dismissible",4],["type",1,0,1,8]]];
 export const Progress = ["bs-progress","qdncm1qa",0,[["className",1,0,"class-name",2],["el",64],["isAnimated",1,0,"is-animated",4],["isStriped",1,0,"is-striped",4],["label",1,0,1,2],["max",1,0,1,8],["min",1,0,1,8],["size",1,0,1,8]]];
 export const ProgressGroup = ["bs-progressGroup","w4ovi3hm",0,[["className",1,0,"class-name",2],["el",64],["isMultiple",1,0,"is-multiple",4]]];
+export const Table = ["bs-table","cf8cnlyi",0,[["className",1,0,"class-name",2],["el",64]]];
 export const Toolbar = ["bs-toolbar","agpulmyk",0,[["className",1,0,"class-name",2],["el",64],["spacing",1,0,1,8]]];
 export const Tooltip = ["bs-tooltip","4hekrn3v",0,[["className",1,0,"class-name",2],["el",64],["type",1,0,1,8]]];

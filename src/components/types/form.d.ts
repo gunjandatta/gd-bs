@@ -6,11 +6,6 @@ import { IFormControl, IFormControlProps, IFormControlTypes } from "./formContro
 export const Form: (props: IFormProps) => IForm;
 
 /**
- * Form Control Types
- */
-export const FormControlTypes: IFormControlTypes;
-
-/**
  * Form
  */
 export interface IForm {
