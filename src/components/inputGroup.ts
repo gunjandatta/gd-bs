@@ -225,9 +225,14 @@ export const InputGroup = (props: IInputGroupProps): IInputGroup => {
     return {
         el: props.formFl ? elInput : inputGroup,
         getValue: () => {
+            // Ensure the input element exists
+            let elTextbox = elInput;
+            if (elTextbox == null && inputGroup) {
+                // Query for the element
+                elTextbox = inputGroup.querySelector("input") || inputGroup.querySelector("textarea") as any;
+            }
+
             // Return the value
-            let elTextbox: HTMLInputElement = elInput || inputGroup as any;
-            elTextbox = elTextbox.querySelector("input") || elTextbox.querySelector("textarea") as any;
             return elTextbox ? elTextbox.value : null;
         }
     };
