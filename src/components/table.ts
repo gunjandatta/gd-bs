@@ -172,13 +172,13 @@ export const Table = (props: ITableProps): ITable => {
             // See if there is an event for this column
             if (col.onRenderCell) {
                 // Call the event
-                col.onRenderCell(elCell, col, value);
+                col.onRenderCell(elCell, col, row);
             }
 
             // See if there is an event for this component
             if (props.onRenderCell) {
                 // Call the event
-                props.onRenderCell(elCell, col, value);
+                props.onRenderCell(elCell, col, row);
             }
 
             // See if there is a click event
@@ -192,8 +192,8 @@ export const Table = (props: ITableProps): ITable => {
                     let row = props.rows[parseInt(elCell.getAttribute("data-row"))] || {};
                     if (col) {
                         // Call the event
-                        col.onClickCell ? col.onClickCell(elCell, col) : null;
-                        props.onClickCell ? props.onClickCell(elCell, col, row[col.name]) : null;
+                        col.onClickCell ? col.onClickCell(elCell, col, row) : null;
+                        props.onClickCell ? props.onClickCell(elCell, col, row) : null;
                     }
                 });
             }

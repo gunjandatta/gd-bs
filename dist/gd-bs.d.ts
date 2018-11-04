@@ -1464,13 +1464,13 @@ declare module 'gd-bs/components/types/table' {
             className?: string;
             columns?: Array<ITableColumn>;
             el?: Element | HTMLElement;
-            onClickCell?: (el: HTMLTableDataCellElement, column?: ITableColumn, value?: string) => void;
+            onClickCell?: (el: HTMLTableDataCellElement, column?: ITableColumn, data?: any) => void;
             onClickHeader?: (el: HTMLTableHeaderCellElement, column?: ITableColumn) => void;
-            onRenderCell?: (el?: HTMLTableDataCellElement, column?: ITableColumn, value?: string) => void;
+            onRenderCell?: (el?: HTMLTableDataCellElement, column?: ITableColumn, data?: any) => void;
             onRenderHeaderCell?: (el?: HTMLTableDataCellElement, column?: ITableColumn) => void;
             onRenderHeaderRow?: (el?: HTMLTableRowElement) => void;
             onRenderRow?: (el?: HTMLTableRowElement, data?: any) => void;
-            rows?: Array<{ [key: string]: string }>;
+            rows?: Array<any>;
     }
     
     /**
@@ -1482,9 +1482,9 @@ declare module 'gd-bs/components/types/table' {
             enableSort?: boolean;
             isHidden?: boolean;
             name: string;
-            onClickCell?: (el: HTMLTableDataCellElement, column?: ITableColumn, value?: string) => void;
+            onClickCell?: (el: HTMLTableDataCellElement, column?: ITableColumn, data?: any) => void;
             onClickHeader?: (el: HTMLTableHeaderCellElement, column?: ITableColumn) => void;
-            onRenderCell?: (el: HTMLTableDataCellElement, column?: ITableColumn, value?: string) => void;
+            onRenderCell?: (el: HTMLTableDataCellElement, column?: ITableColumn, data?: any) => void;
             onRenderHeader?: (el?: HTMLTableDataCellElement, column?: ITableColumn) => void;
             scope?: string;
             title?: string;
