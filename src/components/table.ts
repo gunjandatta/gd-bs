@@ -1,9 +1,65 @@
-import { ITable, ITableProps } from "./types/table";
+import { ITable, ITableColumn, ITableProps } from "./types/table";
+import { debug } from "util";
 
 /**
  * Table
  */
 export const Table = (props: ITableProps): ITable => {
+    // Method to sort the table
+    let sortTable = (colIdx: number) => {
+        let idx = -1;
+
+        // Get the sort icon
+        let elIcon = elHead.querySelector(".sort-icon");
+        if (elIcon) {
+            // Remove the sort icon
+            elIcon.parentElement.removeChild(elIcon);
+        }
+
+        // Determine the sort
+        let sortAscending = true;
+        let elCol = elHead.children[0].children[colIdx];
+        if (elCol) {
+            // Get the sort attribute
+            if (elCol.hasAttribute("data-sort-asc")) {
+                // Set the flag
+                sortAscending = false;
+
+                // Remove the attribute
+                elCol.removeAttribute("data-sort-asc");
+            } else {
+                // Add the attribute
+                elCol.setAttribute("data-sort-asc", "true");
+            }
+
+            // Create the icon
+            elIcon = document.createElement("i");
+            elIcon.className = "ml-1 sort-icon";
+            elIcon.innerHTML = sortAscending ? "&uarr;" : "&darr;";
+            elCol.appendChild(elIcon);
+        } else { return; }
+
+        // Parse the table rows
+        while (++idx < elBody.children.length) {
+            let elRow = elBody.children[idx] as HTMLTableRowElement;
+            let value = ((elRow.children[colIdx] as HTMLTableDataCellElement).innerText || "").toLowerCase();
+
+            // Loop through the previous items
+            let counter = idx;
+            while (--counter >= 0) {
+                let elPreviousRow = elBody.children[counter] as HTMLTableRowElement;
+                let elPreviousCol = elPreviousRow.children[colIdx] as HTMLTableDataCellElement;
+                let prevValue = (elPreviousCol ? elPreviousCol.innerText : "").toLowerCase();
+
+                // Compare the values
+                if (sortAscending ? value < prevValue : value > prevValue) {
+                    // Switch the values
+                    elBody.insertBefore(elRow, elPreviousRow);
+                } else { break; }
+            }
+        }
+    }
+
     // Create the table element
     let elTable = document.createElement("table");
 
@@ -12,9 +68,10 @@ export const Table = (props: ITableProps): ITable => {
     elTable.classList.add("table");
 
     // See if columns are defined
+    let elHead: HTMLTableHeaderCellElement = null;
     if (props.columns) {
         // Create the header
-        let elHead = document.createElement("thead");
+        elHead = document.createElement("thead") as any;
         elTable.appendChild(elHead);
 
         // Append the row
@@ -43,6 +100,17 @@ export const Table = (props: ITableProps): ITable => {
             if (props.onRenderHeaderCell) {
                 // Call the event
                 props.onRenderHeaderCell(elCol, col);
+            }
+
+            // See if we are sorting this column
+            if (col.enableSort) {
+                // Add a click event
+                elCol.addEventListener("click", ev => {
+                    let elCol = ev.currentTarget as HTMLTableHeaderCellElement;
+
+                    // Sort the table data
+                    sortTable(parseInt(elCol.getAttribute("data-idx")));
+                });
             }
 
             // See if there is a click event

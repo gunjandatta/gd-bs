@@ -32,6 +32,7 @@ export interface ITableProps {
 export interface ITableColumn {
     className?: string;
     data?: any;
+    enableSort?: boolean;
     isHidden?: boolean;
     name: string;
     onClickCell?: (el: HTMLTableDataCellElement, column?: ITableColumn, value?: string) => void;
