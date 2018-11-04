@@ -182,14 +182,14 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
 
     // See if an error message exists
     if (props.errorMessage) {
-        // Get the input group
-        let elInputGroup = el.querySelector(".input-group");
-        if (elInputGroup) {
+        // Get the group
+        let elGroup = el.querySelector(".input-group") || el.querySelector(".form-check:last-child");
+        if (elGroup) {
             // Add the error message
             let elErrorMessage = document.createElement("div");
             elErrorMessage.className = "invalid-feedback";
             elErrorMessage.innerHTML = props.errorMessage;
-            elInputGroup.appendChild(elErrorMessage);
+            elGroup.appendChild(elErrorMessage);
         }
     }
 
@@ -271,7 +271,26 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
 
                 // Set the class
                 elFormControl.classList.add(validation.isValid ? "is-valid" : "is-invalid");
+            } else {
+                // Parse the checkboxes
+                let elCheckboxes = elControl.querySelectorAll(".form-check-input");
+                for (let i = 0; i < elCheckboxes.length; i++) {
+                    let elCheckbox = elCheckboxes[i];
 
+                    // Clear the invalid/valid classes
+                    elCheckbox.classList.remove("is-invalid");
+                    elCheckbox.classList.remove("is-valid");
+
+                    // Set the class
+                    elCheckbox.classList.add(validation.isValid ? "is-valid" : "is-invalid");
+                }
+
+                // Set the form control
+                elFormControl = elCheckboxes.length > 0 ? elCheckboxes[elCheckboxes.length - 1].parentElement : elFormControl;
+            }
+
+            // Ensure the form control exists
+            if (elFormControl) {
                 // See if there is invalid feedback
                 if (validation.invalidMessage || props.errorMessage) {
                     // Get the element
@@ -280,6 +299,8 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
                         // Create the element
                         elMessage = document.createElement("div");
                         elMessage.className = "invalid-feedback";
+
+                        // add the feedback
                         elFormControl.parentElement.appendChild(elMessage);
                     }
 
