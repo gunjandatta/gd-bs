@@ -539,6 +539,7 @@ declare module 'gd-bs/components/types/checkboxGroup' {
             multi?: boolean;
             onChange?: (items: ICheckboxGroupItem | Array<ICheckboxGroupItem>) => void;
             type?: number;
+            value?: any;
     }
     
     /**

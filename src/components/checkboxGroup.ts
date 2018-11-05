@@ -55,6 +55,20 @@ export const CheckboxGroup = (props: ICheckboxGroupProps): ICheckboxGroup => {
         cb.setAttribute("data-idx", i.toString());
         elCheckbox.appendChild(cb);
 
+        // See if a value exists
+        if (props.value) {
+            let values = typeof (props.value) === "string" ? [props.value] : props.value;
+
+            // Parse the values
+            for (let j = 0; j < values.length; j++) {
+                // See if this item is selected
+                if (values[j] == item.label) {
+                    // Select this item
+                    cb.checked = true;
+                }
+            }
+        }
+
         // Append a label
         let label = document.createElement("label");
         label.classList.add("form-check-label");

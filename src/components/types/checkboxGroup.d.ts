@@ -44,6 +44,7 @@ export interface ICheckboxGroupProps {
     multi?: boolean;
     onChange?: (items: ICheckboxGroupItem | Array<ICheckboxGroupItem>) => void;
     type?: number;
+    value?: any;
 }
 
 /**

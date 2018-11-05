@@ -48,7 +48,8 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
                 label: props.label,
                 multi: (props as IFormControlPropsCheckbox).multi,
                 onChange: (props as IFormControlPropsCheckbox).onChange,
-                type: CheckboxGroupTypes.Checkbox
+                type: CheckboxGroupTypes.Checkbox,
+                value: props.value
             });
             break;
         // Dropdown
@@ -129,7 +130,8 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
                 label: props.label,
                 multi: (props as IFormControlPropsCheckbox).multi,
                 onChange: (props as IFormControlPropsCheckbox).onChange,
-                type: CheckboxGroupTypes.Radio
+                type: CheckboxGroupTypes.Radio,
+                value: props.value
             });
             break;
         // Range
