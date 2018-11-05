@@ -107,6 +107,24 @@
                         }
                     },
                     {
+                        control: {
+                            label: "Reason Not Tested Explanation Radio:",
+                            name: "ReasonNotTestedExplanationRadio",
+                            type: GD.Components.FormControlTypes.Radio,
+                            items: [
+                                { label: "Primary", name: "primary" },
+                                { label: "Secondary", name: "secondary" }
+                            ],
+                            onValidate: function(ctrl, value) {
+                                if (value)
+                                    return true;
+                                else
+                                    return false;
+                                },
+                            errorMessage: "Select an option"
+                        }
+                    },
+                    {
                         columns: [
                             {
                                 size: 5,
