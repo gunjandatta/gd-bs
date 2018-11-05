@@ -92,6 +92,21 @@
                         }
                     },
                     {
+                        control: {
+                            label: "Reason Not Tested Explanation:",
+                            name: "ReasonNotTestedExplanation",
+                            type: GD.Components.FormControlTypes.TextField,
+                            placeholder: "Explain the reason not tested",
+                            onValidate: function(ctrl, value) {
+                                if (value && value.length > 0)
+                                    return true;
+                                else
+                                    return false;
+                                },
+                            errorMessage: "Provide a reason for not testing"
+                        }
+                    },
+                    {
                         columns: [
                             {
                                 size: 5,
