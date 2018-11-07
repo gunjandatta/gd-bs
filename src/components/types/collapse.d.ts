@@ -1,3 +1,5 @@
+import { IButtonProps } from "./button";
+
 /**
  * Collapse
  */
@@ -27,8 +29,8 @@ export interface ICollapse {
  * Collapse Options
  */
 export interface ICollapseOptions {
-    parent?: string;
-    toggle?: string;
+    parent?: string | Element;
+    toggle?: boolean;
 }
 
 /**
@@ -37,9 +39,10 @@ export interface ICollapseOptions {
 export interface ICollapseProps {
     className?: string;
     content?: string;
+    data?: any;
     el?: Element | HTMLElement;
     id?: string;
     isMulti?: boolean;
-    onRender?: (el: HTMLElement) => void;
+    onRender?: (props?: ICollapseProps, el?: HTMLElement) => void;
     options?: ICollapseOptions;
 }

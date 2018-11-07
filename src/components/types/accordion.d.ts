@@ -1,4 +1,5 @@
 import { IButtonProps } from "./button";
+import { ICollapseOptions } from "./collapse";
 
 /**
  * Accordion
@@ -19,7 +20,13 @@ export interface IAccordion {
 export interface IAccordionItem {
     btnProps?: IButtonProps;
     content?: string;
+    showFl?: boolean;
 }
+
+/**
+ * Accordion Options
+ */
+export interface IAccordionOptions extends ICollapseOptions { }
 
 /**
  * Accordion Properties
@@ -29,4 +36,5 @@ export interface IAccordionProps {
     el?: Element | HTMLElement;
     id?: string;
     items?: Array<IAccordionItem>;
+    options?: IAccordionOptions;
 }

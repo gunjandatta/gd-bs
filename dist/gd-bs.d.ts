@@ -44,6 +44,7 @@ declare module 'gd-bs/components/types' {
 
 declare module 'gd-bs/components/types/accordion' {
     import { IButtonProps } from "gd-bs/components/types/button";
+    import { ICollapseOptions } from "gd-bs/components/types/collapse";
     
     /**
         * Accordion
@@ -64,7 +65,13 @@ declare module 'gd-bs/components/types/accordion' {
     export interface IAccordionItem {
             btnProps?: IButtonProps;
             content?: string;
+            showFl?: boolean;
     }
+    
+    /**
+        * Accordion Options
+        */
+    export interface IAccordionOptions extends ICollapseOptions { }
     
     /**
         * Accordion Properties
@@ -74,6 +81,7 @@ declare module 'gd-bs/components/types/accordion' {
             el?: Element | HTMLElement;
             id?: string;
             items?: Array<IAccordionItem>;
+            options?: IAccordionOptions;
     }
 }
 
@@ -552,6 +560,8 @@ declare module 'gd-bs/components/types/checkboxGroup' {
 }
 
 declare module 'gd-bs/components/types/collapse' {
+    import { IButtonProps } from "gd-bs/components/types/button";
+    
     /**
         * Collapse
         */
@@ -581,8 +591,8 @@ declare module 'gd-bs/components/types/collapse' {
         * Collapse Options
         */
     export interface ICollapseOptions {
-            parent?: string;
-            toggle?: string;
+            parent?: string | Element;
+            toggle?: boolean;
     }
     
     /**
@@ -591,10 +601,11 @@ declare module 'gd-bs/components/types/collapse' {
     export interface ICollapseProps {
             className?: string;
             content?: string;
+            data?: any;
             el?: Element | HTMLElement;
             id?: string;
             isMulti?: boolean;
-            onRender?: (el: HTMLElement) => void;
+            onRender?: (props?: ICollapseProps, el?: HTMLElement) => void;
             options?: ICollapseOptions;
     }
 }

@@ -22,7 +22,7 @@ export const Collapse = (props: ICollapseProps): ICollapse => {
     ].join('\n');
 
     // Execute the render event
-    props.onRender ? props.onRender(collapse.children[0] as any) : null;
+    props.onRender ? props.onRender(props, collapse.children[0] as any) : null;
 
     // Create the element
     let el = document.createElement("div");
@@ -48,8 +48,16 @@ export const Collapse = (props: ICollapseProps): ICollapse => {
         el.classList.add("bs");
     }
 
+    // Create the collapse
+    let $collapse = jQuery(collapse);
+
+    // See if options exist
+    if (props.options) {
+        // Set the options
+        $collapse.collapse(props.options);
+    }
+
     // Return the collapse
-    let $collapse = jQuery(el.children[0]);
     return {
         dispose: () => { $collapse.collapse("dispose"); },
         el: collapse,

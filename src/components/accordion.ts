@@ -23,8 +23,6 @@ export const Accordion = (props: IAccordionProps): IAccordion => {
         // Set the button properties
         let btnProps = item.btnProps || {};
         typeof (btnProps.type) === "number" ? null : btnProps.type = ButtonTypes.Link;
-
-        //btnProps.isLink = true;
         btnProps.target = '#collapse_' + itemId;
         btnProps.toggle = "collapse";
 
@@ -34,7 +32,7 @@ export const Accordion = (props: IAccordionProps): IAccordion => {
             '<div class="card-header" id="' + itemId + '">',
             Button(btnProps).el.outerHTML,
             '</div>',
-            '<div id="' + ('collapse_' + itemId) + '" class="collapse" aria-labelledby="' + itemId + '" data-parent="#' + accordion.id + '">',
+            '<div id="' + ('collapse_' + itemId) + '" class="collapse' + (item.showFl ? ' show' : '') + '" aria-labelledby="' + itemId + '" data-parent="#' + accordion.id + '">',
             '<div class="card-body">' + (item.content || "") + '</div>',
             '</div>',
             '</div>'
@@ -65,8 +63,11 @@ export const Accordion = (props: IAccordionProps): IAccordion => {
         el.classList.add("bs");
     }
 
-    // Initialize the collapse items
-    jQuery(accordion.querySelectorAll(".collapse")).collapse();
+    // See if options exist
+    if (props.options) {
+        // Set the options
+        jQuery(accordion).collapse(props.options);
+    }
 
     // Return the accordion
     return { el: accordion };
