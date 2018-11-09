@@ -115,7 +115,12 @@ export const Carousel = (props: ICarouselProps): ICarousel => {
 
     // Create the carousel
     let $carousel = jQuery(carousel);
-    $carousel.carousel(props.options);
+
+    // See if options exist
+    if (props.options) {
+        // Initialize the carousel options
+        $carousel.carousel(props.options);
+    }
 
     // Return the carousel
     return {

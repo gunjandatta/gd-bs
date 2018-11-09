@@ -449,7 +449,7 @@ declare module 'gd-bs/components/types/carousel' {
                 * Cycles the carousel to a particular frame.
                 * @prop value - The frame number.
                 */
-            number: (value:number) => void;
+            number: (value: number) => void;
     
             /**
                 * Stops the carousel from cycling through items.
@@ -460,20 +460,6 @@ declare module 'gd-bs/components/types/carousel' {
                 * Cycles to the previous item.
                 */
             previous: () => void;
-    }
-    
-    /**
-        * Carousel Properties
-        */
-    export interface ICarouselProps {
-            className?: string;
-            el?: Element | HTMLElement;
-            enableControls?: boolean;
-            enableCrossfade?: boolean;
-            enableIndicators?: boolean;
-            id?: string;
-            items?: Array<ICarouselItem>;
-            options?: ICarouselOptions;
     }
     
     /**
@@ -497,6 +483,20 @@ declare module 'gd-bs/components/types/carousel' {
             pause?: string | boolean;
             ride?: string;
             wrap?: boolean;
+    }
+    
+    /**
+        * Carousel Properties
+        */
+    export interface ICarouselProps {
+            className?: string;
+            el?: Element | HTMLElement;
+            enableControls?: boolean;
+            enableCrossfade?: boolean;
+            enableIndicators?: boolean;
+            id?: string;
+            items?: Array<ICarouselItem>;
+            options?: ICarouselOptions;
     }
 }
 
