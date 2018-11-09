@@ -31,7 +31,7 @@ export const Carousel = (props: ICarouselProps): ICarousel => {
 
             // Set the attributes
             let itemAttributes = [
-                'data-target="' + carousel.id + '"',
+                'data-target="#' + carousel.id + '"',
                 'data-slide-to="' + i + '"',
                 item.isActive ? 'class="active"' : null
             ].join(' ');
