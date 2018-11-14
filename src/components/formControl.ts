@@ -301,8 +301,6 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
                         // Create the element
                         elMessage = document.createElement("div");
                         elMessage.className = "invalid-feedback";
-
-                        // add the feedback
                         elFormControl.parentElement.appendChild(elMessage);
                     }
 
