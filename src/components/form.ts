@@ -185,9 +185,7 @@ export const Form = (props: IFormProps): IForm => {
                         elNewRow = document.createElement("div");
                         elNewRow.className = "col-" + (12 - colSize);
                         elRow.appendChild(elNewRow);
-                    }
-                    // Else, ensure this isn't a checkbox
-                    else if (row.control.type != FormControlTypes.Checkbox) {
+                    } else {
                         // Add the label element
                         elRow.appendChild(elLabel);
                     }

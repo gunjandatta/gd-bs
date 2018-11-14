@@ -288,7 +288,7 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
                 }
 
                 // Set the form control
-                elFormControl = elCheckboxes.length > 0 ? elCheckboxes[elCheckboxes.length - 1].parentElement : elFormControl;
+                elFormControl = elCheckboxes.length > 0 ? elCheckboxes[elCheckboxes.length - 1] as any : elFormControl;
             }
 
             // Ensure the form control exists

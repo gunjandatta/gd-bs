@@ -128,6 +128,26 @@
                         }
                     },
                     {
+                        control: {
+                            label: "Reason Not Tested Explanation Checkbox:",
+                            name: "ReasonNotTestedExplanationCheckbox",
+                            type: GD.Components.FormControlTypes.Checkbox,
+                            items: [
+                                { label: "Primary", name: "primary" },
+                                { label: "Secondary", name: "secondary" }
+                            ],
+                            onValidate: function(ctrl, value) {
+                                if (value)
+                                    return true;
+                                else
+                                    return {
+                                        isValid: false,
+                                        invalidMessage: "Select an option"
+                                    };
+                                }
+                        }
+                    },
+                    {
                         columns: [
                             {
                                 size: 5,
