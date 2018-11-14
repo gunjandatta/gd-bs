@@ -253,20 +253,19 @@ export const Form = (props: IFormProps): IForm => {
         controls,
         el: form,
         getControl: (name: string) => {
-            let control = null;
-
             // Parse the controls
             for (let i = 0; i < controls.length; i++) {
                 let control = controls[i];
-                if (control.props.name) {
-                    // Set the control
-                    control = control;
-                    break;
+
+                // See if this is the control we are looking for
+                if (control.props.name == name) {
+                    // Return the control
+                    return control;
                 }
             }
 
-            // Return the control
-            return control;
+            // Control not found
+            return null;
         },
         getValues: () => {
             let values = {};
