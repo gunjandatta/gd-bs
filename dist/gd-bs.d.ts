@@ -66,6 +66,7 @@ declare module 'gd-bs/components/types/accordion' {
             btnProps?: IButtonProps;
             data?: any;
             content?: string;
+            onClick?: (el?: HTMLElement, item?: IAccordionItem) => void;
             onRender?: (el?: HTMLElement, item?: IAccordionItem) => void;
             showFl?: boolean;
     }
@@ -997,6 +998,7 @@ declare module 'gd-bs/components/types/listGroup' {
             href?: string;
             isActive?: boolean;
             isDisabled?: boolean;
+            onClick?: (el?: HTMLElement, item?: IListGroupItem) => void;
             onRender?: (el?: HTMLElement, item?: IListGroupItem) => void;
             tabName?: string;
             type?: number;

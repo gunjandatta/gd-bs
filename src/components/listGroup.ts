@@ -172,6 +172,24 @@ export const ListGroup = (props: IListGroupProps): IListGroup => {
 
             // Execute the render event
             item.onRender ? item.onRender(elItem, item) : null;
+
+            // See if there is a click event
+            if (item.onClick) {
+                // Set the data attribute
+                elItem.setAttribute("data-idx", i.toString());
+
+                // Add a click event
+                elItem.addEventListener("click", ev => {
+                    let el = ev.currentTarget as HTMLElement;
+
+                    // Get the item
+                    let item = items[parseInt(el.getAttribute("data-idx"))];
+                    if (item && item.onClick) {
+                        // Call the click event
+                        item.onClick(el, item);
+                    }
+                });
+            }
         }
     }
 

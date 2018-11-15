@@ -26,20 +26,56 @@ export const Accordion = (props: IAccordionProps): IAccordion => {
         btnProps.target = '#collapse_' + itemId;
         btnProps.toggle = "collapse";
 
-        // Add the collapse
-        accordion.innerHTML += [
-            '<div class="card">',
-            '<div class="card-header" id="' + itemId + '">',
-            Button(btnProps).el.outerHTML,
-            '</div>',
-            '<div id="' + ('collapse_' + itemId) + '" class="collapse' + (item.showFl ? ' show' : '') + '" aria-labelledby="' + itemId + '" data-parent="#' + accordion.id + '">',
-            '<div class="card-body">' + (item.content || "") + '</div>',
-            '</div>',
-            '</div>'
-        ].join('\n');
+        // Create the card element
+        let elCard = document.createElement("div");
+        elCard.className = "card";
+        accordion.appendChild(elCard);
+
+        // Append the header element
+        let elHeader = document.createElement("div");
+        elHeader.className = "card-header";
+        elHeader.id = itemId;
+        elCard.appendChild(elHeader);
+
+        // Render the button to the header
+        btnProps.el = elHeader;
+        Button(btnProps);
+
+        // Append the collapse element
+        let elCollapse = document.createElement("div");
+        elCollapse.className = "collapse";
+        item.showFl ? elCollapse.classList.add("show") : null;
+        elCollapse.setAttribute("aria-labelledby", itemId);
+        elCollapse.setAttribute("data-parent", "#" + accordion.id);
+        elCollapse.id = "collapse_" + itemId;
+        elCard.appendChild(elCollapse);
+
+        // Append the card body
+        let elCardBody = document.createElement("div");
+        elCardBody.className = "card-body";
+        elCardBody.innerHTML = item.content || "";
+        elCollapse.appendChild(elCardBody);
 
         // Execute the render event
-        item.onRender ? item.onRender(accordion.querySelector(".card-body"), item) : null;
+        item.onRender ? item.onRender(elCardBody, item) : null;
+
+        // See if there is a click event
+        if (item.onClick) {
+            // Set the data attribute
+            elCardBody.setAttribute("data-idx", i.toString());
+
+            // Add a click event
+            elCardBody.addEventListener("click", ev => {
+                let el = ev.currentTarget as HTMLElement;
+
+                // Get the item
+                let item = items[parseInt(el.getAttribute("data-idx"))];
+                if (item && item.onClick) {
+                    // Call the click event
+                    item.onClick(el, item);
+                }
+            });
+        }
     }
 
     // Create the element
