@@ -991,6 +991,7 @@ declare module 'gd-bs/components/types/listGroup' {
             badge?: IBadgeProps;
             className?: string;
             content?: string;
+            data?: any;
             href?: string;
             isActive?: boolean;
             isDisabled?: boolean;

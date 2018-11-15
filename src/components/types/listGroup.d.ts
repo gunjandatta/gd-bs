@@ -31,6 +31,7 @@ export interface IListGroupItem {
     badge?: IBadgeProps;
     className?: string;
     content?: string;
+    data?: any;
     href?: string;
     isActive?: boolean;
     isDisabled?: boolean;
