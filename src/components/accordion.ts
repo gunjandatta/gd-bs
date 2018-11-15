@@ -37,6 +37,9 @@ export const Accordion = (props: IAccordionProps): IAccordion => {
             '</div>',
             '</div>'
         ].join('\n');
+
+        // Execute the render event
+        item.onRender ? item.onRender(accordion.querySelector(".card-body"), item) : null;
     }
 
     // Create the element

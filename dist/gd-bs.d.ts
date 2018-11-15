@@ -64,7 +64,9 @@ declare module 'gd-bs/components/types/accordion' {
         */
     export interface IAccordionItem {
             btnProps?: IButtonProps;
+            data?: any;
             content?: string;
+            onRender?: (el?: HTMLElement, item?: IAccordionItem) => void;
             showFl?: boolean;
     }
     
@@ -995,7 +997,7 @@ declare module 'gd-bs/components/types/listGroup' {
             href?: string;
             isActive?: boolean;
             isDisabled?: boolean;
-            onRender?: (el: HTMLElement, item: IListGroupItem) => void;
+            onRender?: (el?: HTMLElement, item?: IListGroupItem) => void;
             tabName?: string;
             type?: number;
     }

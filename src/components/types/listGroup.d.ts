@@ -35,7 +35,7 @@ export interface IListGroupItem {
     href?: string;
     isActive?: boolean;
     isDisabled?: boolean;
-    onRender?: (el: HTMLElement, item: IListGroupItem) => void;
+    onRender?: (el?: HTMLElement, item?: IListGroupItem) => void;
     tabName?: string;
     type?: number;
 }

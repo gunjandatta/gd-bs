@@ -19,7 +19,9 @@ export interface IAccordion {
  */
 export interface IAccordionItem {
     btnProps?: IButtonProps;
+    data?: any;
     content?: string;
+    onRender?: (el?: HTMLElement, item?: IAccordionItem) => void;
     showFl?: boolean;
 }
 
