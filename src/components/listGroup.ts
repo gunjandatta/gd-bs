@@ -169,6 +169,9 @@ export const ListGroup = (props: IListGroupProps): IListGroup => {
 
             // Append the item to the tab content
             elTabContent.appendChild(elItem);
+
+            // Execute the render event
+            item.onRender ? item.onRender(elItem, item) : null;
         }
     }
 

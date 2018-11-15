@@ -1,6 +1,6 @@
 {
   "name": "gd-bs",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Bootstrap JavaScript, TypeScript and Web Components library.",
   "main": "dist/gd-bs.js",
   "typings": "src/typings.d.ts",
@@ -26,7 +26,9 @@
     "url": "https://github.com/gunjandatta/gd-bs/issues"
   },
   "homepage": "https://gunjandatta.github.io/extras/bs",
-  "dependencies": {},
+  "dependencies": {
+    "@stencil/core": "^0.15.2"
+  },
   "devDependencies": {
     "@babel/core": "^7.1.2",
     "@babel/preset-env": "^7.1.0",

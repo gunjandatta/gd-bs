@@ -2,3 +2,4 @@ node_modules
 scss
 wc/.stencil
 wc/node_modules
+*.yaml

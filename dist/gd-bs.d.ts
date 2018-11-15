@@ -994,6 +994,7 @@ declare module 'gd-bs/components/types/listGroup' {
             href?: string;
             isActive?: boolean;
             isDisabled?: boolean;
+            onRender?: (el: HTMLElement, item: IListGroupItem) => void;
             tabName?: string;
             type?: number;
     }

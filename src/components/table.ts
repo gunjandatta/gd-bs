@@ -1,5 +1,4 @@
-import { ITable, ITableColumn, ITableProps } from "./types/table";
-import { debug } from "util";
+import { ITable, ITableProps } from "./types/table";
 
 /**
  * Table
