@@ -39,12 +39,22 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
     switch (props.type) {
         // Checkbox
         case FormControlTypes.Checkbox:
+            // Ensure items exist
+            let items = (props as IFormControlPropsCheckbox).items || [];
+            if (items.length == 0) {
+                // Add the item
+                items.push({
+                    name: props.name,
+                    isSelected: props.value ? true : false
+                });
+            }
+
             // Add the checkbox group
             cb = CheckboxGroup({
                 className: props.className,
                 el,
                 hideLabel: true,
-                items: (props as IFormControlPropsCheckbox).items,
+                items,
                 label: props.label,
                 multi: (props as IFormControlPropsCheckbox).multi,
                 onChange: (props as IFormControlPropsCheckbox).onChange,

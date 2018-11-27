@@ -54,14 +54,22 @@
             var myForm = GD.Components.Form({
                 el: document.getElementById("myForm"),
                 value: {
-                    ReasonNotTestedExplanationRadio: "Primary"
+                    ReasonNotTestedExplanationRadio: "Primary",
+                    CBExample: true
                 },
                 rows: [
-                    {
+                {
                         control: {
                             controlClassName: "d-none",
                             label: "Shouldn't See Me",
                             type: GD.Components.FormControlTypes.Dropdown
+                        }
+                    },
+                    {
+                        control: {
+                            label: "Checkbox Example",
+                            name: "CBExample",
+                            type: GD.Components.FormControlTypes.Checkbox,
                         }
                     },
                     {
