@@ -214,6 +214,12 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
 
         // See if this is a checkbox
         if (cb) {
+            // See if the items were defined
+            if ((props as IFormControlPropsCheckbox).items) {
+                // Return the value
+                return cb.getValue() ? true : false;
+            }
+
             // Return the value(s)
             return cb.getValue();
         }
