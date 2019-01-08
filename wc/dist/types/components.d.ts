@@ -406,6 +406,21 @@ export namespace Components {
     'isMultiple'?: boolean;
   }
 
+  interface BsSpinner {
+    'className': string;
+    'isGrowing': boolean;
+    'isSmall': boolean;
+    'text': string;
+    'type': number;
+  }
+  interface BsSpinnerAttributes extends StencilHTMLAttributes {
+    'className'?: string;
+    'isGrowing'?: boolean;
+    'isSmall'?: boolean;
+    'text'?: string;
+    'type'?: number;
+  }
+
   interface BsTable {
     'className': string;
   }
@@ -458,6 +473,7 @@ declare global {
     'BsPopover': Components.BsPopover;
     'BsProgress': Components.BsProgress;
     'BsProgressgroup': Components.BsProgressgroup;
+    'BsSpinner': Components.BsSpinner;
     'BsTable': Components.BsTable;
     'BsTooltip': Components.BsTooltip;
     'BsToolbar': Components.BsToolbar;
@@ -488,6 +504,7 @@ declare global {
     'bs-popover': Components.BsPopoverAttributes;
     'bs-progress': Components.BsProgressAttributes;
     'bs-progressgroup': Components.BsProgressgroupAttributes;
+    'bs-spinner': Components.BsSpinnerAttributes;
     'bs-table': Components.BsTableAttributes;
     'bs-tooltip': Components.BsTooltipAttributes;
     'bs-toolbar': Components.BsToolbarAttributes;
@@ -638,6 +655,12 @@ declare global {
     new (): HTMLBsProgressgroupElement;
   };
 
+  interface HTMLBsSpinnerElement extends Components.BsSpinner, HTMLStencilElement {}
+  var HTMLBsSpinnerElement: {
+    prototype: HTMLBsSpinnerElement;
+    new (): HTMLBsSpinnerElement;
+  };
+
   interface HTMLBsTableElement extends Components.BsTable, HTMLStencilElement {}
   var HTMLBsTableElement: {
     prototype: HTMLBsTableElement;
@@ -681,6 +704,7 @@ declare global {
     'bs-popover': HTMLBsPopoverElement
     'bs-progress': HTMLBsProgressElement
     'bs-progressgroup': HTMLBsProgressgroupElement
+    'bs-spinner': HTMLBsSpinnerElement
     'bs-table': HTMLBsTableElement
     'bs-tooltip': HTMLBsTooltipElement
     'bs-toolbar': HTMLBsToolbarElement
@@ -711,6 +735,7 @@ declare global {
     'bs-popover': HTMLBsPopoverElement;
     'bs-progress': HTMLBsProgressElement;
     'bs-progressgroup': HTMLBsProgressgroupElement;
+    'bs-spinner': HTMLBsSpinnerElement;
     'bs-table': HTMLBsTableElement;
     'bs-tooltip': HTMLBsTooltipElement;
     'bs-toolbar': HTMLBsToolbarElement;

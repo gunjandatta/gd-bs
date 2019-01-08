@@ -974,6 +974,43 @@
       }
     },
     {
+      "tag": "bs-spinner",
+      "dependencies": [],
+      "componentClass": "Spinner",
+      "componentPath": "components/spinner.js",
+      "styles": {},
+      "props": [
+        {
+          "name": "className",
+          "type": "String",
+          "attr": "class-name"
+        },
+        {
+          "name": "isGrowing",
+          "type": "Boolean",
+          "attr": "is-growing"
+        },
+        {
+          "name": "isSmall",
+          "type": "Boolean",
+          "attr": "is-small"
+        },
+        {
+          "name": "text",
+          "type": "String",
+          "attr": "text"
+        },
+        {
+          "name": "type",
+          "type": "Number",
+          "attr": "type"
+        }
+      ],
+      "hostElement": {
+        "name": "el"
+      }
+    },
+    {
       "tag": "bs-table",
       "dependencies": [],
       "componentClass": "Table",

@@ -27,6 +27,7 @@ import {
   Popover,
   Progress,
   ProgressGroup,
+  Spinner,
   Table,
   Toolbar,
   Tooltip
@@ -58,6 +59,7 @@ export function defineCustomElements(win, opts) {
     Popover,
     Progress,
     ProgressGroup,
+    Spinner,
     Table,
     Toolbar,
     Tooltip

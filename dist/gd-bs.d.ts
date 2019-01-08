@@ -37,6 +37,7 @@ declare module 'gd-bs/components/types' {
     export * from "gd-bs/components/types/popover";
     export * from "gd-bs/components/types/progress";
     export * from "gd-bs/components/types/progressGroup";
+    export * from "gd-bs/components/types/spinner";
     export * from "gd-bs/components/types/table";
     export * from "gd-bs/components/types/toolbar";
     export * from "gd-bs/components/types/tooltip";
@@ -1459,6 +1460,52 @@ declare module 'gd-bs/components/types/progressGroup' {
             el?: Element | HTMLElement;
             isMultiple?: boolean;
             progressbars?: Array<IProgressProps>;
+    }
+}
+
+declare module 'gd-bs/components/types/spinner' {
+    /**
+        * Spinner
+        */
+    export const Spinner: (props: ISpinnerProps) => ISpinner;
+    
+    /**
+        * Spinner Types
+        */
+    export const SpinnerTypes: ISpinnerTypes;
+    
+    /**
+        * Spinner
+        */
+    export interface ISpinner {
+            /** The element. */
+            el: Element;
+    }
+    
+    /**
+        * Spinner Properties
+        */
+    export interface ISpinnerProps {
+            className?: string;
+            el?: Element | HTMLElement;
+            isGrowing?: boolean;
+            isSmall?: boolean;
+            text?: string;
+            type?: number;
+    }
+    
+    /**
+        * Spinner Types
+        */
+    export type ISpinnerTypes = {
+            Danger: number;
+            Dark: number;
+            Info: number;
+            Light: number;
+            Primary: number;
+            Secondary: number;
+            Success: number;
+            Warning: number;
     }
 }
 
