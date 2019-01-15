@@ -1,5 +1,6 @@
 import * as jQuery from "jquery";
 import { Badge, BadgeTypes } from "./badge";
+import { Spinner } from "./spinner";
 import { IButton, IButtonProps } from "./types/button";
 
 /**
@@ -97,8 +98,18 @@ export const Button = (props: IButtonProps): IButton => {
             break;
     }
 
+    // See if this is a spinner
+    if (props.spinnerProps) {
+        // Set the element to render to
+        props.spinnerProps.el = button;
+
+        // Render the spinner
+        Spinner(props.spinnerProps);
+    }
+
     // Set the text
-    button.innerHTML = props.text || "";
+    let btnText = document.createTextNode(props.text || "");
+    button.appendChild(btnText);
 
     // See if there is a badge
     if (props.badge) {
@@ -146,6 +157,16 @@ export const Button = (props: IButtonProps): IButton => {
     return {
         dispose: () => { jQuery(button).button("dispose"); },
         el: button,
+        setText: (btnText?: string) => {
+            // Clear the element
+            while (button.firstChild) { button.removeChild(button.firstChild); }
+
+            // Set the text
+            let elText = document.createTextNode(btnText || "");
+
+            // Append the text
+            button.appendChild(elText);
+        },
         toggle: () => { jQuery(button).button("toggle"); }
     };
 }

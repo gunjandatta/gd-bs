@@ -224,6 +224,7 @@ declare module 'gd-bs/components/types/breadcrumb' {
 
 declare module 'gd-bs/components/types/button' {
     import { IBadgeProps } from "gd-bs/components/types/badge";
+    import { ISpinnerProps } from "gd-bs/components/types/spinner";
     
     /**
         * Button
@@ -244,6 +245,9 @@ declare module 'gd-bs/components/types/button' {
     
             /** The element. */
             el: Element;
+    
+            /** Updates the button text. */
+            setText: (btnText?: string) => void;
     
             /** Toggles push state. Gives the button the appearance that it has been activated. */
             toggle: () => void;
@@ -268,6 +272,7 @@ declare module 'gd-bs/components/types/button' {
             isOutline?: boolean;
             isSmall?: boolean;
             onClick?: (button?: IButtonProps, ev?: Event) => void;
+            spinnerProps?: ISpinnerProps;
             target?: string;
             text?: string;
             toggle?: string;

@@ -1,4 +1,5 @@
 import { IBadgeProps } from "./badge";
+import { ISpinnerProps } from "./spinner";
 
 /**
  * Button
@@ -19,6 +20,9 @@ export interface IButton {
 
     /** The element. */
     el: Element;
+
+    /** Updates the button text. */
+    setText: (btnText?: string) => void;
 
     /** Toggles push state. Gives the button the appearance that it has been activated. */
     toggle: () => void;
@@ -43,6 +47,7 @@ export interface IButtonProps {
     isOutline?: boolean;
     isSmall?: boolean;
     onClick?: (button?: IButtonProps, ev?: Event) => void;
+    spinnerProps?: ISpinnerProps;
     target?: string;
     text?: string;
     toggle?: string;
