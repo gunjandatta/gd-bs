@@ -428,6 +428,25 @@ export namespace Components {
     'className'?: string;
   }
 
+  interface BsToast {
+    'bodyText': string;
+    'className': string;
+    'closeButtonHidden': boolean;
+    'closeButtonText': boolean;
+    'headerImgClass': string;
+    'headerImgSrc': string;
+    'headerText': string;
+  }
+  interface BsToastAttributes extends StencilHTMLAttributes {
+    'bodyText'?: string;
+    'className'?: string;
+    'closeButtonHidden'?: boolean;
+    'closeButtonText'?: boolean;
+    'headerImgClass'?: string;
+    'headerImgSrc'?: string;
+    'headerText'?: string;
+  }
+
   interface BsTooltip {
     'className': string;
     'type': number;
@@ -475,6 +494,7 @@ declare global {
     'BsProgressgroup': Components.BsProgressgroup;
     'BsSpinner': Components.BsSpinner;
     'BsTable': Components.BsTable;
+    'BsToast': Components.BsToast;
     'BsTooltip': Components.BsTooltip;
     'BsToolbar': Components.BsToolbar;
   }
@@ -506,6 +526,7 @@ declare global {
     'bs-progressgroup': Components.BsProgressgroupAttributes;
     'bs-spinner': Components.BsSpinnerAttributes;
     'bs-table': Components.BsTableAttributes;
+    'bs-toast': Components.BsToastAttributes;
     'bs-tooltip': Components.BsTooltipAttributes;
     'bs-toolbar': Components.BsToolbarAttributes;
   }
@@ -667,6 +688,12 @@ declare global {
     new (): HTMLBsTableElement;
   };
 
+  interface HTMLBsToastElement extends Components.BsToast, HTMLStencilElement {}
+  var HTMLBsToastElement: {
+    prototype: HTMLBsToastElement;
+    new (): HTMLBsToastElement;
+  };
+
   interface HTMLBsTooltipElement extends Components.BsTooltip, HTMLStencilElement {}
   var HTMLBsTooltipElement: {
     prototype: HTMLBsTooltipElement;
@@ -706,6 +733,7 @@ declare global {
     'bs-progressgroup': HTMLBsProgressgroupElement
     'bs-spinner': HTMLBsSpinnerElement
     'bs-table': HTMLBsTableElement
+    'bs-toast': HTMLBsToastElement
     'bs-tooltip': HTMLBsTooltipElement
     'bs-toolbar': HTMLBsToolbarElement
   }
@@ -737,6 +765,7 @@ declare global {
     'bs-progressgroup': HTMLBsProgressgroupElement;
     'bs-spinner': HTMLBsSpinnerElement;
     'bs-table': HTMLBsTableElement;
+    'bs-toast': HTMLBsToastElement;
     'bs-tooltip': HTMLBsTooltipElement;
     'bs-toolbar': HTMLBsToolbarElement;
   }

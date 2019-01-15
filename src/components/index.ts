@@ -25,5 +25,6 @@ export * from "./progress";
 export * from "./progressGroup";
 export * from "./spinner";
 export * from "./table";
-export * from "./tooltip";
+export * from "./toast";
 export * from "./toolbar";
+export * from "./tooltip";

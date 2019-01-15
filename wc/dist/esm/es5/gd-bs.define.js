@@ -29,6 +29,7 @@ import {
   ProgressGroup,
   Spinner,
   Table,
+  Toast,
   Toolbar,
   Tooltip
 } from './gd-bs.components.js';
@@ -61,6 +62,7 @@ export function defineCustomElements(win, opts) {
     ProgressGroup,
     Spinner,
     Table,
+    Toast,
     Toolbar,
     Tooltip
   ], opts);

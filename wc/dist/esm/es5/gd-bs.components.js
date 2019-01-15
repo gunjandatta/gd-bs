@@ -25,5 +25,6 @@ export var Progress = ["bs-progress","qdncm1qa",0,[["className",1,0,"class-name"
 export var ProgressGroup = ["bs-progressGroup","w4ovi3hm",0,[["className",1,0,"class-name",2],["el",64],["isMultiple",1,0,"is-multiple",4]]];
 export var Spinner = ["bs-spinner","kd5bngm2",0,[["className",1,0,"class-name",2],["el",64],["isGrowing",1,0,"is-growing",4],["isSmall",1,0,"is-small",4],["text",1,0,1,2],["type",1,0,1,8]]];
 export var Table = ["bs-table","cf8cnlyi",0,[["className",1,0,"class-name",2],["el",64]]];
+export var Toast = ["bs-toast","2nyhiavt",0,[["bodyText",1,0,"body-text",2],["className",1,0,"class-name",2],["closeButtonHidden",1,0,"close-button-hidden",4],["closeButtonText",1,0,"close-button-text",4],["el",64],["headerImgClass",1,0,"header-img-class",2],["headerImgSrc",1,0,"header-img-src",2],["headerText",1,0,"header-text",2]]];
 export var Toolbar = ["bs-toolbar","agpulmyk",0,[["className",1,0,"class-name",2],["el",64],["spacing",1,0,1,8]]];
 export var Tooltip = ["bs-tooltip","4hekrn3v",0,[["className",1,0,"class-name",2],["el",64],["type",1,0,1,8]]];

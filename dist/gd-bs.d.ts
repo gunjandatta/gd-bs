@@ -39,6 +39,7 @@ declare module 'gd-bs/components/types' {
     export * from "gd-bs/components/types/progressGroup";
     export * from "gd-bs/components/types/spinner";
     export * from "gd-bs/components/types/table";
+    export * from "gd-bs/components/types/toast";
     export * from "gd-bs/components/types/toolbar";
     export * from "gd-bs/components/types/tooltip";
 }
@@ -1558,6 +1559,55 @@ declare module 'gd-bs/components/types/table' {
             onRenderHeader?: (el?: HTMLTableDataCellElement, column?: ITableColumn) => void;
             scope?: string;
             title?: string;
+    }
+}
+
+declare module 'gd-bs/components/types/toast' {
+    /**
+        * Toast
+        */
+    export const Toast: (props: IToastProps) => IToast;
+    
+    /**
+        * Toast
+        */
+    export interface IToast {
+            /** The component element. */
+            el: HTMLElement;
+    
+            /** Hides the toast. */
+            hide: () => void;
+    
+            /** Shows the toast. */
+            show: () => void;
+    }
+    
+    /**
+        * Toast Properties
+        */
+    export interface IToastProps {
+            bodyText?: string;
+            className?: string;
+            closeButtonHidden?: boolean;
+            closeButtonText?: string;
+            data?: any;
+            el?: Element | HTMLElement;
+            headerImgClass?: string;
+            headerImgSrc?: string;
+            headerText?: string;
+            options?: IToastOptions;
+            onClick?: (el?: HTMLElement, data?: any) => void;
+            onRenderBody?: (el?: HTMLElement, data?: any) => void;
+            onRenderHeader?: (el?: HTMLElement, data?: any) => void;
+    }
+    
+    /**
+        * Toast Options
+        */
+    export interface IToastOptions {
+            animation?: boolean;
+            autohide?: boolean;
+            delay?: number;
     }
 }
 

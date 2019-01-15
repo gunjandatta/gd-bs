@@ -38,6 +38,7 @@
         <div id="progressGroup"></div>
         <div id="navbar"></div>
         <div id="table"></div>
+        <div id="toast"></div>
     </form>
     <script type="text/javascript">
         window.addEventListener("load", function () {
@@ -56,6 +57,13 @@
                 // Update the text
                 btnLoading.setText("Click Me");
             }, 5000);
+
+            window.toast = GD.Components.Toast({
+                el: document.getElementById("toast"),
+                headerText: "Header Text",
+                bodyText: "This is the body of the toast."
+            });
+            window.toast.show();
 
             GD.Components.Spinner({
                 el: document.getElementById("spinner"),
