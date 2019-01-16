@@ -53,4 +53,5 @@ export interface ICheckboxGroupProps {
 export type ICheckboxTypes = {
     Checkbox: number;
     Radio: number;
+    Switch: number;
 }

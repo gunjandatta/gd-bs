@@ -98,6 +98,7 @@ export type IFormControlTypes = {
     Radio; number;
     Range: number;
     Readonly: number;
+    Switch: number;
     TextArea: number;
     TextField: number;
 }

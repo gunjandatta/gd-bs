@@ -105,6 +105,17 @@
                     },
                     {
                         control: {
+                            label: "Switch Example",
+                            name: "SwitchExample",
+                            type: GD.Components.FormControlTypes.Switch,
+                            items: [
+                                { name: "Label1", label: "Do you like this framework?", isSelected: true },
+                                { name: "Label2", label: "Is it easy to use?" }
+                            ]
+                        }
+                    },
+                    {
+                        control: {
                             label: "Post:",
                             name: "PostName",
                             type: GD.Components.FormControlTypes.Dropdown,
@@ -243,7 +254,10 @@
                                         GD.Components.Button({
                                             el: control.el,
                                             text: "Save",
-                                            onClick: function () { window.myForm = { values: myForm.getValues(), isValid: myForm.isValid() }; }
+                                            onClick: function () {
+                                                window.myForm = { values: myForm.getValues(), isValid: myForm.isValid() };
+                                                console.log(window.myForm);
+                                            }
                                         });
                                     }
                                 }

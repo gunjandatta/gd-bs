@@ -1,7 +1,7 @@
 import { CheckboxGroup, CheckboxGroupTypes } from "./checkboxGroup";
 import { ICheckboxGroup } from "./types/checkboxGroup";
 import { Dropdown } from "./dropdown";
-import { IDropdown, IDropdownItem } from "./types/dropdown";
+import { IDropdown } from "./types/dropdown";
 import { InputGroup, InputGroupTypes } from "./inputGroup";
 import { IInputGroup } from "./types/inputGroup";
 import { IFormControl, IFormControlProps, IFormControlPropsCheckbox, IFormControlPropsDropdown, IFormControlPropsNumberField, IFormControlPropsTextField, IFormControlValidationResult } from "./types/formControl";
@@ -19,8 +19,9 @@ export enum FormControlTypes {
     Radio = 7,
     Range = 8,
     Readonly = 9,
-    TextArea = 10,
-    TextField = 11
+    Switch = 10,
+    TextArea = 11,
+    TextField = 12
 }
 
 /**
@@ -158,6 +159,21 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
                 placeholder: (props as IFormControlPropsNumberField).placeholder,
                 step: (props as IFormControlPropsNumberField).step,
                 type: InputGroupTypes.Range,
+                value: props.value
+            });
+            break;
+        // Switch
+        case FormControlTypes.Switch:
+            // Add the checkbox group
+            cb = CheckboxGroup({
+                className: props.className,
+                el,
+                hideLabel: true,
+                items: (props as IFormControlPropsCheckbox).items,
+                label: props.label,
+                multi: (props as IFormControlPropsCheckbox).multi,
+                onChange: (props as IFormControlPropsCheckbox).onChange,
+                type: CheckboxGroupTypes.Switch,
                 value: props.value
             });
             break;

@@ -566,6 +566,7 @@ declare module 'gd-bs/components/types/checkboxGroup' {
     export type ICheckboxTypes = {
             Checkbox: number;
             Radio: number;
+            Switch: number;
     }
 }
 
@@ -858,6 +859,7 @@ declare module 'gd-bs/components/types/formControl' {
             Radio; number;
             Range: number;
             Readonly: number;
+            Switch: number;
             TextArea: number;
             TextField: number;
     }
