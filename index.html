@@ -88,12 +88,21 @@
                     ReasonNotTestedExplanationRadio: "Primary",
                     CBExample: true
                 },
+                onRendered: function () { console.log("The form has been rendered..."); },
                 rows: [
                     {
                         control: {
                             controlClassName: "d-none",
                             label: "Shouldn't See Me",
                             type: GD.Components.FormControlTypes.Dropdown
+                        }
+                    },
+                    {
+                        control: {
+                            onControlRendered: function (control) {
+                                // Render a header
+                                control.el.innerHTML = "<h3>Form Header</h3>";
+                            }
                         }
                     },
                     {
@@ -229,7 +238,10 @@
                                     onControlRendering: function (props) {
                                         return {
                                             then: function (resolve) {
-                                                setTimeout(function () { resolve(props); }, 5000);
+                                                setTimeout(function () {
+                                                    console.log("Delayed textbox has been rendered...");
+                                                    resolve(props);
+                                                }, 5000);
                                             }
                                         }
                                     }

@@ -33,6 +33,7 @@ export interface IFormProps {
     rows?: Array<IFormRow>;
     onControlRendering?: (control: IFormControlProps) => void | Promise<IFormControlProps>;
     onControlRendered?: (control: IFormControl) => void | Promise<IFormControl>;
+    onRendered?: (controls: Array<IFormControl>) => void;
     value?: any;
 }
 

@@ -1,6 +1,6 @@
 import { IForm, IFormProps } from "./types/form";
 import { IFormControl, IFormControlProps } from "./types/formControl";
-import { FormControl, FormControlTypes } from "./formControl";
+import { FormControl } from "./formControl";
 import { Progress } from "./progress";
 
 /**
@@ -9,6 +9,7 @@ import { Progress } from "./progress";
  */
 export const Form = (props: IFormProps): IForm => {
     let controls: Array<IFormControl> = [];
+    let counter: number = 0;
 
     // Create the form element
     let form = document.createElement("form");
@@ -28,6 +29,15 @@ export const Form = (props: IFormProps): IForm => {
                 resolve(props);
             }
         })
+    }
+
+    // The on form rendered event
+    let onFormRendered = () => {
+        // Decrement the counter
+        if (--counter == 0) {
+            // Call the event
+            props.onRendered ? props.onRendered(controls) : null;
+        }
     }
 
     // The on rendered event
@@ -53,6 +63,9 @@ export const Form = (props: IFormProps): IForm => {
 
     // The on rendering event
     let onRendering = (el: HTMLElement, controlProps: IFormControlProps): Promise<IFormControlProps> => {
+        // Increment the the counter
+        counter++;
+
         // Return a promise
         return new Promise((resolve, reject) => {
             // Render a loading message
@@ -144,6 +157,9 @@ export const Form = (props: IFormProps): IForm => {
                         onRendered(control).then(control => {
                             // Save the control
                             controls.push(control);
+
+                            // Call the form rendered event
+                            onFormRendered();
                         });
                     });
                 }
@@ -215,6 +231,9 @@ export const Form = (props: IFormProps): IForm => {
                     onRendered(control).then(control => {
                         // Save the control
                         controls.push(control);
+
+                        // Call the form rendered event
+                        onFormRendered();
                     });
                 });
             }
