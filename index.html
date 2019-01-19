@@ -135,13 +135,18 @@
                             onControlRendered: (control) => {
                                 window.myFormControl = control;
                                 control.get().setItems([
+                                    { isHeader: true, text: "Header 1" },
+                                    { isDivider: true },
                                     { text: "" },
                                     { text: "Update Item 1" },
+                                    { isHeader: true, text: "Header 2" },
+                                    { isDivider: true },
                                     { text: "Update Item 2" },
                                     { text: "Update Item 3" },
                                 ]);
                             },
                             onChange: (item) => {
+                                debugger;
                                 alert("Selected Item: " + item.text);
                             },
                             onValidate: function (props, item) {
@@ -331,17 +336,20 @@
                 el: document.querySelector("#ddl"),
                 isSplit: "true",
                 label: "My Dropdown",
-                multi: true,
                 onChange: function (item, ev) {
                     item ? alert("Selected Item: " + item.text) : null;
                 },
                 type: GD.Components.DropdownTypes.Secondary,
                 items: [
+                    { isHeader: true, text: "Header 1" },
+                    { isDivider: true },
                     { text: "Item 1" },
                     { text: "Item 2" },
                     { text: "Item 3" },
                     { text: "Item 4" },
                     { text: "Item 5" },
+                    { isHeader: true, text: "Header 2" },
+                    { isDivider: true },
                     { text: "Item 6" },
                     { text: "Item 7" },
                     { text: "Item 8" },

@@ -24,12 +24,30 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
 
     // Method to generate the items
     let generateItems = (elParent: HTMLElement, value?: any) => {
-        // See if we are rendering this in a form
-        if (props.formFl) {
-            // Parse the items
-            for (let i = 0; i < items.length; i++) {
-                let item = items[i];
+        // Parse the items
+        for (let i = 0; i < items.length; i++) {
+            let item = items[i];
 
+            // See if this is a divider
+            if (item.isDivider) {
+                // Add the divider
+                let elDivider = document.createElement("div");
+                elDivider.className = "dropdown-divider";
+                elParent.appendChild(elDivider);
+                continue;
+            }
+
+            // See if this is a header
+            if (item.isHeader) {
+                // Add the header
+                let elHeader = document.createElement("h6");
+                elHeader.className = "dropdown-header";
+                elHeader.innerHTML = item.text || "";
+                elParent.appendChild(elHeader);
+                continue;
+            }
+            // See if we are rendering this in a form
+            if (props.formFl) {
                 // Create the option
                 let option = document.createElement("option");
                 option.setAttribute("data-idx", i.toString());
@@ -98,79 +116,74 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
                     }
                 });
             }
-        }
-        else {
-            // Set the click event for the custom events
-            let onItemClick = (ev: Event) => {
-                let elItem = ev.currentTarget as HTMLElement;
-                let itemIdx = elItem.getAttribute("data-idx");
-                let item: IDropdownItem = items[itemIdx];
-                let selectedItems: Array<IDropdownItem> = [];
+            else {
+                // Set the click event for the custom events
+                let onItemClick = (ev: Event) => {
+                    let elItem = ev.currentTarget as HTMLElement;
+                    let itemIdx = elItem.getAttribute("data-idx");
+                    let item: IDropdownItem = items[itemIdx];
+                    let selectedItems: Array<IDropdownItem> = [];
 
-                // See if this is a menu only
-                if (props.menuOnly) {
-                    // Set the location
-                    item.href && item.href != "#" ? document.location.href = item.href : null;
-                }
-
-                // Parse the selected items
-                let elSelectedItems = el.querySelectorAll(".dropdown-item.active");
-                for (let i = 0; i < elSelectedItems.length; i++) {
-                    let elSelectedItem = elSelectedItems[i] as HTMLElement;
-                    let selectedIdx = elSelectedItem.getAttribute("data-idx");
-                    let selectedItem = items[selectedIdx];
-
-                    // Skip this item
-                    if (itemIdx == selectedIdx) { continue; }
-
-                    // See if this is a multi-select
-                    if (isMulti) {
-                        // Add the item
-                        selectedItems.push(selectedItem);
-                    } else {
-                        // Unselect the item
-                        elSelectedItem.classList.remove("active");
+                    // See if this is a menu only
+                    if (props.menuOnly) {
+                        // Set the location
+                        item.href && item.href != "#" ? document.location.href = item.href : null;
                     }
-                }
 
-                // See if this item is selected
-                if (elItem.classList.contains("active")) {
-                    // Unselect this item
-                    elItem.classList.remove("active");
-                } else {
-                    // Select this item
-                    elItem.classList.add("active");
+                    // Parse the selected items
+                    let elSelectedItems = el.querySelectorAll(".dropdown-item.active");
+                    for (let i = 0; i < elSelectedItems.length; i++) {
+                        let elSelectedItem = elSelectedItems[i] as HTMLElement;
+                        let selectedIdx = elSelectedItem.getAttribute("data-idx");
+                        let selectedItem = items[selectedIdx];
 
-                    // Add the item
-                    selectedItems.push(item);
-                }
+                        // Skip this item
+                        if (itemIdx == selectedIdx) { continue; }
 
-                // Sort the items
-                selectedItems = selectedItems.sort((a, b) => {
-                    if (a.text < b.text) { return -1; }
-                    if (a.text > b.text) { return 1; }
-                    return 0;
-                });
+                        // See if this is a multi-select
+                        if (isMulti) {
+                            // Add the item
+                            selectedItems.push(selectedItem);
+                        } else {
+                            // Unselect the item
+                            elSelectedItem.classList.remove("active");
+                        }
+                    }
 
-                // See if a click event exists
-                if (item.onClick) {
-                    // Call the click event
-                    item.onClick(item, ev);
-                }
+                    // See if this item is selected
+                    if (elItem.classList.contains("active")) {
+                        // Unselect this item
+                        elItem.classList.remove("active");
+                    } else {
+                        // Select this item
+                        elItem.classList.add("active");
 
-                // See if a global change event exists
-                if (props.onChange) {
-                    // Call the change event
-                    props.onChange(isMulti ? selectedItems : selectedItems[0], ev);
-                }
-            };
+                        // Add the item
+                        selectedItems.push(item);
+                    }
 
-            // See if we are rendering this in a nav bar
-            if (props.navFl) {
-                // Parse the items
-                for (let i = 0; i < items.length; i++) {
-                    let item = items[i];
+                    // Sort the items
+                    selectedItems = selectedItems.sort((a, b) => {
+                        if (a.text < b.text) { return -1; }
+                        if (a.text > b.text) { return 1; }
+                        return 0;
+                    });
 
+                    // See if a click event exists
+                    if (item.onClick) {
+                        // Call the click event
+                        item.onClick(item, ev);
+                    }
+
+                    // See if a global change event exists
+                    if (props.onChange) {
+                        // Call the change event
+                        props.onChange(isMulti ? selectedItems : selectedItems[0], ev);
+                    }
+                };
+
+                // See if we are rendering this in a nav bar
+                if (props.navFl) {
                     // See if this is a divider
                     if (item.isDivider) {
                         // Add the divider
@@ -190,12 +203,7 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
                         // Set the click event
                         elItem.addEventListener("click", onItemClick);
                     }
-                }
-            } else {
-                // Parse the items
-                for (let i = 0; i < items.length; i++) {
-                    let item = items[i];
-
+                } else {
                     // See if this is a divider
                     if (item.isDivider) {
                         // Add the divider
@@ -205,10 +213,19 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
                         continue;
                     }
 
+                    // See if this is a header
+                    if (item.isHeader) {
+                        // Add the header
+                        let elHeader = document.createElement("h6");
+                        elHeader.className = "dropdown-header";
+                        elHeader.innerHTML = item.text || "";
+                        elParent.appendChild(elHeader);
+                        continue;
+                    }
+
                     // Create the item
                     let elItem = document.createElement("a");
                     elItem.className = "dropdown-item";
-                    item.isHeader ? elItem.classList.add("dropdown-header") : null;
                     elItem.href = item.href || "#";
                     elItem.setAttribute("data-idx", i.toString());
                     elItem.innerHTML = item.text || "";
