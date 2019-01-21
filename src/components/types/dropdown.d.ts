@@ -25,7 +25,7 @@ export interface IDropdown {
     isMulti: boolean;
 
     /** Updates the dropdown items. */
-    setItems: (items:Array<IDropdownItem>) => void;
+    setItems: (items: Array<IDropdownItem>) => void;
 
     /** Toggles the dropdown menu of a given navbar or tabbed navigation. */
     toggle: () => void;
@@ -38,12 +38,15 @@ export interface IDropdown {
  * Dropdown Item
  */
 export interface IDropdownItem {
+    className?: string;
     data?: any;
     href?: string;
+    isDisabled?: boolean;
     isDivider?: boolean;
     isHeader?: boolean;
     isSelected?: boolean;
     onClick?: (item?: IDropdownItem, ev?: Event) => void;
+    onRender?: (el: HTMLElement, item?: IDropdownItem) => void;
     text?: string;
     value?: string;
 }

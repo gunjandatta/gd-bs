@@ -28,28 +28,45 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
         for (let i = 0; i < items.length; i++) {
             let item = items[i];
 
-            // See if this is a divider
-            if (item.isDivider) {
-                // Add the divider
-                let elDivider = document.createElement("div");
-                elDivider.className = "dropdown-divider";
-                elParent.appendChild(elDivider);
-                continue;
-            }
-
-            // See if this is a header
-            if (item.isHeader) {
-                // Add the header
-                let elHeader = document.createElement("h6");
-                elHeader.className = "dropdown-header";
-                elHeader.innerHTML = item.text || "";
-                elParent.appendChild(elHeader);
-                continue;
-            }
             // See if we are rendering this in a form
             if (props.formFl) {
+                // See if this is a divider
+                if (item.isDivider) {
+                    // Add the divider
+                    let elDivider = document.createElement("optgroup");
+                    elDivider.className = item.className || "";
+                    elDivider.classList.add("dropdown-divider");
+                    elDivider.disabled = true;
+                    elParent.appendChild(elDivider);
+
+                    // Call the event
+                    item.onRender ? item.onRender(elDivider, item) : null;
+
+                    // Continue the loop
+                    continue;
+                }
+
+                // See if this is a header
+                if (item.isHeader) {
+                    // Add the header
+                    let elHeader = document.createElement("optgroup");
+                    elHeader.className = item.className || "";
+                    elHeader.classList.add("dropdown-header");
+                    elHeader.disabled = item.isDisabled;
+                    elHeader.label = item.text || "";
+                    elParent.appendChild(elHeader);
+
+                    // Call the event
+                    item.onRender ? item.onRender(elHeader, item) : null;
+
+                    // Continue the loop
+                    continue;
+                }
+
                 // Create the option
                 let option = document.createElement("option");
+                option.className = item.className || "";
+                option.disabled = item.isDisabled ? true : false;
                 option.setAttribute("data-idx", i.toString());
                 elParent.appendChild(option);
 
@@ -76,6 +93,10 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
                         }
                     }
                 }
+
+                // Call the event
+                item.onRender ? item.onRender(option, item) : null;
+
                 // Set the click event for the custom events
                 option.addEventListener("click", ev => {
                     let elItem = ev.currentTarget as HTMLElement;
@@ -117,6 +138,39 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
                 });
             }
             else {
+                // See if this is a divider
+                if (item.isDivider) {
+                    // Add the divider
+                    let elDivider = document.createElement("div");
+                    elDivider.className = item.className || "";
+                    elDivider.classList.add("dropdown-divider");
+                    item.isDisabled ? elDivider.classList.add("disabled") : null;
+                    elParent.appendChild(elDivider);
+
+                    // Call the event
+                    item.onRender ? item.onRender(elDivider, item) : null;
+
+                    // Continue the loop
+                    continue;
+                }
+
+                // See if this is a header
+                if (item.isHeader) {
+                    // Add the header
+                    let elHeader = document.createElement("h6");
+                    elHeader.className = item.className || "";
+                    elHeader.classList.add("dropdown-header");
+                    item.isDisabled ? elHeader.classList.add("disabled") : null;
+                    elHeader.innerHTML = item.text || "";
+                    elParent.appendChild(elHeader);
+
+                    // Call the event
+                    item.onRender ? item.onRender(elHeader, item) : null;
+
+                    // Continue the loop
+                    continue;
+                }
+
                 // Set the click event for the custom events
                 let onItemClick = (ev: Event) => {
                     let elItem = ev.currentTarget as HTMLElement;
@@ -184,55 +238,31 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
 
                 // See if we are rendering this in a nav bar
                 if (props.navFl) {
-                    // See if this is a divider
-                    if (item.isDivider) {
-                        // Add the divider
-                        let elDivider = document.createElement("div");
-                        elDivider.className = "dropdown-divider";
-                        elParent.appendChild(elDivider);
-                    } else {
-                        // Add the item
-                        let elItem = document.createElement("a");
-                        elItem.className = "dropdown-item";
-                        item.isHeader ? elItem.classList.add("dropdown-header") : null;
-                        elItem.href = item.href || "#";
-                        elItem.setAttribute("data-idx", i.toString());
-                        elItem.innerHTML = item.text || "";
-                        elParent.appendChild(elItem);
-
-                        // Set the click event
-                        elItem.addEventListener("click", onItemClick);
-                    }
-                } else {
-                    // See if this is a divider
-                    if (item.isDivider) {
-                        // Add the divider
-                        let elDivider = document.createElement("div");
-                        elDivider.className = "dropdown-divider";
-                        elParent.appendChild(elDivider);
-                        continue;
-                    }
-
-                    // See if this is a header
-                    if (item.isHeader) {
-                        // Add the header
-                        let elHeader = document.createElement("h6");
-                        elHeader.className = "dropdown-header";
-                        elHeader.innerHTML = item.text || "";
-                        elParent.appendChild(elHeader);
-                        continue;
-                    }
-
-                    // Create the item
+                    // Add the item
                     let elItem = document.createElement("a");
-                    elItem.className = "dropdown-item";
+                    elItem.className = item.className || "";
+                    elItem.classList.add("dropdown-item");
+                    item.isDisabled ? elItem.classList.add("disabled") : null;
                     elItem.href = item.href || "#";
                     elItem.setAttribute("data-idx", i.toString());
                     elItem.innerHTML = item.text || "";
                     elParent.appendChild(elItem);
 
+                    // Call the event
+                    item.onRender ? item.onRender(elItem, item) : null;
+
                     // Set the click event
                     elItem.addEventListener("click", onItemClick);
+                } else {
+                    // Create the item
+                    let elItem = document.createElement("a");
+                    elItem.className = item.className || "";
+                    elItem.classList.add("dropdown-item");
+                    item.isDisabled ? elItem.classList.add("disabled") : null;
+                    elItem.href = item.href || "#";
+                    elItem.setAttribute("data-idx", i.toString());
+                    elItem.innerHTML = item.text || "";
+                    elParent.appendChild(elItem);
 
                     // See if this item is selected
                     if (item.isSelected) {
@@ -254,6 +284,12 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
                             }
                         }
                     }
+
+                    // Call the event
+                    item.onRender ? item.onRender(elItem, item) : null;
+
+                    // Set the click event
+                    elItem.addEventListener("click", onItemClick);
                 }
             }
         }
