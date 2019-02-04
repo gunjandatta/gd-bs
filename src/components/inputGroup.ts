@@ -96,7 +96,7 @@ export const InputGroup = (props: IInputGroupProps): IInputGroup => {
             props.min ? 'min="' + props.min + '"' : '',
             props.max ? 'max="' + props.max + '"' : '',
             props.step ? 'step="' + props.step + '"' : '',
-            props.value ? 'value="' + props.value + '"' : '',
+            typeof (props.value) != "undefined" ? 'value="' + props.value + '"' : '',
             props.isReadonly ? 'readonly' : '',
             props.type == InputGroupTypes.Search ? 'aria-label="Search"' : '',
             '></input>'
