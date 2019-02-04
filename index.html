@@ -12,6 +12,9 @@
 <body>
     <h1>Library</h1>
     <form>
+        <div id="dev">
+
+        </div>
         <div id="btn-loading"></div>
         <div id="spinner"></div>
         <span id="myPopover">Menu</span>
@@ -42,6 +45,21 @@
     </form>
     <script type="text/javascript">
         window.addEventListener("load", function () {
+            var form = GD.Components.Form({
+                el: document.getElementById("dev"),
+                value: {
+                    "fieldValue": "0"
+                },
+                rows: [
+                    {
+                        control: {
+                            label: "Issue 4",
+                            name: "fieldValue",
+                            type: GD.Components.FormControlTypes.TextField
+                        }
+                    }
+                ]
+            });
             var btnLoading = GD.Components.Button({
                 className: "btn-loading",
                 el: document.getElementById("btn-loading"),
@@ -85,6 +103,7 @@
             var myForm = GD.Components.Form({
                 el: document.getElementById("myForm"),
                 value: {
+                    ReasonNotTestedExplanation: "0",
                     ReasonNotTestedExplanationRadio: "Primary",
                     CBExample: true
                 },
@@ -143,7 +162,6 @@
                                 ]);
                             },
                             onChange: (item) => {
-                                debugger;
                                 alert("Selected Item: " + item.text);
                             },
                             onValidate: function (props, item) {
@@ -523,7 +541,7 @@
                 prependedButtons: [{ text: "Save" }],
                 prependedLabel: "First Name",
                 appendedButtons: [{ text: "Run" }],
-                value: "Test Value",
+                value: "0",
                 onClear: function () {
                     console.log("The value was cleared.");
                 },
