@@ -8,6 +8,7 @@ export const Table: (props: ITableProps) => ITable
  */
 export interface ITable {
     el: HTMLTableElement;
+    addRows(rows: Array<any>);
 }
 
 /**

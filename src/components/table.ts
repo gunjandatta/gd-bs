@@ -139,70 +139,75 @@ export const Table = (props: ITableProps): ITable => {
     let elBody = document.createElement("tbody");
     elTable.appendChild(elBody);
 
-    // Parse the rows
-    let rows = props.rows || [];
-    for (let i = 0; i < rows.length; i++) {
-        let row = rows[i];
+    // Method to add the rows
+    let addRows = (rows: Array<any>) => {
+        // Parse the rows
+        for (let i = 0; i < rows.length; i++) {
+            let row = rows[i];
 
-        // Append the row
-        let elRow = document.createElement("tr");
-        elBody.appendChild(elRow);
+            // Append the row
+            let elRow = document.createElement("tr");
+            elBody.appendChild(elRow);
 
-        // See if columns
-        for (let j = 0; j < props.columns.length; j++) {
-            let col = props.columns[j];
-            let value = row[col.name] || "";
+            // See if columns
+            for (let j = 0; j < props.columns.length; j++) {
+                let col = props.columns[j];
+                let value = row[col.name] || "";
 
-            // Append the cell
-            let elCell = document.createElement("td");
-            elCell.className = col.className || "";
-            elCell.innerHTML = value;
-            elCell.setAttribute("data-row", i.toString());
-            elCell.setAttribute("data-idx", j.toString());
-            elRow.appendChild(elCell);
+                // Append the cell
+                let elCell = document.createElement("td");
+                elCell.className = col.className || "";
+                elCell.innerHTML = value;
+                elCell.setAttribute("data-row", i.toString());
+                elCell.setAttribute("data-idx", j.toString());
+                elRow.appendChild(elCell);
 
-            // See if there is a scope
-            if (col.scope) {
-                // Set the scope
-                elCell.setAttribute("scope", col.scope);
+                // See if there is a scope
+                if (col.scope) {
+                    // Set the scope
+                    elCell.setAttribute("scope", col.scope);
+                }
+
+                // See if there is an event for this column
+                if (col.onRenderCell) {
+                    // Call the event
+                    col.onRenderCell(elCell, col, row);
+                }
+
+                // See if there is an event for this component
+                if (props.onRenderCell) {
+                    // Call the event
+                    props.onRenderCell(elCell, col, row);
+                }
+
+                // See if there is a click event
+                if (col.onClickCell || props.onClickCell) {
+                    // Add the click event
+                    elCell.addEventListener("click", ev => {
+                        let elCell = ev.currentTarget as HTMLTableHeaderCellElement;
+
+                        // Get the column
+                        let col = props.columns[parseInt(elCell.getAttribute("data-idx"))];
+                        let row = props.rows[parseInt(elCell.getAttribute("data-row"))] || {};
+                        if (col) {
+                            // Call the event
+                            col.onClickCell ? col.onClickCell(elCell, col, row) : null;
+                            props.onClickCell ? props.onClickCell(elCell, col, row) : null;
+                        }
+                    });
+                }
             }
 
-            // See if there is an event for this column
-            if (col.onRenderCell) {
+            // See if there is an event
+            if (props.onRenderRow) {
                 // Call the event
-                col.onRenderCell(elCell, col, row);
+                props.onRenderRow(elRow, row);
             }
-
-            // See if there is an event for this component
-            if (props.onRenderCell) {
-                // Call the event
-                props.onRenderCell(elCell, col, row);
-            }
-
-            // See if there is a click event
-            if (col.onClickCell || props.onClickCell) {
-                // Add the click event
-                elCell.addEventListener("click", ev => {
-                    let elCell = ev.currentTarget as HTMLTableHeaderCellElement;
-
-                    // Get the column
-                    let col = props.columns[parseInt(elCell.getAttribute("data-idx"))];
-                    let row = props.rows[parseInt(elCell.getAttribute("data-row"))] || {};
-                    if (col) {
-                        // Call the event
-                        col.onClickCell ? col.onClickCell(elCell, col, row) : null;
-                        props.onClickCell ? props.onClickCell(elCell, col, row) : null;
-                    }
-                });
-            }
-        }
-
-        // See if there is an event
-        if (props.onRenderRow) {
-            // Call the event
-            props.onRenderRow(elRow, row);
         }
     }
+
+    // Add the rows
+    addRows(props.rows || []);
 
     // Create the element
     let el = document.createElement("div");
@@ -230,6 +235,7 @@ export const Table = (props: ITableProps): ITable => {
 
     // Return the table
     return {
-        el: elTable
+        el: elTable,
+        addRows
     };
 }

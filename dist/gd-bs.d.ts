@@ -1532,6 +1532,7 @@ declare module 'gd-bs/components/types/table' {
         */
     export interface ITable {
             el: HTMLTableElement;
+            addRows(rows: Array<any>);
     }
     
     /**
