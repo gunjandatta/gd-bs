@@ -898,8 +898,11 @@ declare module 'gd-bs/components/types/inputGroup' {
             /** The element. */
             el: HTMLElement;
     
-            /** Method to return the value. */
+            /** Method to get the value. */
             getValue: () => string;
+    
+            /** Method to set the value. */
+            setValue: (value: string) => void;
     }
     
     /**

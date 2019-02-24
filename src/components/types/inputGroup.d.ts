@@ -17,8 +17,11 @@ export interface IInputGroup {
     /** The element. */
     el: HTMLElement;
 
-    /** Method to return the value. */
+    /** Method to get the value. */
     getValue: () => string;
+
+    /** Method to set the value. */
+    setValue: (value: string) => void;
 }
 
 /**

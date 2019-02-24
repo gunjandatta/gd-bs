@@ -234,6 +234,18 @@ export const InputGroup = (props: IInputGroupProps): IInputGroup => {
 
             // Return the value
             return elTextbox ? elTextbox.value : null;
+        },
+        setValue: (value: string = "") => {
+            // Ensure the input element exists
+            let elTextbox = elInput;
+            if (elTextbox == null && inputGroup) {
+                // Query for the element
+                elTextbox = inputGroup.querySelector("input") || inputGroup.querySelector("textarea") as any;
+                if (elTextbox) {
+                    // Set the value
+                    elTextbox.value = value;
+                }
+            }
         }
     };
 }
