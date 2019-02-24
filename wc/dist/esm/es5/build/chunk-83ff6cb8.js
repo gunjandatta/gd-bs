@@ -18,6 +18,7 @@ var Dropdown = /** @class */ (function () {
             label: this.label,
             menuOnly: this.menuOnly,
             multi: this.multi,
+            setLabelToValue: this.setLabelToValue,
             type: this.type,
             value: this.value
         });
@@ -75,6 +76,10 @@ var Dropdown = /** @class */ (function () {
                 "multi": {
                     "type": Boolean,
                     "attr": "multi"
+                },
+                "setLabelToValue": {
+                    "type": Boolean,
+                    "attr": "set-label-to-value"
                 },
                 "type": {
                     "type": Number,

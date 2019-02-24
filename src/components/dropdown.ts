@@ -24,6 +24,67 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
 
     // Method to generate the items
     let generateItems = (elParent: HTMLElement, value?: any) => {
+        // Method to update the label
+        let updateLabel = (value: IDropdownItem | Array<IDropdownItem>) => {
+            let isMulti = value && typeof (value["length"]) === "number";
+            let item = value as IDropdownItem;
+            let items = value as Array<IDropdownItem>;
+
+            // Ensure we are updating the label
+            if (props.setLabelToValue != true) { return; }
+
+            // Get the label
+            let label = null;
+            let buttons = el.querySelectorAll("button");
+            for (let i = 0; i < buttons.length; i++) {
+                let button = buttons[i];
+
+                // See if this is the label
+                if (button.hasAttribute("data-is-label")) {
+                    // Set the label and break from the loop
+                    label = button;
+                    break;
+                }
+
+                // See if this is the target button
+                if (button.innerHTML == props.label) {
+                    // Set the attribute
+                    button.setAttribute("data-is-label", "true");
+
+                    // Set the label and break from the loop
+                    label = button;
+                    break;
+                }
+            }
+
+            // Ensure the label exists
+            if (label == null) { return; }
+
+            // See if a value exists
+            if (value && ((isMulti && items.length > 0) || item)) {
+                // See if this is a multi value
+                if (isMulti) {
+                    let values = [];
+
+                    // Parse the items
+                    for (let i = 0; i < items.length; i++) {
+                        // Add the value
+                        values.push(items[i].text);
+                    }
+
+                    // Set the value
+                    label.innerHTML = values.join(", ");
+                } else {
+
+                    // Set the value
+                    label.innerHTML = item.text;
+                }
+            } else {
+                // Revert to the default label
+                label.innerHTML = props.label;
+            }
+        };
+
         // Parse the items
         for (let i = 0; i < items.length; i++) {
             let item = items[i];
@@ -132,8 +193,13 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
 
                     // See if a global change event exists
                     if (props.onChange) {
+                        let value = isMulti ? selectedItems : selectedItems[0];
+
+                        // Update the label
+                        updateLabel(value)
+
                         // Call the change event
-                        props.onChange(isMulti ? selectedItems : selectedItems[0], ev);
+                        props.onChange(value, ev);
                     }
                 });
             }
@@ -231,8 +297,13 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
 
                     // See if a global change event exists
                     if (props.onChange) {
+                        let value = isMulti ? selectedItems : selectedItems[0];
+
+                        // Update the label
+                        updateLabel(value)
+
                         // Call the change event
-                        props.onChange(isMulti ? selectedItems : selectedItems[0], ev);
+                        props.onChange(value, ev);
                     }
                 };
 

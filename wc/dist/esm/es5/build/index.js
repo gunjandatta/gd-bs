@@ -4,7 +4,7 @@ import { a as ButtonGroup } from './chunk-fc103bb6.js';
 import { a as CardGroup } from './chunk-410e90bf.js';
 import { a as Carousel } from './chunk-30085220.js';
 import { a as Collapse } from './chunk-18826dc7.js';
-import { a as Dropdown } from './chunk-5b4b2da4.js';
+import { a as Dropdown } from './chunk-83ff6cb8.js';
 import { a as Form } from './chunk-9e0b9bc5.js';
 import { a as InputGroup } from './chunk-eb04fd34.js';
 import { a as Jumbotron } from './chunk-b34698a7.js';

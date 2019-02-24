@@ -69,6 +69,7 @@ export interface IDropdownProps {
     multi?: boolean;
     navFl?: boolean;
     onChange?: (item?: IDropdownItem | Array<IDropdownItem>, ev?: Event) => void;
+    setLabelToValue?: boolean;
     type?: number;
     value?: any;
 }

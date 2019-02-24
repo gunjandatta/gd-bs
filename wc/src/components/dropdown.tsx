@@ -19,6 +19,7 @@ export class Dropdown {
     @Prop() label: string;
     @Prop() menuOnly: boolean;
     @Prop() multi: boolean;
+    @Prop() setLabelToValue: boolean;
     @Prop() type: number;
     @Prop() value: string;
 
@@ -41,6 +42,7 @@ export class Dropdown {
             label: this.label,
             menuOnly: this.menuOnly,
             multi: this.multi,
+            setLabelToValue: this.setLabelToValue,
             type: this.type,
             value: this.value
         });
