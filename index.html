@@ -397,12 +397,16 @@
                     // Render a form
                     window["modalForm"] = GD.Components.Form({
                         el: el,
+                        className: "customClassName",
+                        rowClassName: "rowClassName",
                         rows: [
                             {
                                 columns: [
                                     {
                                         size: 6,
                                         control: {
+                                            className: "fixed-issue-1",
+                                            controlClassName: "fixed-issue-2",
                                             errorMessage: "This is a required field.",
                                             required: true,
                                             label: "First Name",

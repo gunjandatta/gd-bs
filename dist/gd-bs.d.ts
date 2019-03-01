@@ -744,6 +744,7 @@ declare module 'gd-bs/components/types/form' {
     export interface IFormProps {
             className?: string;
             el?: Element | HTMLElement,
+            rowClassName?: string;
             rows?: Array<IFormRow>;
             onControlRendering?: (control: IFormControlProps) => void | Promise<IFormControlProps>;
             onControlRendered?: (control: IFormControl) => void | Promise<IFormControl>;

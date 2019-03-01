@@ -34,7 +34,8 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
 
     // Create the element
     let el = props.el || document.createElement("div");
-    el.className = props.controlClassName || el.className;
+    props.className ? el.classList.add(props.className) : null;
+    props.controlClassName ? el.classList.add(props.controlClassName) : null;
 
     // Render the control based on the type
     switch (props.type) {
@@ -52,7 +53,7 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
 
             // Add the checkbox group
             cb = CheckboxGroup({
-                className: props.className,
+                className: el.className,
                 el,
                 hideLabel: true,
                 items,
@@ -67,7 +68,7 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
         case FormControlTypes.Dropdown:
             // Add the dropdown
             ddl = Dropdown({
-                className: props.className,
+                className: el.className,
                 el,
                 formFl: true,
                 items: (props as IFormControlPropsDropdown).items,
@@ -79,7 +80,7 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
         case FormControlTypes.Email:
             // Add the input
             tb = InputGroup({
-                className: props.className,
+                className: el.className,
                 el,
                 isPlainText: props.isPlainText,
                 isReadonly: props.isReadonly,
@@ -93,7 +94,7 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
         case FormControlTypes.File:
             // Add the input
             tb = InputGroup({
-                className: props.className,
+                className: el.className,
                 el,
                 isPlainText: props.isPlainText,
                 isReadonly: props.isReadonly,
@@ -107,7 +108,7 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
         case FormControlTypes.MultiDropdown:
             // Add the dropdown
             ddl = Dropdown({
-                className: props.className,
+                className: el.className,
                 el,
                 formFl: true,
                 items: (props as IFormControlPropsDropdown).items,
@@ -120,7 +121,7 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
         case FormControlTypes.Password:
             // Add the input
             tb = InputGroup({
-                className: props.className,
+                className: el.className,
                 el,
                 isPlainText: props.isPlainText,
                 isReadonly: props.isReadonly,
@@ -134,7 +135,7 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
         case FormControlTypes.Radio:
             // Add the checkbox group
             cb = CheckboxGroup({
-                className: props.className,
+                className: el.className,
                 el,
                 hideLabel: true,
                 items: (props as IFormControlPropsCheckbox).items,
@@ -149,7 +150,7 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
         case FormControlTypes.Range:
             // Add the input
             tb = InputGroup({
-                className: props.className,
+                className: el.className,
                 el,
                 isPlainText: props.isPlainText,
                 isReadonly: props.isReadonly,
@@ -166,7 +167,7 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
         case FormControlTypes.Switch:
             // Add the checkbox group
             cb = CheckboxGroup({
-                className: props.className,
+                className: el.className,
                 el,
                 hideLabel: true,
                 items: (props as IFormControlPropsCheckbox).items,
@@ -181,7 +182,7 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
         case FormControlTypes.TextArea:
             // Add the input
             tb = InputGroup({
-                className: props.className,
+                className: el.className,
                 el,
                 isPlainText: props.isPlainText,
                 isReadonly: props.isReadonly,
@@ -196,7 +197,7 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
         case FormControlTypes.TextField:
             // Add the input
             tb = InputGroup({
-                className: props.className,
+                className: el.className,
                 el,
                 isPlainText: props.isPlainText,
                 isReadonly: props.isReadonly,
