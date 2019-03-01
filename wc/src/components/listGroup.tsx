@@ -3,7 +3,7 @@ import { getProps } from "../common";
 declare var GD;
 
 @Component({
-    tag: "bs-listGroup"
+    tag: "bs-list-group"
 })
 export class ListGroup {
     @Element() private el: HTMLElement;

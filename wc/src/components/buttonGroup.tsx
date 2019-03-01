@@ -3,7 +3,7 @@ import { getProps } from "../common";
 declare var GD;
 
 @Component({
-    tag: "bs-buttonGroup"
+    tag: "bs-button-group"
 })
 export class ButtonGroup {
     @Element() private el: HTMLElement;

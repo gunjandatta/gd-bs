@@ -3,7 +3,7 @@ import { getProps } from "../common";
 declare var GD;
 
 @Component({
-    tag: "bs-cardGroup"
+    tag: "bs-card-group"
 })
 export class CardGroup {
     @Element() private el: HTMLElement;

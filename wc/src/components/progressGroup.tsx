@@ -3,7 +3,7 @@ import { getProps } from "../common";
 declare var GD;
 
 @Component({
-    tag: "bs-progressGroup"
+    tag: "bs-progress-group"
 })
 export class ProgressGroup {
     @Element() private el: HTMLElement;

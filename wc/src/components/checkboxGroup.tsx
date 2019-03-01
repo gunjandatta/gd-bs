@@ -3,7 +3,7 @@ import { getProps } from "../common";
 declare var GD;
 
 @Component({
-    tag: "bs-checkboxGroup"
+    tag: "bs-checkbox-group"
 })
 export class CheckboxGroup {
     @Element() private el: HTMLElement;

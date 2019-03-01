@@ -3,7 +3,7 @@ import { getProps } from "../common";
 declare var GD;
 
 @Component({
-    tag: "bs-inputGroup"
+    tag: "bs-input-group"
 })
 export class InputGroup {
     @Element() private el: HTMLElement;
