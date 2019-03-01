@@ -1,0 +1,2 @@
+/*! Built with http://stenciljs.com */
+GdBs.loadBundle("mafbaimm",["exports","./chunk-afcb0fb3.js","./chunk-91cbcf9d.js"],function(e,n,d){window,e.BsButton=n.Button,Object.defineProperty(e,"__esModule",{value:!0})});

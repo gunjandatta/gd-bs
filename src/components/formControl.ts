@@ -271,7 +271,7 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
             // See if this control is required
             if (props.required) {
                 // See if a value doesn't exists
-                if (typeof (value) === "undefined") {
+                if (value == null) {
                     // Set the flag
                     validation.isValid = false;
                 }

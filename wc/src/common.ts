@@ -22,7 +22,7 @@ export const getProps = (el: HTMLElement, elProps: any = {}) => {
     // Parse the element properties
     for (let key in elProps) {
         // See if a property is already defined
-        if (typeof (props[key]) != "undefined") { continue; }
+        if (props[key] != null) { continue; }
 
         // Set the property
         props[key] = elProps[key];

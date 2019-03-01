@@ -1,2 +1,0 @@
-/*! Built with http://stenciljs.com */
-GdBs.loadBundle("ws4npaky",["exports","./chunk-071d085d.js","./chunk-9a04bf15.js"],function(d,e,n){window,d.BsForm=e.Form,Object.defineProperty(d,"__esModule",{value:!0})});
