@@ -100,12 +100,13 @@
                     trigger: "focus"
                 }
             });
-            var myForm = GD.Components.Form({
+            window["myForm"] = GD.Components.Form({
                 el: document.getElementById("myForm"),
                 value: {
                     ReasonNotTestedExplanation: "0",
                     ReasonNotTestedExplanationRadio: "Primary",
                     CBExample: true,
+                    DDLExample: 3,
                     FName: "Datta",
                     LName: "Base",
                     TestDelay: null
@@ -125,6 +126,19 @@
                                 // Render a header
                                 control.el.innerHTML = "<h3>Form Header</h3>";
                             }
+                        }
+                    },
+                    {
+                        control: {
+                            label: "Dropdown Example",
+                            name: "DDLExample",
+                            type: GD.Components.FormControlTypes.Dropdown,
+                            items: [
+                                { text: "Test 1", value: 1 },
+                                { text: "Test 2", value: 2 },
+                                { text: "Test 3", value: 3 },
+                                { text: "Test 4", value: 4 }
+                            ]
                         }
                     },
                     {
