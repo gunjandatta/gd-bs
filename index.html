@@ -106,7 +106,7 @@
                     ReasonNotTestedExplanation: "0",
                     ReasonNotTestedExplanationRadio: "Primary",
                     CBExample: true,
-                    DDLExample: 3,
+                    DDLExample: "3",
                     FName: "Datta",
                     LName: "Base",
                     TestDelay: null
@@ -114,134 +114,149 @@
                 onRendered: function () { console.log("The form has been rendered..."); },
                 rows: [
                     {
-                        control: {
-                            controlClassName: "d-none",
-                            label: "Shouldn't See Me",
-                            type: GD.Components.FormControlTypes.Dropdown
-                        }
-                    },
-                    {
-                        control: {
-                            onControlRendered: function (control) {
-                                // Render a header
-                                control.el.innerHTML = "<h3>Form Header</h3>";
+                        columns: [
+                            {
+                                control: {
+                                    controlClassName: "d-none",
+                                    label: "Shouldn't See Me",
+                                    type: GD.Components.FormControlTypes.Dropdown
+                                }
+                            },
+                            {
+                                control: {
+                                    onControlRendered: function (control) {
+                                        // Render a header
+                                        control.el.innerHTML = "<h3>Form Header</h3>";
+                                    }
+                                }
+                            },
+                            {
+                                control: {
+                                    label: "Dropdown Example",
+                                    name: "DDLExample",
+                                    type: GD.Components.FormControlTypes.Dropdown,
+                                    items: [
+                                        { text: "Test 1", value: 1 },
+                                        { text: "Test 2", value: 2 },
+                                        { text: "Test 3", value: 3 },
+                                        { text: "Test 4", value: 4 }
+                                    ]
+                                }
+                            },
+                            {
+                                control: {
+                                    label: "Checkbox Example",
+                                    name: "CBExample",
+                                    type: GD.Components.FormControlTypes.Checkbox,
+                                }
+                            },
+                            {
+                                control: {
+                                    label: "Switch Example",
+                                    name: "SwitchExample",
+                                    type: GD.Components.FormControlTypes.Switch,
+                                    items: [
+                                        { name: "Label1", label: "Do you like this framework?", isSelected: true },
+                                        { name: "Label2", label: "Is it easy to use?" }
+                                    ]
+                                }
                             }
-                        }
+                        ],
+                        size: 4
                     },
                     {
-                        control: {
-                            label: "Dropdown Example",
-                            name: "DDLExample",
-                            type: GD.Components.FormControlTypes.Dropdown,
-                            items: [
-                                { text: "Test 1", value: 1 },
-                                { text: "Test 2", value: 2 },
-                                { text: "Test 3", value: 3 },
-                                { text: "Test 4", value: 4 }
-                            ]
-                        }
-                    },
-                    {
-                        control: {
-                            label: "Checkbox Example",
-                            name: "CBExample",
-                            type: GD.Components.FormControlTypes.Checkbox,
-                        }
-                    },
-                    {
-                        control: {
-                            label: "Switch Example",
-                            name: "SwitchExample",
-                            type: GD.Components.FormControlTypes.Switch,
-                            items: [
-                                { name: "Label1", label: "Do you like this framework?", isSelected: true },
-                                { name: "Label2", label: "Is it easy to use?" }
-                            ]
-                        }
-                    },
-                    {
-                        control: {
-                            label: "Post:",
-                            name: "PostName",
-                            type: GD.Components.FormControlTypes.Dropdown,
-                            items: [
-                                { text: "Item 1" },
-                                { text: "Item 2" }
-                            ],
-                            onControlRendered: (control) => {
-                                window.myFormControl = control;
-                                control.get().setItems([
-                                    { isHeader: true, text: "Header 1" },
-                                    { text: "Update Item 1" },
-                                    { isHeader: true, text: "Header 2" },
-                                    { text: "Update Item 2" },
-                                    { text: "Update Item 3" },
-                                ]);
-                            },
-                            onChange: (item) => {
-                                alert("Selected Item: " + item.text);
-                            },
-                            onValidate: function (props, item) {
-                                return {
-                                    invalidMessage: "This is invalid.",
-                                    isValid: item.text ? true : false,
-                                    validMessage: "This is valid"
-                                };
+                        columns: [
+                            {
+                                control: {
+                                    label: "Post:",
+                                    name: "PostName",
+                                    type: GD.Components.FormControlTypes.Dropdown,
+                                    items: [
+                                        { text: "Item 1" },
+                                        { text: "Item 2" }
+                                    ],
+                                    onControlRendered: (control) => {
+                                        window.myFormControl = control;
+                                        control.get().setItems([
+                                            { isHeader: true, text: "Header 1" },
+                                            { text: "Update Item 1" },
+                                            { isHeader: true, text: "Header 2" },
+                                            { text: "Update Item 2" },
+                                            { text: "Update Item 3" },
+                                        ]);
+                                    },
+                                    onChange: (item) => {
+                                        alert("Selected Item: " + item.text);
+                                    },
+                                    onValidate: function (props, item) {
+                                        return {
+                                            invalidMessage: "This is invalid.",
+                                            isValid: item.text ? true : false,
+                                            validMessage: "This is valid"
+                                        };
+                                    }
+                                }
                             }
-                        }
+                        ],
+                        size: 4
                     },
                     {
-                        control: {
-                            label: "Reason Not Tested Explanation:",
-                            name: "ReasonNotTestedExplanation",
-                            type: GD.Components.FormControlTypes.TextField,
-                            placeholder: "Explain the reason not tested",
-                            onValidate: function (ctrl, value) {
-                                if (value && value.length > 0)
-                                    return true;
-                                else
-                                    return false;
+                        columns: [
+                            {
+                                control: {
+                                    label: "Reason Not Tested Explanation:",
+                                    name: "ReasonNotTestedExplanation",
+                                    type: GD.Components.FormControlTypes.TextField,
+                                    placeholder: "Explain the reason not tested",
+                                    onValidate: function (ctrl, value) {
+                                        if (value && value.length > 0)
+                                            return true;
+                                        else
+                                            return false;
+                                    },
+                                    errorMessage: "Provide a reason for not testing"
+                                }
                             },
-                            errorMessage: "Provide a reason for not testing"
-                        }
-                    },
-                    {
-                        control: {
-                            label: "Reason Not Tested Explanation Radio:",
-                            name: "ReasonNotTestedExplanationRadio",
-                            type: GD.Components.FormControlTypes.Radio,
-                            items: [
-                                { label: "Primary", name: "primary" },
-                                { label: "Secondary", name: "secondary" }
-                            ],
-                            onValidate: function (ctrl, value) {
-                                if (value)
-                                    return true;
-                                else
-                                    return false;
+                            {
+                                control: {
+                                    label: "Reason Not Tested Explanation Radio:",
+                                    name: "ReasonNotTestedExplanationRadio",
+                                    type: GD.Components.FormControlTypes.Radio,
+                                    items: [
+                                        { label: "Primary", name: "primary" },
+                                        { label: "Secondary", name: "secondary" }
+                                    ],
+                                    onValidate: function (ctrl, value) {
+                                        if (value)
+                                            return true;
+                                        else
+                                            return false;
+                                    },
+                                    errorMessage: "Select an option"
+                                }
                             },
-                            errorMessage: "Select an option"
-                        }
-                    },
-                    {
-                        control: {
-                            label: "Reason Not Tested Explanation Checkbox:",
-                            name: "ReasonNotTestedExplanationCheckbox",
-                            type: GD.Components.FormControlTypes.Checkbox,
-                            items: [
-                                { label: "Primary", name: "primary" },
-                                { label: "Secondary", name: "secondary" }
-                            ],
-                            onValidate: function (ctrl, value) {
-                                if (value)
-                                    return true;
-                                else
-                                    return {
-                                        isValid: false,
-                                        invalidMessage: "Select an option"
-                                    };
+                            {
+                                control: {
+                                    label: "Reason Not Tested Explanation Checkbox:",
+                                    name: "ReasonNotTestedExplanationCheckbox",
+                                    type: GD.Components.FormControlTypes.Checkbox,
+                                    items: [
+                                        { label: "Primary", name: "primary" },
+                                        { label: "Secondary", name: "secondary" }
+                                    ],
+                                    onValidate: function (ctrl, value) {
+                                        if (value)
+                                            return true;
+                                        else
+                                            return {
+                                                isValid: false,
+                                                invalidMessage: "Select an option"
+                                            };
+                                    }
+                                }
                             }
-                        }
+                        ],
+                        size: 4
                     },
                     {
                         columns: [
@@ -264,57 +279,58 @@
                                     required: true,
                                     type: GD.Components.FormControlTypes.TextField
                                 }
-                            },
-                            {
-                                size: 5,
-                                control: {
-                                    label: "Delayed Textbox",
-                                    name: "TestDelay",
-                                    type: GD.Components.FormControlTypes.TextField,
-                                    loadingMessage: "Loading...",
-                                    onControlRendering: function (props) {
-                                        return {
-                                            then: function (resolve) {
-                                                setTimeout(function () {
-                                                    console.log("Delayed textbox has been rendered...");
-                                                    resolve(props);
-                                                }, 5000);
-                                            }
-                                        }
+                            }
+                        ],
+                        size: 4
+                    },
+                    {
+                        size: 5,
+                        control: {
+                            label: "Delayed Textbox",
+                            name: "TestDelay",
+                            type: GD.Components.FormControlTypes.TextField,
+                            loadingMessage: "Loading...",
+                            onControlRendering: function (props) {
+                                return {
+                                    then: function (resolve) {
+                                        setTimeout(function () {
+                                            console.log("Delayed textbox has been rendered...");
+                                            resolve(props);
+                                        }, 5000);
                                     }
                                 }
-                            },
-                            {
-                                size: 5,
-                                control: {
-                                    label: "Radio Buttons",
-                                    loadingMessage: "Loading...",
-                                    errorMessage: "Please select a choice.",
-                                    name: "RadioTest",
-                                    required: true,
-                                    type: GD.Components.FormControlTypes.Radio,
-                                    items: [{ label: "Choice 1" }, { label: "Choice 2" }, { label: "Choice 3" }]
-                                }
-                            },
-                            {
-                                size: 2,
-                                control: {
-                                    onControlRendered: function (control) {
-                                        GD.Components.Button({
-                                            el: control.el,
-                                            text: "Save",
-                                            onClick: function () {
-                                                window.myForm = { values: myForm.getValues(), isValid: myForm.isValid() };
-                                                console.log(window.myForm);
-                                            }
-                                        });
+                            }
+                        }
+                    },
+                    {
+                        size: 5,
+                        control: {
+                            label: "Radio Buttons",
+                            loadingMessage: "Loading...",
+                            errorMessage: "Please select a choice.",
+                            name: "RadioTest",
+                            required: true,
+                            type: GD.Components.FormControlTypes.Radio,
+                            items: [{ label: "Choice 1" }, { label: "Choice 2" }, { label: "Choice 3" }]
+                        }
+                    },
+                    {
+                        size: 2,
+                        control: {
+                            onControlRendered: function (control) {
+                                GD.Components.Button({
+                                    el: control.el,
+                                    text: "Save",
+                                    onClick: function () {
+                                        window.myForm = { values: myForm.getValues(), isValid: myForm.isValid() };
+                                        console.log(window.myForm);
                                     }
-                                }
-                            },
-                        ]
-                    }
+                                });
+                            }
+                        }
+                    },
                 ]
-            })
+            });
             var panel = GD.Components.Panel({
                 el: document.getElementById("panel"),
                 modalProps: {
