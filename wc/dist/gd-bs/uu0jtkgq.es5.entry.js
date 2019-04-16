@@ -1,2 +1,0 @@
-/*! Built with http://stenciljs.com */
-GdBs.loadBundle("uu0jtkgq",["exports","./chunk-07cdd0a5.js","./chunk-91cbcf9d.js"],function(d,e,u){window,d.BsListgroup=e.ListGroup,Object.defineProperty(d,"__esModule",{value:!0})});

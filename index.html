@@ -13,8 +13,8 @@
     <h1>Library</h1>
     <form>
         <div id="dev">
-
         </div>
+        <div id="alert"></div>
         <div id="btn-loading"></div>
         <div id="spinner"></div>
         <span id="myPopover">Menu</span>
@@ -45,6 +45,11 @@
     </form>
     <script type="text/javascript">
         window.addEventListener("load", function () {
+            GD.Components.Alert({
+                el: document.getElementById("alert"),
+                isDismissible: true,
+                content: "This is an alert."
+            });
             var form = GD.Components.Form({
                 el: document.getElementById("dev"),
                 value: {

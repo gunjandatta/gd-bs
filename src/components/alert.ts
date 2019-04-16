@@ -70,6 +70,20 @@ export const Alert = (props: IAlertProps): IAlert => {
     // Add the content
     alert.innerHTML += props.content || "";
 
+    // See if we need to add the dismiss icon
+    if (props.isDismissible) {
+        // Create the button
+        let btn = document.createElement("button");
+        btn.className = "close";
+        btn.type = "button";
+        btn.setAttribute("data-dismiss", "alert");
+        btn.setAttribute("aria-label", "Close");
+        btn.innerHTML = '<span aria-hidden="true">&times;</span>';
+
+        // Append the button
+        alert.appendChild(btn);
+    }
+
     // Create the element
     let el = document.createElement("div");
     el.appendChild(alert);
