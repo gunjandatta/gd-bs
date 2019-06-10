@@ -113,8 +113,11 @@ export const Form = (props: IFormProps): IForm => {
 
                 // Set the row class names
                 elRow.classList.add("form-row");
-                props.rowClassName ? elRow.classList.add(props.rowClassName) : null;
                 row.isCentered ? elRow.classList.add("align-items-center") : null;
+
+                // Get the row class name
+                let classNames = props.rowClassName ? props.rowClassName.split(' ') : [];
+                for (let i = 0; i < classNames.length; i++) { elRow.classList.add(classNames[i]); }
 
                 // Parse the columns
                 let columns = row.columns || [];
