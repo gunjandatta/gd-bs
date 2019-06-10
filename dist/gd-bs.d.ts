@@ -756,6 +756,7 @@ declare module 'gd-bs/components/types/form' {
         * Form Row
         */
     export interface IFormRow {
+            className?: string;
             isAutoSized?: boolean;
             isCentered?: boolean;
             control?: IFormControlProps;

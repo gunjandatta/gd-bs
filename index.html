@@ -12,8 +12,8 @@
 <body>
     <h1>Library</h1>
     <form>
-        <div id="dev">
-        </div>
+        <div id="test-skyler"></div>
+        <div id="dev"></div>
         <div id="alert"></div>
         <div id="btn-loading"></div>
         <div id="spinner"></div>
@@ -45,6 +45,38 @@
     </form>
     <script type="text/javascript">
         window.addEventListener("load", function () {
+            GD.Components.Form({
+                el: document.getElementById("test-skyler"),
+                rowClassName: "test",
+                rows: [
+                {
+                        className: "test1",
+                        columns: [
+                            {
+                                control: {
+                                    className: "col-header",
+                                    onControlRendered: control => {
+                                        control.el.innerHTML = `<span>$ in Millions!</span>`;
+                                    }
+                                }
+                            },
+                        ]
+                    },
+                    {
+                        columns: [
+                            {
+                                control: {
+                                    className: "col-header",
+                                    onControlRendered: control => {
+                                        control.el.innerHTML = `<span>$ in Billions!</span>`;
+                                    }
+                                }
+                            },
+                        ]
+                    }
+                ]
+            });
+
             GD.Components.Alert({
                 el: document.getElementById("alert"),
                 isDismissible: true,
@@ -117,11 +149,13 @@
                     TestDelay: null
                 },
                 onRendered: function () { console.log("The form has been rendered..."); },
+                rowClassName: "class1 class2",
                 rows: [
                     {
                         columns: [
                             {
                                 control: {
+                                    className: "col-header",
                                     controlClassName: "d-none",
                                     label: "Shouldn't See Me",
                                     type: GD.Components.FormControlTypes.Dropdown

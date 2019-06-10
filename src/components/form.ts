@@ -117,6 +117,7 @@ export const Form = (props: IFormProps): IForm => {
 
                 // Get the row class name
                 let classNames = props.rowClassName ? props.rowClassName.split(' ') : [];
+                classNames = row.className ? classNames.concat(row.className.split(' ')) : classNames;
                 for (let i = 0; i < classNames.length; i++) { elRow.classList.add(classNames[i]); }
 
                 // Parse the columns

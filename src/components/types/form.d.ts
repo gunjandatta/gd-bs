@@ -42,6 +42,7 @@ export interface IFormProps {
  * Form Row
  */
 export interface IFormRow {
+    className?: string;
     isAutoSized?: boolean;
     isCentered?: boolean;
     control?: IFormControlProps;
