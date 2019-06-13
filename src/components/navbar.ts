@@ -97,6 +97,7 @@ export const Navbar = (props: INavbarProps): INavbar => {
         if (item.items) {
             // Render a dropdown
             navItem = Dropdown({
+                isReadonly: item.isDisabled,
                 items: item.items,
                 label: item.text,
                 navFl: true,

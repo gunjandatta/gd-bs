@@ -386,6 +386,7 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
         let elSelect = document.createElement("select");
         elSelect.className = props.className || "";
         elSelect.classList.add("form-control");
+        elSelect.disabled = props.isReadonly ? true : false;
         elSelect.multiple = props.multi ? true : false;
         elForm.appendChild(elSelect);
 
@@ -409,6 +410,7 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
         link.setAttribute("data-toggle", "dropdown");
         link.setAttribute("aria-haspopup", "true");
         link.setAttribute("aria-expanded", "false");
+        props.isReadonly ? link.setAttribute("aria-disabled", "true") : null;
         link.innerHTML = props.label || "";
         elNav.appendChild(link);
 
@@ -465,6 +467,7 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
             let label = document.createElement("button");
             label.className = "button";
             label.classList.add(btnType);
+            label.disabled = props.isReadonly ? true : false;
             label.innerHTML = props.label || "";
             elDropdown.appendChild(label);
 
@@ -476,6 +479,7 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
         let elButton = document.createElement("button");
         elButton.className = "btn dropdown-toggle";
         elButton.classList.add(btnType);
+        elButton.disabled = props.isReadonly ? true : false;
         props.isSplit ? elButton.classList.add("dropdown-toggle-split") : null;
         elButton.setAttribute("data-toggle", "dropdown");
         elButton.setAttribute("aria-haspopup", "true");

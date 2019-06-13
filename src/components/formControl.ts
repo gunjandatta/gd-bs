@@ -71,6 +71,7 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
                 className: el.className,
                 el,
                 formFl: true,
+                isReadonly: props.isReadonly,
                 items: (props as IFormControlPropsDropdown).items,
                 onChange: (props as IFormControlPropsDropdown).onChange,
                 value: props.value
@@ -111,6 +112,7 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
                 className: el.className,
                 el,
                 formFl: true,
+                isReadonly: props.isReadonly,
                 items: (props as IFormControlPropsDropdown).items,
                 multi: true,
                 onChange: (props as IFormControlPropsDropdown).onChange,
