@@ -411,6 +411,7 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
         link.setAttribute("data-toggle", "dropdown");
         link.setAttribute("aria-haspopup", "true");
         link.setAttribute("aria-expanded", "false");
+        link.title = props.title || "";
         props.isReadonly ? link.setAttribute("aria-disabled", "true") : null;
         link.innerHTML = props.label || "";
         elNav.appendChild(link);
@@ -420,7 +421,6 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
         elMenu.className = props.menuOnly && props.className ? props.className : "";
         elMenu.classList.add("dropdown-menu");
         elMenu.setAttribute("aria-labelledby", "navbarDDL_" + (props.label || ""));
-        elMenu.title = props.title || "";
         elNav.appendChild(elMenu);
 
         // Generate the items

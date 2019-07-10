@@ -276,6 +276,7 @@ declare module 'gd-bs/components/types/button' {
             spinnerProps?: ISpinnerProps;
             target?: string;
             text?: string;
+            title?: string;
             toggle?: string;
             trigger?: string;
             type?: number;

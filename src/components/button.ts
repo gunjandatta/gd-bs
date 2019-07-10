@@ -46,6 +46,7 @@ export const Button = (props: IButtonProps): IButton => {
     props.id ? button.id = props.id : null;
     props.isDisabled ? button.setAttribute("disabled", "disabled") : null;
     props.target ? button.setAttribute("data-target", props.target) : null;
+    props.title ? button.title = props.title : null;
     props.toggle ? button.setAttribute("data-toggle", props.toggle) : null;
     props.trigger ? button.setAttribute("data-trigger", props.trigger) : null;
     typeof (props.isExpanded) === "boolean" ? button.setAttribute("aria-expanded", props.isExpanded ? "true" : "false") : null;

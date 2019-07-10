@@ -50,6 +50,7 @@ export interface IButtonProps {
     spinnerProps?: ISpinnerProps;
     target?: string;
     text?: string;
+    title?: string;
     toggle?: string;
     trigger?: string;
     type?: number;
