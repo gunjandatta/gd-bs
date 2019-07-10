@@ -43,6 +43,7 @@ export interface IFormControlProps {
     onGetValue?: (control: IFormControlProps) => any;
     onValidate?: (control: IFormControlProps, value: any) => boolean | IFormControlValidationResult;
     required?: boolean;
+    title?: string;
     type?: number;
     value?: any;
 }

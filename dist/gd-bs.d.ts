@@ -556,6 +556,7 @@ declare module 'gd-bs/components/types/checkboxGroup' {
             items?: Array<ICheckboxGroupItem>;
             multi?: boolean;
             onChange?: (items: ICheckboxGroupItem | Array<ICheckboxGroupItem>) => void;
+            title?: string;
             type?: number;
             value?: any;
     }
@@ -695,6 +696,7 @@ declare module 'gd-bs/components/types/dropdown' {
             navFl?: boolean;
             onChange?: (item?: IDropdownItem | Array<IDropdownItem>, ev?: Event) => void;
             setLabelToValue?: boolean;
+            title?: string;
             type?: number;
             value?: any;
     }
@@ -812,6 +814,7 @@ declare module 'gd-bs/components/types/formControl' {
             onGetValue?: (control: IFormControlProps) => any;
             onValidate?: (control: IFormControlProps, value: any) => boolean | IFormControlValidationResult;
             required?: boolean;
+            title?: string;
             type?: number;
             value?: any;
     }
@@ -934,6 +937,7 @@ declare module 'gd-bs/components/types/inputGroup' {
             prependedLabel?: string;
             rows?: number;
             step?: number;
+            title?: string;
             type?: number;
             value?: string;
     }

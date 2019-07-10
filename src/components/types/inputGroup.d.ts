@@ -49,6 +49,7 @@ export interface IInputGroupProps {
     prependedLabel?: string;
     rows?: number;
     step?: number;
+    title?: string;
     type?: number;
     value?: string;
 }

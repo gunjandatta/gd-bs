@@ -125,6 +125,7 @@
                                     className: "col-header",
                                     controlClassName: "d-none",
                                     label: "Shouldn't See Me",
+                                    title: "This is a dropdown",
                                     type: GD.Components.FormControlTypes.Dropdown
                                 }
                             },
@@ -140,6 +141,7 @@
                                 control: {
                                     label: "Dropdown Example",
                                     name: "DDLExample",
+                                    title: "This is a dropdown",
                                     type: GD.Components.FormControlTypes.Dropdown,
                                     items: [
                                         { text: "Test 1", value: 1 },
@@ -153,6 +155,7 @@
                                 control: {
                                     label: "Checkbox Example",
                                     name: "CBExample",
+                                    title: "This is a checkbox",
                                     type: GD.Components.FormControlTypes.Checkbox,
                                 }
                             },
@@ -160,6 +163,7 @@
                                 control: {
                                     label: "Switch Example",
                                     name: "SwitchExample",
+                                    title: "This is a checkbox",
                                     type: GD.Components.FormControlTypes.Switch,
                                     items: [
                                         { name: "Label1", label: "Do you like this framework?", isSelected: true },
@@ -176,6 +180,7 @@
                                 control: {
                                     label: "Post:",
                                     name: "PostName",
+                                    title: "This is a dropdown",
                                     type: GD.Components.FormControlTypes.Dropdown,
                                     items: [
                                         { text: "Item 1" },
@@ -212,6 +217,7 @@
                                 control: {
                                     label: "Reason Not Tested Explanation:",
                                     name: "ReasonNotTestedExplanation",
+                                    title: "This is a textfield",
                                     type: GD.Components.FormControlTypes.TextField,
                                     placeholder: "Explain the reason not tested",
                                     onValidate: function (ctrl, value) {
@@ -227,6 +233,7 @@
                                 control: {
                                     label: "Reason Not Tested Explanation Radio:",
                                     name: "ReasonNotTestedExplanationRadio",
+                                    title: "This is a radio button",
                                     type: GD.Components.FormControlTypes.Radio,
                                     items: [
                                         { label: "Primary", name: "primary" },
@@ -245,6 +252,7 @@
                                 control: {
                                     label: "Reason Not Tested Explanation Checkbox:",
                                     name: "ReasonNotTestedExplanationCheckbox",
+                                    title: "This is a checkbox",
                                     type: GD.Components.FormControlTypes.Checkbox,
                                     items: [
                                         { label: "Primary", name: "primary" },
@@ -273,6 +281,7 @@
                                     label: "First Name",
                                     name: "FName",
                                     required: true,
+                                    title: "This is a textfield",
                                     type: GD.Components.FormControlTypes.TextField
                                 }
                             },
@@ -283,6 +292,7 @@
                                     label: "Last Name",
                                     name: "LName",
                                     required: true,
+                                    title: "This is a textfield",
                                     type: GD.Components.FormControlTypes.TextField
                                 }
                             }
@@ -294,6 +304,7 @@
                         control: {
                             label: "Delayed Textbox",
                             name: "TestDelay",
+                            title: "This is a textfield",
                             type: GD.Components.FormControlTypes.TextField,
                             loadingMessage: "Loading...",
                             onControlRendering: function (props) {
@@ -316,6 +327,7 @@
                             errorMessage: "Please select a choice.",
                             name: "RadioTest",
                             required: true,
+                            title: "This is a radio",
                             type: GD.Components.FormControlTypes.Radio,
                             items: [{ label: "Choice 1" }, { label: "Choice 2" }, { label: "Choice 3" }]
                         }

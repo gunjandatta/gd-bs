@@ -60,6 +60,7 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
                 label: props.label,
                 multi: (props as IFormControlPropsCheckbox).multi,
                 onChange: (props as IFormControlPropsCheckbox).onChange,
+                title: props.title,
                 type: CheckboxGroupTypes.Checkbox,
                 value: props.value
             });
@@ -74,6 +75,7 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
                 isReadonly: props.isReadonly,
                 items: (props as IFormControlPropsDropdown).items,
                 onChange: (props as IFormControlPropsDropdown).onChange,
+                title: props.title,
                 value: props.value
             });
             break;
@@ -87,6 +89,7 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
                 isReadonly: props.isReadonly,
                 onChange: (props as IFormControlPropsTextField).onChange,
                 placeholder: (props as IFormControlPropsTextField).placeholder,
+                title: props.title,
                 type: InputGroupTypes.Email,
                 value: props.value
             });
@@ -101,6 +104,7 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
                 isReadonly: props.isReadonly,
                 onChange: (props as IFormControlPropsTextField).onChange,
                 placeholder: (props as IFormControlPropsTextField).placeholder,
+                title: props.title,
                 type: InputGroupTypes.File,
                 value: props.value
             });
@@ -116,6 +120,7 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
                 items: (props as IFormControlPropsDropdown).items,
                 multi: true,
                 onChange: (props as IFormControlPropsDropdown).onChange,
+                title: props.title,
                 value: props.value
             });
             break;
@@ -129,6 +134,7 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
                 isReadonly: props.isReadonly,
                 onChange: (props as IFormControlPropsTextField).onChange,
                 placeholder: (props as IFormControlPropsTextField).placeholder,
+                title: props.title,
                 type: InputGroupTypes.Password,
                 value: props.value
             });
@@ -144,6 +150,7 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
                 label: props.label,
                 multi: (props as IFormControlPropsCheckbox).multi,
                 onChange: (props as IFormControlPropsCheckbox).onChange,
+                title: props.title,
                 type: CheckboxGroupTypes.Radio,
                 value: props.value
             });
@@ -161,6 +168,7 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
                 onChange: (props as IFormControlPropsNumberField).onChange,
                 placeholder: (props as IFormControlPropsNumberField).placeholder,
                 step: (props as IFormControlPropsNumberField).step,
+                title: props.title,
                 type: InputGroupTypes.Range,
                 value: props.value
             });
@@ -176,6 +184,7 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
                 label: props.label,
                 multi: (props as IFormControlPropsCheckbox).multi,
                 onChange: (props as IFormControlPropsCheckbox).onChange,
+                title: props.title,
                 type: CheckboxGroupTypes.Switch,
                 value: props.value
             });
@@ -191,6 +200,7 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
                 onChange: (props as IFormControlPropsTextField).onChange,
                 placeholder: (props as IFormControlPropsTextField).placeholder,
                 rows: (props as IFormControlPropsTextField).rows,
+                title: props.title,
                 type: InputGroupTypes.TextArea,
                 value: props.value
             });
@@ -205,6 +215,7 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
                 isReadonly: props.isReadonly,
                 onChange: (props as IFormControlPropsTextField).onChange,
                 placeholder: (props as IFormControlPropsTextField).placeholder,
+                title: props.title,
                 type: InputGroupTypes.TextField,
                 value: props.value
             });

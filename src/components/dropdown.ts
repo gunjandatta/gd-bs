@@ -388,6 +388,7 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
         elSelect.classList.add("form-control");
         elSelect.disabled = props.isReadonly ? true : false;
         elSelect.multiple = props.multi ? true : false;
+        elSelect.title = props.title || "";
         elForm.appendChild(elSelect);
 
         // Generate the items
@@ -419,6 +420,7 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
         elMenu.className = props.menuOnly && props.className ? props.className : "";
         elMenu.classList.add("dropdown-menu");
         elMenu.setAttribute("aria-labelledby", "navbarDDL_" + (props.label || ""));
+        elMenu.title = props.title || "";
         elNav.appendChild(elMenu);
 
         // Generate the items
@@ -428,6 +430,7 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
         elDropdown = document.createElement("div");
         elDropdown.className = props.className || "";
         elDropdown.classList.add(props.isSplit ? "btn-group" : "dropdown");
+        elDropdown.title = props.title || "";
         props.dropLeft ? elDropdown.classList.add("dropleft") : null;
         props.dropRight ? elDropdown.classList.add("dropright") : null;
         props.dropUp ? elDropdown.classList.add("dropup") : null;

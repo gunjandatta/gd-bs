@@ -85,6 +85,7 @@ export const InputGroup = (props: IInputGroupProps): IInputGroup => {
             props.placeholder ? 'placeholder="' + props.placeholder + '"' : '',
             props.isReadonly ? 'readonly' : '',
             props.rows ? 'rows="' + props.rows + '"' : '',
+            props.title ? 'title="' + props.title + '"' : '',
             '>' + (props.value || "") + '</textarea>'
         ].join(' ')
         :
@@ -98,6 +99,7 @@ export const InputGroup = (props: IInputGroupProps): IInputGroup => {
             props.step ? 'step="' + props.step + '"' : '',
             props.value != null ? 'value="' + props.value + '"' : '',
             props.isReadonly ? 'readonly' : '',
+            props.title ? 'title="' + props.title + '"' : '',
             props.type == InputGroupTypes.Search ? 'aria-label="Search"' : '',
             '></input>'
         ].join(' ');

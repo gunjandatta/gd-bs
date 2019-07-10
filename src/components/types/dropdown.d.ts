@@ -71,6 +71,7 @@ export interface IDropdownProps {
     navFl?: boolean;
     onChange?: (item?: IDropdownItem | Array<IDropdownItem>, ev?: Event) => void;
     setLabelToValue?: boolean;
+    title?: string;
     type?: number;
     value?: any;
 }
