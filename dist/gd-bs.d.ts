@@ -553,6 +553,7 @@ declare module 'gd-bs/components/types/checkboxGroup' {
             colSize?: number;
             el?: Element | HTMLElement;
             hideLabel?: boolean;
+            isReadonly?: boolean;
             label?: string;
             items?: Array<ICheckboxGroupItem>;
             multi?: boolean;

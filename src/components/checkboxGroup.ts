@@ -50,9 +50,10 @@ export const CheckboxGroup = (props: ICheckboxGroupProps): ICheckboxGroup => {
 
         // Create the checkbox
         let cb = document.createElement("input");
-        cb.type = props.type == CheckboxGroupTypes.Radio ? "radio" : "checkbox";
         cb.checked = item.isSelected ? true : false;
+        cb.disabled = props.isReadonly ? true : false;
         cb.title = props.title || "";
+        cb.type = props.type == CheckboxGroupTypes.Radio ? "radio" : "checkbox";
         cb.setAttribute("data-idx", i.toString());
         elCheckbox.appendChild(cb);
 
