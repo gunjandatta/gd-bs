@@ -1,4 +1,4 @@
-import { IBreadcrumb, IBreadcrumbProps } from "./types/breadcrumb";
+import { IBreadcrumb, IBreadcrumbProps, IBreadcrumbItem } from "./types/breadcrumb";
 
 /**
  * Breadcrumb
@@ -16,30 +16,57 @@ export const Breadcrumb = (props: IBreadcrumbProps): IBreadcrumb => {
     list.className = props.className || "";
     list.classList.add("breadcrumb");
 
-    // Parse the items
-    let items = props.items || [];
-    for (let i = 0; i < items.length; i++) {
-        let item = items[i];
-        let isActive = i == items.length - 1;
+    // The click event for the item
+    let onItemClick = ev => {
+        let elItem = ev.currentTarget as HTMLElement;
+
+        // Get the item
+        let item: IBreadcrumbItem = props.items[elItem.getAttribute("data-idx")];
+        if (item) {
+            // Call the click event
+            item.onClick ? item.onClick(item, ev) : null;
+            props.onClick ? props.onClick(item, ev) : null;
+        }
+    }
+
+    // Parse the item properties
+    let itemProps = props.items || [];
+    for (let i = 0; i < itemProps.length; i++) {
+        let prop = itemProps[i];
+        let isActive = i == itemProps.length - 1;
 
         // Set the class names
         let itemClassNames = ["breadcrumb-item"];
         isActive ? itemClassNames.push("active") : null;
 
-        // Set the attributes
-        let attributes = [
-            'class="' + itemClassNames.join(' ') + '"',
-            isActive ? 'aria-current="page"' : null
-        ].join(' ');
+        // Create the item
+        let item = document.createElement("li");
+        item.className = itemClassNames.join(' ');
+        isActive ? item.setAttribute("aria-current", "page") : null;
+
+        // See if this is a link
+        let link: HTMLAnchorElement = null;
+        if (prop.href) {
+            // Add a link
+            link = document.createElement("a");
+            link.href = prop.href;
+            link.innerHTML = prop.text || "";
+            link.setAttribute("data-idx", i.toString());
+            item.appendChild(link);
+        } else {
+            // Set the text and index
+            item.innerHTML = prop.text || "";
+            item.setAttribute("data-idx", i.toString());
+        }
+
+        // See if there is a click event
+        if (prop.onClick || props.onClick) {
+            // Add the click event
+            link ? link.addEventListener("click", onItemClick) : item.addEventListener("click", onItemClick);
+        }
 
         // Add the item
-        list.innerHTML += [
-            '<li ' + attributes + '>',
-            item.href ? '<a href="' + item.href + '">' : '',
-            item.text || "",
-            item.href ? '</a>' : '',
-            '</li>'
-        ].join('\n');
+        list.appendChild(item);
     }
 
     // Create the element

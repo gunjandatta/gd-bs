@@ -16,7 +16,8 @@ export interface IBreadcrumb {
  */
 export interface IBreadcrumbItem {
     href?: string;
-    text?: string;
+    onClick?: (item?: IBreadcrumbItem, ev?: Event) => void;
+    text?: string;    
 }
 
 /**
@@ -26,4 +27,5 @@ export interface IBreadcrumbProps {
     className?: string;
     el?: Element | HTMLElement;
     items?: Array<IBreadcrumbItem>
+    onClick?: (item?: IBreadcrumbItem, ev?: Event) => void;
 }

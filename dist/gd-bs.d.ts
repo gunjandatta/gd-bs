@@ -210,7 +210,8 @@ declare module 'gd-bs/components/types/breadcrumb' {
         */
     export interface IBreadcrumbItem {
             href?: string;
-            text?: string;
+            onClick?: (item?: IBreadcrumbItem, ev?: Event) => void;
+            text?: string;    
     }
     
     /**
@@ -220,6 +221,7 @@ declare module 'gd-bs/components/types/breadcrumb' {
             className?: string;
             el?: Element | HTMLElement;
             items?: Array<IBreadcrumbItem>
+            onClick?: (item?: IBreadcrumbItem, ev?: Event) => void;
     }
 }
 
