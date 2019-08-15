@@ -157,51 +157,6 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
 
                 // Call the event
                 item.onRender ? item.onRender(option, item) : null;
-
-                // Set the click event for the custom events
-                option.addEventListener("click", ev => {
-                    let elItem = ev.currentTarget as HTMLElement;
-                    let itemIdx = elItem.getAttribute("data-idx");
-                    let item: IDropdownItem = items[itemIdx];
-                    let selectedItems: Array<IDropdownItem> = [];
-
-                    // Parse the selected items
-                    let elSelectedItems = el.querySelectorAll("option");
-                    for (let i = 0; i < elSelectedItems.length; i++) {
-                        let elSelectedItem = elSelectedItems[i] as HTMLOptionElement;
-                        let selectedIdx = elSelectedItem.getAttribute("data-idx");
-
-                        // See if the item is selected
-                        if (elSelectedItem.selected) {
-                            // Add the item
-                            selectedItems.push(items[selectedIdx]);
-                        }
-                    }
-
-                    // Sort the items
-                    selectedItems = selectedItems.sort((a, b) => {
-                        if (a.text < b.text) { return -1; }
-                        if (a.text > b.text) { return 1; }
-                        return 0;
-                    });
-
-                    // See if a click event exists
-                    if (item.onClick) {
-                        // Call the click event
-                        item.onClick(item, ev);
-                    }
-
-                    // See if a global change event exists
-                    if (props.onChange) {
-                        let value = isMulti ? selectedItems : selectedItems[0];
-
-                        // Update the label
-                        updateLabel(value)
-
-                        // Call the change event
-                        props.onChange(value, ev);
-                    }
-                });
             }
             else {
                 // See if this is a divider
@@ -363,6 +318,56 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
                     elItem.addEventListener("click", onItemClick);
                 }
             }
+        }
+
+        // See if this is a form
+        if (props.formFl) {
+            // Set the change event for the custom events
+            // The click event on a 'option' element will not work in chrome
+            elParent.addEventListener("change", ev => {
+                let elSelect = ev.currentTarget as HTMLSelectElement;
+                let elItem = elSelect.children[elSelect.selectedIndex];
+                let itemIdx = elItem.getAttribute("data-idx");
+                let item: IDropdownItem = items[itemIdx];
+                let selectedItems: Array<IDropdownItem> = [];
+
+                // Parse the selected items
+                let elSelectedItems = el.querySelectorAll("option");
+                for (let i = 0; i < elSelectedItems.length; i++) {
+                    let elSelectedItem = elSelectedItems[i] as HTMLOptionElement;
+                    let selectedIdx = elSelectedItem.getAttribute("data-idx");
+
+                    // See if the item is selected
+                    if (elSelectedItem.selected) {
+                        // Add the item
+                        selectedItems.push(items[selectedIdx]);
+                    }
+                }
+
+                // Sort the items
+                selectedItems = selectedItems.sort((a, b) => {
+                    if (a.text < b.text) { return -1; }
+                    if (a.text > b.text) { return 1; }
+                    return 0;
+                });
+
+                // See if a click event exists
+                if (item.onClick) {
+                    // Call the click event
+                    item.onClick(item, ev);
+                }
+
+                // See if a global change event exists
+                if (props.onChange) {
+                    let value = isMulti ? selectedItems : selectedItems[0];
+
+                    // Update the label
+                    updateLabel(value)
+
+                    // Call the change event
+                    props.onChange(value, ev);
+                }
+            });
         }
     }
 

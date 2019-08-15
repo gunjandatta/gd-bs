@@ -68,7 +68,7 @@
                 className: "btn-loading",
                 el: document.getElementById("btn-loading"),
                 text: "Loading...",
-                onClick: () => { alert("The loading button was clicked..."); },
+                onClick: function () { alert("The loading button was clicked..."); },
                 spinnerProps: {
                     className: "mr-2",
                     isSmall: true,
@@ -148,7 +148,10 @@
                                         { text: "Test 2", value: 2 },
                                         { text: "Test 3", value: 3 },
                                         { text: "Test 4", value: 4 }
-                                    ]
+                                    ],
+                                    onChange: function (item) {
+                                        item ? alert(item.text + " was selected.") : null;
+                                    }
                                 }
                             },
                             {
@@ -187,7 +190,7 @@
                                         { text: "Item 1" },
                                         { text: "Item 2" }
                                     ],
-                                    onControlRendered: (control) => {
+                                    onControlRendered: function (control) {
                                         window.myFormControl = control;
                                         control.get().setItems([
                                             { isHeader: true, text: "Header 1" },
@@ -197,7 +200,7 @@
                                             { text: "Update Item 3" },
                                         ]);
                                     },
-                                    onChange: (item) => {
+                                    onChange: function (item) {
                                         alert("Selected Item: " + item.text);
                                     },
                                     onValidate: function (props, item) {
@@ -398,7 +401,7 @@
                     { buttons: [{ text: "Button 24" }] },
                     { buttons: [{ text: "Button 25" }] }
                 ]
-            })
+            });
             var dll = GD.Components.Dropdown({
                 el: document.querySelector("#ddl"),
                 isSplit: "true",
