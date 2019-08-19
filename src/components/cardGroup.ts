@@ -11,7 +11,7 @@ export const CardGroup = (props: ICardGroupProps): ICardGroup => {
 
     // Set the class names
     cardGroup.className = props.className || "";
-    cardGroup.classList.add("card-group");
+    cardGroup.classList.add(props.isDeck ? "card-deck" : "card-group");
 
     // Parse the cards
     let cards = props.cards || [];

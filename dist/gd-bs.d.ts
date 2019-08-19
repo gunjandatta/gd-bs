@@ -430,6 +430,7 @@ declare module 'gd-bs/components/types/cardGroup' {
             cards?: Array<ICardProps>;
             className?: string;
             el?: Element | HTMLElement;
+            isDeck?: boolean;
     }
 }
 

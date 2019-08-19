@@ -20,4 +20,5 @@ export interface ICardGroupProps {
     cards?: Array<ICardProps>;
     className?: string;
     el?: Element | HTMLElement;
+    isDeck?: boolean;
 }

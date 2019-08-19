@@ -32,35 +32,35 @@ export const Alert = (props: IAlertProps): IAlert => {
     switch (props.type) {
         // Danger
         case AlertTypes.Danger:
-            alert.classList.add("btn-danger");
+            alert.classList.add("alert-danger");
             break;
         // Dark
         case AlertTypes.Dark:
-            alert.classList.add("btn-dark");
+            alert.classList.add("alert-dark");
             break;
         // Info
         case AlertTypes.Info:
-            alert.classList.add("btn-info");
+            alert.classList.add("alert-info");
             break;
         // Light
         case AlertTypes.Light:
-            alert.classList.add("btn-light");
+            alert.classList.add("alert-light");
             break;
         // Secondary
         case AlertTypes.Secondary:
-            alert.classList.add("btn-secondary");
+            alert.classList.add("alert-secondary");
             break;
         // Success
         case AlertTypes.Success:
-            alert.classList.add("btn-success");
+            alert.classList.add("alert-success");
             break;
         // Warning
         case AlertTypes.Warning:
-            alert.classList.add("btn-warning");
+            alert.classList.add("alert-warning");
             break;
         // Default - Primary
         default:
-            alert.classList.add("btn-primary");
+            alert.classList.add("alert-primary");
             break;
     }
 
