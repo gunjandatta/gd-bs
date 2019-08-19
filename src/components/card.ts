@@ -72,6 +72,9 @@ export const Card = (props: ICardProps): ICard => {
         ].join('\n');
         card.appendChild(body);
 
+        // Call the render event if it exists
+        item.onRender ? item.onRender(body, item) : null;
+
         // See if there is a click event
         if (props.onClick || item.onClick) {
             // Set the click event

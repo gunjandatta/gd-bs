@@ -37,6 +37,7 @@ export interface ICardBody {
     content?: string;
     data?: any;
     onClick?: (card?: ICardProps, ev?: Event) => void;
+    onRender?: (el?: HTMLElement, card?: ICardProps) => void;
     subTitle?: string;
     text?: string;
     title?: string;
