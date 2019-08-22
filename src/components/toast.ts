@@ -41,6 +41,7 @@ export const Toast = (props: IToastProps): IToast => {
         // Create the text
         let mutedText = document.createElement("small");
         mutedText.classList.add("text-muted");
+        mutedText.innerHTML = props.mutedText;
         header.appendChild(mutedText);
     }
 

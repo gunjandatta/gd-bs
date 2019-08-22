@@ -80,12 +80,13 @@
                 btnLoading.setText("Click Me");
             }, 5000);
 
-            window.toast = GD.Components.Toast({
+            GD.Components.Toast({
                 el: document.getElementById("toast"),
                 headerText: "Header Text",
-                bodyText: "This is the body of the toast."
+                bodyText: "This is the body of the toast.",
+                mutedText: "Date/Time",
+                className: "show"
             });
-            window.toast.show();
 
             GD.Components.Spinner({
                 el: document.getElementById("spinner"),
