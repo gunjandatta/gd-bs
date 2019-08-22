@@ -36,6 +36,14 @@ export const Toast = (props: IToastProps): IToast => {
     headerText.innerHTML = props.headerText || "";
     header.appendChild(headerText);
 
+    // See if there is muted text
+    if (props.mutedText) {
+        // Create the text
+        let mutedText = document.createElement("small");
+        mutedText.classList.add("text-muted");
+        header.appendChild(mutedText);
+    }
+
     // See if we are creating the close button
     if (props.closeButtonHidden != true) {
         // Set the close button text

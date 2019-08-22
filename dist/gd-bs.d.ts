@@ -1619,6 +1619,7 @@ declare module 'gd-bs/components/types/toast' {
             headerImgClass?: string;
             headerImgSrc?: string;
             headerText?: string;
+            mutedText?: string;
             options?: IToastOptions;
             onClick?: (el?: HTMLElement, data?: any) => void;
             onRenderBody?: (el?: HTMLElement, data?: any) => void;
