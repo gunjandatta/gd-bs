@@ -358,7 +358,7 @@ declare module 'gd-bs/components/types/card' {
     export interface ICardAction {
             buttonType?: number;
             data?: any;
-            onClick?: (action?: ICardAction, card?: ICardProps, ev?: Event) => void;
+            onClick?: (action?: ICardAction, card?: ICardBody, ev?: Event) => void;
             href?: string;
             text?: string;
     }
@@ -372,7 +372,7 @@ declare module 'gd-bs/components/types/card' {
             content?: string;
             data?: any;
             onClick?: (card?: ICardProps, ev?: Event) => void;
-            onRender?: (el?: HTMLElement, card?: ICardProps) => void;
+            onRender?: (el?: HTMLElement, card?: ICardBody) => void;
             subTitle?: string;
             text?: string;
             title?: string;
@@ -403,7 +403,7 @@ declare module 'gd-bs/components/types/card' {
                     alt?: string;
                     src?: string;
             };
-            onClick?: (card?: ICardProps, ev?: Event) => void;
+            onClick?: (card?: ICardBody, ev?: Event) => void;
     }
 }
 
