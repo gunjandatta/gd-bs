@@ -25,6 +25,7 @@ export interface INav {
  */
 export interface INavProps {
     className?: string;
+    data?: any;
     el?: Element | HTMLElement;
     enableFade?: boolean;
     enableFill?: boolean;
@@ -42,6 +43,7 @@ export interface INavProps {
 export interface INavLink {
     isActive?: boolean;
     isDisabled?: boolean;
+    data?: any;
     href?: string;
     onClick?: (item?: INavLink, ev?: Event) => void;
     onRenderTab?: (item?: INavLink, el?: HTMLDivElement) => void;

@@ -34,6 +34,7 @@ export const Nav = (props: INavProps): INav => {
         // Create the navigation item
         let elNavItem = document.createElement("li");
         elNavItem.className = "nav-item";
+        elNavItem.setAttribute("data-idx", i.toString());
         navLinks.appendChild(elNavItem);
 
         // Set the link class names
@@ -49,9 +50,6 @@ export const Nav = (props: INavProps): INav => {
 
         // Set the link
         elNavItem.innerHTML = '<a class="' + linkClassNames.join(' ') + '" href="' + (item.href || '#') + '">' + (item.title || '') + '</a>';
-
-        // Set the index
-        elNavItem.setAttribute("data-idx", i.toString());
 
         // See if we are rendering tabs
         if (props.isPills || props.isTabs) {
@@ -99,10 +97,12 @@ export const Nav = (props: INavProps): INav => {
         if (item.onClick) {
             // Add a click event
             elNavItem.addEventListener("click", ev => {
-                let elItem = ev.currentTarget as HTMLDivElement;
+                let elTab = ev.currentTarget as HTMLDivElement;
+                let idx = elTab.getAttribute("data-idx");
+                let item = props.items[idx];
 
                 // Call the click event
-                item.onClick(props.items[elItem.getAttribute("data-idx")], ev);
+                item.onClick(item, ev);
             });
         }
 

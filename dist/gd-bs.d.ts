@@ -1160,6 +1160,7 @@ declare module 'gd-bs/components/types/nav' {
         */
     export interface INavProps {
             className?: string;
+            data?: any;
             el?: Element | HTMLElement;
             enableFade?: boolean;
             enableFill?: boolean;
@@ -1177,6 +1178,7 @@ declare module 'gd-bs/components/types/nav' {
     export interface INavLink {
             isActive?: boolean;
             isDisabled?: boolean;
+            data?: any;
             href?: string;
             onClick?: (item?: INavLink, ev?: Event) => void;
             onRenderTab?: (item?: INavLink, el?: HTMLDivElement) => void;
