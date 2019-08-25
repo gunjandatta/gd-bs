@@ -27,16 +27,8 @@ export const Card = (props: ICardProps): ICard => {
 
     // See if the header exists
     if (props.header) {
-        // See if the content exists
-        if (props.header.content) {
-            // Render the content
-            let header = document.createElement("div");
-            header.className = "card-header";
-            header.innerHTML = props.header.content;
-            card.appendChild(header);
-        }
-        // Else, see if the navigation exists
-        else if (props.header.nav) {
+        // See if the navigation exists
+        if (props.header.nav) {
             let navProps = props.header.nav;
 
             // Set the class
@@ -47,6 +39,13 @@ export const Card = (props: ICardProps): ICard => {
 
             // Render the navigation
             card.appendChild(Nav(navProps).el);
+        } else {
+            // Render the header
+            let header = document.createElement("div");
+            header.className = props.header.className || "";
+            header.classList.add("card-header")
+            header.innerHTML = props.header.content || "";
+            card.appendChild(header);
         }
     }
 
@@ -174,8 +173,9 @@ export const Card = (props: ICardProps): ICard => {
     if (props.footer) {
         // Add the footer
         let footer = document.createElement("div");
-        footer.className = "card-footer";
-        footer.innerHTML = props.footer;
+        footer.className = props.footer.className || "";
+        footer.classList.add("card-footer");
+        footer.innerHTML = props.footer.content || "";
         card.appendChild(footer);
     }
 

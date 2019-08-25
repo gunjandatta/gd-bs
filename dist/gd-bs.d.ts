@@ -421,9 +421,18 @@ declare module 'gd-bs/card' {
     }
     
     /**
+        * Card Footer
+        */
+    export interface ICardFooter {
+            className?: string;
+            content?: string;
+    }
+    
+    /**
         * Card Header
         */
     export interface ICardHeader {
+            className?: string;
             content?: string;
             nav?: INavProps;
     }
@@ -435,7 +444,7 @@ declare module 'gd-bs/card' {
             body?: Array<ICardBody>;
             className?: string;
             el?: Element | HTMLElement;
-            footer?: string;
+            footer?: ICardFooter;
             header?: ICardHeader;
             imgBottom?: {
                     alt?: string;
