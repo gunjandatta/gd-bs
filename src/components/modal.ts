@@ -1,5 +1,5 @@
 import * as jQuery from "jquery";
-import { IModal, IModalProps } from "./types/modal";
+import { IModal, IModalProps } from "../../@types/modal";
 import { Button } from "./button";
 
 /**

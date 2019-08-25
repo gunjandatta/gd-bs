@@ -1,4 +1,4 @@
-import { IJumbotron, IJumbotronProps } from "./types/jumbotron";
+import { IJumbotron, IJumbotronProps } from "../../@types/jumbotron";
 
 /**
  * Jumbotron

@@ -1,6 +1,6 @@
 import * as jQuery from "jquery";
 import { ButtonTypes } from "./button";
-import { ICard, ICardAction, ICardBody, ICardProps } from "./types/card";
+import { ICard, ICardAction, ICardBody, ICardProps } from "../../@types/card";
 import { Nav } from "./nav";
 
 /**

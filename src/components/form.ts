@@ -1,5 +1,5 @@
-import { IForm, IFormProps } from "./types/form";
-import { IFormControl, IFormControlProps } from "./types/formControl";
+import { IForm, IFormProps } from "../../@types/form";
+import { IFormControl, IFormControlProps } from "../../@types/formControl";
 import { FormControl } from "./formControl";
 import { Progress } from "./progress";
 

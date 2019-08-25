@@ -1,7 +1,7 @@
 import * as jQuery from "jquery";
 import { Badge, BadgeTypes } from "./badge";
 import { Spinner } from "./spinner";
-import { IButton, IButtonProps } from "./types/button";
+import { IButton, IButtonProps } from "../../@types/button";
 
 /**
  * Button Types

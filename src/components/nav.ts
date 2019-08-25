@@ -1,5 +1,5 @@
 import * as jQuery from "jquery";
-import { INav, INavProps } from "./types/nav";
+import { INav, INavProps } from "../../@types/nav";
 
 /**
  * Navigation

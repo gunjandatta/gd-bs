@@ -1,5 +1,5 @@
 import { Button } from "./button";
-import { IButtonGroup, IButtonGroupProps } from "./types/buttonGroup";
+import { IButtonGroup, IButtonGroupProps } from "../../@types/buttonGroup";
 
 /**
  * Button Group

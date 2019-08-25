@@ -1,5 +1,5 @@
 import { Button } from "./button";
-import { IInputGroup, IInputGroupProps } from "./types/inputGroup";
+import { IInputGroup, IInputGroupProps } from "../../@types/inputGroup";
 
 /**
  * Input Group Types

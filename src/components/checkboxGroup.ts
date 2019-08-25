@@ -1,4 +1,4 @@
-import { ICheckboxGroup, ICheckboxGroupItem, ICheckboxGroupProps } from "./types/checkboxGroup";
+import { ICheckboxGroup, ICheckboxGroupItem, ICheckboxGroupProps } from "../../@types/checkboxGroup";
 
 /**
  * Checkbox Group Types

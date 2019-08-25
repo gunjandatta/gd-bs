@@ -1,5 +1,5 @@
 import * as jQuery from "jquery";
-import { IListGroup, IListGroupProps } from "./types/listGroup";
+import { IListGroup, IListGroupProps } from "../../@types/listGroup";
 import { Badge } from "./badge";
 
 /**

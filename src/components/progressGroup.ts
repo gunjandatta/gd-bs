@@ -1,4 +1,4 @@
-import { IProgressGroup, IProgressGroupProps } from "./types/progressGroup";
+import { IProgressGroup, IProgressGroupProps } from "../../@types/progressGroup";
 import { Progress } from "./progress";
 
 /**

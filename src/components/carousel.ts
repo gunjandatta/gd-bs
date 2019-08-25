@@ -1,5 +1,5 @@
 import * as jQuery from "jquery";
-import { ICarousel, ICarouselProps } from "./types/carousel";
+import { ICarousel, ICarouselProps } from "../../@types/carousel";
 
 /**
  * Carousel

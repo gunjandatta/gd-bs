@@ -1,5 +1,5 @@
 import * as jQuery from "jquery";
-import { IToast, IToastProps } from "./types/toast";
+import { IToast, IToastProps } from "../../@types/toast";
 
 /**
  * Toast

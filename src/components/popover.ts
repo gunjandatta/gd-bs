@@ -1,6 +1,6 @@
 import * as jQuery from "jquery";
 import { Button } from "./button";
-import { IPopover, IPopoverProps } from "./types/popover";
+import { IPopover, IPopoverProps } from "../../@types/popover";
 
 /**
  * Popover Types

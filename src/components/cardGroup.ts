@@ -1,5 +1,5 @@
 import { Card } from "./card";
-import { ICardGroup, ICardGroupProps } from "./types/cardGroup";
+import { ICardGroup, ICardGroupProps } from "../../@types/cardGroup";
 
 /**
  * Card Group

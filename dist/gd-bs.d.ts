@@ -4,1757 +4,1695 @@
 
 declare module 'gd-bs' {
     import * as jQuery from "jquery";
-    import * as Components from "gd-bs/components/types";
+    import * as Components from "gd-bs/--/@types";
     export {
         Components,
         jQuery
     }
 }
 
-declare module 'gd-bs/components/types' {
-    export * from "gd-bs/components/types/accordion";
-    export * from "gd-bs/components/types/alert";
-    export * from "gd-bs/components/types/badge";
-    export * from "gd-bs/components/types/breadcrumb";
-    export * from "gd-bs/components/types/button";
-    export * from "gd-bs/components/types/buttonGroup";
-    export * from "gd-bs/components/types/card";
-    export * from "gd-bs/components/types/cardGroup";
-    export * from "gd-bs/components/types/carousel";
-    export * from "gd-bs/components/types/checkboxGroup";
-    export * from "gd-bs/components/types/collapse";
-    export * from "gd-bs/components/types/dropdown";
-    export * from "gd-bs/components/types/form";
-    export * from "gd-bs/components/types/formControl";
-    export * from "gd-bs/components/types/inputGroup";
-    export * from "gd-bs/components/types/jumbotron";
-    export * from "gd-bs/components/types/listGroup";
-    export * from "gd-bs/components/types/modal";
-    export * from "gd-bs/components/types/nav";
-    export * from "gd-bs/components/types/navbar";
-    export * from "gd-bs/components/types/pagination";
-    export * from "gd-bs/components/types/panel";
-    export * from "gd-bs/components/types/popover";
-    export * from "gd-bs/components/types/progress";
-    export * from "gd-bs/components/types/progressGroup";
-    export * from "gd-bs/components/types/spinner";
-    export * from "gd-bs/components/types/table";
-    export * from "gd-bs/components/types/toast";
-    export * from "gd-bs/components/types/toolbar";
-    export * from "gd-bs/components/types/tooltip";
+export * from "gd-bs/--/@types/accordion";
+export * from "gd-bs/--/@types/alert";
+export * from "gd-bs/--/@types/badge";
+export * from "gd-bs/--/@types/breadcrumb";
+export * from "gd-bs/--/@types/button";
+export * from "gd-bs/--/@types/buttonGroup";
+export * from "gd-bs/--/@types/card";
+export * from "gd-bs/--/@types/cardGroup";
+export * from "gd-bs/--/@types/carousel";
+export * from "gd-bs/--/@types/checkboxGroup";
+export * from "gd-bs/--/@types/collapse";
+export * from "gd-bs/--/@types/dropdown";
+export * from "gd-bs/--/@types/form";
+export * from "gd-bs/--/@types/formControl";
+export * from "gd-bs/--/@types/inputGroup";
+export * from "gd-bs/--/@types/jumbotron";
+export * from "gd-bs/--/@types/listGroup";
+export * from "gd-bs/--/@types/modal";
+export * from "gd-bs/--/@types/nav";
+export * from "gd-bs/--/@types/navbar";
+export * from "gd-bs/--/@types/pagination";
+export * from "gd-bs/--/@types/panel";
+export * from "gd-bs/--/@types/popover";
+export * from "gd-bs/--/@types/progress";
+export * from "gd-bs/--/@types/progressGroup";
+export * from "gd-bs/--/@types/spinner";
+export * from "gd-bs/--/@types/table";
+export * from "gd-bs/--/@types/toast";
+export * from "gd-bs/--/@types/toolbar";
+export * from "gd-bs/--/@types/tooltip";
+
+import { IButtonProps } from "gd-bs/--/@types/button";
+import { ICollapseOptions } from "gd-bs/--/@types/collapse";
+
+/**
+    * Accordion
+    */
+export const Accordion: (props: IAccordionProps) => IAccordion;
+
+/**
+    * Accordion
+    */
+export interface IAccordion {
+        /** The element. */
+        el: Element;
 }
 
-declare module 'gd-bs/components/types/accordion' {
-    import { IButtonProps } from "gd-bs/components/types/button";
-    import { ICollapseOptions } from "gd-bs/components/types/collapse";
-    
-    /**
-        * Accordion
-        */
-    export const Accordion: (props: IAccordionProps) => IAccordion;
-    
-    /**
-        * Accordion
-        */
-    export interface IAccordion {
-            /** The element. */
-            el: Element;
-    }
-    
-    /**
-        * Accordion Item
-        */
-    export interface IAccordionItem {
-            btnProps?: IButtonProps;
-            data?: any;
-            content?: string;
-            onClick?: (el?: HTMLElement, item?: IAccordionItem) => void;
-            onRender?: (el?: HTMLElement, item?: IAccordionItem) => void;
-            showFl?: boolean;
-    }
-    
-    /**
-        * Accordion Options
-        */
-    export interface IAccordionOptions extends ICollapseOptions { }
-    
-    /**
-        * Accordion Properties
-        */
-    export interface IAccordionProps {
-            className?: string;
-            el?: Element | HTMLElement;
-            id?: string;
-            items?: Array<IAccordionItem>;
-            options?: IAccordionOptions;
-    }
+/**
+    * Accordion Item
+    */
+export interface IAccordionItem {
+        btnProps?: IButtonProps;
+        data?: any;
+        content?: string;
+        onClick?: (el?: HTMLElement, item?: IAccordionItem) => void;
+        onRender?: (el?: HTMLElement, item?: IAccordionItem) => void;
+        showFl?: boolean;
 }
 
-declare module 'gd-bs/components/types/alert' {
-    /**
-        * Alert
-        */
-    export const Alert: (props: IAlertProps) => IAlert;
-    
-    /**
-        * Alert Types
-        */
-    export const AlertTypes: IAlertTypes;
-    
-    /**
-        * Alert
-        */
-    export interface IAlert {
-            /** Closes an alert by removing it from the DOM. */
-            close: () => void;
-    
-            /** Destroys an element’s alert. */
-            dispose: () => void;
-    
-            /** The element. */
-            el: Element;
-    }
-    
-    /**
-        * Alert Properties
-        */
-    export interface IAlertProps {
-            className?: string;
-            content?: string;
-            el?: Element | HTMLElement;
-            header?: string;
-            isDismissible?: boolean;
-            type?: number;
-    }
-    
-    /**
-        * Alert Types
-        */
-    export type IAlertTypes = {
-            Danger: number;
-            Dark: number;
-            Info: number;
-            Light: number;
-            Primary: number;
-            Secondary: number;
-            Success: number;
-            Warning: number;
-    }
+/**
+    * Accordion Options
+    */
+export interface IAccordionOptions extends ICollapseOptions { }
+
+/**
+    * Accordion Properties
+    */
+export interface IAccordionProps {
+        className?: string;
+        el?: Element | HTMLElement;
+        id?: string;
+        items?: Array<IAccordionItem>;
+        options?: IAccordionOptions;
 }
 
-declare module 'gd-bs/components/types/badge' {
-    /**
-        * Badge
-        */
-    export const Badge: (props: IBadgeProps) => IBadge;
-    
-    /**
-        * Badge Types
-        */
-    export const BadgeTypes: IBadgeTypes;
-    
-    /**
-        * Badge
-        */
-    export interface IBadge {
-            /** The element. */
-            el: Element;
-    }
-    
-    /**
-        * Badge Properties
-        */
-    export interface IBadgeProps {
-            className?: string;
-            content?: string;
-            data?: any;
-            el?: Element | HTMLElement;
-            header?: string;
-            href?: string;
-            isPill?: boolean;
-            onClick?: (badge?: IBadgeProps, ev?: Event) => void;
-            type?: number;
-    }
-    
-    /**
-        * Badge Types
-        */
-    export type IBadgeTypes = {
-            Danger: number;
-            Dark: number;
-            Info: number;
-            Light: number;
-            Primary: number;
-            Secondary: number;
-            Success: number;
-            Warning: number;
-    }
+/**
+    * Alert
+    */
+export const Alert: (props: IAlertProps) => IAlert;
+
+/**
+    * Alert Types
+    */
+export const AlertTypes: IAlertTypes;
+
+/**
+    * Alert
+    */
+export interface IAlert {
+        /** Closes an alert by removing it from the DOM. */
+        close: () => void;
+
+        /** Destroys an element’s alert. */
+        dispose: () => void;
+
+        /** The element. */
+        el: Element;
 }
 
-declare module 'gd-bs/components/types/breadcrumb' {
-    /**
-        * Breadcrumb
-        */
-    export const Breadcrumb: (props: IBreadcrumbProps) => IBreadcrumb;
-    
-    /**
-        * Breadcrumb
-        */
-    export interface IBreadcrumb {
-            /** The element. */
-            el: Element;
-    }
-    
-    /**
-        * Breadcrumb Item
-        */
-    export interface IBreadcrumbItem {
-            href?: string;
-            onClick?: (item?: IBreadcrumbItem, ev?: Event) => void;
-            text?: string;    
-    }
-    
-    /**
-        * Breadcrumb Properties
-        */
-    export interface IBreadcrumbProps {
-            className?: string;
-            el?: Element | HTMLElement;
-            items?: Array<IBreadcrumbItem>
-            onClick?: (item?: IBreadcrumbItem, ev?: Event) => void;
-    }
+/**
+    * Alert Properties
+    */
+export interface IAlertProps {
+        className?: string;
+        content?: string;
+        el?: Element | HTMLElement;
+        header?: string;
+        isDismissible?: boolean;
+        type?: number;
 }
 
-declare module 'gd-bs/components/types/button' {
-    import { IBadgeProps } from "gd-bs/components/types/badge";
-    import { ISpinnerProps } from "gd-bs/components/types/spinner";
-    
-    /**
-        * Button
-        */
-    export const Button: (props: IButtonProps) => IButton;
-    
-    /**
-        * Button Types
-        */
-    export const ButtonTypes: IButtonTypes;
-    
-    /**
-        * Button
-        */
-    export interface IButton {
-            /** Destroys an element’s button. */
-            dispose: () => void;
-    
-            /** The element. */
-            el: Element;
-    
-            /** Updates the button text. */
-            setText: (btnText?: string) => void;
-    
-            /** Toggles push state. Gives the button the appearance that it has been activated. */
-            toggle: () => void;
-    }
-    
-    /**
-        * Button Properties
-        */
-    export interface IButtonProps {
-            badge?: IBadgeProps;
-            className?: string;
-            controls?: Array<string>;
-            data?: any;
-            el?: Element | HTMLElement;
-            href?: string;
-            id?: string;
-            isBlock?: boolean;
-            isDisabled?: boolean;
-            isExpanded?: boolean;
-            isLarge?: boolean;
-            isLink?: boolean;
-            isOutline?: boolean;
-            isSmall?: boolean;
-            onClick?: (button?: IButtonProps, ev?: Event) => void;
-            spinnerProps?: ISpinnerProps;
-            target?: string;
-            text?: string;
-            title?: string;
-            toggle?: string;
-            trigger?: string;
-            type?: number;
-    }
-    
-    /**
-        * Button Types
-        */
-    export type IButtonTypes = {
-            Danger: number;
-            Dark: number;
-            Info: number;
-            Light: number;
-            Link: number;
-            Primary: number;
-            Secondary: number;
-            Success: number;
-            Warning: number;
-    }
+/**
+    * Alert Types
+    */
+export type IAlertTypes = {
+        Danger: number;
+        Dark: number;
+        Info: number;
+        Light: number;
+        Primary: number;
+        Secondary: number;
+        Success: number;
+        Warning: number;
 }
 
-declare module 'gd-bs/components/types/buttonGroup' {
-    import { IButtonProps } from "gd-bs/components/types";
-    
-    /**
-        * Button Group
-        */
-    export const ButtonGroup: (props: IButtonGroupProps) => IButtonGroup;
-    
-    /**
-        * Button Group
-        */
-    export interface IButtonGroup {
-            /** The element. */
-            el: Element;
-    }
-    
-    /**
-        * Button Group Properties
-        */
-    export interface IButtonGroupProps {
-            buttons?: Array<IButtonProps>;
-            buttonType?: number;
-            className?: string;
-            el?: Element | HTMLElement;
-            id?: string;
-            isLarge?: boolean;
-            isSmall?: boolean;
-            isVertical?: boolean;
-            label?: string;
-    }
+/**
+    * Badge
+    */
+export const Badge: (props: IBadgeProps) => IBadge;
+
+/**
+    * Badge Types
+    */
+export const BadgeTypes: IBadgeTypes;
+
+/**
+    * Badge
+    */
+export interface IBadge {
+        /** The element. */
+        el: Element;
 }
 
-declare module 'gd-bs/components/types/card' {
-    import { IButtonProps } from "gd-bs/components/types/button";
-    import { INavProps } from "gd-bs/components/types/nav";
-    
-    /**
-        * Card
-        */
-    export const Card: (props: ICardProps) => ICard;
-    
-    /**
-        * Card
-        */
-    export interface ICard {
-            /** Destroys an element’s card. */
-            dispose: () => void;
-    
-            /** The element. */
-            el: Element;
-    }
-    
-    /**
-        * Card Action
-        */
-    export interface ICardAction {
-            buttonType?: number;
-            data?: any;
-            onClick?: (action?: ICardAction, card?: ICardBody, ev?: Event) => void;
-            href?: string;
-            text?: string;
-    }
-    
-    /**
-        * Card Body
-        */
-    export interface ICardBody {
-            actions?: Array<ICardAction>;
-            className?: string;
-            content?: string;
-            data?: any;
-            onClick?: (card?: ICardProps, ev?: Event) => void;
-            onRender?: (el?: HTMLElement, card?: ICardBody) => void;
-            subTitle?: string;
-            text?: string;
-            title?: string;
-    }
-    
-    /**
-        * Card Header
-        */
-    export interface ICardHeader {
-            content?: string;
-            nav?: INavProps;
-    }
-    
-    /**
-        * Card Properties
-        */
-    export interface ICardProps {
-            body?: Array<ICardBody>;
-            className?: string;
-            el?: Element | HTMLElement;
-            footer?: string;
-            header?: ICardHeader;
-            imgBottom?: {
-                    alt?: string;
-                    src?: string;
-            }
-            imgTop?: {
-                    alt?: string;
-                    src?: string;
-            };
-            onClick?: (card?: ICardBody, ev?: Event) => void;
-    }
+/**
+    * Badge Properties
+    */
+export interface IBadgeProps {
+        className?: string;
+        content?: string;
+        data?: any;
+        el?: Element | HTMLElement;
+        header?: string;
+        href?: string;
+        isPill?: boolean;
+        onClick?: (badge?: IBadgeProps, ev?: Event) => void;
+        type?: number;
 }
 
-declare module 'gd-bs/components/types/cardGroup' {
-    import { ICardProps } from "gd-bs/components/types";
-    
-    /**
-        * Card Group
-        */
-    export const CardGroup: (props: ICardGroupProps) => ICardGroup;
-    
-    /**
-        * Card Group
-        */
-    export interface ICardGroup {
-            /** The element. */
-            el: Element;
-    }
-    
-    /**
-        * Card Group Properties
-        */
-    export interface ICardGroupProps {
-            cards?: Array<ICardProps>;
-            className?: string;
-            el?: Element | HTMLElement;
-            isDeck?: boolean;
-    }
+/**
+    * Badge Types
+    */
+export type IBadgeTypes = {
+        Danger: number;
+        Dark: number;
+        Info: number;
+        Light: number;
+        Primary: number;
+        Secondary: number;
+        Success: number;
+        Warning: number;
 }
 
-declare module 'gd-bs/components/types/carousel' {
-    /**
-        * Carousel
-        */
-    export const Carousel: (props: ICarouselProps) => ICarousel;
-    
-    /**
-        * Carousel
-        */
-    export interface ICarousel {
-            /**
-                * Cycles through the carousel items from left to right.
-                */
-            cycle: () => void;
-    
-            /** Destroys an element’s tab. */
-            dispose: () => void;
-    
-            /** The element. */
-            el: Element;
-    
-            /**
-                * Cycles to the next item.
-                */
-            next: () => void;
-    
-            /**
-                * Cycles the carousel to a particular frame.
-                * @prop value - The frame number.
-                */
-            number: (value: number) => void;
-    
-            /**
-                * Stops the carousel from cycling through items.
-                */
-            pause: () => void;
-    
-            /**
-                * Cycles to the previous item.
-                */
-            previous: () => void;
-    }
-    
-    /**
-        * Carousel Item
-        */
-    export interface ICarouselItem {
-            captions?: string;
-            className?: string;
-            content?: string;
-            imageAlt?: string;
-            imageUrl?: string;
-            isActive?: boolean;
-    }
-    
-    /**
-        * Carousel Options
-        */
-    export interface ICarouselOptions {
-            interval?: number;
-            keyboard?: boolean;
-            pause?: string | boolean;
-            ride?: string;
-            wrap?: boolean;
-    }
-    
-    /**
-        * Carousel Properties
-        */
-    export interface ICarouselProps {
-            className?: string;
-            el?: Element | HTMLElement;
-            enableControls?: boolean;
-            enableCrossfade?: boolean;
-            enableIndicators?: boolean;
-            id?: string;
-            items?: Array<ICarouselItem>;
-            options?: ICarouselOptions;
-    }
+/**
+    * Breadcrumb
+    */
+export const Breadcrumb: (props: IBreadcrumbProps) => IBreadcrumb;
+
+/**
+    * Breadcrumb
+    */
+export interface IBreadcrumb {
+        /** The element. */
+        el: Element;
 }
 
-declare module 'gd-bs/components/types/checkboxGroup' {
-    /**
-        * Checkbox Group
-        */
-    export const CheckboxGroup: (props: ICheckboxGroupProps) => ICheckboxGroup;
-    
-    /**
-        * Checkbox Group Types
-        */
-    export const CheckboxGroupTypes: ICheckboxTypes;
-    
-    /**
-        * Checkbox Group
-        */
-    export interface ICheckboxGroup {
-            /** The checkbox element. */
-            el: HTMLElement;
-    
-            /** Gets the values. */
-            getValue: () => ICheckboxGroupItem | Array<ICheckboxGroupItem>;
-    }
-    
-    /**
-        * Checkbox Group Item
-        */
-    export interface ICheckboxGroupItem {
-            data?: any;
-            isDisabled?: boolean;
-            isSelected?: boolean;
-            label?: string;
-            name?: string;
-            onChange?: (item: ICheckboxGroupItem) => void;
-    }
-    
-    /**
-        * Checkbox Group Properties
-        */
-    export interface ICheckboxGroupProps {
-            className?: string;
-            colSize?: number;
-            el?: Element | HTMLElement;
-            hideLabel?: boolean;
-            isReadonly?: boolean;
-            label?: string;
-            items?: Array<ICheckboxGroupItem>;
-            multi?: boolean;
-            onChange?: (items: ICheckboxGroupItem | Array<ICheckboxGroupItem>) => void;
-            title?: string;
-            type?: number;
-            value?: any;
-    }
-    
-    /**
-        * Checkbox Group Types
-        */
-    export type ICheckboxTypes = {
-            Checkbox: number;
-            Radio: number;
-            Switch: number;
-    }
+/**
+    * Breadcrumb Item
+    */
+export interface IBreadcrumbItem {
+        href?: string;
+        onClick?: (item?: IBreadcrumbItem, ev?: Event) => void;
+        text?: string;    
 }
 
-declare module 'gd-bs/components/types/collapse' {
-    import { IButtonProps } from "gd-bs/components/types/button";
-    
-    /**
-        * Collapse
-        */
-    export const Collapse: (props: ICollapseProps) => ICollapse;
-    
-    /**
-        * Collapse
-        */
-    export interface ICollapse {
-            /** Destroys an element’s collapse. */
-            dispose: () => void;
-    
-            /** The element. */
-            el: Element;
-    
-            /** Hides a collapsible element. */
-            hide: () => void;
-    
-            /** Shows a collapsible element. */
-            show: () => void;
-    
-            /** Toggles the collapsible element on invocation. */
-            toggle: () => void;
-    }
-    
-    /**
-        * Collapse Options
-        */
-    export interface ICollapseOptions {
-            parent?: string | Element;
-            toggle?: boolean;
-    }
-    
-    /**
-        * Collapse Properties
-        */
-    export interface ICollapseProps {
-            className?: string;
-            content?: string;
-            data?: any;
-            el?: Element | HTMLElement;
-            id?: string;
-            isMulti?: boolean;
-            onRender?: (props?: ICollapseProps, el?: HTMLElement) => void;
-            options?: ICollapseOptions;
-    }
+/**
+    * Breadcrumb Properties
+    */
+export interface IBreadcrumbProps {
+        className?: string;
+        el?: Element | HTMLElement;
+        items?: Array<IBreadcrumbItem>
+        onClick?: (item?: IBreadcrumbItem, ev?: Event) => void;
 }
 
-declare module 'gd-bs/components/types/dropdown' {
-    /**
-        * Dropdown
-        */
-    export const Dropdown: (props: IDropdownProps) => IDropdown;
-    
-    /**
-        * Dropdown Types
-        */
-    export const DropdownTypes: IDropdownTypes;
-    
-    /**
-        * Dropdown
-        */
-    export interface IDropdown {
-            /** Destroys an element’s dropdown. */
-            dispose: () => void;
-    
-            /** The element. */
-            el: Element;
-    
-            /** Gets the selected dropdown item(s). */
-            getValue: () => IDropdownItem | Array<IDropdownItem>;
-    
-            /** True if the dropdown is a multi-select. */
-            isMulti: boolean;
-    
-            /** Updates the dropdown items. */
-            setItems: (items: Array<IDropdownItem>) => void;
-    
-            /** Toggles the dropdown menu of a given navbar or tabbed navigation. */
-            toggle: () => void;
-    
-            /** Updates the position of an element’s dropdown. */
-            update: () => void;
-    }
-    
-    /**
-        * Dropdown Item
-        */
-    export interface IDropdownItem {
-            className?: string;
-            data?: any;
-            href?: string;
-            isDisabled?: boolean;
-            isDivider?: boolean;
-            isHeader?: boolean;
-            isSelected?: boolean;
-            onClick?: (item?: IDropdownItem, ev?: Event) => void;
-            onRender?: (el: HTMLElement, item?: IDropdownItem) => void;
-            text?: string;
-            value?: string;
-    }
-    
-    /**
-        * Dropdown Properties
-        */
-    export interface IDropdownProps {
-            className?: string;
-            dropLeft?: boolean;
-            dropRight?: boolean;
-            dropUp?: boolean;
-            el?: Element | HTMLElement;
-            formFl?: boolean;
-            id?: string;
-            isReadonly?: boolean;
-            isSplit?: boolean;
-            items?: Array<IDropdownItem>;
-            label?: string;
-            menuOnly?: boolean;
-            multi?: boolean;
-            navFl?: boolean;
-            onChange?: (item?: IDropdownItem | Array<IDropdownItem>, ev?: Event) => void;
-            setLabelToValue?: boolean;
-            title?: string;
-            type?: number;
-            value?: any;
-    }
-    
-    /**
-        * Dropdown Types
-        */
-    export type IDropdownTypes = {
-            Danger: number;
-            Info: number;
-            Primary: number;
-            Secondary: number;
-            Success: number;
-            Warning: number;
-    }
+import { IBadgeProps } from "gd-bs/--/@types/badge";
+import { ISpinnerProps } from "gd-bs/--/@types/spinner";
+
+/**
+    * Button
+    */
+export const Button: (props: IButtonProps) => IButton;
+
+/**
+    * Button Types
+    */
+export const ButtonTypes: IButtonTypes;
+
+/**
+    * Button
+    */
+export interface IButton {
+        /** Destroys an element’s button. */
+        dispose: () => void;
+
+        /** The element. */
+        el: Element;
+
+        /** Updates the button text. */
+        setText: (btnText?: string) => void;
+
+        /** Toggles push state. Gives the button the appearance that it has been activated. */
+        toggle: () => void;
 }
 
-declare module 'gd-bs/components/types/form' {
-    import { IFormControl, IFormControlProps, IFormControlTypes } from "gd-bs/components/types/formControl";
-    
-    /**
-        * Form
-        */
-    export const Form: (props: IFormProps) => IForm;
-    
-    /**
-        * Form
-        */
-    export interface IForm {
-            controls: Array<IFormControl>;
-            el: HTMLFormElement;
-            getControl: (name: string) => IFormControl;
-            getValues: () => { [key: string]: any };
-            isValid: () => boolean;
-    }
-    
-    /**
-        * Form Column
-        */
-    export interface IFormColumn {
-            control: IFormControlProps;
-            size?: number;
-    }
-    
-    /**
-        * Form Properties
-        */
-    export interface IFormProps {
-            className?: string;
-            el?: Element | HTMLElement,
-            rowClassName?: string;
-            rows?: Array<IFormRow>;
-            onControlRendering?: (control: IFormControlProps) => void | Promise<IFormControlProps>;
-            onControlRendered?: (control: IFormControl) => void | Promise<IFormControl>;
-            onRendered?: (controls: Array<IFormControl>) => void;
-            value?: any;
-    }
-    
-    /**
-        * Form Row
-        */
-    export interface IFormRow {
-            className?: string;
-            isAutoSized?: boolean;
-            isCentered?: boolean;
-            control?: IFormControlProps;
-            colSize?: number;
-            columns?: Array<IFormColumn>;
-    }
+/**
+    * Button Properties
+    */
+export interface IButtonProps {
+        badge?: IBadgeProps;
+        className?: string;
+        controls?: Array<string>;
+        data?: any;
+        el?: Element | HTMLElement;
+        href?: string;
+        id?: string;
+        isBlock?: boolean;
+        isDisabled?: boolean;
+        isExpanded?: boolean;
+        isLarge?: boolean;
+        isLink?: boolean;
+        isOutline?: boolean;
+        isSmall?: boolean;
+        onClick?: (button?: IButtonProps, ev?: Event) => void;
+        spinnerProps?: ISpinnerProps;
+        target?: string;
+        text?: string;
+        title?: string;
+        toggle?: string;
+        trigger?: string;
+        type?: number;
 }
 
-declare module 'gd-bs/components/types/formControl' {
-    import { ICheckboxGroup, ICheckboxGroupItem } from "gd-bs/components/types/checkboxGroup";
-    import { IDropdown, IDropdownItem } from "gd-bs/components/types/dropdown";
-    import { IInputGroup } from "gd-bs/components/types/inputGroup";
-    
-    /**
-        * Form Control
-        */
-    export const FormControl: (control: IFormControlProps) => IFormControl;
-    
-    /**
-        * Form Control Types
-        */
-    export const FormControlTypes: IFormControlTypes;
-    
-    /**
-        * Form Control
-        */
-    export interface IFormControl {
-            el: HTMLElement;
-            get: () => ICheckboxGroup | IDropdown | IInputGroup;
-            getValue: () => any;
-            isValid: () => boolean;
-            props: IFormControlProps;
-    }
-    
-    /**
-        * Form Control Properties
-        */
-    export interface IFormControlProps {
-            className?: string;
-            controlClassName?: string;
-            data?: any;
-            description?: string;
-            el?: HTMLElement;
-            errorMessage?: string;
-            isReadonly?: boolean;
-            isPlainText?: boolean;
-            label?: string;
-            loadingMessage?: string;
-            name?: string;
-            onControlRendering?: (control: IFormControlProps) => void | Promise<IFormControlProps>;
-            onControlRendered?: (control: IFormControl) => void | Promise<IFormControl>;
-            onGetValue?: (control: IFormControlProps) => any;
-            onValidate?: (control: IFormControlProps, value: any) => boolean | IFormControlValidationResult;
-            required?: boolean;
-            title?: string;
-            type?: number;
-            value?: any;
-    }
-    
-    /**
-        * Form Control Properties - Checkbox
-        */
-    export interface IFormControlPropsCheckbox extends IFormControlProps {
-            el?: HTMLInputElement;
-            hideLabel?: boolean;
-            items?: Array<ICheckboxGroupItem>;
-            multi?: boolean;
-            onChange?: (item: Array<ICheckboxGroupItem>) => void;
-    }
-    
-    /**
-        * Form Control Properties - Dropdown
-        */
-    export interface IFormControlPropsDropdown extends IFormControlProps {
-            items?: Array<IDropdownItem>;
-            onChange?: (item: IDropdownItem | Array<IDropdownItem>) => void;
-    }
-    
-    /**
-        * Form Control Properties - Number Field
-        */
-    export interface IFormControlPropsNumberField extends IFormControlPropsTextField {
-            max?: number;
-            min?: number;
-            step?: number;
-    }
-    
-    /**
-        * Form Control Properties - TextField
-        */
-    export interface IFormControlPropsTextField extends IFormControlProps {
-            el?: HTMLInputElement;
-            onChange?: (value: string) => void;
-            placeholder?: string;
-            rows?: number;
-    }
-    
-    /**
-        * Form Control Types
-        */
-    export type IFormControlTypes = {
-            Checkbox: number;
-            Email: number;
-            Dropdown: number;
-            File: number;
-            MultiDropdown: number;
-            Password: number;
-            Radio; number;
-            Range: number;
-            Readonly: number;
-            Switch: number;
-            TextArea: number;
-            TextField: number;
-    }
-    
-    /**
-        * Form Control Validation Result
-        */
-    export interface IFormControlValidationResult {
-            invalidMessage?: string;
-            isValid?: boolean;
-            validMessage?: string;
-    }
+/**
+    * Button Types
+    */
+export type IButtonTypes = {
+        Danger: number;
+        Dark: number;
+        Info: number;
+        Light: number;
+        Link: number;
+        Primary: number;
+        Secondary: number;
+        Success: number;
+        Warning: number;
 }
 
-declare module 'gd-bs/components/types/inputGroup' {
-    import { IButtonProps } from "gd-bs/components/types/button";
-    
-    /**
-        * Input Group
-        */
-    export const InputGroup: (props: IInputGroupProps) => IInputGroup;
-    
-    /**
-        * Input Group Types
-        */
-    export const InputGroupTypes: IInputGroupTypes;
-    
-    /**
-        * Button Group
-        */
-    export interface IInputGroup {
-            /** The element. */
-            el: HTMLElement;
-    
-            /** Method to get the value. */
-            getValue: () => string;
-    
-            /** Method to set the value. */
-            setValue: (value: string) => void;
-    }
-    
-    /**
-        * Input Group Properties
-        */
-    export interface IInputGroupProps {
-            appendedButtons?: Array<IButtonProps>;
-            appendedLabel?: string;
-            className?: string;
-            description?: string;
-            el?: Element | HTMLElement;
-            formFl?: boolean;
-            id?: string;
-            isLarge?: boolean;
-            isPlainText?: boolean;
-            isReadonly?: boolean;
-            isSmall?: boolean;
-            label?: string;
-            max?: number;
-            min?: number;
-            onClear?: () => void;
-            onChange?: (value?: string, ev?: Event) => void;
-            placeholder?: string;
-            prependedButtons?: Array<IButtonProps>;
-            prependedLabel?: string;
-            rows?: number;
-            step?: number;
-            title?: string;
-            type?: number;
-            value?: string;
-    }
-    
-    /**
-        * Input Group Types
-        */
-    export type IInputGroupTypes = {
-            Email: number;
-            File: number;
-            Password: number;
-            Range: number;
-            Search: number;
-            TextArea: number;
-            TextField: number;
-    }
+import { IButtonProps } from "gd-bs/--/@types";
+
+/**
+    * Button Group
+    */
+export const ButtonGroup: (props: IButtonGroupProps) => IButtonGroup;
+
+/**
+    * Button Group
+    */
+export interface IButtonGroup {
+        /** The element. */
+        el: Element;
 }
 
-declare module 'gd-bs/components/types/jumbotron' {
-    /**
-        * Jumbotron
-        */
-    export const Jumbotron: (props: IJumbotronProps) => IJumbotron;
-    
-    /**
-        * Jumbotron
-        */
-    export interface IJumbotron {
-            /** The element. */
-            el: Element;
-    }
-    
-    /**
-        * Jumbotron Properties
-        */
-    export interface IJumbotronProps {
-            className?: string;
-            content?: string;
-            el?: Element | HTMLElement;
-            isFluid?: boolean;
-            lead?: string;
-            onRenderContent?: (el?: HTMLElement) => void;
-            title?: string;
-    }
+/**
+    * Button Group Properties
+    */
+export interface IButtonGroupProps {
+        buttons?: Array<IButtonProps>;
+        buttonType?: number;
+        className?: string;
+        el?: Element | HTMLElement;
+        id?: string;
+        isLarge?: boolean;
+        isSmall?: boolean;
+        isVertical?: boolean;
+        label?: string;
 }
 
-declare module 'gd-bs/components/types/listGroup' {
-    import { IBadgeProps } from "gd-bs/components/types/badge";
-    
-    /**
-        * List Group
-        */
-    export const ListGroup: (props: IListGroupProps) => IListGroup;
-    
-    /**
-        * List Group Item Types
-        */
-    export const ListGroupItemTypes: IListGroupItemTypes;
-    
-    /**
-        * List Group
-        */
-    export interface IListGroup {
-            /** The element. */
-            el: Element;
-    
-            /**
-                * Shows the tab content.
-                * @prop elId - The tab id.
-                */
-            show: (tabId: string) => void;
-    }
-    
-    /**
-        * List Group Item
-        */
-    export interface IListGroupItem {
-            badge?: IBadgeProps;
-            className?: string;
-            content?: string;
-            data?: any;
-            href?: string;
-            isActive?: boolean;
-            isDisabled?: boolean;
-            onClick?: (el?: HTMLElement, item?: IListGroupItem) => void;
-            onRender?: (el?: HTMLElement, item?: IListGroupItem) => void;
-            tabName?: string;
-            type?: number;
-    }
-    
-    /**
-        * List Group Properties
-        */
-    export interface IListGroupProps {
-            className?: string;
-            colWidth?: number;
-            el?: Element | HTMLElement;
-            enableFade?: boolean;
-            isFlush?: boolean;
-            isTabs?: boolean;
-            items?: Array<IListGroupItem>;
-    }
-    
-    /**
-        * List Group Item Types
-        */
-    export type IListGroupItemTypes = {
-            Danger: number;
-            Dark: number;
-            Info: number;
-            Light: number;
-            Primary: number;
-            Secondary: number;
-            Success: number;
-            Warning: number;
-    }
+import { IButtonProps } from "gd-bs/--/@types/button";
+import { INavProps } from "gd-bs/--/@types/nav";
+
+/**
+    * Card
+    */
+export const Card: (props: ICardProps) => ICard;
+
+/**
+    * Card
+    */
+export interface ICard {
+        /** Destroys an element’s card. */
+        dispose: () => void;
+
+        /** The element. */
+        el: Element;
 }
 
-declare module 'gd-bs/components/types/modal' {
-    import { IButtonProps } from "gd-bs/components/types/button";
-    
-    /**
-        * Modal
-        */
-    export const Modal: (props: IModalProps) => IModal;
-    
-    /**
-        * Modal
-        */
-    export interface IModal {
-            /** Destroys an element’s modal. */
-            dispose: () => void;
-    
-            /** The element. */
-            el: Element,
-    
-            /** Manually readjust the modal’s position if the height of a modal changes while it is open (i.e. in case a scrollbar appears). */
-            handleUpdate: () => void;
-    
-            /** Manually hides a modal. */
-            hide: () => void;
-    
-            /** Manually opens a modal. */
-            show: () => void;
-    
-            /** Manually toggles a modal. */
-            toggle: () => void;
-    }
-    
-    /**
-        * Modal Options
-        */
-    export interface IModalOptions {
-            /** Includes a modal-backdrop element. Alternatively, specify static for a backdrop which doesn't close the modal on click. */
-            backdrop: boolean | string;
-    
-            /** Puts the focus on the modal when initialized. */
-            focus: boolean;
-    
-            /** Closes the modal when escape key is pressed. */
-            keyboard: boolean;
-    
-            /** Shows the modal when initialized. */
-            show: boolean;
-    }
-    
-    /**
-        * Modal Properties
-        */
-    export interface IModalProps {
-            body?: string;
-            button?: IButtonProps;
-            className?: string;
-            el?: Element | HTMLElement;
-            disableFade?: boolean;
-            footer?: string;
-            hideCloseButton?: boolean;
-            id?: string;
-            isCentered?: boolean;
-            isLarge?: boolean;
-            isSmall?: boolean;
-            onClose?: (el: HTMLDivElement) => void;
-            onRenderBody?: (el: HTMLDivElement) => void;
-            onRenderFooter?: (el: HTMLDivElement) => void;
-            title?: string;
-    }
+/**
+    * Card Action
+    */
+export interface ICardAction {
+        buttonType?: number;
+        data?: any;
+        onClick?: (action?: ICardAction, card?: ICardBody, ev?: Event) => void;
+        href?: string;
+        text?: string;
 }
 
-declare module 'gd-bs/components/types/nav' {
-    /**
-        * Navigation
-        */
-    export const Nav: (props: INavProps) => INav;
-    
-    /**
-        * Navigation
-        */
-    export interface INav {
-            /** Destroys an element’s tab. */
-            dispose: () => void;
-    
-            /** The element. */
-            el: Element;
-    
-            /**
-                * Selects the given tab and shows its associated pane. Any other tab that was previously selected becomes unselected and its associated pane is hidden.
-                * @prop selector - The query selector.
-                */
-            show: (selector: string) => void;
-    }
-    
-    /**
-        * Navigation Properties
-        */
-    export interface INavProps {
-            className?: string;
-            data?: any;
-            el?: Element | HTMLElement;
-            enableFade?: boolean;
-            enableFill?: boolean;
-            id?: string;
-            items?: Array<INavLink>;
-            isJustified?: boolean;
-            isPills?: boolean;
-            isTabs?: boolean;
-            isVertical?: boolean;
-    }
-    
-    /**
-        * Navigation Links
-        */
-    export interface INavLink {
-            isActive?: boolean;
-            isDisabled?: boolean;
-            data?: any;
-            href?: string;
-            onClick?: (item?: INavLink, ev?: Event) => void;
-            onRenderTab?: (item?: INavLink, el?: HTMLDivElement) => void;
-            tabContent?: string;
-            title?: string;
-    }
+/**
+    * Card Body
+    */
+export interface ICardBody {
+        actions?: Array<ICardAction>;
+        className?: string;
+        content?: string;
+        data?: any;
+        onClick?: (card?: ICardProps, ev?: Event) => void;
+        onRender?: (el?: HTMLElement, card?: ICardBody) => void;
+        subTitle?: string;
+        text?: string;
+        title?: string;
 }
 
-declare module 'gd-bs/components/types/navbar' {
-    import { IButtonProps } from "gd-bs/components/types/button";
-    import { IDropdownItem } from "gd-bs/components/types/dropdown";
-    
-    /**
-        * Navbar
-        */
-    export const Navbar: (props: INavbarProps) => INavbar;
-    
-    /**
-        * Navbar Types
-        */
-    export const NavbarTypes: INavbarTypes;
-    
-    /**
-        * Navbar
-        */
-    export interface INavbar {
-            /** The element. */
-            el: Element;
-    }
-    
-    /**
-        * Navbar Item
-        */
-    export interface INavbarItem {
-            href?: string;
-            isActive?: boolean;
-            isDisabled?: boolean;
-            items?: Array<IDropdownItem>;
-            onClick?: (item?: INavbarItem, ev?: Event) => void;
-            text?: string;
-    }
-    
-    /**
-        * Navbar Properties
-        */
-    export interface INavbarProps {
-            brand?: string;
-            brandUrl?: string;
-            className?: string;
-            el?: Element | HTMLElement;
-            enableSearch?: boolean;
-            id?: string;
-            items?: Array<INavbarItem>;
-            onClick?: (item?: INavbarItem, ev?: Event) => void;
-            searchBox?: INavbarSearchBox;
-            type?: number;
-    }
-    
-    /**
-        * Navbar Types
-        */
-    export type INavbarTypes = {
-            Dark: number;
-            Light: number;
-            Primary: number;
-    }
-    
-    /**
-        * Navbar Search Box
-        */
-    export interface INavbarSearchBox {
-            btnType?: number;
-            btnText?: string;
-            hideButton?: boolean;
-            onChange?: (value?: string) => void;
-            onSearch?: (value?: string) => void;
-            placeholder?: string;
-    }
+/**
+    * Card Header
+    */
+export interface ICardHeader {
+        content?: string;
+        nav?: INavProps;
 }
 
-declare module 'gd-bs/components/types/pagination' {
-    /**
-        * Pagination
-        */
-    export const Pagination: (props: IPaginationProps) => IPagination;
-    
-    /**
-        * Pagination Alignment
-        */
-    export const PaginationAlignment: IPaginationAlignment;
-    
-    /**
-        * Pagination
-        */
-    export interface IPagination {
-            /** The element. */
-            el: Element;
-    }
-    
-    /**
-        * Pagination Properties
-        */
-    export interface IPaginationProps {
-            alignment?: number;
-            className?: string;
-            el?: Element;
-            icon?: string;
-            isLarge?: boolean;
-            isSmall?: boolean;
-            label?: string;
-            numberOfPages?: number;
-            onClick?: (pageNumber?: number, ev?: Event) => void;
-    }
-    
-    /**
-        * Pagination Alignment
-        */
-    export type IPaginationAlignment = {
-            Centered: number;
-            Left: number;
-            Right: number;
-    }
+/**
+    * Card Properties
+    */
+export interface ICardProps {
+        body?: Array<ICardBody>;
+        className?: string;
+        el?: Element | HTMLElement;
+        footer?: string;
+        header?: ICardHeader;
+        imgBottom?: {
+                alt?: string;
+                src?: string;
+        }
+        imgTop?: {
+                alt?: string;
+                src?: string;
+        };
+        onClick?: (card?: ICardBody, ev?: Event) => void;
 }
 
-declare module 'gd-bs/components/types/panel' {
-    import { IModal, IModalProps } from "gd-bs/components/types/modal";
-    
-    /**
-        * Panel
-        */
-    export const Panel: (props: IPanelProps) => IPanel;
-    
-    /**
-        * Panel Types
-        */
-    export const PanelTypes: IPanelTypes;
-    
-    /**
-        * Panel
-        */
-    export interface IPanel {
-            /** The element. */
-            el: Element;
-    
-            /** The modal. */
-            modal: IModal;
-    
-            /** Hides the panel. */
-            hide: () => void;
-    
-            /** Shows the panel. */
-            show: () => void;
-    }
-    
-    /**
-        * Panel Properties
-        */
-    export interface IPanelProps {
-            className?: string;
-            el?: Element | HTMLElement;
-            modalProps?: IModalProps;
-            type?: number;
-    }
-    
-    /**
-        * Panel Types
-        */
-    export type IPanelTypes = {
-            Small: number;
-            Medium: number;
-            Large: number;
-            XLarge: number;
-            Full: number;
-    }
+import { ICardProps } from "gd-bs/--/@types";
+
+/**
+    * Card Group
+    */
+export const CardGroup: (props: ICardGroupProps) => ICardGroup;
+
+/**
+    * Card Group
+    */
+export interface ICardGroup {
+        /** The element. */
+        el: Element;
 }
 
-declare module 'gd-bs/components/types/popover' {
-    import { IButtonProps } from "gd-bs/components/types/button";
-    
-    /**
-        * Popover
-        */
-    export const Popover: (props: IPopoverProps) => IPopover;
-    
-    /**
-        * Popover Types
-        */
-    export const PopoverTypes: IPopoverTypes;
-    
-    /**
-        * Popover
-        */
-    export interface IPopover {
-            /** Destroys an element’s popover. */
-            dispose: () => void;
-    
-            /** The element. */
-            el: Element;
-    
-            /** Hides an element’s popover. */
-            hide: () => void;
-    
-            /** Toggles an element's popover. */
-            toggle: () => void;
-    
-            /** Toggles the ability for an element’s popover to be shown or hidden. */
-            toggleEnabled: () => void;
-    
-            /** Reveals an element’s popover. */
-            show: () => void;
-    
-            /** Updates the position of an element’s popover. */
-            update: () => void;
-    }
-    
-    /**
-        * Popover Options
-        */
-    export interface IPopoverOptions {
-            animation?: boolean;
-            boundary?: string | Element;
-            container?: string | Element | Function;
-            content?: string | Element | Function;
-            delay?: number | object;
-            fallbackPlacement?: string | Array<string>;
-            html?: boolean;
-            offset?: number | string;
-            placement?: string | Function;
-            selector?: string;
-            template?: string;
-            title?: string | Element | Function;
-            trigger?: string;
-    }
-    
-    /**
-        * Popover Properties
-        */
-    export interface IPopoverProps {
-            btnProps?: IButtonProps;
-            className?: string;
-            el?: Element | HTMLElement;
-            isDismissible?: boolean;
-            options?: IPopoverOptions;
-            target?: Element,
-            type?: number;
-    }
-    
-    /**
-        * Popover Types
-        */
-    export type IPopoverTypes = {
-            Auto: number;
-            Bottom: number;
-            Left: number;
-            Right: number;
-            Top: number;
-    }
+/**
+    * Card Group Properties
+    */
+export interface ICardGroupProps {
+        cards?: Array<ICardProps>;
+        className?: string;
+        el?: Element | HTMLElement;
+        isDeck?: boolean;
 }
 
-declare module 'gd-bs/components/types/progress' {
-    /**
-        * Progress
-        */
-    export const Progress: (props: IProgressProps) => IProgress;
-    
-    /**
-        * Progress
-        */
-    export interface IProgress {
-            /** The element. */
-            el: Element;
-    }
-    
-    /**
-        * Progress Properties
-        */
-    export interface IProgressProps {
-            className?: string;
-            el?: Element | HTMLElement;
-            isAnimated?: boolean;
-            isStriped?: boolean;
-            label?: string;
-            max?: number;
-            min?: number;
-            size?: number;
-    }
+/**
+    * Carousel
+    */
+export const Carousel: (props: ICarouselProps) => ICarousel;
+
+/**
+    * Carousel
+    */
+export interface ICarousel {
+        /**
+            * Cycles through the carousel items from left to right.
+            */
+        cycle: () => void;
+
+        /** Destroys an element’s tab. */
+        dispose: () => void;
+
+        /** The element. */
+        el: Element;
+
+        /**
+            * Cycles to the next item.
+            */
+        next: () => void;
+
+        /**
+            * Cycles the carousel to a particular frame.
+            * @prop value - The frame number.
+            */
+        number: (value: number) => void;
+
+        /**
+            * Stops the carousel from cycling through items.
+            */
+        pause: () => void;
+
+        /**
+            * Cycles to the previous item.
+            */
+        previous: () => void;
 }
 
-declare module 'gd-bs/components/types/progressGroup' {
-    import { IProgressProps } from "gd-bs/components/types/progress";
-    
-    /**
-        * Progress Group
-        */
-    export const ProgressGroup: (props: IProgressGroupProps) => IProgressGroup;
-    
-    /**
-        * Progress Group
-        */
-    export interface IProgressGroup {
-            /** The element. */
-            el: Element;
-    }
-    
-    /**
-        * Progress Group Properties
-        */
-    export interface IProgressGroupProps {
-            className?: string;
-            el?: Element | HTMLElement;
-            isMultiple?: boolean;
-            progressbars?: Array<IProgressProps>;
-    }
+/**
+    * Carousel Item
+    */
+export interface ICarouselItem {
+        captions?: string;
+        className?: string;
+        content?: string;
+        imageAlt?: string;
+        imageUrl?: string;
+        isActive?: boolean;
 }
 
-declare module 'gd-bs/components/types/spinner' {
-    /**
-        * Spinner
-        */
-    export const Spinner: (props: ISpinnerProps) => ISpinner;
-    
-    /**
-        * Spinner Types
-        */
-    export const SpinnerTypes: ISpinnerTypes;
-    
-    /**
-        * Spinner
-        */
-    export interface ISpinner {
-            /** The element. */
-            el: Element;
-    }
-    
-    /**
-        * Spinner Properties
-        */
-    export interface ISpinnerProps {
-            className?: string;
-            el?: Element | HTMLElement;
-            isGrowing?: boolean;
-            isSmall?: boolean;
-            text?: string;
-            type?: number;
-    }
-    
-    /**
-        * Spinner Types
-        */
-    export type ISpinnerTypes = {
-            Danger: number;
-            Dark: number;
-            Info: number;
-            Light: number;
-            Primary: number;
-            Secondary: number;
-            Success: number;
-            Warning: number;
-    }
+/**
+    * Carousel Options
+    */
+export interface ICarouselOptions {
+        interval?: number;
+        keyboard?: boolean;
+        pause?: string | boolean;
+        ride?: string;
+        wrap?: boolean;
 }
 
-declare module 'gd-bs/components/types/table' {
-    /**
-        * Table
-        */
-    export const Table: (props: ITableProps) => ITable
-    
-    /**
-        * Table
-        */
-    export interface ITable {
-            el: HTMLTableElement;
-            addRows(rows: Array<any>);
-    }
-    
-    /**
-        * Table Properties
-        */
-    export interface ITableProps {
-            className?: string;
-            columns?: Array<ITableColumn>;
-            el?: Element | HTMLElement;
-            onClickCell?: (el: HTMLTableDataCellElement, column?: ITableColumn, data?: any) => void;
-            onClickHeader?: (el: HTMLTableHeaderCellElement, column?: ITableColumn) => void;
-            onRenderCell?: (el?: HTMLTableDataCellElement, column?: ITableColumn, data?: any) => void;
-            onRenderHeaderCell?: (el?: HTMLTableDataCellElement, column?: ITableColumn) => void;
-            onRenderHeaderRow?: (el?: HTMLTableRowElement) => void;
-            onRenderRow?: (el?: HTMLTableRowElement, data?: any) => void;
-            rows?: Array<any>;
-    }
-    
-    /**
-        * Table Column
-        */
-    export interface ITableColumn {
-            className?: string;
-            data?: any;
-            enableSort?: boolean;
-            isHidden?: boolean;
-            name: string;
-            onClickCell?: (el: HTMLTableDataCellElement, column?: ITableColumn, data?: any) => void;
-            onClickHeader?: (el: HTMLTableHeaderCellElement, column?: ITableColumn) => void;
-            onRenderCell?: (el: HTMLTableDataCellElement, column?: ITableColumn, data?: any) => void;
-            onRenderHeader?: (el?: HTMLTableDataCellElement, column?: ITableColumn) => void;
-            scope?: string;
-            title?: string;
-    }
+/**
+    * Carousel Properties
+    */
+export interface ICarouselProps {
+        className?: string;
+        el?: Element | HTMLElement;
+        enableControls?: boolean;
+        enableCrossfade?: boolean;
+        enableIndicators?: boolean;
+        id?: string;
+        items?: Array<ICarouselItem>;
+        options?: ICarouselOptions;
 }
 
-declare module 'gd-bs/components/types/toast' {
-    /**
-        * Toast
-        */
-    export const Toast: (props: IToastProps) => IToast;
-    
-    /**
-        * Toast
-        */
-    export interface IToast {
-            /** The component element. */
-            el: HTMLElement;
-    
-            /** Hides the toast. */
-            hide: () => void;
-    
-            /** Shows the toast. */
-            show: () => void;
-    }
-    
-    /**
-        * Toast Properties
-        */
-    export interface IToastProps {
-            bodyText?: string;
-            className?: string;
-            closeButtonHidden?: boolean;
-            closeButtonText?: string;
-            data?: any;
-            el?: Element | HTMLElement;
-            headerImgClass?: string;
-            headerImgSrc?: string;
-            headerText?: string;
-            mutedText?: string;
-            options?: IToastOptions;
-            onClick?: (el?: HTMLElement, data?: any) => void;
-            onRenderBody?: (el?: HTMLElement, data?: any) => void;
-            onRenderHeader?: (el?: HTMLElement, data?: any) => void;
-    }
-    
-    /**
-        * Toast Options
-        */
-    export interface IToastOptions {
-            animation?: boolean;
-            autohide?: boolean;
-            delay?: number;
-    }
+/**
+    * Checkbox Group
+    */
+export const CheckboxGroup: (props: ICheckboxGroupProps) => ICheckboxGroup;
+
+/**
+    * Checkbox Group Types
+    */
+export const CheckboxGroupTypes: ICheckboxTypes;
+
+/**
+    * Checkbox Group
+    */
+export interface ICheckboxGroup {
+        /** The checkbox element. */
+        el: HTMLElement;
+
+        /** Gets the values. */
+        getValue: () => ICheckboxGroupItem | Array<ICheckboxGroupItem>;
 }
 
-declare module 'gd-bs/components/types/toolbar' {
-    import { IButtonProps } from "gd-bs/components/types/button";
-    import { IInputGroupProps } from "gd-bs/components/types/inputGroup";
-    
-    /**
-        * Toolbar
-        */
-    export const Toolbar: (props: IToolbarProps) => IToolbar;
-    
-    /**
-        * Toolbar
-        */
-    export interface IToolbar {
-            /** The element. */
-            el: Element;
-    }
-    
-    /**
-        * Toolbar Item
-        */
-    export interface IToolbarItem {
-            buttons?: Array<IButtonProps>;
-            buttonType?: number;
-            inputGroup?: IInputGroupProps;
-    }
-    
-    /**
-        * Toolbar Properties
-        */
-    export interface IToolbarProps {
-            className?: string;
-            el?: Element | HTMLElement;
-            items?: Array<IToolbarItem>;
-            spacing?: number;
-    }
+/**
+    * Checkbox Group Item
+    */
+export interface ICheckboxGroupItem {
+        data?: any;
+        isDisabled?: boolean;
+        isSelected?: boolean;
+        label?: string;
+        name?: string;
+        onChange?: (item: ICheckboxGroupItem) => void;
 }
 
-declare module 'gd-bs/components/types/tooltip' {
-    import { IButtonProps } from "gd-bs/components/types/button";
-    
-    /**
-        * Tooltip
-        */
-    export const Tooltip: (props: ITooltipProps) => ITooltip;
-    
-    /**
-        * Tooltip Types
-        */
-    export const TooltipTypes: ITooltipTypes;
-    
-    /**
-        * Tooltip
-        */
-    export interface ITooltip {
-            /** Destroys an element’s tooltip. */
-            dispose: () => void;
-    
-            /** The element. */
-            el: Element;
-    
-            /** Gives an element’s tooltip the ability to be shown. */
-            enable: () => void;
-    
-            /** Hides an element’s tooltip. */
-            hide: () => void;
-    
-            /** Toggles an element's tooltip. */
-            toggle: () => void;
-    
-            /** Toggles the ability for an element’s tooltip to be shown or hidden. */
-            toggleEnabled: () => void;
-    
-            /** Reveals an element’s tooltip. */
-            show: () => void;
-    
-            /** Updates the position of an element’s tooltip. */
-            update: () => void;
-    }
-    
-    /**
-        * Tooltip Options
-        */
-    export interface ITooltipOptions {
-            animation?: boolean;
-            boundary?: string;
-            container?: string;
-            delay?: number | object;
-            fallbackPlacement?: string | Array<string>;
-            html?: boolean;
-            offset?: number | string;
-            placement?: string | Function;
-            selector?: string;
-            template?: string;
-            title?: string;
-            trigger?: string;
-    }
-    
-    /**
-        * Tooltip Properties
-        */
-    export interface ITooltipProps {
-            btnProps?: IButtonProps;
-            className?: string;
-            el?: Element | HTMLElement;
-            options?: ITooltipOptions;
-            type?: number;
-    }
-    
-    /**
-        * Tooltip Types
-        */
-    export type ITooltipTypes = {
-            Auto: number;
-            Bottom: number;
-            Left: number;
-            Right: number;
-            Top: number;
-    }
+/**
+    * Checkbox Group Properties
+    */
+export interface ICheckboxGroupProps {
+        className?: string;
+        colSize?: number;
+        el?: Element | HTMLElement;
+        hideLabel?: boolean;
+        isReadonly?: boolean;
+        label?: string;
+        items?: Array<ICheckboxGroupItem>;
+        multi?: boolean;
+        onChange?: (items: ICheckboxGroupItem | Array<ICheckboxGroupItem>) => void;
+        title?: string;
+        type?: number;
+        value?: any;
+}
+
+/**
+    * Checkbox Group Types
+    */
+export type ICheckboxTypes = {
+        Checkbox: number;
+        Radio: number;
+        Switch: number;
+}
+
+import { IButtonProps } from "gd-bs/--/@types/button";
+
+/**
+    * Collapse
+    */
+export const Collapse: (props: ICollapseProps) => ICollapse;
+
+/**
+    * Collapse
+    */
+export interface ICollapse {
+        /** Destroys an element’s collapse. */
+        dispose: () => void;
+
+        /** The element. */
+        el: Element;
+
+        /** Hides a collapsible element. */
+        hide: () => void;
+
+        /** Shows a collapsible element. */
+        show: () => void;
+
+        /** Toggles the collapsible element on invocation. */
+        toggle: () => void;
+}
+
+/**
+    * Collapse Options
+    */
+export interface ICollapseOptions {
+        parent?: string | Element;
+        toggle?: boolean;
+}
+
+/**
+    * Collapse Properties
+    */
+export interface ICollapseProps {
+        className?: string;
+        content?: string;
+        data?: any;
+        el?: Element | HTMLElement;
+        id?: string;
+        isMulti?: boolean;
+        onRender?: (props?: ICollapseProps, el?: HTMLElement) => void;
+        options?: ICollapseOptions;
+}
+
+/**
+    * Dropdown
+    */
+export const Dropdown: (props: IDropdownProps) => IDropdown;
+
+/**
+    * Dropdown Types
+    */
+export const DropdownTypes: IDropdownTypes;
+
+/**
+    * Dropdown
+    */
+export interface IDropdown {
+        /** Destroys an element’s dropdown. */
+        dispose: () => void;
+
+        /** The element. */
+        el: Element;
+
+        /** Gets the selected dropdown item(s). */
+        getValue: () => IDropdownItem | Array<IDropdownItem>;
+
+        /** True if the dropdown is a multi-select. */
+        isMulti: boolean;
+
+        /** Updates the dropdown items. */
+        setItems: (items: Array<IDropdownItem>) => void;
+
+        /** Toggles the dropdown menu of a given navbar or tabbed navigation. */
+        toggle: () => void;
+
+        /** Updates the position of an element’s dropdown. */
+        update: () => void;
+}
+
+/**
+    * Dropdown Item
+    */
+export interface IDropdownItem {
+        className?: string;
+        data?: any;
+        href?: string;
+        isDisabled?: boolean;
+        isDivider?: boolean;
+        isHeader?: boolean;
+        isSelected?: boolean;
+        onClick?: (item?: IDropdownItem, ev?: Event) => void;
+        onRender?: (el: HTMLElement, item?: IDropdownItem) => void;
+        text?: string;
+        value?: string;
+}
+
+/**
+    * Dropdown Properties
+    */
+export interface IDropdownProps {
+        className?: string;
+        dropLeft?: boolean;
+        dropRight?: boolean;
+        dropUp?: boolean;
+        el?: Element | HTMLElement;
+        formFl?: boolean;
+        id?: string;
+        isReadonly?: boolean;
+        isSplit?: boolean;
+        items?: Array<IDropdownItem>;
+        label?: string;
+        menuOnly?: boolean;
+        multi?: boolean;
+        navFl?: boolean;
+        onChange?: (item?: IDropdownItem | Array<IDropdownItem>, ev?: Event) => void;
+        setLabelToValue?: boolean;
+        title?: string;
+        type?: number;
+        value?: any;
+}
+
+/**
+    * Dropdown Types
+    */
+export type IDropdownTypes = {
+        Danger: number;
+        Info: number;
+        Primary: number;
+        Secondary: number;
+        Success: number;
+        Warning: number;
+}
+
+import { IFormControl, IFormControlProps, IFormControlTypes } from "gd-bs/--/@types/formControl";
+
+/**
+    * Form
+    */
+export const Form: (props: IFormProps) => IForm;
+
+/**
+    * Form
+    */
+export interface IForm {
+        controls: Array<IFormControl>;
+        el: HTMLFormElement;
+        getControl: (name: string) => IFormControl;
+        getValues: () => { [key: string]: any };
+        isValid: () => boolean;
+}
+
+/**
+    * Form Column
+    */
+export interface IFormColumn {
+        control: IFormControlProps;
+        size?: number;
+}
+
+/**
+    * Form Properties
+    */
+export interface IFormProps {
+        className?: string;
+        el?: Element | HTMLElement,
+        rowClassName?: string;
+        rows?: Array<IFormRow>;
+        onControlRendering?: (control: IFormControlProps) => void | Promise<IFormControlProps>;
+        onControlRendered?: (control: IFormControl) => void | Promise<IFormControl>;
+        onRendered?: (controls: Array<IFormControl>) => void;
+        value?: any;
+}
+
+/**
+    * Form Row
+    */
+export interface IFormRow {
+        className?: string;
+        isAutoSized?: boolean;
+        isCentered?: boolean;
+        control?: IFormControlProps;
+        colSize?: number;
+        columns?: Array<IFormColumn>;
+}
+
+import { ICheckboxGroup, ICheckboxGroupItem } from "gd-bs/--/@types/checkboxGroup";
+import { IDropdown, IDropdownItem } from "gd-bs/--/@types/dropdown";
+import { IInputGroup } from "gd-bs/--/@types/inputGroup";
+
+/**
+    * Form Control
+    */
+export const FormControl: (control: IFormControlProps) => IFormControl;
+
+/**
+    * Form Control Types
+    */
+export const FormControlTypes: IFormControlTypes;
+
+/**
+    * Form Control
+    */
+export interface IFormControl {
+        el: HTMLElement;
+        get: () => ICheckboxGroup | IDropdown | IInputGroup;
+        getValue: () => any;
+        isValid: () => boolean;
+        props: IFormControlProps;
+}
+
+/**
+    * Form Control Properties
+    */
+export interface IFormControlProps {
+        className?: string;
+        controlClassName?: string;
+        data?: any;
+        description?: string;
+        el?: HTMLElement;
+        errorMessage?: string;
+        isReadonly?: boolean;
+        isPlainText?: boolean;
+        label?: string;
+        loadingMessage?: string;
+        name?: string;
+        onControlRendering?: (control: IFormControlProps) => void | Promise<IFormControlProps>;
+        onControlRendered?: (control: IFormControl) => void | Promise<IFormControl>;
+        onGetValue?: (control: IFormControlProps) => any;
+        onValidate?: (control: IFormControlProps, value: any) => boolean | IFormControlValidationResult;
+        required?: boolean;
+        title?: string;
+        type?: number;
+        value?: any;
+}
+
+/**
+    * Form Control Properties - Checkbox
+    */
+export interface IFormControlPropsCheckbox extends IFormControlProps {
+        el?: HTMLInputElement;
+        hideLabel?: boolean;
+        items?: Array<ICheckboxGroupItem>;
+        multi?: boolean;
+        onChange?: (item: Array<ICheckboxGroupItem>) => void;
+}
+
+/**
+    * Form Control Properties - Dropdown
+    */
+export interface IFormControlPropsDropdown extends IFormControlProps {
+        items?: Array<IDropdownItem>;
+        onChange?: (item: IDropdownItem | Array<IDropdownItem>) => void;
+}
+
+/**
+    * Form Control Properties - Number Field
+    */
+export interface IFormControlPropsNumberField extends IFormControlPropsTextField {
+        max?: number;
+        min?: number;
+        step?: number;
+}
+
+/**
+    * Form Control Properties - TextField
+    */
+export interface IFormControlPropsTextField extends IFormControlProps {
+        el?: HTMLInputElement;
+        onChange?: (value: string) => void;
+        placeholder?: string;
+        rows?: number;
+}
+
+/**
+    * Form Control Types
+    */
+export type IFormControlTypes = {
+        Checkbox: number;
+        Email: number;
+        Dropdown: number;
+        File: number;
+        MultiDropdown: number;
+        Password: number;
+        Radio; number;
+        Range: number;
+        Readonly: number;
+        Switch: number;
+        TextArea: number;
+        TextField: number;
+}
+
+/**
+    * Form Control Validation Result
+    */
+export interface IFormControlValidationResult {
+        invalidMessage?: string;
+        isValid?: boolean;
+        validMessage?: string;
+}
+
+import { IButtonProps } from "gd-bs/--/@types/button";
+
+/**
+    * Input Group
+    */
+export const InputGroup: (props: IInputGroupProps) => IInputGroup;
+
+/**
+    * Input Group Types
+    */
+export const InputGroupTypes: IInputGroupTypes;
+
+/**
+    * Button Group
+    */
+export interface IInputGroup {
+        /** The element. */
+        el: HTMLElement;
+
+        /** Method to get the value. */
+        getValue: () => string;
+
+        /** Method to set the value. */
+        setValue: (value: string) => void;
+}
+
+/**
+    * Input Group Properties
+    */
+export interface IInputGroupProps {
+        appendedButtons?: Array<IButtonProps>;
+        appendedLabel?: string;
+        className?: string;
+        description?: string;
+        el?: Element | HTMLElement;
+        formFl?: boolean;
+        id?: string;
+        isLarge?: boolean;
+        isPlainText?: boolean;
+        isReadonly?: boolean;
+        isSmall?: boolean;
+        label?: string;
+        max?: number;
+        min?: number;
+        onClear?: () => void;
+        onChange?: (value?: string, ev?: Event) => void;
+        placeholder?: string;
+        prependedButtons?: Array<IButtonProps>;
+        prependedLabel?: string;
+        rows?: number;
+        step?: number;
+        title?: string;
+        type?: number;
+        value?: string;
+}
+
+/**
+    * Input Group Types
+    */
+export type IInputGroupTypes = {
+        Email: number;
+        File: number;
+        Password: number;
+        Range: number;
+        Search: number;
+        TextArea: number;
+        TextField: number;
+}
+
+/**
+    * Jumbotron
+    */
+export const Jumbotron: (props: IJumbotronProps) => IJumbotron;
+
+/**
+    * Jumbotron
+    */
+export interface IJumbotron {
+        /** The element. */
+        el: Element;
+}
+
+/**
+    * Jumbotron Properties
+    */
+export interface IJumbotronProps {
+        className?: string;
+        content?: string;
+        el?: Element | HTMLElement;
+        isFluid?: boolean;
+        lead?: string;
+        onRenderContent?: (el?: HTMLElement) => void;
+        title?: string;
+}
+
+import { IBadgeProps } from "gd-bs/--/@types/badge";
+
+/**
+    * List Group
+    */
+export const ListGroup: (props: IListGroupProps) => IListGroup;
+
+/**
+    * List Group Item Types
+    */
+export const ListGroupItemTypes: IListGroupItemTypes;
+
+/**
+    * List Group
+    */
+export interface IListGroup {
+        /** The element. */
+        el: Element;
+
+        /**
+            * Shows the tab content.
+            * @prop elId - The tab id.
+            */
+        show: (tabId: string) => void;
+}
+
+/**
+    * List Group Item
+    */
+export interface IListGroupItem {
+        badge?: IBadgeProps;
+        className?: string;
+        content?: string;
+        data?: any;
+        href?: string;
+        isActive?: boolean;
+        isDisabled?: boolean;
+        onClick?: (el?: HTMLElement, item?: IListGroupItem) => void;
+        onRender?: (el?: HTMLElement, item?: IListGroupItem) => void;
+        tabName?: string;
+        type?: number;
+}
+
+/**
+    * List Group Properties
+    */
+export interface IListGroupProps {
+        className?: string;
+        colWidth?: number;
+        el?: Element | HTMLElement;
+        enableFade?: boolean;
+        isFlush?: boolean;
+        isTabs?: boolean;
+        items?: Array<IListGroupItem>;
+}
+
+/**
+    * List Group Item Types
+    */
+export type IListGroupItemTypes = {
+        Danger: number;
+        Dark: number;
+        Info: number;
+        Light: number;
+        Primary: number;
+        Secondary: number;
+        Success: number;
+        Warning: number;
+}
+
+import { IButtonProps } from "gd-bs/--/@types/button";
+
+/**
+    * Modal
+    */
+export const Modal: (props: IModalProps) => IModal;
+
+/**
+    * Modal
+    */
+export interface IModal {
+        /** Destroys an element’s modal. */
+        dispose: () => void;
+
+        /** The element. */
+        el: Element,
+
+        /** Manually readjust the modal’s position if the height of a modal changes while it is open (i.e. in case a scrollbar appears). */
+        handleUpdate: () => void;
+
+        /** Manually hides a modal. */
+        hide: () => void;
+
+        /** Manually opens a modal. */
+        show: () => void;
+
+        /** Manually toggles a modal. */
+        toggle: () => void;
+}
+
+/**
+    * Modal Options
+    */
+export interface IModalOptions {
+        /** Includes a modal-backdrop element. Alternatively, specify static for a backdrop which doesn't close the modal on click. */
+        backdrop: boolean | string;
+
+        /** Puts the focus on the modal when initialized. */
+        focus: boolean;
+
+        /** Closes the modal when escape key is pressed. */
+        keyboard: boolean;
+
+        /** Shows the modal when initialized. */
+        show: boolean;
+}
+
+/**
+    * Modal Properties
+    */
+export interface IModalProps {
+        body?: string;
+        button?: IButtonProps;
+        className?: string;
+        el?: Element | HTMLElement;
+        disableFade?: boolean;
+        footer?: string;
+        hideCloseButton?: boolean;
+        id?: string;
+        isCentered?: boolean;
+        isLarge?: boolean;
+        isSmall?: boolean;
+        onClose?: (el: HTMLDivElement) => void;
+        onRenderBody?: (el: HTMLDivElement) => void;
+        onRenderFooter?: (el: HTMLDivElement) => void;
+        title?: string;
+}
+
+/**
+    * Navigation
+    */
+export const Nav: (props: INavProps) => INav;
+
+/**
+    * Navigation
+    */
+export interface INav {
+        /** Destroys an element’s tab. */
+        dispose: () => void;
+
+        /** The element. */
+        el: Element;
+
+        /**
+            * Selects the given tab and shows its associated pane. Any other tab that was previously selected becomes unselected and its associated pane is hidden.
+            * @prop selector - The query selector.
+            */
+        show: (selector: string) => void;
+}
+
+/**
+    * Navigation Properties
+    */
+export interface INavProps {
+        className?: string;
+        data?: any;
+        el?: Element | HTMLElement;
+        enableFade?: boolean;
+        enableFill?: boolean;
+        id?: string;
+        items?: Array<INavLink>;
+        isJustified?: boolean;
+        isPills?: boolean;
+        isTabs?: boolean;
+        isVertical?: boolean;
+}
+
+/**
+    * Navigation Links
+    */
+export interface INavLink {
+        isActive?: boolean;
+        isDisabled?: boolean;
+        data?: any;
+        href?: string;
+        onClick?: (item?: INavLink, ev?: Event) => void;
+        onRenderTab?: (item?: INavLink, el?: HTMLDivElement) => void;
+        tabContent?: string;
+        title?: string;
+}
+
+import { IButtonProps } from "gd-bs/--/@types/button";
+import { IDropdownItem } from "gd-bs/--/@types/dropdown";
+
+/**
+    * Navbar
+    */
+export const Navbar: (props: INavbarProps) => INavbar;
+
+/**
+    * Navbar Types
+    */
+export const NavbarTypes: INavbarTypes;
+
+/**
+    * Navbar
+    */
+export interface INavbar {
+        /** The element. */
+        el: Element;
+}
+
+/**
+    * Navbar Item
+    */
+export interface INavbarItem {
+        href?: string;
+        isActive?: boolean;
+        isDisabled?: boolean;
+        items?: Array<IDropdownItem>;
+        onClick?: (item?: INavbarItem, ev?: Event) => void;
+        text?: string;
+}
+
+/**
+    * Navbar Properties
+    */
+export interface INavbarProps {
+        brand?: string;
+        brandUrl?: string;
+        className?: string;
+        el?: Element | HTMLElement;
+        enableSearch?: boolean;
+        id?: string;
+        items?: Array<INavbarItem>;
+        onClick?: (item?: INavbarItem, ev?: Event) => void;
+        searchBox?: INavbarSearchBox;
+        type?: number;
+}
+
+/**
+    * Navbar Types
+    */
+export type INavbarTypes = {
+        Dark: number;
+        Light: number;
+        Primary: number;
+}
+
+/**
+    * Navbar Search Box
+    */
+export interface INavbarSearchBox {
+        btnType?: number;
+        btnText?: string;
+        hideButton?: boolean;
+        onChange?: (value?: string) => void;
+        onSearch?: (value?: string) => void;
+        placeholder?: string;
+}
+
+/**
+    * Pagination
+    */
+export const Pagination: (props: IPaginationProps) => IPagination;
+
+/**
+    * Pagination Alignment
+    */
+export const PaginationAlignment: IPaginationAlignment;
+
+/**
+    * Pagination
+    */
+export interface IPagination {
+        /** The element. */
+        el: Element;
+}
+
+/**
+    * Pagination Properties
+    */
+export interface IPaginationProps {
+        alignment?: number;
+        className?: string;
+        el?: Element;
+        icon?: string;
+        isLarge?: boolean;
+        isSmall?: boolean;
+        label?: string;
+        numberOfPages?: number;
+        onClick?: (pageNumber?: number, ev?: Event) => void;
+}
+
+/**
+    * Pagination Alignment
+    */
+export type IPaginationAlignment = {
+        Centered: number;
+        Left: number;
+        Right: number;
+}
+
+import { IModal, IModalProps } from "gd-bs/--/@types/modal";
+
+/**
+    * Panel
+    */
+export const Panel: (props: IPanelProps) => IPanel;
+
+/**
+    * Panel Types
+    */
+export const PanelTypes: IPanelTypes;
+
+/**
+    * Panel
+    */
+export interface IPanel {
+        /** The element. */
+        el: Element;
+
+        /** The modal. */
+        modal: IModal;
+
+        /** Hides the panel. */
+        hide: () => void;
+
+        /** Shows the panel. */
+        show: () => void;
+}
+
+/**
+    * Panel Properties
+    */
+export interface IPanelProps {
+        className?: string;
+        el?: Element | HTMLElement;
+        modalProps?: IModalProps;
+        type?: number;
+}
+
+/**
+    * Panel Types
+    */
+export type IPanelTypes = {
+        Small: number;
+        Medium: number;
+        Large: number;
+        XLarge: number;
+        Full: number;
+}
+
+import { IButtonProps } from "gd-bs/--/@types/button";
+
+/**
+    * Popover
+    */
+export const Popover: (props: IPopoverProps) => IPopover;
+
+/**
+    * Popover Types
+    */
+export const PopoverTypes: IPopoverTypes;
+
+/**
+    * Popover
+    */
+export interface IPopover {
+        /** Destroys an element’s popover. */
+        dispose: () => void;
+
+        /** The element. */
+        el: Element;
+
+        /** Hides an element’s popover. */
+        hide: () => void;
+
+        /** Toggles an element's popover. */
+        toggle: () => void;
+
+        /** Toggles the ability for an element’s popover to be shown or hidden. */
+        toggleEnabled: () => void;
+
+        /** Reveals an element’s popover. */
+        show: () => void;
+
+        /** Updates the position of an element’s popover. */
+        update: () => void;
+}
+
+/**
+    * Popover Options
+    */
+export interface IPopoverOptions {
+        animation?: boolean;
+        boundary?: string | Element;
+        container?: string | Element | Function;
+        content?: string | Element | Function;
+        delay?: number | object;
+        fallbackPlacement?: string | Array<string>;
+        html?: boolean;
+        offset?: number | string;
+        placement?: string | Function;
+        selector?: string;
+        template?: string;
+        title?: string | Element | Function;
+        trigger?: string;
+}
+
+/**
+    * Popover Properties
+    */
+export interface IPopoverProps {
+        btnProps?: IButtonProps;
+        className?: string;
+        el?: Element | HTMLElement;
+        isDismissible?: boolean;
+        options?: IPopoverOptions;
+        target?: Element,
+        type?: number;
+}
+
+/**
+    * Popover Types
+    */
+export type IPopoverTypes = {
+        Auto: number;
+        Bottom: number;
+        Left: number;
+        Right: number;
+        Top: number;
+}
+
+/**
+    * Progress
+    */
+export const Progress: (props: IProgressProps) => IProgress;
+
+/**
+    * Progress
+    */
+export interface IProgress {
+        /** The element. */
+        el: Element;
+}
+
+/**
+    * Progress Properties
+    */
+export interface IProgressProps {
+        className?: string;
+        el?: Element | HTMLElement;
+        isAnimated?: boolean;
+        isStriped?: boolean;
+        label?: string;
+        max?: number;
+        min?: number;
+        size?: number;
+}
+
+import { IProgressProps } from "gd-bs/--/@types/progress";
+
+/**
+    * Progress Group
+    */
+export const ProgressGroup: (props: IProgressGroupProps) => IProgressGroup;
+
+/**
+    * Progress Group
+    */
+export interface IProgressGroup {
+        /** The element. */
+        el: Element;
+}
+
+/**
+    * Progress Group Properties
+    */
+export interface IProgressGroupProps {
+        className?: string;
+        el?: Element | HTMLElement;
+        isMultiple?: boolean;
+        progressbars?: Array<IProgressProps>;
+}
+
+/**
+    * Spinner
+    */
+export const Spinner: (props: ISpinnerProps) => ISpinner;
+
+/**
+    * Spinner Types
+    */
+export const SpinnerTypes: ISpinnerTypes;
+
+/**
+    * Spinner
+    */
+export interface ISpinner {
+        /** The element. */
+        el: Element;
+}
+
+/**
+    * Spinner Properties
+    */
+export interface ISpinnerProps {
+        className?: string;
+        el?: Element | HTMLElement;
+        isGrowing?: boolean;
+        isSmall?: boolean;
+        text?: string;
+        type?: number;
+}
+
+/**
+    * Spinner Types
+    */
+export type ISpinnerTypes = {
+        Danger: number;
+        Dark: number;
+        Info: number;
+        Light: number;
+        Primary: number;
+        Secondary: number;
+        Success: number;
+        Warning: number;
+}
+
+/**
+    * Table
+    */
+export const Table: (props: ITableProps) => ITable
+
+/**
+    * Table
+    */
+export interface ITable {
+        el: HTMLTableElement;
+        addRows(rows: Array<any>);
+}
+
+/**
+    * Table Properties
+    */
+export interface ITableProps {
+        className?: string;
+        columns?: Array<ITableColumn>;
+        el?: Element | HTMLElement;
+        onClickCell?: (el: HTMLTableDataCellElement, column?: ITableColumn, data?: any) => void;
+        onClickHeader?: (el: HTMLTableHeaderCellElement, column?: ITableColumn) => void;
+        onRenderCell?: (el?: HTMLTableDataCellElement, column?: ITableColumn, data?: any) => void;
+        onRenderHeaderCell?: (el?: HTMLTableDataCellElement, column?: ITableColumn) => void;
+        onRenderHeaderRow?: (el?: HTMLTableRowElement) => void;
+        onRenderRow?: (el?: HTMLTableRowElement, data?: any) => void;
+        rows?: Array<any>;
+}
+
+/**
+    * Table Column
+    */
+export interface ITableColumn {
+        className?: string;
+        data?: any;
+        enableSort?: boolean;
+        isHidden?: boolean;
+        name: string;
+        onClickCell?: (el: HTMLTableDataCellElement, column?: ITableColumn, data?: any) => void;
+        onClickHeader?: (el: HTMLTableHeaderCellElement, column?: ITableColumn) => void;
+        onRenderCell?: (el: HTMLTableDataCellElement, column?: ITableColumn, data?: any) => void;
+        onRenderHeader?: (el?: HTMLTableDataCellElement, column?: ITableColumn) => void;
+        scope?: string;
+        title?: string;
+}
+
+/**
+    * Toast
+    */
+export const Toast: (props: IToastProps) => IToast;
+
+/**
+    * Toast
+    */
+export interface IToast {
+        /** The component element. */
+        el: HTMLElement;
+
+        /** Hides the toast. */
+        hide: () => void;
+
+        /** Shows the toast. */
+        show: () => void;
+}
+
+/**
+    * Toast Properties
+    */
+export interface IToastProps {
+        bodyText?: string;
+        className?: string;
+        closeButtonHidden?: boolean;
+        closeButtonText?: string;
+        data?: any;
+        el?: Element | HTMLElement;
+        headerImgClass?: string;
+        headerImgSrc?: string;
+        headerText?: string;
+        mutedText?: string;
+        options?: IToastOptions;
+        onClick?: (el?: HTMLElement, data?: any) => void;
+        onRenderBody?: (el?: HTMLElement, data?: any) => void;
+        onRenderHeader?: (el?: HTMLElement, data?: any) => void;
+}
+
+/**
+    * Toast Options
+    */
+export interface IToastOptions {
+        animation?: boolean;
+        autohide?: boolean;
+        delay?: number;
+}
+
+import { IButtonProps } from "gd-bs/--/@types/button";
+import { IInputGroupProps } from "gd-bs/--/@types/inputGroup";
+
+/**
+    * Toolbar
+    */
+export const Toolbar: (props: IToolbarProps) => IToolbar;
+
+/**
+    * Toolbar
+    */
+export interface IToolbar {
+        /** The element. */
+        el: Element;
+}
+
+/**
+    * Toolbar Item
+    */
+export interface IToolbarItem {
+        buttons?: Array<IButtonProps>;
+        buttonType?: number;
+        inputGroup?: IInputGroupProps;
+}
+
+/**
+    * Toolbar Properties
+    */
+export interface IToolbarProps {
+        className?: string;
+        el?: Element | HTMLElement;
+        items?: Array<IToolbarItem>;
+        spacing?: number;
+}
+
+import { IButtonProps } from "gd-bs/--/@types/button";
+
+/**
+    * Tooltip
+    */
+export const Tooltip: (props: ITooltipProps) => ITooltip;
+
+/**
+    * Tooltip Types
+    */
+export const TooltipTypes: ITooltipTypes;
+
+/**
+    * Tooltip
+    */
+export interface ITooltip {
+        /** Destroys an element’s tooltip. */
+        dispose: () => void;
+
+        /** The element. */
+        el: Element;
+
+        /** Gives an element’s tooltip the ability to be shown. */
+        enable: () => void;
+
+        /** Hides an element’s tooltip. */
+        hide: () => void;
+
+        /** Toggles an element's tooltip. */
+        toggle: () => void;
+
+        /** Toggles the ability for an element’s tooltip to be shown or hidden. */
+        toggleEnabled: () => void;
+
+        /** Reveals an element’s tooltip. */
+        show: () => void;
+
+        /** Updates the position of an element’s tooltip. */
+        update: () => void;
+}
+
+/**
+    * Tooltip Options
+    */
+export interface ITooltipOptions {
+        animation?: boolean;
+        boundary?: string;
+        container?: string;
+        delay?: number | object;
+        fallbackPlacement?: string | Array<string>;
+        html?: boolean;
+        offset?: number | string;
+        placement?: string | Function;
+        selector?: string;
+        template?: string;
+        title?: string;
+        trigger?: string;
+}
+
+/**
+    * Tooltip Properties
+    */
+export interface ITooltipProps {
+        btnProps?: IButtonProps;
+        className?: string;
+        el?: Element | HTMLElement;
+        options?: ITooltipOptions;
+        type?: number;
+}
+
+/**
+    * Tooltip Types
+    */
+export type ITooltipTypes = {
+        Auto: number;
+        Bottom: number;
+        Left: number;
+        Right: number;
+        Top: number;
 }
 

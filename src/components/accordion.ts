@@ -1,5 +1,5 @@
 import * as jQuery from "jquery";
-import { IAccordion, IAccordionProps } from "./types/accordion";
+import { IAccordion, IAccordionProps } from "../../@types/accordion";
 import { Button, ButtonTypes } from "./button";
 
 /**

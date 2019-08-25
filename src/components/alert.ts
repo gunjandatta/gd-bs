@@ -1,5 +1,5 @@
 import * as jQuery from "jquery";
-import { IAlert, IAlertProps } from "./types/alert";
+import { IAlert, IAlertProps } from "../../@types/alert";
 
 /**
  * Alert Types

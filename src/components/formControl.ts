@@ -1,10 +1,10 @@
 import { CheckboxGroup, CheckboxGroupTypes } from "./checkboxGroup";
-import { ICheckboxGroup } from "./types/checkboxGroup";
+import { ICheckboxGroup } from "../../@types/checkboxGroup";
 import { Dropdown } from "./dropdown";
-import { IDropdown } from "./types/dropdown";
+import { IDropdown } from "../../@types/dropdown";
 import { InputGroup, InputGroupTypes } from "./inputGroup";
-import { IInputGroup } from "./types/inputGroup";
-import { IFormControl, IFormControlProps, IFormControlPropsCheckbox, IFormControlPropsDropdown, IFormControlPropsNumberField, IFormControlPropsTextField, IFormControlValidationResult } from "./types/formControl";
+import { IInputGroup } from "../../@types/inputGroup";
+import { IFormControl, IFormControlProps, IFormControlPropsCheckbox, IFormControlPropsDropdown, IFormControlPropsNumberField, IFormControlPropsTextField, IFormControlValidationResult } from "../../@types/formControl";
 
 /**
  * Form Control Types

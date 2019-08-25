@@ -1,4 +1,4 @@
-import { ISpinner, ISpinnerProps } from "./types/spinner";
+import { ISpinner, ISpinnerProps } from "../../@types/spinner";
 
 /**
  * Spinner Types

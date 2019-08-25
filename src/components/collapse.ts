@@ -1,5 +1,5 @@
 import * as jQuery from "jquery";
-import { ICollapse, ICollapseProps } from "./types/collapse";
+import { ICollapse, ICollapseProps } from "../../@types/collapse";
 
 /**
  * Collapse

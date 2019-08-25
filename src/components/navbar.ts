@@ -1,7 +1,7 @@
 import { Button } from "./button";
 import { Dropdown } from "./dropdown";
 import { InputGroup, InputGroupTypes } from "./inputGroup";
-import { INavbar, INavbarProps, INavbarItem } from "./types/navbar";
+import { INavbar, INavbarProps, INavbarItem } from "../../@types/navbar";
 
 /**
  * Navbar Types

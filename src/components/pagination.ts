@@ -1,4 +1,4 @@
-import { IPagination, IPaginationProps } from "./types/pagination";
+import { IPagination, IPaginationProps } from "../../@types/pagination";
 
 /**
  * Pagination Alignment

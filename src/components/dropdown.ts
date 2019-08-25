@@ -1,5 +1,5 @@
 import * as jQuery from "jquery";
-import { IDropdown, IDropdownItem, IDropdownProps } from "./types/dropdown";
+import { IDropdown, IDropdownItem, IDropdownProps } from "../../@types/dropdown";
 
 /**
  * Dropdown Types
