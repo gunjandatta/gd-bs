@@ -1,5 +1,6 @@
-import { Button } from "./button";
 import { IInputGroup, IInputGroupProps } from "../../@types/inputGroup";
+import * as Common from "../common";
+import { Button } from "./button";
 
 /**
  * Input Group Types
@@ -237,6 +238,7 @@ export const InputGroup = (props: IInputGroupProps): IInputGroup => {
             // Return the value
             return elTextbox ? elTextbox.value : null;
         },
+        hide: () => { Common.hide(props.formFl ? elInput : inputGroup); },
         setValue: (value: string = "") => {
             // Get the textbox
             let elTextbox = elInput;
@@ -244,12 +246,13 @@ export const InputGroup = (props: IInputGroupProps): IInputGroup => {
                 // Query for the element
                 elTextbox = inputGroup.querySelector("input") || inputGroup.querySelector("textarea") as any;
             }
-
+            
             // Ensure a textbox exists
             if (elTextbox) {
                 // Set the value
                 elTextbox.value = value;
             }
-        }
+        },
+        show: () => { Common.show(props.formFl ? elInput : inputGroup); }
     };
 }

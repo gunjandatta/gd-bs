@@ -12,6 +12,12 @@ export const Toolbar: (props: IToolbarProps) => IToolbar;
 export interface IToolbar {
     /** The element. */
     el: Element;
+
+    /** Hides the toolbar. */
+    hide: () => void;
+
+    /** Shows the toolbar. */
+    show: () => void;
 }
 
 /**

@@ -11,6 +11,12 @@ export const ButtonGroup: (props: IButtonGroupProps) => IButtonGroup;
 export interface IButtonGroup {
     /** The element. */
     el: Element;
+
+    /** Hides the button group. */
+    hide: () => void;
+
+    /** Shows the button group. */
+    show: () => void;
 }
 
 /**

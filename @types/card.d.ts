@@ -15,6 +15,12 @@ export interface ICard {
 
     /** The element. */
     el: Element;
+
+    /** Hides the card. */
+    hide: () => void;
+
+    /** Shows the card. */
+    show: () => void;
 }
 
 /**

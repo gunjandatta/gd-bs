@@ -20,8 +20,14 @@ export interface IInputGroup {
     /** Method to get the value. */
     getValue: () => string;
 
+    /** Hides the input group. */
+    hide: () => void;
+    
     /** Method to set the value. */
     setValue: (value: string) => void;
+
+    /** Shows the input group. */
+    show: () => void;
 }
 
 /**

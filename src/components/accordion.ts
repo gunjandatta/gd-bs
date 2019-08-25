@@ -1,4 +1,5 @@
 import * as jQuery from "jquery";
+import * as Common from "../common";
 import { IAccordion, IAccordionProps } from "../../@types/accordion";
 import { Button, ButtonTypes } from "./button";
 
@@ -109,5 +110,9 @@ export const Accordion = (props: IAccordionProps): IAccordion => {
     }
 
     // Return the accordion
-    return { el: accordion };
+    return {
+        el: accordion,
+        hide: () => { Common.hide(accordion); },
+        show: () => { Common.show(accordion); }
+    };
 }

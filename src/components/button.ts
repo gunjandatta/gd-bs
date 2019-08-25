@@ -1,4 +1,5 @@
 import * as jQuery from "jquery";
+import * as Common from "../common";
 import { Badge, BadgeTypes } from "./badge";
 import { Spinner } from "./spinner";
 import { IButton, IButtonProps } from "../../@types/button";
@@ -158,16 +159,18 @@ export const Button = (props: IButtonProps): IButton => {
     return {
         dispose: () => { jQuery(button).button("dispose"); },
         el: button,
+        hide: () => { Common.hide(button); },
         setText: (btnText?: string) => {
             // Clear the element
             while (button.firstChild) { button.removeChild(button.firstChild); }
-
+            
             // Set the text
             let elText = document.createTextNode(btnText || "");
-
+            
             // Append the text
             button.appendChild(elText);
         },
+        show: () => { Common.show(button); },
         toggle: () => { jQuery(button).button("toggle"); }
     };
 }

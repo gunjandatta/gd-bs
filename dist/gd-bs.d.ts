@@ -56,6 +56,12 @@ export const Accordion: (props: IAccordionProps) => IAccordion;
 export interface IAccordion {
         /** The element. */
         el: Element;
+
+        /** Hides the accordion. */
+        hide: () => void;
+
+        /** Shows the accordion. */
+        show: () => void;
 }
 
 /**
@@ -108,6 +114,12 @@ export interface IAlert {
 
         /** The element. */
         el: Element;
+
+        /** Hides the alert. */
+        hide: () => void;
+
+        /** Shows the alert. */
+        show: () => void;
 }
 
 /**
@@ -152,6 +164,12 @@ export const BadgeTypes: IBadgeTypes;
 export interface IBadge {
         /** The element. */
         el: Element;
+
+        /** Hides the badge. */
+        hide: () => void;
+
+        /** Shows the badge. */
+        show: () => void;
 }
 
 /**
@@ -194,6 +212,12 @@ export const Breadcrumb: (props: IBreadcrumbProps) => IBreadcrumb;
 export interface IBreadcrumb {
         /** The element. */
         el: Element;
+
+        /** Hides the breadcrumb. */
+        hide: () => void;
+
+        /** Shows the breadcrumb. */
+        show: () => void;
 }
 
 /**
@@ -238,8 +262,14 @@ export interface IButton {
         /** The element. */
         el: Element;
 
+        /** Hides the button. */
+        hide: () => void;
+
         /** Updates the button text. */
         setText: (btnText?: string) => void;
+
+        /** Shows the button. */
+        show: () => void;
 
         /** Toggles push state. Gives the button the appearance that it has been activated. */
         toggle: () => void;
@@ -301,6 +331,12 @@ export const ButtonGroup: (props: IButtonGroupProps) => IButtonGroup;
 export interface IButtonGroup {
         /** The element. */
         el: Element;
+
+        /** Hides the button group. */
+        hide: () => void;
+
+        /** Shows the button group. */
+        show: () => void;
 }
 
 /**
@@ -335,6 +371,12 @@ export interface ICard {
 
         /** The element. */
         el: Element;
+
+        /** Hides the card. */
+        hide: () => void;
+
+        /** Shows the card. */
+        show: () => void;
 }
 
 /**
@@ -404,6 +446,12 @@ export const CardGroup: (props: ICardGroupProps) => ICardGroup;
 export interface ICardGroup {
         /** The element. */
         el: Element;
+
+        /** Hides the card group. */
+        hide: () => void;
+
+        /** Shows the card group. */
+        show: () => void;
 }
 
 /**
@@ -436,6 +484,9 @@ export interface ICarousel {
         /** The element. */
         el: Element;
 
+        /** Hides the carousel. */
+        hide: () => void;
+
         /**
             * Cycles to the next item.
             */
@@ -456,6 +507,9 @@ export interface ICarousel {
             * Cycles to the previous item.
             */
         previous: () => void;
+
+        /** Shows the carousel. */
+        show: () => void;
 }
 
 /**
@@ -514,6 +568,12 @@ export interface ICheckboxGroup {
 
         /** Gets the values. */
         getValue: () => ICheckboxGroupItem | Array<ICheckboxGroupItem>;
+
+        /** Hides the checkbox group. */
+        hide: () => void;
+
+        /** Shows the checkbox group. */
+        show: () => void;
 }
 
 /**
@@ -627,11 +687,17 @@ export interface IDropdown {
         /** Gets the selected dropdown item(s). */
         getValue: () => IDropdownItem | Array<IDropdownItem>;
 
+        /** Hides the dropdown. */
+        hide: () => void;
+
         /** True if the dropdown is a multi-select. */
         isMulti: boolean;
 
         /** Updates the dropdown items. */
         setItems: (items: Array<IDropdownItem>) => void;
+
+        /** Shows the dropdown. */
+        show: () => void;
 
         /** Toggles the dropdown menu of a given navbar or tabbed navigation. */
         toggle: () => void;
@@ -709,7 +775,14 @@ export interface IForm {
         el: HTMLFormElement;
         getControl: (name: string) => IFormControl;
         getValues: () => { [key: string]: any };
+
+        /** Hides the form. */
+        hide: () => void;
+
         isValid: () => boolean;
+
+        /** Shows the form. */
+        show: () => void;
 }
 
 /**
@@ -767,6 +840,13 @@ export interface IFormControl {
         el: HTMLElement;
         get: () => ICheckboxGroup | IDropdown | IInputGroup;
         getValue: () => any;
+
+        /** Hides the form control. */
+        hide: () => void;
+
+        /** Shows the form control. */
+        show: () => void;
+
         isValid: () => boolean;
         props: IFormControlProps;
 }
@@ -883,8 +963,14 @@ export interface IInputGroup {
         /** Method to get the value. */
         getValue: () => string;
 
+        /** Hides the input group. */
+        hide: () => void;
+
         /** Method to set the value. */
         setValue: (value: string) => void;
+
+        /** Shows the input group. */
+        show: () => void;
 }
 
 /**
@@ -941,6 +1027,12 @@ export const Jumbotron: (props: IJumbotronProps) => IJumbotron;
 export interface IJumbotron {
         /** The element. */
         el: Element;
+
+        /** Hides the jumbotron. */
+        hide: () => void;
+
+        /** Shows the jumbotron. */
+        show: () => void;
 }
 
 /**
@@ -975,11 +1067,14 @@ export interface IListGroup {
         /** The element. */
         el: Element;
 
+        /** Hides the list group. */
+        hide: () => void;
+
         /**
-            * Shows the tab content.
+            * Shows the list group, or specified tab content.
             * @prop elId - The tab id.
             */
-        show: (tabId: string) => void;
+        show: (tabId?: string) => void;
 }
 
 /**
@@ -1109,11 +1204,14 @@ export interface INav {
         /** The element. */
         el: Element;
 
+        /** Hides the navigation. */
+        hide: () => void;
+
         /**
-            * Selects the given tab and shows its associated pane. Any other tab that was previously selected becomes unselected and its associated pane is hidden.
+            * Shows the navigation or selects the given tab and shows its associated pane. Any other tab that was previously selected becomes unselected and its associated pane is hidden.
             * @prop selector - The query selector.
             */
-        show: (selector: string) => void;
+        show: (selector?: string) => void;
 }
 
 /**
@@ -1166,6 +1264,12 @@ export const NavbarTypes: INavbarTypes;
 export interface INavbar {
         /** The element. */
         el: Element;
+
+        /** Hides the nav bar. */
+        hide: () => void;
+
+        /** Shows the nav bar. */
+        show: () => void;
 }
 
 /**
@@ -1233,6 +1337,12 @@ export const PaginationAlignment: IPaginationAlignment;
 export interface IPagination {
         /** The element. */
         el: Element;
+
+        /** Hides the pagination. */
+        hide: () => void;
+
+        /** Shows the pagination. */
+        show: () => void;
 }
 
 /**
@@ -1401,6 +1511,12 @@ export const Progress: (props: IProgressProps) => IProgress;
 export interface IProgress {
         /** The element. */
         el: Element;
+
+        /** Hides the progress. */
+        hide: () => void;
+
+        /** Shows the progress. */
+        show: () => void;
 }
 
 /**
@@ -1430,6 +1546,12 @@ export const ProgressGroup: (props: IProgressGroupProps) => IProgressGroup;
 export interface IProgressGroup {
         /** The element. */
         el: Element;
+
+        /** Hides the progress group. */
+        hide: () => void;
+
+        /** Shows the progress group. */
+        show: () => void;
 }
 
 /**
@@ -1458,6 +1580,12 @@ export const SpinnerTypes: ISpinnerTypes;
 export interface ISpinner {
         /** The element. */
         el: Element;
+
+        /** Hides the spinner. */
+        hide: () => void;
+
+        /** Shows the spinner. */
+        show: () => void;
 }
 
 /**
@@ -1495,8 +1623,14 @@ export const Table: (props: ITableProps) => ITable
     * Table
     */
 export interface ITable {
-        el: HTMLTableElement;
         addRows(rows: Array<any>);
+        el: HTMLTableElement;
+
+        /** Hides the table. */
+        hide: () => void;
+
+        /** Shows the table. */
+        show: () => void;
 }
 
 /**
@@ -1594,6 +1728,12 @@ export const Toolbar: (props: IToolbarProps) => IToolbar;
 export interface IToolbar {
         /** The element. */
         el: Element;
+
+        /** Hides the toolbar. */
+        hide: () => void;
+
+        /** Shows the toolbar. */
+        show: () => void;
 }
 
 /**

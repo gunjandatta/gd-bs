@@ -11,6 +11,12 @@ export const CardGroup: (props: ICardGroupProps) => ICardGroup;
 export interface ICardGroup {
     /** The element. */
     el: Element;
+
+    /** Hides the card group. */
+    hide: () => void;
+
+    /** Shows the card group. */
+    show: () => void;
 }
 
 /**

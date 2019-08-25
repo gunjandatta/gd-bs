@@ -13,11 +13,14 @@ export interface INav {
     /** The element. */
     el: Element;
 
+    /** Hides the navigation. */
+    hide: () => void;
+
     /**
-     * Selects the given tab and shows its associated pane. Any other tab that was previously selected becomes unselected and its associated pane is hidden.
+     * Shows the navigation or selects the given tab and shows its associated pane. Any other tab that was previously selected becomes unselected and its associated pane is hidden.
      * @prop selector - The query selector.
      */
-    show: (selector: string) => void;
+    show: (selector?: string) => void;
 }
 
 /**

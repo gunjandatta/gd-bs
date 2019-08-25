@@ -19,6 +19,13 @@ export interface IFormControl {
     el: HTMLElement;
     get: () => ICheckboxGroup | IDropdown | IInputGroup;
     getValue: () => any;
+
+    /** Hides the form control. */
+    hide: () => void;
+
+    /** Shows the form control. */
+    show: () => void;
+
     isValid: () => boolean;
     props: IFormControlProps;
 }

@@ -20,6 +20,12 @@ export interface IAlert {
 
     /** The element. */
     el: Element;
+
+    /** Hides the alert. */
+    hide: () => void;
+
+    /** Shows the alert. */
+    show: () => void;
 }
 
 /**

@@ -12,6 +12,12 @@ export const Accordion: (props: IAccordionProps) => IAccordion;
 export interface IAccordion {
     /** The element. */
     el: Element;
+
+    /** Hides the accordion. */
+    hide: () => void;
+
+    /** Shows the accordion. */
+    show: () => void;
 }
 
 /**

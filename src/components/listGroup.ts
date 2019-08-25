@@ -1,4 +1,5 @@
 import * as jQuery from "jquery";
+import * as Common from "../common";
 import { IListGroup, IListGroupProps } from "../../@types/listGroup";
 import { Badge } from "./badge";
 
@@ -228,9 +229,15 @@ export const ListGroup = (props: IListGroupProps): IListGroup => {
     // Return the list group
     return {
         el,
-        show: (tabId: string) => {
-            // Show the tab
-            listGroup.querySelector("#" + tabId).tab("show");
+        hide: () => { Common.hide(el); },
+        show: (tabId?: string) => {
+            if (tabId) {
+                // Show the tab
+                listGroup.querySelector("#" + tabId).tab("show");
+            } else {
+                // Show the list group
+                Common.show(el);
+            }
         }
     };
 }

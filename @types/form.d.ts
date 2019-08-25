@@ -13,7 +13,14 @@ export interface IForm {
     el: HTMLFormElement;
     getControl: (name: string) => IFormControl;
     getValues: () => { [key: string]: any };
+
+    /** Hides the form. */
+    hide: () => void;
+    
     isValid: () => boolean;
+    
+    /** Shows the form. */
+    show: () => void;
 }
 
 /**

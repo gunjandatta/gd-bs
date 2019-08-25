@@ -17,6 +17,12 @@ export const NavbarTypes: INavbarTypes;
 export interface INavbar {
     /** The element. */
     el: Element;
+
+    /** Hides the nav bar. */
+    hide: () => void;
+
+    /** Shows the nav bar. */
+    show: () => void;
 }
 
 /**

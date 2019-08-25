@@ -1,4 +1,5 @@
 import { IToolbar, IToolbarProps } from "../../@types/toolbar";
+import * as Common from "../common";
 import { ButtonGroup } from "./buttonGroup";
 import { InputGroup } from "./inputGroup";
 
@@ -63,5 +64,9 @@ export const Toolbar = (props: IToolbarProps): IToolbar => {
     }
 
     // Return the toolbar
-    return { el };
+    return {
+        el,
+        hide: () => { Common.hide(el); },
+        show: () => { Common.show(el); }
+    };
 }

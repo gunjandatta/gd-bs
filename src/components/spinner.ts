@@ -1,4 +1,5 @@
 import { ISpinner, ISpinnerProps } from "../../@types/spinner";
+import * as Common from "../common";
 
 /**
  * Spinner Types
@@ -106,6 +107,8 @@ export const Spinner = (props: ISpinnerProps): ISpinner => {
 
     // Return the spinner
     return {
-        el: spinner
+        el: spinner,
+        hide: () => { Common.hide(spinner); },
+        show: () => { Common.show(spinner); }
     };
 }

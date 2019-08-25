@@ -1,10 +1,11 @@
-import { CheckboxGroup, CheckboxGroupTypes } from "./checkboxGroup";
 import { ICheckboxGroup } from "../../@types/checkboxGroup";
-import { Dropdown } from "./dropdown";
 import { IDropdown } from "../../@types/dropdown";
-import { InputGroup, InputGroupTypes } from "./inputGroup";
 import { IInputGroup } from "../../@types/inputGroup";
 import { IFormControl, IFormControlProps, IFormControlPropsCheckbox, IFormControlPropsDropdown, IFormControlPropsNumberField, IFormControlPropsTextField, IFormControlValidationResult } from "../../@types/formControl";
+import * as Common from "../common";
+import { CheckboxGroup, CheckboxGroupTypes } from "./checkboxGroup";
+import { Dropdown } from "./dropdown";
+import { InputGroup, InputGroupTypes } from "./inputGroup";
 
 /**
  * Form Control Types
@@ -277,13 +278,14 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
         get: () => { return cb || ddl || tb },
         // Get the value
         getValue,
+        hide: () => { Common.hide(el); },
         isValid: () => {
             let validation: IFormControlValidationResult = { isValid: true };
-
+            
             // Get the element and value
             let elControl = (cb || ddl || tb) ? (cb || ddl || tb).el : el;
             let value = getValue();
-
+            
             // See if this control is required
             if (props.required) {
                 // See if a value doesn't exists
@@ -297,7 +299,7 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
                     validation.isValid = value.length > 0;
                 }
             }
-
+            
             // See if an event exists
             if (props.onValidate) {
                 // Call the event
@@ -312,14 +314,14 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
                     validation = returnValue;
                 }
             }
-
+            
             // Get the form control
             let elFormControl = elControl.querySelector(".form-control") as HTMLElement;
             if (elFormControl) {
                 // Clear the invalid/valid classes
                 elFormControl.classList.remove("is-invalid");
                 elFormControl.classList.remove("is-valid");
-
+                
                 // Set the class
                 elFormControl.classList.add(validation.isValid ? "is-valid" : "is-invalid");
             } else {
@@ -327,19 +329,19 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
                 let elCheckboxes = elControl.querySelectorAll(".form-check-input");
                 for (let i = 0; i < elCheckboxes.length; i++) {
                     let elCheckbox = elCheckboxes[i];
-
+                    
                     // Clear the invalid/valid classes
                     elCheckbox.classList.remove("is-invalid");
                     elCheckbox.classList.remove("is-valid");
-
+                    
                     // Set the class
                     elCheckbox.classList.add(validation.isValid ? "is-valid" : "is-invalid");
                 }
-
+                
                 // Set the form control
                 elFormControl = elCheckboxes.length > 0 ? elCheckboxes[elCheckboxes.length - 1] as any : elFormControl;
             }
-
+            
             // Ensure the form control exists
             if (elFormControl) {
                 // See if there is invalid feedback
@@ -352,11 +354,11 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
                         elMessage.className = "invalid-feedback";
                         elFormControl.parentElement.appendChild(elMessage);
                     }
-
+                    
                     // Set the message
                     elMessage.innerHTML = validation.invalidMessage || props.errorMessage;
                 }
-
+                
                 // See if there is valid feedback
                 if (validation.validMessage) {
                     // Get the element
@@ -367,15 +369,16 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
                         elMessage.className = "valid-feedback";
                         elFormControl.parentElement.appendChild(elMessage);
                     }
-
+                    
                     // Set the message
                     elMessage.innerHTML = validation.validMessage;
                 }
             }
-
+            
             // Return the flag
             return validation.isValid;
         },
-        props
+        props,
+        show: () => { Common.show(el); }
     }
 }

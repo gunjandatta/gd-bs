@@ -9,6 +9,12 @@ export const Progress: (props: IProgressProps) => IProgress;
 export interface IProgress {
     /** The element. */
     el: Element;
+
+    /** Hides the progress. */
+    hide: () => void;
+
+    /** Shows the progress. */
+    show: () => void;
 }
 
 /**

@@ -1,5 +1,6 @@
-import { Card } from "./card";
 import { ICardGroup, ICardGroupProps } from "../../@types/cardGroup";
+import * as Common from "../common";
+import { Card } from "./card";
 
 /**
  * Card Group
@@ -47,5 +48,9 @@ export const CardGroup = (props: ICardGroupProps): ICardGroup => {
     }
 
     // Return the card group
-    return { el: cardGroup };
+    return {
+        el: cardGroup,
+        hide: () => { Common.hide(cardGroup); },
+        show: () => { Common.show(cardGroup); }
+    };
 }

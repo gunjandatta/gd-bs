@@ -1,4 +1,5 @@
 import * as jQuery from "jquery";
+import * as Common from "../common";
 import { Button } from "./button";
 import { ITooltip, ITooltipProps } from "../../@types/tooltip";
 

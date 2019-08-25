@@ -1,4 +1,5 @@
 import * as jQuery from "jquery";
+import * as Common from "../common";
 import { IAlert, IAlertProps } from "../../@types/alert";
 
 /**
@@ -112,6 +113,8 @@ export const Alert = (props: IAlertProps): IAlert => {
     return {
         close: () => { jQuery(alert).alert("toggle"); },
         dispose: () => { jQuery(alert).alert("dispose"); },
-        el: alert
+        el: alert,
+        hide: () => { Common.hide(alert); },
+        show: () => { Common.show(alert); }
     };
 }

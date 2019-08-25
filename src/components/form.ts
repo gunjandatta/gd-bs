@@ -1,3 +1,4 @@
+import * as Common from "../common";
 import { IForm, IFormProps } from "../../@types/form";
 import { IFormControl, IFormControlProps } from "../../@types/formControl";
 import { FormControl } from "./formControl";
@@ -306,6 +307,7 @@ export const Form = (props: IFormProps): IForm => {
             // Return the values
             return values;
         },
+        hide: () => { Common.hide(form); },
         isValid: () => {
             let isValid = true;
 
@@ -320,6 +322,7 @@ export const Form = (props: IFormProps): IForm => {
 
             // Return the flag
             return isValid;
-        }
+        },
+        show: () => { Common.show(form); }
     };
 }

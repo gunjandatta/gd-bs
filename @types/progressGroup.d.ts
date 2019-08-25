@@ -11,6 +11,12 @@ export const ProgressGroup: (props: IProgressGroupProps) => IProgressGroup;
 export interface IProgressGroup {
     /** The element. */
     el: Element;
+
+    /** Hides the progress group. */
+    hide: () => void;
+
+    /** Shows the progress group. */
+    show: () => void;
 }
 
 /**

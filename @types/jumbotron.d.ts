@@ -9,6 +9,12 @@ export const Jumbotron: (props: IJumbotronProps) => IJumbotron;
 export interface IJumbotron {
     /** The element. */
     el: Element;
+
+    /** Hides the jumbotron. */
+    hide: () => void;
+
+    /** Shows the jumbotron. */
+    show: () => void;
 }
 
 /**

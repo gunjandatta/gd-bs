@@ -1,4 +1,5 @@
 import { IPagination, IPaginationProps } from "../../@types/pagination";
+import * as Common from "../common";
 
 /**
  * Pagination Alignment
@@ -141,5 +142,9 @@ export const Pagination = (props: IPaginationProps): IPagination => {
     }
 
     // Return the pagination
-    return { el: pagination };
+    return {
+        el: pagination,
+        hide: () => { Common.hide(pagination); },
+        show: () => { Common.show(pagination); }
+    };
 }

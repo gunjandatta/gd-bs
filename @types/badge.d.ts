@@ -14,6 +14,12 @@ export const BadgeTypes: IBadgeTypes;
 export interface IBadge {
     /** The element. */
     el: Element;
+
+    /** Hides the badge. */
+    hide: () => void;
+
+    /** Shows the badge. */
+    show: () => void;
 }
 
 /**

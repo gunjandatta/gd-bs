@@ -17,11 +17,14 @@ export interface IListGroup {
     /** The element. */
     el: Element;
 
+    /** Hides the list group. */
+    hide: () => void;
+
     /**
-     * Shows the tab content.
+     * Shows the list group, or specified tab content.
      * @prop elId - The tab id.
      */
-    show: (tabId: string) => void;
+    show: (tabId?: string) => void;
 }
 
 /**

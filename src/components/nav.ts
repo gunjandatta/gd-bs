@@ -1,4 +1,5 @@
 import * as jQuery from "jquery";
+import * as Common from "../common";
 import { INav, INavProps } from "../../@types/nav";
 
 /**
@@ -179,6 +180,16 @@ export const Nav = (props: INavProps): INav => {
     return {
         dispose: () => { $nav.tab("dispose"); },
         el: nav,
-        show: (selector: string) => { $nav.querySelector(selector).tab("show"); }
+        hide: () => { Common.hide(nav); },
+        show: (selector?: string) => {
+            // See if a tab was specified
+            if (selector) {
+                // Show the specified tab
+                $nav.querySelector(selector).tab("show");
+            } else {
+                // Show the navigation
+                Common.show(nav);
+            }
+        }
     };
 }

@@ -1,4 +1,5 @@
 import * as jQuery from "jquery";
+import * as Common from "../common";
 import { IDropdown, IDropdownItem, IDropdownProps } from "../../@types/dropdown";
 
 /**
@@ -568,7 +569,9 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
             // Return the value
             return isMulti ? values : values[0];
         },
+        hide: () => { Common.hide(el); },
         isMulti,
+        show: () => { Common.show(el); },
         setItems: (newItems: Array<IDropdownItem> = []) => {
             // Set the items
             items = newItems;

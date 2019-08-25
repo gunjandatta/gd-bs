@@ -17,6 +17,12 @@ export interface ICheckboxGroup {
 
     /** Gets the values. */
     getValue: () => ICheckboxGroupItem | Array<ICheckboxGroupItem>;
+
+    /** Hides the checkbox group. */
+    hide: () => void;
+
+    /** Shows the checkbox group. */
+    show: () => void;
 }
 
 /**

@@ -1,4 +1,5 @@
 import { IJumbotron, IJumbotronProps } from "../../@types/jumbotron";
+import * as Common from "../common";
 
 /**
  * Jumbotron
@@ -47,5 +48,9 @@ export const Jumbotron = (props: IJumbotronProps): IJumbotron => {
     props.onRenderContent ? props.onRenderContent(jumbotron) : null;
 
     // Return the jumbotron
-    return { el: jumbotron };
+    return {
+        el: jumbotron,
+        hide: () => { Common.hide(jumbotron); },
+        show: () => { Common.show(jumbotron); }
+    };
 }

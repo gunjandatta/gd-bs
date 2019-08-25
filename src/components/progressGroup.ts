@@ -1,4 +1,5 @@
 import { IProgressGroup, IProgressGroupProps } from "../../@types/progressGroup";
+import * as Common from "../common";
 import { Progress } from "./progress";
 
 /**
@@ -42,5 +43,9 @@ export const ProgressGroup = (props: IProgressGroupProps): IProgressGroup => {
     }
 
     // Return the progress group
-    return { el: progressGroup };
+    return {
+        el: progressGroup,
+        hide: () => { Common.hide(progressGroup); },
+        show: () => { Common.show(progressGroup); }
+    };
 }

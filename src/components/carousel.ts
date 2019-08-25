@@ -1,4 +1,5 @@
 import * as jQuery from "jquery";
+import * as Common from "../common";
 import { ICarousel, ICarouselProps } from "../../@types/carousel";
 
 /**
@@ -127,9 +128,11 @@ export const Carousel = (props: ICarouselProps): ICarousel => {
         cycle: () => { $carousel.carousel("cycle"); },
         dispose: () => { $carousel.carousel("dispose"); },
         el: carousel,
+        hide: () => { Common.hide(carousel); },
         next: () => { $carousel.carousel("next"); },
         number: (value: number) => { $carousel.carousel(value); },
         pause: () => { $carousel.carousel("pause"); },
-        previous: () => { $carousel.carousel("dispose"); }
+        previous: () => { $carousel.carousel("dispose"); },
+        show: () => { Common.show(carousel); }
     };
 }

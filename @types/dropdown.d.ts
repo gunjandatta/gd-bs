@@ -21,12 +21,18 @@ export interface IDropdown {
     /** Gets the selected dropdown item(s). */
     getValue: () => IDropdownItem | Array<IDropdownItem>;
 
+    /** Hides the dropdown. */
+    hide: () => void;
+    
     /** True if the dropdown is a multi-select. */
     isMulti: boolean;
-
+    
     /** Updates the dropdown items. */
     setItems: (items: Array<IDropdownItem>) => void;
 
+    /** Shows the dropdown. */
+    show: () => void;
+    
     /** Toggles the dropdown menu of a given navbar or tabbed navigation. */
     toggle: () => void;
 

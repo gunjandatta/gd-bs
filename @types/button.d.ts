@@ -21,8 +21,14 @@ export interface IButton {
     /** The element. */
     el: Element;
 
+    /** Hides the button. */
+    hide: () => void;
+    
     /** Updates the button text. */
     setText: (btnText?: string) => void;
+    
+    /** Shows the button. */
+    show: () => void;
 
     /** Toggles push state. Gives the button the appearance that it has been activated. */
     toggle: () => void;

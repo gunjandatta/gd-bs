@@ -1,4 +1,5 @@
 import { ITable, ITableProps } from "../../@types/table";
+import * as Common from "../common";
 
 /**
  * Table
@@ -237,7 +238,9 @@ export const Table = (props: ITableProps): ITable => {
 
     // Return the table
     return {
+        addRows,
         el: elTable,
-        addRows
+        hide: () => { Common.hide(elTable); },
+        show: () => { Common.show(elTable); }
     };
 }

@@ -1,4 +1,5 @@
 import { IBreadcrumb, IBreadcrumbProps, IBreadcrumbItem } from "../../@types/breadcrumb";
+import * as Common from "../common";
 
 /**
  * Breadcrumb
@@ -94,5 +95,9 @@ export const Breadcrumb = (props: IBreadcrumbProps): IBreadcrumb => {
     }
 
     // Return the breadcrumb
-    return { el: breadcrumb };
+    return {
+        el: breadcrumb,
+        hide: () => { Common.hide(breadcrumb); },
+        show: () => { Common.show(breadcrumb); }
+    };
 }

@@ -1,5 +1,6 @@
-import { Button } from "./button";
 import { IButtonGroup, IButtonGroupProps } from "../../@types/buttonGroup";
+import * as Common from "../common";
+import { Button } from "./button";
 
 /**
  * Button Group
@@ -55,5 +56,9 @@ export const ButtonGroup = (props: IButtonGroupProps): IButtonGroup => {
     }
 
     // Return the button group
-    return { el: buttonGroup };
+    return {
+        el: buttonGroup,
+        hide: () => { Common.hide(buttonGroup); },
+        show: () => { Common.show(buttonGroup); }
+    };
 }

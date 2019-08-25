@@ -1,4 +1,5 @@
 import { IBadge, IBadgeProps } from "../../@types/badge";
+import * as Common from "../common";
 
 /**
  * Badge Types
@@ -107,5 +108,9 @@ export const Badge = (props: IBadgeProps): IBadge => {
     }
 
     // Return the badge
-    return { el: badge };
+    return {
+        el: badge,
+        hide: () => { Common.hide(badge); },
+        show: () => { Common.show(badge); }
+    };
 }

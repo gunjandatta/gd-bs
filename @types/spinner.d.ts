@@ -14,6 +14,12 @@ export const SpinnerTypes: ISpinnerTypes;
 export interface ISpinner {
     /** The element. */
     el: Element;
+
+    /** Hides the spinner. */
+    hide: () => void;
+
+    /** Shows the spinner. */
+    show: () => void;
 }
 
 /**

@@ -1,4 +1,5 @@
 import * as jQuery from "jquery";
+import * as Common from "../common";
 import { ButtonTypes } from "./button";
 import { ICard, ICardAction, ICardBody, ICardProps } from "../../@types/card";
 import { Nav } from "./nav";
@@ -215,6 +216,8 @@ export const Card = (props: ICardProps): ICard => {
     // Return the alert
     return {
         dispose: () => { jQuery(card).card("dispose"); },
-        el: card
+        el: card,
+        hide: () => { Common.hide(card); },
+        show: () => { Common.show(card); }
     };
 }

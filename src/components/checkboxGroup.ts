@@ -1,4 +1,5 @@
 import { ICheckboxGroup, ICheckboxGroupItem, ICheckboxGroupProps } from "../../@types/checkboxGroup";
+import * as Common from "../common";
 
 /**
  * Checkbox Group Types
@@ -212,6 +213,8 @@ export const CheckboxGroup = (props: ICheckboxGroupProps): ICheckboxGroup => {
     // Return the checkbox
     return {
         el: cbGroup,
-        getValue
+        getValue,
+        hide: () => { Common.hide(cbGroup); },
+        show: () => { Common.show(cbGroup); }
     };
 }

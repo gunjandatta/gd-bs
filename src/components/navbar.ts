@@ -1,7 +1,8 @@
+import { INavbar, INavbarProps, INavbarItem } from "../../@types/navbar";
+import * as Common from "../common";
 import { Button } from "./button";
 import { Dropdown } from "./dropdown";
 import { InputGroup, InputGroupTypes } from "./inputGroup";
-import { INavbar, INavbarProps, INavbarItem } from "../../@types/navbar";
 
 /**
  * Navbar Types
@@ -247,5 +248,9 @@ export const Navbar = (props: INavbarProps): INavbar => {
     }
 
     // Return the navbar
-    return { el: navbar };
+    return {
+        el: navbar,
+        hide: () => { Common.hide(navbar); },
+        show: () => { Common.show(navbar); }
+    };
 }

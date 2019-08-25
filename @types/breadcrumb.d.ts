@@ -9,6 +9,12 @@ export const Breadcrumb: (props: IBreadcrumbProps) => IBreadcrumb;
 export interface IBreadcrumb {
     /** The element. */
     el: Element;
+
+    /** Hides the breadcrumb. */
+    hide: () => void;
+
+    /** Shows the breadcrumb. */
+    show: () => void;
 }
 
 /**

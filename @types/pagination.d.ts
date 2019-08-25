@@ -14,6 +14,12 @@ export const PaginationAlignment: IPaginationAlignment;
 export interface IPagination {
     /** The element. */
     el: Element;
+
+    /** Hides the pagination. */
+    hide: () => void;
+
+    /** Shows the pagination. */
+    show: () => void;
 }
 
 /**
