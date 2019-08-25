@@ -1,5 +1,5 @@
 import * as jQuery from "jquery";
-import * as Components from "../@types";
+import * as Components from ".";
 export {
     Components,
     jQuery

@@ -1,6 +1,6 @@
 {
   "name": "gd-bs",
-  "version": "1.4.7",
+  "version": "1.4.8",
   "description": "Bootstrap JavaScript, TypeScript and Web Components library.",
   "main": "dist/gd-bs.js",
   "typings": "dist/gd-bs.d.ts",
@@ -8,7 +8,7 @@
     "all": "npm run build && npm run prod && npm run typings && npm run wc",
     "build": "webpack --mode=development",
     "prod": "webpack --mode=production",
-    "typings": "dts-bundle --out ../dist/gd-bs.d.ts --name gd-bs --main ./src/typings.d.ts",
+    "typings": "dts-bundle --out ../dist/gd-bs.d.ts --name gd-bs --main ./@types/typings.d.ts",
     "wc": "cd wc && npm run build",
     "wc-serve": "cd wc && npm run start"
   },
