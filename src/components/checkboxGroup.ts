@@ -108,6 +108,12 @@ export const CheckboxGroup = (props: ICheckboxGroupProps): ICheckboxGroup => {
             cb.classList.add("form-check-input");
             label.classList.add("form-check-label");
 
+            // See if this is an inline checkbox
+            if (props.isInline) {
+                // Update the class
+                elCheckbox.classList.add("form-check-inline");
+            }
+
             // Set the event
             cb.addEventListener("click", ev => {
                 let el = ev.currentTarget as HTMLElement;

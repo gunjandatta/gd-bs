@@ -626,6 +626,7 @@ declare module 'gd-bs/checkboxGroup' {
             colSize?: number;
             el?: Element | HTMLElement;
             hideLabel?: boolean;
+            isInline?: boolean;
             isReadonly?: boolean;
             label?: string;
             items?: Array<ICheckboxGroupItem>;
@@ -920,6 +921,7 @@ declare module 'gd-bs/formControl' {
     export interface IFormControlPropsCheckbox extends IFormControlProps {
             el?: HTMLInputElement;
             hideLabel?: boolean;
+            isInline?: boolean;
             items?: Array<ICheckboxGroupItem>;
             multi?: boolean;
             onChange?: (item: Array<ICheckboxGroupItem>) => void;
