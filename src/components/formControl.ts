@@ -1,7 +1,7 @@
 import { ICheckboxGroup } from "../../@types/checkboxGroup";
 import { IDropdown } from "../../@types/dropdown";
 import { IInputGroup } from "../../@types/inputGroup";
-import { IFormControl, IFormControlProps, IFormControlPropsCheckbox, IFormControlPropsDropdown, IFormControlPropsNumberField, IFormControlPropsTextField, IFormControlValidationResult } from "../../@types/formControl";
+import { IFormControl, IFormControlProps, IFormControlPropsCheckbox, IFormControlPropsDropdown, IFormControlPropsNumberField, IFormControlPropsRange, IFormControlPropsTextField, IFormControlValidationResult } from "../../@types/formControl";
 import * as Common from "../common";
 import { CheckboxGroup, CheckboxGroupTypes } from "./checkboxGroup";
 import { Dropdown } from "./dropdown";
@@ -167,11 +167,11 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
                 el,
                 isPlainText: props.isPlainText,
                 isReadonly: props.isReadonly,
-                min: (props as IFormControlPropsNumberField).min || 0,
-                max: (props as IFormControlPropsNumberField).max || 100,
-                onChange: (props as IFormControlPropsNumberField).onChange,
-                placeholder: (props as IFormControlPropsNumberField).placeholder,
-                step: (props as IFormControlPropsNumberField).step,
+                min: (props as IFormControlPropsRange).min || 0,
+                max: (props as IFormControlPropsRange).max || 100,
+                onChange: (props as IFormControlPropsRange).onChange,
+                placeholder: (props as IFormControlPropsRange).placeholder,
+                step: (props as IFormControlPropsRange).step,
                 title: props.title,
                 type: InputGroupTypes.Range,
                 value: props.value

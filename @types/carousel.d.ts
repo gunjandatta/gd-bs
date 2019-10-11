@@ -14,13 +14,13 @@ export interface ICarousel {
 
     /** Destroys an element’s tab. */
     dispose: () => void;
-    
+
     /** The element. */
     el: Element;
-    
+
     /** Hides the carousel. */
     hide: () => void;
-    
+
     /**
      * Cycles to the next item.
      */
@@ -62,7 +62,7 @@ export interface ICarouselItem {
  * Carousel Options
  */
 export interface ICarouselOptions {
-    interval?: number;
+    interval?: number | boolean;
     keyboard?: boolean;
     pause?: string | boolean;
     ride?: string;

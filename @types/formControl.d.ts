@@ -85,6 +85,11 @@ export interface IFormControlPropsNumberField extends IFormControlPropsTextField
 }
 
 /**
+ * Form Control Properties - Range
+ */
+export interface IFormControlPropsRange extends IFormControlPropsNumberField { }
+
+/**
  * Form Control Properties - TextField
  */
 export interface IFormControlPropsTextField extends IFormControlProps {

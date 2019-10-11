@@ -117,11 +117,17 @@ export const Carousel = (props: ICarouselProps): ICarousel => {
     // Create the carousel
     let $carousel = jQuery(carousel);
 
-    // See if options exist
-    if (props.options) {
-        // Initialize the carousel options
-        $carousel.carousel(props.options);
+    // Method to set the options
+    let setOptions = () => {
+        // See if options exist
+        if (props.options) {
+            // Initialize the carousel options
+            $carousel.carousel(props.options);
+        }
     }
+
+    // Set the options
+    setOptions();
 
     // Return the carousel
     return {
@@ -129,10 +135,10 @@ export const Carousel = (props: ICarouselProps): ICarousel => {
         dispose: () => { $carousel.carousel("dispose"); },
         el: carousel,
         hide: () => { Common.hide(carousel); },
-        next: () => { $carousel.carousel("next"); },
+        next: () => { $carousel.carousel("next"); setOptions(); },
         number: (value: number) => { $carousel.carousel(value); },
         pause: () => { $carousel.carousel("pause"); },
-        previous: () => { $carousel.carousel("dispose"); },
+        previous: () => { $carousel.carousel("prev"); setOptions(); },
         show: () => { Common.show(carousel); }
     };
 }

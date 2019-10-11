@@ -556,7 +556,7 @@ declare module 'gd-bs/carousel' {
         * Carousel Options
         */
     export interface ICarouselOptions {
-            interval?: number;
+            interval?: number | boolean;
             keyboard?: boolean;
             pause?: string | boolean;
             ride?: string;
@@ -943,6 +943,11 @@ declare module 'gd-bs/formControl' {
             min?: number;
             step?: number;
     }
+    
+    /**
+        * Form Control Properties - Range
+        */
+    export interface IFormControlPropsRange extends IFormControlPropsNumberField { }
     
     /**
         * Form Control Properties - TextField
