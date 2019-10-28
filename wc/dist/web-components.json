@@ -1,0 +1,20 @@
+{
+  "tags": [
+    {
+      "label": "bs-accordion",
+      "description": "",
+      "attributes": [
+        {
+          "label": "class-name",
+          "description": "",
+          "required": false
+        },
+        {
+          "label": "id",
+          "description": "",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

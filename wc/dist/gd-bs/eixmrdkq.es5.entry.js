@@ -1,2 +1,0 @@
-/*! Built with http://stenciljs.com */
-GdBs.loadBundle("eixmrdkq",["exports","./chunk-0157d9ea.js","./chunk-91cbcf9d.js"],function(e,d,o){window,e.BsPopover=d.Popover,Object.defineProperty(e,"__esModule",{value:!0})});

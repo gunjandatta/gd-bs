@@ -1,0 +1,1 @@
+GdBs.loadBundle("fi0pow8t",["exports","./chunk-1c26bad2.js","./chunk-b3b55bb1.js"],function(d,e,b){d.BsCard=b.Card,Object.defineProperty(d,"__esModule",{value:!0})});

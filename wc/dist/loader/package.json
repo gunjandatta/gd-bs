@@ -1,1 +1,9 @@
-{"name":"loader","typings":"./index.d.ts","module":"..\\esm\\es5\\gd-bs.define.js","es2017":"..\\esm\\es2017\\gd-bs.define.js"}
+{
+  "name": "loader",
+  "typings": "./index.d.ts",
+  "module": "./index.js",
+  "main": "./index.cjs.js",
+  "jsnext:main": "./index.es2017.js",
+  "es2015": "./index.es2017.js",
+  "es2017": "./index.es2017.js"
+}

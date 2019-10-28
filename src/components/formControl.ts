@@ -47,6 +47,7 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
             if (items.length == 0) {
                 // Add the item
                 items.push({
+                    label: props.label,
                     name: props.name,
                     isSelected: props.value ? true : false
                 });
@@ -60,7 +61,7 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
                 isInline: (props as IFormControlPropsCheckbox).isInline,
                 isReadonly: props.isReadonly,
                 items,
-                label: props.label,
+                label: items.length == 0 ? null : props.label,
                 multi: (props as IFormControlPropsCheckbox).multi,
                 onChange: (props as IFormControlPropsCheckbox).onChange,
                 title: props.title,

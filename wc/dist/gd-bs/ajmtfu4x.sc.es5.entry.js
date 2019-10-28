@@ -1,0 +1,1 @@
+GdBs.loadBundle("ajmtfu4x",["exports","./chunk-1c26bad2.js","./chunk-08c64553.js"],function(c,d,e){c.BsAccordion=e.Accordion,Object.defineProperty(c,"__esModule",{value:!0})});

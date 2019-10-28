@@ -1,0 +1,1 @@
+GdBs.loadBundle("pzhrvrn5",["exports","./chunk-1c26bad2.js","./chunk-82b8acb5.js"],function(e,u,d){e.BsCarousel=d.Carousel,Object.defineProperty(e,"__esModule",{value:!0})});
