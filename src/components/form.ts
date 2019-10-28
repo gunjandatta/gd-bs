@@ -1,6 +1,6 @@
 import * as Common from "../common";
 import { IForm, IFormProps } from "../../@types/form";
-import { IFormControl, IFormControlProps } from "../../@types/formControl";
+import { IFormControl, IFormControlProps, IFormControlPropsCheckbox } from "../../@types/formControl";
 import { FormControl } from "./formControl";
 import { Progress } from "./progress";
 
@@ -147,7 +147,7 @@ export const Form = (props: IFormProps): IForm => {
                     // Call the rendering event
                     onRendering(elCol, column.control).then(controlProps => {
                         // See if there is a label
-                        if (controlProps.label) {
+                        if (controlProps.label && (controlProps as IFormControlPropsCheckbox).isInline != true) {
                             // Set the label element
                             elCol.innerHTML = "<label>" + controlProps.label + "</label>";
                         }
@@ -186,7 +186,7 @@ export const Form = (props: IFormProps): IForm => {
 
                 // See if there is a label
                 let elLabel: HTMLLabelElement = null;
-                if (row.control.label) {
+                if (row.control.label && (row.control as IFormControlPropsCheckbox).isInline != true) {
                     let elNewRow = null;
 
                     // Create the label element

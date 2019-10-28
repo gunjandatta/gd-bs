@@ -26,13 +26,12 @@ export const CheckboxGroup = (props: ICheckboxGroupProps): ICheckboxGroup => {
     cbGroup.classList.add("row");
 
     // See if the label exists
-    if (props.label) {
+    if (props.label && props.hideLabel != false) {
         // Add the label
         let elLabel = document.createElement("legend");
         elLabel.classList.add("col-form-label");
         elLabel.classList.add("col-" + (12 - colSize));
         elLabel.innerHTML = props.label;
-        props.hideLabel ? null : cbGroup.appendChild(elLabel);
     }
 
     // Create the checkbox group element

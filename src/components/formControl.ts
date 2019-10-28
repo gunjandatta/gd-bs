@@ -42,12 +42,14 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
     switch (props.type) {
         // Checkbox
         case FormControlTypes.Checkbox:
+            let cbProps = props as IFormControlPropsCheckbox;
+
             // Ensure items exist
-            let items = (props as IFormControlPropsCheckbox).items || [];
+            let items = cbProps.items || [];
             if (items.length == 0) {
                 // Add the item
                 items.push({
-                    label: props.label,
+                    label: cbProps.isInline ? props.label : null,
                     name: props.name,
                     isSelected: props.value ? true : false
                 });
@@ -58,12 +60,12 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
                 className: el.className,
                 el,
                 hideLabel: true,
-                isInline: (props as IFormControlPropsCheckbox).isInline,
+                isInline: cbProps.isInline,
                 isReadonly: props.isReadonly,
                 items,
                 label: items.length == 0 ? null : props.label,
-                multi: (props as IFormControlPropsCheckbox).multi,
-                onChange: (props as IFormControlPropsCheckbox).onChange,
+                multi: cbProps.multi,
+                onChange: cbProps.onChange,
                 title: props.title,
                 type: CheckboxGroupTypes.Checkbox,
                 value: props.value

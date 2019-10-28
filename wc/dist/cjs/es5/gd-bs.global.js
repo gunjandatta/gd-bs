@@ -1065,9 +1065,9 @@ function appGlobal(n, x, w, d, r, h) {
             }
             else
                 p.classList.add("bs"); var u = p.querySelectorAll(".tab-pane"); for (s = 0; s < u.length; s++)
-                (l = e.items[s]).onRenderTab && l.onRenderTab(l, u[s]); var f = r(p.children[0]); return { dispose: function () { f.tab("dispose"); }, el: o, hide: function () { n.hide(o); }, show: function (e) { e ? f.querySelector(e).tab("show") : n.show(o); } }; }; }, function (e, t, o) { Object.defineProperty(t, "__esModule", { value: !0 }); var r, n = o(0); !function (e) { e[e.Checkbox = 1] = "Checkbox", e[e.Radio = 2] = "Radio", e[e.Switch = 3] = "Switch"; }(r = t.CheckboxGroupTypes || (t.CheckboxGroupTypes = {})), t.CheckboxGroup = function (e) { var t = e.colSize > 0 && e.colSize < 13 ? e.colSize : e.label ? 10 : 12, o = e.type == r.Switch, i = !(!e.multi && !o), a = document.createElement("div"); if (a.className = e.className || "", a.classList.add("row"), e.label) {
+                (l = e.items[s]).onRenderTab && l.onRenderTab(l, u[s]); var f = r(p.children[0]); return { dispose: function () { f.tab("dispose"); }, el: o, hide: function () { n.hide(o); }, show: function (e) { e ? f.querySelector(e).tab("show") : n.show(o); } }; }; }, function (e, t, o) { Object.defineProperty(t, "__esModule", { value: !0 }); var r, n = o(0); !function (e) { e[e.Checkbox = 1] = "Checkbox", e[e.Radio = 2] = "Radio", e[e.Switch = 3] = "Switch"; }(r = t.CheckboxGroupTypes || (t.CheckboxGroupTypes = {})), t.CheckboxGroup = function (e) { var t = e.colSize > 0 && e.colSize < 13 ? e.colSize : e.label ? 10 : 12, o = e.type == r.Switch, i = !(!e.multi && !o), a = document.createElement("div"); if (a.className = e.className || "", a.classList.add("row"), e.label && 0 != e.hideLabel) {
                 var s = document.createElement("legend");
-                s.classList.add("col-form-label"), s.classList.add("col-" + (12 - t)), s.innerHTML = e.label, !e.hideLabel && a.appendChild(s);
+                s.classList.add("col-form-label"), s.classList.add("col-" + (12 - t)), s.innerHTML = e.label;
             } var l = document.createElement("div"); l.classList.add("col-" + t), a.appendChild(l); for (var d = e.items || [], c = 0; c < d.length; c++) {
                 var b = d[c], m = document.createElement("div");
                 l.appendChild(m);
@@ -1093,8 +1093,8 @@ function appGlobal(n, x, w, d, r, h) {
                 s.isSelected = n.checked, e.push(s);
             } return i ? e : e[0]; }; return { el: a, getValue: v, hide: function () { n.hide(a); }, show: function () { n.show(a); } }; }; }, function (e, t, o) { Object.defineProperty(t, "__esModule", { value: !0 }); var r, n = o(0), i = o(11), a = o(5), s = o(3); !function (e) { e[e.Checkbox = 1] = "Checkbox", e[e.Email = 2] = "Email", e[e.Dropdown = 3] = "Dropdown", e[e.File = 4] = "File", e[e.MultiDropdown = 5] = "MultiDropdown", e[e.Password = 6] = "Password", e[e.Radio = 7] = "Radio", e[e.Range = 8] = "Range", e[e.Readonly = 9] = "Readonly", e[e.Switch = 10] = "Switch", e[e.TextArea = 11] = "TextArea", e[e.TextField = 12] = "TextField"; }(r = t.FormControlTypes || (t.FormControlTypes = {})), t.FormControl = function (e) { var t = null, o = null, l = null, d = e.el || document.createElement("div"); switch ((e.className && d.classList.add(e.className), e.controlClassName && d.classList.add(e.controlClassName), e.type)) {
                 case r.Checkbox:
-                    var c = e.items || [];
-                    0 == c.length && c.push({ label: e.label, name: e.name, isSelected: !!e.value }), t = i.CheckboxGroup({ className: d.className, el: d, hideLabel: !0, isInline: e.isInline, isReadonly: e.isReadonly, items: c, label: 0 == c.length ? null : e.label, multi: e.multi, onChange: e.onChange, title: e.title, type: i.CheckboxGroupTypes.Checkbox, value: e.value });
+                    var c = e, b = c.items || [];
+                    0 == b.length && b.push({ label: c.isInline ? e.label : null, name: e.name, isSelected: !!e.value }), t = i.CheckboxGroup({ className: d.className, el: d, hideLabel: !0, isInline: c.isInline, isReadonly: e.isReadonly, items: b, label: 0 == b.length ? null : e.label, multi: c.multi, onChange: c.onChange, title: e.title, type: i.CheckboxGroupTypes.Checkbox, value: e.value });
                     break;
                 case r.Dropdown:
                     o = a.Dropdown({ className: d.className, el: d, formFl: !0, isReadonly: e.isReadonly, items: e.items, onChange: e.onChange, title: e.title, value: e.value });
@@ -1125,20 +1125,20 @@ function appGlobal(n, x, w, d, r, h) {
                     break;
                 case r.TextField: l = s.InputGroup({ className: d.className, el: d, isPlainText: e.isPlainText, isReadonly: e.isReadonly, onChange: e.onChange, placeholder: e.placeholder, title: e.title, type: s.InputGroupTypes.TextField, value: e.value });
             } if (e.errorMessage) {
-                var b = d.querySelector(".input-group") || d.querySelector(".form-check:last-child");
-                if (b) {
-                    var m = document.createElement("div");
-                    m.className = "invalid-feedback", m.innerHTML = e.errorMessage, b.appendChild(m);
+                var m = d.querySelector(".input-group") || d.querySelector(".form-check:last-child");
+                if (m) {
+                    var p = document.createElement("div");
+                    p.className = "invalid-feedback", p.innerHTML = e.errorMessage, m.appendChild(p);
                 }
-            } var p = function () { return e.onGetValue ? e.onGetValue(e) : t ? e.items ? t.getValue() : !!t.getValue() : o ? o.getValue() : l ? l.getValue() : void 0; }; return { el: d, get: function () { return t || o || l; }, getValue: p, hide: function () { n.hide(d); }, isValid: function () { var r = { isValid: !0 }, n = t || o || l ? (t || o || l).el : d, i = p(); if (e.required && (null == i ? r.isValid = !1 : "number" == typeof i.length && (r.isValid = i.length > 0)), e.onValidate) {
+            } var u = function () { return e.onGetValue ? e.onGetValue(e) : t ? e.items ? t.getValue() : !!t.getValue() : o ? o.getValue() : l ? l.getValue() : void 0; }; return { el: d, get: function () { return t || o || l; }, getValue: u, hide: function () { n.hide(d); }, isValid: function () { var r = { isValid: !0 }, n = t || o || l ? (t || o || l).el : d, i = u(); if (e.required && (null == i ? r.isValid = !1 : "number" == typeof i.length && (r.isValid = i.length > 0)), e.onValidate) {
                     var a = e.onValidate(e, i);
                     "boolean" == typeof a ? r.isValid = a : a && (r = a);
                 } var s, c = n.querySelector(".form-control"); if (c)
                     c.classList.remove("is-invalid"), c.classList.remove("is-valid"), c.classList.add(r.isValid ? "is-valid" : "is-invalid");
                 else {
                     for (var b = n.querySelectorAll(".form-check-input"), m = 0; m < b.length; m++) {
-                        var u = b[m];
-                        u.classList.remove("is-invalid"), u.classList.remove("is-valid"), u.classList.add(r.isValid ? "is-valid" : "is-invalid");
+                        var p = b[m];
+                        p.classList.remove("is-invalid"), p.classList.remove("is-valid"), p.classList.add(r.isValid ? "is-valid" : "is-invalid");
                     }
                     c = b.length > 0 ? b[b.length - 1] : c;
                 } return c && ((r.invalidMessage || e.errorMessage) && (null == (s = n.querySelector(".invalid-feedback")) && ((s = document.createElement("div")).className = "invalid-feedback", c.parentElement.appendChild(s)), s.innerHTML = r.invalidMessage || e.errorMessage), r.validMessage && (null == (s = n.querySelector(".valid-feedback")) && ((s = document.createElement("div")).className = "valid-feedback", c.parentElement.appendChild(s)), s.innerHTML = r.validMessage)), r.isValid; }, props: e, show: function () { n.show(d); } }; }; }, function (e, t, o) { Object.defineProperty(t, "__esModule", { value: !0 }); var r = o(1), n = o(2); t.Modal = function (e) { var t = document.createElement("div"); e.id && (t.id = e.id), t.setAttribute("role", "dialog"), e.className && (t.className = e.className), t.classList.add("modal"), !e.disableFade && t.classList.add("fade"); var o = ["modal-dialog"]; e.isCentered && o.push("modal-dialog-centered"), e.isLarge && o.push("modal-lg"), e.isSmall && o.push("modal-sm"), t.innerHTML = ['<div class="' + o.join(" ") + '" role="document">', '<div class="modal-content">', '<div class="modal-header">', '<div class="modal-title">' + (e.title || "") + "</div>", e.hideCloseButton ? "" : ['<button type="button" class="close" data-dismiss="modal" aria-label="Close">', '<span aria-hidden="true">&times;</span>', "</button>"].join("\n"), "</div>", '<div class="modal-body">' + (e.body || "") + "</div>", '<div class="modal-footer">' + (e.footer || "") + "</div>", "</div>", "</div>"].join("\n"); var i = document.createElement("div"); if (i.appendChild(t), e.el) {
@@ -1740,7 +1740,7 @@ function appGlobal(n, x, w, d, r, h) {
                 s = i.className ? s.concat(i.className.split(" ")) : s;
                 for (var b = 0; b < s.length; b++)
                     f.classList.add(s[b]);
-                for (var m = i.columns || [], p = function (o) { var r = m[o], a = r.size > 0 && r.size < 13 ? r.size : 0, s = document.createElement("div"); f.appendChild(s), s.classList.add("form-group"), s.classList.add(i.isCentered ? "col-auto" : a > 0 ? "col-" + a : "col"), r.control.value = r.control.value || (e.value ? e.value[r.control.name] : null), c(s, r.control).then(function (e) { e.label && (s.innerHTML = "<label>" + e.label + "</label>"); var o = n.FormControl(e || r.control), i = o.get(); s.appendChild(i ? i.el : o.el), d(o).then(function (e) { t.push(e), l(); }); }); }, u = 0; u < m.length; u++)
+                for (var m = i.columns || [], p = function (o) { var r = m[o], a = r.size > 0 && r.size < 13 ? r.size : 0, s = document.createElement("div"); f.appendChild(s), s.classList.add("form-group"), s.classList.add(i.isCentered ? "col-auto" : a > 0 ? "col-" + a : "col"), r.control.value = r.control.value || (e.value ? e.value[r.control.name] : null), c(s, r.control).then(function (e) { e.label && 1 != e.isInline && (s.innerHTML = "<label>" + e.label + "</label>"); var o = n.FormControl(e || r.control), i = o.get(); s.appendChild(i ? i.el : o.el), d(o).then(function (e) { t.push(e), l(); }); }); }, u = 0; u < m.length; u++)
                     p(u);
                 a.appendChild(f);
             }
@@ -1748,7 +1748,7 @@ function appGlobal(n, x, w, d, r, h) {
                 var f, g = i.colSize > 0 && i.colSize < 13 ? i.colSize : 0;
                 (f = document.createElement("div")).classList.add("form-group"), i.control.value = i.control.value || (e.value ? e.value[i.control.name] : null);
                 var h = null;
-                if (i.control.label) {
+                if (i.control.label && 1 != i.control.isInline) {
                     var v = null;
                     h = document.createElement("label"), g > 0 ? (f.classList.add("row"), h.className = "col-" + g + " col-form-label", f.appendChild(h), (v = document.createElement("div")).className = "col-" + (12 - g), f.appendChild(v)) : f.appendChild(h), i.control.el = v || f;
                 }
