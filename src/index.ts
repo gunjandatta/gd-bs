@@ -13,3 +13,6 @@ window["GD"] = {
     Components,
     jQuery
 }
+
+// Execute a jQuery no conflict by default.
+jQuery.noConflict(true);
