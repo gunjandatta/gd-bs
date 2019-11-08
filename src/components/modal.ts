@@ -94,9 +94,6 @@ export const Modal = (props: IModalProps): IModal => {
         });
     }
 
-    // Toggle the modal by default if it's hidden, in order for it to work the first time
-    if (!modal.classList.contains("show")) { $modal.modal("toggle"); }
-
     // Return the element
     return {
         dispose: () => { $modal.modal("dispose"); },
