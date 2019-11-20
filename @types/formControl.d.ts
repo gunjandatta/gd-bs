@@ -90,6 +90,11 @@ export interface IFormControlPropsNumberField extends IFormControlPropsTextField
 export interface IFormControlPropsRange extends IFormControlPropsNumberField { }
 
 /**
+ * Form Control Properties - Switch
+ */
+export interface IFormControlPropsSwitch extends IFormControlPropsCheckbox { }
+
+/**
  * Form Control Properties - TextField
  */
 export interface IFormControlPropsTextField extends IFormControlProps {
@@ -109,7 +114,7 @@ export type IFormControlTypes = {
     File: number;
     MultiDropdown: number;
     Password: number;
-    Radio; number;
+    Radio: number;
     Range: number;
     Readonly: number;
     Switch: number;
