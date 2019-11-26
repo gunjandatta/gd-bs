@@ -60,45 +60,51 @@ export const Button = (props: IButtonProps): IButton => {
     props.isLarge ? button.classList.add("btn-lg") : null;
     props.isSmall ? button.classList.add("btn-sm") : null;
 
-    // Read the type
-    switch (props.type) {
-        // Danger
-        case ButtonTypes.Danger:
-            button.classList.add("btn" + (props.isOutline ? "-outline" : "") + "-danger");
-            break;
-        // Dark
-        case ButtonTypes.Dark:
-            button.classList.add("btn" + (props.isOutline ? "-outline" : "") + "-dark");
-            break;
-        // Info
-        case ButtonTypes.Info:
-            button.classList.add("btn" + (props.isOutline ? "-outline" : "") + "-info");
-            break;
-        // Light
-        case ButtonTypes.Light:
-            button.classList.add("btn" + (props.isOutline ? "-outline" : "") + "-light");
-            break;
-        // Link
-        case ButtonTypes.Link:
-            button.classList.add("btn" + (props.isOutline ? "-outline" : "") + "-link");
-            break;
-        // Secondary
-        case ButtonTypes.Secondary:
-            button.classList.add("btn" + (props.isOutline ? "-outline" : "") + "-secondary");
-            break;
-        // Success
-        case ButtonTypes.Success:
-            button.classList.add("btn" + (props.isOutline ? "-outline" : "") + "-success");
-            break;
-        // Warning
-        case ButtonTypes.Warning:
-            button.classList.add("btn" + (props.isOutline ? "-outline" : "") + "-warning");
-            break;
-        // Default - Primary
-        default:
-            button.classList.add("btn" + (props.isOutline ? "-outline" : "") + "-primary");
-            break;
-    }
+    // Method to set the button type
+    let setType = (btnType: number) => {
+        // Read the button type
+        switch (btnType) {
+            // Danger
+            case ButtonTypes.Danger:
+                button.classList.add("btn" + (props.isOutline ? "-outline" : "") + "-danger");
+                break;
+            // Dark
+            case ButtonTypes.Dark:
+                button.classList.add("btn" + (props.isOutline ? "-outline" : "") + "-dark");
+                break;
+            // Info
+            case ButtonTypes.Info:
+                button.classList.add("btn" + (props.isOutline ? "-outline" : "") + "-info");
+                break;
+            // Light
+            case ButtonTypes.Light:
+                button.classList.add("btn" + (props.isOutline ? "-outline" : "") + "-light");
+                break;
+            // Link
+            case ButtonTypes.Link:
+                button.classList.add("btn" + (props.isOutline ? "-outline" : "") + "-link");
+                break;
+            // Secondary
+            case ButtonTypes.Secondary:
+                button.classList.add("btn" + (props.isOutline ? "-outline" : "") + "-secondary");
+                break;
+            // Success
+            case ButtonTypes.Success:
+                button.classList.add("btn" + (props.isOutline ? "-outline" : "") + "-success");
+                break;
+            // Warning
+            case ButtonTypes.Warning:
+                button.classList.add("btn" + (props.isOutline ? "-outline" : "") + "-warning");
+                break;
+            // Default - Primary
+            default:
+                button.classList.add("btn" + (props.isOutline ? "-outline" : "") + "-primary");
+                break;
+        }
+    };
+
+    // Set the button type
+    setType(props.type);
 
     // See if this is a spinner
     if (props.spinnerProps) {
@@ -163,12 +169,27 @@ export const Button = (props: IButtonProps): IButton => {
         setText: (btnText?: string) => {
             // Clear the element
             while (button.firstChild) { button.removeChild(button.firstChild); }
-            
+
             // Set the text
             let elText = document.createTextNode(btnText || "");
-            
+
             // Append the text
             button.appendChild(elText);
+        },
+        setType: (btnType: number) => {
+            // Remove the current type
+            button.classList.remove("btn" + (props.isOutline ? "-outline" : "") + "-danger");
+            button.classList.remove("btn" + (props.isOutline ? "-outline" : "") + "-dark");
+            button.classList.remove("btn" + (props.isOutline ? "-outline" : "") + "-info");
+            button.classList.remove("btn" + (props.isOutline ? "-outline" : "") + "-light");
+            button.classList.remove("btn" + (props.isOutline ? "-outline" : "") + "-link");
+            button.classList.remove("btn" + (props.isOutline ? "-outline" : "") + "-secondary");
+            button.classList.remove("btn" + (props.isOutline ? "-outline" : "") + "-success");
+            button.classList.remove("btn" + (props.isOutline ? "-outline" : "") + "-warning");
+            button.classList.remove("btn" + (props.isOutline ? "-outline" : "") + "-primary");
+
+            // Add the button type
+            setType(btnType);
         },
         show: () => { Common.show(button); },
         toggle: () => { jQuery(button).button("toggle"); }

@@ -279,6 +279,9 @@ declare module 'gd-bs/button' {
             /** Updates the button text. */
             setText: (btnText?: string) => void;
     
+            /** Updates the butotn type. */
+            setType: (btnType: number) => void;
+    
             /** Shows the button. */
             show: () => void;
     
@@ -950,6 +953,11 @@ declare module 'gd-bs/formControl' {
     export interface IFormControlPropsRange extends IFormControlPropsNumberField { }
     
     /**
+        * Form Control Properties - Switch
+        */
+    export interface IFormControlPropsSwitch extends IFormControlPropsCheckbox { }
+    
+    /**
         * Form Control Properties - TextField
         */
     export interface IFormControlPropsTextField extends IFormControlProps {
@@ -969,7 +977,7 @@ declare module 'gd-bs/formControl' {
             File: number;
             MultiDropdown: number;
             Password: number;
-            Radio; number;
+            Radio: number;
             Range: number;
             Readonly: number;
             Switch: number;

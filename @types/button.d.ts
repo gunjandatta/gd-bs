@@ -23,10 +23,13 @@ export interface IButton {
 
     /** Hides the button. */
     hide: () => void;
-    
+
     /** Updates the button text. */
     setText: (btnText?: string) => void;
-    
+
+    /** Updates the butotn type. */
+    setType: (btnType: number) => void;
+
     /** Shows the button. */
     show: () => void;
 
