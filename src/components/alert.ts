@@ -29,41 +29,47 @@ export const Alert = (props: IAlertProps): IAlert => {
     alert.classList.add("alert");
     props.isDismissible ? alert.classList.add("alert-dismissible") : null;
 
-    // Read the type
-    switch (props.type) {
-        // Danger
-        case AlertTypes.Danger:
-            alert.classList.add("alert-danger");
-            break;
-        // Dark
-        case AlertTypes.Dark:
-            alert.classList.add("alert-dark");
-            break;
-        // Info
-        case AlertTypes.Info:
-            alert.classList.add("alert-info");
-            break;
-        // Light
-        case AlertTypes.Light:
-            alert.classList.add("alert-light");
-            break;
-        // Secondary
-        case AlertTypes.Secondary:
-            alert.classList.add("alert-secondary");
-            break;
-        // Success
-        case AlertTypes.Success:
-            alert.classList.add("alert-success");
-            break;
-        // Warning
-        case AlertTypes.Warning:
-            alert.classList.add("alert-warning");
-            break;
-        // Default - Primary
-        default:
-            alert.classList.add("alert-primary");
-            break;
-    }
+    // Method to set the alert type
+    let setType = (alertType: number) => {
+        // Read the type
+        switch (alertType) {
+            // Danger
+            case AlertTypes.Danger:
+                alert.classList.add("alert-danger");
+                break;
+            // Dark
+            case AlertTypes.Dark:
+                alert.classList.add("alert-dark");
+                break;
+            // Info
+            case AlertTypes.Info:
+                alert.classList.add("alert-info");
+                break;
+            // Light
+            case AlertTypes.Light:
+                alert.classList.add("alert-light");
+                break;
+            // Secondary
+            case AlertTypes.Secondary:
+                alert.classList.add("alert-secondary");
+                break;
+            // Success
+            case AlertTypes.Success:
+                alert.classList.add("alert-success");
+                break;
+            // Warning
+            case AlertTypes.Warning:
+                alert.classList.add("alert-warning");
+                break;
+            // Default - Primary
+            default:
+                alert.classList.add("alert-primary");
+                break;
+        }
+    };
+
+    // Set the alert type
+    setType(props.type);
 
     // Add the header
     props.header ? alert.innerHTML = '<h4 class="alert-heading">' + props.header + '</h4>' : '';
@@ -115,6 +121,30 @@ export const Alert = (props: IAlertProps): IAlert => {
         dispose: () => { jQuery(alert).alert("dispose"); },
         el: alert,
         hide: () => { Common.hide(alert); },
+        setText: (alertText?: string) => {
+            // Clear the element
+            while (alert.firstChild) { alert.removeChild(alert.firstChild); }
+
+            // Set the text
+            let elText = document.createTextNode(alertText || "");
+
+            // Append the text
+            alert.appendChild(elText);
+        },
+        setType: (alertType: number) => {
+            // Remove the current type
+            alert.classList.remove("alert-danger");
+            alert.classList.remove("alert-dark");
+            alert.classList.remove("alert-info");
+            alert.classList.remove("alert-light");
+            alert.classList.remove("alert-secondary");
+            alert.classList.remove("alert-success");
+            alert.classList.remove("alert-warning");
+            alert.classList.remove("alert-primary");
+
+            // Add the button type
+            setType(alertType);
+        },
         show: () => { Common.show(alert); }
     };
 }

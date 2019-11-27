@@ -24,6 +24,12 @@ export interface IAlert {
     /** Hides the alert. */
     hide: () => void;
 
+    /** Updates the alert text. */
+    setText: (alertText?: string) => void;
+
+    /** Updates the alert type. */
+    setType: (alertType: number) => void;
+
     /** Shows the alert. */
     show: () => void;
 }

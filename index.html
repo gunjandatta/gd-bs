@@ -44,7 +44,7 @@
     </form>
     <script type="text/javascript">
         window.addEventListener("load", function () {
-            GD.Components.Alert({
+            window.alert = GD.Components.Alert({
                 el: document.getElementById("alert"),
                 isDismissible: true,
                 content: "This is an alert."

@@ -123,6 +123,12 @@ declare module 'gd-bs/alert' {
             /** Hides the alert. */
             hide: () => void;
     
+            /** Updates the alert text. */
+            setText: (alertText?: string) => void;
+    
+            /** Updates the alert type. */
+            setType: (alertType: number) => void;
+    
             /** Shows the alert. */
             show: () => void;
     }
@@ -279,7 +285,7 @@ declare module 'gd-bs/button' {
             /** Updates the button text. */
             setText: (btnText?: string) => void;
     
-            /** Updates the butotn type. */
+            /** Updates the button type. */
             setType: (btnType: number) => void;
     
             /** Shows the button. */

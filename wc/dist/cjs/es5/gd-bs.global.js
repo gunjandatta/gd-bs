@@ -1659,7 +1659,7 @@ function appGlobal(n, x, w, d, r, h) {
                 u = e.el;
             }
             else
-                u.classList.add("bs"); return e.options && r(t).collapse(e.options), { el: t, hide: function () { n.hide(t); }, show: function () { n.show(t); } }; }; }, function (e, t, o) { Object.defineProperty(t, "__esModule", { value: !0 }); var r, n = o(1), i = o(0); !function (e) { e[e.Danger = 1] = "Danger", e[e.Dark = 2] = "Dark", e[e.Info = 3] = "Info", e[e.Light = 4] = "Light", e[e.Primary = 5] = "Primary", e[e.Secondary = 6] = "Secondary", e[e.Success = 7] = "Success", e[e.Warning = 8] = "Warning"; }(r = t.AlertTypes || (t.AlertTypes = {})), t.Alert = function (e) { var t = document.createElement("div"); switch (t.setAttribute("role", "alert"), t.className = e.className || "", t.classList.add("alert"), e.isDismissible && t.classList.add("alert-dismissible"), e.type) {
+                u.classList.add("bs"); return e.options && r(t).collapse(e.options), { el: t, hide: function () { n.hide(t); }, show: function () { n.show(t); } }; }; }, function (e, t, o) { Object.defineProperty(t, "__esModule", { value: !0 }); var r, n = o(1), i = o(0); !function (e) { e[e.Danger = 1] = "Danger", e[e.Dark = 2] = "Dark", e[e.Info = 3] = "Info", e[e.Light = 4] = "Light", e[e.Primary = 5] = "Primary", e[e.Secondary = 6] = "Secondary", e[e.Success = 7] = "Success", e[e.Warning = 8] = "Warning"; }(r = t.AlertTypes || (t.AlertTypes = {})), t.Alert = function (e) { var t = document.createElement("div"); t.setAttribute("role", "alert"), t.className = e.className || "", t.classList.add("alert"), e.isDismissible && t.classList.add("alert-dismissible"); var o = function (e) { switch (e) {
                 case r.Danger:
                     t.classList.add("alert-danger");
                     break;
@@ -1682,16 +1682,17 @@ function appGlobal(n, x, w, d, r, h) {
                     t.classList.add("alert-warning");
                     break;
                 default: t.classList.add("alert-primary");
-            } if (e.header && (t.innerHTML = '<h4 class="alert-heading">' + e.header + "</h4>"), t.innerHTML += e.content || "", e.isDismissible) {
-                var o = document.createElement("button");
-                o.className = "close", o.type = "button", o.setAttribute("data-dismiss", "alert"), o.setAttribute("aria-label", "Close"), o.innerHTML = '<span aria-hidden="true">&times;</span>', t.appendChild(o);
-            } var a = document.createElement("div"); if (a.appendChild(t), e.el) {
-                for (e.el.classList && "BODY" != e.el.tagName && !e.el.classList.contains("bs") && e.el.classList.add("bs"); a.children.length > 0;)
-                    e.el.appendChild(a.children[0]);
-                a = e.el;
+            } }; if (o(e.type), e.header && (t.innerHTML = '<h4 class="alert-heading">' + e.header + "</h4>"), t.innerHTML += e.content || "", e.isDismissible) {
+                var a = document.createElement("button");
+                a.className = "close", a.type = "button", a.setAttribute("data-dismiss", "alert"), a.setAttribute("aria-label", "Close"), a.innerHTML = '<span aria-hidden="true">&times;</span>', t.appendChild(a);
+            } var s = document.createElement("div"); if (s.appendChild(t), e.el) {
+                for (e.el.classList && "BODY" != e.el.tagName && !e.el.classList.contains("bs") && e.el.classList.add("bs"); s.children.length > 0;)
+                    e.el.appendChild(s.children[0]);
+                s = e.el;
             }
             else
-                a.classList.add("bs"); return { close: function () { n(t).alert("toggle"); }, dispose: function () { n(t).alert("dispose"); }, el: t, hide: function () { i.hide(t); }, show: function () { i.show(t); } }; }; }, function (e, t, o) { Object.defineProperty(t, "__esModule", { value: !0 }); var r = o(0); t.Breadcrumb = function (e) { var t = document.createElement("nav"); t.setAttribute("aria-label", "breadcrumb"); var o = document.createElement("ol"); t.appendChild(o), o.className = e.className || "", o.classList.add("breadcrumb"); for (var n = function (t) { var o = e.items[t.currentTarget.getAttribute("data-idx")]; o && (o.onClick && o.onClick(o, t), e.onClick && e.onClick(o, t)); }, i = e.items || [], a = 0; a < i.length; a++) {
+                s.classList.add("bs"); return { close: function () { n(t).alert("toggle"); }, dispose: function () { n(t).alert("dispose"); }, el: t, hide: function () { i.hide(t); }, setText: function (e) { for (; t.firstChild;)
+                    t.removeChild(t.firstChild); var o = document.createTextNode(e || ""); t.appendChild(o); }, setType: function (e) { t.classList.remove("alert-danger"), t.classList.remove("alert-dark"), t.classList.remove("alert-info"), t.classList.remove("alert-light"), t.classList.remove("alert-secondary"), t.classList.remove("alert-success"), t.classList.remove("alert-warning"), t.classList.remove("alert-primary"), o(e); }, show: function () { i.show(t); } }; }; }, function (e, t, o) { Object.defineProperty(t, "__esModule", { value: !0 }); var r = o(0); t.Breadcrumb = function (e) { var t = document.createElement("nav"); t.setAttribute("aria-label", "breadcrumb"); var o = document.createElement("ol"); t.appendChild(o), o.className = e.className || "", o.classList.add("breadcrumb"); for (var n = function (t) { var o = e.items[t.currentTarget.getAttribute("data-idx")]; o && (o.onClick && o.onClick(o, t), e.onClick && e.onClick(o, t)); }, i = e.items || [], a = 0; a < i.length; a++) {
                 var s = i[a], l = a == i.length - 1, d = ["breadcrumb-item"];
                 l && d.push("active");
                 var c = document.createElement("li");

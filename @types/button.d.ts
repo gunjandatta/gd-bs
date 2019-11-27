@@ -27,7 +27,7 @@ export interface IButton {
     /** Updates the button text. */
     setText: (btnText?: string) => void;
 
-    /** Updates the butotn type. */
+    /** Updates the button type. */
     setType: (btnType: number) => void;
 
     /** Shows the button. */
