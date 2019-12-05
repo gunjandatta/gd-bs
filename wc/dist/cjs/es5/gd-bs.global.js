@@ -831,7 +831,7 @@ function appGlobal(n, x, w, d, r, h) {
                     var l = document.createElement("option");
                     if (l.className = s.className || "", l.disabled = !!s.isDisabled, l.setAttribute("data-idx", a.toString()), r.appendChild(l), l.innerHTML = s.text || "", s.isSelected)
                         l.selected = !0;
-                    else if (n)
+                    else if (void 0 !== n)
                         for (var d = n.length && "string" != typeof n ? n : [n], c = 0; c < d.length; c++)
                             if (s.value == d[c]) {
                                 l.selected = !0;
@@ -863,7 +863,7 @@ function appGlobal(n, x, w, d, r, h) {
                         var u;
                         if ((u = document.createElement("a")).className = s.className || "", u.classList.add("dropdown-item"), s.isDisabled && u.classList.add("disabled"), u.href = s.href || "#", u.setAttribute("data-idx", a.toString()), u.innerHTML = s.text || "", r.appendChild(u), s.isSelected)
                             u.classList.add("active");
-                        else if (n)
+                        else if (void 0 !== n)
                             for (d = n.length && "string" != typeof n ? n : [n], c = 0; c < d.length; c++)
                                 if (s.value == d[c]) {
                                     u.classList.add("active");

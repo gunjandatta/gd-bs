@@ -141,7 +141,7 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
                     option.selected = true;
                 }
                 // Else, see if a value exists
-                else if (value) {
+                else if (typeof (value) !== "undefined") {
                     // Ensure it's an array
                     let values = value.length && typeof (value) !== "string" ? value : [value];
 
@@ -297,7 +297,7 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
                         elItem.classList.add("active");
                     }
                     // Else, see if a value exists
-                    else if (value) {
+                    else if (typeof (value) !== "undefined") {
                         // Ensure it's an array
                         let values = value.length && typeof (value) !== "string" ? value : [value];
 
