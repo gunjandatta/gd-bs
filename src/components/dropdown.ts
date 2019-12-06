@@ -143,7 +143,7 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
                 // Else, see if a value exists
                 else if (typeof (value) !== "undefined") {
                     // Ensure it's an array
-                    let values = value.length && typeof (value) !== "string" ? value : [value];
+                    let values = value && value.length && typeof (value) !== "string" ? value : [value];
 
                     // Parse the values
                     for (let j = 0; j < values.length; j++) {
@@ -299,7 +299,7 @@ export const Dropdown = (props: IDropdownProps): IDropdown => {
                     // Else, see if a value exists
                     else if (typeof (value) !== "undefined") {
                         // Ensure it's an array
-                        let values = value.length && typeof (value) !== "string" ? value : [value];
+                        let values = value && value.length && typeof (value) !== "string" ? value : [value];
 
                         // Parse the values
                         for (let j = 0; j < values.length; j++) {
