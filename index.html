@@ -51,6 +51,9 @@
             });
             window["form"] = GD.Components.Form({
                 el: document.getElementById("dev"),
+                value: {
+                    textfield: 0
+                },
                 rows: [
                     {
                         control: {
@@ -74,6 +77,13 @@
                                 { text: "Option 4", value: 4 },
                                 { text: "Option 5", value: 5 }
                             ]
+                        }
+                    },
+                    {
+                        control: {
+                            label: "Issue 6",
+                            name: "textfield",
+                            type: GD.Components.FormControlTypes.TextField
                         }
                     }
                 ]
@@ -626,7 +636,7 @@
                 prependedButtons: [{ text: "Save" }],
                 prependedLabel: "First Name",
                 appendedButtons: [{ text: "Run" }],
-                value: "0",
+                value: 0,
                 onClear: function () {
                     console.log("The value was cleared.");
                 },

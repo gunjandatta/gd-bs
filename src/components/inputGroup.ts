@@ -79,31 +79,36 @@ export const InputGroup = (props: IInputGroupProps): IInputGroup => {
             break;
     }
 
-    // Add the textbox
-    inputGroup.innerHTML += props.type == InputGroupTypes.TextArea ?
-        [
-            '<textarea class="form-control"',
-            props.placeholder ? 'placeholder="' + props.placeholder + '"' : '',
-            props.isReadonly ? 'readonly' : '',
-            props.rows ? 'rows="' + props.rows + '"' : '',
-            props.title ? 'title="' + props.title + '"' : '',
-            '>' + (props.value || "") + '</textarea>'
-        ].join(' ')
-        :
-        [
-            '<input class="' + (props.isPlainText ? 'form-control-plaintext' : 'form-control') + '"',
-            'type="' + inputType + '"',
-            props.placeholder ? 'placeholder="' + props.placeholder + '"' : '',
-            props.id ? 'id="' + props.id + '"' : '',
-            props.min ? 'min="' + props.min + '"' : '',
-            props.max ? 'max="' + props.max + '"' : '',
-            props.step ? 'step="' + props.step + '"' : '',
-            props.value != null ? 'value="' + props.value + '"' : '',
-            props.isReadonly ? 'readonly' : '',
-            props.title ? 'title="' + props.title + '"' : '',
-            props.type == InputGroupTypes.Search ? 'aria-label="Search"' : '',
-            '></input>'
-        ].join(' ');
+    // See if this is a text area
+    if (props.type == InputGroupTypes.TextArea) {
+        // Add a text area
+        let elText = document.createElement("textarea");
+        inputGroup.appendChild(elText);
+
+        // Set the properties
+        elText.classList.add("form-control");
+        elText.id = props.id || "";
+        elText.placeholder = props.placeholder || "";
+        elText.readOnly = props.isReadonly ? true : false;
+        elText.rows = props.rows;
+        elText.title = props.title || "";
+    } else {
+        // Add the textbox
+        let elText = document.createElement("input");
+        inputGroup.appendChild(elText);
+
+        // Set the properties
+        elText.classList.add(props.isPlainText ? 'form-control-plaintext' : 'form-control');
+        elText.placeholder = props.placeholder || "";
+        elText.readOnly = props.isReadonly ? true : false;
+        elText.title = props.title || "";
+        elText.type = inputType;
+        props.id ? elText.id = props.id : "";
+        typeof (props.min) === "number" ? elText.min = props.min + "" : null;
+        typeof (props.max) === "number" ? elText.max = props.max + "" : null;
+        typeof (props.step) === "number" ? elText.step = props.step + "" : null;
+        props.type == InputGroupTypes.Search ? elText.setAttribute("aria-label", "Search") : null;
+    }
 
     // Default the appended buttons
     let appendedButtons = props.appendedButtons || [];
@@ -200,6 +205,25 @@ export const InputGroup = (props: IInputGroupProps): IInputGroup => {
         });
     }
 
+    // Method to set the value
+    let setValue = (value: string = "") => {
+        // Get the textbox
+        let elTextbox = elInput;
+        if (elTextbox == null && inputGroup) {
+            // Query for the element
+            elTextbox = inputGroup.querySelector("input") || inputGroup.querySelector("textarea") as any;
+        }
+
+        // Ensure a textbox exists
+        if (elTextbox) {
+            // Set the value
+            elTextbox.value = value;
+        }
+    }
+
+    // Set the value
+    setValue(props.value);
+
     // Create the element
     let el = document.createElement("div");
     el.appendChild(inputGroup);
@@ -239,20 +263,7 @@ export const InputGroup = (props: IInputGroupProps): IInputGroup => {
             return elTextbox ? elTextbox.value : null;
         },
         hide: () => { Common.hide(props.formFl ? elInput : inputGroup); },
-        setValue: (value: string = "") => {
-            // Get the textbox
-            let elTextbox = elInput;
-            if (elTextbox == null && inputGroup) {
-                // Query for the element
-                elTextbox = inputGroup.querySelector("input") || inputGroup.querySelector("textarea") as any;
-            }
-            
-            // Ensure a textbox exists
-            if (elTextbox) {
-                // Set the value
-                elTextbox.value = value;
-            }
-        },
+        setValue,
         show: () => { Common.show(props.formFl ? elInput : inputGroup); }
     };
 }
