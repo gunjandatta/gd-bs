@@ -1091,10 +1091,11 @@ function appGlobal(n, x, w, d, r, h) {
                 h.classList.add("bs"); var v = function () { for (var e = [], t = a.querySelectorAll(o ? "input" : "input:checked"), r = 0; r < t.length; r++) {
                 var n = t[r], s = d[n.getAttribute("data-idx")];
                 s.isSelected = n.checked, e.push(s);
-            } return i ? e : e[0]; }; return { el: a, getValue: v, hide: function () { n.hide(a); }, show: function () { n.show(a); } }; }; }, function (e, t, o) { Object.defineProperty(t, "__esModule", { value: !0 }); var r, n = o(0), i = o(11), a = o(5), s = o(3); !function (e) { e[e.Checkbox = 1] = "Checkbox", e[e.Email = 2] = "Email", e[e.Dropdown = 3] = "Dropdown", e[e.File = 4] = "File", e[e.MultiDropdown = 5] = "MultiDropdown", e[e.Password = 6] = "Password", e[e.Radio = 7] = "Radio", e[e.Range = 8] = "Range", e[e.Readonly = 9] = "Readonly", e[e.Switch = 10] = "Switch", e[e.TextArea = 11] = "TextArea", e[e.TextField = 12] = "TextField"; }(r = t.FormControlTypes || (t.FormControlTypes = {})), t.FormControl = function (e) { var t = null, o = null, l = null, d = e.el || document.createElement("div"); switch ((e.className && d.classList.add(e.className), e.controlClassName && d.classList.add(e.controlClassName), e.type)) {
+            } return i ? e : e[0]; }; return { el: a, getValue: v, hide: function () { n.hide(a); }, show: function () { n.show(a); } }; }; }, function (e, t, o) { Object.defineProperty(t, "__esModule", { value: !0 }); var r, n = o(0), i = o(11), a = o(5), s = o(3); !function (e) { e[e.Checkbox = 1] = "Checkbox", e[e.Email = 2] = "Email", e[e.Dropdown = 3] = "Dropdown", e[e.File = 4] = "File", e[e.MultiDropdown = 5] = "MultiDropdown", e[e.Password = 6] = "Password", e[e.Radio = 7] = "Radio", e[e.Range = 8] = "Range", e[e.Readonly = 9] = "Readonly", e[e.Switch = 10] = "Switch", e[e.TextArea = 11] = "TextArea", e[e.TextField = 12] = "TextField"; }(r = t.FormControlTypes || (t.FormControlTypes = {})), t.FormControl = function (e) { for (var t = null, o = null, l = null, d = e.el || document.createElement("div"), c = [e.className || "", e.controlClassName || ""].join(" ").trim().split(" "), b = 0; b < c.length; b++)
+                c[b] && d.classList.add(c[b]); switch (e.type) {
                 case r.Checkbox:
-                    var c = e, b = c.items || [];
-                    0 == b.length && b.push({ label: c.isInline ? e.label : null, name: e.name, isSelected: !!e.value }), t = i.CheckboxGroup({ className: d.className, el: d, hideLabel: !0, isInline: c.isInline, isReadonly: e.isReadonly, items: b, label: 0 == b.length ? null : e.label, multi: c.multi, onChange: c.onChange, title: e.title, type: i.CheckboxGroupTypes.Checkbox, value: e.value });
+                    var m = e, p = m.items || [];
+                    0 == p.length && p.push({ label: m.isInline ? e.label : null, name: e.name, isSelected: !!e.value }), t = i.CheckboxGroup({ className: d.className, el: d, hideLabel: !0, isInline: m.isInline, isReadonly: e.isReadonly, items: p, label: 0 == p.length ? null : e.label, multi: m.multi, onChange: m.onChange, title: e.title, type: i.CheckboxGroupTypes.Checkbox, value: e.value });
                     break;
                 case r.Dropdown:
                     o = a.Dropdown({ className: d.className, el: d, formFl: !0, isReadonly: e.isReadonly, items: e.items, onChange: e.onChange, title: e.title, value: e.value });
@@ -1125,12 +1126,12 @@ function appGlobal(n, x, w, d, r, h) {
                     break;
                 case r.TextField: l = s.InputGroup({ className: d.className, el: d, isPlainText: e.isPlainText, isReadonly: e.isReadonly, onChange: e.onChange, placeholder: e.placeholder, title: e.title, type: s.InputGroupTypes.TextField, value: e.value });
             } if (e.errorMessage) {
-                var m = d.querySelector(".input-group") || d.querySelector(".form-check:last-child");
-                if (m) {
-                    var p = document.createElement("div");
-                    p.className = "invalid-feedback", p.innerHTML = e.errorMessage, m.appendChild(p);
+                var u = d.querySelector(".input-group") || d.querySelector(".form-check:last-child");
+                if (u) {
+                    var f = document.createElement("div");
+                    f.className = "invalid-feedback", f.innerHTML = e.errorMessage, u.appendChild(f);
                 }
-            } var u = function () { return e.onGetValue ? e.onGetValue(e) : t ? e.items ? t.getValue() : !!t.getValue() : o ? o.getValue() : l ? l.getValue() : void 0; }; return { el: d, get: function () { return t || o || l; }, getValue: u, hide: function () { n.hide(d); }, isValid: function () { var r = { isValid: !0 }, n = t || o || l ? (t || o || l).el : d, i = u(); if (e.required && (null == i ? r.isValid = !1 : "number" == typeof i.length && (r.isValid = i.length > 0)), e.onValidate) {
+            } var g = function () { return e.onGetValue ? e.onGetValue(e) : t ? e.items ? t.getValue() : !!t.getValue() : o ? o.getValue() : l ? l.getValue() : void 0; }; return { el: d, get: function () { return t || o || l; }, getValue: g, hide: function () { n.hide(d); }, isValid: function () { var r = { isValid: !0 }, n = t || o || l ? (t || o || l).el : d, i = g(); if (e.required && (null == i ? r.isValid = !1 : "number" == typeof i.length && (r.isValid = i.length > 0)), e.onValidate) {
                     var a = e.onValidate(e, i);
                     "boolean" == typeof a ? r.isValid = a : a && (r = a);
                 } var s, c = n.querySelector(".form-control"); if (c)

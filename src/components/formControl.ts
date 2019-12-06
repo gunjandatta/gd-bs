@@ -35,8 +35,15 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
 
     // Create the element
     let el = props.el || document.createElement("div");
-    props.className ? el.classList.add(props.className) : null;
-    props.controlClassName ? el.classList.add(props.controlClassName) : null;
+
+    // Parse the custom classes to add
+    let classNames = [(props.className || ""), (props.controlClassName || "")].join(" ").trim().split(" ");
+    for (let i = 0; i < classNames.length; i++) {
+        let className = classNames[i];
+
+        // Add the class if it exists
+        className ? el.classList.add(classNames[i]) : null;
+    }
 
     // Render the control based on the type
     switch (props.type) {
