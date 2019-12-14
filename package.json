@@ -1,14 +1,19 @@
 {
   "name": "gd-bs",
-  "version": "1.6.4",
+  "version": "1.6.5",
   "description": "Bootstrap JavaScript, TypeScript and Web Components library.",
   "main": "dist/gd-bs.js",
   "typings": "dist/gd-bs.d.ts",
   "scripts": {
-    "all": "npm run build && npm run prod && npm run typings && npm run wc",
+    "all": "npm run icons && npm run build-all && npm run prod-all && npm run typings && npm run wc",
+    "build-all": "npm run build && npm run build-icons",
     "build": "webpack --mode=development",
+    "build-icons": "webpack --mode=development --icons=true",
+    "icons": "generateIcons.js",
+    "prod-all": "npm run prod && npm run prod-icons",
     "prod": "webpack --mode=production",
-    "typings": "dts-bundle --out ../dist/gd-bs.d.ts --name gd-bs --main ./@types/typings.d.ts",
+    "prod-icons": "webpack --mode=production --icons=true",
+    "typings": "dts-bundle --out ../dist/gd-bs.d.ts --name gd-bs --main ./@types/index.d.ts",
     "wc": "cd wc && npm run build",
     "wc-serve": "cd wc && npm run start"
   },
@@ -26,14 +31,16 @@
     "url": "https://github.com/gunjandatta/gd-bs/issues"
   },
   "homepage": "https://gunjandatta.github.io/extras/bs",
-  "dependencies": {},
+  "dependencies": {
+    "bootstrap": "^4.4.1",
+    "bootstrap-icons": "^1.0.0-alpha"
+  },
   "devDependencies": {
     "@babel/core": "^7.3.4",
     "@babel/preset-env": "^7.3.4",
     "@stencil/core": "^0.18.0",
     "autoprefixer": "^9.4.9",
     "babel-loader": "^8.0.5",
-    "bootstrap": "^4.4.1",
     "copy-webpack-plugin": "^5.0.0",
     "css-loader": "^2.1.0",
     "dts-bundle": "^0.7.3",
@@ -44,6 +51,7 @@
     "replace-in-file-webpack-plugin": "^1.0.6",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
+    "svg-inline-loader": "^0.8.0",
     "ts-loader": "^5.3.3",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.2.3"

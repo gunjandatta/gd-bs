@@ -4,13 +4,14 @@ const replace = require("replace-in-file-webpack-plugin");
 
 module.exports = (env, argv) => {
     var isDev = argv.mode === "development";
+    var includeIcons = argv.icons === "true";
 
     // Return the configuration
     var config = {
-        entry: "./src/index.ts",
+        entry: "./src/index" + (includeIcons ? "-icons" : "") + ".ts",
         output: {
             path: path.resolve(__dirname, "dist"),
-            filename: "gd-bs" + (isDev ? "" : ".min") + ".js"
+            filename: "gd-bs" + (includeIcons ? "-icons" : "") + (isDev ? "" : ".min") + ".js"
         },
         resolve: {
             extensions: [".scss", ".css", ".ts", ".js"]
@@ -37,6 +38,12 @@ module.exports = (env, argv) => {
                         },
                         // Compile SASS to CSS
                         { loader: "sass-loader" }
+                    ]
+                },
+                {
+                    test: /\.svg$/,
+                    use: [
+                        { loader: "svg-inline-loader" }
                     ]
                 },
                 {
