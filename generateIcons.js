@@ -39,7 +39,7 @@ fs.readdir(dirIcons, function (err, files) {
 
         // Add the variable
         var funcName = varName[0].toUpperCase() + varName.substr(1);
-        variables.push("export const " + funcName + " = (height=32,width=32) => { return generateIcon(" + varName + ", height, width); }");
+        variables.push("export const " + funcName + " = (height,width) => { return generateIcon(" + varName + ", height, width); }");
 
         // Add the variable definition
         definitions.push("export const " + funcName + ": (height?: number, width?: number) => HTMLElement;")
@@ -55,9 +55,9 @@ fs.readdir(dirIcons, function (err, files) {
     ].join('\n');
 
     // Delete the icons definition file
-    fs.unlink("./@types/icons.d.ts", function(err) {
+    fs.unlink("./@types/icons.d.ts", function (err) {
         // See if there is an error
-        if(err) {
+        if (err) {
             // Log
             console.log(err);
             return;
@@ -73,9 +73,9 @@ fs.readdir(dirIcons, function (err, files) {
     });
 
     // Delete the icons file
-    fs.unlink("./src/icons/icons.ts", function(err) {
+    fs.unlink("./src/icons/icons.ts", function (err) {
         // See if there is an error
-        if(err) {
+        if (err) {
             // Log
             console.log(err);
             return;

@@ -1,6 +1,6 @@
 {
   "name": "gd-bs",
-  "version": "1.6.5",
+  "version": "1.6.6",
   "description": "Bootstrap JavaScript, TypeScript and Web Components library.",
   "main": "dist/gd-bs.js",
   "typings": "dist/gd-bs.d.ts",
@@ -9,7 +9,7 @@
     "build-all": "npm run build && npm run build-icons",
     "build": "webpack --mode=development",
     "build-icons": "webpack --mode=development --icons=true",
-    "icons": "generateIcons.js",
+    "icons": "node generateIcons",
     "prod-all": "npm run prod && npm run prod-icons",
     "prod": "webpack --mode=production",
     "prod-icons": "webpack --mode=production --icons=true",
