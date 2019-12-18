@@ -313,7 +313,11 @@ export const XOctagon: (height?: number, width?: number) => HTMLElement;
 export const XSquareFill: (height?: number, width?: number) => HTMLElement;
 export const XSquare: (height?: number, width?: number) => HTMLElement;
 export const X: (height?: number, width?: number) => HTMLElement;
-export const byType = (iconType:number) => HTMLOrSVGElement;
+
+// Renders an icon by type
+export const byType = (iconType:number) => HTMLElement;
+
+// Icon Types
 export const IconTypes: {
 	// alarm-fill.svg
 	alarmFill: number;

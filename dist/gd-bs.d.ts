@@ -362,7 +362,9 @@ declare module 'gd-bs/icons' {
     export const XSquareFill: (height?: number, width?: number) => HTMLElement;
     export const XSquare: (height?: number, width?: number) => HTMLElement;
     export const X: (height?: number, width?: number) => HTMLElement;
-    export const byType = (iconType:number) => HTMLOrSVGElement;
+    
+    export const byType = (iconType:number) => HTMLElement;
+    
     export const IconTypes: {
         // alarm-fill.svg
         alarmFill: number;

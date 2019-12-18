@@ -50,10 +50,10 @@ fs.readdir(dirIcons, function (err, files) {
         types.push("\t" + varName + " = " + iconType);
 
         // Add the switch case statement
-        switches.push("\t// " + file);
-        switches.push("\tcase " + iconType + ":");
-        switches.push("\t\treturn " + funcName + "(height, width);");
-        switches.push("\tbreak;");
+        switches.push("\t\t// " + file);
+        switches.push("\t\tcase " + iconType + ":");
+        switches.push("\t\t\treturn " + funcName + "(height, width);");
+        switches.push("\t\tbreak;");
 
         // Add the variable definition
         definitions.push("export const " + funcName + ": (height?: number, width?: number) => HTMLElement;");
@@ -64,9 +64,11 @@ fs.readdir(dirIcons, function (err, files) {
     });
 
     // Add the by type definition
-    definitions.push("export const byType = (iconType:number) => HTMLOrSVGElement;")
+    definitions.push("\n// Renders an icon by type");
+    definitions.push("export const byType = (iconType:number) => HTMLElement;")
 
     // Add the type definitions
+    definitions.push("\n// Icon Types")
     definitions.push([
         "export const IconTypes: {",
         typeDefs.join('\n'),
@@ -84,6 +86,7 @@ fs.readdir(dirIcons, function (err, files) {
 
     // Add the types
     code.push([
+        "\n// Icon Types",
         "export enum IconTypes {",
         types.join(',\n'),
         '}'
@@ -91,8 +94,9 @@ fs.readdir(dirIcons, function (err, files) {
 
     // Add the by type method
     code.push([
+        "\n// Renders an icon by type",
         "export const byType = (iconType:number, height?:number, width?:number) => {",
-        "\t// Render by the icon type",
+        "\t// See which icon is selected",
         "\tswitch(iconType) {",
         switches.join('\n'),
         "\t}",

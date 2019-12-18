@@ -633,6 +633,8 @@ export const XOctagon = (height,width) => { return generateIcon(xOctagon, height
 export const XSquareFill = (height,width) => { return generateIcon(xSquareFill, height, width); }
 export const XSquare = (height,width) => { return generateIcon(xSquare, height, width); }
 export const X = (height,width) => { return generateIcon(x, height, width); }
+
+// Icon Types
 export enum IconTypes {
 	alarmFill = 1,
 	alarm = 2,
@@ -950,1268 +952,1270 @@ export enum IconTypes {
 	xSquare = 314,
 	x = 315
 }
+
+// Renders an icon by type
 export const byType = (iconType:number, height?:number, width?:number) => {
-	// Render by the icon type
+	// See which icon is selected
 	switch(iconType) {
-	// alarm-fill.svg
-	case 1:
-		return AlarmFill(height, width);
-	break;
-	// alarm.svg
-	case 2:
-		return Alarm(height, width);
-	break;
-	// alert-circle-fill.svg
-	case 3:
-		return AlertCircleFill(height, width);
-	break;
-	// alert-circle.svg
-	case 4:
-		return AlertCircle(height, width);
-	break;
-	// alert-octagon-fill.svg
-	case 5:
-		return AlertOctagonFill(height, width);
-	break;
-	// alert-octagon.svg
-	case 6:
-		return AlertOctagon(height, width);
-	break;
-	// alert-square-fill.svg
-	case 7:
-		return AlertSquareFill(height, width);
-	break;
-	// alert-square.svg
-	case 8:
-		return AlertSquare(height, width);
-	break;
-	// alert-triangle-fill.svg
-	case 9:
-		return AlertTriangleFill(height, width);
-	break;
-	// alert-triangle.svg
-	case 10:
-		return AlertTriangle(height, width);
-	break;
-	// archive-fill.svg
-	case 11:
-		return ArchiveFill(height, width);
-	break;
-	// archive.svg
-	case 12:
-		return Archive(height, width);
-	break;
-	// arrow-bar-bottom.svg
-	case 13:
-		return ArrowBarBottom(height, width);
-	break;
-	// arrow-bar-left.svg
-	case 14:
-		return ArrowBarLeft(height, width);
-	break;
-	// arrow-bar-right.svg
-	case 15:
-		return ArrowBarRight(height, width);
-	break;
-	// arrow-bar-up.svg
-	case 16:
-		return ArrowBarUp(height, width);
-	break;
-	// arrow-clockwise.svg
-	case 17:
-		return ArrowClockwise(height, width);
-	break;
-	// arrow-counterclockwise.svg
-	case 18:
-		return ArrowCounterclockwise(height, width);
-	break;
-	// arrow-down-left.svg
-	case 19:
-		return ArrowDownLeft(height, width);
-	break;
-	// arrow-down-right.svg
-	case 20:
-		return ArrowDownRight(height, width);
-	break;
-	// arrow-down-short.svg
-	case 21:
-		return ArrowDownShort(height, width);
-	break;
-	// arrow-down.svg
-	case 22:
-		return ArrowDown(height, width);
-	break;
-	// arrow-left-right.svg
-	case 23:
-		return ArrowLeftRight(height, width);
-	break;
-	// arrow-left-short.svg
-	case 24:
-		return ArrowLeftShort(height, width);
-	break;
-	// arrow-left.svg
-	case 25:
-		return ArrowLeft(height, width);
-	break;
-	// arrow-repeat.svg
-	case 26:
-		return ArrowRepeat(height, width);
-	break;
-	// arrow-right-short.svg
-	case 27:
-		return ArrowRightShort(height, width);
-	break;
-	// arrow-right.svg
-	case 28:
-		return ArrowRight(height, width);
-	break;
-	// arrow-up-down.svg
-	case 29:
-		return ArrowUpDown(height, width);
-	break;
-	// arrow-up-left.svg
-	case 30:
-		return ArrowUpLeft(height, width);
-	break;
-	// arrow-up-right.svg
-	case 31:
-		return ArrowUpRight(height, width);
-	break;
-	// arrow-up-short.svg
-	case 32:
-		return ArrowUpShort(height, width);
-	break;
-	// arrow-up.svg
-	case 33:
-		return ArrowUp(height, width);
-	break;
-	// arrows-angle-contract.svg
-	case 34:
-		return ArrowsAngleContract(height, width);
-	break;
-	// arrows-angle-expand.svg
-	case 35:
-		return ArrowsAngleExpand(height, width);
-	break;
-	// arrows-collapse.svg
-	case 36:
-		return ArrowsCollapse(height, width);
-	break;
-	// arrows-expand.svg
-	case 37:
-		return ArrowsExpand(height, width);
-	break;
-	// arrows-fullscreen.svg
-	case 38:
-		return ArrowsFullscreen(height, width);
-	break;
-	// at.svg
-	case 39:
-		return At(height, width);
-	break;
-	// award.svg
-	case 40:
-		return Award(height, width);
-	break;
-	// backspace-fill.svg
-	case 41:
-		return BackspaceFill(height, width);
-	break;
-	// backspace-reverse-fill.svg
-	case 42:
-		return BackspaceReverseFill(height, width);
-	break;
-	// backspace-reverse.svg
-	case 43:
-		return BackspaceReverse(height, width);
-	break;
-	// backspace.svg
-	case 44:
-		return Backspace(height, width);
-	break;
-	// bar-chart-fill.svg
-	case 45:
-		return BarChartFill(height, width);
-	break;
-	// bar-chart.svg
-	case 46:
-		return BarChart(height, width);
-	break;
-	// battery-charging.svg
-	case 47:
-		return BatteryCharging(height, width);
-	break;
-	// battery-full.svg
-	case 48:
-		return BatteryFull(height, width);
-	break;
-	// battery.svg
-	case 49:
-		return Battery(height, width);
-	break;
-	// bell-fill.svg
-	case 50:
-		return BellFill(height, width);
-	break;
-	// bell.svg
-	case 51:
-		return Bell(height, width);
-	break;
-	// blockquote-left.svg
-	case 52:
-		return BlockquoteLeft(height, width);
-	break;
-	// blockquote-right.svg
-	case 53:
-		return BlockquoteRight(height, width);
-	break;
-	// book-half-fill.svg
-	case 54:
-		return BookHalfFill(height, width);
-	break;
-	// book.svg
-	case 55:
-		return Book(height, width);
-	break;
-	// bookmark-fill.svg
-	case 56:
-		return BookmarkFill(height, width);
-	break;
-	// bookmark.svg
-	case 57:
-		return Bookmark(height, width);
-	break;
-	// bootstrap-fill.svg
-	case 58:
-		return BootstrapFill(height, width);
-	break;
-	// bootstrap-reboot.svg
-	case 59:
-		return BootstrapReboot(height, width);
-	break;
-	// bootstrap.svg
-	case 60:
-		return Bootstrap(height, width);
-	break;
-	// box-arrow-bottom-left.svg
-	case 61:
-		return BoxArrowBottomLeft(height, width);
-	break;
-	// box-arrow-bottom-right.svg
-	case 62:
-		return BoxArrowBottomRight(height, width);
-	break;
-	// box-arrow-down.svg
-	case 63:
-		return BoxArrowDown(height, width);
-	break;
-	// box-arrow-left.svg
-	case 64:
-		return BoxArrowLeft(height, width);
-	break;
-	// box-arrow-right.svg
-	case 65:
-		return BoxArrowRight(height, width);
-	break;
-	// box-arrow-up-left.svg
-	case 66:
-		return BoxArrowUpLeft(height, width);
-	break;
-	// box-arrow-up-right.svg
-	case 67:
-		return BoxArrowUpRight(height, width);
-	break;
-	// box-arrow-up.svg
-	case 68:
-		return BoxArrowUp(height, width);
-	break;
-	// braces.svg
-	case 69:
-		return Braces(height, width);
-	break;
-	// brightness-fill-high.svg
-	case 70:
-		return BrightnessFillHigh(height, width);
-	break;
-	// brightness-fill-low.svg
-	case 71:
-		return BrightnessFillLow(height, width);
-	break;
-	// brightness-high.svg
-	case 72:
-		return BrightnessHigh(height, width);
-	break;
-	// brightness-low.svg
-	case 73:
-		return BrightnessLow(height, width);
-	break;
-	// brush.svg
-	case 74:
-		return Brush(height, width);
-	break;
-	// bucket-fill.svg
-	case 75:
-		return BucketFill(height, width);
-	break;
-	// bucket.svg
-	case 76:
-		return Bucket(height, width);
-	break;
-	// building.svg
-	case 77:
-		return Building(height, width);
-	break;
-	// bullseye.svg
-	case 78:
-		return Bullseye(height, width);
-	break;
-	// calendar-fill.svg
-	case 79:
-		return CalendarFill(height, width);
-	break;
-	// calendar.svg
-	case 80:
-		return Calendar(height, width);
-	break;
-	// camera-video-fill.svg
-	case 81:
-		return CameraVideoFill(height, width);
-	break;
-	// camera-video.svg
-	case 82:
-		return CameraVideo(height, width);
-	break;
-	// camera.svg
-	case 83:
-		return Camera(height, width);
-	break;
-	// capslock-fill.svg
-	case 84:
-		return CapslockFill(height, width);
-	break;
-	// capslock.svg
-	case 85:
-		return Capslock(height, width);
-	break;
-	// chat-fill.svg
-	case 86:
-		return ChatFill(height, width);
-	break;
-	// chat.svg
-	case 87:
-		return Chat(height, width);
-	break;
-	// check-box.svg
-	case 88:
-		return CheckBox(height, width);
-	break;
-	// check-circle.svg
-	case 89:
-		return CheckCircle(height, width);
-	break;
-	// check.svg
-	case 90:
-		return Check(height, width);
-	break;
-	// chevron-compact-down.svg
-	case 91:
-		return ChevronCompactDown(height, width);
-	break;
-	// chevron-compact-left.svg
-	case 92:
-		return ChevronCompactLeft(height, width);
-	break;
-	// chevron-compact-right.svg
-	case 93:
-		return ChevronCompactRight(height, width);
-	break;
-	// chevron-compact-up.svg
-	case 94:
-		return ChevronCompactUp(height, width);
-	break;
-	// chevron-down.svg
-	case 95:
-		return ChevronDown(height, width);
-	break;
-	// chevron-left.svg
-	case 96:
-		return ChevronLeft(height, width);
-	break;
-	// chevron-right.svg
-	case 97:
-		return ChevronRight(height, width);
-	break;
-	// chevron-up.svg
-	case 98:
-		return ChevronUp(height, width);
-	break;
-	// circle-fill.svg
-	case 99:
-		return CircleFill(height, width);
-	break;
-	// circle-half.svg
-	case 100:
-		return CircleHalf(height, width);
-	break;
-	// circle-slash.svg
-	case 101:
-		return CircleSlash(height, width);
-	break;
-	// circle.svg
-	case 102:
-		return Circle(height, width);
-	break;
-	// clock-fill.svg
-	case 103:
-		return ClockFill(height, width);
-	break;
-	// clock.svg
-	case 104:
-		return Clock(height, width);
-	break;
-	// cloud-download.svg
-	case 105:
-		return CloudDownload(height, width);
-	break;
-	// cloud-fill.svg
-	case 106:
-		return CloudFill(height, width);
-	break;
-	// cloud-upload.svg
-	case 107:
-		return CloudUpload(height, width);
-	break;
-	// cloud.svg
-	case 108:
-		return Cloud(height, width);
-	break;
-	// code-slash.svg
-	case 109:
-		return CodeSlash(height, width);
-	break;
-	// code.svg
-	case 110:
-		return Code(height, width);
-	break;
-	// columns-gutters.svg
-	case 111:
-		return ColumnsGutters(height, width);
-	break;
-	// columns.svg
-	case 112:
-		return Columns(height, width);
-	break;
-	// command.svg
-	case 113:
-		return Command(height, width);
-	break;
-	// compass.svg
-	case 114:
-		return Compass(height, width);
-	break;
-	// cone-striped.svg
-	case 115:
-		return ConeStriped(height, width);
-	break;
-	// cone.svg
-	case 116:
-		return Cone(height, width);
-	break;
-	// controller.svg
-	case 117:
-		return Controller(height, width);
-	break;
-	// credit-card.svg
-	case 118:
-		return CreditCard(height, width);
-	break;
-	// cursor-fill.svg
-	case 119:
-		return CursorFill(height, width);
-	break;
-	// cursor.svg
-	case 120:
-		return Cursor(height, width);
-	break;
-	// dash.svg
-	case 121:
-		return Dash(height, width);
-	break;
-	// diamond-half.svg
-	case 122:
-		return DiamondHalf(height, width);
-	break;
-	// diamond.svg
-	case 123:
-		return Diamond(height, width);
-	break;
-	// display-fill.svg
-	case 124:
-		return DisplayFill(height, width);
-	break;
-	// display.svg
-	case 125:
-		return Display(height, width);
-	break;
-	// document-code.svg
-	case 126:
-		return DocumentCode(height, width);
-	break;
-	// document-diff.svg
-	case 127:
-		return DocumentDiff(height, width);
-	break;
-	// document-richtext.svg
-	case 128:
-		return DocumentRichtext(height, width);
-	break;
-	// document-spreadsheet.svg
-	case 129:
-		return DocumentSpreadsheet(height, width);
-	break;
-	// document-text.svg
-	case 130:
-		return DocumentText(height, width);
-	break;
-	// document.svg
-	case 131:
-		return Document(height, width);
-	break;
-	// documents-alt.svg
-	case 132:
-		return DocumentsAlt(height, width);
-	break;
-	// documents.svg
-	case 133:
-		return Documents(height, width);
-	break;
-	// dot.svg
-	case 134:
-		return Dot(height, width);
-	break;
-	// download.svg
-	case 135:
-		return Download(height, width);
-	break;
-	// egg-fried.svg
-	case 136:
-		return EggFried(height, width);
-	break;
-	// eject-fill.svg
-	case 137:
-		return EjectFill(height, width);
-	break;
-	// eject.svg
-	case 138:
-		return Eject(height, width);
-	break;
-	// envelope-fill.svg
-	case 139:
-		return EnvelopeFill(height, width);
-	break;
-	// envelope-open-fill.svg
-	case 140:
-		return EnvelopeOpenFill(height, width);
-	break;
-	// envelope-open.svg
-	case 141:
-		return EnvelopeOpen(height, width);
-	break;
-	// envelope.svg
-	case 142:
-		return Envelope(height, width);
-	break;
-	// eye-fill.svg
-	case 143:
-		return EyeFill(height, width);
-	break;
-	// eye-slash-fill.svg
-	case 144:
-		return EyeSlashFill(height, width);
-	break;
-	// eye-slash.svg
-	case 145:
-		return EyeSlash(height, width);
-	break;
-	// eye.svg
-	case 146:
-		return Eye(height, width);
-	break;
-	// filter.svg
-	case 147:
-		return Filter(height, width);
-	break;
-	// flag-fill.svg
-	case 148:
-		return FlagFill(height, width);
-	break;
-	// flag.svg
-	case 149:
-		return Flag(height, width);
-	break;
-	// folder-fill.svg
-	case 150:
-		return FolderFill(height, width);
-	break;
-	// folder-symlink-fill.svg
-	case 151:
-		return FolderSymlinkFill(height, width);
-	break;
-	// folder-symlink.svg
-	case 152:
-		return FolderSymlink(height, width);
-	break;
-	// folder.svg
-	case 153:
-		return Folder(height, width);
-	break;
-	// fonts.svg
-	case 154:
-		return Fonts(height, width);
-	break;
-	// forward-fill.svg
-	case 155:
-		return ForwardFill(height, width);
-	break;
-	// forward.svg
-	case 156:
-		return Forward(height, width);
-	break;
-	// gear-fill.svg
-	case 157:
-		return GearFill(height, width);
-	break;
-	// gear-wide-connected.svg
-	case 158:
-		return GearWideConnected(height, width);
-	break;
-	// gear-wide.svg
-	case 159:
-		return GearWide(height, width);
-	break;
-	// gear.svg
-	case 160:
-		return Gear(height, width);
-	break;
-	// geo.svg
-	case 161:
-		return Geo(height, width);
-	break;
-	// graph-down.svg
-	case 162:
-		return GraphDown(height, width);
-	break;
-	// graph-up.svg
-	case 163:
-		return GraphUp(height, width);
-	break;
-	// grid-fill.svg
-	case 164:
-		return GridFill(height, width);
-	break;
-	// grid.svg
-	case 165:
-		return Grid(height, width);
-	break;
-	// hammer.svg
-	case 166:
-		return Hammer(height, width);
-	break;
-	// hash.svg
-	case 167:
-		return Hash(height, width);
-	break;
-	// heart-fill.svg
-	case 168:
-		return HeartFill(height, width);
-	break;
-	// heart.svg
-	case 169:
-		return Heart(height, width);
-	break;
-	// house-fill.svg
-	case 170:
-		return HouseFill(height, width);
-	break;
-	// house.svg
-	case 171:
-		return House(height, width);
-	break;
-	// image-alt.svg
-	case 172:
-		return ImageAlt(height, width);
-	break;
-	// image-fill.svg
-	case 173:
-		return ImageFill(height, width);
-	break;
-	// image.svg
-	case 174:
-		return Image(height, width);
-	break;
-	// images.svg
-	case 175:
-		return Images(height, width);
-	break;
-	// inbox-fill.svg
-	case 176:
-		return InboxFill(height, width);
-	break;
-	// inbox.svg
-	case 177:
-		return Inbox(height, width);
-	break;
-	// inboxes-fill.svg
-	case 178:
-		return InboxesFill(height, width);
-	break;
-	// inboxes.svg
-	case 179:
-		return Inboxes(height, width);
-	break;
-	// info-fill.svg
-	case 180:
-		return InfoFill(height, width);
-	break;
-	// info-square-fill.svg
-	case 181:
-		return InfoSquareFill(height, width);
-	break;
-	// info-square.svg
-	case 182:
-		return InfoSquare(height, width);
-	break;
-	// info.svg
-	case 183:
-		return Info(height, width);
-	break;
-	// justify-left.svg
-	case 184:
-		return JustifyLeft(height, width);
-	break;
-	// justify-right.svg
-	case 185:
-		return JustifyRight(height, width);
-	break;
-	// justify.svg
-	case 186:
-		return Justify(height, width);
-	break;
-	// kanban-fill.svg
-	case 187:
-		return KanbanFill(height, width);
-	break;
-	// kanban.svg
-	case 188:
-		return Kanban(height, width);
-	break;
-	// laptop.svg
-	case 189:
-		return Laptop(height, width);
-	break;
-	// layout-sidebar-reverse.svg
-	case 190:
-		return LayoutSidebarReverse(height, width);
-	break;
-	// layout-sidebar.svg
-	case 191:
-		return LayoutSidebar(height, width);
-	break;
-	// layout-split.svg
-	case 192:
-		return LayoutSplit(height, width);
-	break;
-	// list-check.svg
-	case 193:
-		return ListCheck(height, width);
-	break;
-	// list-ol.svg
-	case 194:
-		return ListOl(height, width);
-	break;
-	// list-task.svg
-	case 195:
-		return ListTask(height, width);
-	break;
-	// list-ul.svg
-	case 196:
-		return ListUl(height, width);
-	break;
-	// list.svg
-	case 197:
-		return List(height, width);
-	break;
-	// lock-fill.svg
-	case 198:
-		return LockFill(height, width);
-	break;
-	// lock.svg
-	case 199:
-		return Lock(height, width);
-	break;
-	// map.svg
-	case 200:
-		return Map(height, width);
-	break;
-	// mic.svg
-	case 201:
-		return Mic(height, width);
-	break;
-	// moon.svg
-	case 202:
-		return Moon(height, width);
-	break;
-	// music-player-fill.svg
-	case 203:
-		return MusicPlayerFill(height, width);
-	break;
-	// music-player.svg
-	case 204:
-		return MusicPlayer(height, width);
-	break;
-	// option.svg
-	case 205:
-		return Option(height, width);
-	break;
-	// outlet.svg
-	case 206:
-		return Outlet(height, width);
-	break;
-	// pause-fill.svg
-	case 207:
-		return PauseFill(height, width);
-	break;
-	// pause.svg
-	case 208:
-		return Pause(height, width);
-	break;
-	// pen.svg
-	case 209:
-		return Pen(height, width);
-	break;
-	// pencil.svg
-	case 210:
-		return Pencil(height, width);
-	break;
-	// people-fill.svg
-	case 211:
-		return PeopleFill(height, width);
-	break;
-	// people.svg
-	case 212:
-		return People(height, width);
-	break;
-	// person-fill.svg
-	case 213:
-		return PersonFill(height, width);
-	break;
-	// person.svg
-	case 214:
-		return Person(height, width);
-	break;
-	// phone-landscape.svg
-	case 215:
-		return PhoneLandscape(height, width);
-	break;
-	// phone.svg
-	case 216:
-		return Phone(height, width);
-	break;
-	// pie-chart-fill.svg
-	case 217:
-		return PieChartFill(height, width);
-	break;
-	// pie-chart.svg
-	case 218:
-		return PieChart(height, width);
-	break;
-	// play-fill.svg
-	case 219:
-		return PlayFill(height, width);
-	break;
-	// play.svg
-	case 220:
-		return Play(height, width);
-	break;
-	// plug.svg
-	case 221:
-		return Plug(height, width);
-	break;
-	// plus.svg
-	case 222:
-		return Plus(height, width);
-	break;
-	// power.svg
-	case 223:
-		return Power(height, width);
-	break;
-	// question-fill.svg
-	case 224:
-		return QuestionFill(height, width);
-	break;
-	// question-square-fill.svg
-	case 225:
-		return QuestionSquareFill(height, width);
-	break;
-	// question-square.svg
-	case 226:
-		return QuestionSquare(height, width);
-	break;
-	// question.svg
-	case 227:
-		return Question(height, width);
-	break;
-	// reply-all-fill.svg
-	case 228:
-		return ReplyAllFill(height, width);
-	break;
-	// reply-all.svg
-	case 229:
-		return ReplyAll(height, width);
-	break;
-	// reply-fill.svg
-	case 230:
-		return ReplyFill(height, width);
-	break;
-	// reply.svg
-	case 231:
-		return Reply(height, width);
-	break;
-	// screwdriver.svg
-	case 232:
-		return Screwdriver(height, width);
-	break;
-	// search.svg
-	case 233:
-		return Search(height, width);
-	break;
-	// shield-fill.svg
-	case 234:
-		return ShieldFill(height, width);
-	break;
-	// shield-lock-fill.svg
-	case 235:
-		return ShieldLockFill(height, width);
-	break;
-	// shield-lock.svg
-	case 236:
-		return ShieldLock(height, width);
-	break;
-	// shield-shaded.svg
-	case 237:
-		return ShieldShaded(height, width);
-	break;
-	// shield.svg
-	case 238:
-		return Shield(height, width);
-	break;
-	// shift-fill.svg
-	case 239:
-		return ShiftFill(height, width);
-	break;
-	// shift.svg
-	case 240:
-		return Shift(height, width);
-	break;
-	// skip-backward-fill.svg
-	case 241:
-		return SkipBackwardFill(height, width);
-	break;
-	// skip-backward.svg
-	case 242:
-		return SkipBackward(height, width);
-	break;
-	// skip-end-fill.svg
-	case 243:
-		return SkipEndFill(height, width);
-	break;
-	// skip-end.svg
-	case 244:
-		return SkipEnd(height, width);
-	break;
-	// skip-forward-fill.svg
-	case 245:
-		return SkipForwardFill(height, width);
-	break;
-	// skip-forward.svg
-	case 246:
-		return SkipForward(height, width);
-	break;
-	// skip-start-fill.svg
-	case 247:
-		return SkipStartFill(height, width);
-	break;
-	// skip-start.svg
-	case 248:
-		return SkipStart(height, width);
-	break;
-	// speaker.svg
-	case 249:
-		return Speaker(height, width);
-	break;
-	// square-fill.svg
-	case 250:
-		return SquareFill(height, width);
-	break;
-	// square-half.svg
-	case 251:
-		return SquareHalf(height, width);
-	break;
-	// square.svg
-	case 252:
-		return Square(height, width);
-	break;
-	// star-fill.svg
-	case 253:
-		return StarFill(height, width);
-	break;
-	// star-half.svg
-	case 254:
-		return StarHalf(height, width);
-	break;
-	// star.svg
-	case 255:
-		return Star(height, width);
-	break;
-	// stop-fill.svg
-	case 256:
-		return StopFill(height, width);
-	break;
-	// stop.svg
-	case 257:
-		return Stop(height, width);
-	break;
-	// stopwatch-fill.svg
-	case 258:
-		return StopwatchFill(height, width);
-	break;
-	// stopwatch.svg
-	case 259:
-		return Stopwatch(height, width);
-	break;
-	// sun.svg
-	case 260:
-		return Sun(height, width);
-	break;
-	// table.svg
-	case 261:
-		return Table(height, width);
-	break;
-	// tablet-landscape.svg
-	case 262:
-		return TabletLandscape(height, width);
-	break;
-	// tablet.svg
-	case 263:
-		return Tablet(height, width);
-	break;
-	// tag-fill.svg
-	case 264:
-		return TagFill(height, width);
-	break;
-	// tag.svg
-	case 265:
-		return Tag(height, width);
-	break;
-	// terminal-fill.svg
-	case 266:
-		return TerminalFill(height, width);
-	break;
-	// terminal.svg
-	case 267:
-		return Terminal(height, width);
-	break;
-	// text-center.svg
-	case 268:
-		return TextCenter(height, width);
-	break;
-	// text-indent-left.svg
-	case 269:
-		return TextIndentLeft(height, width);
-	break;
-	// text-indent-right.svg
-	case 270:
-		return TextIndentRight(height, width);
-	break;
-	// text-left.svg
-	case 271:
-		return TextLeft(height, width);
-	break;
-	// text-right.svg
-	case 272:
-		return TextRight(height, width);
-	break;
-	// three-dots-vertical.svg
-	case 273:
-		return ThreeDotsVertical(height, width);
-	break;
-	// three-dots.svg
-	case 274:
-		return ThreeDots(height, width);
-	break;
-	// toggle-off.svg
-	case 275:
-		return ToggleOff(height, width);
-	break;
-	// toggle-on.svg
-	case 276:
-		return ToggleOn(height, width);
-	break;
-	// toggles.svg
-	case 277:
-		return Toggles(height, width);
-	break;
-	// tools.svg
-	case 278:
-		return Tools(height, width);
-	break;
-	// trash-fill.svg
-	case 279:
-		return TrashFill(height, width);
-	break;
-	// trash.svg
-	case 280:
-		return Trash(height, width);
-	break;
-	// triangle-fill.svg
-	case 281:
-		return TriangleFill(height, width);
-	break;
-	// triangle-half.svg
-	case 282:
-		return TriangleHalf(height, width);
-	break;
-	// triangle.svg
-	case 283:
-		return Triangle(height, width);
-	break;
-	// trophy.svg
-	case 284:
-		return Trophy(height, width);
-	break;
-	// tv-fill.svg
-	case 285:
-		return TvFill(height, width);
-	break;
-	// tv.svg
-	case 286:
-		return Tv(height, width);
-	break;
-	// type-bold.svg
-	case 287:
-		return TypeBold(height, width);
-	break;
-	// type-h1.svg
-	case 288:
-		return TypeH1(height, width);
-	break;
-	// type-h2.svg
-	case 289:
-		return TypeH2(height, width);
-	break;
-	// type-h3.svg
-	case 290:
-		return TypeH3(height, width);
-	break;
-	// type-italic.svg
-	case 291:
-		return TypeItalic(height, width);
-	break;
-	// type-strikethrough.svg
-	case 292:
-		return TypeStrikethrough(height, width);
-	break;
-	// type-underline.svg
-	case 293:
-		return TypeUnderline(height, width);
-	break;
-	// type.svg
-	case 294:
-		return Type(height, width);
-	break;
-	// unlock-fill.svg
-	case 295:
-		return UnlockFill(height, width);
-	break;
-	// unlock.svg
-	case 296:
-		return Unlock(height, width);
-	break;
-	// upload.svg
-	case 297:
-		return Upload(height, width);
-	break;
-	// volume-down-fill.svg
-	case 298:
-		return VolumeDownFill(height, width);
-	break;
-	// volume-down.svg
-	case 299:
-		return VolumeDown(height, width);
-	break;
-	// volume-mute-fill.svg
-	case 300:
-		return VolumeMuteFill(height, width);
-	break;
-	// volume-mute.svg
-	case 301:
-		return VolumeMute(height, width);
-	break;
-	// volume-up-fill.svg
-	case 302:
-		return VolumeUpFill(height, width);
-	break;
-	// volume-up.svg
-	case 303:
-		return VolumeUp(height, width);
-	break;
-	// wallet.svg
-	case 304:
-		return Wallet(height, width);
-	break;
-	// watch.svg
-	case 305:
-		return Watch(height, width);
-	break;
-	// wifi.svg
-	case 306:
-		return Wifi(height, width);
-	break;
-	// window.svg
-	case 307:
-		return Window(height, width);
-	break;
-	// wrench.svg
-	case 308:
-		return Wrench(height, width);
-	break;
-	// x-circle-fill.svg
-	case 309:
-		return XCircleFill(height, width);
-	break;
-	// x-circle.svg
-	case 310:
-		return XCircle(height, width);
-	break;
-	// x-octagon-fill.svg
-	case 311:
-		return XOctagonFill(height, width);
-	break;
-	// x-octagon.svg
-	case 312:
-		return XOctagon(height, width);
-	break;
-	// x-square-fill.svg
-	case 313:
-		return XSquareFill(height, width);
-	break;
-	// x-square.svg
-	case 314:
-		return XSquare(height, width);
-	break;
-	// x.svg
-	case 315:
-		return X(height, width);
-	break;
+		// alarm-fill.svg
+		case 1:
+			return AlarmFill(height, width);
+		break;
+		// alarm.svg
+		case 2:
+			return Alarm(height, width);
+		break;
+		// alert-circle-fill.svg
+		case 3:
+			return AlertCircleFill(height, width);
+		break;
+		// alert-circle.svg
+		case 4:
+			return AlertCircle(height, width);
+		break;
+		// alert-octagon-fill.svg
+		case 5:
+			return AlertOctagonFill(height, width);
+		break;
+		// alert-octagon.svg
+		case 6:
+			return AlertOctagon(height, width);
+		break;
+		// alert-square-fill.svg
+		case 7:
+			return AlertSquareFill(height, width);
+		break;
+		// alert-square.svg
+		case 8:
+			return AlertSquare(height, width);
+		break;
+		// alert-triangle-fill.svg
+		case 9:
+			return AlertTriangleFill(height, width);
+		break;
+		// alert-triangle.svg
+		case 10:
+			return AlertTriangle(height, width);
+		break;
+		// archive-fill.svg
+		case 11:
+			return ArchiveFill(height, width);
+		break;
+		// archive.svg
+		case 12:
+			return Archive(height, width);
+		break;
+		// arrow-bar-bottom.svg
+		case 13:
+			return ArrowBarBottom(height, width);
+		break;
+		// arrow-bar-left.svg
+		case 14:
+			return ArrowBarLeft(height, width);
+		break;
+		// arrow-bar-right.svg
+		case 15:
+			return ArrowBarRight(height, width);
+		break;
+		// arrow-bar-up.svg
+		case 16:
+			return ArrowBarUp(height, width);
+		break;
+		// arrow-clockwise.svg
+		case 17:
+			return ArrowClockwise(height, width);
+		break;
+		// arrow-counterclockwise.svg
+		case 18:
+			return ArrowCounterclockwise(height, width);
+		break;
+		// arrow-down-left.svg
+		case 19:
+			return ArrowDownLeft(height, width);
+		break;
+		// arrow-down-right.svg
+		case 20:
+			return ArrowDownRight(height, width);
+		break;
+		// arrow-down-short.svg
+		case 21:
+			return ArrowDownShort(height, width);
+		break;
+		// arrow-down.svg
+		case 22:
+			return ArrowDown(height, width);
+		break;
+		// arrow-left-right.svg
+		case 23:
+			return ArrowLeftRight(height, width);
+		break;
+		// arrow-left-short.svg
+		case 24:
+			return ArrowLeftShort(height, width);
+		break;
+		// arrow-left.svg
+		case 25:
+			return ArrowLeft(height, width);
+		break;
+		// arrow-repeat.svg
+		case 26:
+			return ArrowRepeat(height, width);
+		break;
+		// arrow-right-short.svg
+		case 27:
+			return ArrowRightShort(height, width);
+		break;
+		// arrow-right.svg
+		case 28:
+			return ArrowRight(height, width);
+		break;
+		// arrow-up-down.svg
+		case 29:
+			return ArrowUpDown(height, width);
+		break;
+		// arrow-up-left.svg
+		case 30:
+			return ArrowUpLeft(height, width);
+		break;
+		// arrow-up-right.svg
+		case 31:
+			return ArrowUpRight(height, width);
+		break;
+		// arrow-up-short.svg
+		case 32:
+			return ArrowUpShort(height, width);
+		break;
+		// arrow-up.svg
+		case 33:
+			return ArrowUp(height, width);
+		break;
+		// arrows-angle-contract.svg
+		case 34:
+			return ArrowsAngleContract(height, width);
+		break;
+		// arrows-angle-expand.svg
+		case 35:
+			return ArrowsAngleExpand(height, width);
+		break;
+		// arrows-collapse.svg
+		case 36:
+			return ArrowsCollapse(height, width);
+		break;
+		// arrows-expand.svg
+		case 37:
+			return ArrowsExpand(height, width);
+		break;
+		// arrows-fullscreen.svg
+		case 38:
+			return ArrowsFullscreen(height, width);
+		break;
+		// at.svg
+		case 39:
+			return At(height, width);
+		break;
+		// award.svg
+		case 40:
+			return Award(height, width);
+		break;
+		// backspace-fill.svg
+		case 41:
+			return BackspaceFill(height, width);
+		break;
+		// backspace-reverse-fill.svg
+		case 42:
+			return BackspaceReverseFill(height, width);
+		break;
+		// backspace-reverse.svg
+		case 43:
+			return BackspaceReverse(height, width);
+		break;
+		// backspace.svg
+		case 44:
+			return Backspace(height, width);
+		break;
+		// bar-chart-fill.svg
+		case 45:
+			return BarChartFill(height, width);
+		break;
+		// bar-chart.svg
+		case 46:
+			return BarChart(height, width);
+		break;
+		// battery-charging.svg
+		case 47:
+			return BatteryCharging(height, width);
+		break;
+		// battery-full.svg
+		case 48:
+			return BatteryFull(height, width);
+		break;
+		// battery.svg
+		case 49:
+			return Battery(height, width);
+		break;
+		// bell-fill.svg
+		case 50:
+			return BellFill(height, width);
+		break;
+		// bell.svg
+		case 51:
+			return Bell(height, width);
+		break;
+		// blockquote-left.svg
+		case 52:
+			return BlockquoteLeft(height, width);
+		break;
+		// blockquote-right.svg
+		case 53:
+			return BlockquoteRight(height, width);
+		break;
+		// book-half-fill.svg
+		case 54:
+			return BookHalfFill(height, width);
+		break;
+		// book.svg
+		case 55:
+			return Book(height, width);
+		break;
+		// bookmark-fill.svg
+		case 56:
+			return BookmarkFill(height, width);
+		break;
+		// bookmark.svg
+		case 57:
+			return Bookmark(height, width);
+		break;
+		// bootstrap-fill.svg
+		case 58:
+			return BootstrapFill(height, width);
+		break;
+		// bootstrap-reboot.svg
+		case 59:
+			return BootstrapReboot(height, width);
+		break;
+		// bootstrap.svg
+		case 60:
+			return Bootstrap(height, width);
+		break;
+		// box-arrow-bottom-left.svg
+		case 61:
+			return BoxArrowBottomLeft(height, width);
+		break;
+		// box-arrow-bottom-right.svg
+		case 62:
+			return BoxArrowBottomRight(height, width);
+		break;
+		// box-arrow-down.svg
+		case 63:
+			return BoxArrowDown(height, width);
+		break;
+		// box-arrow-left.svg
+		case 64:
+			return BoxArrowLeft(height, width);
+		break;
+		// box-arrow-right.svg
+		case 65:
+			return BoxArrowRight(height, width);
+		break;
+		// box-arrow-up-left.svg
+		case 66:
+			return BoxArrowUpLeft(height, width);
+		break;
+		// box-arrow-up-right.svg
+		case 67:
+			return BoxArrowUpRight(height, width);
+		break;
+		// box-arrow-up.svg
+		case 68:
+			return BoxArrowUp(height, width);
+		break;
+		// braces.svg
+		case 69:
+			return Braces(height, width);
+		break;
+		// brightness-fill-high.svg
+		case 70:
+			return BrightnessFillHigh(height, width);
+		break;
+		// brightness-fill-low.svg
+		case 71:
+			return BrightnessFillLow(height, width);
+		break;
+		// brightness-high.svg
+		case 72:
+			return BrightnessHigh(height, width);
+		break;
+		// brightness-low.svg
+		case 73:
+			return BrightnessLow(height, width);
+		break;
+		// brush.svg
+		case 74:
+			return Brush(height, width);
+		break;
+		// bucket-fill.svg
+		case 75:
+			return BucketFill(height, width);
+		break;
+		// bucket.svg
+		case 76:
+			return Bucket(height, width);
+		break;
+		// building.svg
+		case 77:
+			return Building(height, width);
+		break;
+		// bullseye.svg
+		case 78:
+			return Bullseye(height, width);
+		break;
+		// calendar-fill.svg
+		case 79:
+			return CalendarFill(height, width);
+		break;
+		// calendar.svg
+		case 80:
+			return Calendar(height, width);
+		break;
+		// camera-video-fill.svg
+		case 81:
+			return CameraVideoFill(height, width);
+		break;
+		// camera-video.svg
+		case 82:
+			return CameraVideo(height, width);
+		break;
+		// camera.svg
+		case 83:
+			return Camera(height, width);
+		break;
+		// capslock-fill.svg
+		case 84:
+			return CapslockFill(height, width);
+		break;
+		// capslock.svg
+		case 85:
+			return Capslock(height, width);
+		break;
+		// chat-fill.svg
+		case 86:
+			return ChatFill(height, width);
+		break;
+		// chat.svg
+		case 87:
+			return Chat(height, width);
+		break;
+		// check-box.svg
+		case 88:
+			return CheckBox(height, width);
+		break;
+		// check-circle.svg
+		case 89:
+			return CheckCircle(height, width);
+		break;
+		// check.svg
+		case 90:
+			return Check(height, width);
+		break;
+		// chevron-compact-down.svg
+		case 91:
+			return ChevronCompactDown(height, width);
+		break;
+		// chevron-compact-left.svg
+		case 92:
+			return ChevronCompactLeft(height, width);
+		break;
+		// chevron-compact-right.svg
+		case 93:
+			return ChevronCompactRight(height, width);
+		break;
+		// chevron-compact-up.svg
+		case 94:
+			return ChevronCompactUp(height, width);
+		break;
+		// chevron-down.svg
+		case 95:
+			return ChevronDown(height, width);
+		break;
+		// chevron-left.svg
+		case 96:
+			return ChevronLeft(height, width);
+		break;
+		// chevron-right.svg
+		case 97:
+			return ChevronRight(height, width);
+		break;
+		// chevron-up.svg
+		case 98:
+			return ChevronUp(height, width);
+		break;
+		// circle-fill.svg
+		case 99:
+			return CircleFill(height, width);
+		break;
+		// circle-half.svg
+		case 100:
+			return CircleHalf(height, width);
+		break;
+		// circle-slash.svg
+		case 101:
+			return CircleSlash(height, width);
+		break;
+		// circle.svg
+		case 102:
+			return Circle(height, width);
+		break;
+		// clock-fill.svg
+		case 103:
+			return ClockFill(height, width);
+		break;
+		// clock.svg
+		case 104:
+			return Clock(height, width);
+		break;
+		// cloud-download.svg
+		case 105:
+			return CloudDownload(height, width);
+		break;
+		// cloud-fill.svg
+		case 106:
+			return CloudFill(height, width);
+		break;
+		// cloud-upload.svg
+		case 107:
+			return CloudUpload(height, width);
+		break;
+		// cloud.svg
+		case 108:
+			return Cloud(height, width);
+		break;
+		// code-slash.svg
+		case 109:
+			return CodeSlash(height, width);
+		break;
+		// code.svg
+		case 110:
+			return Code(height, width);
+		break;
+		// columns-gutters.svg
+		case 111:
+			return ColumnsGutters(height, width);
+		break;
+		// columns.svg
+		case 112:
+			return Columns(height, width);
+		break;
+		// command.svg
+		case 113:
+			return Command(height, width);
+		break;
+		// compass.svg
+		case 114:
+			return Compass(height, width);
+		break;
+		// cone-striped.svg
+		case 115:
+			return ConeStriped(height, width);
+		break;
+		// cone.svg
+		case 116:
+			return Cone(height, width);
+		break;
+		// controller.svg
+		case 117:
+			return Controller(height, width);
+		break;
+		// credit-card.svg
+		case 118:
+			return CreditCard(height, width);
+		break;
+		// cursor-fill.svg
+		case 119:
+			return CursorFill(height, width);
+		break;
+		// cursor.svg
+		case 120:
+			return Cursor(height, width);
+		break;
+		// dash.svg
+		case 121:
+			return Dash(height, width);
+		break;
+		// diamond-half.svg
+		case 122:
+			return DiamondHalf(height, width);
+		break;
+		// diamond.svg
+		case 123:
+			return Diamond(height, width);
+		break;
+		// display-fill.svg
+		case 124:
+			return DisplayFill(height, width);
+		break;
+		// display.svg
+		case 125:
+			return Display(height, width);
+		break;
+		// document-code.svg
+		case 126:
+			return DocumentCode(height, width);
+		break;
+		// document-diff.svg
+		case 127:
+			return DocumentDiff(height, width);
+		break;
+		// document-richtext.svg
+		case 128:
+			return DocumentRichtext(height, width);
+		break;
+		// document-spreadsheet.svg
+		case 129:
+			return DocumentSpreadsheet(height, width);
+		break;
+		// document-text.svg
+		case 130:
+			return DocumentText(height, width);
+		break;
+		// document.svg
+		case 131:
+			return Document(height, width);
+		break;
+		// documents-alt.svg
+		case 132:
+			return DocumentsAlt(height, width);
+		break;
+		// documents.svg
+		case 133:
+			return Documents(height, width);
+		break;
+		// dot.svg
+		case 134:
+			return Dot(height, width);
+		break;
+		// download.svg
+		case 135:
+			return Download(height, width);
+		break;
+		// egg-fried.svg
+		case 136:
+			return EggFried(height, width);
+		break;
+		// eject-fill.svg
+		case 137:
+			return EjectFill(height, width);
+		break;
+		// eject.svg
+		case 138:
+			return Eject(height, width);
+		break;
+		// envelope-fill.svg
+		case 139:
+			return EnvelopeFill(height, width);
+		break;
+		// envelope-open-fill.svg
+		case 140:
+			return EnvelopeOpenFill(height, width);
+		break;
+		// envelope-open.svg
+		case 141:
+			return EnvelopeOpen(height, width);
+		break;
+		// envelope.svg
+		case 142:
+			return Envelope(height, width);
+		break;
+		// eye-fill.svg
+		case 143:
+			return EyeFill(height, width);
+		break;
+		// eye-slash-fill.svg
+		case 144:
+			return EyeSlashFill(height, width);
+		break;
+		// eye-slash.svg
+		case 145:
+			return EyeSlash(height, width);
+		break;
+		// eye.svg
+		case 146:
+			return Eye(height, width);
+		break;
+		// filter.svg
+		case 147:
+			return Filter(height, width);
+		break;
+		// flag-fill.svg
+		case 148:
+			return FlagFill(height, width);
+		break;
+		// flag.svg
+		case 149:
+			return Flag(height, width);
+		break;
+		// folder-fill.svg
+		case 150:
+			return FolderFill(height, width);
+		break;
+		// folder-symlink-fill.svg
+		case 151:
+			return FolderSymlinkFill(height, width);
+		break;
+		// folder-symlink.svg
+		case 152:
+			return FolderSymlink(height, width);
+		break;
+		// folder.svg
+		case 153:
+			return Folder(height, width);
+		break;
+		// fonts.svg
+		case 154:
+			return Fonts(height, width);
+		break;
+		// forward-fill.svg
+		case 155:
+			return ForwardFill(height, width);
+		break;
+		// forward.svg
+		case 156:
+			return Forward(height, width);
+		break;
+		// gear-fill.svg
+		case 157:
+			return GearFill(height, width);
+		break;
+		// gear-wide-connected.svg
+		case 158:
+			return GearWideConnected(height, width);
+		break;
+		// gear-wide.svg
+		case 159:
+			return GearWide(height, width);
+		break;
+		// gear.svg
+		case 160:
+			return Gear(height, width);
+		break;
+		// geo.svg
+		case 161:
+			return Geo(height, width);
+		break;
+		// graph-down.svg
+		case 162:
+			return GraphDown(height, width);
+		break;
+		// graph-up.svg
+		case 163:
+			return GraphUp(height, width);
+		break;
+		// grid-fill.svg
+		case 164:
+			return GridFill(height, width);
+		break;
+		// grid.svg
+		case 165:
+			return Grid(height, width);
+		break;
+		// hammer.svg
+		case 166:
+			return Hammer(height, width);
+		break;
+		// hash.svg
+		case 167:
+			return Hash(height, width);
+		break;
+		// heart-fill.svg
+		case 168:
+			return HeartFill(height, width);
+		break;
+		// heart.svg
+		case 169:
+			return Heart(height, width);
+		break;
+		// house-fill.svg
+		case 170:
+			return HouseFill(height, width);
+		break;
+		// house.svg
+		case 171:
+			return House(height, width);
+		break;
+		// image-alt.svg
+		case 172:
+			return ImageAlt(height, width);
+		break;
+		// image-fill.svg
+		case 173:
+			return ImageFill(height, width);
+		break;
+		// image.svg
+		case 174:
+			return Image(height, width);
+		break;
+		// images.svg
+		case 175:
+			return Images(height, width);
+		break;
+		// inbox-fill.svg
+		case 176:
+			return InboxFill(height, width);
+		break;
+		// inbox.svg
+		case 177:
+			return Inbox(height, width);
+		break;
+		// inboxes-fill.svg
+		case 178:
+			return InboxesFill(height, width);
+		break;
+		// inboxes.svg
+		case 179:
+			return Inboxes(height, width);
+		break;
+		// info-fill.svg
+		case 180:
+			return InfoFill(height, width);
+		break;
+		// info-square-fill.svg
+		case 181:
+			return InfoSquareFill(height, width);
+		break;
+		// info-square.svg
+		case 182:
+			return InfoSquare(height, width);
+		break;
+		// info.svg
+		case 183:
+			return Info(height, width);
+		break;
+		// justify-left.svg
+		case 184:
+			return JustifyLeft(height, width);
+		break;
+		// justify-right.svg
+		case 185:
+			return JustifyRight(height, width);
+		break;
+		// justify.svg
+		case 186:
+			return Justify(height, width);
+		break;
+		// kanban-fill.svg
+		case 187:
+			return KanbanFill(height, width);
+		break;
+		// kanban.svg
+		case 188:
+			return Kanban(height, width);
+		break;
+		// laptop.svg
+		case 189:
+			return Laptop(height, width);
+		break;
+		// layout-sidebar-reverse.svg
+		case 190:
+			return LayoutSidebarReverse(height, width);
+		break;
+		// layout-sidebar.svg
+		case 191:
+			return LayoutSidebar(height, width);
+		break;
+		// layout-split.svg
+		case 192:
+			return LayoutSplit(height, width);
+		break;
+		// list-check.svg
+		case 193:
+			return ListCheck(height, width);
+		break;
+		// list-ol.svg
+		case 194:
+			return ListOl(height, width);
+		break;
+		// list-task.svg
+		case 195:
+			return ListTask(height, width);
+		break;
+		// list-ul.svg
+		case 196:
+			return ListUl(height, width);
+		break;
+		// list.svg
+		case 197:
+			return List(height, width);
+		break;
+		// lock-fill.svg
+		case 198:
+			return LockFill(height, width);
+		break;
+		// lock.svg
+		case 199:
+			return Lock(height, width);
+		break;
+		// map.svg
+		case 200:
+			return Map(height, width);
+		break;
+		// mic.svg
+		case 201:
+			return Mic(height, width);
+		break;
+		// moon.svg
+		case 202:
+			return Moon(height, width);
+		break;
+		// music-player-fill.svg
+		case 203:
+			return MusicPlayerFill(height, width);
+		break;
+		// music-player.svg
+		case 204:
+			return MusicPlayer(height, width);
+		break;
+		// option.svg
+		case 205:
+			return Option(height, width);
+		break;
+		// outlet.svg
+		case 206:
+			return Outlet(height, width);
+		break;
+		// pause-fill.svg
+		case 207:
+			return PauseFill(height, width);
+		break;
+		// pause.svg
+		case 208:
+			return Pause(height, width);
+		break;
+		// pen.svg
+		case 209:
+			return Pen(height, width);
+		break;
+		// pencil.svg
+		case 210:
+			return Pencil(height, width);
+		break;
+		// people-fill.svg
+		case 211:
+			return PeopleFill(height, width);
+		break;
+		// people.svg
+		case 212:
+			return People(height, width);
+		break;
+		// person-fill.svg
+		case 213:
+			return PersonFill(height, width);
+		break;
+		// person.svg
+		case 214:
+			return Person(height, width);
+		break;
+		// phone-landscape.svg
+		case 215:
+			return PhoneLandscape(height, width);
+		break;
+		// phone.svg
+		case 216:
+			return Phone(height, width);
+		break;
+		// pie-chart-fill.svg
+		case 217:
+			return PieChartFill(height, width);
+		break;
+		// pie-chart.svg
+		case 218:
+			return PieChart(height, width);
+		break;
+		// play-fill.svg
+		case 219:
+			return PlayFill(height, width);
+		break;
+		// play.svg
+		case 220:
+			return Play(height, width);
+		break;
+		// plug.svg
+		case 221:
+			return Plug(height, width);
+		break;
+		// plus.svg
+		case 222:
+			return Plus(height, width);
+		break;
+		// power.svg
+		case 223:
+			return Power(height, width);
+		break;
+		// question-fill.svg
+		case 224:
+			return QuestionFill(height, width);
+		break;
+		// question-square-fill.svg
+		case 225:
+			return QuestionSquareFill(height, width);
+		break;
+		// question-square.svg
+		case 226:
+			return QuestionSquare(height, width);
+		break;
+		// question.svg
+		case 227:
+			return Question(height, width);
+		break;
+		// reply-all-fill.svg
+		case 228:
+			return ReplyAllFill(height, width);
+		break;
+		// reply-all.svg
+		case 229:
+			return ReplyAll(height, width);
+		break;
+		// reply-fill.svg
+		case 230:
+			return ReplyFill(height, width);
+		break;
+		// reply.svg
+		case 231:
+			return Reply(height, width);
+		break;
+		// screwdriver.svg
+		case 232:
+			return Screwdriver(height, width);
+		break;
+		// search.svg
+		case 233:
+			return Search(height, width);
+		break;
+		// shield-fill.svg
+		case 234:
+			return ShieldFill(height, width);
+		break;
+		// shield-lock-fill.svg
+		case 235:
+			return ShieldLockFill(height, width);
+		break;
+		// shield-lock.svg
+		case 236:
+			return ShieldLock(height, width);
+		break;
+		// shield-shaded.svg
+		case 237:
+			return ShieldShaded(height, width);
+		break;
+		// shield.svg
+		case 238:
+			return Shield(height, width);
+		break;
+		// shift-fill.svg
+		case 239:
+			return ShiftFill(height, width);
+		break;
+		// shift.svg
+		case 240:
+			return Shift(height, width);
+		break;
+		// skip-backward-fill.svg
+		case 241:
+			return SkipBackwardFill(height, width);
+		break;
+		// skip-backward.svg
+		case 242:
+			return SkipBackward(height, width);
+		break;
+		// skip-end-fill.svg
+		case 243:
+			return SkipEndFill(height, width);
+		break;
+		// skip-end.svg
+		case 244:
+			return SkipEnd(height, width);
+		break;
+		// skip-forward-fill.svg
+		case 245:
+			return SkipForwardFill(height, width);
+		break;
+		// skip-forward.svg
+		case 246:
+			return SkipForward(height, width);
+		break;
+		// skip-start-fill.svg
+		case 247:
+			return SkipStartFill(height, width);
+		break;
+		// skip-start.svg
+		case 248:
+			return SkipStart(height, width);
+		break;
+		// speaker.svg
+		case 249:
+			return Speaker(height, width);
+		break;
+		// square-fill.svg
+		case 250:
+			return SquareFill(height, width);
+		break;
+		// square-half.svg
+		case 251:
+			return SquareHalf(height, width);
+		break;
+		// square.svg
+		case 252:
+			return Square(height, width);
+		break;
+		// star-fill.svg
+		case 253:
+			return StarFill(height, width);
+		break;
+		// star-half.svg
+		case 254:
+			return StarHalf(height, width);
+		break;
+		// star.svg
+		case 255:
+			return Star(height, width);
+		break;
+		// stop-fill.svg
+		case 256:
+			return StopFill(height, width);
+		break;
+		// stop.svg
+		case 257:
+			return Stop(height, width);
+		break;
+		// stopwatch-fill.svg
+		case 258:
+			return StopwatchFill(height, width);
+		break;
+		// stopwatch.svg
+		case 259:
+			return Stopwatch(height, width);
+		break;
+		// sun.svg
+		case 260:
+			return Sun(height, width);
+		break;
+		// table.svg
+		case 261:
+			return Table(height, width);
+		break;
+		// tablet-landscape.svg
+		case 262:
+			return TabletLandscape(height, width);
+		break;
+		// tablet.svg
+		case 263:
+			return Tablet(height, width);
+		break;
+		// tag-fill.svg
+		case 264:
+			return TagFill(height, width);
+		break;
+		// tag.svg
+		case 265:
+			return Tag(height, width);
+		break;
+		// terminal-fill.svg
+		case 266:
+			return TerminalFill(height, width);
+		break;
+		// terminal.svg
+		case 267:
+			return Terminal(height, width);
+		break;
+		// text-center.svg
+		case 268:
+			return TextCenter(height, width);
+		break;
+		// text-indent-left.svg
+		case 269:
+			return TextIndentLeft(height, width);
+		break;
+		// text-indent-right.svg
+		case 270:
+			return TextIndentRight(height, width);
+		break;
+		// text-left.svg
+		case 271:
+			return TextLeft(height, width);
+		break;
+		// text-right.svg
+		case 272:
+			return TextRight(height, width);
+		break;
+		// three-dots-vertical.svg
+		case 273:
+			return ThreeDotsVertical(height, width);
+		break;
+		// three-dots.svg
+		case 274:
+			return ThreeDots(height, width);
+		break;
+		// toggle-off.svg
+		case 275:
+			return ToggleOff(height, width);
+		break;
+		// toggle-on.svg
+		case 276:
+			return ToggleOn(height, width);
+		break;
+		// toggles.svg
+		case 277:
+			return Toggles(height, width);
+		break;
+		// tools.svg
+		case 278:
+			return Tools(height, width);
+		break;
+		// trash-fill.svg
+		case 279:
+			return TrashFill(height, width);
+		break;
+		// trash.svg
+		case 280:
+			return Trash(height, width);
+		break;
+		// triangle-fill.svg
+		case 281:
+			return TriangleFill(height, width);
+		break;
+		// triangle-half.svg
+		case 282:
+			return TriangleHalf(height, width);
+		break;
+		// triangle.svg
+		case 283:
+			return Triangle(height, width);
+		break;
+		// trophy.svg
+		case 284:
+			return Trophy(height, width);
+		break;
+		// tv-fill.svg
+		case 285:
+			return TvFill(height, width);
+		break;
+		// tv.svg
+		case 286:
+			return Tv(height, width);
+		break;
+		// type-bold.svg
+		case 287:
+			return TypeBold(height, width);
+		break;
+		// type-h1.svg
+		case 288:
+			return TypeH1(height, width);
+		break;
+		// type-h2.svg
+		case 289:
+			return TypeH2(height, width);
+		break;
+		// type-h3.svg
+		case 290:
+			return TypeH3(height, width);
+		break;
+		// type-italic.svg
+		case 291:
+			return TypeItalic(height, width);
+		break;
+		// type-strikethrough.svg
+		case 292:
+			return TypeStrikethrough(height, width);
+		break;
+		// type-underline.svg
+		case 293:
+			return TypeUnderline(height, width);
+		break;
+		// type.svg
+		case 294:
+			return Type(height, width);
+		break;
+		// unlock-fill.svg
+		case 295:
+			return UnlockFill(height, width);
+		break;
+		// unlock.svg
+		case 296:
+			return Unlock(height, width);
+		break;
+		// upload.svg
+		case 297:
+			return Upload(height, width);
+		break;
+		// volume-down-fill.svg
+		case 298:
+			return VolumeDownFill(height, width);
+		break;
+		// volume-down.svg
+		case 299:
+			return VolumeDown(height, width);
+		break;
+		// volume-mute-fill.svg
+		case 300:
+			return VolumeMuteFill(height, width);
+		break;
+		// volume-mute.svg
+		case 301:
+			return VolumeMute(height, width);
+		break;
+		// volume-up-fill.svg
+		case 302:
+			return VolumeUpFill(height, width);
+		break;
+		// volume-up.svg
+		case 303:
+			return VolumeUp(height, width);
+		break;
+		// wallet.svg
+		case 304:
+			return Wallet(height, width);
+		break;
+		// watch.svg
+		case 305:
+			return Watch(height, width);
+		break;
+		// wifi.svg
+		case 306:
+			return Wifi(height, width);
+		break;
+		// window.svg
+		case 307:
+			return Window(height, width);
+		break;
+		// wrench.svg
+		case 308:
+			return Wrench(height, width);
+		break;
+		// x-circle-fill.svg
+		case 309:
+			return XCircleFill(height, width);
+		break;
+		// x-circle.svg
+		case 310:
+			return XCircle(height, width);
+		break;
+		// x-octagon-fill.svg
+		case 311:
+			return XOctagonFill(height, width);
+		break;
+		// x-octagon.svg
+		case 312:
+			return XOctagon(height, width);
+		break;
+		// x-square-fill.svg
+		case 313:
+			return XSquareFill(height, width);
+		break;
+		// x-square.svg
+		case 314:
+			return XSquare(height, width);
+		break;
+		// x.svg
+		case 315:
+			return X(height, width);
+		break;
 	}
 }
