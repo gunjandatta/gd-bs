@@ -1,19 +1,19 @@
 import "bootstrap";
 import * as jQuery from "jquery";
 import * as Components from "./components";
-import * as Icons from "./icons";
+import { Icons, IconTypes } from "./icons";
 import "./sass/bootstrap";
 
 export {
     Components,
-    Icons,
+    Icons, IconTypes,
     jQuery
 }
 
 // Global Library
 window["GD"] = {
     Components,
-    Icons,
+    Icons, IconTypes,
     jQuery
 }
 

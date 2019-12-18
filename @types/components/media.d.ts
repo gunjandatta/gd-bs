@@ -29,10 +29,12 @@ export interface IMediaProps {
     className?: string;
     body?: string;
     el?: Element | HTMLElement;
+    data?: any;
     icon?: {
         className?: string;
         height?: number;
         icon: number;
+        onClick?: (ev?: Event) => void;
         rightAligned?: boolean;
         type?: number;
         url?: string;
@@ -41,6 +43,7 @@ export interface IMediaProps {
     image?: {
         alt?: string;
         className?: string;
+        onClick?: (ev?: Event) => void;
         rightAligned?: boolean;
         src: string;
         type?: number;

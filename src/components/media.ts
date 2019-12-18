@@ -40,7 +40,7 @@ export const Media = (props: IMediaProps): IMedia => {
         // See if the icon properties exist
         if (props.icon) {
             // Create the icon
-            let icon: HTMLElement = GD.Icons ? GD.Icons.byType(props.icon.icon, props.icon.height, props.icon.width) : null;
+            let icon: HTMLElement = GD.Icons ? GD.Icons(props.icon.icon, props.icon.height, props.icon.width) : null;
             if (icon) {
                 // Parse the class names
                 let classNames = (props.icon.className || "").trim().split(' ');
@@ -78,9 +78,21 @@ export const Media = (props: IMediaProps): IMedia => {
 
                     // Add the icon
                     link.appendChild(icon);
+
+                    // See if a click event exists
+                    if (props.icon.onClick) {
+                        // Add the click event
+                        link.addEventListener("click", props.icon.onClick);
+                    }
                 } else {
                     // Add the icon
                     media.appendChild(icon);
+
+                    // See if a click event exists
+                    if (props.icon.onClick) {
+                        // Add the click event
+                        icon.addEventListener("click", props.icon.onClick);
+                    }
                 }
             }
         }
@@ -121,9 +133,21 @@ export const Media = (props: IMediaProps): IMedia => {
 
                 // Add the image
                 link.appendChild(image);
+
+                // See if a click event exists
+                if (props.icon.onClick) {
+                    // Add the click event
+                    link.addEventListener("click", props.icon.onClick);
+                }
             } else {
                 // Add the image
                 media.appendChild(image);
+
+                // See if a click event exists
+                if (props.icon.onClick) {
+                    // Add the click event
+                    image.addEventListener("click", props.icon.onClick);
+                }
             }
         }
     }

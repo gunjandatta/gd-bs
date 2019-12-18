@@ -7,10 +7,7 @@ const dirIcons = path.join(__dirname, "node_modules/bootstrap-icons/icons");
 console.log(dirIcons);
 // Get the icon files
 fs.readdir(dirIcons, function (err, files) {
-    var code = [];
-    var definitions = [];
     var icons = [];
-    var variables = [];
     var switches = [];
     var types = [];
     var typeDefs = [];
@@ -35,107 +32,73 @@ fs.readdir(dirIcons, function (err, files) {
             varName = varName.substr(0, idx) + varName.charAt(idx + 1).toUpperCase() + varName.substr(idx + 2);
         }
 
-        // Remove the extension
+        // Determine the variable and function names
         varName = varName.replace(/\.svg$/, '');
-
-        // Add the icon
-        icons.push("const " + varName + " = require(\"bootstrap-icons/icons/" + file + "\");");
-
-        // Add the variable
         var funcName = varName[0].toUpperCase() + varName.substr(1);
-        variables.push("export const " + funcName + " = (height,width) => { return generateIcon(" + varName + ", height, width); }");
+
+        // Add the icon reference
+        icons.push("const " + varName + " = require(\"bootstrap-icons/icons/" + file + "\");");
 
         // Add the type
         let iconType = types.length + 1;
-        types.push("\t" + varName + " = " + iconType);
+        types.push("\t" + funcName + " = " + iconType);
 
         // Add the switch case statement
         switches.push("\t\t// " + file);
         switches.push("\t\tcase " + iconType + ":");
-        switches.push("\t\t\treturn " + funcName + "(height, width);");
-        switches.push("\t\tbreak;");
-
-        // Add the variable definition
-        definitions.push("export const " + funcName + ": (height?: number, width?: number) => HTMLElement;");
+        switches.push("\t\t\treturn generateIcon(" + varName + ", height, width);");
 
         // Add the type definition
         typeDefs.push("\t// " + file);
         typeDefs.push("\t" + varName + ": number;");
     });
 
-    // Add the by type definition
-    definitions.push("\n// Renders an icon by type");
-    definitions.push("export const byType = (iconType:number) => HTMLElement;")
+    // Delete the files
+    try { fs.unlinkSync("./@types/icons.d.ts"); } catch { }
+    try { fs.unlinkSync("./src/icons/icons.ts"); } catch { }
+    try { fs.unlinkSync("./src/icons/iconTypes.ts"); } catch { }
 
-    // Add the type definitions
-    definitions.push("\n// Icon Types")
-    definitions.push([
+    // Generate the file
+    var stream = fs.createWriteStream("./@types/icons.d.ts");
+    stream.write([
+        "\n// Renders an icon by type",
+        "export const Icons = (iconType:number, height?:number, width?:number) => HTMLElement;",
+        "\n// Icon Types",
         "export const IconTypes: {",
         typeDefs.join('\n'),
         "}"
     ].join("\n"));
+    stream.end();
 
-    // Generate the icons file
-    code.push([
+    // Log
+    console.log("Icons definition file generated");
+
+    // Generate the file
+    var stream = fs.createWriteStream("./src/icons/icons.ts");
+    stream.write([
         'import generateIcon from "./generate";\n',
         '// Icons to import',
-        icons.join('\n') + '\n',
-        '// Icon components',
-        variables.join('\n')
-    ].join('\n'));
-
-    // Add the types
-    code.push([
-        "\n// Icon Types",
-        "export enum IconTypes {",
-        types.join(',\n'),
-        '}'
-    ].join('\n'));
-
-    // Add the by type method
-    code.push([
+        icons.join('\n'),
         "\n// Renders an icon by type",
-        "export const byType = (iconType:number, height?:number, width?:number) => {",
+        "export const Icons = (iconType:number, height?:number, width?:number) => {",
         "\t// See which icon is selected",
         "\tswitch(iconType) {",
         switches.join('\n'),
         "\t}",
         "}"
     ].join('\n'));
+    stream.end();
 
-    // Delete the icons definition file
-    fs.unlink("./@types/icons.d.ts", function (err) {
-        // See if there is an error
-        if (err) {
-            // Log
-            console.log(err);
-            return;
-        }
+    // Generate the icon types
+    var stream = fs.createWriteStream("./src/icons/iconTypes.ts");
+    stream.write([
+        "// Icon Types",
+        "export enum IconTypes {",
+        types.join(',\n'),
+        '}'
+    ].join('\n'));
+    stream.end();
 
-        // Generate the file
-        var stream = fs.createWriteStream("./@types/icons.d.ts");
-        stream.write(definitions.join('\n'));
-        stream.end();
-
-        // Log
-        console.log("Icons definition file generated");
-    });
-
-    // Delete the icons file
-    fs.unlink("./src/icons/icons.ts", function (err) {
-        // See if there is an error
-        if (err) {
-            // Log
-            console.log(err);
-            return;
-        }
-
-        // Generate the file
-        var stream = fs.createWriteStream("./src/icons/icons.ts");
-        stream.write(code.join('\n'));
-        stream.end();
-
-        // Log
-        console.log("Icons file generated");
-    });
+    // Log
+    console.log("Icons file generated");
 });
