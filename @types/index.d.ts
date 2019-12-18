@@ -1,8 +1,8 @@
 import * as Components from "./components";
-import * as Icons from "./icons";
+import { Icons, IconTypes } from "./icons";
 import * as jQuery from "jquery";
 export {
     Components,
-    Icons,
+    Icons, IconTypes,
     jQuery
 }

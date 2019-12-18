@@ -50,7 +50,7 @@ fs.readdir(dirIcons, function (err, files) {
 
         // Add the type definition
         typeDefs.push("\t// " + file);
-        typeDefs.push("\t" + varName + ": number;");
+        typeDefs.push("\t" + funcName + ": number;");
     });
 
     // Delete the files
@@ -62,7 +62,7 @@ fs.readdir(dirIcons, function (err, files) {
     var stream = fs.createWriteStream("./@types/icons.d.ts");
     stream.write([
         "\n// Renders an icon by type",
-        "export const Icons = (iconType:number, height?:number, width?:number) => HTMLElement;",
+        "export const Icons: (iconType:number, height?:number, width?:number) => HTMLElement;",
         "\n// Icon Types",
         "export const IconTypes: {",
         typeDefs.join('\n'),

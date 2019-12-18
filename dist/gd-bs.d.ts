@@ -4,11 +4,11 @@
 
 declare module 'gd-bs' {
     import * as Components from "gd-bs/components";
-    import * as Icons from "gd-bs/icons";
+    import { Icons, IconTypes } from "gd-bs/icons";
     import * as jQuery from "jquery";
     export {
         Components,
-        Icons,
+        Icons, IconTypes,
         jQuery
     }
 }
@@ -48,639 +48,639 @@ declare module 'gd-bs/components' {
 
 declare module 'gd-bs/icons' {
     
-    export const Icons = (iconType:number, height?:number, width?:number) => HTMLElement;
+    export const Icons: (iconType:number, height?:number, width?:number) => HTMLElement;
     
     export const IconTypes: {
         // alarm-fill.svg
-        alarmFill: number;
+        AlarmFill: number;
         // alarm.svg
-        alarm: number;
+        Alarm: number;
         // alert-circle-fill.svg
-        alertCircleFill: number;
+        AlertCircleFill: number;
         // alert-circle.svg
-        alertCircle: number;
+        AlertCircle: number;
         // alert-octagon-fill.svg
-        alertOctagonFill: number;
+        AlertOctagonFill: number;
         // alert-octagon.svg
-        alertOctagon: number;
+        AlertOctagon: number;
         // alert-square-fill.svg
-        alertSquareFill: number;
+        AlertSquareFill: number;
         // alert-square.svg
-        alertSquare: number;
+        AlertSquare: number;
         // alert-triangle-fill.svg
-        alertTriangleFill: number;
+        AlertTriangleFill: number;
         // alert-triangle.svg
-        alertTriangle: number;
+        AlertTriangle: number;
         // archive-fill.svg
-        archiveFill: number;
+        ArchiveFill: number;
         // archive.svg
-        archive: number;
+        Archive: number;
         // arrow-bar-bottom.svg
-        arrowBarBottom: number;
+        ArrowBarBottom: number;
         // arrow-bar-left.svg
-        arrowBarLeft: number;
+        ArrowBarLeft: number;
         // arrow-bar-right.svg
-        arrowBarRight: number;
+        ArrowBarRight: number;
         // arrow-bar-up.svg
-        arrowBarUp: number;
+        ArrowBarUp: number;
         // arrow-clockwise.svg
-        arrowClockwise: number;
+        ArrowClockwise: number;
         // arrow-counterclockwise.svg
-        arrowCounterclockwise: number;
+        ArrowCounterclockwise: number;
         // arrow-down-left.svg
-        arrowDownLeft: number;
+        ArrowDownLeft: number;
         // arrow-down-right.svg
-        arrowDownRight: number;
+        ArrowDownRight: number;
         // arrow-down-short.svg
-        arrowDownShort: number;
+        ArrowDownShort: number;
         // arrow-down.svg
-        arrowDown: number;
+        ArrowDown: number;
         // arrow-left-right.svg
-        arrowLeftRight: number;
+        ArrowLeftRight: number;
         // arrow-left-short.svg
-        arrowLeftShort: number;
+        ArrowLeftShort: number;
         // arrow-left.svg
-        arrowLeft: number;
+        ArrowLeft: number;
         // arrow-repeat.svg
-        arrowRepeat: number;
+        ArrowRepeat: number;
         // arrow-right-short.svg
-        arrowRightShort: number;
+        ArrowRightShort: number;
         // arrow-right.svg
-        arrowRight: number;
+        ArrowRight: number;
         // arrow-up-down.svg
-        arrowUpDown: number;
+        ArrowUpDown: number;
         // arrow-up-left.svg
-        arrowUpLeft: number;
+        ArrowUpLeft: number;
         // arrow-up-right.svg
-        arrowUpRight: number;
+        ArrowUpRight: number;
         // arrow-up-short.svg
-        arrowUpShort: number;
+        ArrowUpShort: number;
         // arrow-up.svg
-        arrowUp: number;
+        ArrowUp: number;
         // arrows-angle-contract.svg
-        arrowsAngleContract: number;
+        ArrowsAngleContract: number;
         // arrows-angle-expand.svg
-        arrowsAngleExpand: number;
+        ArrowsAngleExpand: number;
         // arrows-collapse.svg
-        arrowsCollapse: number;
+        ArrowsCollapse: number;
         // arrows-expand.svg
-        arrowsExpand: number;
+        ArrowsExpand: number;
         // arrows-fullscreen.svg
-        arrowsFullscreen: number;
+        ArrowsFullscreen: number;
         // at.svg
-        at: number;
+        At: number;
         // award.svg
-        award: number;
+        Award: number;
         // backspace-fill.svg
-        backspaceFill: number;
+        BackspaceFill: number;
         // backspace-reverse-fill.svg
-        backspaceReverseFill: number;
+        BackspaceReverseFill: number;
         // backspace-reverse.svg
-        backspaceReverse: number;
+        BackspaceReverse: number;
         // backspace.svg
-        backspace: number;
+        Backspace: number;
         // bar-chart-fill.svg
-        barChartFill: number;
+        BarChartFill: number;
         // bar-chart.svg
-        barChart: number;
+        BarChart: number;
         // battery-charging.svg
-        batteryCharging: number;
+        BatteryCharging: number;
         // battery-full.svg
-        batteryFull: number;
+        BatteryFull: number;
         // battery.svg
-        battery: number;
+        Battery: number;
         // bell-fill.svg
-        bellFill: number;
+        BellFill: number;
         // bell.svg
-        bell: number;
+        Bell: number;
         // blockquote-left.svg
-        blockquoteLeft: number;
+        BlockquoteLeft: number;
         // blockquote-right.svg
-        blockquoteRight: number;
+        BlockquoteRight: number;
         // book-half-fill.svg
-        bookHalfFill: number;
+        BookHalfFill: number;
         // book.svg
-        book: number;
+        Book: number;
         // bookmark-fill.svg
-        bookmarkFill: number;
+        BookmarkFill: number;
         // bookmark.svg
-        bookmark: number;
+        Bookmark: number;
         // bootstrap-fill.svg
-        bootstrapFill: number;
+        BootstrapFill: number;
         // bootstrap-reboot.svg
-        bootstrapReboot: number;
+        BootstrapReboot: number;
         // bootstrap.svg
-        bootstrap: number;
+        Bootstrap: number;
         // box-arrow-bottom-left.svg
-        boxArrowBottomLeft: number;
+        BoxArrowBottomLeft: number;
         // box-arrow-bottom-right.svg
-        boxArrowBottomRight: number;
+        BoxArrowBottomRight: number;
         // box-arrow-down.svg
-        boxArrowDown: number;
+        BoxArrowDown: number;
         // box-arrow-left.svg
-        boxArrowLeft: number;
+        BoxArrowLeft: number;
         // box-arrow-right.svg
-        boxArrowRight: number;
+        BoxArrowRight: number;
         // box-arrow-up-left.svg
-        boxArrowUpLeft: number;
+        BoxArrowUpLeft: number;
         // box-arrow-up-right.svg
-        boxArrowUpRight: number;
+        BoxArrowUpRight: number;
         // box-arrow-up.svg
-        boxArrowUp: number;
+        BoxArrowUp: number;
         // braces.svg
-        braces: number;
+        Braces: number;
         // brightness-fill-high.svg
-        brightnessFillHigh: number;
+        BrightnessFillHigh: number;
         // brightness-fill-low.svg
-        brightnessFillLow: number;
+        BrightnessFillLow: number;
         // brightness-high.svg
-        brightnessHigh: number;
+        BrightnessHigh: number;
         // brightness-low.svg
-        brightnessLow: number;
+        BrightnessLow: number;
         // brush.svg
-        brush: number;
+        Brush: number;
         // bucket-fill.svg
-        bucketFill: number;
+        BucketFill: number;
         // bucket.svg
-        bucket: number;
+        Bucket: number;
         // building.svg
-        building: number;
+        Building: number;
         // bullseye.svg
-        bullseye: number;
+        Bullseye: number;
         // calendar-fill.svg
-        calendarFill: number;
+        CalendarFill: number;
         // calendar.svg
-        calendar: number;
+        Calendar: number;
         // camera-video-fill.svg
-        cameraVideoFill: number;
+        CameraVideoFill: number;
         // camera-video.svg
-        cameraVideo: number;
+        CameraVideo: number;
         // camera.svg
-        camera: number;
+        Camera: number;
         // capslock-fill.svg
-        capslockFill: number;
+        CapslockFill: number;
         // capslock.svg
-        capslock: number;
+        Capslock: number;
         // chat-fill.svg
-        chatFill: number;
+        ChatFill: number;
         // chat.svg
-        chat: number;
+        Chat: number;
         // check-box.svg
-        checkBox: number;
+        CheckBox: number;
         // check-circle.svg
-        checkCircle: number;
+        CheckCircle: number;
         // check.svg
-        check: number;
+        Check: number;
         // chevron-compact-down.svg
-        chevronCompactDown: number;
+        ChevronCompactDown: number;
         // chevron-compact-left.svg
-        chevronCompactLeft: number;
+        ChevronCompactLeft: number;
         // chevron-compact-right.svg
-        chevronCompactRight: number;
+        ChevronCompactRight: number;
         // chevron-compact-up.svg
-        chevronCompactUp: number;
+        ChevronCompactUp: number;
         // chevron-down.svg
-        chevronDown: number;
+        ChevronDown: number;
         // chevron-left.svg
-        chevronLeft: number;
+        ChevronLeft: number;
         // chevron-right.svg
-        chevronRight: number;
+        ChevronRight: number;
         // chevron-up.svg
-        chevronUp: number;
+        ChevronUp: number;
         // circle-fill.svg
-        circleFill: number;
+        CircleFill: number;
         // circle-half.svg
-        circleHalf: number;
+        CircleHalf: number;
         // circle-slash.svg
-        circleSlash: number;
+        CircleSlash: number;
         // circle.svg
-        circle: number;
+        Circle: number;
         // clock-fill.svg
-        clockFill: number;
+        ClockFill: number;
         // clock.svg
-        clock: number;
+        Clock: number;
         // cloud-download.svg
-        cloudDownload: number;
+        CloudDownload: number;
         // cloud-fill.svg
-        cloudFill: number;
+        CloudFill: number;
         // cloud-upload.svg
-        cloudUpload: number;
+        CloudUpload: number;
         // cloud.svg
-        cloud: number;
+        Cloud: number;
         // code-slash.svg
-        codeSlash: number;
+        CodeSlash: number;
         // code.svg
-        code: number;
+        Code: number;
         // columns-gutters.svg
-        columnsGutters: number;
+        ColumnsGutters: number;
         // columns.svg
-        columns: number;
+        Columns: number;
         // command.svg
-        command: number;
+        Command: number;
         // compass.svg
-        compass: number;
+        Compass: number;
         // cone-striped.svg
-        coneStriped: number;
+        ConeStriped: number;
         // cone.svg
-        cone: number;
+        Cone: number;
         // controller.svg
-        controller: number;
+        Controller: number;
         // credit-card.svg
-        creditCard: number;
+        CreditCard: number;
         // cursor-fill.svg
-        cursorFill: number;
+        CursorFill: number;
         // cursor.svg
-        cursor: number;
+        Cursor: number;
         // dash.svg
-        dash: number;
+        Dash: number;
         // diamond-half.svg
-        diamondHalf: number;
+        DiamondHalf: number;
         // diamond.svg
-        diamond: number;
+        Diamond: number;
         // display-fill.svg
-        displayFill: number;
+        DisplayFill: number;
         // display.svg
-        display: number;
+        Display: number;
         // document-code.svg
-        documentCode: number;
+        DocumentCode: number;
         // document-diff.svg
-        documentDiff: number;
+        DocumentDiff: number;
         // document-richtext.svg
-        documentRichtext: number;
+        DocumentRichtext: number;
         // document-spreadsheet.svg
-        documentSpreadsheet: number;
+        DocumentSpreadsheet: number;
         // document-text.svg
-        documentText: number;
+        DocumentText: number;
         // document.svg
-        document: number;
+        Document: number;
         // documents-alt.svg
-        documentsAlt: number;
+        DocumentsAlt: number;
         // documents.svg
-        documents: number;
+        Documents: number;
         // dot.svg
-        dot: number;
+        Dot: number;
         // download.svg
-        download: number;
+        Download: number;
         // egg-fried.svg
-        eggFried: number;
+        EggFried: number;
         // eject-fill.svg
-        ejectFill: number;
+        EjectFill: number;
         // eject.svg
-        eject: number;
+        Eject: number;
         // envelope-fill.svg
-        envelopeFill: number;
+        EnvelopeFill: number;
         // envelope-open-fill.svg
-        envelopeOpenFill: number;
+        EnvelopeOpenFill: number;
         // envelope-open.svg
-        envelopeOpen: number;
+        EnvelopeOpen: number;
         // envelope.svg
-        envelope: number;
+        Envelope: number;
         // eye-fill.svg
-        eyeFill: number;
+        EyeFill: number;
         // eye-slash-fill.svg
-        eyeSlashFill: number;
+        EyeSlashFill: number;
         // eye-slash.svg
-        eyeSlash: number;
+        EyeSlash: number;
         // eye.svg
-        eye: number;
+        Eye: number;
         // filter.svg
-        filter: number;
+        Filter: number;
         // flag-fill.svg
-        flagFill: number;
+        FlagFill: number;
         // flag.svg
-        flag: number;
+        Flag: number;
         // folder-fill.svg
-        folderFill: number;
+        FolderFill: number;
         // folder-symlink-fill.svg
-        folderSymlinkFill: number;
+        FolderSymlinkFill: number;
         // folder-symlink.svg
-        folderSymlink: number;
+        FolderSymlink: number;
         // folder.svg
-        folder: number;
+        Folder: number;
         // fonts.svg
-        fonts: number;
+        Fonts: number;
         // forward-fill.svg
-        forwardFill: number;
+        ForwardFill: number;
         // forward.svg
-        forward: number;
+        Forward: number;
         // gear-fill.svg
-        gearFill: number;
+        GearFill: number;
         // gear-wide-connected.svg
-        gearWideConnected: number;
+        GearWideConnected: number;
         // gear-wide.svg
-        gearWide: number;
+        GearWide: number;
         // gear.svg
-        gear: number;
+        Gear: number;
         // geo.svg
-        geo: number;
+        Geo: number;
         // graph-down.svg
-        graphDown: number;
+        GraphDown: number;
         // graph-up.svg
-        graphUp: number;
+        GraphUp: number;
         // grid-fill.svg
-        gridFill: number;
+        GridFill: number;
         // grid.svg
-        grid: number;
+        Grid: number;
         // hammer.svg
-        hammer: number;
+        Hammer: number;
         // hash.svg
-        hash: number;
+        Hash: number;
         // heart-fill.svg
-        heartFill: number;
+        HeartFill: number;
         // heart.svg
-        heart: number;
+        Heart: number;
         // house-fill.svg
-        houseFill: number;
+        HouseFill: number;
         // house.svg
-        house: number;
+        House: number;
         // image-alt.svg
-        imageAlt: number;
+        ImageAlt: number;
         // image-fill.svg
-        imageFill: number;
+        ImageFill: number;
         // image.svg
-        image: number;
+        Image: number;
         // images.svg
-        images: number;
+        Images: number;
         // inbox-fill.svg
-        inboxFill: number;
+        InboxFill: number;
         // inbox.svg
-        inbox: number;
+        Inbox: number;
         // inboxes-fill.svg
-        inboxesFill: number;
+        InboxesFill: number;
         // inboxes.svg
-        inboxes: number;
+        Inboxes: number;
         // info-fill.svg
-        infoFill: number;
+        InfoFill: number;
         // info-square-fill.svg
-        infoSquareFill: number;
+        InfoSquareFill: number;
         // info-square.svg
-        infoSquare: number;
+        InfoSquare: number;
         // info.svg
-        info: number;
+        Info: number;
         // justify-left.svg
-        justifyLeft: number;
+        JustifyLeft: number;
         // justify-right.svg
-        justifyRight: number;
+        JustifyRight: number;
         // justify.svg
-        justify: number;
+        Justify: number;
         // kanban-fill.svg
-        kanbanFill: number;
+        KanbanFill: number;
         // kanban.svg
-        kanban: number;
+        Kanban: number;
         // laptop.svg
-        laptop: number;
+        Laptop: number;
         // layout-sidebar-reverse.svg
-        layoutSidebarReverse: number;
+        LayoutSidebarReverse: number;
         // layout-sidebar.svg
-        layoutSidebar: number;
+        LayoutSidebar: number;
         // layout-split.svg
-        layoutSplit: number;
+        LayoutSplit: number;
         // list-check.svg
-        listCheck: number;
+        ListCheck: number;
         // list-ol.svg
-        listOl: number;
+        ListOl: number;
         // list-task.svg
-        listTask: number;
+        ListTask: number;
         // list-ul.svg
-        listUl: number;
+        ListUl: number;
         // list.svg
-        list: number;
+        List: number;
         // lock-fill.svg
-        lockFill: number;
+        LockFill: number;
         // lock.svg
-        lock: number;
+        Lock: number;
         // map.svg
-        map: number;
+        Map: number;
         // mic.svg
-        mic: number;
+        Mic: number;
         // moon.svg
-        moon: number;
+        Moon: number;
         // music-player-fill.svg
-        musicPlayerFill: number;
+        MusicPlayerFill: number;
         // music-player.svg
-        musicPlayer: number;
+        MusicPlayer: number;
         // option.svg
-        option: number;
+        Option: number;
         // outlet.svg
-        outlet: number;
+        Outlet: number;
         // pause-fill.svg
-        pauseFill: number;
+        PauseFill: number;
         // pause.svg
-        pause: number;
+        Pause: number;
         // pen.svg
-        pen: number;
+        Pen: number;
         // pencil.svg
-        pencil: number;
+        Pencil: number;
         // people-fill.svg
-        peopleFill: number;
+        PeopleFill: number;
         // people.svg
-        people: number;
+        People: number;
         // person-fill.svg
-        personFill: number;
+        PersonFill: number;
         // person.svg
-        person: number;
+        Person: number;
         // phone-landscape.svg
-        phoneLandscape: number;
+        PhoneLandscape: number;
         // phone.svg
-        phone: number;
+        Phone: number;
         // pie-chart-fill.svg
-        pieChartFill: number;
+        PieChartFill: number;
         // pie-chart.svg
-        pieChart: number;
+        PieChart: number;
         // play-fill.svg
-        playFill: number;
+        PlayFill: number;
         // play.svg
-        play: number;
+        Play: number;
         // plug.svg
-        plug: number;
+        Plug: number;
         // plus.svg
-        plus: number;
+        Plus: number;
         // power.svg
-        power: number;
+        Power: number;
         // question-fill.svg
-        questionFill: number;
+        QuestionFill: number;
         // question-square-fill.svg
-        questionSquareFill: number;
+        QuestionSquareFill: number;
         // question-square.svg
-        questionSquare: number;
+        QuestionSquare: number;
         // question.svg
-        question: number;
+        Question: number;
         // reply-all-fill.svg
-        replyAllFill: number;
+        ReplyAllFill: number;
         // reply-all.svg
-        replyAll: number;
+        ReplyAll: number;
         // reply-fill.svg
-        replyFill: number;
+        ReplyFill: number;
         // reply.svg
-        reply: number;
+        Reply: number;
         // screwdriver.svg
-        screwdriver: number;
+        Screwdriver: number;
         // search.svg
-        search: number;
+        Search: number;
         // shield-fill.svg
-        shieldFill: number;
+        ShieldFill: number;
         // shield-lock-fill.svg
-        shieldLockFill: number;
+        ShieldLockFill: number;
         // shield-lock.svg
-        shieldLock: number;
+        ShieldLock: number;
         // shield-shaded.svg
-        shieldShaded: number;
+        ShieldShaded: number;
         // shield.svg
-        shield: number;
+        Shield: number;
         // shift-fill.svg
-        shiftFill: number;
+        ShiftFill: number;
         // shift.svg
-        shift: number;
+        Shift: number;
         // skip-backward-fill.svg
-        skipBackwardFill: number;
+        SkipBackwardFill: number;
         // skip-backward.svg
-        skipBackward: number;
+        SkipBackward: number;
         // skip-end-fill.svg
-        skipEndFill: number;
+        SkipEndFill: number;
         // skip-end.svg
-        skipEnd: number;
+        SkipEnd: number;
         // skip-forward-fill.svg
-        skipForwardFill: number;
+        SkipForwardFill: number;
         // skip-forward.svg
-        skipForward: number;
+        SkipForward: number;
         // skip-start-fill.svg
-        skipStartFill: number;
+        SkipStartFill: number;
         // skip-start.svg
-        skipStart: number;
+        SkipStart: number;
         // speaker.svg
-        speaker: number;
+        Speaker: number;
         // square-fill.svg
-        squareFill: number;
+        SquareFill: number;
         // square-half.svg
-        squareHalf: number;
+        SquareHalf: number;
         // square.svg
-        square: number;
+        Square: number;
         // star-fill.svg
-        starFill: number;
+        StarFill: number;
         // star-half.svg
-        starHalf: number;
+        StarHalf: number;
         // star.svg
-        star: number;
+        Star: number;
         // stop-fill.svg
-        stopFill: number;
+        StopFill: number;
         // stop.svg
-        stop: number;
+        Stop: number;
         // stopwatch-fill.svg
-        stopwatchFill: number;
+        StopwatchFill: number;
         // stopwatch.svg
-        stopwatch: number;
+        Stopwatch: number;
         // sun.svg
-        sun: number;
+        Sun: number;
         // table.svg
-        table: number;
+        Table: number;
         // tablet-landscape.svg
-        tabletLandscape: number;
+        TabletLandscape: number;
         // tablet.svg
-        tablet: number;
+        Tablet: number;
         // tag-fill.svg
-        tagFill: number;
+        TagFill: number;
         // tag.svg
-        tag: number;
+        Tag: number;
         // terminal-fill.svg
-        terminalFill: number;
+        TerminalFill: number;
         // terminal.svg
-        terminal: number;
+        Terminal: number;
         // text-center.svg
-        textCenter: number;
+        TextCenter: number;
         // text-indent-left.svg
-        textIndentLeft: number;
+        TextIndentLeft: number;
         // text-indent-right.svg
-        textIndentRight: number;
+        TextIndentRight: number;
         // text-left.svg
-        textLeft: number;
+        TextLeft: number;
         // text-right.svg
-        textRight: number;
+        TextRight: number;
         // three-dots-vertical.svg
-        threeDotsVertical: number;
+        ThreeDotsVertical: number;
         // three-dots.svg
-        threeDots: number;
+        ThreeDots: number;
         // toggle-off.svg
-        toggleOff: number;
+        ToggleOff: number;
         // toggle-on.svg
-        toggleOn: number;
+        ToggleOn: number;
         // toggles.svg
-        toggles: number;
+        Toggles: number;
         // tools.svg
-        tools: number;
+        Tools: number;
         // trash-fill.svg
-        trashFill: number;
+        TrashFill: number;
         // trash.svg
-        trash: number;
+        Trash: number;
         // triangle-fill.svg
-        triangleFill: number;
+        TriangleFill: number;
         // triangle-half.svg
-        triangleHalf: number;
+        TriangleHalf: number;
         // triangle.svg
-        triangle: number;
+        Triangle: number;
         // trophy.svg
-        trophy: number;
+        Trophy: number;
         // tv-fill.svg
-        tvFill: number;
+        TvFill: number;
         // tv.svg
-        tv: number;
+        Tv: number;
         // type-bold.svg
-        typeBold: number;
+        TypeBold: number;
         // type-h1.svg
-        typeH1: number;
+        TypeH1: number;
         // type-h2.svg
-        typeH2: number;
+        TypeH2: number;
         // type-h3.svg
-        typeH3: number;
+        TypeH3: number;
         // type-italic.svg
-        typeItalic: number;
+        TypeItalic: number;
         // type-strikethrough.svg
-        typeStrikethrough: number;
+        TypeStrikethrough: number;
         // type-underline.svg
-        typeUnderline: number;
+        TypeUnderline: number;
         // type.svg
-        type: number;
+        Type: number;
         // unlock-fill.svg
-        unlockFill: number;
+        UnlockFill: number;
         // unlock.svg
-        unlock: number;
+        Unlock: number;
         // upload.svg
-        upload: number;
+        Upload: number;
         // volume-down-fill.svg
-        volumeDownFill: number;
+        VolumeDownFill: number;
         // volume-down.svg
-        volumeDown: number;
+        VolumeDown: number;
         // volume-mute-fill.svg
-        volumeMuteFill: number;
+        VolumeMuteFill: number;
         // volume-mute.svg
-        volumeMute: number;
+        VolumeMute: number;
         // volume-up-fill.svg
-        volumeUpFill: number;
+        VolumeUpFill: number;
         // volume-up.svg
-        volumeUp: number;
+        VolumeUp: number;
         // wallet.svg
-        wallet: number;
+        Wallet: number;
         // watch.svg
-        watch: number;
+        Watch: number;
         // wifi.svg
-        wifi: number;
+        Wifi: number;
         // window.svg
-        window: number;
+        Window: number;
         // wrench.svg
-        wrench: number;
+        Wrench: number;
         // x-circle-fill.svg
-        xCircleFill: number;
+        XCircleFill: number;
         // x-circle.svg
-        xCircle: number;
+        XCircle: number;
         // x-octagon-fill.svg
-        xOctagonFill: number;
+        XOctagonFill: number;
         // x-octagon.svg
-        xOctagon: number;
+        XOctagon: number;
         // x-square-fill.svg
-        xSquareFill: number;
+        XSquareFill: number;
         // x-square.svg
-        xSquare: number;
+        XSquare: number;
         // x.svg
-        x: number;
+        X: number;
     }
 }
 
