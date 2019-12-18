@@ -1,6 +1,6 @@
 {
   "name": "gd-bs",
-  "version": "1.6.8",
+  "version": "1.6.9",
   "description": "Bootstrap JavaScript, TypeScript and Web Components library.",
   "main": "dist/gd-bs.js",
   "typings": "dist/gd-bs.d.ts",
@@ -25,12 +25,12 @@
     "Bootstrap",
     "Web Components"
   ],
-  "author": "Gunjan Datta <me@dattabase.com> (https://gunjandatta.github.io)",
+  "author": "Gunjan Datta <me@dattabase.com> (https://dattabase.com)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/gunjandatta/gd-bs/issues"
   },
-  "homepage": "https://gunjandatta.github.io/extras/bs",
+  "homepage": "https://dattabase.com/extras/bs",
   "dependencies": {
     "bootstrap": "^4.4.1",
     "bootstrap-icons": "^1.0.0-alpha2"

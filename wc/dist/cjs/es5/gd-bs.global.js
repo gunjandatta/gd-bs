@@ -1147,8 +1147,8 @@ function appGlobal(n, x, w, d, r, h) {
                         p.classList.remove("is-invalid"), p.classList.remove("is-valid"), p.classList.add(r.isValid ? "is-valid" : "is-invalid");
                     }
                     c = b.length > 0 ? b[b.length - 1] : c;
-                } return c && ((r.invalidMessage || e.errorMessage) && (null == (s = n.querySelector(".invalid-feedback")) && ((s = document.createElement("div")).className = "invalid-feedback", c.parentElement.appendChild(s)), s.innerHTML = r.invalidMessage || e.errorMessage), r.validMessage && (null == (s = n.querySelector(".valid-feedback")) && ((s = document.createElement("div")).className = "valid-feedback", c.parentElement.appendChild(s)), s.innerHTML = r.validMessage)), r.isValid; }, props: e, show: function () { n.show(d); } }; }; }, function (e, t, o) { Object.defineProperty(t, "__esModule", { value: !0 }); var r, n, i = o(0); !function (e) { e[e.Bottom = 1] = "Bottom", e[e.Center = 2] = "Center", e[e.Top = 3] = "Top"; }(r = t.MediaImageTypes || (t.MediaImageTypes = {})), function (e) { e[e.Left = 1] = "Left", e[e.Right = 2] = "Right"; }(n = t.MediaOrderTypes || (t.MediaOrderTypes = {})), t.Media = function (e) { var o = document.createElement("div"); o.className = e.className || "", o.classList.add("media"); var a = document.createElement("div"); a.classList.add("media-body"); var s = function () { var t = e.image ? document.createElement("img") : null; if (t) {
-                switch (t.alt = e.image.alt, t.className = e.className || "", t.src = e.image.src || "", e.image.type) {
+                } return c && ((r.invalidMessage || e.errorMessage) && (null == (s = n.querySelector(".invalid-feedback")) && ((s = document.createElement("div")).className = "invalid-feedback", c.parentElement.appendChild(s)), s.innerHTML = r.invalidMessage || e.errorMessage), r.validMessage && (null == (s = n.querySelector(".valid-feedback")) && ((s = document.createElement("div")).className = "valid-feedback", c.parentElement.appendChild(s)), s.innerHTML = r.validMessage)), r.isValid; }, props: e, show: function () { n.show(d); } }; }; }, function (e, t, o) { Object.defineProperty(t, "__esModule", { value: !0 }); var r, n, i = o(0); !function (e) { e[e.Bottom = 1] = "Bottom", e[e.Center = 2] = "Center", e[e.Top = 3] = "Top"; }(r = t.MediaImageTypes || (t.MediaImageTypes = {})), function (e) { e[e.Left = 1] = "Left", e[e.Right = 2] = "Right"; }(n = t.MediaOrderTypes || (t.MediaOrderTypes = {})), t.Media = function (e) { var o = document.createElement("div"); o.className = e.className || "", o.classList.add("media"); var a = document.createElement("div"); a.classList.add("media-body"), a.innerHTML = e.body || ""; var s = function () { var t = e.image ? document.createElement("img") : null; if (t) {
+                switch (t.alt = e.image.alt, t.className = e.image.className || "", t.src = e.image.src || "", e.image.type) {
                     case r.Bottom:
                         t.classList.add("align-self-start");
                         break;
@@ -1163,9 +1163,9 @@ function appGlobal(n, x, w, d, r, h) {
                 }
                 else
                     o.appendChild(t);
-            } }; if (e.order == n.Right ? (o.appendChild(a), s()) : (s(), o.appendChild(a)), e.items && e.items.length > 0)
+            } }; if (e.items && e.items.length > 0)
                 for (var l = 0; l < e.items.length; l++)
-                    a.appendChild(t.Media(e.items[l]).el); e.onRenderBody && e.onRenderBody(a); var d = document.createElement("div"); if (d.appendChild(o), e.el) {
+                    a.appendChild(t.Media(e.items[l]).el); e.order == n.Right ? (o.appendChild(a), s()) : (s(), o.appendChild(a)), e.onRenderBody && e.onRenderBody(a); var d = document.createElement("div"); if (d.appendChild(o), e.el) {
                 for (e.el.classList && "BODY" != e.el.tagName && !e.el.classList.contains("bs") && e.el.classList.add("bs"); d.children.length > 0;)
                     e.el.appendChild(d.children[0]);
                 d = e.el;
@@ -1880,7 +1880,8 @@ function appGlobal(n, x, w, d, r, h) {
             else
                 p.classList.add("bs"); var u = n(p.children[0]); return { el: p, hide: function () { i.hide(p); }, show: function (e) { e ? u.querySelector("#" + e).tab("show") : i.show(p); } }; }; }, function (e, t, o) { Object.defineProperty(t, "__esModule", { value: !0 }); var r = o(0), n = o(13); t.MediaList = function (e) { var t = document.createElement("ul"); t.className = e.className || "", t.classList.add("list-unstyled"); for (var o = e.items || [], i = 0; i < o.length; i++) {
                 var a = n.Media(o[i]), s = document.createElement("li");
-                s.className = a.el.className, t.appendChild(s);
+                for (s.className = a.el.className, t.appendChild(s); a.el.firstChild;)
+                    s.appendChild(a.el.firstChild);
             } var l = document.createElement("div"); if (l.appendChild(t), e.el) {
                 for (e.el.classList && "BODY" != e.el.tagName && !e.el.classList.contains("bs") && e.el.classList.add("bs"); l.children.length > 0;)
                     e.el.appendChild(l.children[0]);

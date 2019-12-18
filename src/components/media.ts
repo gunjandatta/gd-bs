@@ -32,6 +32,7 @@ export const Media = (props: IMediaProps): IMedia => {
     // Render the body
     let body = document.createElement("div");
     body.classList.add("media-body");
+    body.innerHTML = props.body || "";
 
     // Method to render the image
     let renderImage = () => {
@@ -40,7 +41,7 @@ export const Media = (props: IMediaProps): IMedia => {
         if (image) {
             // Set the properties
             image.alt = props.image.alt;
-            image.className = props.className || "";
+            image.className = props.image.className || "";
             image.src = props.image.src || "";
 
             // Read the type
@@ -75,6 +76,17 @@ export const Media = (props: IMediaProps): IMedia => {
         }
     }
 
+    // See if items exist
+    if (props.items && props.items.length > 0) {
+        // Parse the items
+        for (let i = 0; i < props.items.length; i++) {
+            let item = props.items[i];
+
+            // Add the item to the body
+            body.appendChild(Media(item).el);
+        }
+    }
+
     // See if we are rendering the body first
     if (props.order == MediaOrderTypes.Right) {
         // Render the body
@@ -88,17 +100,6 @@ export const Media = (props: IMediaProps): IMedia => {
 
         // Render the body
         media.appendChild(body);
-    }
-
-    // See if items exist
-    if (props.items && props.items.length > 0) {
-        // Parse the items
-        for (let i = 0; i < props.items.length; i++) {
-            let item = props.items[i];
-
-            // Add the item to the body
-            body.appendChild(Media(item).el);
-        }
     }
 
     // Call the render event

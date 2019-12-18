@@ -29,10 +29,9 @@ export interface IMediaProps {
     className?: string;
     body?: string;
     el?: Element | HTMLElement;
-    header?: string;
     image?: {
         alt?: string;
-        class?: string;
+        className?: string;
         rightAligned?: boolean;
         src: string;
         type?: number;

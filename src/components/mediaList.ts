@@ -23,6 +23,12 @@ export const MediaList = (props: IMediaListProps): IMediaList => {
         let item = document.createElement("li");
         item.className = mediaObj.el.className;
         mediaList.appendChild(item);
+
+        // Move the media elements
+        while (mediaObj.el.firstChild) {
+            // Add the media element
+            item.appendChild(mediaObj.el.firstChild);
+        }
     }
 
     // Create the element

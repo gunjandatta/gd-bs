@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <script src="dist/gd-bs.js"></script>
+    <script src="dist/gd-bs-icons.js"></script>
     <style>
         .carousel {
             max-width: 400px;
@@ -41,6 +41,7 @@
         <div id="navbar"></div>
         <div id="table"></div>
         <div id="toast"></div>
+        <div id="mediaList"></div>
     </form>
     <script type="text/javascript">
         window.addEventListener("load", function () {
@@ -390,6 +391,32 @@
                     },
                 ]
             });
+            var mediaList = GD.Components.MediaList({
+                el: document.getElementById("mediaList"),
+                items: [
+                    {
+                        image: { src: "https://via.placeholder.com/32x32", alt: "test", className: "mr-3" },
+                        body: "<h5>List Item Default</h5>This is test item 1."
+                    },
+                    {
+                        image: { src: "https://via.placeholder.com/32x32", alt: "test", className: "mr-3", type: 1 },
+                        body: "<h5>List Item Top</h5>This is test item 2."
+                    },
+                    {
+                        image: { src: "https://via.placeholder.com/32x32", alt: "test", className: "mr-3", type: 2 },
+                        body: "<h5>List Item Center</h5>This is test item 3."
+                    },
+                    {
+                        image: { src: "https://via.placeholder.com/32x32", alt: "test", className: "mr-3", type: 3 },
+                        body: "<h5>List Item Bottom</h5>This is test item 4."
+                    },
+                    {
+                        image: { src: "https://via.placeholder.com/32x32", alt: "test", className: "mr-3" },
+                        body: "<h5>List Item Right Aligned</h5>This is test item 5.",
+                        order: 2
+                    }
+                ]
+            })
             var panel = GD.Components.Panel({
                 el: document.getElementById("panel"),
                 modalProps: {
