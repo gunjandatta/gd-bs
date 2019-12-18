@@ -2,7 +2,7 @@ import * as jQuery from "jquery";
 import * as Common from "../common";
 import { Badge, BadgeTypes } from "./badge";
 import { Spinner } from "./spinner";
-import { IButton, IButtonProps } from "../../@types/button";
+import { IButton, IButtonProps } from "../../@types/components/button";
 
 /**
  * Button Types

@@ -1,4 +1,4 @@
-import { IPagination, IPaginationProps } from "../../@types/pagination";
+import { IPagination, IPaginationProps } from "../../@types/components/pagination";
 import * as Common from "../common";
 
 /**

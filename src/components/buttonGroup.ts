@@ -1,4 +1,4 @@
-import { IButtonGroup, IButtonGroupProps } from "../../@types/buttonGroup";
+import { IButtonGroup, IButtonGroupProps } from "../../@types/components/buttonGroup";
 import * as Common from "../common";
 import { Button } from "./button";
 

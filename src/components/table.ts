@@ -1,4 +1,4 @@
-import { ITable, ITableProps } from "../../@types/table";
+import { ITable, ITableProps } from "../../@types/components/table";
 import * as Common from "../common";
 
 /**

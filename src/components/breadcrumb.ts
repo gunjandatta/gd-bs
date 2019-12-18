@@ -1,4 +1,4 @@
-import { IBreadcrumb, IBreadcrumbProps, IBreadcrumbItem } from "../../@types/breadcrumb";
+import { IBreadcrumb, IBreadcrumbProps, IBreadcrumbItem } from "../../@types/components/breadcrumb";
 import * as Common from "../common";
 
 /**

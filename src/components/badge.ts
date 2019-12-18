@@ -1,4 +1,4 @@
-import { IBadge, IBadgeProps } from "../../@types/badge";
+import { IBadge, IBadgeProps } from "../../@types/components/badge";
 import * as Common from "../common";
 
 /**

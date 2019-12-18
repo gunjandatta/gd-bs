@@ -1,7 +1,7 @@
-import { ICheckboxGroup } from "../../@types/checkboxGroup";
-import { IDropdown } from "../../@types/dropdown";
-import { IInputGroup } from "../../@types/inputGroup";
-import { IFormControl, IFormControlProps, IFormControlPropsCheckbox, IFormControlPropsDropdown, IFormControlPropsNumberField, IFormControlPropsRange, IFormControlPropsTextField, IFormControlValidationResult } from "../../@types/formControl";
+import { ICheckboxGroup } from "../../@types/components/checkboxGroup";
+import { IDropdown } from "../../@types/components/dropdown";
+import { IInputGroup } from "../../@types/components/inputGroup";
+import { IFormControl, IFormControlProps, IFormControlPropsCheckbox, IFormControlPropsDropdown, IFormControlPropsNumberField, IFormControlPropsRange, IFormControlPropsTextField, IFormControlValidationResult } from "../../@types/components/formControl";
 import * as Common from "../common";
 import { CheckboxGroup, CheckboxGroupTypes } from "./checkboxGroup";
 import { Dropdown } from "./dropdown";

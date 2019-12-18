@@ -1,6 +1,6 @@
 import * as Common from "../common";
-import { IForm, IFormProps } from "../../@types/form";
-import { IFormControl, IFormControlProps, IFormControlPropsCheckbox } from "../../@types/formControl";
+import { IForm, IFormProps } from "../../@types/components/form";
+import { IFormControl, IFormControlProps, IFormControlPropsCheckbox } from "../../@types/components/formControl";
 import { FormControl } from "./formControl";
 import { Progress } from "./progress";
 

@@ -14,36 +14,36 @@ declare module 'gd-bs' {
 }
 
 declare module 'gd-bs/components' {
-    export * from "gd-bs/accordion";
-    export * from "gd-bs/alert";
-    export * from "gd-bs/badge";
-    export * from "gd-bs/breadcrumb";
-    export * from "gd-bs/button";
-    export * from "gd-bs/buttonGroup";
-    export * from "gd-bs/card";
-    export * from "gd-bs/cardGroup";
-    export * from "gd-bs/carousel";
-    export * from "gd-bs/checkboxGroup";
-    export * from "gd-bs/collapse";
-    export * from "gd-bs/dropdown";
-    export * from "gd-bs/form";
-    export * from "gd-bs/formControl";
-    export * from "gd-bs/inputGroup";
-    export * from "gd-bs/jumbotron";
-    export * from "gd-bs/listGroup";
-    export * from "gd-bs/modal";
-    export * from "gd-bs/nav";
-    export * from "gd-bs/navbar";
-    export * from "gd-bs/pagination";
-    export * from "gd-bs/panel";
-    export * from "gd-bs/popover";
-    export * from "gd-bs/progress";
-    export * from "gd-bs/progressGroup";
-    export * from "gd-bs/spinner";
-    export * from "gd-bs/table";
-    export * from "gd-bs/toast";
-    export * from "gd-bs/toolbar";
-    export * from "gd-bs/tooltip";
+    export * from "gd-bs/components/accordion";
+    export * from "gd-bs/components/alert";
+    export * from "gd-bs/components/badge";
+    export * from "gd-bs/components/breadcrumb";
+    export * from "gd-bs/components/button";
+    export * from "gd-bs/components/buttonGroup";
+    export * from "gd-bs/components/card";
+    export * from "gd-bs/components/cardGroup";
+    export * from "gd-bs/components/carousel";
+    export * from "gd-bs/components/checkboxGroup";
+    export * from "gd-bs/components/collapse";
+    export * from "gd-bs/components/dropdown";
+    export * from "gd-bs/components/form";
+    export * from "gd-bs/components/formControl";
+    export * from "gd-bs/components/inputGroup";
+    export * from "gd-bs/components/jumbotron";
+    export * from "gd-bs/components/listGroup";
+    export * from "gd-bs/components/modal";
+    export * from "gd-bs/components/nav";
+    export * from "gd-bs/components/navbar";
+    export * from "gd-bs/components/pagination";
+    export * from "gd-bs/components/panel";
+    export * from "gd-bs/components/popover";
+    export * from "gd-bs/components/progress";
+    export * from "gd-bs/components/progressGroup";
+    export * from "gd-bs/components/spinner";
+    export * from "gd-bs/components/table";
+    export * from "gd-bs/components/toast";
+    export * from "gd-bs/components/toolbar";
+    export * from "gd-bs/components/tooltip";
 }
 
 declare module 'gd-bs/icons' {
@@ -364,9 +364,9 @@ declare module 'gd-bs/icons' {
     export const X: (height?: number, width?: number) => HTMLElement;
 }
 
-declare module 'gd-bs/accordion' {
-    import { IButtonProps } from "gd-bs/button";
-    import { ICollapseOptions } from "gd-bs/collapse";
+declare module 'gd-bs/components/accordion' {
+    import { IButtonProps } from "gd-bs/components/button";
+    import { ICollapseOptions } from "gd-bs/components/collapse";
     
     /**
         * Accordion
@@ -416,7 +416,7 @@ declare module 'gd-bs/accordion' {
     }
 }
 
-declare module 'gd-bs/alert' {
+declare module 'gd-bs/components/alert' {
     /**
         * Alert
         */
@@ -480,7 +480,7 @@ declare module 'gd-bs/alert' {
     }
 }
 
-declare module 'gd-bs/badge' {
+declare module 'gd-bs/components/badge' {
     /**
         * Badge
         */
@@ -535,7 +535,7 @@ declare module 'gd-bs/badge' {
     }
 }
 
-declare module 'gd-bs/breadcrumb' {
+declare module 'gd-bs/components/breadcrumb' {
     /**
         * Breadcrumb
         */
@@ -575,9 +575,9 @@ declare module 'gd-bs/breadcrumb' {
     }
 }
 
-declare module 'gd-bs/button' {
-    import { IBadgeProps } from "gd-bs/badge";
-    import { ISpinnerProps } from "gd-bs/spinner";
+declare module 'gd-bs/components/button' {
+    import { IBadgeProps } from "gd-bs/components/badge";
+    import { ISpinnerProps } from "gd-bs/components/spinner";
     
     /**
         * Button
@@ -659,8 +659,8 @@ declare module 'gd-bs/button' {
     }
 }
 
-declare module 'gd-bs/buttonGroup' {
-    import { IButtonProps } from "gd-bs/";
+declare module 'gd-bs/components/buttonGroup' {
+    import { IButtonProps } from "gd-bs/components";
     
     /**
         * Button Group
@@ -697,9 +697,9 @@ declare module 'gd-bs/buttonGroup' {
     }
 }
 
-declare module 'gd-bs/card' {
-    import { IButtonProps } from "gd-bs/button";
-    import { INavProps } from "gd-bs/nav";
+declare module 'gd-bs/components/card' {
+    import { IButtonProps } from "gd-bs/components/button";
+    import { INavProps } from "gd-bs/components/nav";
     
     /**
         * Card
@@ -787,8 +787,8 @@ declare module 'gd-bs/card' {
     }
 }
 
-declare module 'gd-bs/cardGroup' {
-    import { ICardProps } from "gd-bs/";
+declare module 'gd-bs/components/cardGroup' {
+    import { ICardProps } from "gd-bs/components";
     
     /**
         * Card Group
@@ -820,7 +820,7 @@ declare module 'gd-bs/cardGroup' {
     }
 }
 
-declare module 'gd-bs/carousel' {
+declare module 'gd-bs/components/carousel' {
     /**
         * Carousel
         */
@@ -907,7 +907,7 @@ declare module 'gd-bs/carousel' {
     }
 }
 
-declare module 'gd-bs/checkboxGroup' {
+declare module 'gd-bs/components/checkboxGroup' {
     /**
         * Checkbox Group
         */
@@ -976,8 +976,8 @@ declare module 'gd-bs/checkboxGroup' {
     }
 }
 
-declare module 'gd-bs/collapse' {
-    import { IButtonProps } from "gd-bs/button";
+declare module 'gd-bs/components/collapse' {
+    import { IButtonProps } from "gd-bs/components/button";
     
     /**
         * Collapse
@@ -1027,7 +1027,7 @@ declare module 'gd-bs/collapse' {
     }
 }
 
-declare module 'gd-bs/dropdown' {
+declare module 'gd-bs/components/dropdown' {
     /**
         * Dropdown
         */
@@ -1125,8 +1125,8 @@ declare module 'gd-bs/dropdown' {
     }
 }
 
-declare module 'gd-bs/form' {
-    import { IFormControl, IFormControlProps, IFormControlTypes } from "gd-bs/formControl";
+declare module 'gd-bs/components/form' {
+    import { IFormControl, IFormControlProps, IFormControlTypes } from "gd-bs/components/formControl";
     
     /**
         * Form
@@ -1186,10 +1186,10 @@ declare module 'gd-bs/form' {
     }
 }
 
-declare module 'gd-bs/formControl' {
-    import { ICheckboxGroup, ICheckboxGroupItem } from "gd-bs/checkboxGroup";
-    import { IDropdown, IDropdownItem } from "gd-bs/dropdown";
-    import { IInputGroup } from "gd-bs/inputGroup";
+declare module 'gd-bs/components/formControl' {
+    import { ICheckboxGroup, ICheckboxGroupItem } from "gd-bs/components/checkboxGroup";
+    import { IDropdown, IDropdownItem } from "gd-bs/components/dropdown";
+    import { IInputGroup } from "gd-bs/components/inputGroup";
     
     /**
         * Form Control
@@ -1321,8 +1321,8 @@ declare module 'gd-bs/formControl' {
     }
 }
 
-declare module 'gd-bs/inputGroup' {
-    import { IButtonProps } from "gd-bs/button";
+declare module 'gd-bs/components/inputGroup' {
+    import { IButtonProps } from "gd-bs/components/button";
     
     /**
         * Input Group
@@ -1398,7 +1398,7 @@ declare module 'gd-bs/inputGroup' {
     }
 }
 
-declare module 'gd-bs/jumbotron' {
+declare module 'gd-bs/components/jumbotron' {
     /**
         * Jumbotron
         */
@@ -1432,8 +1432,8 @@ declare module 'gd-bs/jumbotron' {
     }
 }
 
-declare module 'gd-bs/listGroup' {
-    import { IBadgeProps } from "gd-bs/badge";
+declare module 'gd-bs/components/listGroup' {
+    import { IBadgeProps } from "gd-bs/components/badge";
     
     /**
         * List Group
@@ -1507,8 +1507,8 @@ declare module 'gd-bs/listGroup' {
     }
 }
 
-declare module 'gd-bs/modal' {
-    import { IButtonProps } from "gd-bs/button";
+declare module 'gd-bs/components/modal' {
+    import { IButtonProps } from "gd-bs/components/button";
     
     /**
         * Modal
@@ -1577,7 +1577,7 @@ declare module 'gd-bs/modal' {
     }
 }
 
-declare module 'gd-bs/nav' {
+declare module 'gd-bs/components/nav' {
     /**
         * Navigation
         */
@@ -1635,9 +1635,9 @@ declare module 'gd-bs/nav' {
     }
 }
 
-declare module 'gd-bs/navbar' {
-    import { IButtonProps } from "gd-bs/button";
-    import { IDropdownItem } from "gd-bs/dropdown";
+declare module 'gd-bs/components/navbar' {
+    import { IButtonProps } from "gd-bs/components/button";
+    import { IDropdownItem } from "gd-bs/components/dropdown";
     
     /**
         * Navbar
@@ -1713,7 +1713,7 @@ declare module 'gd-bs/navbar' {
     }
 }
 
-declare module 'gd-bs/pagination' {
+declare module 'gd-bs/components/pagination' {
     /**
         * Pagination
         */
@@ -1763,8 +1763,8 @@ declare module 'gd-bs/pagination' {
     }
 }
 
-declare module 'gd-bs/panel' {
-    import { IModal, IModalProps } from "gd-bs/modal";
+declare module 'gd-bs/components/panel' {
+    import { IModal, IModalProps } from "gd-bs/components/modal";
     
     /**
         * Panel
@@ -1815,8 +1815,8 @@ declare module 'gd-bs/panel' {
     }
 }
 
-declare module 'gd-bs/popover' {
-    import { IButtonProps } from "gd-bs/button";
+declare module 'gd-bs/components/popover' {
+    import { IButtonProps } from "gd-bs/components/button";
     
     /**
         * Popover
@@ -1898,7 +1898,7 @@ declare module 'gd-bs/popover' {
     }
 }
 
-declare module 'gd-bs/progress' {
+declare module 'gd-bs/components/progress' {
     /**
         * Progress
         */
@@ -1933,8 +1933,8 @@ declare module 'gd-bs/progress' {
     }
 }
 
-declare module 'gd-bs/progressGroup' {
-    import { IProgressProps } from "gd-bs/progress";
+declare module 'gd-bs/components/progressGroup' {
+    import { IProgressProps } from "gd-bs/components/progress";
     
     /**
         * Progress Group
@@ -1966,7 +1966,7 @@ declare module 'gd-bs/progressGroup' {
     }
 }
 
-declare module 'gd-bs/spinner' {
+declare module 'gd-bs/components/spinner' {
     /**
         * Spinner
         */
@@ -2018,7 +2018,7 @@ declare module 'gd-bs/spinner' {
     }
 }
 
-declare module 'gd-bs/table' {
+declare module 'gd-bs/components/table' {
     /**
         * Table
         */
@@ -2072,7 +2072,7 @@ declare module 'gd-bs/table' {
     }
 }
 
-declare module 'gd-bs/toast' {
+declare module 'gd-bs/components/toast' {
     /**
         * Toast
         */
@@ -2122,9 +2122,9 @@ declare module 'gd-bs/toast' {
     }
 }
 
-declare module 'gd-bs/toolbar' {
-    import { IButtonProps } from "gd-bs/button";
-    import { IInputGroupProps } from "gd-bs/inputGroup";
+declare module 'gd-bs/components/toolbar' {
+    import { IButtonProps } from "gd-bs/components/button";
+    import { IInputGroupProps } from "gd-bs/components/inputGroup";
     
     /**
         * Toolbar
@@ -2165,8 +2165,8 @@ declare module 'gd-bs/toolbar' {
     }
 }
 
-declare module 'gd-bs/tooltip' {
-    import { IButtonProps } from "gd-bs/button";
+declare module 'gd-bs/components/tooltip' {
+    import { IButtonProps } from "gd-bs/components/button";
     
     /**
         * Tooltip
@@ -2245,17 +2245,6 @@ declare module 'gd-bs/tooltip' {
             Left: number;
             Right: number;
             Top: number;
-    }
-}
-
-declare module 'gd-bs/' {
-    import * as Components from "gd-bs/components";
-    import * as Icons from "gd-bs/icons";
-    import * as jQuery from "jquery";
-    export {
-        Components,
-        Icons,
-        jQuery
     }
 }
 

@@ -1,4 +1,4 @@
-import { IPanel, IPanelProps, IPanelTypes } from "../../@types/panel";
+import { IPanel, IPanelProps, IPanelTypes } from "../../@types/components/panel";
 import { Modal } from "./modal";
 
 /**

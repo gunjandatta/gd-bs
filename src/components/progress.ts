@@ -1,4 +1,4 @@
-import { IProgress, IProgressProps } from "../../@types/progress";
+import { IProgress, IProgressProps } from "../../@types/components/progress";
 import * as Common from "../common";
 
 /**

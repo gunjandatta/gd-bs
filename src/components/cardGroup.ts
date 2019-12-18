@@ -1,4 +1,4 @@
-import { ICardGroup, ICardGroupProps } from "../../@types/cardGroup";
+import { ICardGroup, ICardGroupProps } from "../../@types/components/cardGroup";
 import * as Common from "../common";
 import { Card } from "./card";
 

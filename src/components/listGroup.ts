@@ -1,6 +1,6 @@
 import * as jQuery from "jquery";
 import * as Common from "../common";
-import { IListGroup, IListGroupProps } from "../../@types/listGroup";
+import { IListGroup, IListGroupProps } from "../../@types/components/listGroup";
 import { Badge } from "./badge";
 
 /**

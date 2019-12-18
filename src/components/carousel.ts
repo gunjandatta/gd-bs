@@ -1,6 +1,6 @@
 import * as jQuery from "jquery";
 import * as Common from "../common";
-import { ICarousel, ICarouselProps } from "../../@types/carousel";
+import { ICarousel, ICarouselProps } from "../../@types/components/carousel";
 
 /**
  * Carousel

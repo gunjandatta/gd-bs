@@ -1,6 +1,6 @@
 import * as jQuery from "jquery";
 import * as Common from "../common";
-import { IDropdown, IDropdownItem, IDropdownProps } from "../../@types/dropdown";
+import { IDropdown, IDropdownItem, IDropdownProps } from "../../@types/components/dropdown";
 
 /**
  * Dropdown Types

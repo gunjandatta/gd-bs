@@ -15,6 +15,8 @@ export * from "./formControl";
 export * from "./inputGroup";
 export * from "./jumbotron";
 export * from "./listGroup";
+export * from "./media";
+export * from "./mediaList";
 export * from "./modal";
 export * from "./nav";
 export * from "./navbar";

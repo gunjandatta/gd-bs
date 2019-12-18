@@ -1,6 +1,6 @@
 import * as jQuery from "jquery";
 import * as Common from "../common";
-import { ICollapse, ICollapseProps } from "../../@types/collapse";
+import { ICollapse, ICollapseProps } from "../../@types/components/collapse";
 
 /**
  * Collapse

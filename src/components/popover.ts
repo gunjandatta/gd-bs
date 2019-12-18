@@ -1,7 +1,7 @@
 import * as jQuery from "jquery";
 import * as Common from "../common";
 import { Button } from "./button";
-import { IPopover, IPopoverProps } from "../../@types/popover";
+import { IPopover, IPopoverProps } from "../../@types/components/popover";
 
 /**
  * Popover Types

@@ -1,6 +1,6 @@
 import * as jQuery from "jquery";
 import * as Common from "../common";
-import { IAlert, IAlertProps } from "../../@types/alert";
+import { IAlert, IAlertProps } from "../../@types/components/alert";
 
 /**
  * Alert Types
