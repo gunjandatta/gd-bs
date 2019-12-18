@@ -112,7 +112,7 @@ export const Media = (props: IMediaProps): IMedia => {
             switch (props.image.type) {
                 // Bottom
                 case MediaImageTypes.Bottom:
-                    image.classList.add("align-self-start");
+                    image.classList.add("align-self-end");
                     break;
                 // Center
                 case MediaImageTypes.Center:
@@ -120,7 +120,7 @@ export const Media = (props: IMediaProps): IMedia => {
                     break;
                 // Top
                 case MediaImageTypes.Top:
-                    image.classList.add("align-self-end");
+                    image.classList.add("align-self-start");
                     break;
             }
 

@@ -1173,12 +1173,12 @@ function appGlobal(n, x, w, d, r, h) {
             } }, l = function () { var t = e.image ? document.createElement("img") : null; if (t) {
                 switch (t.alt = e.image.alt, t.className = e.image.className || "", t.src = e.image.src || "", e.image.type) {
                     case n.Bottom:
-                        t.classList.add("align-self-start");
+                        t.classList.add("align-self-end");
                         break;
                     case n.Center:
                         t.classList.add("align-self-center");
                         break;
-                    case n.Top: t.classList.add("align-self-end");
+                    case n.Top: t.classList.add("align-self-start");
                 }
                 if (e.image.url) {
                     var r = document.createElement("a");
