@@ -1156,12 +1156,12 @@ function appGlobal(n, x, w, d, r, h) {
                     }
                     switch (e.icon.type) {
                         case n.Bottom:
-                            t.classList.add("align-self-start");
+                            t.classList.add("align-self-end");
                             break;
                         case n.Center:
                             t.classList.add("align-self-center");
                             break;
-                        case n.Top: t.classList.add("align-self-end");
+                        case n.Top: t.classList.add("align-self-start");
                     }
                     if (e.icon.url) {
                         var s = document.createElement("a");
