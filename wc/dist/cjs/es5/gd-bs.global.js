@@ -1147,7 +1147,30 @@ function appGlobal(n, x, w, d, r, h) {
                         p.classList.remove("is-invalid"), p.classList.remove("is-valid"), p.classList.add(r.isValid ? "is-valid" : "is-invalid");
                     }
                     c = b.length > 0 ? b[b.length - 1] : c;
-                } return c && ((r.invalidMessage || e.errorMessage) && (null == (s = n.querySelector(".invalid-feedback")) && ((s = document.createElement("div")).className = "invalid-feedback", c.parentElement.appendChild(s)), s.innerHTML = r.invalidMessage || e.errorMessage), r.validMessage && (null == (s = n.querySelector(".valid-feedback")) && ((s = document.createElement("div")).className = "valid-feedback", c.parentElement.appendChild(s)), s.innerHTML = r.validMessage)), r.isValid; }, props: e, show: function () { n.show(d); } }; }; }, function (e, t, o) { Object.defineProperty(t, "__esModule", { value: !0 }); var r, n, i = o(0); !function (e) { e[e.Bottom = 1] = "Bottom", e[e.Center = 2] = "Center", e[e.Top = 3] = "Top"; }(r = t.MediaImageTypes || (t.MediaImageTypes = {})), function (e) { e[e.Left = 1] = "Left", e[e.Right = 2] = "Right"; }(n = t.MediaOrderTypes || (t.MediaOrderTypes = {})), t.Media = function (e) { var o = document.createElement("div"); o.className = e.className || "", o.classList.add("media"); var a = document.createElement("div"); a.classList.add("media-body"), a.innerHTML = e.body || ""; var s = function () { var t = e.image ? document.createElement("img") : null; if (t) {
+                } return c && ((r.invalidMessage || e.errorMessage) && (null == (s = n.querySelector(".invalid-feedback")) && ((s = document.createElement("div")).className = "invalid-feedback", c.parentElement.appendChild(s)), s.innerHTML = r.invalidMessage || e.errorMessage), r.validMessage && (null == (s = n.querySelector(".valid-feedback")) && ((s = document.createElement("div")).className = "valid-feedback", c.parentElement.appendChild(s)), s.innerHTML = r.validMessage)), r.isValid; }, props: e, show: function () { n.show(d); } }; }; }, function (e, t, o) { Object.defineProperty(t, "__esModule", { value: !0 }); var r, n, i = o(0); !function (e) { e[e.Bottom = 1] = "Bottom", e[e.Center = 2] = "Center", e[e.Top = 3] = "Top"; }(r = t.MediaImageTypes || (t.MediaImageTypes = {})), function (e) { e[e.Left = 1] = "Left", e[e.Right = 2] = "Right"; }(n = t.MediaOrderTypes || (t.MediaOrderTypes = {})), t.Media = function (e) { var o = document.createElement("div"); o.className = e.className || "", o.classList.add("media"); var a = document.createElement("div"); a.classList.add("media-body"), a.innerHTML = e.body || ""; var s = function () { if (e.icon) {
+                var t = GD.Icons ? GD.Icons.byType(e.icon.icon, e.icon.height, e.icon.width) : null;
+                if (t) {
+                    for (var n = (e.icon.className || "").trim().split(" "), i = 0; i < n.length; i++) {
+                        var a = n[i];
+                        a && t.classList.add(a);
+                    }
+                    switch (e.icon.type) {
+                        case r.Bottom:
+                            t.classList.add("align-self-start");
+                            break;
+                        case r.Center:
+                            t.classList.add("align-self-center");
+                            break;
+                        case r.Top: t.classList.add("align-self-end");
+                    }
+                    if (e.icon.url) {
+                        var s = document.createElement("a");
+                        s.href = e.image.url, o.appendChild(s), s.appendChild(t);
+                    }
+                    else
+                        o.appendChild(t);
+                }
+            } }, l = function () { var t = e.image ? document.createElement("img") : null; if (t) {
                 switch (t.alt = e.image.alt, t.className = e.image.className || "", t.src = e.image.src || "", e.image.type) {
                     case r.Bottom:
                         t.classList.add("align-self-start");
@@ -1164,14 +1187,14 @@ function appGlobal(n, x, w, d, r, h) {
                 else
                     o.appendChild(t);
             } }; if (e.items && e.items.length > 0)
-                for (var l = 0; l < e.items.length; l++)
-                    a.appendChild(t.Media(e.items[l]).el); e.order == n.Right ? (o.appendChild(a), s()) : (s(), o.appendChild(a)), e.onRenderBody && e.onRenderBody(a); var d = document.createElement("div"); if (d.appendChild(o), e.el) {
-                for (e.el.classList && "BODY" != e.el.tagName && !e.el.classList.contains("bs") && e.el.classList.add("bs"); d.children.length > 0;)
-                    e.el.appendChild(d.children[0]);
-                d = e.el;
+                for (var d = 0; d < e.items.length; d++)
+                    a.appendChild(t.Media(e.items[d]).el); e.order == n.Right ? (o.appendChild(a), s(), l()) : (s(), l(), o.appendChild(a)), e.onRenderBody && e.onRenderBody(a); var c = document.createElement("div"); if (c.appendChild(o), e.el) {
+                for (e.el.classList && "BODY" != e.el.tagName && !e.el.classList.contains("bs") && e.el.classList.add("bs"); c.children.length > 0;)
+                    e.el.appendChild(c.children[0]);
+                c = e.el;
             }
             else
-                d.classList.add("bs"); return { el: o, hide: function () { i.hide(o); }, show: function () { i.show(o); } }; }; }, function (e, t, o) { Object.defineProperty(t, "__esModule", { value: !0 }); var r = o(1), n = o(2); t.Modal = function (e) { var t = document.createElement("div"); e.id && (t.id = e.id), t.setAttribute("role", "dialog"), e.className && (t.className = e.className), t.classList.add("modal"), !e.disableFade && t.classList.add("fade"); var o = ["modal-dialog"]; e.isCentered && o.push("modal-dialog-centered"), e.isLarge && o.push("modal-lg"), e.isSmall && o.push("modal-sm"), t.innerHTML = ['<div class="' + o.join(" ") + '" role="document">', '<div class="modal-content">', '<div class="modal-header">', '<div class="modal-title">' + (e.title || "") + "</div>", e.hideCloseButton ? "" : ['<button type="button" class="close" data-dismiss="modal" aria-label="Close">', '<span aria-hidden="true">&times;</span>', "</button>"].join("\n"), "</div>", '<div class="modal-body">' + (e.body || "") + "</div>", '<div class="modal-footer">' + (e.footer || "") + "</div>", "</div>", "</div>"].join("\n"); var i = document.createElement("div"); if (i.appendChild(t), e.el) {
+                c.classList.add("bs"); return { el: o, hide: function () { i.hide(o); }, show: function () { i.show(o); } }; }; }, function (e, t, o) { Object.defineProperty(t, "__esModule", { value: !0 }); var r = o(1), n = o(2); t.Modal = function (e) { var t = document.createElement("div"); e.id && (t.id = e.id), t.setAttribute("role", "dialog"), e.className && (t.className = e.className), t.classList.add("modal"), !e.disableFade && t.classList.add("fade"); var o = ["modal-dialog"]; e.isCentered && o.push("modal-dialog-centered"), e.isLarge && o.push("modal-lg"), e.isSmall && o.push("modal-sm"), t.innerHTML = ['<div class="' + o.join(" ") + '" role="document">', '<div class="modal-content">', '<div class="modal-header">', '<div class="modal-title">' + (e.title || "") + "</div>", e.hideCloseButton ? "" : ['<button type="button" class="close" data-dismiss="modal" aria-label="Close">', '<span aria-hidden="true">&times;</span>', "</button>"].join("\n"), "</div>", '<div class="modal-body">' + (e.body || "") + "</div>", '<div class="modal-footer">' + (e.footer || "") + "</div>", "</div>", "</div>"].join("\n"); var i = document.createElement("div"); if (i.appendChild(t), e.el) {
                 for (e.el.classList && "BODY" != e.el.tagName && !e.el.classList.contains("bs") && e.el.classList.add("bs"); i.children.length > 0;)
                     e.el.appendChild(i.children[0]);
                 if (i = e.el, e.button) {

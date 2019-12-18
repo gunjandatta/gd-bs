@@ -45,8 +45,8 @@
     </form>
     <script type="text/javascript">
         window.addEventListener("load", function () {
-            var icon = GD.Icons.AlertCircleFill();
-            document.body.insertBefore(icon, document.body.firstChild);
+            var icon = GD.Icons ? GD.Icons.AlertCircleFill() : null;
+            icon ? document.body.insertBefore(icon, document.body.firstChild) : null;
             window.alert = GD.Components.Alert({
                 el: document.getElementById("alert"),
                 isDismissible: true,
@@ -395,23 +395,23 @@
                 el: document.getElementById("mediaList"),
                 items: [
                     {
-                        image: { src: "https://via.placeholder.com/32x32", alt: "test", className: "mr-3" },
+                        icon: { icon: 1, className: "mr-3" },
                         body: "<h5>List Item Default</h5>This is test item 1."
                     },
                     {
-                        image: { src: "https://via.placeholder.com/32x32", alt: "test", className: "mr-3", type: 1 },
+                        icon: { icon: 2, className: "mr-3", type: 1 },
                         body: "<h5>List Item Top</h5>This is test item 2."
                     },
                     {
-                        image: { src: "https://via.placeholder.com/32x32", alt: "test", className: "mr-3", type: 2 },
+                        icon: { icon: 3, className: "mr-3", type: 2 },
                         body: "<h5>List Item Center</h5>This is test item 3."
                     },
                     {
-                        image: { src: "https://via.placeholder.com/32x32", alt: "test", className: "mr-3", type: 3 },
+                        icon: { icon: 4, className: "mr-3", type: 3 },
                         body: "<h5>List Item Bottom</h5>This is test item 4."
                     },
                     {
-                        image: { src: "https://via.placeholder.com/32x32", alt: "test", className: "mr-3" },
+                        icon: { icon: 5, className: "mr-3" },
                         body: "<h5>List Item Right Aligned</h5>This is test item 5.",
                         order: 2
                     }

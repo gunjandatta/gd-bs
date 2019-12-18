@@ -1,5 +1,6 @@
 import * as Common from "../common";
 import { IMedia, IMediaProps } from "../../@types/components/media";
+declare var GD;
 
 /**
  * Media Images Types
@@ -33,6 +34,57 @@ export const Media = (props: IMediaProps): IMedia => {
     let body = document.createElement("div");
     body.classList.add("media-body");
     body.innerHTML = props.body || "";
+
+    // Method to render the icon
+    let renderIcon = () => {
+        // See if the icon properties exist
+        if (props.icon) {
+            // Create the icon
+            let icon: HTMLElement = GD.Icons ? GD.Icons.byType(props.icon.icon, props.icon.height, props.icon.width) : null;
+            if (icon) {
+                // Parse the class names
+                let classNames = (props.icon.className || "").trim().split(' ');
+                for (let i = 0; i < classNames.length; i++) {
+                    let className = classNames[i];
+
+                    // Add the class name
+                    className ? icon.classList.add(className) : null;
+                }
+
+                // Read the type
+                switch (props.icon.type) {
+                    // Bottom
+                    case MediaImageTypes.Bottom:
+                        icon.classList.add("align-self-start");
+                        break;
+                    // Center
+                    case MediaImageTypes.Center:
+                        icon.classList.add("align-self-center");
+                        break;
+                    // Top
+                    case MediaImageTypes.Top:
+                        icon.classList.add("align-self-end");
+                        break;
+                    // Do nothing
+                    default: break;
+                }
+
+                // See if this is a link
+                if (props.icon.url) {
+                    // Create a link
+                    let link = document.createElement("a");
+                    link.href = props.image.url;
+                    media.appendChild(link);
+
+                    // Add the icon
+                    link.appendChild(icon);
+                } else {
+                    // Add the icon
+                    media.appendChild(icon);
+                }
+            }
+        }
+    }
 
     // Method to render the image
     let renderImage = () => {
@@ -92,10 +144,12 @@ export const Media = (props: IMediaProps): IMedia => {
         // Render the body
         media.appendChild(body);
 
-        // Render the image
+        // Render the icon/image
+        renderIcon();
         renderImage();
     } else {
-        // Render the image
+        // Render the icon/image
+        renderIcon();
         renderImage();
 
         // Render the body

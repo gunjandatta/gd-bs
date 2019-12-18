@@ -7,9 +7,13 @@ const dirIcons = path.join(__dirname, "node_modules/bootstrap-icons/icons");
 console.log(dirIcons);
 // Get the icon files
 fs.readdir(dirIcons, function (err, files) {
+    var code = [];
     var definitions = [];
     var icons = [];
     var variables = [];
+    var switches = [];
+    var types = [];
+    var typeDefs = [];
 
     // See if there is an error
     if (err) {
@@ -41,18 +45,59 @@ fs.readdir(dirIcons, function (err, files) {
         var funcName = varName[0].toUpperCase() + varName.substr(1);
         variables.push("export const " + funcName + " = (height,width) => { return generateIcon(" + varName + ", height, width); }");
 
+        // Add the type
+        let iconType = types.length + 1;
+        types.push("\t" + varName + " = " + iconType);
+
+        // Add the switch case statement
+        switches.push("\t// " + file);
+        switches.push("\tcase " + iconType + ":");
+        switches.push("\t\treturn " + funcName + "(height, width);");
+        switches.push("\tbreak;");
+
         // Add the variable definition
-        definitions.push("export const " + funcName + ": (height?: number, width?: number) => HTMLElement;")
+        definitions.push("export const " + funcName + ": (height?: number, width?: number) => HTMLElement;");
+
+        // Add the type definition
+        typeDefs.push("\t// " + file);
+        typeDefs.push("\t" + varName + ": number;");
     });
 
+    // Add the by type definition
+    definitions.push("export const byType = (iconType:number) => HTMLOrSVGElement;")
+
+    // Add the type definitions
+    definitions.push([
+        "export const IconTypes: {",
+        typeDefs.join('\n'),
+        "}"
+    ].join("\n"));
+
     // Generate the icons file
-    let code = [
+    code.push([
         'import generateIcon from "./generate";\n',
         '// Icons to import',
         icons.join('\n') + '\n',
         '// Icon components',
         variables.join('\n')
-    ].join('\n');
+    ].join('\n'));
+
+    // Add the types
+    code.push([
+        "export enum IconTypes {",
+        types.join(',\n'),
+        '}'
+    ].join('\n'));
+
+    // Add the by type method
+    code.push([
+        "export const byType = (iconType:number, height?:number, width?:number) => {",
+        "\t// Render by the icon type",
+        "\tswitch(iconType) {",
+        switches.join('\n'),
+        "\t}",
+        "}"
+    ].join('\n'));
 
     // Delete the icons definition file
     fs.unlink("./@types/icons.d.ts", function (err) {
@@ -83,7 +128,7 @@ fs.readdir(dirIcons, function (err, files) {
 
         // Generate the file
         var stream = fs.createWriteStream("./src/icons/icons.ts");
-        stream.write(code);
+        stream.write(code.join('\n'));
         stream.end();
 
         // Log
