@@ -45,7 +45,7 @@
     </form>
     <script type="text/javascript">
         window.addEventListener("load", function () {
-            var icon = GD.Icons ? GD.Icons.AlertCircleFill() : null;
+            var icon = GD.Icons ? GD.Icons(GD.IconTypes.AlertCircleFill) : null;
             icon ? document.body.insertBefore(icon, document.body.firstChild) : null;
             window.alert = GD.Components.Alert({
                 el: document.getElementById("alert"),
