@@ -1,1 +1,0 @@
-GdBs.loadBundle("8q0eurcw",["exports","./chunk-1c26bad2.js","./chunk-1cca7ac3.js"],function(n,e,a){n.BsPagination=a.Pagination,Object.defineProperty(n,"__esModule",{value:!0})});

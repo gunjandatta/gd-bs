@@ -1,1 +1,0 @@
-GdBs.loadBundle("fpxrjgmp",["exports","./chunk-1c26bad2.js","./chunk-50f721b7.js"],function(d,e,l){d.BsModal=l.Modal,Object.defineProperty(d,"__esModule",{value:!0})});

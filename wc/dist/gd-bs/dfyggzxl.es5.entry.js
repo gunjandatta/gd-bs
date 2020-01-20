@@ -1,1 +1,0 @@
-GdBs.loadBundle("dfyggzxl",["exports","./chunk-1c26bad2.js","./chunk-b1314896.js"],function(e,l,d){e.BsCollapse=d.Collapse,Object.defineProperty(e,"__esModule",{value:!0})});

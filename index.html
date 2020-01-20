@@ -16,7 +16,6 @@
         <div id="alert"></div>
         <div id="btn-loading"></div>
         <div id="spinner"></div>
-        <span id="myPopover">Menu</span>
         <div id="myForm"></div>
         <div id="panel"></div>
         <div id="badge"></div>
@@ -31,6 +30,7 @@
         <div id="breadcrumb"></div>
         <div id="navTabs"></div>
         <div id="popover"></div>
+        <div id="popover1"></div>
         <div id="carousel"></div>
         <div id="btnCollapse"></div>
         <div id="collapse"></div>
@@ -121,15 +121,24 @@
                 type: GD.Components.SpinnerTypes.Danger
             });
             GD.Components.Popover({
-                target: document.getElementById("myPopover"),
+                el: document.getElementById("popover"),
+                isDismissible: true,
+                btnProps: { text: "Popover Demo" },
                 options: {
-                    content: function () {
-                        let el = document.createElement("h1");
-                        el.innerText = "This is a popover";
-                        return el;
-                    },
+                    content: "This is the content.",
+                    container: "body",
+                    title: "My Popover",
+                    trigger: "hover"
+                }
+            });
+            GD.Components.Popover({
+                el: document.querySelector("#popover1"),
+                btnProps: { text: "Popover Demo" },
+                isDismissible: true,
+                options: {
                     html: true,
-                    trigger: "focus"
+                    content: GD.Components.Button({ text: "Action", onClick: function () { alert("Take Action"); } }).el,
+                    title: (function () { var el = document.createElement("div"); el.innerText = "Title"; return el; })(),
                 }
             });
             window["myForm"] = GD.Components.Form({
@@ -715,16 +724,6 @@
                     { title: "Tab 4", tabContent: "This is the content for tab 4." },
                     { title: "Tab 5", tabContent: "This is the content for tab 5." }
                 ]
-            });
-            GD.Components.Popover({
-                el: document.querySelector("#popover"),
-                btnProps: { text: "Popover Demo" },
-                isDismissible: true,
-                options: {
-                    html: true,
-                    content: GD.Components.Button({ text: "Action", onClick: function () { alert("Take Action"); } }).el,
-                    title: (function () { var el = document.createElement("div"); el.innerText = "Title"; return el; })(),
-                }
             });
             GD.Components.Carousel({
                 el: document.querySelector("#carousel"),

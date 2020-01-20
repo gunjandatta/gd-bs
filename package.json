@@ -1,11 +1,11 @@
 {
   "name": "gd-bs",
-  "version": "1.7.5",
+  "version": "1.7.6",
   "description": "Bootstrap JavaScript, TypeScript and Web Components library.",
   "main": "dist/gd-bs.js",
   "typings": "dist/gd-bs.d.ts",
   "scripts": {
-    "all": "npm run icons && npm run build-all && npm run prod-all && npm run typings && npm run wc",
+    "all": "npm run icons && npm run build-all && npm run prod-all && npm run typings",
     "build-all": "npm run build && npm run build-icons",
     "build": "webpack --mode=development",
     "build-icons": "webpack --mode=development --icons=true",
@@ -13,9 +13,7 @@
     "prod-all": "npm run prod && npm run prod-icons",
     "prod": "webpack --mode=production",
     "prod-icons": "webpack --mode=production --icons=true",
-    "typings": "dts-bundle --out ../dist/gd-bs.d.ts --name gd-bs --main ./@types/index.d.ts",
-    "wc": "cd wc && npm run build",
-    "wc-serve": "cd wc && npm run start"
+    "typings": "dts-bundle --out ../dist/gd-bs.d.ts --name gd-bs --main ./@types/index.d.ts"
   },
   "repository": {
     "type": "git",
@@ -38,7 +36,7 @@
   "devDependencies": {
     "@babel/core": "^7.3.4",
     "@babel/preset-env": "^7.3.4",
-    "@stencil/core": "^0.18.0",
+    "@types/node": "^13.1.8",
     "autoprefixer": "^9.4.9",
     "babel-loader": "^8.0.5",
     "copy-webpack-plugin": "^5.0.0",
