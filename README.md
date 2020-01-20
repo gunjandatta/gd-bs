@@ -4,10 +4,6 @@
 
 This library extends the [Bootstrap Library](https://getbootstrap.com/), to help create modern components using JavaScript/TypeScript/Web Components. Reference the [SharePoint REST Framework](https://gunjandatta.github.io/extras/bs) for documentation and code references of this library.
 
-### Web Components
-
-This library is using [Stencil](https://stenciljs.com/) to build the web components.
-
 ### Issues/Requests
 
 Please report any bugs/issues/requests [here](https://github.com/gunjandatta/sprest-bs).
