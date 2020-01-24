@@ -145,11 +145,10 @@ export const Table = (props: ITableProps): ITable => {
         // Parse the rows
         for (let i = 0; i < rows.length; i++) {
             let row = rows[i];
-            let rowIdx = elBody.children.length + i;
 
             // Append the row
             let elRow = document.createElement("tr");
-            elRow.setAttribute("data-idx", rowIdx.toString());
+            elRow.setAttribute("data-idx", i.toString());
             elBody.appendChild(elRow);
 
             // See if columns
@@ -161,7 +160,7 @@ export const Table = (props: ITableProps): ITable => {
                 let elCell = document.createElement("td");
                 elCell.className = col.className || "";
                 elCell.innerHTML = value;
-                elCell.setAttribute("data-row", rowIdx.toString());
+                elCell.setAttribute("data-row", i.toString());
                 elCell.setAttribute("data-idx", j.toString());
                 elRow.appendChild(elCell);
 
