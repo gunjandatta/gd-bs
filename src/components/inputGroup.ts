@@ -116,7 +116,7 @@ export const InputGroup = (props: IInputGroupProps): IInputGroup => {
         // Add the button
         appendedButtons.push({
             id: "range-value",
-            text: props.value || "50"
+            text: props.value || ""
         });
     }
 
