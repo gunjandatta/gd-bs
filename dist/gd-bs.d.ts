@@ -1514,7 +1514,12 @@ declare module 'gd-bs/components/formControl' {
     /**
         * Form Control
         */
-    export const FormControl: (control: IFormControlProps) => IFormControl;
+    export const FormControl: {
+            (control: IFormControlProps): IFormControl;
+    
+            /** Registers a custom form control type. */
+            registerType: (key: number, onRender: (props?: IFormControlProps) => void) => void;
+    }
     
     /**
         * Form Control Types
@@ -1531,9 +1536,6 @@ declare module 'gd-bs/components/formControl' {
     
             /** Hides the form control. */
             hide: () => void;
-    
-            /** Registers a custom form control type. */
-            registerType: (key: string, event: (props?: IFormControlProps) => void) => void;
     
             /** Shows the form control. */
             show: () => void;
