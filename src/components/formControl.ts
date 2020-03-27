@@ -32,6 +32,7 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
     let cb: ICheckboxGroup = null;
     let ddl: IDropdown = null;
     let tb: IInputGroup = null;
+    let customTypes: { [key: string]: (props?: IFormControlProps) => void } = {};
 
     // Create the element
     let el = props.el || document.createElement("div");
@@ -235,6 +236,12 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
                 value: props.value
             });
             break;
+
+        // Custom Type
+        default:
+            // Execute the custom type
+            typeof (customTypes[props.type]) === "function" ? customTypes[props.type](props) : null;
+            break;
     }
 
     // See if an error message exists
@@ -390,6 +397,7 @@ export const FormControl = (props: IFormControlProps): IFormControl => {
             return validation.isValid;
         },
         props,
+        registerType: (key: string, event: (props?: IFormControlProps) => void) => { customTypes[key] = event; },
         show: () => { Common.show(el); }
     }
 }

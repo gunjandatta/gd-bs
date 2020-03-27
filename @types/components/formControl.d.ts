@@ -23,6 +23,9 @@ export interface IFormControl {
     /** Hides the form control. */
     hide: () => void;
 
+    /** Registers a custom form control type. */
+    registerType: (key: string, event: (props?: IFormControlProps) => void) => void;
+
     /** Shows the form control. */
     show: () => void;
 
