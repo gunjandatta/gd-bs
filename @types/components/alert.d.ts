@@ -39,7 +39,7 @@ export interface IAlert {
  */
 export interface IAlertProps {
     className?: string;
-    content?: string;
+    content?: string | Element;
     el?: Element | HTMLElement;
     header?: string;
     isDismissible?: boolean;

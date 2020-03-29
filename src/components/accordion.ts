@@ -54,8 +54,17 @@ export const Accordion = (props: IAccordionProps): IAccordion => {
         // Append the card body
         let elCardBody = document.createElement("div");
         elCardBody.className = "card-body";
-        elCardBody.innerHTML = item.content || "";
         elCollapse.appendChild(elCardBody);
+
+        // Set the content
+        let content = item.content || "";
+        if (typeof (content) === "string") {
+            // Set the html
+            elCardBody.innerHTML = content;
+        } else {
+            // Append the element
+            elCardBody.appendChild(content);
+        }
 
         // Execute the render event
         item.onRender ? item.onRender(elCardBody, item) : null;

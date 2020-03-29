@@ -134,11 +134,19 @@ export const Nav = (props: INavProps): INav => {
             item.isActive ? tabClassNames.push("active show") : null;
 
             // Add the tab content
-            elTabContent.innerHTML += [
-                '<div class="' + tabClassNames.join(' ') + '">',
-                item.tabContent || "",
-                '</div>'
-            ].join('\n');
+            let elTabContentDiv = document.createElement("div");
+            elTabContentDiv.className = tabClassNames.join(' ');
+            elTabContent.appendChild(elTabContentDiv);
+
+            // Set the tab content
+            let content = item.tabContent || "";
+            if (typeof (content) === "string") {
+                // Set the html
+                elTabContentDiv.innerHTML = content;
+            } else {
+                // Append the element
+                elTabContentDiv.appendChild(content);
+            }
         }
     }
 

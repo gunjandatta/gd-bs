@@ -22,7 +22,7 @@ export interface IJumbotron {
  */
 export interface IJumbotronProps {
     className?: string;
-    content?: string;
+    content?: string | Element;
     el?: Element | HTMLElement;
     isFluid?: boolean;
     lead?: string;

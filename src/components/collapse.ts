@@ -15,12 +15,21 @@ export const Collapse = (props: ICollapseProps): ICollapse => {
     collapse.classList.add("collapse");
     props.isMulti ? collapse.classList.add("multi-collapse") : null;
 
+    // Create the body element
+    let elBody = document.createElement("div");
+    elBody.classList.add("card");
+    elBody.classList.add("card-body");
+    collapse.appendChild(elBody);
+
     // Set the content
-    collapse.innerHTML = [
-        '<div class="card card-body">',
-        props.content || "",
-        '</div>'
-    ].join('\n');
+    let content = props.content || "";
+    if (typeof (content) === "string") {
+        // Set the html
+        elBody.innerHTML = content;
+    } else {
+        // Append the element
+        elBody.appendChild(content);
+    }
 
     // Execute the render event
     props.onRender ? props.onRender(props, collapse.children[0] as any) : null;

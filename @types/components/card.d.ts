@@ -40,7 +40,7 @@ export interface ICardAction {
 export interface ICardBody {
     actions?: Array<ICardAction>;
     className?: string;
-    content?: string;
+    content?: string | Element;
     data?: any;
     onClick?: (card?: ICardProps, ev?: Event) => void;
     onRender?: (el?: HTMLElement, card?: ICardBody) => void;
@@ -54,7 +54,7 @@ export interface ICardBody {
  */
 export interface ICardFooter {
     className?: string;
-    content?: string;
+    content?: string | Element;
 }
 
 /**
@@ -62,7 +62,7 @@ export interface ICardFooter {
  */
 export interface ICardHeader {
     className?: string;
-    content?: string;
+    content?: string | Element;
     nav?: INavProps;
 }
 

@@ -44,8 +44,17 @@ export const Card = (props: ICardProps): ICard => {
             let header = document.createElement("div");
             header.className = props.header.className || "";
             header.classList.add("card-header")
-            header.innerHTML = props.header.content || "";
             card.appendChild(header);
+
+            // Set the content
+            let content = props.header.content || "";
+            if (typeof (content) === "string") {
+                // Set the html
+                header.innerHTML = content;
+            } else {
+                // Append the element
+                header.appendChild(content);
+            }
         }
     }
 
@@ -67,10 +76,19 @@ export const Card = (props: ICardProps): ICard => {
         body.innerHTML = [
             item.title ? '<h5 class="card-title">' + item.title + '</h5>' : '',
             item.subTitle ? '<h6 class="card-subtitle">' + item.subTitle + '</h6>' : '',
-            item.text ? '<p class="card-text">' + item.text + '</p>' : '',
-            item.content || '',
+            item.text ? '<p class="card-text">' + item.text + '</p>' : ''
         ].join('\n');
         card.appendChild(body);
+
+        // Set the content
+        let content = item.content || "";
+        if (typeof (content) === "string") {
+            // Set the html
+            body.innerHTML += content;
+        } else {
+            // Append the element
+            body.appendChild(content);
+        }
 
         // Call the render event if it exists
         item.onRender ? item.onRender(body, item) : null;
@@ -175,8 +193,17 @@ export const Card = (props: ICardProps): ICard => {
         let footer = document.createElement("div");
         footer.className = props.footer.className || "";
         footer.classList.add("card-footer");
-        footer.innerHTML = props.footer.content || "";
         card.appendChild(footer);
+
+        // Set the content
+        let content = props.footer.content || "";
+        if (typeof (content) === "string") {
+            // Set the html
+            footer.innerHTML = content;
+        } else {
+            // Append the element
+            footer.appendChild(content);
+        }
     }
 
     // See if the bottom image exists

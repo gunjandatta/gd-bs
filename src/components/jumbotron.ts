@@ -16,9 +16,18 @@ export const Jumbotron = (props: IJumbotronProps): IJumbotron => {
     // Set the content
     jumbotron.innerHTML = [
         props.title ? '<h1 class="display-4">' + props.title + '</h1>' : '',
-        props.lead ? '<p class="lead">' + props.lead + '</p>' : '',
-        props.content || ''
+        props.lead ? '<p class="lead">' + props.lead + '</p>' : ''
     ].join('\n');
+
+    // Set the content
+    let content = props.content || "";
+    if (typeof (content) === "string") {
+        // Set the html
+        jumbotron.innerHTML += content;
+    } else {
+        // Append the element
+        jumbotron.appendChild(content);
+    }
 
     // Create the element
     let el = document.createElement("div");

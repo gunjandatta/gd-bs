@@ -38,7 +38,7 @@ export interface ICollapseOptions {
  */
 export interface ICollapseProps {
     className?: string;
-    content?: string;
+    content?: string | Element;
     data?: any;
     el?: Element | HTMLElement;
     id?: string;

@@ -34,7 +34,14 @@ export const Badge = (props: IBadgeProps): IBadge => {
     }
 
     // Set the content
-    badge.innerHTML = props.content || "";
+    let content = props.content || "";
+    if (typeof (content) === "string") {
+        // Set the html
+        badge.innerHTML = content;
+    } else {
+        // Append the element
+        badge.appendChild(content);
+    }
 
     // Set the class names
     badge.className = props.className || "";

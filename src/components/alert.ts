@@ -74,8 +74,15 @@ export const Alert = (props: IAlertProps): IAlert => {
     // Add the header
     props.header ? alert.innerHTML = '<h4 class="alert-heading">' + props.header + '</h4>' : '';
 
-    // Add the content
-    alert.innerHTML += props.content || "";
+    // Set the content
+    let content = props.content || "";
+    if (typeof (content) === "string") {
+        // Set the html
+        alert.innerHTML += content;
+    } else {
+        // Append the element
+        alert.appendChild(content);
+    }
 
     // See if we need to add the dismiss icon
     if (props.isDismissible) {

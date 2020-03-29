@@ -52,7 +52,7 @@ export interface ICarousel {
 export interface ICarouselItem {
     captions?: string;
     className?: string;
-    content?: string;
+    content?: string | Element;
     imageAlt?: string;
     imageUrl?: string;
     isActive?: boolean;

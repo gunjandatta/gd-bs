@@ -713,7 +713,7 @@ declare module 'gd-bs/components/accordion' {
     export interface IAccordionItem {
             btnProps?: IButtonProps;
             data?: any;
-            content?: string;
+            content?: string | Element;
             onClick?: (el?: HTMLElement, item?: IAccordionItem) => void;
             onRender?: (el?: HTMLElement, item?: IAccordionItem) => void;
             showFl?: boolean;
@@ -778,7 +778,7 @@ declare module 'gd-bs/components/alert' {
         */
     export interface IAlertProps {
             className?: string;
-            content?: string;
+            content?: string | Element;
             el?: Element | HTMLElement;
             header?: string;
             isDismissible?: boolean;
@@ -830,7 +830,7 @@ declare module 'gd-bs/components/badge' {
         */
     export interface IBadgeProps {
             className?: string;
-            content?: string;
+            content?: string | Element;
             data?: any;
             el?: Element | HTMLElement;
             header?: string;
@@ -1060,7 +1060,7 @@ declare module 'gd-bs/components/card' {
     export interface ICardBody {
             actions?: Array<ICardAction>;
             className?: string;
-            content?: string;
+            content?: string | Element;
             data?: any;
             onClick?: (card?: ICardProps, ev?: Event) => void;
             onRender?: (el?: HTMLElement, card?: ICardBody) => void;
@@ -1074,7 +1074,7 @@ declare module 'gd-bs/components/card' {
         */
     export interface ICardFooter {
             className?: string;
-            content?: string;
+            content?: string | Element;
     }
     
     /**
@@ -1082,7 +1082,7 @@ declare module 'gd-bs/components/card' {
         */
     export interface ICardHeader {
             className?: string;
-            content?: string;
+            content?: string | Element;
             nav?: INavProps;
     }
     
@@ -1195,7 +1195,7 @@ declare module 'gd-bs/components/carousel' {
     export interface ICarouselItem {
             captions?: string;
             className?: string;
-            content?: string;
+            content?: string | Element;
             imageAlt?: string;
             imageUrl?: string;
             isActive?: boolean;
@@ -1337,7 +1337,7 @@ declare module 'gd-bs/components/collapse' {
         */
     export interface ICollapseProps {
             className?: string;
-            content?: string;
+            content?: string | Element;
             data?: any;
             el?: Element | HTMLElement;
             id?: string;
@@ -1748,7 +1748,7 @@ declare module 'gd-bs/components/jumbotron' {
         */
     export interface IJumbotronProps {
             className?: string;
-            content?: string;
+            content?: string | Element;
             el?: Element | HTMLElement;
             isFluid?: boolean;
             lead?: string;
@@ -1793,7 +1793,7 @@ declare module 'gd-bs/components/listGroup' {
     export interface IListGroupItem {
             badge?: IBadgeProps;
             className?: string;
-            content?: string;
+            content?: string | Element;
             data?: any;
             href?: string;
             isActive?: boolean;
@@ -1955,7 +1955,7 @@ declare module 'gd-bs/components/nav' {
             href?: string;
             onClick?: (item?: INavLink, ev?: Event) => void;
             onRenderTab?: (item?: INavLink, el?: HTMLDivElement) => void;
-            tabContent?: string;
+            tabContent?: string | Element;
             title?: string;
     }
 }

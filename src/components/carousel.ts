@@ -70,8 +70,15 @@ export const Carousel = (props: ICarouselProps): ICarousel => {
                 item.captions ? '</div>' : ''
             ].join('\n');
         } else {
-            // Add the content
-            elItem.innerHTML += item.content || "";
+            // Set the content
+            let content = item.content || "";
+            if (typeof (content) === "string") {
+                // Set the html
+                elItem.innerHTML += content;
+            } else {
+                // Append the element
+                elItem.appendChild(content);
+            }
         }
     }
 

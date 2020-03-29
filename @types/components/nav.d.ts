@@ -50,6 +50,6 @@ export interface INavLink {
     href?: string;
     onClick?: (item?: INavLink, ev?: Event) => void;
     onRenderTab?: (item?: INavLink, el?: HTMLDivElement) => void;
-    tabContent?: string;
+    tabContent?: string | Element;
     title?: string;
 }

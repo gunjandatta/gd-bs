@@ -33,7 +33,7 @@ export interface IListGroup {
 export interface IListGroupItem {
     badge?: IBadgeProps;
     className?: string;
-    content?: string;
+    content?: string | Element;
     data?: any;
     href?: string;
     isActive?: boolean;

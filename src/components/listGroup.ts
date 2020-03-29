@@ -105,7 +105,17 @@ export const ListGroup = (props: IListGroupProps): IListGroup => {
         }
 
         // Set the content
-        elItem.innerHTML = (props.isTabs ? item.tabName : item.content) || "";
+        let content = item.content || "";
+        if (props.isTabs) {
+            elItem.innerHTML = item.tabName || "";
+        }
+        else if (typeof (content) === "string") {
+            // Set the html
+            elItem.innerHTML = content;
+        } else {
+            // Append the element
+            elItem.appendChild(content);
+        }
 
         // See if there is a badge
         if (item.badge) {
@@ -189,7 +199,16 @@ export const ListGroup = (props: IListGroupProps): IListGroup => {
             props.enableFade ? elItem.classList.add("fade") : null;
             elItem.id = item.tabName.replace(/[^a-zA-Z0-9]/, "");
             elItem.setAttribute("role", "tabpanel");
-            elItem.innerHTML = item.content || "";
+
+            // Set the content
+            let content = item.content || "";
+            if (typeof (content) === "string") {
+                // Set the html
+                elItem.innerHTML = content;
+            } else {
+                // Append the element
+                elItem.appendChild(content);
+            }
 
             // Append the item to the tab content
             elTabContent.appendChild(elItem);
