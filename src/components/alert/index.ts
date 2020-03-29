@@ -1,6 +1,12 @@
 import * as jQuery from "jquery";
-import * as Common from "../common";
-import { IAlert, IAlertProps } from "../../@types/components/alert";
+import * as Common from "../../common";
+import { IAlert, IAlertProps } from "../../../@types/components/alert";
+import * as HTML from "./index.html";
+
+/**
+ * HTML Template
+ */
+const Template: string = HTML as any;
 
 /**
  * Alert Types
@@ -17,62 +23,40 @@ export enum AlertTypes {
 }
 
 /**
+ * Alert Class Names
+ */
+const AlertClassNames = [
+    "alert-danger",
+    "alert-dark",
+    "alert-info",
+    "alert-light",
+    "alert-primary",
+    "alert-secondary",
+    "alert-success",
+    "alert-warning"
+];
+
+/**
  * Alert
  */
 export const Alert = (props: IAlertProps): IAlert => {
     // Create the alert
     let alert = document.createElement("div");
-    alert.setAttribute("role", "alert");
+    alert.innerHTML = Template;
+    alert = alert.firstChild as HTMLDivElement;
 
-    // Set the class name
-    alert.className = props.className || "";
-    alert.classList.add("alert");
-    props.isDismissible ? alert.classList.add("alert-dismissible") : null;
+    // Set the default styling
+    alert.classList.add(AlertClassNames[props.type || AlertTypes.Primary]);
 
-    // Method to set the alert type
-    let setType = (alertType: number) => {
-        // Read the type
-        switch (alertType) {
-            // Danger
-            case AlertTypes.Danger:
-                alert.classList.add("alert-danger");
-                break;
-            // Dark
-            case AlertTypes.Dark:
-                alert.classList.add("alert-dark");
-                break;
-            // Info
-            case AlertTypes.Info:
-                alert.classList.add("alert-info");
-                break;
-            // Light
-            case AlertTypes.Light:
-                alert.classList.add("alert-light");
-                break;
-            // Secondary
-            case AlertTypes.Secondary:
-                alert.classList.add("alert-secondary");
-                break;
-            // Success
-            case AlertTypes.Success:
-                alert.classList.add("alert-success");
-                break;
-            // Warning
-            case AlertTypes.Warning:
-                alert.classList.add("alert-warning");
-                break;
-            // Default - Primary
-            default:
-                alert.classList.add("alert-primary");
-                break;
-        }
-    };
-
-    // Set the alert type
-    setType(props.type);
-
-    // Add the header
-    props.header ? alert.innerHTML = '<h4 class="alert-heading">' + props.header + '</h4>' : '';
+    // Set the header
+    let header = alert.querySelector(".alert-heading");
+    if (props.header) {
+        // Set the heading
+        header.innerHTML = props.header;
+    } else {
+        // Remove the element
+        alert.removeChild(header);
+    }
 
     // Set the content
     let content = props.content || "";
@@ -86,6 +70,9 @@ export const Alert = (props: IAlertProps): IAlert => {
 
     // See if we need to add the dismiss icon
     if (props.isDismissible) {
+        // Add the class
+        alert.classList.add("alert-dismissible");
+
         // Create the button
         let btn = document.createElement("button");
         btn.className = "close";
@@ -139,18 +126,14 @@ export const Alert = (props: IAlertProps): IAlert => {
             alert.appendChild(elText);
         },
         setType: (alertType: number) => {
-            // Remove the current type
-            alert.classList.remove("alert-danger");
-            alert.classList.remove("alert-dark");
-            alert.classList.remove("alert-info");
-            alert.classList.remove("alert-light");
-            alert.classList.remove("alert-secondary");
-            alert.classList.remove("alert-success");
-            alert.classList.remove("alert-warning");
-            alert.classList.remove("alert-primary");
+            // Parse the class names
+            for (let i = 0; i < AlertClassNames.length; i++) {
+                // Remove the class name
+                alert.classList.remove(AlertClassNames[i]);
+            }
 
-            // Add the button type
-            setType(alertType);
+            // Set the alert type
+            alert.classList.add(AlertClassNames[alertType || AlertTypes.Primary]);
         },
         show: () => { Common.show(alert); }
     };

@@ -40,12 +40,20 @@ module.exports = (env, argv) => {
                         { loader: "sass-loader" }
                     ]
                 },
+                // Handle SVG Files
                 {
                     test: /\.svg$/,
                     use: [
                         { loader: "svg-inline-loader" }
                     ]
                 },
+                // Handle HTML Files
+                {
+                    test: /\.html$/,
+                    exclude: "/node_modules/",
+                    use: [{ loader: "html-loader" }]
+                },
+                // Handle TypeScript Files
                 {
                     test: /\.tsx?$/,
                     exclude: /node_modules/,
