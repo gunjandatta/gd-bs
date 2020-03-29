@@ -13,7 +13,7 @@ class _Accordion extends Base<IAccordionProps> implements IAccordion {
         super(HTML, props);
 
         // Ensure the id is set
-        this._el.id = props.id || "accordion";
+        this.el.id = props.id || "accordion";
 
         // Render the items
         this.renderItems();
@@ -22,7 +22,7 @@ class _Accordion extends Base<IAccordionProps> implements IAccordion {
         this._configureParent();
 
         // Apply the options if they exist
-        props.options ? jQuery(this._el).collapse(props.options) : null;
+        props.options ? jQuery(this.el).collapse(props.options) : null;
     }
 
     // Renders the items
@@ -31,8 +31,8 @@ class _Accordion extends Base<IAccordionProps> implements IAccordion {
         let items = this.props.items || [];
         for (let i = 0; i < items.length; i++) {
             // Create the item and append it to the card
-            let item = new AccordionItem(this._el.id, this._el.id + "_" + i, items[i]);
-            this._el.appendChild(item.el);
+            let item = new AccordionItem(this.el.id, this.el.id + "_" + i, items[i]);
+            this.el.appendChild(item.el);
         }
     }
 }

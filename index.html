@@ -47,7 +47,7 @@
         window.addEventListener("load", function () {
             var icon = GD.Icons ? GD.Icons(GD.IconTypes.AlertCircleFill) : null;
             icon ? document.body.insertBefore(icon, document.body.firstChild) : null;
-            window.alert = GD.Components.Alert({
+            GD.Components.Alert({
                 el: document.getElementById("alert"),
                 isDismissible: true,
                 header: "Alert Header",

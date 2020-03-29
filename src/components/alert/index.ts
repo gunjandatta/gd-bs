@@ -40,7 +40,7 @@ class _Alert extends Base<IAlertProps> implements IAlert {
         super(HTML, props);
 
         // Set the default styling
-        this._el.classList.add(AlertClassNames[(this.props.type || AlertTypes.Primary) - 1]);
+        this.el.classList.add(AlertClassNames[(this.props.type || AlertTypes.Primary) - 1]);
 
         // Render the header
         this.renderHeader();
@@ -60,7 +60,7 @@ class _Alert extends Base<IAlertProps> implements IAlert {
         // See if we need to add the dismiss icon
         if (this.props.isDismissible) {
             // Add the class
-            this._el.classList.add("alert-dismissible");
+            this.el.classList.add("alert-dismissible");
 
             // Create the button
             let btn = document.createElement("button");
@@ -71,7 +71,7 @@ class _Alert extends Base<IAlertProps> implements IAlert {
             btn.innerHTML = '<span aria-hidden="true">&times;</span>';
 
             // Append the button
-            this._el.appendChild(btn);
+            this.el.appendChild(btn);
         }
     }
 
@@ -82,16 +82,16 @@ class _Alert extends Base<IAlertProps> implements IAlert {
         // See if the content is a string
         if (typeof (content) === "string") {
             // Set the html
-            this._el.innerHTML += content;
+            this.el.innerHTML += content;
         } else {
             // Append the element
-            this._el.appendChild(content);
+            this.el.appendChild(content);
         }
     }
 
     // Render the header
     private renderHeader() {
-        let header = this._el.querySelector(".alert-heading");
+        let header = this.el.querySelector(".alert-heading");
 
         // See if a header was defined
         if (this.props.header) {
@@ -99,7 +99,7 @@ class _Alert extends Base<IAlertProps> implements IAlert {
             header.innerHTML = this.props.header;
         } else {
             // Remove the element
-            this._el.removeChild(header);
+            this.el.removeChild(header);
         }
     }
 
@@ -108,21 +108,21 @@ class _Alert extends Base<IAlertProps> implements IAlert {
      */
 
     // Closes the alert
-    close() { jQuery(this._el).alert("toggle"); }
+    close() { jQuery(this.el).alert("toggle"); }
 
     // Disposes the alert
-    dispose() { jQuery(this._el).alert("dispose"); }
+    dispose() { jQuery(this.el).alert("dispose"); }
 
     // Clears the alert and updates the text
     setText(alertText?: string) {
         // Clear the element
-        while (this._el.firstChild) { this._el.removeChild(this._el.firstChild); }
+        while (this.el.firstChild) { this.el.removeChild(this.el.firstChild); }
 
         // Set the text
         let elText = document.createTextNode(alertText || "");
 
         // Append the text
-        this._el.appendChild(elText);
+        this.el.appendChild(elText);
     }
 
     // Updates the alert template type
@@ -130,11 +130,11 @@ class _Alert extends Base<IAlertProps> implements IAlert {
         // Parse the class names
         for (let i = 0; i < AlertClassNames.length; i++) {
             // Remove the class name
-            this._el.classList.remove(AlertClassNames[i]);
+            this.el.classList.remove(AlertClassNames[i]);
         }
 
         // Set the alert type
-        this._el.classList.add(AlertClassNames[(alertType || AlertTypes.Primary) - 1]);
+        this.el.classList.add(AlertClassNames[(alertType || AlertTypes.Primary) - 1]);
     }
 }
 export const Alert = (props: IAlertProps) => { return new _Alert(props); }

@@ -1,3 +1,5 @@
+import { IBase, IBaseProps } from '../base';
+
 /**
  * Badge
  */
@@ -11,25 +13,17 @@ export const BadgeTypes: IBadgeTypes;
 /**
  * Badge
  */
-export interface IBadge {
+export interface IBadge extends IBase<IBadgeProps> {
     /** The element. */
-    el: Element;
-
-    /** Hides the badge. */
-    hide: () => void;
-
-    /** Shows the badge. */
-    show: () => void;
+    el: HTMLAnchorElement | HTMLSpanElement;
 }
 
 /**
  * Badge Properties
  */
-export interface IBadgeProps {
-    className?: string;
+export interface IBadgeProps extends IBaseProps{
     content?: string | Element;
     data?: any;
-    el?: Element | HTMLElement;
     header?: string;
     href?: string;
     isPill?: boolean;

@@ -1,5 +1,7 @@
 import { IBadge, IBadgeProps } from "../../../@types/components/badge";
-import * as Common from "../common";
+import { Base } from "../base";
+import * as HTMLLink from "./link.html";
+import * as HTMLSpan from "./span.html";
 
 /**
  * Badge Types
@@ -15,129 +17,76 @@ export enum BadgeTypes {
     Warning = 8
 }
 
-export class Template {
-    private _el: HTMLDivElement = null;
-    private _props: IBadgeProps = null;
-
-    // Constructor
-    constructor(props: IBadgeProps) {
-        // Save the properties
-        this._props = props;
-
-        // Create the element
-        let el = document.createElement("div");
-        //el.innerHTML = HTML as any;
-        this._el = el.firstChild as HTMLDivElement;
-    }
-
-    // Class Names
-    private addClassNames() {
-    }
-}
+/**
+ * Badge Class Names
+ */
+const BadgeClassNames = [
+    "badge-danger",
+    "badge-dark",
+    "badge-info",
+    "badge-light",
+    "badge-primary",
+    "badge-secondary",
+    "badge-success",
+    "badge-warning"
+];
 
 /**
  * Badge
  */
-export const Badge = (props: IBadgeProps): IBadge => {
-    let badge: HTMLAnchorElement | HTMLSpanElement = null;
+class _Badge extends Base<IBadgeProps> implements IBadge {
+    // Constructor
+    constructor(props: IBadgeProps) {
+        super(props.href || props.onClick ? HTMLLink : HTMLSpan, props);
 
-    // See if this is a link or has a click event
-    if (props.href || props.onClick) {
-        // Create the badge
-        badge = document.createElement("a") as HTMLAnchorElement;
+        // Set the href property
+        props.href ? this.el.setAttribute("href", props.href) : null;
 
-        // Set the properties
-        badge.setAttribute("href", props.href || "#");
-    } else {
-        // Create the badge
-        badge = document.createElement("span");
+        // Add the class names
+        this.addClassNames();
+
+        // Render the content
+        this.renderContent();
+
+        // Configure the events
+        this.configureEvents();
+
+        // Configure the parent element
+        this._configureParent();
     }
 
-    // Set the content
-    let content = props.content || "";
-    if (typeof (content) === "string") {
-        // Set the html
-        badge.innerHTML = content;
-    } else {
-        // Append the element
-        badge.appendChild(content);
-    }
-
-    // Set the class names
-    badge.className = props.className || "";
-    badge.classList.add("badge");
-    props.isPill ? badge.classList.add("badge-pill") : null;
-
-    // Read the type
-    switch (props.type) {
-        // Danger
-        case BadgeTypes.Danger:
-            badge.classList.add("badge-danger");
-            break;
-        // Dark
-        case BadgeTypes.Dark:
-            badge.classList.add("badge-dark");
-            break;
-        // Info
-        case BadgeTypes.Info:
-            badge.classList.add("badge-info");
-            break;
-        // Light
-        case BadgeTypes.Light:
-            badge.classList.add("badge-light");
-            break;
-        // Secondary
-        case BadgeTypes.Secondary:
-            badge.classList.add("badge-secondary");
-            break;
-        // Success
-        case BadgeTypes.Success:
-            badge.classList.add("badge-success");
-            break;
-        // Warning
-        case BadgeTypes.Warning:
-            badge.classList.add("badge-warning");
-            break;
-        // Default - Primary
-        default:
-            badge.classList.add("badge-primary");
-            break;
-    }
-
-    // Set the click event
-    props.onClick ? badge.addEventListener("click", ev => {
-        // Call the event
-        props.onClick(props, ev);
-    }) : null;
-
-    // Create the element
-    let el = document.createElement("div");
-    el.appendChild(badge);
-
-    // See if we are rendering it to an element
-    if (props.el) {
-        // Ensure the class list exists and it's not the body element
-        if (props.el.classList && props.el.tagName != "BODY") {
-            // Set the bootstrap class
-            props.el.classList.contains("bs") ? null : props.el.classList.add("bs");
+    // Adds the class names
+    private addClassNames() {
+        // See if this is a pill
+        if (this.props.isPill) {
+            // Add the class name
+            this.el.classList.add("badge-pill");
         }
 
-        // Append the elements
-        while (el.children.length > 0) {
-            props.el.appendChild(el.children[0]);
-        }
-
-        // Update the element
-        el = props.el as any;
-    } else {
-        // Set the bootstrap class
-        el.classList.add("bs");
+        // Set the default styling
+        this.el.classList.add(BadgeClassNames[(this.props.type || BadgeTypes.Primary) - 1]);
     }
 
-    // Return the badge
-    return {
-        el: badge,
-        hide: () => { Common.hide(badge); },
-        show: () => { Common.show(badge); }
-    };
+    // Configures the events
+    private configureEvents() {
+        // Set the click event
+        this.props.onClick ? this.el.addEventListener("click", ev => {
+            // Call the event
+            this.props.onClick(this.props, ev);
+        }) : null;
+    }
+
+    // Render the content
+    private renderContent() {
+        // Set the content
+        let content = this.props.content || "";
+        if (typeof (content) === "string") {
+            // Set the html
+            this.el.innerHTML = content;
+        } else {
+            // Append the element
+            this.el.appendChild(content);
+        }
+    }
 }
+export const Badge = (props: IBadgeProps) => { return new _Badge(props); }
