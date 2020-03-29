@@ -1,12 +1,7 @@
 import * as jQuery from "jquery";
-import * as Common from "../../common";
 import { IAlert, IAlertProps } from "../../../@types/components/alert";
+import { Base } from "../base";
 import * as HTML from "./index.html";
-
-/**
- * HTML Template
- */
-const Template: string = HTML as any;
 
 /**
  * Alert Types
@@ -39,102 +34,107 @@ const AlertClassNames = [
 /**
  * Alert
  */
-export const Alert = (props: IAlertProps): IAlert => {
-    // Create the alert
-    let alert = document.createElement("div");
-    alert.innerHTML = Template;
-    alert = alert.firstChild as HTMLDivElement;
+class _Alert extends Base<IAlertProps> implements IAlert {
+    // Constructor
+    constructor(props: IAlertProps) {
+        super(HTML, props);
 
-    // Set the default styling
-    alert.classList.add(AlertClassNames[props.type || AlertTypes.Primary]);
+        // Set the default styling
+        this._el.classList.add(AlertClassNames[(this.props.type || AlertTypes.Primary) - 1]);
 
-    // Set the header
-    let header = alert.querySelector(".alert-heading");
-    if (props.header) {
-        // Set the heading
-        header.innerHTML = props.header;
-    } else {
-        // Remove the element
-        alert.removeChild(header);
+        // Render the header
+        this.renderHeader();
+
+        // Render the content
+        this.renderContent();
+
+        // Configure the dissmissible property
+        this.configureDismissible();
+
+        // Configure the parent element
+        this._configureParent();
     }
 
-    // Set the content
-    let content = props.content || "";
-    if (typeof (content) === "string") {
-        // Set the html
-        alert.innerHTML += content;
-    } else {
-        // Append the element
-        alert.appendChild(content);
+    // Configures the alert to be dismissible
+    private configureDismissible() {
+        // See if we need to add the dismiss icon
+        if (this.props.isDismissible) {
+            // Add the class
+            this._el.classList.add("alert-dismissible");
+
+            // Create the button
+            let btn = document.createElement("button");
+            btn.className = "close";
+            btn.type = "button";
+            btn.setAttribute("data-dismiss", "alert");
+            btn.setAttribute("aria-label", "Close");
+            btn.innerHTML = '<span aria-hidden="true">&times;</span>';
+
+            // Append the button
+            this._el.appendChild(btn);
+        }
     }
 
-    // See if we need to add the dismiss icon
-    if (props.isDismissible) {
-        // Add the class
-        alert.classList.add("alert-dismissible");
+    // Render the content
+    private renderContent() {
+        let content = this.props.content || "";
 
-        // Create the button
-        let btn = document.createElement("button");
-        btn.className = "close";
-        btn.type = "button";
-        btn.setAttribute("data-dismiss", "alert");
-        btn.setAttribute("aria-label", "Close");
-        btn.innerHTML = '<span aria-hidden="true">&times;</span>';
-
-        // Append the button
-        alert.appendChild(btn);
+        // See if the content is a string
+        if (typeof (content) === "string") {
+            // Set the html
+            this._el.innerHTML += content;
+        } else {
+            // Append the element
+            this._el.appendChild(content);
+        }
     }
 
-    // Create the element
-    let el = document.createElement("div");
-    el.appendChild(alert);
+    // Render the header
+    private renderHeader() {
+        let header = this._el.querySelector(".alert-heading");
 
-    // See if we are rendering it to an element
-    if (props.el) {
-        // Ensure the class list exists and it's not the body element
-        if (props.el.classList && props.el.tagName != "BODY") {
-            // Set the bootstrap class
-            props.el.classList.contains("bs") ? null : props.el.classList.add("bs");
+        // See if a header was defined
+        if (this.props.header) {
+            // Set the heading
+            header.innerHTML = this.props.header;
+        } else {
+            // Remove the element
+            this._el.removeChild(header);
+        }
+    }
+
+    /**
+     * Public Properties
+     */
+
+    // Closes the alert
+    close() { jQuery(this._el).alert("toggle"); }
+
+    // Disposes the alert
+    dispose() { jQuery(this._el).alert("dispose"); }
+
+    // Clears the alert and updates the text
+    setText(alertText?: string) {
+        // Clear the element
+        while (this._el.firstChild) { this._el.removeChild(this._el.firstChild); }
+
+        // Set the text
+        let elText = document.createTextNode(alertText || "");
+
+        // Append the text
+        this._el.appendChild(elText);
+    }
+
+    // Updates the alert template type
+    setType(alertType: number) {
+        // Parse the class names
+        for (let i = 0; i < AlertClassNames.length; i++) {
+            // Remove the class name
+            this._el.classList.remove(AlertClassNames[i]);
         }
 
-        // Append the elements
-        while (el.children.length > 0) {
-            props.el.appendChild(el.children[0]);
-        }
-
-        // Update the element
-        el = props.el as any;
-    } else {
-        // Set the bootstrap class
-        el.classList.add("bs");
+        // Set the alert type
+        this._el.classList.add(AlertClassNames[(alertType || AlertTypes.Primary) - 1]);
     }
-
-    // Return the alert
-    return {
-        close: () => { jQuery(alert).alert("toggle"); },
-        dispose: () => { jQuery(alert).alert("dispose"); },
-        el: alert,
-        hide: () => { Common.hide(alert); },
-        setText: (alertText?: string) => {
-            // Clear the element
-            while (alert.firstChild) { alert.removeChild(alert.firstChild); }
-
-            // Set the text
-            let elText = document.createTextNode(alertText || "");
-
-            // Append the text
-            alert.appendChild(elText);
-        },
-        setType: (alertType: number) => {
-            // Parse the class names
-            for (let i = 0; i < AlertClassNames.length; i++) {
-                // Remove the class name
-                alert.classList.remove(AlertClassNames[i]);
-            }
-
-            // Set the alert type
-            alert.classList.add(AlertClassNames[alertType || AlertTypes.Primary]);
-        },
-        show: () => { Common.show(alert); }
-    };
 }
+export const Alert = (props: IAlertProps) => { return new _Alert(props); }

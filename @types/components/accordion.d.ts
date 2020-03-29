@@ -1,3 +1,4 @@
+import { IBase, IBaseProps } from "../base";
 import { IButtonProps } from "./button";
 import { ICollapseOptions } from "./collapse";
 
@@ -9,16 +10,7 @@ export const Accordion: (props: IAccordionProps) => IAccordion;
 /**
  * Accordion
  */
-export interface IAccordion {
-    /** The element. */
-    el: Element;
-
-    /** Hides the accordion. */
-    hide: () => void;
-
-    /** Shows the accordion. */
-    show: () => void;
-}
+export interface IAccordion extends IBase<IAccordionProps> { }
 
 /**
  * Accordion Item
@@ -40,9 +32,7 @@ export interface IAccordionOptions extends ICollapseOptions { }
 /**
  * Accordion Properties
  */
-export interface IAccordionProps {
-    className?: string;
-    el?: Element | HTMLElement;
+export interface IAccordionProps extends IBaseProps {
     id?: string;
     items?: Array<IAccordionItem>;
     options?: IAccordionOptions;

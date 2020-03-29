@@ -1,3 +1,5 @@
+import { IBase, IBaseProps } from "../base";
+
 /**
  * Alert
  */
@@ -11,36 +13,25 @@ export const AlertTypes: IAlertTypes;
 /**
  * Alert
  */
-export interface IAlert {
+export interface IAlert extends IBase<IAlertProps> {
     /** Closes an alert by removing it from the DOM. */
     close: () => void;
 
     /** Destroys an element’s alert. */
     dispose: () => void;
 
-    /** The element. */
-    el: Element;
-
-    /** Hides the alert. */
-    hide: () => void;
-
     /** Updates the alert text. */
     setText: (alertText?: string) => void;
 
     /** Updates the alert type. */
     setType: (alertType: number) => void;
-
-    /** Shows the alert. */
-    show: () => void;
 }
 
 /**
  * Alert Properties
  */
-export interface IAlertProps {
-    className?: string;
+export interface IAlertProps extends IBaseProps {
     content?: string | Element;
-    el?: Element | HTMLElement;
     header?: string;
     isDismissible?: boolean;
     type?: number;
