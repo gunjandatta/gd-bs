@@ -52,7 +52,7 @@ class _Badge extends Base<IBadgeProps> implements IBadge {
         this.configureEvents();
 
         // Configure the parent element
-        this._configureParent();
+        this.configureParent();
     }
 
     // Adds the class names

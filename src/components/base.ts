@@ -26,7 +26,7 @@ export class Base<IProps = IBaseProps> implements IBase<IProps> {
      */
 
     // Configures the parent element
-    _configureParent() {
+    configureParent() {
         // Create the element
         let el: Element = document.createElement("div");
         el.appendChild(this._el);

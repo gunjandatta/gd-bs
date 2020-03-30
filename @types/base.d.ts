@@ -3,7 +3,7 @@
  */
 export interface IBase<IProps = IBaseProps> {
     /** Internal method to configure the parent element. */
-    _configureParent(): Element;
+    configureParent(): Element;
 
     /** The component HTML element */
     el: Element;

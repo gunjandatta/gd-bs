@@ -52,7 +52,7 @@ class _Alert extends Base<IAlertProps> implements IAlert {
         this.configureDismissible();
 
         // Configure the parent element
-        this._configureParent();
+        this.configureParent();
     }
 
     // Configures the alert to be dismissible

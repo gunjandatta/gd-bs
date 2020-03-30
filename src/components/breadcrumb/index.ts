@@ -1,103 +1,57 @@
 import { IBreadcrumb, IBreadcrumbProps, IBreadcrumbItem } from "../../../@types/components/breadcrumb";
-import * as Common from "../common";
+import { Base } from "../base";
+import * as HTML from "./index.html";
+import { BreadcrumbItem } from "./item";
 
 /**
  * Breadcrumb
  */
-export const Breadcrumb = (props: IBreadcrumbProps): IBreadcrumb => {
-    // Create the breadcrumb
-    let breadcrumb = document.createElement("nav");
-    breadcrumb.setAttribute("aria-label", "breadcrumb");
+class _Breadcrumb extends Base<IBreadcrumbProps> implements IBreadcrumb {
+    // Constructor
+    constructor(props: IBreadcrumbProps) {
+        super(HTML, props);
 
-    // Create the list
-    let list = document.createElement("ol");
-    breadcrumb.appendChild(list);
+        // Render the items
+        this.renderItems();
 
-    // Set the class names
-    list.className = props.className || "";
-    list.classList.add("breadcrumb");
-
-    // The click event for the item
-    let onItemClick = ev => {
-        let elItem = ev.currentTarget as HTMLElement;
-
-        // Get the item
-        let item: IBreadcrumbItem = props.items[elItem.getAttribute("data-idx")];
-        if (item) {
-            // Call the click event
-            item.onClick ? item.onClick(item, ev) : null;
-            props.onClick ? props.onClick(item, ev) : null;
-        }
+        // Configure the parent
+        this.configureParent();
     }
 
-    // Parse the item properties
-    let itemProps = props.items || [];
-    for (let i = 0; i < itemProps.length; i++) {
-        let prop = itemProps[i];
-        let isActive = i == itemProps.length - 1;
-
-        // Set the class names
-        let itemClassNames = ["breadcrumb-item"];
-        isActive ? itemClassNames.push("active") : null;
-
-        // Create the item
-        let item = document.createElement("li");
-        item.className = itemClassNames.join(' ');
-        isActive ? item.setAttribute("aria-current", "page") : null;
-
-        // See if this is a link
-        let link: HTMLAnchorElement = null;
-        if (prop.href) {
-            // Add a link
-            link = document.createElement("a");
-            link.href = prop.href;
-            link.innerHTML = prop.text || "";
-            link.setAttribute("data-idx", i.toString());
-            item.appendChild(link);
-        } else {
-            // Set the text and index
-            item.innerHTML = prop.text || "";
-            item.setAttribute("data-idx", i.toString());
-        }
-
+    // Configures the events
+    private configureEvents(item: BreadcrumbItem) {
         // See if there is a click event
-        if (prop.onClick || props.onClick) {
+        if (this.props.onClick) {
             // Add the click event
-            link ? link.addEventListener("click", onItemClick) : item.addEventListener("click", onItemClick);
+            item.el.addEventListener("click", ev => {
+                // Call the click event
+                this.props.onClick(item.props, ev);
+            });
         }
-
-        // Add the item
-        list.appendChild(item);
     }
 
-    // Create the element
-    let el = document.createElement("div");
-    el.appendChild(breadcrumb);
+    // Renders the breadcrumb items
+    private renderItems() {
+        // Get the list element
+        let elList = this.el.querySelector(".breadcrumb");
 
-    // See if we are rendering it to an element
-    if (props.el) {
-        // Ensure the class list exists and it's not the body element
-        if (props.el.classList && props.el.tagName != "BODY") {
-            // Set the bootstrap class
-            props.el.classList.contains("bs") ? null : props.el.classList.add("bs");
+        // Parse the item properties
+        let itemProps = this.props.items || [];
+        for (let i = 0; i < itemProps.length; i++) {
+            let itemProp = itemProps[i];
+
+            // Set the active flag
+            itemProp.isActive = i == itemProps.length - 1;
+
+            // Render the item
+            let item = new BreadcrumbItem(itemProp);
+
+            // Configure the events
+            this.configureEvents(item);
+
+            // Add the item
+            elList.appendChild(item.el);
         }
-
-        // Append the elements
-        while (el.children.length > 0) {
-            props.el.appendChild(el.children[0]);
-        }
-
-        // Update the element
-        el = props.el as any;
-    } else {
-        // Set the bootstrap class
-        el.classList.add("bs");
     }
-
-    // Return the breadcrumb
-    return {
-        el: breadcrumb,
-        hide: () => { Common.hide(breadcrumb); },
-        show: () => { Common.show(breadcrumb); }
-    };
 }
+export const Breadcrumb = (props: IBreadcrumbProps) => { return new _Breadcrumb(props); }
