@@ -1,78 +1,58 @@
 import * as jQuery from "jquery";
-import * as Common from "../common";
+import { Base } from "../base";
 import { ICollapse, ICollapseProps } from "../../../@types/components/collapse";
+import * as HTML from "./index.html";
 
 /**
  * Collapse
  */
-export const Collapse = (props: ICollapseProps): ICollapse => {
-    // Create the collapse
-    let collapse = document.createElement("div");
-    props.id ? collapse.id = props.id : null;
+class _Collapse extends Base<ICollapseProps> implements ICollapse {
+    // Constructor
+    constructor(props: ICollapseProps) {
+        super(HTML, props);
 
-    // Set the class names
-    collapse.className = props.className || "";
-    collapse.classList.add("collapse");
-    props.isMulti ? collapse.classList.add("multi-collapse") : null;
+        // Configure the card group
+        this.configure();
 
-    // Create the body element
-    let elBody = document.createElement("div");
-    elBody.classList.add("card");
-    elBody.classList.add("card-body");
-    collapse.appendChild(elBody);
-
-    // Set the content
-    let content = props.content || "";
-    if (typeof (content) === "string") {
-        // Set the html
-        elBody.innerHTML = content;
-    } else {
-        // Append the element
-        elBody.appendChild(content);
+        // Configure the parent
+        this.configureParent();
     }
 
-    // Execute the render event
-    props.onRender ? props.onRender(props, collapse.children[0] as any) : null;
+    // Configure the card group
+    private configure() {
+        // Set the attributes
+        this.props.id ? this.el.id = this.props.id : null;
+        this.props.isMulti ? this.el.classList.add("multi-collapse") : null;
 
-    // Create the element
-    let el = document.createElement("div");
-    el.appendChild(collapse);
-
-    // See if we are rendering it to an element
-    if (props.el) {
-        // Ensure the class list exists and it's not the body element
-        if (props.el.classList && props.el.tagName != "BODY") {
-            // Set the bootstrap class
-            props.el.classList.contains("bs") ? null : props.el.classList.add("bs");
+        // Set the content
+        let content = this.props.content || "";
+        let body = this.el.querySelector(".card") as HTMLDivElement;
+        if (typeof (content) === "string") {
+            // Set the html
+            body.innerHTML = content;
+        } else {
+            // Append the element
+            body.appendChild(content);
         }
 
-        // Append the elements
-        while (el.children.length > 0) {
-            props.el.appendChild(el.children[0]);
+        // Execute the render event
+        this.props.onRender ? this.props.onRender(this.props, body) : null;
+
+        // See if options exist
+        if (this.props.options) {
+            // Set the options
+            jQuery(this.el).collapse(this.props.options);
         }
-
-        // Update the element
-        el = props.el as any;
-    } else {
-        // Set the bootstrap class
-        el.classList.add("bs");
     }
 
-    // Create the collapse
-    let $collapse = jQuery(collapse);
+    /**
+     * Public Interface
+     */
 
-    // See if options exist
-    if (props.options) {
-        // Set the options
-        $collapse.collapse(props.options);
-    }
+    // Disposes the component
+    dispose() { jQuery(this.el).collapse("dispose"); }
 
-    // Return the collapse
-    return {
-        dispose: () => { $collapse.collapse("dispose"); },
-        el: collapse,
-        hide: () => { $collapse.collapse("hide"); },
-        show: () => { $collapse.collapse("show"); },
-        toggle: () => { $collapse.collapse("toggle"); }
-    };
+    // Toggles the component
+    toggle() { jQuery(this.el).collapse("toggle"); }
 }
+export const Collapse = (props: ICollapseProps): ICollapse => { return new _Collapse(props); }
