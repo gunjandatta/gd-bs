@@ -35,6 +35,7 @@ export interface ICheckboxGroupItem {
     label?: string;
     name?: string;
     onChange?: (item: ICheckboxGroupItem) => void;
+    type?: number;
 }
 
 /**

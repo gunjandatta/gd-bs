@@ -23,6 +23,7 @@
         <div id="ddl"></div>
         <div id="button"></div>
         <div id="buttonGroup"></div>
+        <div id="cbGroup"></div>
         <div id="modal"></div>
         <div id="textbox"></div>
         <div id="multi-textbox"></div>
@@ -87,6 +88,18 @@
                 // Update the text
                 btnLoading.setText("Click Me");
             }, 5000);
+
+            window["cbg"] = GD.Components.CheckboxGroup({
+                el: document.getElementById("cbGroup"),
+                label: "Label",
+                type: GD.Components.CheckboxGroupTypes.Switch,
+                items: [
+                    { name: "cb1", label: "Checkbox 1" },
+                    { name: "cb2", label: "Checkbox 2", isSelected: true },
+                    { name: "cb3", label: "Checkbox 3" },
+                    { name: "cb4", label: "Checkbox 4" }
+                ]
+            });
 
             GD.Components.Toast({
                 el: document.getElementById("toast"),
