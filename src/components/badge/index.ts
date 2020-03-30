@@ -45,8 +45,8 @@ class _Badge extends Base<IBadgeProps> implements IBadge {
         // Add the class names
         this.addClassNames();
 
-        // Render the content
-        this.renderContent();
+        // Configure the badge
+        this.configure();
 
         // Configure the events
         this.configureEvents();
@@ -67,17 +67,8 @@ class _Badge extends Base<IBadgeProps> implements IBadge {
         this.el.classList.add(BadgeClassNames[(this.props.type || BadgeTypes.Primary) - 1]);
     }
 
-    // Configures the events
-    private configureEvents() {
-        // Set the click event
-        this.props.onClick ? this.el.addEventListener("click", ev => {
-            // Call the event
-            this.props.onClick(this.props, ev);
-        }) : null;
-    }
-
-    // Render the content
-    private renderContent() {
+    // Configure the badge
+    private configure() {
         // Set the content
         let content = this.props.content || "";
         if (typeof (content) === "string") {
@@ -88,5 +79,14 @@ class _Badge extends Base<IBadgeProps> implements IBadge {
             this.el.appendChild(content);
         }
     }
+
+    // Configures the events
+    private configureEvents() {
+        // Set the click event
+        this.props.onClick ? this.el.addEventListener("click", ev => {
+            // Call the event
+            this.props.onClick(this.props, ev);
+        }) : null;
+    }
 }
-export const Badge = (props: IBadgeProps) => { return new _Badge(props); }
+export const Badge = (props: IBadgeProps): IBadge => { return new _Badge(props); }

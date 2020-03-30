@@ -21,14 +21,14 @@ export class BreadcrumbItem {
         this._el = elItem.firstChild as HTMLLIElement;
 
         // Configure the item
-        this.configureItem();
+        this.configure();
 
         // Configure the events
         this.configureEvents();
     }
 
     // Configure the item
-    private configureItem() {
+    private configure() {
         // See if this item is active
         if (this._props.isActive) {
             // Add the class name

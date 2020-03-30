@@ -45,18 +45,26 @@ class _Alert extends Base<IAlertProps> implements IAlert {
         // Render the header
         this.renderHeader();
 
-        // Render the content
-        this.renderContent();
-
-        // Configure the dissmissible property
-        this.configureDismissible();
+        // Configure the alert
+        this.configure();
 
         // Configure the parent element
         this.configureParent();
     }
 
-    // Configures the alert to be dismissible
-    private configureDismissible() {
+    // Configure the alert
+    private configure() {
+        let content = this.props.content || "";
+
+        // See if the content is a string
+        if (typeof (content) === "string") {
+            // Set the html
+            this.el.innerHTML += content;
+        } else {
+            // Append the element
+            this.el.appendChild(content);
+        }
+
         // See if we need to add the dismiss icon
         if (this.props.isDismissible) {
             // Add the class
@@ -72,20 +80,6 @@ class _Alert extends Base<IAlertProps> implements IAlert {
 
             // Append the button
             this.el.appendChild(btn);
-        }
-    }
-
-    // Render the content
-    private renderContent() {
-        let content = this.props.content || "";
-
-        // See if the content is a string
-        if (typeof (content) === "string") {
-            // Set the html
-            this.el.innerHTML += content;
-        } else {
-            // Append the element
-            this.el.appendChild(content);
         }
     }
 
@@ -137,4 +131,4 @@ class _Alert extends Base<IAlertProps> implements IAlert {
         this.el.classList.add(AlertClassNames[(alertType || AlertTypes.Primary) - 1]);
     }
 }
-export const Alert = (props: IAlertProps) => { return new _Alert(props); }
+export const Alert = (props: IAlertProps): IAlert => { return new _Alert(props); }

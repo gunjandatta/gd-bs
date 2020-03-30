@@ -1,8 +1,10 @@
 import * as jQuery from "jquery";
-import * as Common from "../common";
+import { Base } from "../base";
 import { Badge, BadgeTypes } from "../badge";
 import { Spinner } from "../spinner";
 import { IButton, IButtonProps } from "../../../@types/components/button";
+import * as HTML from "./index.html";
+import * as HTMLLink from "./link.html";
 
 /**
  * Button Types
@@ -20,178 +22,139 @@ export enum ButtonTypes {
 }
 
 /**
+ * Button Classes
+ */
+const ButtonClassNames = [
+    "btn-danger",
+    "btn-dark",
+    "btn-info",
+    "btn-light",
+    "btn-link",
+    "btn-primary",
+    "btn-secondary",
+    "btn-success",
+    "btn-warning"
+]
+
+/**
  * Button
  * @param props The button properties.
  */
-export const Button = (props: IButtonProps): IButton => {
-    // Create the button
-    let button: HTMLAnchorElement | HTMLButtonElement = null;
+class _Button extends Base<IButtonProps> implements IButton {
+    // Constructor
+    constructor(props: IButtonProps) {
+        super(props.href || props.isLink ? HTMLLink : HTML, props);
 
-    // See if this is a link
-    if (props.href || props.isLink) {
-        // Create the button
-        button = document.createElement("a") as HTMLAnchorElement;
+        // Add the class names
+        this.addClassNames();
 
+        // Configure the button
+        this.configure();
+
+        // Configure the events
+        this.configureEvents();
+
+        // Configure the parent
+        this.configureParent();
+    }
+
+    // Configure the class names
+    private addClassNames() {
+        // Add the class names
+        this.props.isBlock ? this.el.classList.add("btn-block") : null;
+        this.props.isLarge ? this.el.classList.add("btn-lg") : null;
+        this.props.isSmall ? this.el.classList.add("btn-sm") : null;
+
+        // Set the default type
+        this.setType(this.props.type || ButtonTypes.Primary)
+    }
+
+    // Configure the button
+    private configure() {
         // Set the attributes
-        button.href = props.href || "#";
-        button.setAttribute("role", "button");
-    } else {
-        // Create the button
-        button = document.createElement("button") as HTMLButtonElement;
+        this.props.id ? this.el.id = this.props.id : null;
+        this.props.isDisabled ? this.el.setAttribute("disabled", "disabled") : null;
+        this.props.target ? this.el.setAttribute("data-target", this.props.target) : null;
+        this.props.title ? this.el.title = this.props.title : null;
+        this.props.toggle ? this.el.setAttribute("data-toggle", this.props.toggle) : null;
+        this.props.trigger ? this.el.setAttribute("data-trigger", this.props.trigger) : null;
+        typeof (this.props.isExpanded) === "boolean" ? this.el.setAttribute("aria-expanded", this.props.isExpanded ? "true" : "false") : null;
+        this.props.controls ? this.el.setAttribute("aria-controls", this.props.controls.join(' ')) : null;
 
-        // Set the attributes
-        button.setAttribute("type", "button");
-    }
+        // Set the text
+        this.setText(this.props.text);
 
-    // Set the attributes
-    props.id ? button.id = props.id : null;
-    props.isDisabled ? button.setAttribute("disabled", "disabled") : null;
-    props.target ? button.setAttribute("data-target", props.target) : null;
-    props.title ? button.title = props.title : null;
-    props.toggle ? button.setAttribute("data-toggle", props.toggle) : null;
-    props.trigger ? button.setAttribute("data-trigger", props.trigger) : null;
-    typeof (props.isExpanded) === "boolean" ? button.setAttribute("aria-expanded", props.isExpanded ? "true" : "false") : null;
-    props.controls ? button.setAttribute("aria-controls", props.controls.join(' ')) : null;
+        // See if this is a spinner
+        if (this.props.spinnerProps) {
+            // Set the element to render to
+            this.props.spinnerProps.el = this.el;
 
-    // Set the class names
-    button.className = props.className || "";
-    button.classList.add("btn");
-    props.isBlock ? button.classList.add("btn-block") : null;
-    props.isLarge ? button.classList.add("btn-lg") : null;
-    props.isSmall ? button.classList.add("btn-sm") : null;
-
-    // Method to set the button type
-    let setType = (btnType: number) => {
-        // Read the button type
-        switch (btnType) {
-            // Danger
-            case ButtonTypes.Danger:
-                button.classList.add("btn" + (props.isOutline ? "-outline" : "") + "-danger");
-                break;
-            // Dark
-            case ButtonTypes.Dark:
-                button.classList.add("btn" + (props.isOutline ? "-outline" : "") + "-dark");
-                break;
-            // Info
-            case ButtonTypes.Info:
-                button.classList.add("btn" + (props.isOutline ? "-outline" : "") + "-info");
-                break;
-            // Light
-            case ButtonTypes.Light:
-                button.classList.add("btn" + (props.isOutline ? "-outline" : "") + "-light");
-                break;
-            // Link
-            case ButtonTypes.Link:
-                button.classList.add("btn" + (props.isOutline ? "-outline" : "") + "-link");
-                break;
-            // Secondary
-            case ButtonTypes.Secondary:
-                button.classList.add("btn" + (props.isOutline ? "-outline" : "") + "-secondary");
-                break;
-            // Success
-            case ButtonTypes.Success:
-                button.classList.add("btn" + (props.isOutline ? "-outline" : "") + "-success");
-                break;
-            // Warning
-            case ButtonTypes.Warning:
-                button.classList.add("btn" + (props.isOutline ? "-outline" : "") + "-warning");
-                break;
-            // Default - Primary
-            default:
-                button.classList.add("btn" + (props.isOutline ? "-outline" : "") + "-primary");
-                break;
-        }
-    };
-
-    // Set the button type
-    setType(props.type);
-
-    // See if this is a spinner
-    if (props.spinnerProps) {
-        // Set the element to render to
-        props.spinnerProps.el = button;
-
-        // Render the spinner
-        Spinner(props.spinnerProps);
-    }
-
-    // Set the text
-    let btnText = document.createTextNode(props.text || "");
-    button.appendChild(btnText);
-
-    // See if there is a badge
-    if (props.badge) {
-        // Default the type
-        props.badge.type = props.badge.type || BadgeTypes.Light;
-
-        // Render the badge
-        button.appendChild(Badge(props.badge).el);
-    }
-
-    // See if there is a click event
-    if (props.onClick) {
-        // Add a click event
-        button.addEventListener("click", ev => {
-            // Call the click event
-            props.onClick(props, ev);
-        });
-    }
-
-    // Create the element
-    let el = document.createElement("div");
-    el.appendChild(button);
-
-    // See if we are rendering it to an element
-    if (props.el) {
-        // Ensure the class list exists and it's not the body element
-        if (props.el.classList && props.el.tagName != "BODY") {
-            // Set the bootstrap class
-            props.el.classList.contains("bs") ? null : props.el.classList.add("bs");
+            // Render the spinner
+            Spinner(this.props.spinnerProps);
         }
 
-        // Append the elements
-        while (el.children.length > 0) {
-            props.el.appendChild(el.children[0]);
-        }
+        // See if there is a badge
+        if (this.props.badge) {
+            // Default the type
+            this.props.badge.type = this.props.badge.type || BadgeTypes.Light;
 
-        // Update the element
-        el = props.el as any;
-    } else {
-        // Set the bootstrap class
-        el.classList.add("bs");
+            // Render the badge
+            this.el.appendChild(Badge(this.props.badge).el);
+        }
     }
 
-    // Return the button
-    return {
-        dispose: () => { jQuery(button).button("dispose"); },
-        el: button,
-        hide: () => { Common.hide(button); },
-        setText: (btnText?: string) => {
-            // Clear the element
-            while (button.firstChild) { button.removeChild(button.firstChild); }
+    // Configure the events
+    private configureEvents() {
+        // See if there is a click event
+        if (this.props.onClick) {
+            // Add a click event
+            this.el.addEventListener("click", ev => {
+                // Call the click event
+                this.props.onClick(this.props, ev);
+            });
+        }
+    }
 
-            // Set the text
-            let elText = document.createTextNode(btnText || "");
+    /**
+     * Public Properties
+     */
 
-            // Append the text
-            button.appendChild(elText);
-        },
-        setType: (btnType: number) => {
-            // Remove the current type
-            button.classList.remove("btn" + (props.isOutline ? "-outline" : "") + "-danger");
-            button.classList.remove("btn" + (props.isOutline ? "-outline" : "") + "-dark");
-            button.classList.remove("btn" + (props.isOutline ? "-outline" : "") + "-info");
-            button.classList.remove("btn" + (props.isOutline ? "-outline" : "") + "-light");
-            button.classList.remove("btn" + (props.isOutline ? "-outline" : "") + "-link");
-            button.classList.remove("btn" + (props.isOutline ? "-outline" : "") + "-secondary");
-            button.classList.remove("btn" + (props.isOutline ? "-outline" : "") + "-success");
-            button.classList.remove("btn" + (props.isOutline ? "-outline" : "") + "-warning");
-            button.classList.remove("btn" + (props.isOutline ? "-outline" : "") + "-primary");
+    // Disposes the component
+    dispose() {
+        // Dispose of the button
+        jQuery(this.el).button("dispose");
+    }
 
-            // Add the button type
-            setType(btnType);
-        },
-        show: () => { Common.show(button); },
-        toggle: () => { jQuery(button).button("toggle"); }
-    };
+    // Sets the button text
+    setText(btnText?: string) {
+        // Clear the element
+        while (this.el.firstChild) { this.el.removeChild(this.el.firstChild); }
+
+        // Set the text
+        let elText = document.createTextNode(btnText || "");
+
+        // Append the text
+        this.el.appendChild(elText);
+    }
+
+    // Sets the button type
+    setType(buttonType: number) {
+        // Parse the class names
+        for (let i = 0; i < ButtonClassNames.length; i++) {
+            // Remove the class names
+            this.el.classList.remove(ButtonClassNames[i]);
+            this.el.classList.remove(ButtonClassNames[i].replace("btn-", "btn-outline-"));
+        }
+
+        // Set the default type
+        let defaultType = ButtonClassNames[buttonType] || ButtonClassNames[ButtonTypes.Primary];
+        this.el.classList.add(this.props.isOutline ? defaultType.replace("btn-", "btn-outline-") : defaultType);
+    }
+
+    // Toggles the button
+    toggle() {
+        // Toggle the button
+        jQuery(this.el).button("toggle");
+    }
 }
+export const Button = (props: IButtonProps): IButton => { return new _Button(props); }

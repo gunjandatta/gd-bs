@@ -36,4 +36,4 @@ class _Accordion extends Base<IAccordionProps> implements IAccordion {
         }
     }
 }
-export const Accordion = (props: IAccordionProps) => { return new _Accordion(props); }
+export const Accordion = (props: IAccordionProps): IAccordion => { return new _Accordion(props); }

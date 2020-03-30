@@ -54,4 +54,4 @@ class _Breadcrumb extends Base<IBreadcrumbProps> implements IBreadcrumb {
         }
     }
 }
-export const Breadcrumb = (props: IBreadcrumbProps) => { return new _Breadcrumb(props); }
+export const Breadcrumb = (props: IBreadcrumbProps): IBreadcrumb => { return new _Breadcrumb(props); }
