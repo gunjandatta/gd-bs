@@ -20,7 +20,7 @@ export enum BadgeTypes {
 /**
  * Badge Class Names
  */
-const BadgeClassNames = [
+export const BadgeClassNames = [
     "badge-danger",
     "badge-dark",
     "badge-info",

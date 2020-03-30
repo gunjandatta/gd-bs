@@ -20,7 +20,7 @@ export enum AlertTypes {
 /**
  * Alert Class Names
  */
-const AlertClassNames = [
+export const AlertClassNames = [
     "alert-danger",
     "alert-dark",
     "alert-info",

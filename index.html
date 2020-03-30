@@ -53,42 +53,22 @@
                 header: "Alert Header",
                 content: "This is an alert."
             });
-            window["form"] = GD.Components.Form({
+            GD.Components.Card({
                 el: document.getElementById("dev"),
-                value: {
-                    textfield: 0
-                },
-                rows: [
+                body: [
                     {
-                        control: {
-                            className: "text-right mr-1",
-                            label: "Issue 4",
-                            name: "fieldValue",
-                            type: GD.Components.FormControlTypes.TextField
-                        }
-                    },
-                    {
-                        control: {
-                            label: "Issue 5",
-                            name: "DDL",
-                            type: GD.Components.FormControlTypes.Dropdown,
-                            required: true,
-                            items: [
-                                { text: "Select the Option" },
-                                { text: "Option 1", value: 1 },
-                                { text: "Option 2", value: 2 },
-                                { text: "Option 3", value: 3 },
-                                { text: "Option 4", value: 4 },
-                                { text: "Option 5", value: 5 }
-                            ]
-                        }
-                    },
-                    {
-                        control: {
-                            label: "Issue 6",
-                            name: "textfield",
-                            type: GD.Components.FormControlTypes.TextField
-                        }
+                        title: "Title",
+                        subTitle: "Sub-Title",
+                        text: "This is the card text",
+                        actions: [
+                            {
+                                text: "Click Me",
+                                buttonType: 6,
+                                onClick: () => {
+                                    alert("You clicked on a card.");
+                                }
+                            }
+                        ]
                     }
                 ]
             });

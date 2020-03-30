@@ -24,7 +24,7 @@ export enum ButtonTypes {
 /**
  * Button Classes
  */
-const ButtonClassNames = [
+export const ButtonClassNames = [
     "btn-danger",
     "btn-dark",
     "btn-info",
@@ -114,10 +114,7 @@ class _Button extends Base<IButtonProps> implements IButton {
      */
 
     // Disposes the component
-    dispose() {
-        // Dispose of the button
-        jQuery(this.el).button("dispose");
-    }
+    dispose() { jQuery(this.el).button("dispose"); }
 
     // Sets the button text
     setText(btnText?: string) {
@@ -146,9 +143,6 @@ class _Button extends Base<IButtonProps> implements IButton {
     }
 
     // Toggles the button
-    toggle() {
-        // Toggle the button
-        jQuery(this.el).button("toggle");
-    }
+    toggle() { jQuery(this.el).button("toggle"); }
 }
 export const Button = (props: IButtonProps): IButton => { return new _Button(props); }

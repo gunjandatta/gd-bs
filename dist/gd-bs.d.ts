@@ -685,6 +685,7 @@ declare module 'gd-bs/icons' {
 }
 
 declare module 'gd-bs/components/accordion' {
+    import { IBase, IBaseProps } from "gd-bs/base";
     import { IButtonProps } from "gd-bs/components/button";
     import { ICollapseOptions } from "gd-bs/components/collapse";
     
@@ -696,16 +697,7 @@ declare module 'gd-bs/components/accordion' {
     /**
         * Accordion
         */
-    export interface IAccordion {
-            /** The element. */
-            el: Element;
-    
-            /** Hides the accordion. */
-            hide: () => void;
-    
-            /** Shows the accordion. */
-            show: () => void;
-    }
+    export interface IAccordion extends IBase<IAccordionProps> { }
     
     /**
         * Accordion Item
@@ -727,9 +719,7 @@ declare module 'gd-bs/components/accordion' {
     /**
         * Accordion Properties
         */
-    export interface IAccordionProps {
-            className?: string;
-            el?: Element | HTMLElement;
+    export interface IAccordionProps extends IBaseProps {
             id?: string;
             items?: Array<IAccordionItem>;
             options?: IAccordionOptions;
@@ -737,6 +727,8 @@ declare module 'gd-bs/components/accordion' {
 }
 
 declare module 'gd-bs/components/alert' {
+    import { IBase, IBaseProps } from "gd-bs/base";
+    
     /**
         * Alert
         */
@@ -750,36 +742,25 @@ declare module 'gd-bs/components/alert' {
     /**
         * Alert
         */
-    export interface IAlert {
+    export interface IAlert extends IBase<IAlertProps> {
             /** Closes an alert by removing it from the DOM. */
             close: () => void;
     
             /** Destroys an element’s alert. */
             dispose: () => void;
     
-            /** The element. */
-            el: Element;
-    
-            /** Hides the alert. */
-            hide: () => void;
-    
             /** Updates the alert text. */
             setText: (alertText?: string) => void;
     
             /** Updates the alert type. */
             setType: (alertType: number) => void;
-    
-            /** Shows the alert. */
-            show: () => void;
     }
     
     /**
         * Alert Properties
         */
-    export interface IAlertProps {
-            className?: string;
+    export interface IAlertProps extends IBaseProps {
             content?: string | Element;
-            el?: Element | HTMLElement;
             header?: string;
             isDismissible?: boolean;
             type?: number;
@@ -801,6 +782,8 @@ declare module 'gd-bs/components/alert' {
 }
 
 declare module 'gd-bs/components/badge' {
+    import { IBase, IBaseProps } from 'gd-bs/base';
+    
     /**
         * Badge
         */
@@ -814,25 +797,17 @@ declare module 'gd-bs/components/badge' {
     /**
         * Badge
         */
-    export interface IBadge {
+    export interface IBadge extends IBase<IBadgeProps> {
             /** The element. */
-            el: Element;
-    
-            /** Hides the badge. */
-            hide: () => void;
-    
-            /** Shows the badge. */
-            show: () => void;
+            el: HTMLAnchorElement | HTMLSpanElement;
     }
     
     /**
         * Badge Properties
         */
-    export interface IBadgeProps {
-            className?: string;
+    export interface IBadgeProps extends IBaseProps{
             content?: string | Element;
             data?: any;
-            el?: Element | HTMLElement;
             header?: string;
             href?: string;
             isPill?: boolean;
@@ -879,18 +854,33 @@ declare module 'gd-bs/components/breadcrumb' {
         * Breadcrumb Item
         */
     export interface IBreadcrumbItem {
+            /** The breadcrumb link */
             href?: string;
+    
+            /** Internal flag set by the component */
+            isActive?: boolean;
+    
+            /** Click event for the link */
             onClick?: (item?: IBreadcrumbItem, ev?: Event) => void;
-            text?: string;    
+    
+            /** The link text */
+            text?: string;
     }
     
     /**
         * Breadcrumb Properties
         */
     export interface IBreadcrumbProps {
+            /** The breadcrumb class name */
             className?: string;
+    
+            /** The element to render the breadcrumb to. */
             el?: Element | HTMLElement;
+    
+            /** The breadcrumb items */
             items?: Array<IBreadcrumbItem>
+    
+            /** Click event for the link */
             onClick?: (item?: IBreadcrumbItem, ev?: Event) => void;
     }
 }
@@ -2570,6 +2560,39 @@ declare module 'gd-bs/components/tooltip' {
             Left: number;
             Right: number;
             Top: number;
+    }
+}
+
+declare module 'gd-bs/base' {
+    /**
+        * Base
+        */
+    export interface IBase<IProps = IBaseProps> {
+            /** Internal method to configure the parent element. */
+            configureParent(): Element;
+    
+            /** The component HTML element */
+            el: Element;
+    
+            /** Hides the component. */
+            hide(): void;
+    
+            /** The component properties */
+            props: IProps;
+    
+            /** Shows the component. */
+            show(): void;
+    }
+    
+    /**
+        * Base Properties
+        */
+    export interface IBaseProps {
+            /** Custom class names. */
+            className?: string;
+    
+            /** The element to render the component to. */
+            el?: Element | HTMLElement;
     }
 }
 

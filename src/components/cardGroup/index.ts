@@ -1,56 +1,35 @@
 import { ICardGroup, ICardGroupProps } from "../../../@types/components/cardGroup";
-import * as Common from "../common";
+import { Base } from "../base";
 import { Card } from "../card";
+import * as HTML from "./index.html";
 
 /**
  * Card Group
  * @property props - The button group properties.
  */
-export const CardGroup = (props: ICardGroupProps): ICardGroup => {
-    // Create the card group
-    let cardGroup = document.createElement("div");
+class _CardGroup extends Base<ICardGroupProps> implements ICardGroup {
+    // Constructor
+    constructor(props: ICardGroupProps) {
+        super(HTML, props);
 
-    // Set the class names
-    cardGroup.className = props.className || "";
-    cardGroup.classList.add(props.isDeck ? "card-deck" : "card-group");
+        // Configure the card group
+        this.configure();
 
-    // Parse the cards
-    let cards = props.cards || [];
-    for (let i = 0; i < cards.length; i++) {
-        let card = cards[i];
-
-        // Add the button html
-        cardGroup.appendChild(Card(card).el);
+        // Configure the parent
+        this.configureParent();
     }
 
-    // Create the element
-    let el = document.createElement("div");
-    el.appendChild(cardGroup);
+    // Configure the card group
+    private configure() {
+        // Set the default class
+        this.el.classList.add(this.props.isDeck ? "card-deck" : "card-group");
 
-    // See if we are rendering it to an element
-    if (props.el) {
-        // Ensure the class list exists and it's not the body element
-        if (props.el.classList && props.el.tagName != "BODY") {
-            // Set the bootstrap class
-            props.el.classList.contains("bs") ? null : props.el.classList.add("bs");
+        // Parse the cards
+        let cards = this.props.cards || [];
+        for (let i = 0; i < cards.length; i++) {
+            // Add the card
+            this.el.appendChild(Card(cards[i]).el);
         }
-
-        // Append the elements
-        while (el.children.length > 0) {
-            props.el.appendChild(el.children[0]);
-        }
-
-        // Update the element
-        el = props.el as any;
-    } else {
-        // Set the bootstrap class
-        el.classList.add("bs");
     }
-
-    // Return the card group
-    return {
-        el: cardGroup,
-        hide: () => { Common.hide(cardGroup); },
-        show: () => { Common.show(cardGroup); }
-    };
 }
+export const CardGroup = (props: ICardGroupProps): ICardGroup => { return new _CardGroup(props); }
