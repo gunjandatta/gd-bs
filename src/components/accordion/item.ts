@@ -96,5 +96,5 @@ export class AccordionItem {
      */
 
     // The component HTML element
-    get el() { return this._el; }
+    get el(): HTMLDivElement { return this._el; }
 }

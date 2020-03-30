@@ -1,145 +1,127 @@
 import * as jQuery from "jquery";
-import * as Common from "../common";
+import { Base } from "../base";
 import { ICarousel, ICarouselProps } from "../../../@types/components/carousel";
+import * as HTML from "./index.html";
+import { CarouselItem } from "./item";
 
 /**
  * Carousel
  * @param props - The carousel properties.
  */
-export const Carousel = (props: ICarouselProps): ICarousel => {
-    let items = props.items || [];
+class _Carousel extends Base<ICarouselProps> implements ICarousel {
+    // Constructor
+    constructor(props: ICarouselProps) {
+        super(HTML, props);
 
-    // Create the carousel
-    let carousel = document.createElement("div");
-    carousel.id = 'carousel_' + (props.id || '');
-    carousel.setAttribute("data-ride", "carousel");
+        // Configure the card group
+        this.configure();
 
-    // Set the class names
-    carousel.className = props.className || "";
-    carousel.classList.add("carousel");
-    carousel.classList.add("slide");
-    props.enableCrossfade ? carousel.classList.add("carousel-fade") : null;
+        // Configure the parent
+        this.configureParent();
+    }
 
-    // See if we are rendering indicators
-    if (props.enableIndicators) {
-        let list = document.createElement("ol");
-        list.className = "carousel-indicators";
-        carousel.appendChild(list);
+    // Configure the card group
+    private configure() {
+        // Set the attributes
+        this.el.id = "carousel_" + (this.props.id || "");
+        this.props.enableCrossfade ? this.el.classList.add("carousel-fade") : null;
+
+        // Render the indicators
+        this.renderIndicators();
+
+        // Render the controls
+        this.renderControls();
+
+        // Render the slides
+        this.renderSlides();
+
+        // See if options exist
+        if (this.props.options) {
+            // Initialize the carousel options
+            jQuery(this.el).carousel(this.props.options);
+        }
+    }
+
+    // Renders the controls
+    private renderControls() {
+        // Get the controls
+        let nextControl = this.el.querySelector(".carousel-control-next") as HTMLAnchorElement;
+        let prevControl = this.el.querySelector(".carousel-control-prev") as HTMLAnchorElement;
+
+        // See if we are rendering controls
+        if (this.props.enableControls) {
+            // Configure the controls
+            nextControl.href = "#" + this.el.id;
+            prevControl.href = "#" + this.el.id;
+        } else {
+            // Remove the controls
+            this.el.removeChild(nextControl);
+            this.el.removeChild(prevControl);
+        }
+    }
+
+    // Renders the indicators
+    private renderIndicators() {
+        // Get the indicators
+        let indicators = this.el.querySelector(".carousel-indicators");
+
+        // See if we are enabling indicators
+        if (this.props.enableIndicators) {
+            // Parse the items
+            let items = this.props.items || [];
+            for (let i = 0; i < items.length; i++) {
+                let item = items[i];
+
+                // Create the item
+                let elItem = document.createElement("li");
+                elItem.setAttribute("data-target", "#" + this.el.id);
+                elItem.setAttribute("data-slide-to", i.toString());
+                item.isActive ? elItem.classList.add("active") : null;
+
+                // Add the item
+                indicators.appendChild(elItem);
+            }
+        } else {
+            // Remove the indicators
+            this.el.removeChild(indicators);
+        }
+    }
+
+    // Renders the slides
+    private renderSlides() {
+        // Get the indicators
+        let slides = this.el.querySelector(".carousel-inner");
 
         // Parse the items
+        let items = this.props.items || [];
         for (let i = 0; i < items.length; i++) {
-            let item = items[i];
+            let slide = new CarouselItem(items[i]);
 
-            // Set the attributes
-            let itemAttributes = [
-                'data-target="#' + carousel.id + '"',
-                'data-slide-to="' + i + '"',
-                item.isActive ? 'class="active"' : null
-            ].join(' ');
-
-            // Add the item
-            list.innerHTML += '<li ' + itemAttributes + '></li>';
+            // Create the item element
+            slides.appendChild(slide.el);
         }
     }
 
-    // Add the inner starting element
-    let inner = document.createElement("div");
-    inner.className = "carousel-inner";
-    carousel.appendChild(inner);
+    /**
+     * Public Interface
+     */
 
-    // Parse the items
-    for (let i = 0; i < items.length; i++) {
-        let item = items[i];
+    // Cycle the carousel
+    cycle() { jQuery(this.el).carousel("cycle"); }
 
-        // Create the item element
-        let elItem = document.createElement("div");
-        inner.appendChild(elItem);
+    // Disposes the carousel
+    dispose() { jQuery(this.el).carousel("dispose"); }
 
-        // Set the class names
-        elItem.className = item.className || "";
-        elItem.classList.add("carousel-item");
-        item.isActive ? elItem.classList.add("active") : null;
+    // Goes to the next slide
+    next() { jQuery(this.el).carousel("next"); }
 
-        // See if we are rendering an image
-        if (item.imageUrl) {
-            // Add the image
-            elItem.innerHTML += [
-                item.imageUrl ? '<img class="d-block w-100" src="' + item.imageUrl + '" alt="' + (item.imageAlt || '') + '">' : '',
-                item.captions ? '<div class="carousel-caption">' : '',
-                item.captions ? item.captions : '',
-                item.captions ? '</div>' : ''
-            ].join('\n');
-        } else {
-            // Set the content
-            let content = item.content || "";
-            if (typeof (content) === "string") {
-                // Set the html
-                elItem.innerHTML += content;
-            } else {
-                // Append the element
-                elItem.appendChild(content);
-            }
-        }
-    }
+    // Sets the slide by number
+    number(value: number) { jQuery(this.el).carousel(value); }
 
-    // See if we are rendering controls
-    if (props.enableControls) {
-        // Add the controls
-        carousel.innerHTML += [
-            '<a class="carousel-control-prev" href="#' + carousel.id + '" role="button" data-slide="prev">',
-            '<span class="carousel-control-prev-icon" aria-hidden="true"></span>',
-            '<span class="sr-only">Previous</span>',
-            '</a>',
-            '<a class="carousel-control-next" href="#' + carousel.id + '" role="button" data-slide="next">',
-            '<span class="carousel-control-next-icon" aria-hidden="true"></span>',
-            '<span class="sr-only">Next</span>',
-            '</a>'
-        ].join('\n');
-    }
+    // Pauses the slide
+    pause() { jQuery(this.el).carousel("pause"); }
 
-    // Create the element
-    let el = document.createElement("div");
-    el.appendChild(carousel);
-
-    // See if we are rendering it to an element
-    if (props.el) {
-        // Ensure the class list exists and it's not the body element
-        if (props.el.classList && props.el.tagName != "BODY") {
-            // Set the bootstrap class
-            props.el.classList.contains("bs") ? null : props.el.classList.add("bs");
-        }
-
-        // Append the elements
-        while (el.children.length > 0) {
-            props.el.appendChild(el.children[0]);
-        }
-
-        // Update the element
-        el = props.el as any;
-    } else {
-        // Set the bootstrap class
-        el.classList.add("bs");
-    }
-
-    // Create the carousel
-    let $carousel = jQuery(carousel);
-
-    // See if options exist
-    if (props.options) {
-        // Initialize the carousel options
-        $carousel.carousel(props.options);
-    }
-
-    // Return the carousel
-    return {
-        cycle: () => { $carousel.carousel("cycle"); },
-        dispose: () => { $carousel.carousel("dispose"); },
-        el: carousel,
-        hide: () => { Common.hide(carousel); },
-        next: () => { $carousel.carousel("next"); },
-        number: (value: number) => { $carousel.carousel(value); },
-        pause: () => { $carousel.carousel("pause"); },
-        previous: () => { $carousel.carousel("prev"); },
-        show: () => { Common.show(carousel); }
-    };
+    // Goes to the previous slide
+    previous() { jQuery(this.el).carousel("prev"); }
 }
+export const Carousel = (props: ICarouselProps): ICarousel => { return new _Carousel(props); }
