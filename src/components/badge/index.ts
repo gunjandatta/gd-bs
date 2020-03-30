@@ -42,9 +42,6 @@ class _Badge extends Base<IBadgeProps> implements IBadge {
         // Set the href property
         props.href ? this.el.setAttribute("href", props.href) : null;
 
-        // Add the class names
-        this.addClassNames();
-
         // Configure the badge
         this.configure();
 
@@ -55,8 +52,8 @@ class _Badge extends Base<IBadgeProps> implements IBadge {
         this.configureParent();
     }
 
-    // Adds the class names
-    private addClassNames() {
+    // Configure the badge
+    private configure() {
         // See if this is a pill
         if (this.props.isPill) {
             // Add the class name
@@ -65,10 +62,7 @@ class _Badge extends Base<IBadgeProps> implements IBadge {
 
         // Set the default styling
         this.el.classList.add(BadgeClassNames[(this.props.type || BadgeTypes.Primary) - 1]);
-    }
 
-    // Configure the badge
-    private configure() {
         // Set the content
         let content = this.props.content || "";
         if (typeof (content) === "string") {

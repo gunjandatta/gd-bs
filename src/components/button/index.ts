@@ -45,9 +45,6 @@ class _Button extends Base<IButtonProps> implements IButton {
     constructor(props: IButtonProps) {
         super(props.href || props.isLink ? HTMLLink : HTML, props);
 
-        // Add the class names
-        this.addClassNames();
-
         // Configure the button
         this.configure();
 
@@ -58,8 +55,8 @@ class _Button extends Base<IButtonProps> implements IButton {
         this.configureParent();
     }
 
-    // Configure the class names
-    private addClassNames() {
+    // Configure the button
+    private configure() {
         // Add the class names
         this.props.isBlock ? this.el.classList.add("btn-block") : null;
         this.props.isLarge ? this.el.classList.add("btn-lg") : null;
@@ -67,10 +64,7 @@ class _Button extends Base<IButtonProps> implements IButton {
 
         // Set the default type
         this.setType(this.props.type || ButtonTypes.Primary)
-    }
 
-    // Configure the button
-    private configure() {
         // Set the attributes
         this.props.id ? this.el.id = this.props.id : null;
         this.props.isDisabled ? this.el.setAttribute("disabled", "disabled") : null;
