@@ -469,19 +469,19 @@
                     { buttons: [{ text: "Button 25" }] }
                 ]
             });
-            var dll = GD.Components.Dropdown({
+            window["ddl"] = GD.Components.Dropdown({
                 el: document.querySelector("#ddl"),
-                isSplit: "true",
+                isSplit: true,
                 label: "My Dropdown",
                 onChange: function (item, ev) {
-                    item ? alert("Selected Item: " + item.text) : null;
+                    alert("Selected Item: " + (item ? item.text : "None"));
                 },
                 setLabelToValue: true,
                 type: GD.Components.DropdownTypes.Secondary,
                 items: [
                     { isHeader: true, text: "Header 1" },
                     { isDivider: true },
-                    { text: "Item 1" },
+                    { text: "Item 1", onClick: function (item) { alert("Item Clicked: " + item.text); } },
                     { text: "Item 2" },
                     { text: "Item 3" },
                     { text: "Item 4" },
@@ -590,7 +590,7 @@
                                     label: "Boolean",
                                     name: "Boolean",
                                     type: GD.Components.FormControlTypes.Checkbox,
-                                    onChange: function (items) { alert(items.length + " selected items"); },
+                                    onChange: function (item) { alert((item ? item.label : "No item") + " selected."); },
                                     items: [
                                         {
                                             label: "Checkbox 1"
@@ -632,7 +632,7 @@
                                     errorMessage: "This is a required field.",
                                     required: true,
                                     label: "Multi Jobs",
-                                    name: "Jobs",
+                                    name: "MultiJobs",
                                     type: GD.Components.FormControlTypes.MultiDropdown,
                                     items: [
                                         { text: "Job 1" },
@@ -646,8 +646,7 @@
                                         { text: "Job 9" }
                                     ],
                                     onChange: function (items) {
-                                        console.log("Selected Items: ");
-                                        console.log(items)
+                                        console.log("Selected Items: ", items);
                                     }
                                 }
                             }

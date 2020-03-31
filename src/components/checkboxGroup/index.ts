@@ -22,7 +22,7 @@ class _CheckboxGroup extends Base<ICheckboxGroupProps> implements ICheckboxGroup
     constructor(props: ICheckboxGroupProps) {
         super(HTML, props);
 
-        // Configure the card group
+        // Configure the checkbox group
         this.configure();
 
         // Configure the parent
@@ -35,7 +35,7 @@ class _CheckboxGroup extends Base<ICheckboxGroupProps> implements ICheckboxGroup
 
         // See if a label is defined
         let label = this.el.querySelector("legend");
-        if (this.props.label && this.props.hideLabel != false) {
+        if (this.props.label && this.props.hideLabel != true) {
             // Add the label
             label.classList.add("col-" + (12 - colSize));
             label.innerHTML = this.props.label;

@@ -1,6 +1,7 @@
 import * as jQuery from "jquery";
 import { IAlert, IAlertProps } from "../../../@types/components/alert";
 import { Base } from "../base";
+import { ClassNames } from "../classNames";
 import * as HTML from "./index.html";
 
 /**
@@ -20,7 +21,7 @@ export enum AlertTypes {
 /**
  * Alert Class Names
  */
-export const AlertClassNames = [
+export const AlertClassNames = new ClassNames([
     "alert-danger",
     "alert-dark",
     "alert-info",
@@ -29,7 +30,7 @@ export const AlertClassNames = [
     "alert-secondary",
     "alert-success",
     "alert-warning"
-];
+]);
 
 /**
  * Alert
@@ -40,7 +41,7 @@ class _Alert extends Base<IAlertProps> implements IAlert {
         super(HTML, props);
 
         // Set the default styling
-        this.el.classList.add(AlertClassNames[(this.props.type || AlertTypes.Primary) - 1]);
+        this.el.classList.add(AlertClassNames.getByType(this.props.type) || AlertClassNames.getByType(AlertTypes.Primary));
 
         // Render the header
         this.renderHeader();
@@ -122,13 +123,13 @@ class _Alert extends Base<IAlertProps> implements IAlert {
     // Updates the alert template type
     setType(alertType: number) {
         // Parse the class names
-        for (let i = 0; i < AlertClassNames.length; i++) {
+        AlertClassNames.parse(className => {
             // Remove the class name
-            this.el.classList.remove(AlertClassNames[i]);
-        }
+            this.el.classList.remove(className);
+        });
 
         // Set the alert type
-        this.el.classList.add(AlertClassNames[(alertType || AlertTypes.Primary) - 1]);
+        this.el.classList.add(AlertClassNames.getByType(alertType) || AlertClassNames.getByType(AlertTypes.Primary));
     }
 }
 export const Alert = (props: IAlertProps): IAlert => { return new _Alert(props); }

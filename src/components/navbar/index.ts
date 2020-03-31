@@ -106,7 +106,7 @@ export const Navbar = (props: INavbarProps): INavbar => {
                     // Remove the active class
                     (ev.currentTarget as HTMLElement).classList.remove("active");
                 }
-            }).el.children[0];
+            }).el;
         }
         // Else, ensure there is text
         else if (item.text) {

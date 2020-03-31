@@ -1,5 +1,6 @@
 import * as jQuery from "jquery";
 import { Base } from "../base";
+import { ClassNames } from "../classNames";
 import { Badge, BadgeTypes } from "../badge";
 import { Spinner } from "../spinner";
 import { IButton, IButtonProps } from "../../../@types/components/button";
@@ -24,7 +25,7 @@ export enum ButtonTypes {
 /**
  * Button Classes
  */
-export const ButtonClassNames = [
+export const ButtonClassNames = new ClassNames([
     "btn-danger",
     "btn-dark",
     "btn-info",
@@ -34,7 +35,7 @@ export const ButtonClassNames = [
     "btn-secondary",
     "btn-success",
     "btn-warning"
-]
+]);
 
 /**
  * Button
@@ -131,14 +132,14 @@ class _Button extends Base<IButtonProps> implements IButton {
     // Sets the button type
     setType(buttonType: number) {
         // Parse the class names
-        for (let i = 0; i < ButtonClassNames.length; i++) {
+        ButtonClassNames.parse(className => {
             // Remove the class names
-            this.el.classList.remove(ButtonClassNames[i]);
-            this.el.classList.remove(ButtonClassNames[i].replace("btn-", "btn-outline-"));
-        }
+            this.el.classList.remove(className);
+            this.el.classList.remove(className.replace("btn-", "btn-outline-"));
+        });
 
         // Set the default type
-        let defaultType = ButtonClassNames[buttonType] || ButtonClassNames[ButtonTypes.Primary];
+        let defaultType = ButtonClassNames.getByType(buttonType) || ButtonClassNames.getByType(ButtonTypes.Primary);
         this.el.classList.add(this.props.isOutline ? defaultType.replace("btn-", "btn-outline-") : defaultType);
     }
 

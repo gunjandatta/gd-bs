@@ -1,5 +1,6 @@
 import { IBadge, IBadgeProps } from "../../../@types/components/badge";
 import { Base } from "../base";
+import { ClassNames } from "../classNames";
 import * as HTMLLink from "./link.html";
 import * as HTMLSpan from "./span.html";
 
@@ -20,7 +21,7 @@ export enum BadgeTypes {
 /**
  * Badge Class Names
  */
-export const BadgeClassNames = [
+export const BadgeClassNames = new ClassNames([
     "badge-danger",
     "badge-dark",
     "badge-info",
@@ -29,7 +30,7 @@ export const BadgeClassNames = [
     "badge-secondary",
     "badge-success",
     "badge-warning"
-];
+]);
 
 /**
  * Badge
@@ -61,7 +62,7 @@ class _Badge extends Base<IBadgeProps> implements IBadge {
         }
 
         // Set the default styling
-        this.el.classList.add(BadgeClassNames[(this.props.type || BadgeTypes.Primary) - 1]);
+        this.el.classList.add(BadgeClassNames.getByType(this.props.type) || BadgeClassNames.getByType(BadgeTypes.Primary));
 
         // Set the content
         let content = this.props.content || "";

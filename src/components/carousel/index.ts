@@ -13,7 +13,7 @@ class _Carousel extends Base<ICarouselProps> implements ICarousel {
     constructor(props: ICarouselProps) {
         super(HTML, props);
 
-        // Configure the card group
+        // Configure the carousel
         this.configure();
 
         // Configure the parent

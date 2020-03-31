@@ -1,6 +1,6 @@
 import * as jQuery from "jquery";
-import { Base } from "../base";
 import { ICollapse, ICollapseProps } from "../../../@types/components/collapse";
+import { Base } from "../base";
 import * as HTML from "./index.html";
 
 /**
@@ -11,7 +11,7 @@ class _Collapse extends Base<ICollapseProps> implements ICollapse {
     constructor(props: ICollapseProps) {
         super(HTML, props);
 
-        // Configure the card group
+        // Configure the collapse
         this.configure();
 
         // Configure the parent
