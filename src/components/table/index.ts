@@ -1,5 +1,6 @@
 import { ITable, ITableProps } from "../../../@types/components/table";
 import * as Common from "../common";
+import * as HTML from "./index.html";
 
 /**
  * Table

@@ -1,5 +1,6 @@
 import { ISpinner, ISpinnerProps } from "../../../@types/components/spinner";
 import * as Common from "../common";
+import * as HTML from "./index.html";
 
 /**
  * Spinner Types

@@ -1,5 +1,6 @@
 import { IPanel, IPanelProps, IPanelTypes } from "../../../@types/components/panel";
 import { Modal } from "../modal";
+import * as HTML from "./index.html";
 
 /**
  * Panel Types

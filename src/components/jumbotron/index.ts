@@ -1,5 +1,6 @@
 import { IJumbotron, IJumbotronProps } from "../../../@types/components/jumbotron";
 import * as Common from "../common";
+import * as HTML from "./index.html";
 
 /**
  * Jumbotron

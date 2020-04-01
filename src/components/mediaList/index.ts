@@ -1,6 +1,7 @@
 import * as Common from "../common";
 import { IMediaList, IMediaListProps } from "../../../@types/components/mediaList";
 import { Media } from "../media";
+import * as HTML from "./index.html";
 
 /**
  * Media List

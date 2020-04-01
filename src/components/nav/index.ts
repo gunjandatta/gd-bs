@@ -1,6 +1,7 @@
 import * as jQuery from "jquery";
 import * as Common from "../common";
 import { INav, INavProps } from "../../../@types/components/nav";
+import * as HTML from "./index.html";
 
 /**
  * Navigation

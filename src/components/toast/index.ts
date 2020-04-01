@@ -1,6 +1,6 @@
 import * as jQuery from "jquery";
-import * as Common from "../common";
 import { IToast, IToastProps } from "../../../@types/components/toast";
+import * as HTML from "./index.html";
 
 /**
  * Toast

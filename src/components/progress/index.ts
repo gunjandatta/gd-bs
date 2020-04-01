@@ -1,5 +1,6 @@
 import { IProgress, IProgressProps } from "../../../@types/components/progress";
 import * as Common from "../common";
+import * as HTML from "./index.html";
 
 /**
  * Progress

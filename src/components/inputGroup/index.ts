@@ -1,6 +1,7 @@
 import { IInputGroup, IInputGroupProps } from "../../../@types/components/inputGroup";
 import * as Common from "../common";
 import { Button } from "../button";
+import * as HTML from "./index.html";
 
 /**
  * Input Group Types

@@ -1,7 +1,7 @@
 import * as jQuery from "jquery";
-import * as Common from "../common";
 import { IModal, IModalProps } from "../../../@types/components/modal";
 import { Button } from "../button";
+import * as HTML from "./index.html";
 
 /**
  * Modal

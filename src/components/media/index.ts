@@ -1,6 +1,7 @@
 import * as Common from "../common";
 import { IMedia, IMediaProps } from "../../../@types/components/media";
 declare var GD;
+import * as HTML from "./index.html";
 
 /**
  * Media Images Types

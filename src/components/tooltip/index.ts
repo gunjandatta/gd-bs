@@ -1,7 +1,7 @@
 import * as jQuery from "jquery";
-import * as Common from "../common";
 import { Button } from "../button";
 import { ITooltip, ITooltipProps } from "../../../@types/components/tooltip";
+import * as HTML from "./index.html";
 
 /**
  * Tooltip Types

@@ -2,6 +2,7 @@ import * as jQuery from "jquery";
 import * as Common from "../common";
 import { IListGroup, IListGroupProps } from "../../../@types/components/listGroup";
 import { Badge } from "../badge";
+import * as HTML from "./index.html";
 
 /**
  * List Group Item Types

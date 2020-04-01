@@ -1,5 +1,6 @@
 import { IPagination, IPaginationProps } from "../../../@types/components/pagination";
 import * as Common from "../common";
+import * as HTML from "./index.html";
 
 /**
  * Pagination Alignment

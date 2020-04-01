@@ -3,6 +3,7 @@ import * as Common from "../common";
 import { Button } from "../button";
 import { Dropdown } from "../dropdown";
 import { InputGroup, InputGroupTypes } from "../inputGroup";
+import * as HTML from "./index.html";
 
 /**
  * Navbar Types
