@@ -1,5 +1,6 @@
 import { IPanel, IPanelProps, IPanelTypes } from "../../../@types/components/panel";
 import { Modal } from "../modal";
+import { Base } from "../base";
 import * as HTML from "./index.html";
 
 /**
@@ -16,6 +17,22 @@ export enum PanelTypes {
 /**
  * Panel
  */
+class _Panel extends Base<IPanelProps> {//implements IPanel {
+    // Constructor
+    constructor(props: IPanelProps) {
+        super(HTML, props);
+
+        // Configure the collapse
+        this.configure();
+
+        // Configure the parent
+        this.configureParent();
+    }
+
+    // Configure the card group
+    private configure() {
+    }
+}
 export const Panel = (props: IPanelProps): IPanel => {
     // Create the panel
     let elPanel = document.createElement("div");

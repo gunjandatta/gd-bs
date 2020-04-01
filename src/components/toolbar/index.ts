@@ -2,11 +2,28 @@ import { IToolbar, IToolbarProps } from "../../../@types/components/toolbar";
 import * as Common from "../common";
 import { ButtonGroup } from "../buttonGroup";
 import { InputGroup } from "../inputGroup";
+import { Base } from "../base";
 import * as HTML from "./index.html";
 
 /**
  * Toolbar
  */
+class _Toolbar extends Base<IToolbarProps> implements IToolbar {
+    // Constructor
+    constructor(props: IToolbarProps) {
+        super(HTML, props);
+
+        // Configure the collapse
+        this.configure();
+
+        // Configure the parent
+        this.configureParent();
+    }
+
+    // Configure the card group
+    private configure() {
+    }
+}
 export const Toolbar = (props: IToolbarProps): IToolbar => {
     // Create the toolbar
     let toolbar = document.createElement("div") as HTMLDivElement;

@@ -1,5 +1,6 @@
 import { IInputGroup, IInputGroupProps } from "../../../@types/components/inputGroup";
 import * as Common from "../common";
+import { Base } from "../base";
 import { Button } from "../button";
 import * as HTML from "./index.html";
 
@@ -20,6 +21,22 @@ export enum InputGroupTypes {
  * Input Group
  * @param props The input group properties.
  */
+class _InputGroup extends Base<IInputGroupProps> {//implements IInputGroup {
+    // Constructor
+    constructor(props: IInputGroupProps) {
+        super(HTML, props);
+
+        // Configure the collapse
+        this.configure();
+
+        // Configure the parent
+        this.configureParent();
+    }
+
+    // Configure the card group
+    private configure() {
+    }
+}
 export const InputGroup = (props: IInputGroupProps): IInputGroup => {
     // Create the input group
     let inputGroup = document.createElement("div");

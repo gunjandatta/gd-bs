@@ -1,6 +1,7 @@
 import * as Common from "../common";
 import { IMedia, IMediaProps } from "../../../@types/components/media";
 declare var GD;
+import { Base } from "../base";
 import * as HTML from "./index.html";
 
 /**
@@ -23,6 +24,22 @@ export enum MediaOrderTypes {
 /**
  * Media
  */
+class _Media extends Base<IMediaProps> {//implements IMedia {
+    // Constructor
+    constructor(props: IMediaProps) {
+        super(HTML, props);
+
+        // Configure the collapse
+        this.configure();
+
+        // Configure the parent
+        this.configureParent();
+    }
+
+    // Configure the card group
+    private configure() {
+    }
+}
 export const Media = (props: IMediaProps): IMedia => {
     // Create the media
     let media = document.createElement("div");

@@ -1,12 +1,29 @@
 import * as jQuery from "jquery";
 import * as Common from "../common";
 import { INav, INavProps } from "../../../@types/components/nav";
+import { Base } from "../base";
 import * as HTML from "./index.html";
 
 /**
  * Navigation
  * @param props - The navigation properties.
  */
+class _Nav extends Base<INavProps> {//implements INav {
+    // Constructor
+    constructor(props: INavProps) {
+        super(HTML, props);
+
+        // Configure the collapse
+        this.configure();
+
+        // Configure the parent
+        this.configureParent();
+    }
+
+    // Configure the card group
+    private configure() {
+    }
+}
 export const Nav = (props: INavProps): INav => {
     let renderTabContent = false;
 

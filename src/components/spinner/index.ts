@@ -1,5 +1,6 @@
 import { ISpinner, ISpinnerProps } from "../../../@types/components/spinner";
 import * as Common from "../common";
+import { Base } from "../base";
 import * as HTML from "./index.html";
 
 /**
@@ -20,6 +21,22 @@ export enum SpinnerTypes {
  * Spinner
  * @param props The spinner properties.
  */
+class _Spinner extends Base<ISpinnerProps> implements ISpinner {
+    // Constructor
+    constructor(props: ISpinnerProps) {
+        super(HTML, props);
+
+        // Configure the collapse
+        this.configure();
+
+        // Configure the parent
+        this.configureParent();
+    }
+
+    // Configure the card group
+    private configure() {
+    }
+}
 export const Spinner = (props: ISpinnerProps): ISpinner => {
     // Create the spinner
     let spinner: HTMLDivElement = null;

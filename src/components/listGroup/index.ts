@@ -2,6 +2,7 @@ import * as jQuery from "jquery";
 import * as Common from "../common";
 import { IListGroup, IListGroupProps } from "../../../@types/components/listGroup";
 import { Badge } from "../badge";
+import { Base } from "../base";
 import * as HTML from "./index.html";
 
 /**
@@ -22,6 +23,22 @@ export enum ListGroupItemTypes {
  * List Group
  * @param props The list group properties.
  */
+class _ListGroup extends Base<IListGroupProps> {//implements IListGroup {
+    // Constructor
+    constructor(props: IListGroupProps) {
+        super(HTML, props);
+
+        // Configure the collapse
+        this.configure();
+
+        // Configure the parent
+        this.configureParent();
+    }
+
+    // Configure the card group
+    private configure() {
+    }
+}
 export const ListGroup = (props: IListGroupProps): IListGroup => {
     // Create the list group
     let elListGroup = document.createElement("div");

@@ -1,10 +1,27 @@
 import { IJumbotron, IJumbotronProps } from "../../../@types/components/jumbotron";
 import * as Common from "../common";
+import { Base } from "../base";
 import * as HTML from "./index.html";
 
 /**
  * Jumbotron
  */
+class _Jumbotron extends Base<IJumbotronProps> {//implements IJumbotron {
+    // Constructor
+    constructor(props: IJumbotronProps) {
+        super(HTML, props);
+
+        // Configure the collapse
+        this.configure();
+
+        // Configure the parent
+        this.configureParent();
+    }
+
+    // Configure the card group
+    private configure() {
+    }
+}
 export const Jumbotron = (props: IJumbotronProps): IJumbotron => {
     // Create the jumbotron
     let jumbotron = document.createElement("div");

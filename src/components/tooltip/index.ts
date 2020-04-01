@@ -1,6 +1,7 @@
 import * as jQuery from "jquery";
 import { Button } from "../button";
 import { ITooltip, ITooltipProps } from "../../../@types/components/tooltip";
+import { Base } from "../base";
 import * as HTML from "./index.html";
 
 /**
@@ -17,6 +18,22 @@ export enum TooltipTypes {
 /**
  * Tooltip
  */
+class _Tooltip extends Base<ITooltipProps> {//implements ITooltip {
+    // Constructor
+    constructor(props: ITooltipProps) {
+        super(HTML, props);
+
+        // Configure the collapse
+        this.configure();
+
+        // Configure the parent
+        this.configureParent();
+    }
+
+    // Configure the card group
+    private configure() {
+    }
+}
 export const Tooltip = (props: ITooltipProps): ITooltip => {
     // Create the tooltip
     let btnProps = props.btnProps || {};

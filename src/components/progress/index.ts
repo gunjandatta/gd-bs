@@ -1,10 +1,27 @@
 import { IProgress, IProgressProps } from "../../../@types/components/progress";
 import * as Common from "../common";
+import { Base } from "../base";
 import * as HTML from "./index.html";
 
 /**
  * Progress
  */
+class _Progress extends Base<IProgressProps> {//implements IProgress {
+    // Constructor
+    constructor(props: IProgressProps) {
+        super(HTML, props);
+
+        // Configure the collapse
+        this.configure();
+
+        // Configure the parent
+        this.configureParent();
+    }
+
+    // Configure the card group
+    private configure() {
+    }
+}
 export const Progress = (props: IProgressProps): IProgress => {
     let maxValue = typeof (props.max) === "number" ? props.max : 100;
     let minValue = typeof (props.min) === "number" ? props.min : 0;

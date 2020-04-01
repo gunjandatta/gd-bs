@@ -1,11 +1,28 @@
 import * as jQuery from "jquery";
 import { IToast, IToastProps } from "../../../@types/components/toast";
+import { Base } from "../base";
 import * as HTML from "./index.html";
 
 /**
  * Toast
  * @param props - The toast properties.
  */
+class _Toast extends Base<IToastProps> implements IToast {
+    // Constructor
+    constructor(props: IToastProps) {
+        super(HTML, props);
+
+        // Configure the collapse
+        this.configure();
+
+        // Configure the parent
+        this.configureParent();
+    }
+
+    // Configure the card group
+    private configure() {
+    }
+}
 export const Toast = (props: IToastProps): IToast => {
     // Create the toast
     let toast = document.createElement("div");

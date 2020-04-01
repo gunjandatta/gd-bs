@@ -1,12 +1,29 @@
 import * as jQuery from "jquery";
 import { IModal, IModalProps } from "../../../@types/components/modal";
 import { Button } from "../button";
+import { Base } from "../base";
 import * as HTML from "./index.html";
 
 /**
  * Modal
  * @param props The modal properties.
  */
+class _Modal extends Base<IModalProps> {//implements IModal {
+    // Constructor
+    constructor(props: IModalProps) {
+        super(HTML, props);
+
+        // Configure the collapse
+        this.configure();
+
+        // Configure the parent
+        this.configureParent();
+    }
+
+    // Configure the card group
+    private configure() {
+    }
+}
 export const Modal = (props: IModalProps): IModal => {
     // Create the modal
     let modal = document.createElement("div");

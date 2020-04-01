@@ -1,11 +1,28 @@
 import * as Common from "../common";
 import { IMediaList, IMediaListProps } from "../../../@types/components/mediaList";
 import { Media } from "../media";
+import { Base } from "../base";
 import * as HTML from "./index.html";
 
 /**
  * Media List
  */
+class _MediaList extends Base<IMediaListProps> {//implements IMediaList {
+    // Constructor
+    constructor(props: IMediaListProps) {
+        super(HTML, props);
+
+        // Configure the collapse
+        this.configure();
+
+        // Configure the parent
+        this.configureParent();
+    }
+
+    // Configure the card group
+    private configure() {
+    }
+}
 export const MediaList = (props: IMediaListProps): IMediaList => {
     // Create the media list
     let mediaList = document.createElement("ul");

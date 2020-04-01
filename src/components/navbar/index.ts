@@ -3,6 +3,7 @@ import * as Common from "../common";
 import { Button } from "../button";
 import { Dropdown } from "../dropdown";
 import { InputGroup, InputGroupTypes } from "../inputGroup";
+import { Base } from "../base";
 import * as HTML from "./index.html";
 
 /**
@@ -17,6 +18,22 @@ export enum NavbarTypes {
 /**
  * Navbar
  */
+class _Navbar extends Base<INavbarProps> implements INavbar {
+    // Constructor
+    constructor(props: INavbarProps) {
+        super(HTML, props);
+
+        // Configure the collapse
+        this.configure();
+
+        // Configure the parent
+        this.configureParent();
+    }
+
+    // Configure the card group
+    private configure() {
+    }
+}
 export const Navbar = (props: INavbarProps): INavbar => {
     // Create the nav bar
     let navbar = document.createElement("nav");

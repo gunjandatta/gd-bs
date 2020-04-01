@@ -1,6 +1,7 @@
 import * as jQuery from "jquery";
 import { Button } from "../button";
 import { IPopover, IPopoverProps } from "../../../@types/components/popover";
+import { Base } from "../base";
 import * as HTML from "./index.html";
 
 /**
@@ -17,6 +18,22 @@ export enum PopoverTypes {
 /**
  * Popover
  */
+class _Popover extends Base<IPopoverProps> {//implements IPopover {
+    // Constructor
+    constructor(props: IPopoverProps) {
+        super(HTML, props);
+
+        // Configure the collapse
+        this.configure();
+
+        // Configure the parent
+        this.configureParent();
+    }
+
+    // Configure the card group
+    private configure() {
+    }
+}
 export const Popover = (props: IPopoverProps): IPopover => {
     // Set the popover options
     let options = props.options || {};

@@ -1,10 +1,27 @@
 import { ITable, ITableProps } from "../../../@types/components/table";
 import * as Common from "../common";
+import { Base } from "../base";
 import * as HTML from "./index.html";
 
 /**
  * Table
  */
+class _Table extends Base<ITableProps> {//implements ITable {
+    // Constructor
+    constructor(props: ITableProps) {
+        super(HTML, props);
+
+        // Configure the collapse
+        this.configure();
+
+        // Configure the parent
+        this.configureParent();
+    }
+
+    // Configure the card group
+    private configure() {
+    }
+}
 export const Table = (props: ITableProps): ITable => {
     // Method to sort the table
     let sortTable = (colIdx: number) => {

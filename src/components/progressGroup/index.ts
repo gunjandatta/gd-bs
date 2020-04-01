@@ -1,12 +1,29 @@
 import { IProgressGroup, IProgressGroupProps } from "../../../@types/components/progressGroup";
 import * as Common from "../common";
 import { Progress } from "../progress";
+import { Base } from "../base";
 import * as HTML from "./index.html";
 
 /**
  * Progress Group
  * @param props The progress group properties.
  */
+class _ProgressGroup extends Base<IProgressGroupProps> implements IProgressGroup {
+    // Constructor
+    constructor(props: IProgressGroupProps) {
+        super(HTML, props);
+
+        // Configure the collapse
+        this.configure();
+
+        // Configure the parent
+        this.configureParent();
+    }
+
+    // Configure the card group
+    private configure() {
+    }
+}
 export const ProgressGroup = (props: IProgressGroupProps): IProgressGroup => {
     // Create the progress group
     let progressGroup = document.createElement("div");

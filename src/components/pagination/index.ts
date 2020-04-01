@@ -1,5 +1,6 @@
 import { IPagination, IPaginationProps } from "../../../@types/components/pagination";
 import * as Common from "../common";
+import { Base } from "../base";
 import * as HTML from "./index.html";
 
 /**
@@ -14,6 +15,22 @@ export enum PaginationAlignment {
 /**
  * Pagination
  */
+class _Pagination extends Base<IPaginationProps> implements IPagination {
+    // Constructor
+    constructor(props: IPaginationProps) {
+        super(HTML, props);
+
+        // Configure the collapse
+        this.configure();
+
+        // Configure the parent
+        this.configureParent();
+    }
+
+    // Configure the card group
+    private configure() {
+    }
+}
 export const Pagination = (props: IPaginationProps): IPagination => {
     // Create the pagination
     let pagination = document.createElement("nav");
