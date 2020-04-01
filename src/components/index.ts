@@ -11,7 +11,6 @@ export * from "./checkboxGroup";
 export * from "./collapse";
 export * from "./dropdown";
 export * from "./form";
-export * from "./formControl";
 export * from "./inputGroup";
 export * from "./jumbotron";
 export * from "./listGroup";

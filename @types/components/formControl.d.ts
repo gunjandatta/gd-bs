@@ -6,7 +6,8 @@ import { IInputGroup } from "./inputGroup";
  * Form Control
  */
 export const FormControl: {
-    (control: IFormControlProps): IFormControl;
+    // Gets the event by type
+    getByType(key: number): (props?: IFormControlProps) => void;
 
     /** Registers a custom form control type. */
     registerType: (key: number, onRender: (props?: IFormControlProps) => void) => void;
@@ -22,17 +23,20 @@ export const FormControlTypes: IFormControlTypes;
  */
 export interface IFormControl {
     el: HTMLElement;
-    get: () => ICheckboxGroup | IDropdown | IInputGroup;
+
+    checkbox: ICheckboxGroup;
+
+    control: ICheckboxGroup | IDropdown | IInputGroup;
+
+    dropdown: IDropdown;
+
     getValue: () => any;
 
-    /** Hides the form control. */
-    hide: () => void;
+    isValid: boolean;
 
-    /** Shows the form control. */
-    show: () => void;
-
-    isValid: () => boolean;
     props: IFormControlProps;
+
+    textbox: IInputGroup;
 }
 
 /**

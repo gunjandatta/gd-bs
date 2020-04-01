@@ -247,8 +247,7 @@
                                         { text: "Item 2" }
                                     ],
                                     onControlRendered: function (control) {
-                                        window.myFormControl = control;
-                                        control.get().setItems([
+                                        control.dropdown.setItems([
                                             { isHeader: true, text: "Header 1" },
                                             { text: "Update Item 1" },
                                             { isHeader: true, text: "Header 2" },

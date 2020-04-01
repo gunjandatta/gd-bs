@@ -1,5 +1,5 @@
 import { IForm, IFormProps } from "../../../@types/components/form";
-import { IFormControl } from "../../../@types/components/formControl";
+import { IFormControl, IFormControlProps } from "../../../@types/components/formControl";
 import { Base } from "../base";
 import { FormGroup } from "./group";
 import { FormRow } from "./row";
@@ -9,7 +9,7 @@ import * as HTML from "./index.html";
  * Form
  * @property props - The form properties.
  */
-export class _Form extends Base<IFormProps> implements IForm {
+class _Form extends Base<IFormProps> implements IForm {
     private _groups: Array<FormGroup> = null;
     private _rows: Array<FormRow> = null;
 
@@ -17,7 +17,7 @@ export class _Form extends Base<IFormProps> implements IForm {
     constructor(props: IFormProps) {
         super(HTML, props);
 
-        // Configure the dropdown
+        // Configure the form
         this.configure();
 
         // Configure the parent
@@ -117,7 +117,7 @@ export class _Form extends Base<IFormProps> implements IForm {
         let controls = this.controls;
         for (let i = 0; i < controls.length; i++) {
             // See if this control is valid
-            if (controls[i].isValid() == false) {
+            if (controls[i].isValid == false) {
                 // Set the flag
                 isValid = false;
             }
@@ -128,3 +128,34 @@ export class _Form extends Base<IFormProps> implements IForm {
     }
 }
 export const Form = (props: IFormProps): IForm => { return new _Form(props); }
+
+/**
+ * Form Control
+ */
+export class FormControl {
+    private static _customTypes = {};
+
+    // Gets the event by type
+    static getByType(key: number): (props?: IFormControlProps) => void { return this._customTypes[key]; }
+
+    // Registers a custom control type
+    static registerType(key: number, event: (props?: IFormControlProps) => void) { this._customTypes[key] = event; }
+}
+
+/**
+ * Form Control Types
+ */
+export enum FormControlTypes {
+    Checkbox = 1,
+    Email = 2,
+    Dropdown = 3,
+    File = 4,
+    MultiDropdown = 5,
+    Password = 6,
+    Radio = 7,
+    Range = 8,
+    Readonly = 9,
+    Switch = 10,
+    TextArea = 11,
+    TextField = 12
+}

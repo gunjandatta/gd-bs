@@ -1,6 +1,6 @@
 import { IFormControlProps, IFormControl } from "../../../@types/components";
+import { FormControl } from "./control";
 import * as HTML from "./group.html";
-import { FormControl as Control } from "../formControl";
 
 /**
  * Form Group
@@ -62,7 +62,7 @@ export class FormGroup {
         }
 
         // Create the control
-        this._control = Control(this._props);
+        this._control = new FormControl(this._props);
         this._el.appendChild(this._control.el);
 
         // Execute the rendered event
