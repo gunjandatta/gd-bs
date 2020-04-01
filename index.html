@@ -439,9 +439,18 @@
                 modalProps: {
                     button: { text: "Show Panel" },
                     id: "my-panel",
-                    title: "Panel Example"
+                    title: "Panel Example",
+                    onRenderBody: function(el) {
+                        // Render a jumbotron
+                        GD.Components.Jumbotron({
+                            el,
+                            title: "My Panel",
+                            lead: "this is a lead",
+                            content: "This is the content of the jumbotron."
+                        });
+                    }
                 },
-                type: 5
+                type: 5,
             });
             GD.Components.Badge({
                 el: document.getElementById("badge"),

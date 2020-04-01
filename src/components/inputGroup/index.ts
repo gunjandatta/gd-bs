@@ -41,8 +41,6 @@ class _InputGroup extends Base<IInputGroupProps> {//implements IInputGroup {
     // Configure the card group
     private configure() {
         // Set the class names
-        this.el.className = this.props.className || "";
-        this.el.classList.add("input-group");
         this.props.isLarge ? this.el.classList.add("input-group-lg") : null;
         this.props.isSmall ? this.el.classList.add("input-group-sm") : null;
 
