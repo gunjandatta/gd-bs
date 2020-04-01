@@ -35,7 +35,6 @@ const GetHTML = (props: IDropdownProps) => {
     return HTML;
 }
 
-
 /**
  * Dropdown
  * @property props - The dropdown properties.

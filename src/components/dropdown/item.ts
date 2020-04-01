@@ -83,8 +83,10 @@ export class DropdownItem {
 
                     // Parse the values
                     for (let j = 0; j < values.length; j++) {
+                        let value = typeof (this._props.value) === "undefined" ? this._props.text : this._props.value;
+
                         // See if this item is selected
-                        if (this._parent.value == values[j]) {
+                        if (value == values[j]) {
                             // Select the item
                             this._el.classList.add("active");
                             break;
@@ -151,8 +153,10 @@ export class DropdownItem {
 
                 // Parse the values
                 for (let i = 0; i < values.length; i++) {
+                    let value = typeof (this._props.value) === "undefined" ? this._props.text : this._props.value;
+
                     // See if this item is selected
-                    if (this._props.value == values[i]) {
+                    if (value == values[i]) {
                         // Select the option
                         (this._el as HTMLOptionElement).selected = true;
                         break;

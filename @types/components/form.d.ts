@@ -9,16 +9,24 @@ export const Form: (props: IFormProps) => IForm;
  * Form
  */
 export interface IForm {
+    /** The form controls */
     controls: Array<IFormControl>;
-    el: HTMLFormElement;
+
+    /** The form element */
+    el: Element | HTMLElement;
+
+    /** Gets a control by its name */
     getControl: (name: string) => IFormControl;
+
+    /** Returns the form values */
     getValues: () => { [key: string]: any };
 
     /** Hides the form. */
     hide: () => void;
-    
+
+    /** Validates the form */
     isValid: () => boolean;
-    
+
     /** Shows the form. */
     show: () => void;
 }
@@ -28,6 +36,7 @@ export interface IForm {
  */
 export interface IFormColumn {
     control: IFormControlProps;
+    isAutoSized?: boolean;
     size?: number;
 }
 
@@ -36,6 +45,7 @@ export interface IFormColumn {
  */
 export interface IFormProps {
     className?: string;
+    controls?: Array<IFormControl>;
     el?: Element | HTMLElement,
     rowClassName?: string;
     rows?: Array<IFormRow>;
@@ -52,7 +62,5 @@ export interface IFormRow {
     className?: string;
     isAutoSized?: boolean;
     isCentered?: boolean;
-    control?: IFormControlProps;
-    colSize?: number;
     columns?: Array<IFormColumn>;
 }
