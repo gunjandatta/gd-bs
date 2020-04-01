@@ -4,7 +4,7 @@ import { IDropdownItem, IDropdownProps } from "../../../@types/components/dropdo
  * Dropdown Item
  */
 export class DropdownItem {
-    private _el: HTMLAnchorElement | HTMLDivElement | HTMLOptGroupElement | HTMLOptionElement = null;
+    private _el: HTMLAnchorElement | HTMLDivElement = null;
     private _isSelected: boolean = false;
     private _parent: IDropdownProps = null;
     private _props: IDropdownItem = null;
@@ -24,18 +24,6 @@ export class DropdownItem {
 
     // Configures the item
     private configure() {
-        // See if this is for a form
-        if (this._parent.formFl) {
-            // Configure the item
-            this.configureForm();
-        } else {
-            // Configure the item
-            this.configureDefault();
-        }
-    }
-
-    // Configures the item
-    private configureDefault() {
         // See if this is a divider
         if (this._props.isDivider) {
             // Add the divider
@@ -102,71 +90,17 @@ export class DropdownItem {
 
     // Configures the events
     private configureEvents() {
-        // Ensure this isn't a form
-        if (!this._parent.formFl) {
-            // Set the click event
-            this._el.addEventListener("click", ev => {
-                // Toggle the item
-                this.toggle();
+        // Set the click event
+        this._el.addEventListener("click", ev => {
+            // Toggle the item
+            this.toggle();
 
-                // See if there is a click event defined
-                if (this._props.onClick) {
-                    // Execute the event
-                    this._props.onClick(this._props, ev);
-                }
-            });
-        }
-    }
-
-    // Configure the item for a form
-    private configureForm() {
-        // See if this is a divider
-        if (this._props.isDivider) {
-            // Create the divider
-            this._el = document.createElement("optgroup");
-            this._el.className = this._props.className || "";
-            this._el.classList.add("dropdown-divider");
-        }
-        // Else, see if this is a header
-        else if (this._props.isHeader) {
-            // Create the header
-            this._el = document.createElement("optgroup");
-            this._el.className = this._props.className || "";
-            this._el.classList.add("dropdown-header");
-            this._el.label = this._props.text || "";
-        } else {
-            // Create the option
-            this._el = document.createElement("option");
-            this._el.className = this._props.className || "";
-            this._el.disabled = this._props.isDisabled ? true : false;
-            this._el.innerHTML = this._props.text || "";
-
-            // See if the item is selected
-            if (this._props.isSelected) {
-                // Select the option
-                (this._el as HTMLOptionElement).selected = true;
+            // See if there is a click event defined
+            if (this._props.onClick) {
+                // Execute the event
+                this._props.onClick(this._props, ev);
             }
-            // Else, see if a value exists
-            else if (typeof (this._parent.value) !== "undefined") {
-                // Ensure it's an array
-                let values = this._parent.value && this._parent.value.length && typeof (this._parent.value) !== "string" ? this._parent.value : [this._parent.value];
-
-                // Parse the values
-                for (let i = 0; i < values.length; i++) {
-                    let value = typeof (this._props.value) === "undefined" ? this._props.text : this._props.value;
-
-                    // See if this item is selected
-                    if (value == values[i]) {
-                        // Select the option
-                        (this._el as HTMLOptionElement).selected = true;
-                        break;
-                    }
-                }
-            }
-
-            // Set the flag
-            this._isSelected = (this._el as HTMLOptionElement).selected;
-        }
+        });
     }
 
     /**
@@ -190,25 +124,13 @@ export class DropdownItem {
         // Update the selected flag
         this._isSelected = !this._isSelected;
 
-        // See if this is not a form
-        if (this._parent.formFl) {
-            let option = this._el as HTMLOptionElement;
-
-            // See if the value needs to be updated
-            if (option.selected != this._isSelected) {
-                // Update the option
-                option.selected = this._isSelected;
-            }
+        // Update the class
+        if (this._isSelected) {
+            // Add the active class
+            this._el.classList.add("active");
         } else {
-            // Update the class
-            if (this._isSelected) {
-                // Add the active class
-                this._el.classList.add("active");
-            } else {
-                // Remove the active class
-                this._el.classList.remove("active");
-            }
-
+            // Remove the active class
+            this._el.classList.remove("active");
         }
     }
 }

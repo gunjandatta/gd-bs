@@ -2,6 +2,7 @@ import * as jQuery from "jquery";
 import { IDropdown, IDropdownItem, IDropdownProps } from "../../../@types/components/dropdown";
 import { Base } from "../base";
 import { ButtonClassNames, ButtonTypes } from "../button";
+import { DropdownFormItem } from "./formItem";
 import { DropdownItem } from "./item";
 import * as HTML from "./index.html";
 import * as HTMLForm from "./form.html";
@@ -40,7 +41,7 @@ const GetHTML = (props: IDropdownProps) => {
  * @property props - The dropdown properties.
  */
 class _Dropdown extends Base<IDropdownProps> implements IDropdown {
-    private _items: Array<DropdownItem> = null;
+    private _items: Array<DropdownFormItem | DropdownItem> = null;
 
     // Constructor
     constructor(props: IDropdownProps) {
@@ -215,7 +216,7 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
     }
 
     // Configure the item events
-    private configureItemEvents(item: DropdownItem) {
+    private configureItemEvents(item: DropdownFormItem | DropdownItem) {
         // Ensure this isn't a header/divider
         if (item.props.isDivider || item.props.isHeader) { return; }
 
@@ -284,7 +285,7 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
         let items = this.props.items || [];
         for (let i = 0; i < items.length; i++) {
             // Create the item
-            let item = new DropdownItem(items[i], this.props);
+            let item = isForm ? new DropdownFormItem(items[i], this.props) : new DropdownItem(items[i], this.props);
             this._items.push(item);
 
             // See if this isn't for a form
