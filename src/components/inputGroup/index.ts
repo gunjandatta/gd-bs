@@ -116,7 +116,7 @@ class _InputGroup extends Base<IInputGroupProps> {//implements IInputGroup {
         let description = this.el.querySelector("small.text-muted");
         if (this.props.description) {
             // Add the description
-            description.innerHTML = '<small class="text-muted">' + this.props.description + '</small>';
+            description.innerHTML = this.props.description;
         } else {
             // Remove the description
             this.el.removeChild(description);

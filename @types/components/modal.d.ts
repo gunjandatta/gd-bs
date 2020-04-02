@@ -49,12 +49,11 @@ export interface IModalOptions {
  * Modal Properties
  */
 export interface IModalProps {
-    body?: string;
-    button?: IButtonProps;
+    body?: string | Element;
     className?: string;
     el?: Element | HTMLElement;
     disableFade?: boolean;
-    footer?: string;
+    footer?: string | Element;
     hideCloseButton?: boolean;
     id?: string;
     isCentered?: boolean;

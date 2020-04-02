@@ -1,6 +1,5 @@
 import * as jQuery from "jquery";
 import { IModal, IModalProps } from "../../../@types/components/modal";
-import { Button } from "../button";
 import { Base } from "../base";
 import * as HTML from "./index.html";
 
@@ -16,109 +15,91 @@ class _Modal extends Base<IModalProps> {//implements IModal {
         // Configure the collapse
         this.configure();
 
+        // Configure the events
+        this.configureEvents();
+
         // Configure the parent
         this.configureParent();
     }
 
     // Configure the card group
     private configure() {
+        // Set the modal attributes
+        this.props.id ? this.el.id = this.props.id : null;
+        this.props.disableFade ? null : this.el.classList.add("fade");
+
+        // Update the dialog
+        let dialog = this.el.querySelector(".modal-dialog");
+        this.props.isCentered ? dialog.classList.add("modal-dialog-centered") : null;
+        this.props.isLarge ? dialog.classList.add("modal-lg") : null;
+        this.props.isSmall ? dialog.classList.add("modal-sm") : null;
+
+        // Update the title
+        let title = this.el.querySelector(".modal-title");
+        title.innerHTML = this.props.title || "";
+
+        // See if we are hiding the close button
+        if (this.props.hideCloseButton) {
+            // Remove the close button
+            title.removeChild(title.querySelector("button.close"));
+        }
+
+        // Update the body
+        let body = this.el.querySelector(".modal-body");
+        let content = this.props.body || "";
+        if (typeof (content) === "string") {
+            // Set the HTML
+            body.innerHTML = content;
+        } else {
+            // Append the element
+            body.appendChild(content);
+        }
+
+        // Update the footer
+        let footer = this.el.querySelector(".modal-footer");
+        content = this.props.footer || "";
+        if (typeof (content) === "string") {
+            // Set the HTML
+            footer.innerHTML = content;
+        } else {
+            // Append the element
+            footer.appendChild(content);
+        }
     }
+
+    // Configure the events
+    private configureEvents() {
+        // Execute the events
+        this.props.onRenderBody ? this.props.onRenderBody(this.el.querySelector(".modal-body")) : null;
+        this.props.onRenderFooter ? this.props.onRenderFooter(this.el.querySelector(".modal-footer")) : null;
+
+        // See if there is a close event
+        if (this.props.onClose) {
+            // Add a hidden event
+            jQuery(this.el).on("hidden.bs.modal", () => {
+                // Call the event
+                this.props.onClose(this.el);
+            });
+        }
+    }
+
+    /**
+     * Public Interface
+     */
+
+    // Disposes the modal
+    dispose() { jQuery(this.el).modal("dispose"); }
+
+    // Updates the modal
+    handleUpdate() { jQuery(this.el).modal("handleUpdate"); }
+
+    // Hides the modal
+    hide() { if (this.el.classList.contains("show")) { this.toggle(); } }
+
+    // Shows the modal
+    show() { jQuery(this.el).modal("show"); }
+
+    // Toggles the modal
+    toggle() { jQuery(this.el).modal("toggle"); }
 }
-export const Modal = (props: IModalProps): IModal => {
-    // Create the modal
-    let modal = document.createElement("div");
-    props.id ? modal.id = props.id : null;
-    modal.setAttribute("role", "dialog");
-
-    // Set the class names
-    props.className ? modal.className = props.className : null;
-    modal.classList.add("modal");
-    props.disableFade ? null : modal.classList.add("fade");
-
-    // Set the dialog class names
-    let classNames = ["modal-dialog"];
-    props.isCentered ? classNames.push("modal-dialog-centered") : null;
-    props.isLarge ? classNames.push("modal-lg") : null;
-    props.isSmall ? classNames.push("modal-sm") : null;
-
-    // Generate the html
-    modal.innerHTML = [
-        '<div class="' + classNames.join(' ') + '" role="document">',
-        '<div class="modal-content">',
-        '<div class="modal-header">',
-        '<div class="modal-title">' + (props.title || "") + '</div>',
-        props.hideCloseButton ? '' : [
-            '<button type="button" class="close" data-dismiss="modal" aria-label="Close">',
-            '<span aria-hidden="true">&times;</span>',
-            '</button>'
-        ].join('\n'),
-        '</div>',
-        '<div class="modal-body">' + (props.body || "") + '</div>',
-        '<div class="modal-footer">' + (props.footer || "") + '</div>',
-        '</div>',
-        '</div>'
-    ].join('\n');
-
-    // Create the element
-    let el = document.createElement("div");
-    el.appendChild(modal);
-
-    // See if we are rendering it to an element
-    if (props.el) {
-        // Ensure the class list exists and it's not the body element
-        if (props.el.classList && props.el.tagName != "BODY") {
-            // Set the bootstrap class
-            props.el.classList.contains("bs") ? null : props.el.classList.add("bs");
-        }
-
-        // Append the elements
-        while (el.children.length > 0) {
-            props.el.appendChild(el.children[0]);
-        }
-
-        // Update the element
-        el = props.el as any;
-
-        // See if we are rendering a button
-        if (props.button) {
-            let btnProps = props.button;
-
-            // Set the properties
-            props.id ? btnProps.target = "#" + props.id : null
-            btnProps.toggle = "modal";
-
-            // Render the button
-            props.el.appendChild(Button(btnProps).el);
-        }
-    } else {
-        // Set the bootstrap class
-        el.classList.add("bs");
-    }
-
-    // Execute the events
-    props.onRenderBody ? props.onRenderBody(modal.querySelector(".modal-body")) : null;
-    props.onRenderFooter ? props.onRenderFooter(modal.querySelector(".modal-footer")) : null;
-
-    // Create the modal
-    let $modal = jQuery(el.children[0]);
-
-    // See if there is a close event
-    if (props.onClose) {
-        // Add a hidden event
-        $modal.on("hidden.bs.modal", () => {
-            // Call the event
-            props.onClose(modal);
-        });
-    }
-
-    // Return the element
-    return {
-        dispose: () => { $modal.modal("dispose"); },
-        el: modal,
-        handleUpdate: () => { $modal.modal("handleUpdate"); },
-        // Don't use the "hide" method, it will not remove the other customizations from the page.
-        hide: () => { if (modal.classList.contains("show")) { $modal.modal("toggle"); } },
-        show: () => { $modal.modal("show"); },
-        toggle: () => { $modal.modal("toggle"); }
-    };
-}
+export const Modal = (props: IModalProps): IModal => { return new _Modal(props); }

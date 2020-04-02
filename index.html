@@ -440,7 +440,7 @@
                     button: { text: "Show Panel" },
                     id: "my-panel",
                     title: "Panel Example",
-                    onRenderBody: function(el) {
+                    onRenderBody: function (el) {
                         // Render a jumbotron
                         GD.Components.Jumbotron({
                             el,
@@ -529,14 +529,18 @@
                     { text: "File 5.docx", url: "#" },
                 ]
             });
+            GD.Components.Button({
+                el: document.querySelector("#modal"),
+                text: "Modal",
+                target: "#my-modal",
+                toggle: "modal"
+            });
             GD.Components.Modal({
-                button: { text: "Modal" },
                 el: document.querySelector("#modal"),
                 id: "my-modal",
                 title: "My Modal",
                 onClose: function (modal) {
-                    console.log("The modal was closed.");
-                    console.log(modal);
+                    console.log("The modal was closed.", modal);
                 },
                 onRenderBody: function (el) {
                     // Render a form
