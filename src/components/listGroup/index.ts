@@ -37,7 +37,7 @@ export const ListGroupClassNames = new ClassNames([
  * List Group
  * @param props The list group properties.
  */
-class _ListGroup extends Base<IListGroupProps> {//implements IListGroup {
+class _ListGroup extends Base<IListGroupProps> implements IListGroup {
     private _items: Array<ListGroupItem> = null;
 
     // Constructor

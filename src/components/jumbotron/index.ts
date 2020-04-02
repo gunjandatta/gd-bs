@@ -5,7 +5,7 @@ import * as HTML from "./index.html";
 /**
  * Jumbotron
  */
-class _Jumbotron extends Base<IJumbotronProps> {//implements IJumbotron {
+class _Jumbotron extends Base<IJumbotronProps> implements IJumbotron {
     // Constructor
     constructor(props: IJumbotronProps) {
         super(HTML, props);

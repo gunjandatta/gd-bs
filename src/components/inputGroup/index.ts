@@ -20,7 +20,7 @@ export enum InputGroupTypes {
  * Input Group
  * @param props The input group properties.
  */
-class _InputGroup extends Base<IInputGroupProps> {//implements IInputGroup {
+class _InputGroup extends Base<IInputGroupProps> implements IInputGroup {
     // Constructor
     constructor(props: IInputGroupProps) {
         super(HTML, props);

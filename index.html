@@ -434,10 +434,15 @@
                     }
                 ]
             })
+            GD.Components.Button({
+                el: document.getElementById("panel"),
+                text: "Show Panel",
+                target: "#my-panel",
+                toggle: "modal"
+            });
             var panel = GD.Components.Panel({
                 el: document.getElementById("panel"),
                 modalProps: {
-                    button: { text: "Show Panel" },
                     id: "my-panel",
                     title: "Panel Example",
                     onRenderBody: function (el) {
