@@ -127,6 +127,9 @@ class _Navbar extends Base<INavbarProps> implements INavbar {
         if (button && props.onSearch) {
             // Add a click event
             button.addEventListener("click", ev => {
+                // Prevent the page from moving to the top
+                ev.preventDefault();
+
                 // Call the event
                 props.onSearch(searchbox.value);
             });

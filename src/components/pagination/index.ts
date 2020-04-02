@@ -1,7 +1,7 @@
 import { IPagination, IPaginationProps } from "../../../@types/components/pagination";
-import * as Common from "../common";
 import { Base } from "../base";
 import * as HTML from "./index.html";
+import * as HTMLItem from "./item.html";
 
 /**
  * Pagination Alignment
@@ -16,6 +16,8 @@ export enum PaginationAlignment {
  * Pagination
  */
 class _Pagination extends Base<IPaginationProps> implements IPagination {
+    private _items: Array<HTMLLIElement> = null;
+
     // Constructor
     constructor(props: IPaginationProps) {
         super(HTML, props);
@@ -29,140 +31,171 @@ class _Pagination extends Base<IPaginationProps> implements IPagination {
 
     // Configure the card group
     private configure() {
-    }
-}
-export const Pagination = (props: IPaginationProps): IPagination => {
-    // Create the pagination
-    let pagination = document.createElement("nav");
-    props.label ? pagination.setAttribute("aria-label", props.label) : null;
+        // Update the nav properties
+        this.props.label ? this.el.setAttribute("aria-label", this.props.label) : null;
 
-    // Create the list
-    let list = document.createElement("ul");
-    pagination.appendChild(list);
+        // Update the list
+        let list = this.el.querySelector("ul");
+        this.props.isLarge ? list.classList.add("pagination-lg") : null;
+        this.props.isSmall ? list.classList.add("pagination-sm") : null;
 
-    // Set the class names
-    list.className = props.className || "";
-    list.classList.add("pagination");
-    props.isLarge ? list.classList.add("pagination-lg") : null;
-    props.isSmall ? list.classList.add("pagination-sm") : null;
-
-    // Read the alignment
-    switch (props.alignment) {
-        // Danger
-        case PaginationAlignment.Center:
-            list.classList.add("justify-content-center");
-            break;
-        // Dark
-        case PaginationAlignment.Right:
-            list.classList.add("justify-content-end");
-            break;
-    }
-
-    // Render the previous button
-    list.innerHTML += [
-        '<li class="page-item" data-idx="0">',
-        '<a class="page-link" href="#"' + (props.icon ? ' aria-label="Previous"' : '') + '>',
-        props.icon ? '<span aria-hidden="true">' + props.icon + '</span>' : "Previous",
-        props.icon ? '<span class="sr-only">Previous</span>' : '',
-        '</a>',
-        '</li>'
-    ].join('\n');
-
-    // Parse the number of pages
-    let pages = props.numberOfPages || 1;
-    for (let i = 1; i <= pages; i++) {
-        // Add the item
-        list.innerHTML += [
-            '<li class="page-item' + (i == 1 ? ' active' : '') + '" data-idx="' + i + '">',
-            '<a class="page-link" href="#">' + i + '</a>',
-            '</li>'
-        ].join('\n');
-    }
-
-    // Render the next button
-    list.innerHTML += [
-        '<li class="page-item" data-idx="' + (pages + 1) + '">',
-        '<a class="page-link" href="#"' + (props.icon ? ' aria-label="Next"' : '') + '>',
-        props.icon ? '<span aria-hidden="true">' + props.icon + '</span>' : "Next",
-        props.icon ? '<span class="sr-only">Next</span>' : '',
-        '</a>',
-        '</li>'
-    ].join('\n');
-
-    // Create the element
-    let el = document.createElement("div");
-    el.appendChild(pagination);
-
-    // See if we are rendering it to an element
-    if (props.el) {
-        // Ensure the class list exists and it's not the body element
-        if (props.el.classList && props.el.tagName != "BODY") {
-            // Set the bootstrap class
-            props.el.classList.contains("bs") ? null : props.el.classList.add("bs");
+        // Read the alignment
+        switch (this.props.alignment) {
+            // Danger
+            case PaginationAlignment.Center:
+                list.classList.add("justify-content-center");
+                break;
+            // Dark
+            case PaginationAlignment.Right:
+                list.classList.add("justify-content-end");
+                break;
         }
 
-        // Append the elements
-        while (el.children.length > 0) {
-            props.el.appendChild(el.children[0]);
-        }
-
-        // Update the element
-        el = props.el as any;
-    } else {
-        // Set the bootstrap class
-        el.classList.add("bs");
+        // Render the page numbers
+        this.renderPageNumbers(list);
     }
 
-    // Parse the items
-    let items = el.querySelectorAll(".page-item");
-    for (let i = 0; i < items.length; i++) {
-        items[i].addEventListener("click", ev => {
-            ev.preventDefault();
+    // Configures the next/previous buttons, based on the active index
+    private configureNextPrevButtons(activePage: number) {
+        // Update the previous button
+        let prevItem = this._items[0];
+        if (activePage == 1) {
+            // Ensure the previous item is disabled
+            prevItem.classList.add("disabled");
+        } else {
+            // Ensure the previous item is enabled
+            prevItem.classList.remove("disabled");
+        }
 
-            // Get the index
-            let index = parseInt((ev.currentTarget as HTMLElement).getAttribute("data-idx"));
+        // Update the next button
+        let nextItem = this._items[this._items.length - 1];
+        if (activePage == this._items.length - 2) {
+            // Ensure the previous item is disabled
+            nextItem.classList.add("disabled");
+        } else {
+            // Ensure the previous item is enabled
+            nextItem.classList.remove("disabled");
+        }
+    }
 
-            // Get the current active item
-            let activeItem = el.querySelector(".page-item.active");
-            let activeIdx = activeItem ? parseInt(activeItem.getAttribute("data-idx")) : 1;
-            let oldIdx = activeIdx;
+    // Configure the events
+    private configureEvents(item: HTMLLIElement) {
+        // See if this is the next or previous item and skip it
+        let link = item.querySelector("a").getAttribute("aria-label");
+        if (link == "Previous" || link == "Next") {
+            let isPrevious = link == "Previous";
 
-            // Clear the active item
-            activeItem ? activeItem.classList.remove("active") : null;
+            // Add a click event
+            item.addEventListener("click", ev => {
+                // Prevent the page from moving to the top
+                ev.preventDefault();
 
-            // See if this is the previous button
-            if (index == 0) {
-                // Decrement the active index
-                activeIdx > 1 ? activeIdx-- : null;
-            }
-            // Else, see if this is the next button
-            else if (index == pages + 1) {
-                // Increment the active index
-                activeIdx < pages ? activeIdx++ : null;
-            } else {
-                // Set the active index
-                activeIdx = index;
-            }
+                // Do nothing if it's disabled
+                if (item.classList.contains("disabled")) { return; }
 
-            // Set the active item
-            activeItem = items[activeIdx];
-            if (activeItem) {
+                // Parse the items, excluding the next/previous items
+                for (let i = 1; i < this._items.length - 1; i++) {
+                    let item = this._items[i];
+
+                    // See if this item is active
+                    if (item.classList.contains("active")) {
+                        // See if the previous button was clicked
+                        if (isPrevious) {
+                            // Click the previous item if it's available
+                            i - 1 > 0 ? this._items[i - 1].click() : null;
+                        } else {
+                            // Click the next item if it's available
+                            i < this._items.length - 2 ? this._items[i + 1].click() : null;
+                        }
+
+                        // Break from the loop
+                        break;
+                    }
+                }
+            });
+        } else {
+            let pageNumber = parseInt(link);
+
+            // Add a click event
+            item.addEventListener("click", ev => {
+                // Prevent the page from moving to the top
+                ev.preventDefault();
+
+                // Parse the active items
+                let activeItems = this.el.querySelectorAll(".page-item.active");
+                for (let i = 0; i < activeItems.length; i++) {
+                    let item = activeItems[i];
+
+                    // Clear the active class
+                    item.classList.remove("active");
+
+                    // Remove the active span
+                    let span = item.querySelector("span");
+                    span ? span.remove() : null;
+                }
+
                 // Make this item active
-                activeItem.classList.add("active");
-            }
+                item.classList.add("active");
 
-            // Ensure the index has changed
-            if (oldIdx != activeIdx) {
+                // Add the span
+                let span = document.createElement("span");
+                span.classList.add("sr-only");
+                span.innerHTML = "(current)";
+                item.appendChild(span);
+
+                // Configure the next/previous buttons
+                this.configureNextPrevButtons(pageNumber);
+
                 // Class the click event
-                props.onClick ? props.onClick(activeIdx, ev) : null;
-            }
-        });
+                this.props.onClick ? this.props.onClick(parseInt(item.innerHTML), ev) : null;
+            });
+        }
     }
 
-    // Return the pagination
-    return {
-        el: pagination,
-        hide: () => { Common.hide(pagination); },
-        show: () => { Common.show(pagination); }
-    };
+    // Creates an page number item
+    private createItem(text: string): HTMLLIElement {
+        // Create the item
+        let el = document.createElement("div");
+        el.innerHTML = HTMLItem as any;
+        let item = el.firstChild as HTMLLIElement;
+        this._items.push(item);
+
+        // Update the link
+        let link = item.querySelector("a");
+        link.innerHTML = text;
+        link.setAttribute("aria-label", link.innerHTML);
+
+        // Configure the events
+        this.configureEvents(item);
+
+        // Return the item
+        return item;
+    }
+
+    // Renders the page numbers
+    private renderPageNumbers(list: HTMLUListElement) {
+        // Clear the items
+        this._items = [];
+
+        // Create the previous link
+        let item = this.createItem("Previous");
+        list.appendChild(item);
+
+        // Loop for the number of pages to create
+        // Parse the number of pages
+        let pages = this.props.numberOfPages || 1;
+        for (let i = 1; i <= pages; i++) {
+            // Create a link
+            item = this.createItem(i.toString());
+            list.appendChild(item);
+        }
+
+        // Create the next link
+        item = this.createItem("Next");
+        list.appendChild(item);
+
+        // Set the first page number as active
+        this._items[1].click();
+    }
 }
+export const Pagination = (props: IPaginationProps): IPagination => { return new _Pagination(props); }

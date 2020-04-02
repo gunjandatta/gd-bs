@@ -29,7 +29,6 @@ export interface IPaginationProps {
     alignment?: number;
     className?: string;
     el?: Element;
-    icon?: string;
     isLarge?: boolean;
     isSmall?: boolean;
     label?: string;

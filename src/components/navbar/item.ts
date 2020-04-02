@@ -39,8 +39,8 @@ export class NavbarItem {
                 label: this._props.text,
                 navFl: true,
                 onChange: (item, ev) => {
-                    // Remove the active class
-                    //(ev.currentTarget as HTMLElement).classList.remove("active");
+                    // Prevent the page from moving to the top
+                    ev.preventDefault();
                 }
             }).el as HTMLElement;
         }
@@ -56,18 +56,18 @@ export class NavbarItem {
 
     // Configures the events
     private configureEvents() {
-        // See if there is a click event
-        if (this._parent.onClick || this._props.onClick) {
-            // Ensure it's not disabled
-            if (this._props.isDisabled) { return; }
+        // Ensure it's not disabled
+        if (this._props.isDisabled) { return; }
 
-            // Add a click event
-            this._el.addEventListener("click", ev => {
-                // Call the events
-                this._props.onClick ? this._props.onClick(this._props, ev) : null;
-                this._parent.onClick ? this._parent.onClick(this._props, ev) : null;
-            });
-        }
+        // Add a click event
+        this._el.addEventListener("click", ev => {
+            // Prevent the page from moving to the top
+            ev.preventDefault();
+
+            // Call the events
+            this._props.onClick ? this._props.onClick(this._props, ev) : null;
+            this._parent.onClick ? this._parent.onClick(this._props, ev) : null;
+        });
     }
 
     /**
