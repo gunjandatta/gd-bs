@@ -30,8 +30,8 @@ export interface INavProps {
     className?: string;
     data?: any;
     el?: Element | HTMLElement;
-    enableFade?: boolean;
     enableFill?: boolean;
+    fadeTabs?: boolean;
     id?: string;
     items?: Array<INavLink>;
     isJustified?: boolean;

@@ -69,53 +69,39 @@ class _ListGroup extends Base<IListGroupProps> {//implements IListGroup {
         this.renderItems(listGroup);
     }
 
-    // Configures the events
-    private configureEvents(item: ListGroupItem) {
-        // See if we are rendering tabs
-        if (this.props.isTabs) {
-            // Add the click event
-            item.el.addEventListener("click", ev => {
-                // Get the active items
-                let activeItems = this.el.querySelectorAll(".active");
-                for (let i = 0; i < activeItems.length; i++) {
-                    // Remove the class
-                    activeItems[i].classList.remove("active");
-                }
-
-                // Set this tab to be active
-                item.el.classList.add("active");
-
-                // Get the associated tab element
-                let elTab = this.el.querySelector(item.el.getAttribute("href"));
-                elTab ? elTab.classList.add("active") : null;
-
-                // Execute the click event
-                item.props.onClick ? item.props.onClick(item.el, item.props) : null;
-            });
-        }
-    }
-
     // Render the items
     private renderItems(listGroup: Element) {
         // Clear the items
         this._items = [];
 
         // Get the tab content element
-        let elTabs = this.el.querySelector(".tab-content");
+        let tabs = this.el.querySelector(".tab-content");
 
         // Parse the items
         let items = this.props.items || [];
         for (let i = 0; i < items.length; i++) {
             // Create the item
-            let item = new ListGroupItem(items[i], elTabs ? true : false);
+            let item = new ListGroupItem(items[i], tabs ? true : false);
             this._items.push(item);
             listGroup.appendChild(item.el);
 
-            // Add the tab content
-            elTabs ? elTabs.appendChild(item.elTab) : null;
+            // See if we are rendering tabs
+            if (tabs) {
+                // Add the tab content
+                tabs.appendChild(item.elTab);
 
-            // Configure the events
-            this.configureEvents(item);
+                // See if the fade option is enabled
+                if (this.props.fadeTabs) {
+                    // Set the class name
+                    item.elTab.classList.add("fade");
+
+                    // See if the tab is active
+                    if (item.props.isActive) {
+                        // Set the class name
+                        item.elTab.classList.add("show");
+                    }
+                }
+            }
         }
     }
 

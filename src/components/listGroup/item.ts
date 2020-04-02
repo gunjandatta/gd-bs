@@ -49,11 +49,12 @@ export class ListGroupItem extends Base<IListGroupItem> {
             // Set the properties
             this.el.setAttribute("href", "#" + tabId);
             this.el.setAttribute("data-toggle", "list");
-            this.el.setAttribute("aria-controls", this.props.tabName);
+            this.el.setAttribute("aria-controls", tabId);
             this.el.innerHTML = this.props.tabName;
 
             // Update the tab
             this._elTab.id = tabId;
+            this._elTab.setAttribute("aria-labelledby", tabId);
             this.props.isActive ? this._elTab.classList.add("active") : null;
         } else {
             // Set the properties
@@ -80,19 +81,19 @@ export class ListGroupItem extends Base<IListGroupItem> {
 
     // Configures the events
     private configureEvents() {
-        // See if this is not for a tab
-        if (this._elTab == null) {
-            // Execute the render event
-            this.props.onRender ? this.props.onRender(this.el, this.props) : null;
+        // See if there is a click event
+        if (this.props.onClick) {
+            // Add a click event
+            this.el.addEventListener("click", ev => {
+                // Execute the event
+                this.props.onClick(this.el, this.props);
+            });
+        }
 
-            // See if there is a click event
-            if (this.props.onClick) {
-                // Add a click event
-                this.el.addEventListener("click", ev => {
-                    // Execute the event
-                    this.props.onClick(this.el, this.props);
-                });
-            }
+        // See if there is a render event
+        if (this.props.onRender) {
+            // Execute the render event
+            this.props.onRender(this._elTab || this.el, this.props);
         }
     }
 

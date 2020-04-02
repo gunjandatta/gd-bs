@@ -51,7 +51,7 @@ export interface IListGroupProps {
     className?: string;
     colWidth?: number;
     el?: Element | HTMLElement;
-    enableFade?: boolean;
+    fadeTabs?: boolean;
     isFlush?: boolean;
     isTabs?: boolean;
     items?: Array<IListGroupItem>;

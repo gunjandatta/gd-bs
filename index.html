@@ -728,6 +728,7 @@
             window["myListGroup"] = GD.Components.ListGroup({
                 el: document.querySelector("#tabs"),
                 colWidth: 4,
+                fadeTabs: true,
                 isTabs: true,
                 items: [
                     { tabName: "Tab 1", content: "This is the content for tab 1.", isActive: true },
@@ -748,13 +749,14 @@
             });
             GD.Components.Nav({
                 el: document.querySelector("#navTabs"),
+                fadeTabs: true,
                 isTabs: true,
                 items: [
-                    { title: "Tab 1", tabContent: "This is the content for tab 1.", isActive: true },
-                    { title: "Tab 2", tabContent: "This is the content for tab 2." },
-                    { title: "Tab 3", tabContent: "This is the content for tab 3." },
-                    { title: "Tab 4", tabContent: "This is the content for tab 4." },
-                    { title: "Tab 5", tabContent: "This is the content for tab 5." }
+                    { title: "NavTab 1", tabContent: "This is the content for tab 1.", isActive: true },
+                    { title: "NavTab 2", tabContent: "This is the content for tab 2." },
+                    { title: "NavTab 3", tabContent: "This is the content for tab 3." },
+                    { title: "NavTab 4", tabContent: "This is the content for tab 4." },
+                    { title: "NavTab 5", tabContent: "This is the content for tab 5." }
                 ]
             });
             GD.Components.Carousel({

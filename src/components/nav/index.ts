@@ -1,17 +1,21 @@
 import * as jQuery from "jquery";
-import * as Common from "../common";
 import { INav, INavProps } from "../../../@types/components/nav";
 import { Base } from "../base";
+import { NavLink } from "./link";
 import * as HTML from "./index.html";
+import * as HTMLTabs from "./tabs.html";
+import * as HTMLVerticalTabs from "./tabsVertical.html";
 
 /**
  * Navigation
  * @param props - The navigation properties.
  */
 class _Nav extends Base<INavProps> {//implements INav {
+    private _links: Array<NavLink> = null;
+
     // Constructor
     constructor(props: INavProps) {
-        super(HTML, props);
+        super(props.isTabs ? (props.isVertical ? HTMLVerticalTabs : HTMLTabs) : HTML, props);
 
         // Configure the collapse
         this.configure();
@@ -22,200 +26,85 @@ class _Nav extends Base<INavProps> {//implements INav {
 
     // Configure the card group
     private configure() {
-    }
-}
-export const Nav = (props: INavProps): INav => {
-    let renderTabContent = false;
+        // Update the navigation
+        let nav = this.el.querySelector(".nav");
+        this.props.id ? nav.id = this.props.id : null;
+        this.props.enableFill ? this.el.classList.add("nav-fill") : null;
+        this.props.isJustified ? this.el.classList.add("nav-justified") : null;
+        this.props.isPills ? this.el.classList.add("nav-pills") : null;
+        this.props.isTabs ? this.el.classList.add("nav-tabs") : null;
+        this.props.isVertical ? this.el.classList.add("flex-column") : null;
 
-    // Create the navigation
-    let nav = document.createElement("div");
-
-    // Create the navigation links
-    let navLinks = document.createElement("ul");
-    props.id ? navLinks.id = props.id : null;
-    props.isTabs ? navLinks.setAttribute("role", "tablist") : null;
-    nav.appendChild(navLinks);
-
-    // Set the class names
-    navLinks.className = props.className || "";
-    navLinks.classList.add("nav");
-    props.enableFill ? navLinks.classList.add("nav-fill") : null;
-    props.isJustified ? navLinks.classList.add("nav-justified") : null;
-    props.isPills ? navLinks.classList.add("nav-pills") : null;
-    props.isTabs ? navLinks.classList.add("nav-tabs") : null;
-    props.isVertical ? navLinks.classList.add("flex-column") : null;
-
-    // Parse the navigation items
-    let items = props.items || [];
-    for (let i = 0; i < items.length; i++) {
-        let item = items[i];
-
-        // Create the navigation item
-        let elNavItem = document.createElement("li");
-        elNavItem.className = "nav-item";
-        elNavItem.setAttribute("data-idx", i.toString());
-        navLinks.appendChild(elNavItem);
-
-        // Set the link class names
-        let linkClassNames = ["nav-link"];
-        item.isActive ? linkClassNames.push("active") : null;
-        item.isDisabled ? linkClassNames.push("disabled") : null;
-
-        // See if tab content exists
-        if (item.onRenderTab || item.tabContent) {
-            // Set the flag
-            renderTabContent = true;
-        }
-
-        // Set the link
-        elNavItem.innerHTML = '<a class="' + linkClassNames.join(' ') + '" href="' + (item.href || '#') + '">' + (item.title || '') + '</a>';
-
-        // See if we are rendering tabs
-        if (props.isPills || props.isTabs) {
-            // Add a click event
-            elNavItem.addEventListener("click", ev => {
-                let elTab = ev.currentTarget as HTMLElement;
-
-                // Parse the selected tab links
-                let tabs = elTab.parentElement.querySelectorAll(".active");
-                for (let i = 0; i < tabs.length; i++) {
-                    // Unselect this tab
-                    tabs[i].classList.remove("active");
-                }
-
-                // Select this tab
-                elTab.children[0].classList.add("active");
-
-                // Get the tab content
-                let elTabContent = elTab.parentElement.nextElementSibling;
-                if (elTabContent) {
-                    // Parse the selected tab content
-                    for (let i = 0; i < elTabContent.children.length; i++) {
-                        let elSelectedTab = elTabContent.children[i] as HTMLElement;
-
-                        // See if this tab is visible
-                        if (elSelectedTab.classList.contains("active")) {
-                            // Hide this tab
-                            elSelectedTab.classList.remove("active");
-                            elSelectedTab.classList.remove("show");
-                        }
-                    }
-
-                    // Get the tab content
-                    elTabContent = elTabContent.children[elTab.getAttribute("data-idx")];
-                    if (elTabContent) {
-                        // Show the tab content
-                        elTabContent.classList.add("active");
-                        elTabContent.classList.add("show");
-                    }
-                }
-            });
-        }
-
-        // See if a click event exists
-        if (item.onClick) {
-            // Add a click event
-            elNavItem.addEventListener("click", ev => {
-                let elTab = ev.currentTarget as HTMLDivElement;
-                let idx = elTab.getAttribute("data-idx");
-                let item = props.items[idx];
-
-                // Call the click event
-                item.onClick(item, ev);
-            });
-        }
-
-        // See if there is no href
-        if (item.href == null || item.href != "#") {
-            // Add a click event
-            elNavItem.addEventListener("click", ev => {
-                // Cancel the page from moving to the top
-                ev.preventDefault();
-            });
-        }
+        // Render the nav links
+        this.renderItems();
     }
 
-    // See if we are rendering tab content
-    if (renderTabContent) {
-        // Create the tab content element
-        let elTabContent = document.createElement("div");
-        elTabContent.className = "tab-content";
-        nav.appendChild(elTabContent);
+    // Renders the links
+    private renderItems() {
+        // Clear the links
+        this._links = [];
 
-        // Parse the items
-        for (let i = 0; i < items.length; i++) {
-            let item = items[i];
+        // Get the nav and tab elements
+        let nav = this.el.querySelector(".nav") || this.el;
+        let tabs = this.el.querySelector(".tab-content");
 
-            // Set the tab class names
-            let tabClassNames = ["tab-pane"];
-            props.enableFade ? tabClassNames.push("fade") : null;
-            item.isActive ? tabClassNames.push("active show") : null;
+        // Parse the navigation items
+        let links = this.props.items || [];
+        for (let i = 0; i < links.length; i++) {
+            // Create the link
+            let link = new NavLink(links[i], tabs ? true : false);
+            nav.appendChild(link.el);
+            this._links.push(link);
 
-            // Add the tab content
-            let elTabContentDiv = document.createElement("div");
-            elTabContentDiv.className = tabClassNames.join(' ');
-            elTabContent.appendChild(elTabContentDiv);
+            // See if we are rendering tabs
+            if (tabs) {
+                // Add the tab content
+                tabs.appendChild(link.elTab);
 
-            // Set the tab content
-            let content = item.tabContent || "";
-            if (typeof (content) === "string") {
-                // Set the html
-                elTabContentDiv.innerHTML = content;
-            } else {
-                // Append the element
-                elTabContentDiv.appendChild(content);
+                // See if the fade option is enabled
+                if (this.props.fadeTabs) {
+                    // Set the class name
+                    link.elTab.classList.add("fade");
+
+                    // See if the tab is active
+                    if (link.props.isActive) {
+                        // Set the class name
+                        link.elTab.classList.add("show");
+                    }
+                }
             }
         }
     }
 
-    // Create the element
-    let el = document.createElement("div");
-    el.appendChild(nav);
+    /**
+     * Public Interface
+     */
 
-    // See if we are rendering it to an element
-    if (props.el) {
-        // Ensure the class list exists and it's not the body element
-        if (props.el.classList && props.el.tagName != "BODY") {
-            // Set the bootstrap class
-            props.el.classList.contains("bs") ? null : props.el.classList.add("bs");
-        }
+    // Disposes the component
+    dispose() { jQuery(this.el).tab("dispose"); }
 
-        // Append the elements
-        while (el.children.length > 0) {
-            props.el.appendChild(el.children[0]);
-        }
+    // Shows a tab
+    showTab(tabId?: string | number) {
+        // Parse the tabs
+        for (let i = 0; i < this._links.length; i++) {
+            let link = this._links[i];
 
-        // Update the element
-        el = props.el as any;
-    } else {
-        // Set the bootstrap class
-        el.classList.add("bs");
-    }
+            // Ensure a tab element exists
+            if (link.elTab == null) { continue; }
 
-    // Get the tab content elements
-    let elTabContent = el.querySelectorAll(".tab-pane");
-    for (let i = 0; i < elTabContent.length; i++) {
-        let item = props.items[i];
-
-        // Call the event
-        item.onRenderTab ? item.onRenderTab(item, elTabContent[i] as any) : null;
-    }
-
-    // Return the element
-    let $nav = jQuery(el.children[0]);
-    return {
-        dispose: () => { $nav.tab("dispose"); },
-        el: nav,
-        hide: () => { Common.hide(nav); },
-        show: (selector?: string) => {
-            // See if a tab was specified
-            if (selector) {
-                // Show the specified tab
-                $nav.querySelector(selector).tab("show");
+            // See if this is the target tab
+            if (tabId === i + 1 || link.elTab.id == tabId) {
+                // Set the active class
+                link.el.classList.add("active");
+                link.elTab.classList.add("active");
+                this.props.fadeTabs ? link.elTab.classList.add("show") : null;
             } else {
-                // Show the navigation
-                Common.show(nav);
+                // Remove the active class
+                link.el.classList.remove("active");
+                link.elTab.classList.remove("active");
+                link.elTab.classList.remove("show");
             }
         }
-    };
+    }
 }
+export const Nav = (props: INavProps): INav => { return new _Nav(props); }
