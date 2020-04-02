@@ -179,7 +179,7 @@ class _InputGroup extends Base<IInputGroupProps> {//implements IInputGroup {
 
                             // Call the events
                             this.props.onChange ? this.props.onChange(callbackValue, ev) : null;
-                            this.props.onClear ? this.props.onClear() : null;
+                            this.props.onClear && callbackValue == "" ? this.props.onClear() : null;
                         }
                     }
                 }, 1);

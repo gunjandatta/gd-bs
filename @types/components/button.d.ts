@@ -53,7 +53,6 @@ export interface IButtonProps {
     isExpanded?: boolean;
     isLarge?: boolean;
     isLink?: boolean;
-    isOutline?: boolean;
     isSmall?: boolean;
     onClick?: (button?: IButtonProps, ev?: Event) => void;
     spinnerProps?: ISpinnerProps;
@@ -78,4 +77,13 @@ export type IButtonTypes = {
     Secondary: number;
     Success: number;
     Warning: number;
+    OutlineDanger: number;
+    OutlineDark: number;
+    OutlineInfo: number;
+    OutlineLight: number;
+    OutlineLink: number;
+    OutlinePrimary: number;
+    OutlineSecondary: number;
+    OutlineSuccess: number;
+    OutlineWarning: number;
 }

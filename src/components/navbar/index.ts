@@ -1,9 +1,7 @@
-import { INavbar, INavbarProps, INavbarItem } from "../../../@types/components/navbar";
-import * as Common from "../common";
-import { Button } from "../button";
-import { Dropdown } from "../dropdown";
-import { InputGroup, InputGroupTypes } from "../inputGroup";
+import { INavbar, INavbarProps } from "../../../@types/components/navbar";
 import { Base } from "../base";
+import { ButtonClassNames } from "../button";
+import { NavbarItem } from "./item";
 import * as HTML from "./index.html";
 
 /**
@@ -19,6 +17,8 @@ export enum NavbarTypes {
  * Navbar
  */
 class _Navbar extends Base<INavbarProps> implements INavbar {
+    private _items: Array<NavbarItem> = null;
+
     // Constructor
     constructor(props: INavbarProps) {
         super(HTML, props);
@@ -26,249 +26,154 @@ class _Navbar extends Base<INavbarProps> implements INavbar {
         // Configure the collapse
         this.configure();
 
+        // Configure search
+        this.configureSearch();
+
+        // Configure the events
+        this.configureEvents();
+
         // Configure the parent
         this.configureParent();
     }
 
     // Configure the card group
     private configure() {
-    }
-}
-export const Navbar = (props: INavbarProps): INavbar => {
-    // Create the nav bar
-    let navbar = document.createElement("nav");
-
-    // Set the class name
-    navbar.className = props.className || "";
-    navbar.classList.add("navbar");
-
-    // See if the class names contain the "expand"
-    if (navbar.className.indexOf("navbar-expand") < 0) {
-        // Add the default class
-        navbar.classList.add("navbar-expand-lg");
-    }
-
-    // Check the type
-    switch (props.type) {
-        // Dark
-        case NavbarTypes.Dark:
-            // Add the class
-            navbar.classList.add("navbar-dark");
-            navbar.classList.add("bg-dark");
-            break;
-        // Primary
-        case NavbarTypes.Primary:
-            // Add the class
-            navbar.classList.add("navbar-primary");
-            navbar.classList.add("bg-primary");
-            break;
-        // Default - Light
-        default:
-            // Add the class
-            navbar.classList.add("navbar-light");
-            navbar.classList.add("bg-light");
-            break;
-    }
-
-    // See if there is a brand
-    if (props.brand) {
-        // Add the brand
-        let brand = document.createElement("a");
-        brand.className = "navbar-brand";
-        brand.href = props.brandUrl || "#";
-        brand.innerHTML = props.brand;
-        navbar.appendChild(brand);
-    }
-
-    // Set the nav id
-    let navId = props.id || "navbar_content";
-
-    // Add the toggler
-    let toggler = document.createElement("button");
-    toggler.className = "navbar-toggler";
-    toggler.type = "button";
-    toggler.setAttribute("aria-controls", navId);
-    toggler.setAttribute("aria-expanded", "false");
-    toggler.setAttribute("aria-label", "Toggle navigation");
-    toggler.setAttribute("data-target", "#" + navId);
-    toggler.setAttribute("data-toggle", "collapse");
-    toggler.innerHTML = '<span class="navbar-toggler-icon"></span>';
-    navbar.appendChild(toggler);
-
-    // Create the navbar nav
-    let nav = document.createElement("div");
-    nav.className = "collapse navbar-collapse";
-    nav.id = navId;
-    navbar.appendChild(nav);
-
-    // Create the navbar list
-    let navbarList = document.createElement("ul");
-    navbarList.className = "navbar-nav mr-auto";
-    nav.appendChild(navbarList);
-
-    // Parse the items and generate the nav items
-    let items = props.items || [];
-    for (let i = 0; i < items.length; i++) {
-        let navItem = null;
-        let item = items[i];
-
-        // See if this is a dropdown
-        if (item.items) {
-            // Render a dropdown
-            navItem = Dropdown({
-                isReadonly: item.isDisabled,
-                items: item.items,
-                label: item.text,
-                navFl: true,
-                onChange: (item, ev) => {
-                    // Remove the active class
-                    (ev.currentTarget as HTMLElement).classList.remove("active");
-                }
-            }).el;
-        }
-        // Else, ensure there is text
-        else if (item.text) {
-            // Set the class names
-            let classNames = ["nav-link"];
-            item.isActive ? navbar.classList.add("active") : null;
-            item.isDisabled ? navbar.classList.add("disabled") : null;
-
-            // Create the nav item
-            navItem = document.createElement("li");
-            navItem.classList.add("nav-item");
-
-            // Render the item
-            navItem.innerHTML = [
-                '<a class="' + classNames.join(' ') + '" href="' + (item.href ? item.href : '#') + '">',
-                item.text,
-                item.isActive ? '<span class="sr-only">(current)</span>' : '',
-                '</a>'
-            ].join('\n');
+        // See if there is a brand
+        let brand = this.el.querySelector(".navbar-brand") as HTMLAnchorElement;
+        if (this.props.brand) {
+            // Update the brand
+            this.props.brandUrl ? brand.href = this.props.brandUrl : null;
+            brand.innerHTML = this.props.brand || "";
+        } else {
+            // Remove the brand
+            this.el.removeChild(brand);
         }
 
-        // Set the data attribute
-        navItem.setAttribute("data-idx", i.toString());
+        // Update the nav bar
+        let navbar = this.el.querySelector(".navbar-collapse");
+        navbar.id = this.props.id || "navbar_content";
 
-        // See if there is a click event
-        if (props.onClick || item.onClick) {
-            // Add a click event
-            navItem.addEventListener("click", ev => {
-                let navLink = ev.currentTarget as HTMLElement;
-                let itemId = (navLink).getAttribute('data-idx');
-                let item: INavbarItem = props.items[itemId];
+        // Set the toggle
+        let toggler = this.el.querySelector(".navbar-toggler");
+        toggler.setAttribute("aria-controls", navbar.id);
+        toggler.setAttribute("data-target", "#" + navbar.id);
 
-                // Ensure the item exists
-                if (item) {
-                    // See if it's disabled or has no link, and is not a dropdown
-                    if ((item.isDisabled || item.href == null || item.href == "#") && !navLink.classList.contains("dropdown")) {
-                        // Prevent the page from moving to the top
-                        ev.preventDefault();
+        // Add the classes based on the type
+        switch (this.props.type) {
+            // Dark
+            case NavbarTypes.Dark:
+                // Add the class
+                this.el.classList.add("navbar-dark");
+                this.el.classList.add("bg-dark");
+                break;
+            // Primary
+            case NavbarTypes.Primary:
+                // Add the class
+                this.el.classList.add("navbar-dark");
+                this.el.classList.add("bg-primary");
+                break;
+            // Default - Light
+            default:
+                // Add the class
+                this.el.classList.add("navbar-light");
+                this.el.classList.add("bg-light");
+                break;
+        }
+
+        // Render the items
+        this.renderItems();
+    }
+
+    // Configure the events
+    private configureEvents() {
+        let props = this.props.searchBox || {};
+
+        // See if search events exist
+        let searchbox = this.el.querySelector("form input") as HTMLInputElement;
+        if (searchbox) {
+            // Set a keydown event to catch the "Enter" key being pressed
+            searchbox.addEventListener("keydown", ev => {
+                // See if the "Enter" key was pressed
+                if (ev.keyCode == 13) {
+                    // Disable the postback
+                    ev.preventDefault();
+
+                    // See if there is a search event
+                    if (props.onSearch) {
+                        // Call the event
+                        props.onSearch(searchbox.value);
                     }
-
-                    // Do nothing if it's disabled
-                    if (item.isDisabled) { return; }
-
-                    // Call the events
-                    item.onClick ? item.onClick(item, ev) : null;
-                    props.onClick ? props.onClick(item, ev) : null;
                 }
             });
-        }
 
-        // Add the nav item
-        navbarList.appendChild(navItem);
-    }
-
-    // See if we are rendering a search box
-    if (props.enableSearch || props.searchBox) {
-        let text = (props.searchBox ? props.searchBox.btnText : null) || "Search";
-
-        // Render the form
-        let form = document.createElement("form");
-        form.className = "form-inline my-2 my-lg-0";
-
-        // Render the searchbox
-        let searchbox = InputGroup({
-            className: "mr-sm-2",
-            formFl: true,
-            placeholder: text,
-            type: InputGroupTypes.Search,
-            onChange: (value) => {
-                // Call the event
-                props.searchBox && props.searchBox.onChange ? props.searchBox.onChange(value) : null;
-            },
-            onClear: () => {
-                // Call the event
-                props.searchBox && props.searchBox.onChange ? props.searchBox.onChange("") : null;
-            }
-        }).el as HTMLInputElement;
-        form.appendChild(searchbox);
-
-        // Set the key down event, to catch the "Enter" key being pressed
-        searchbox.addEventListener("keydown", ev => {
-            // See if the "Enter" key was pressed
-            if (ev.keyCode == 13) {
-                // Disable the postback
-                ev.preventDefault();
-
-                // See if there is a search event
-                if (props.searchBox && props.searchBox.onSearch) {
+            // See if a change event exists
+            if (props.onChange) {
+                // Add an input event
+                searchbox.addEventListener("input", ev => {
                     // Call the event
-                    props.searchBox.onSearch(searchbox.value);
-                }
+                    props.onChange(searchbox.value);
+                });
+
+                // Add a clear event
+                searchbox.addEventListener("clear", ev => {
+                    // Call the event
+                    props.onChange(searchbox.value);
+                });
             }
-        });
-
-        // See if we are rendering a button
-        let hideButton = props.searchBox && props.searchBox.hideButton ? true : false;
-        if (!hideButton) {
-            // Create the search button
-            form.appendChild(Button({
-                className: "my-2 my-sm-0",
-                text,
-                type: props.searchBox ? props.searchBox.btnType : null,
-                onClick: () => {
-                    // See if a search event exists
-                    if (props.searchBox && props.searchBox.onSearch) {
-                        // Call the event
-                        props.searchBox.onSearch(searchbox.value);
-                    }
-                }
-            }).el);
         }
 
-        // Append the search box
-        nav.appendChild(form);
+        // See if a search event exists
+        let button = this.el.querySelector("form button") as HTMLButtonElement;
+        if (button && props.onSearch) {
+            // Add a click event
+            button.addEventListener("click", ev => {
+                // Call the event
+                props.onSearch(searchbox.value);
+            });
+        }
     }
 
-    // Create the element
-    let el = document.createElement("div");
-    el.appendChild(navbar);
+    // Configures search
+    private configureSearch() {
+        // See if we are rendering a search box
+        let search = this.el.querySelector("form");
+        if (this.props.enableSearch || this.props.searchBox) {
+            let props = this.props.searchBox || {};
 
-    // See if we are rendering it to an element
-    if (props.el) {
-        // Ensure the class list exists and it's not the body element
-        if (props.el.classList && props.el.tagName != "BODY") {
-            // Set the bootstrap class
-            props.el.classList.contains("bs") ? null : props.el.classList.add("bs");
+            // Update the searchbox
+            let searchbox = search.querySelector("input");
+            searchbox.placeholder = props.placeholder || searchbox.placeholder;
+            props.btnText ? searchbox.setAttribute("aria-label", props.btnText) : null;
+
+            // See if we are rendering a button
+            let button = search.querySelector("button");
+            if (props.hideButton == true) {
+                // Remove the button
+                search.removeChild(button);
+            } else {
+                // Set the button type class name
+                let className = ButtonClassNames.getByType(props.btnType);
+                className ? button.classList.add(className) : null;
+            }
         }
-
-        // Append the elements
-        while (el.children.length > 0) {
-            props.el.appendChild(el.children[0]);
-        }
-
-        // Update the element
-        el = props.el as any;
-    } else {
-        // Set the bootstrap class
-        el.classList.add("bs");
     }
 
-    // Return the navbar
-    return {
-        el: navbar,
-        hide: () => { Common.hide(navbar); },
-        show: () => { Common.show(navbar); }
-    };
+    // Render the items
+    private renderItems() {
+        // Clear the list
+        this._items = [];
+
+        // Create the navbar list
+        let list = this.el.querySelector("ul.navbar-nav");
+
+        // Parse the items
+        let items = this.props.items || [];
+        for (let i = 0; i < items.length; i++) {
+            // Create the item
+            let item = new NavbarItem(items[i], this.props);
+            this._items.push(item);
+            list.appendChild(item.el);
+        }
+    }
 }
+export const Navbar = (props: INavbarProps): INavbar => { return new _Navbar(props); }

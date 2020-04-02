@@ -19,7 +19,16 @@ export enum ButtonTypes {
     Primary = 6,
     Secondary = 7,
     Success = 8,
-    Warning = 9
+    Warning = 9,
+    OutlineDanger = 10,
+    OutlineDark = 11,
+    OutlineInfo = 12,
+    OutlineLight = 13,
+    OutlineLink = 14,
+    OutlinePrimary = 15,
+    OutlineSecondary = 16,
+    OutlineSuccess = 17,
+    OutlineWarning = 18
 }
 
 /**
@@ -34,7 +43,16 @@ export const ButtonClassNames = new ClassNames([
     "btn-primary",
     "btn-secondary",
     "btn-success",
-    "btn-warning"
+    "btn-warning",
+    "btn-outline-danger",
+    "btn-outline-dark",
+    "btn-outline-info",
+    "btn-outline-light",
+    "btn-outline-link",
+    "btn-outline-primary",
+    "btn-outline-secondary",
+    "btn-outline-success",
+    "btn-outline-warning"
 ]);
 
 /**
@@ -135,12 +153,11 @@ class _Button extends Base<IButtonProps> implements IButton {
         ButtonClassNames.parse(className => {
             // Remove the class names
             this.el.classList.remove(className);
-            this.el.classList.remove(className.replace("btn-", "btn-outline-"));
         });
 
-        // Set the default type
-        let defaultType = ButtonClassNames.getByType(buttonType) || ButtonClassNames.getByType(ButtonTypes.Primary);
-        this.el.classList.add(this.props.isOutline ? defaultType.replace("btn-", "btn-outline-") : defaultType);
+        // Set the class name
+        let className = ButtonClassNames.getByType(buttonType) || ButtonClassNames.getByType(ButtonTypes.Primary);
+        this.el.classList.add(className);
     }
 
     // Toggles the button
