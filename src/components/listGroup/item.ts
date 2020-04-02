@@ -1,0 +1,105 @@
+import { IListGroupItem } from "../../../@types/components/listGroup";
+import { Base } from "../base";
+import { Badge } from "../badge";
+import { ListGroupClassNames } from ".";
+import * as HTML from "./item.html";
+import * as HTMLTab from "./tab.html";
+
+/**
+ * List Group Item
+ */
+export class ListGroupItem extends Base<IListGroupItem> {
+    private _elTab: HTMLDivElement = null;
+
+    // Constructor
+    constructor(props: IListGroupItem, isTab: boolean = false) {
+        super(HTML, props);
+
+        // See if this is for a tab
+        if (isTab) {
+            // Create the tab element
+            let el = document.createElement("div");
+            el.innerHTML = HTMLTab as any;
+            this._elTab = el.firstChild as HTMLDivElement;
+        }
+
+        // Configure the item
+        this.configure();
+
+        // Configure the events
+        this.configureEvents();
+    }
+
+    // Configure the item
+    private configure() {
+        // Set the class name
+        this.props.badge ? this.el.classList.add("d-flex") : null;
+        this.props.badge ? this.el.classList.add("justify-content-between") : null;
+        this.props.isActive ? this.el.classList.add("active") : null;
+        this.props.isDisabled ? this.el.classList.add("disabled") : null;
+
+        // Set the class name
+        let className = ListGroupClassNames.getByType(this.props.type);
+        className ? this.el.classList.add(className) : null;
+
+        // See if this is a tab
+        if (this._elTab) {
+            let tabId = this.props.tabName.replace(/[^a-zA-Z0-9]/, "");
+
+            // Set the properties
+            this.el.setAttribute("href", "#" + tabId);
+            this.el.setAttribute("data-toggle", "list");
+            this.el.setAttribute("aria-controls", this.props.tabName);
+            this.el.innerHTML = this.props.tabName;
+
+            // Update the tab
+            this._elTab.id = tabId;
+            this.props.isActive ? this._elTab.classList.add("active") : null;
+        } else {
+            // Set the properties
+            this.el.setAttribute("href", this.props.href || "#");
+        }
+
+        // See if there is a badge
+        if (this.props.badge) {
+            // Append a badge
+            this.el.appendChild(Badge(this.props.badge).el);
+        }
+
+        // Set the content
+        let content = this.props.content || "";
+        let elContent = this._elTab || this.el;
+        if (typeof (content) === "string") {
+            // Set the html
+            elContent.innerHTML = content;
+        } else {
+            // Append the element
+            elContent.appendChild(content);
+        }
+    }
+
+    // Configures the events
+    private configureEvents() {
+        // See if this is not for a tab
+        if (this._elTab == null) {
+            // Execute the render event
+            this.props.onRender ? this.props.onRender(this.el, this.props) : null;
+
+            // See if there is a click event
+            if (this.props.onClick) {
+                // Add a click event
+                this.el.addEventListener("click", ev => {
+                    // Execute the event
+                    this.props.onClick(this.el, this.props);
+                });
+            }
+        }
+    }
+
+    /**
+     * Public Interface
+     */
+
+    // The HTML tab element
+    get elTab(): HTMLDivElement { return this._elTab; }
+}

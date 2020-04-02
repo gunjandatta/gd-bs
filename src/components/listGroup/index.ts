@@ -1,9 +1,9 @@
-import * as jQuery from "jquery";
-import * as Common from "../common";
 import { IListGroup, IListGroupProps } from "../../../@types/components/listGroup";
-import { Badge } from "../badge";
 import { Base } from "../base";
+import { ClassNames } from "../classNames";
+import { ListGroupItem } from "./item";
 import * as HTML from "./index.html";
+import * as HTMLTabs from "./tabs.html";
 
 /**
  * List Group Item Types
@@ -20,13 +20,29 @@ export enum ListGroupItemTypes {
 }
 
 /**
+ * List Group Classes
+ */
+export const ListGroupClassNames = new ClassNames([
+    "list-group-item-danger",
+    "list-group-item-dark",
+    "list-group-item-info",
+    "list-group-item-light",
+    "list-group-item-primary",
+    "list-group-item-secondary",
+    "list-group-item-success",
+    "list-group-item-warning"
+]);
+
+/**
  * List Group
  * @param props The list group properties.
  */
 class _ListGroup extends Base<IListGroupProps> {//implements IListGroup {
+    private _items: Array<ListGroupItem> = null;
+
     // Constructor
     constructor(props: IListGroupProps) {
-        super(HTML, props);
+        super(props.isTabs && props.colWidth > 0 && props.colWidth < 12 ? HTMLTabs : HTML, props);
 
         // Configure the collapse
         this.configure();
@@ -37,244 +53,95 @@ class _ListGroup extends Base<IListGroupProps> {//implements IListGroup {
 
     // Configure the card group
     private configure() {
-    }
-}
-export const ListGroup = (props: IListGroupProps): IListGroup => {
-    // Create the list group
-    let elListGroup = document.createElement("div");
-    elListGroup.className = props.className || "";
-    elListGroup.classList.add("list-group");
-    props.isFlush ? elListGroup.classList.add("list-group-flush") : null;
-    props.isTabs ? elListGroup.setAttribute("role", "tablist") : null;
+        // Update the list group
+        let listGroup = this.el.querySelector(".list-group") || this.el;
+        this.props.isFlush ? listGroup.classList.add("list-group-flush") : null;
+        this.props.isTabs ? listGroup.setAttribute("role", "tablist") : null;
 
-    // See if the column width is defined
-    let elRow: HTMLElement = null;
-    if (props.colWidth) {
-        // Validate the value
-        if (props.colWidth > 0 && props.colWidth < 12) {
-            // Create the row
-            elRow = document.createElement("div");
-            elRow.className = "row";
-            elRow.innerHTML = '<div class="col-' + props.colWidth + '"></div>';
-
-            // Append the list group
-            elRow.children[0].appendChild(elListGroup);
-        } else {
-            // Log
-            console.warn("The column width value must be between 1-11");
+        // See if the column width is defined
+        let column = this.el.querySelector(".col");
+        if (column) {
+            // Update the width
+            column.className = "col-" + this.props.colWidth;
         }
+
+        // Render the items
+        this.renderItems(listGroup);
     }
 
-    // Parse the items
-    let items = props.items || [];
-    for (let i = 0; i < items.length; i++) {
-        let item = items[i];
-
-        // Create the item
-        let elItem = document.createElement("a");
-        elListGroup.appendChild(elItem);
-
-        // Set the class name
-        elItem.className = item.className || "";
-        elItem.classList.add("list-group-item");
-        item.badge ? elItem.classList.add("d-flex") : null;
-        item.badge ? elItem.classList.add("justify-content-between") : null;
-        item.isActive ? elItem.classList.add("active") : null;
-        item.isDisabled ? elItem.classList.add("disabled") : null;
-        elItem.setAttribute("data-idx", i.toString());
-
-        // See if this is a tab
-        if (item.tabName) {
-            // Set the properties
-            elItem.href = "#" + item.tabName.replace(/[^a-zA-Z0-9]/, "");
-            elItem.setAttribute("data-toggle", "list");
-            elItem.setAttribute("aria-controls", item.tabName);
-        } else {
-            // Set the properties
-            elItem.href = item.href || "#";
-        }
-
-        // Add the class, based on the item type
-        switch (item.type) {
-            case ListGroupItemTypes.Danger:
-                elItem.classList.add("list-group-item-primary");
-                break;
-            case ListGroupItemTypes.Dark:
-                elItem.classList.add("list-group-item-dark");
-                break;
-            case ListGroupItemTypes.Info:
-                elItem.classList.add("list-group-item-info");
-                break;
-            case ListGroupItemTypes.Light:
-                elItem.classList.add("list-group-item-light");
-                break;
-            case ListGroupItemTypes.Primary:
-                elItem.classList.add("list-group-item-primary");
-                break;
-            case ListGroupItemTypes.Secondary:
-                elItem.classList.add("list-group-item-secondary");
-                break;
-            case ListGroupItemTypes.Success:
-                elItem.classList.add("list-group-item-success");
-                break;
-            case ListGroupItemTypes.Warning:
-                elItem.classList.add("list-group-item-warning");
-                break;
-        }
-
-        // Set the content
-        let content = item.content || "";
-        if (props.isTabs) {
-            elItem.innerHTML = item.tabName || "";
-        }
-        else if (typeof (content) === "string") {
-            // Set the html
-            elItem.innerHTML = content;
-        } else {
-            // Append the element
-            elItem.appendChild(content);
-        }
-
-        // See if there is a badge
-        if (item.badge) {
-            // Append a badge
-            elItem.appendChild(Badge(item.badge).el);
-        }
-
+    // Configures the events
+    private configureEvents(item: ListGroupItem) {
         // See if we are rendering tabs
-        if (props.isTabs) {
+        if (this.props.isTabs) {
             // Add the click event
-            elItem.addEventListener("click", ev => {
-                let elTab = ev.currentTarget as HTMLElement;
-                let item = items[parseInt(elTab.getAttribute("data-idx"))];
-
+            item.el.addEventListener("click", ev => {
                 // Get the active items
-                let activeItems = el.querySelectorAll(".active");
+                let activeItems = this.el.querySelectorAll(".active");
                 for (let i = 0; i < activeItems.length; i++) {
                     // Remove the class
                     activeItems[i].classList.remove("active");
                 }
 
                 // Set this tab to be active
-                elTab.classList.add("active");
+                item.el.classList.add("active");
 
-                // Get the tab content and make it active
-                let elTabContent = el.querySelector(elTab.getAttribute("href"));
-                elTabContent ? elTabContent.classList.add("active") : null;
+                // Get the associated tab element
+                let elTab = this.el.querySelector(item.el.getAttribute("href"));
+                elTab ? elTab.classList.add("active") : null;
 
                 // Execute the click event
-                item && item.onClick ? item.onClick(elTab, item) : null;
+                item.props.onClick ? item.props.onClick(item.el, item.props) : null;
             });
-        } else {
-            // Execute the render event
-            item.onRender ? item.onRender(elItem, item) : null;
-
-            // See if there is a click event
-            if (item.onClick) {
-                // Add a click event
-                elItem.addEventListener("click", ev => {
-                    let el = ev.currentTarget as HTMLElement;
-
-                    // Get the item
-                    let item = items[parseInt(el.getAttribute("data-idx"))];
-                    if (item && item.onClick) {
-                        // Call the click event
-                        item.onClick(el, item);
-                    }
-                });
-            }
         }
     }
 
-    // See if we are rendering tabs
-    if (props.isTabs) {
-        // Add the tab pane starting tag
-        let elTabContent = document.createElement("div");
-        elTabContent.className = "tab-content";
+    // Render the items
+    private renderItems(listGroup: Element) {
+        // Clear the items
+        this._items = [];
 
-        // See if we are rendering columns
-        if (elRow) {
-            // Create the columns
-            let elColumns = document.createElement("div");
-            elColumns.className = "col-" + (12 - props.colWidth);
-            elRow.appendChild(elColumns);
-
-            // Append the tab content
-            elColumns.appendChild(elTabContent);
-        } else {
-            // Append the tab content
-            elListGroup.appendChild(elTabContent);
-        }
+        // Get the tab content element
+        let elTabs = this.el.querySelector(".tab-content");
 
         // Parse the items
+        let items = this.props.items || [];
         for (let i = 0; i < items.length; i++) {
-            let item = items[i];
-
             // Create the item
-            let elItem = document.createElement("div");
-            elItem.className = "tab-pane";
-            item.isActive ? elItem.classList.add("active") : null;
-            props.enableFade ? elItem.classList.add("fade") : null;
-            elItem.id = item.tabName.replace(/[^a-zA-Z0-9]/, "");
-            elItem.setAttribute("role", "tabpanel");
+            let item = new ListGroupItem(items[i], elTabs ? true : false);
+            this._items.push(item);
+            listGroup.appendChild(item.el);
 
-            // Set the content
-            let content = item.content || "";
-            if (typeof (content) === "string") {
-                // Set the html
-                elItem.innerHTML = content;
-            } else {
-                // Append the element
-                elItem.appendChild(content);
-            }
+            // Add the tab content
+            elTabs ? elTabs.appendChild(item.elTab) : null;
 
-            // Append the item to the tab content
-            elTabContent.appendChild(elItem);
-
-            // Execute the render event
-            item.onRender ? item.onRender(elItem, item) : null;
+            // Configure the events
+            this.configureEvents(item);
         }
     }
 
-    // Create the element
-    let el = document.createElement("div");
-    el.appendChild(elRow || elListGroup);
+    /**
+     * Public Interface
+     */
 
-    // See if we are rendering it to an element
-    if (props.el) {
-        // Ensure the class list exists and it's not the body element
-        if (props.el.classList && props.el.tagName != "BODY") {
-            // Set the bootstrap class
-            props.el.classList.contains("bs") ? null : props.el.classList.add("bs");
-        }
+    showTab(tabId?: string | number) {
+        // Parse the tabs
+        for (let i = 0; i < this._items.length; i++) {
+            let item = this._items[i];
 
-        // Append the elements
-        while (el.children.length > 0) {
-            props.el.appendChild(el.children[0]);
-        }
+            // Ensure a tab element exists
+            if (item.elTab == null) { continue; }
 
-        // Update the element
-        el = props.el as any;
-    } else {
-        // Set the bootstrap class
-        el.classList.add("bs");
-    }
-
-    // Create the list group
-    let listGroup = jQuery(el.children[0]);
-
-    // Return the list group
-    return {
-        el,
-        hide: () => { Common.hide(el); },
-        show: (tabId?: string) => {
-            if (tabId) {
-                // Show the tab
-                listGroup.querySelector("#" + tabId).tab("show");
+            // See if this is the target tab
+            if (tabId === i + 1 || item.elTab.id == tabId) {
+                // Set the active class
+                item.el.classList.add("active");
+                item.elTab.classList.add("active");
             } else {
-                // Show the list group
-                Common.show(el);
+                // Remove the active class
+                item.el.classList.remove("active");
+                item.elTab.classList.remove("active");
             }
         }
-    };
+    }
 }
+export const ListGroup = (props: IListGroupProps): IListGroup => { return new _ListGroup(props); }

@@ -19,10 +19,10 @@ export class CheckboxItem {
         this._parent = parent;
         this._props = props;
 
-        // Create the item
-        let elItem = document.createElement("div");
-        elItem.innerHTML = this.getHTML();
-        this._el = elItem.firstChild as HTMLDivElement;
+        // Create the element
+        let el = document.createElement("div");
+        el.innerHTML = this.getHTML();
+        this._el = el.firstChild as HTMLDivElement;
 
         // Configure the item
         this.configure();
