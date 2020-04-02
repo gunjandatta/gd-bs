@@ -27,7 +27,7 @@ export interface IMedia {
  */
 export interface IMediaProps {
     className?: string;
-    body?: string;
+    body?: string | Element;
     el?: Element | HTMLElement;
     data?: any;
     icon?: {

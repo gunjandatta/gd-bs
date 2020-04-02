@@ -1,8 +1,8 @@
-import * as Common from "../common";
 import { IMedia, IMediaProps } from "../../../@types/components/media";
-declare var GD;
 import { Base } from "../base";
+import { ClassNames } from "../classNames";
 import * as HTML from "./index.html";
+declare var GD;
 
 /**
  * Media Images Types
@@ -12,6 +12,15 @@ export enum MediaImageTypes {
     Center = 2,
     Top = 3
 }
+
+/**
+ * Media Images Class Names
+ */
+const MediaImagesClassNames = new ClassNames([
+    "align-self-end",
+    "align-self-center",
+    "align-self-start"
+]);
 
 /**
  * Media Order Types
@@ -38,30 +47,57 @@ class _Media extends Base<IMediaProps> {//implements IMedia {
 
     // Configure the card group
     private configure() {
+        // See if we are rendering the body first
+        if (this.props.order == MediaOrderTypes.Right) {
+            // Render the components
+            this.renderBody();
+            this.renderIcon();
+            this.renderImage();
+        } else {
+            // Render the components
+            this.renderIcon();
+            this.renderImage();
+            this.renderBody();
+        }
     }
-}
-export const Media = (props: IMediaProps): IMedia => {
-    // Create the media
-    let media = document.createElement("div");
 
-    // Set the class name
-    media.className = props.className || "";
-    media.classList.add("media");
+    // Method to render the body
+    private renderBody() {
+        // Create the element
+        let body = document.createElement("div");
+        body.classList.add("media-body");
+        this.el.appendChild(body);
 
-    // Render the body
-    let body = document.createElement("div");
-    body.classList.add("media-body");
-    body.innerHTML = props.body || "";
+        // Set the body content
+        let content = this.props.body || "";
+        if (typeof (content) === "string") {
+            // Set the html
+            body.innerHTML = content;
+        } else {
+            // Append the element
+            body.appendChild(content);
+        }
+
+        // Parse the items
+        let items = this.props.items || [];
+        for (let i = 0; i < items.length; i++) {
+            // Append the media object
+            body.appendChild(Media(items[i]).el);
+        }
+
+        // Call the render event
+        this.props.onRenderBody ? this.props.onRenderBody(body) : null;
+    }
 
     // Method to render the icon
-    let renderIcon = () => {
+    private renderIcon() {
         // See if the icon properties exist
-        if (props.icon) {
+        if (this.props.icon) {
             // Create the icon
-            let icon: HTMLElement = GD.Icons ? GD.Icons(props.icon.icon, props.icon.height, props.icon.width) : null;
+            let icon: HTMLElement = GD.Icons ? GD.Icons(this.props.icon.icon, this.props.icon.height, this.props.icon.width) : null;
             if (icon) {
                 // Parse the class names
-                let classNames = (props.icon.className || "").trim().split(' ');
+                let classNames = (this.props.icon.className || "").trim().split(' ');
                 for (let i = 0; i < classNames.length; i++) {
                     let className = classNames[i];
 
@@ -69,47 +105,33 @@ export const Media = (props: IMediaProps): IMedia => {
                     className ? icon.classList.add(className) : null;
                 }
 
-                // Read the type
-                switch (props.icon.type) {
-                    // Bottom
-                    case MediaImageTypes.Bottom:
-                        icon.classList.add("align-self-end");
-                        break;
-                    // Center
-                    case MediaImageTypes.Center:
-                        icon.classList.add("align-self-center");
-                        break;
-                    // Top
-                    case MediaImageTypes.Top:
-                        icon.classList.add("align-self-start");
-                        break;
-                    // Do nothing
-                    default: break;
+                // Get the icon type
+                let className = MediaImagesClassNames.getByType(this.props.icon.type);
+                if (className) {
+                    icon.classList.add(className);
                 }
 
                 // See if this is a link
-                if (props.icon.url) {
+                if (this.props.icon.url) {
                     // Create a link
                     let link = document.createElement("a");
-                    link.href = props.image.url;
-                    media.appendChild(link);
-
-                    // Add the icon
+                    link.href = this.props.image.url;
                     link.appendChild(icon);
+                    this.el.appendChild(link);
 
                     // See if a click event exists
-                    if (props.icon.onClick) {
+                    if (this.props.icon.onClick) {
                         // Add the click event
-                        link.addEventListener("click", props.icon.onClick);
+                        link.addEventListener("click", this.props.icon.onClick);
                     }
                 } else {
                     // Add the icon
-                    media.appendChild(icon);
+                    this.el.appendChild(icon);
 
                     // See if a click event exists
-                    if (props.icon.onClick) {
+                    if (this.props.icon.onClick) {
                         // Add the click event
-                        icon.addEventListener("click", props.icon.onClick);
+                        icon.addEventListener("click", this.props.icon.onClick);
                     }
                 }
             }
@@ -117,118 +139,45 @@ export const Media = (props: IMediaProps): IMedia => {
     }
 
     // Method to render the image
-    let renderImage = () => {
+    private renderImage() {
         // Create the image
-        let image = props.image ? document.createElement("img") : null;
+        let image = this.props.image ? document.createElement("img") : null;
         if (image) {
             // Set the properties
-            image.alt = props.image.alt;
-            image.className = props.image.className || "";
-            image.src = props.image.src || "";
+            image.alt = this.props.image.alt;
+            image.className = this.props.image.className || "";
+            image.src = this.props.image.src || "";
 
-            // Read the type
-            switch (props.image.type) {
-                // Bottom
-                case MediaImageTypes.Bottom:
-                    image.classList.add("align-self-end");
-                    break;
-                // Center
-                case MediaImageTypes.Center:
-                    image.classList.add("align-self-center");
-                    break;
-                // Top
-                case MediaImageTypes.Top:
-                    image.classList.add("align-self-start");
-                    break;
+            // Get the image type
+            let className = MediaImagesClassNames.getByType(this.props.icon.type);
+            if (className) {
+                image.classList.add(className);
             }
 
             // See if this is a link
-            if (props.image.url) {
+            if (this.props.image.url) {
                 // Create a link
                 let link = document.createElement("a");
-                link.href = props.image.url;
-                media.appendChild(link);
-
-                // Add the image
+                link.href = this.props.image.url;
                 link.appendChild(image);
+                this.el.insertBefore(link, this.el.firstChild);
 
                 // See if a click event exists
-                if (props.icon.onClick) {
+                if (this.props.icon.onClick) {
                     // Add the click event
-                    link.addEventListener("click", props.icon.onClick);
+                    link.addEventListener("click", this.props.icon.onClick);
                 }
             } else {
                 // Add the image
-                media.appendChild(image);
+                this.el.appendChild(image);
 
                 // See if a click event exists
-                if (props.icon.onClick) {
+                if (this.props.icon.onClick) {
                     // Add the click event
-                    image.addEventListener("click", props.icon.onClick);
+                    image.addEventListener("click", this.props.icon.onClick);
                 }
             }
         }
     }
-
-    // See if items exist
-    if (props.items && props.items.length > 0) {
-        // Parse the items
-        for (let i = 0; i < props.items.length; i++) {
-            let item = props.items[i];
-
-            // Add the item to the body
-            body.appendChild(Media(item).el);
-        }
-    }
-
-    // See if we are rendering the body first
-    if (props.order == MediaOrderTypes.Right) {
-        // Render the body
-        media.appendChild(body);
-
-        // Render the icon/image
-        renderIcon();
-        renderImage();
-    } else {
-        // Render the icon/image
-        renderIcon();
-        renderImage();
-
-        // Render the body
-        media.appendChild(body);
-    }
-
-    // Call the render event
-    props.onRenderBody ? props.onRenderBody(body) : null;
-
-    // Create the element
-    let el = document.createElement("div");
-    el.appendChild(media);
-
-    // See if we are rendering it to an element
-    if (props.el) {
-        // Ensure the class list exists and it's not the body element
-        if (props.el.classList && props.el.tagName != "BODY") {
-            // Set the bootstrap class
-            props.el.classList.contains("bs") ? null : props.el.classList.add("bs");
-        }
-
-        // Append the elements
-        while (el.children.length > 0) {
-            props.el.appendChild(el.children[0]);
-        }
-
-        // Update the element
-        el = props.el as any;
-    } else {
-        // Set the bootstrap class
-        el.classList.add("bs");
-    }
-
-    // Return the media
-    return {
-        el: media,
-        hide: () => { Common.hide(media); },
-        show: () => { Common.show(media); }
-    };
 }
+export const Media = (props: IMediaProps): IMedia => { return new _Media(props); }
