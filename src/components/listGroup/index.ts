@@ -114,18 +114,15 @@ class _ListGroup extends Base<IListGroupProps> {//implements IListGroup {
         for (let i = 0; i < this._items.length; i++) {
             let item = this._items[i];
 
-            // Ensure a tab element exists
-            if (item.elTab == null) { continue; }
-
             // See if this is the target tab
             if (tabId === i + 1 || item.elTab.id == tabId) {
-                // Set the active class
-                item.el.classList.add("active");
-                item.elTab.classList.add("active");
-            } else {
-                // Remove the active class
-                item.el.classList.remove("active");
-                item.elTab.classList.remove("active");
+                // Toggle it if it's not visible
+                item.isVisible ? null : item.toggle(this.props.fadeTabs);
+            }
+            // Else, see if it's visible
+            else if (item.isVisible) {
+                // Toggle it
+                item.toggle(this.props.fadeTabs);
             }
         }
     }

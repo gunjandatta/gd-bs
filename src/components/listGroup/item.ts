@@ -103,4 +103,23 @@ export class ListGroupItem extends Base<IListGroupItem> {
 
     // The HTML tab element
     get elTab(): HTMLDivElement { return this._elTab; }
+
+    // Returns true if the link is visible
+    get isVisible(): boolean { return this.el.classList.contains("active"); }
+
+    // Toggles a link
+    toggle(fadeTabs: boolean) {
+        // See if this item is currently active
+        if (this.isVisible) {
+            // Hide this link and tab
+            this.el.classList.remove("active");
+            this._elTab.classList.remove("active");
+            this._elTab.classList.remove("show");
+        } else {
+            // Show this link and tab
+            this.el.classList.add("active");
+            this._elTab.classList.add("active");
+            fadeTabs ? this._elTab.classList.add("show") : null;
+        }
+    }
 }

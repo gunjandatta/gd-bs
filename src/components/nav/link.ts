@@ -7,6 +7,7 @@ import * as HTMLTab from "./tab.html";
  * Nav Link
  */
 export class NavLink extends Base<INavLink> {
+    private _elLink: HTMLAnchorElement = null;
     private _elTab: HTMLDivElement = null;
 
     // Constructor
@@ -31,20 +32,20 @@ export class NavLink extends Base<INavLink> {
     // Configure the item
     private configure() {
         // Update the link
-        let link = this.el.querySelector("a.nav-link");
-        this.props.isActive ? link.classList.add("active") : null;
-        this.props.isDisabled ? link.classList.add("disabled") : null;
-        link.innerHTML = this.props.title || "";
+        this._elLink = this.el.querySelector("a.nav-link");
+        this.props.isActive ? this._elLink.classList.add("active") : null;
+        this.props.isDisabled ? this._elLink.classList.add("disabled") : null;
+        this._elLink.innerHTML = this.props.title || "";
 
         // See if this is a tab
         if (this._elTab) {
             let tabId = this.props.title.replace(/[^a-zA-Z0-9]/, "");
 
             // Set the properties
-            link.setAttribute("href", "#" + tabId);
-            link.setAttribute("data-toggle", "tab");
-            link.setAttribute("aria-controls", tabId);
-            link.innerHTML = this.props.title || "";
+            this._elLink.setAttribute("href", "#" + tabId);
+            this._elLink.setAttribute("data-toggle", "tab");
+            this._elLink.setAttribute("aria-controls", tabId);
+            this._elLink.innerHTML = this.props.title || "";
 
             // Update the tab
             this._elTab.id = tabId;
@@ -67,7 +68,7 @@ export class NavLink extends Base<INavLink> {
             }
         } else {
             // Set the properties
-            link.setAttribute("href", this.props.href || "#");
+            this._elLink.setAttribute("href", this.props.href || "#");
         }
     }
 
@@ -92,4 +93,23 @@ export class NavLink extends Base<INavLink> {
 
     // The HTML tab element
     get elTab(): HTMLDivElement { return this._elTab; }
+
+    // Returns true if the link is visible
+    get isVisible(): boolean { return this._elLink.classList.contains("active"); }
+
+    // Toggles a link
+    toggle(fadeTabs: boolean) {
+        // See if this item is currently active
+        if (this.isVisible) {
+            // Hide this link and tab
+            this._elLink.classList.remove("active");
+            this._elTab.classList.remove("active");
+            this._elTab.classList.remove("show");
+        } else {
+            // Show this link and tab
+            this._elLink.classList.add("active");
+            this._elTab.classList.add("active");
+            fadeTabs ? this._elTab.classList.add("show") : null;
+        }
+    }
 }

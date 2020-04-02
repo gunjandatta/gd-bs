@@ -85,24 +85,22 @@ class _Nav extends Base<INavProps> {//implements INav {
 
     // Shows a tab
     showTab(tabId?: string | number) {
-        // Parse the tabs
-        for (let i = 0; i < this._links.length; i++) {
-            let link = this._links[i];
+        // Ensure tabs exist
+        if (this.props.isTabs) {
+            // Parse the tabs
+            for (let i = 0; i < this._links.length; i++) {
+                let link = this._links[i];
 
-            // Ensure a tab element exists
-            if (link.elTab == null) { continue; }
-
-            // See if this is the target tab
-            if (tabId === i + 1 || link.elTab.id == tabId) {
-                // Set the active class
-                link.el.classList.add("active");
-                link.elTab.classList.add("active");
-                this.props.fadeTabs ? link.elTab.classList.add("show") : null;
-            } else {
-                // Remove the active class
-                link.el.classList.remove("active");
-                link.elTab.classList.remove("active");
-                link.elTab.classList.remove("show");
+                // See if this is the target tab
+                if (tabId === i + 1 || link.elTab.id == tabId) {
+                    // Toggle it if it's not visible
+                    link.isVisible ? null : link.toggle(this.props.fadeTabs);
+                }
+                // Else, see if it's visible
+                else if (link.isVisible) {
+                    // Toggle it
+                    link.toggle(this.props.fadeTabs);
+                }
             }
         }
     }
