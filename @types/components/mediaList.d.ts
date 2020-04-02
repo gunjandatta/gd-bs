@@ -10,7 +10,7 @@ export const MediaList: (props: IMediaListProps) => IMediaList;
  */
 export interface IMediaList {
     /** The element. */
-    el: HTMLUListElement;
+    el: HTMLElement;
 
     /** Hides the media. */
     hide: () => void;
