@@ -15,8 +15,8 @@ class _ButtonGroup extends Base<IButtonGroupProps> implements IButtonGroup {
         // Configure the button group
         this.configure();
 
-        // Render the buttons
-        this.renderButtons();
+        // Configure the parent
+        this.configureParent();
     }
 
     // Configure the button group
@@ -29,6 +29,9 @@ class _ButtonGroup extends Base<IButtonGroupProps> implements IButtonGroup {
         this.el.classList.add(this.props.isVertical ? "btn-group-vertical" : "btn-group");
         this.props.isLarge ? this.el.classList.add("btn-group-lg") : null;
         this.props.isSmall ? this.el.classList.add("btn-group-sm") : null;
+
+        // Render the buttons
+        this.renderButtons();
     }
 
     // Render the buttons
