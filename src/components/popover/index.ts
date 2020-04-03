@@ -86,12 +86,10 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
             // Set the popover to the target element
             popover = this.props.target as HTMLElement;
 
-            // See if this is dissmissible
-            if (this.props.isDismissible) {
-                popover.setAttribute("tabindex", "0");
-                popover.setAttribute("toggle", "popover");
-                popover.setAttribute("trigger", "focus");
-            }
+            // Ensure the attributes are set in the target element
+            popover.setAttribute("tabindex", "0");
+            popover.setAttribute("toggle", "popover");
+            popover.setAttribute("trigger", "focus");
 
             // Update this element
             this.el = popover as any;
