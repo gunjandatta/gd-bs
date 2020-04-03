@@ -55,28 +55,26 @@ declare module 'gd-bs/icons' {
         AlarmFill: number;
         // alarm.svg
         Alarm: number;
-        // alert-circle-fill.svg
-        AlertCircleFill: number;
-        // alert-circle.svg
-        AlertCircle: number;
-        // alert-octagon-fill.svg
-        AlertOctagonFill: number;
-        // alert-octagon.svg
-        AlertOctagon: number;
-        // alert-square-fill.svg
-        AlertSquareFill: number;
-        // alert-square.svg
-        AlertSquare: number;
-        // alert-triangle-fill.svg
-        AlertTriangleFill: number;
-        // alert-triangle.svg
-        AlertTriangle: number;
+        // alt.svg
+        Alt: number;
+        // app-indicator.svg
+        AppIndicator: number;
+        // app.svg
+        App: number;
         // archive-fill.svg
         ArchiveFill: number;
         // archive.svg
         Archive: number;
-        // arrow-bar-bottom.svg
-        ArrowBarBottom: number;
+        // arrow-90deg-down.svg
+        Arrow90degDown: number;
+        // arrow-90deg-left.svg
+        Arrow90degLeft: number;
+        // arrow-90deg-right.svg
+        Arrow90degRight: number;
+        // arrow-90deg-up.svg
+        Arrow90degUp: number;
+        // arrow-bar-down.svg
+        ArrowBarDown: number;
         // arrow-bar-left.svg
         ArrowBarLeft: number;
         // arrow-bar-right.svg
@@ -103,6 +101,10 @@ declare module 'gd-bs/icons' {
         ArrowLeft: number;
         // arrow-repeat.svg
         ArrowRepeat: number;
+        // arrow-return-left.svg
+        ArrowReturnLeft: number;
+        // arrow-return-right.svg
+        ArrowReturnRight: number;
         // arrow-right-short.svg
         ArrowRightShort: number;
         // arrow-right.svg
@@ -127,8 +129,16 @@ declare module 'gd-bs/icons' {
         ArrowsExpand: number;
         // arrows-fullscreen.svg
         ArrowsFullscreen: number;
+        // arrows-move.svg
+        ArrowsMove: number;
+        // aspect-ratio-fill.svg
+        AspectRatioFill: number;
+        // aspect-ratio.svg
+        AspectRatio: number;
         // at.svg
         At: number;
+        // award-fill.svg
+        AwardFill: number;
         // award.svg
         Award: number;
         // backspace-fill.svg
@@ -139,6 +149,10 @@ declare module 'gd-bs/icons' {
         BackspaceReverse: number;
         // backspace.svg
         Backspace: number;
+        // bag-fill.svg
+        BagFill: number;
+        // bag.svg
+        Bag: number;
         // bar-chart-fill.svg
         BarChartFill: number;
         // bar-chart.svg
@@ -147,6 +161,8 @@ declare module 'gd-bs/icons' {
         BatteryCharging: number;
         // battery-full.svg
         BatteryFull: number;
+        // battery-half.svg
+        BatteryHalf: number;
         // battery.svg
         Battery: number;
         // bell-fill.svg
@@ -157,26 +173,56 @@ declare module 'gd-bs/icons' {
         BlockquoteLeft: number;
         // blockquote-right.svg
         BlockquoteRight: number;
-        // book-half-fill.svg
-        BookHalfFill: number;
+        // book-half.svg
+        BookHalf: number;
         // book.svg
         Book: number;
+        // bookmark-check.svg
+        BookmarkCheck: number;
+        // bookmark-dash.svg
+        BookmarkDash: number;
         // bookmark-fill.svg
         BookmarkFill: number;
+        // bookmark-plus.svg
+        BookmarkPlus: number;
         // bookmark.svg
         Bookmark: number;
+        // bookmarks-fill.svg
+        BookmarksFill: number;
+        // bookmarks.svg
+        Bookmarks: number;
         // bootstrap-fill.svg
         BootstrapFill: number;
         // bootstrap-reboot.svg
         BootstrapReboot: number;
         // bootstrap.svg
         Bootstrap: number;
-        // box-arrow-bottom-left.svg
-        BoxArrowBottomLeft: number;
-        // box-arrow-bottom-right.svg
-        BoxArrowBottomRight: number;
+        // bounding-box-circles.svg
+        BoundingBoxCircles: number;
+        // bounding-box.svg
+        BoundingBox: number;
+        // box-arrow-down-left.svg
+        BoxArrowDownLeft: number;
+        // box-arrow-down-right.svg
+        BoxArrowDownRight: number;
         // box-arrow-down.svg
         BoxArrowDown: number;
+        // box-arrow-in-down-left.svg
+        BoxArrowInDownLeft: number;
+        // box-arrow-in-down-right.svg
+        BoxArrowInDownRight: number;
+        // box-arrow-in-down.svg
+        BoxArrowInDown: number;
+        // box-arrow-in-left.svg
+        BoxArrowInLeft: number;
+        // box-arrow-in-right.svg
+        BoxArrowInRight: number;
+        // box-arrow-in-up-left.svg
+        BoxArrowInUpLeft: number;
+        // box-arrow-in-up-right.svg
+        BoxArrowInUpRight: number;
+        // box-arrow-in-up.svg
+        BoxArrowInUp: number;
         // box-arrow-left.svg
         BoxArrowLeft: number;
         // box-arrow-right.svg
@@ -189,12 +235,24 @@ declare module 'gd-bs/icons' {
         BoxArrowUp: number;
         // braces.svg
         Braces: number;
-        // brightness-fill-high.svg
-        BrightnessFillHigh: number;
-        // brightness-fill-low.svg
-        BrightnessFillLow: number;
+        // briefcase-fill.svg
+        BriefcaseFill: number;
+        // briefcase.svg
+        Briefcase: number;
+        // brightness-alt-high-fill.svg
+        BrightnessAltHighFill: number;
+        // brightness-alt-high.svg
+        BrightnessAltHigh: number;
+        // brightness-alt-low-fill.svg
+        BrightnessAltLowFill: number;
+        // brightness-alt-low.svg
+        BrightnessAltLow: number;
+        // brightness-high-fill.svg
+        BrightnessHighFill: number;
         // brightness-high.svg
         BrightnessHigh: number;
+        // brightness-low-fill.svg
+        BrightnessLowFill: number;
         // brightness-low.svg
         BrightnessLow: number;
         // brush.svg
@@ -221,16 +279,76 @@ declare module 'gd-bs/icons' {
         CapslockFill: number;
         // capslock.svg
         Capslock: number;
+        // card-checklist.svg
+        CardChecklist: number;
+        // card-heading.svg
+        CardHeading: number;
+        // card-image.svg
+        CardImage: number;
+        // card-list.svg
+        CardList: number;
+        // card-text.svg
+        CardText: number;
+        // caret-down-fill.svg
+        CaretDownFill: number;
+        // caret-down.svg
+        CaretDown: number;
+        // caret-left-fill.svg
+        CaretLeftFill: number;
+        // caret-left.svg
+        CaretLeft: number;
+        // caret-right-fill.svg
+        CaretRightFill: number;
+        // caret-right.svg
+        CaretRight: number;
+        // caret-up-fill.svg
+        CaretUpFill: number;
+        // caret-up.svg
+        CaretUp: number;
+        // chat-dots-fill.svg
+        ChatDotsFill: number;
+        // chat-dots.svg
+        ChatDots: number;
         // chat-fill.svg
         ChatFill: number;
+        // chat-quote-fill.svg
+        ChatQuoteFill: number;
+        // chat-quote.svg
+        ChatQuote: number;
+        // chat-square-dots-fill.svg
+        ChatSquareDotsFill: number;
+        // chat-square-dots.svg
+        ChatSquareDots: number;
+        // chat-square-fill.svg
+        ChatSquareFill: number;
+        // chat-square-quote-fill.svg
+        ChatSquareQuoteFill: number;
+        // chat-square-quote.svg
+        ChatSquareQuote: number;
+        // chat-square.svg
+        ChatSquare: number;
         // chat.svg
         Chat: number;
+        // check-all.svg
+        CheckAll: number;
         // check-box.svg
         CheckBox: number;
         // check-circle.svg
         CheckCircle: number;
         // check.svg
         Check: number;
+        // chevron-bar-contract.svg
+        ChevronBarContract: number;
+        // chevron-bar-down.svg
+        ChevronBarDown: number;
+        // chevron-bar-expand.svg
+        ChevronBarExpand: number;
+        // chevron-bar-left.svg
+        ChevronBarLeft: number;
+        // chevron-bar-right.svg
+        ChevronBarRight: number;
+        // chevron-bar-up.svg
+        ChevronBarUp: number;
         // chevron-compact-down.svg
         ChevronCompactDown: number;
         // chevron-compact-left.svg
@@ -239,8 +357,20 @@ declare module 'gd-bs/icons' {
         ChevronCompactRight: number;
         // chevron-compact-up.svg
         ChevronCompactUp: number;
+        // chevron-contract.svg
+        ChevronContract: number;
+        // chevron-double-down.svg
+        ChevronDoubleDown: number;
+        // chevron-double-left.svg
+        ChevronDoubleLeft: number;
+        // chevron-double-right.svg
+        ChevronDoubleRight: number;
+        // chevron-double-up.svg
+        ChevronDoubleUp: number;
         // chevron-down.svg
         ChevronDown: number;
+        // chevron-expand.svg
+        ChevronExpand: number;
         // chevron-left.svg
         ChevronLeft: number;
         // chevron-right.svg
@@ -251,12 +381,18 @@ declare module 'gd-bs/icons' {
         CircleFill: number;
         // circle-half.svg
         CircleHalf: number;
-        // circle-slash.svg
-        CircleSlash: number;
+        // circle-square.svg
+        CircleSquare: number;
         // circle.svg
         Circle: number;
+        // clipboard-data.svg
+        ClipboardData: number;
+        // clipboard.svg
+        Clipboard: number;
         // clock-fill.svg
         ClockFill: number;
+        // clock-history.svg
+        ClockHistory: number;
         // clock.svg
         Clock: number;
         // cloud-download.svg
@@ -271,8 +407,16 @@ declare module 'gd-bs/icons' {
         CodeSlash: number;
         // code.svg
         Code: number;
-        // columns-gutters.svg
-        ColumnsGutters: number;
+        // collection-fill.svg
+        CollectionFill: number;
+        // collection-play-fill.svg
+        CollectionPlayFill: number;
+        // collection-play.svg
+        CollectionPlay: number;
+        // collection.svg
+        Collection: number;
+        // columns-gap.svg
+        ColumnsGap: number;
         // columns.svg
         Columns: number;
         // command.svg
@@ -287,12 +431,26 @@ declare module 'gd-bs/icons' {
         Controller: number;
         // credit-card.svg
         CreditCard: number;
+        // crop.svg
+        Crop: number;
         // cursor-fill.svg
         CursorFill: number;
+        // cursor-text.svg
+        CursorText: number;
         // cursor.svg
         Cursor: number;
+        // dash-circle-fill.svg
+        DashCircleFill: number;
+        // dash-circle.svg
+        DashCircle: number;
+        // dash-square-fill.svg
+        DashSquareFill: number;
+        // dash-square.svg
+        DashSquare: number;
         // dash.svg
         Dash: number;
+        // diamond-fill.svg
+        DiamondFill: number;
         // diamond-half.svg
         DiamondHalf: number;
         // diamond.svg
@@ -301,28 +459,22 @@ declare module 'gd-bs/icons' {
         DisplayFill: number;
         // display.svg
         Display: number;
-        // document-code.svg
-        DocumentCode: number;
-        // document-diff.svg
-        DocumentDiff: number;
-        // document-richtext.svg
-        DocumentRichtext: number;
-        // document-spreadsheet.svg
-        DocumentSpreadsheet: number;
-        // document-text.svg
-        DocumentText: number;
-        // document.svg
-        Document: number;
-        // documents-alt.svg
-        DocumentsAlt: number;
-        // documents.svg
-        Documents: number;
         // dot.svg
         Dot: number;
         // download.svg
         Download: number;
+        // droplet-fill.svg
+        DropletFill: number;
+        // droplet-half.svg
+        DropletHalf: number;
+        // droplet.svg
+        Droplet: number;
+        // egg-fill.svg
+        EggFill: number;
         // egg-fried.svg
         EggFried: number;
+        // egg.svg
+        Egg: number;
         // eject-fill.svg
         EjectFill: number;
         // eject.svg
@@ -335,6 +487,30 @@ declare module 'gd-bs/icons' {
         EnvelopeOpen: number;
         // envelope.svg
         Envelope: number;
+        // exclamation-circle-fill.svg
+        ExclamationCircleFill: number;
+        // exclamation-circle.svg
+        ExclamationCircle: number;
+        // exclamation-diamond-fill.svg
+        ExclamationDiamondFill: number;
+        // exclamation-diamond.svg
+        ExclamationDiamond: number;
+        // exclamation-octagon-fill.svg
+        ExclamationOctagonFill: number;
+        // exclamation-octagon.svg
+        ExclamationOctagon: number;
+        // exclamation-square-fill.svg
+        ExclamationSquareFill: number;
+        // exclamation-square.svg
+        ExclamationSquare: number;
+        // exclamation-triangle-fill.svg
+        ExclamationTriangleFill: number;
+        // exclamation-triangle.svg
+        ExclamationTriangle: number;
+        // exclamation.svg
+        Exclamation: number;
+        // exclude.svg
+        Exclude: number;
         // eye-fill.svg
         EyeFill: number;
         // eye-slash-fill.svg
@@ -343,14 +519,86 @@ declare module 'gd-bs/icons' {
         EyeSlash: number;
         // eye.svg
         Eye: number;
+        // file-arrow-down.svg
+        FileArrowDown: number;
+        // file-arrow-up.svg
+        FileArrowUp: number;
+        // file-break.svg
+        FileBreak: number;
+        // file-check.svg
+        FileCheck: number;
+        // file-code.svg
+        FileCode: number;
+        // file-diff.svg
+        FileDiff: number;
+        // file-earmark-arrow-down.svg
+        FileEarmarkArrowDown: number;
+        // file-earmark-arrow-up.svg
+        FileEarmarkArrowUp: number;
+        // file-earmark-break.svg
+        FileEarmarkBreak: number;
+        // file-earmark-check.svg
+        FileEarmarkCheck: number;
+        // file-earmark-code.svg
+        FileEarmarkCode: number;
+        // file-earmark-diff.svg
+        FileEarmarkDiff: number;
+        // file-earmark-minus.svg
+        FileEarmarkMinus: number;
+        // file-earmark-plus.svg
+        FileEarmarkPlus: number;
+        // file-earmark-ruled.svg
+        FileEarmarkRuled: number;
+        // file-earmark-spreadsheet.svg
+        FileEarmarkSpreadsheet: number;
+        // file-earmark-text.svg
+        FileEarmarkText: number;
+        // file-earmark-zip.svg
+        FileEarmarkZip: number;
+        // file-earmark.svg
+        FileEarmark: number;
+        // file-minus.svg
+        FileMinus: number;
+        // file-plus.svg
+        FilePlus: number;
+        // file-post.svg
+        FilePost: number;
+        // file-richtext.svg
+        FileRichtext: number;
+        // file-ruled.svg
+        FileRuled: number;
+        // file-spreadsheet.svg
+        FileSpreadsheet: number;
+        // file-text.svg
+        FileText: number;
+        // file-zip.svg
+        FileZip: number;
+        // file.svg
+        File: number;
+        // files-alt.svg
+        FilesAlt: number;
+        // files.svg
+        Files: number;
+        // film.svg
+        Film: number;
+        // filter-left.svg
+        FilterLeft: number;
+        // filter-right.svg
+        FilterRight: number;
         // filter.svg
         Filter: number;
         // flag-fill.svg
         FlagFill: number;
         // flag.svg
         Flag: number;
+        // folder-check.svg
+        FolderCheck: number;
         // folder-fill.svg
         FolderFill: number;
+        // folder-minus.svg
+        FolderMinus: number;
+        // folder-plus.svg
+        FolderPlus: number;
         // folder-symlink-fill.svg
         FolderSymlinkFill: number;
         // folder-symlink.svg
@@ -363,6 +611,14 @@ declare module 'gd-bs/icons' {
         ForwardFill: number;
         // forward.svg
         Forward: number;
+        // fullscreen-exit.svg
+        FullscreenExit: number;
+        // fullscreen.svg
+        Fullscreen: number;
+        // funnel-fill.svg
+        FunnelFill: number;
+        // funnel.svg
+        Funnel: number;
         // gear-fill.svg
         GearFill: number;
         // gear-wide-connected.svg
@@ -371,12 +627,36 @@ declare module 'gd-bs/icons' {
         GearWide: number;
         // gear.svg
         Gear: number;
+        // gem.svg
+        Gem: number;
+        // geo-alt.svg
+        GeoAlt: number;
         // geo.svg
         Geo: number;
+        // gift-fill.svg
+        GiftFill: number;
+        // gift.svg
+        Gift: number;
         // graph-down.svg
         GraphDown: number;
         // graph-up.svg
         GraphUp: number;
+        // grid-1x2-fill.svg
+        Grid1x2Fill: number;
+        // grid-1x2.svg
+        Grid1x2: number;
+        // grid-3x2-gap-fill.svg
+        Grid3x2GapFill: number;
+        // grid-3x2-gap.svg
+        Grid3x2Gap: number;
+        // grid-3x2.svg
+        Grid3x2: number;
+        // grid-3x3-gap-fill.svg
+        Grid3x3GapFill: number;
+        // grid-3x3-gap.svg
+        Grid3x3Gap: number;
+        // grid-3x3.svg
+        Grid3x3: number;
         // grid-fill.svg
         GridFill: number;
         // grid.svg
@@ -387,12 +667,20 @@ declare module 'gd-bs/icons' {
         Hash: number;
         // heart-fill.svg
         HeartFill: number;
+        // heart-half.svg
+        HeartHalf: number;
         // heart.svg
         Heart: number;
+        // house-door-fill.svg
+        HouseDoorFill: number;
+        // house-door.svg
+        HouseDoor: number;
         // house-fill.svg
         HouseFill: number;
         // house.svg
         House: number;
+        // hr.svg
+        Hr: number;
         // image-alt.svg
         ImageAlt: number;
         // image-fill.svg
@@ -409,14 +697,18 @@ declare module 'gd-bs/icons' {
         InboxesFill: number;
         // inboxes.svg
         Inboxes: number;
-        // info-fill.svg
-        InfoFill: number;
+        // info-circle-fill.svg
+        InfoCircleFill: number;
+        // info-circle.svg
+        InfoCircle: number;
         // info-square-fill.svg
         InfoSquareFill: number;
         // info-square.svg
         InfoSquare: number;
         // info.svg
         Info: number;
+        // intersect.svg
+        Intersect: number;
         // justify-left.svg
         JustifyLeft: number;
         // justify-right.svg
@@ -429,14 +721,48 @@ declare module 'gd-bs/icons' {
         Kanban: number;
         // laptop.svg
         Laptop: number;
+        // layers-fill.svg
+        LayersFill: number;
+        // layers-half.svg
+        LayersHalf: number;
+        // layers.svg
+        Layers: number;
+        // layout-sidebar-inset-reverse.svg
+        LayoutSidebarInsetReverse: number;
+        // layout-sidebar-inset.svg
+        LayoutSidebarInset: number;
         // layout-sidebar-reverse.svg
         LayoutSidebarReverse: number;
         // layout-sidebar.svg
         LayoutSidebar: number;
         // layout-split.svg
         LayoutSplit: number;
+        // layout-text-sidebar-reverse.svg
+        LayoutTextSidebarReverse: number;
+        // layout-text-sidebar.svg
+        LayoutTextSidebar: number;
+        // layout-text-window-reverse.svg
+        LayoutTextWindowReverse: number;
+        // layout-text-window.svg
+        LayoutTextWindow: number;
+        // layout-three-columns.svg
+        LayoutThreeColumns: number;
+        // layout-wtf.svg
+        LayoutWtf: number;
+        // life-preserver.svg
+        LifePreserver: number;
+        // lightning-fill.svg
+        LightningFill: number;
+        // lightning.svg
+        Lightning: number;
+        // link-45deg.svg
+        Link45deg: number;
+        // link.svg
+        Link: number;
         // list-check.svg
         ListCheck: number;
+        // list-nested.svg
+        ListNested: number;
         // list-ol.svg
         ListOl: number;
         // list-task.svg
@@ -451,32 +777,82 @@ declare module 'gd-bs/icons' {
         Lock: number;
         // map.svg
         Map: number;
+        // mic-fill.svg
+        MicFill: number;
+        // mic-mute-fill.svg
+        MicMuteFill: number;
+        // mic-mute.svg
+        MicMute: number;
         // mic.svg
         Mic: number;
         // moon.svg
         Moon: number;
+        // music-note-beamed.svg
+        MusicNoteBeamed: number;
+        // music-note-list.svg
+        MusicNoteList: number;
+        // music-note.svg
+        MusicNote: number;
         // music-player-fill.svg
         MusicPlayerFill: number;
         // music-player.svg
         MusicPlayer: number;
+        // newspaper.svg
+        Newspaper: number;
+        // octagon-fill.svg
+        OctagonFill: number;
+        // octagon-half.svg
+        OctagonHalf: number;
+        // octagon.svg
+        Octagon: number;
         // option.svg
         Option: number;
         // outlet.svg
         Outlet: number;
+        // paperclip.svg
+        Paperclip: number;
         // pause-fill.svg
         PauseFill: number;
         // pause.svg
         Pause: number;
         // pen.svg
         Pen: number;
+        // pencil-square.svg
+        PencilSquare: number;
         // pencil.svg
         Pencil: number;
+        // pentagon-fill.svg
+        PentagonFill: number;
+        // pentagon-half.svg
+        PentagonHalf: number;
+        // pentagon.svg
+        Pentagon: number;
+        // people-circle.svg
+        PeopleCircle: number;
         // people-fill.svg
         PeopleFill: number;
         // people.svg
         People: number;
+        // person-bounding-box.svg
+        PersonBoundingBox: number;
+        // person-check-fill.svg
+        PersonCheckFill: number;
+        // person-check.svg
+        PersonCheck: number;
+        // person-dash-fill.svg
+        PersonDashFill: number;
+        // person-dash.svg
+        PersonDash: number;
         // person-fill.svg
         PersonFill: number;
+        // person-lines-fill.svg
+        PersonLinesFill: number;
+        // person-plus-fill.svg
+        PersonPlusFill: number;
+        // person-plus.svg
+        PersonPlus: number;
+        // person-square.svg
+        PersonSquare: number;
         // person.svg
         Person: number;
         // phone-landscape.svg
@@ -487,18 +863,44 @@ declare module 'gd-bs/icons' {
         PieChartFill: number;
         // pie-chart.svg
         PieChart: number;
+        // pip-fill.svg
+        PipFill: number;
+        // pip.svg
+        Pip: number;
         // play-fill.svg
         PlayFill: number;
         // play.svg
         Play: number;
         // plug.svg
         Plug: number;
+        // plus-circle-fill.svg
+        PlusCircleFill: number;
+        // plus-circle.svg
+        PlusCircle: number;
+        // plus-square-fill.svg
+        PlusSquareFill: number;
+        // plus-square.svg
+        PlusSquare: number;
         // plus.svg
         Plus: number;
         // power.svg
         Power: number;
-        // question-fill.svg
-        QuestionFill: number;
+        // puzzle-fill.svg
+        PuzzleFill: number;
+        // puzzle.svg
+        Puzzle: number;
+        // question-circle-fill.svg
+        QuestionCircleFill: number;
+        // question-circle.svg
+        QuestionCircle: number;
+        // question-diamond-fill.svg
+        QuestionDiamondFill: number;
+        // question-diamond.svg
+        QuestionDiamond: number;
+        // question-octagon-fill.svg
+        QuestionOctagonFill: number;
+        // question-octagon.svg
+        QuestionOctagon: number;
         // question-square-fill.svg
         QuestionSquareFill: number;
         // question-square.svg
@@ -517,6 +919,8 @@ declare module 'gd-bs/icons' {
         Screwdriver: number;
         // search.svg
         Search: number;
+        // server.svg
+        Server: number;
         // shield-fill.svg
         ShieldFill: number;
         // shield-lock-fill.svg
@@ -531,6 +935,8 @@ declare module 'gd-bs/icons' {
         ShiftFill: number;
         // shift.svg
         Shift: number;
+        // shuffle.svg
+        Shuffle: number;
         // skip-backward-fill.svg
         SkipBackwardFill: number;
         // skip-backward.svg
@@ -547,6 +953,20 @@ declare module 'gd-bs/icons' {
         SkipStartFill: number;
         // skip-start.svg
         SkipStart: number;
+        // slash-circle-fill.svg
+        SlashCircleFill: number;
+        // slash-circle.svg
+        SlashCircle: number;
+        // slash-square-fill.svg
+        SlashSquareFill: number;
+        // slash-square.svg
+        SlashSquare: number;
+        // slash.svg
+        Slash: number;
+        // sliders.svg
+        Sliders: number;
+        // soundwave.svg
+        Soundwave: number;
         // speaker.svg
         Speaker: number;
         // square-fill.svg
@@ -569,6 +989,8 @@ declare module 'gd-bs/icons' {
         StopwatchFill: number;
         // stopwatch.svg
         Stopwatch: number;
+        // subtract.svg
+        Subtract: number;
         // sun.svg
         Sun: number;
         // table.svg
@@ -595,6 +1017,10 @@ declare module 'gd-bs/icons' {
         TextLeft: number;
         // text-right.svg
         TextRight: number;
+        // textarea-t.svg
+        TextareaT: number;
+        // textarea.svg
+        Textarea: number;
         // three-dots-vertical.svg
         ThreeDotsVertical: number;
         // three-dots.svg
@@ -611,6 +1037,10 @@ declare module 'gd-bs/icons' {
         TrashFill: number;
         // trash.svg
         Trash: number;
+        // trash2-fill.svg
+        Trash2Fill: number;
+        // trash2.svg
+        Trash2: number;
         // triangle-fill.svg
         TriangleFill: number;
         // triangle-half.svg
@@ -639,12 +1069,18 @@ declare module 'gd-bs/icons' {
         TypeUnderline: number;
         // type.svg
         Type: number;
+        // union.svg
+        Union: number;
         // unlock-fill.svg
         UnlockFill: number;
         // unlock.svg
         Unlock: number;
         // upload.svg
         Upload: number;
+        // view-list.svg
+        ViewList: number;
+        // view-stacked.svg
+        ViewStacked: number;
         // volume-down-fill.svg
         VolumeDownFill: number;
         // volume-down.svg
@@ -657,6 +1093,8 @@ declare module 'gd-bs/icons' {
         VolumeUpFill: number;
         // volume-up.svg
         VolumeUp: number;
+        // vr.svg
+        Vr: number;
         // wallet.svg
         Wallet: number;
         // watch.svg
@@ -671,6 +1109,10 @@ declare module 'gd-bs/icons' {
         XCircleFill: number;
         // x-circle.svg
         XCircle: number;
+        // x-diamond-fill.svg
+        XDiamondFill: number;
+        // x-diamond.svg
+        XDiamond: number;
         // x-octagon-fill.svg
         XOctagonFill: number;
         // x-octagon.svg
