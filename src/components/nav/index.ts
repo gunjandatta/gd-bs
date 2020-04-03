@@ -10,7 +10,7 @@ import * as HTMLVerticalTabs from "./tabsVertical.html";
  * Navigation
  * @param props - The navigation properties.
  */
-class _Nav extends Base<INavProps> {//implements INav {
+class _Nav extends Base<INavProps> implements INav {
     private _links: Array<NavLink> = null;
 
     // Constructor

@@ -33,7 +33,7 @@ export enum MediaOrderTypes {
 /**
  * Media
  */
-class _Media extends Base<IMediaProps> {//implements IMedia {
+class _Media extends Base<IMediaProps> implements IMedia {
     // Constructor
     constructor(props: IMediaProps) {
         super(HTML, props);

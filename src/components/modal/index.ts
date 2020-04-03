@@ -7,7 +7,7 @@ import * as HTML from "./index.html";
  * Modal
  * @param props The modal properties.
  */
-class _Modal extends Base<IModalProps> {//implements IModal {
+class _Modal extends Base<IModalProps> implements IModal {
     // Constructor
     constructor(props: IModalProps) {
         super(HTML, props);
@@ -35,13 +35,13 @@ class _Modal extends Base<IModalProps> {//implements IModal {
         this.props.isSmall ? dialog.classList.add("modal-sm") : null;
 
         // Update the title
-        let title = this.el.querySelector(".modal-title");
+        let title = dialog.querySelector(".modal-title");
         title.innerHTML = this.props.title || "";
 
         // See if we are hiding the close button
         if (this.props.hideCloseButton) {
             // Remove the close button
-            title.removeChild(title.querySelector("button.close"));
+            dialog.querySelector("button.close").remove();
         }
 
         // Update the body
