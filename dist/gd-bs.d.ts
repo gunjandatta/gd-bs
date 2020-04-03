@@ -3042,7 +3042,7 @@ declare module 'gd-bs/base' {
             configureParent(): Element;
     
             /** The component HTML element */
-            el: Element;
+            el: Element | HTMLElement;
     
             /** Hides the component. */
             hide(): void;

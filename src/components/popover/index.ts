@@ -30,8 +30,8 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
         // Configure the events
         this.configureEvents();
 
-        // Configure the parent
-        this.configureParent();
+        // Configure the parent, if the target wasn't specified
+        this.props.target ? null : this.configureParent();
     }
 
     // Configure the card group
@@ -94,7 +94,7 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
             }
 
             // Update this element
-            this["_el"] = popover as any;
+            this.el = popover as any;
         } else {
             // Create the button
             let btnProps = this.props.btnProps || {};
@@ -104,7 +104,7 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
             let button = Button(btnProps);
 
             // Update this element
-            this["_el"] = button.el as any;
+            this.el = button.el as any;
 
             // Set the popover title and content
             typeof (options.title) === "string" ? this.el.setAttribute("title", options.title) : null;

@@ -68,7 +68,8 @@ export class Base<IProps = IBaseProps> implements IBase<IProps> {
      */
 
     // The component element
-    get el(): HTMLDivElement { return this._el; }
+    get el() { return this._el; }
+    set el(el) { this._el = el; }
 
     // Hides the alert
     hide() {

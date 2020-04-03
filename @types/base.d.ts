@@ -6,7 +6,7 @@ export interface IBase<IProps = IBaseProps> {
     configureParent(): Element;
 
     /** The component HTML element */
-    el: Element;
+    el: Element | HTMLElement;
 
     /** Hides the component. */
     hide(): void;
