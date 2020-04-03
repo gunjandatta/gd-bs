@@ -1,6 +1,6 @@
 import { ISpinner, ISpinnerProps } from "../../../@types/components/spinner";
-import * as Common from "../common";
 import { Base } from "../base";
+import { ClassNames } from "../classNames";
 import * as HTML from "./index.html";
 
 /**
@@ -16,6 +16,20 @@ export enum SpinnerTypes {
     Success = 7,
     Warning = 8
 }
+
+/**
+ * Spinner Class Names
+ */
+export const SpinnerClassNames = new ClassNames([
+    "text-danger",
+    "text-dark",
+    "text-info",
+    "text-light",
+    "text-primary",
+    "text-secondary",
+    "text-success",
+    "text-warning"
+]);
 
 /**
  * Spinner
@@ -35,98 +49,23 @@ class _Spinner extends Base<ISpinnerProps> implements ISpinner {
 
     // Configure the card group
     private configure() {
-    }
-}
-export const Spinner = (props: ISpinnerProps): ISpinner => {
-    // Create the spinner
-    let spinner: HTMLDivElement = null;
-
-    // Create the spinner
-    spinner = document.createElement("div");
-
-    // Set the attributes
-    spinner.setAttribute("role", "status");
-
-    // Set the class names
-    spinner.className = props.className || "";
-    props.isGrowing ? spinner.classList.add("spinner-grow") : spinner.classList.add("spinner-border");
-    props.isSmall ? (props.isGrowing ? spinner.classList.add("spinner-grow-sm") : spinner.classList.add("spinner-border-sm")) : null;
-
-    // Read the type
-    switch (props.type) {
-        // Danger
-        case SpinnerTypes.Danger:
-            spinner.classList.add("text-danger");
-            break;
-        // Dark
-        case SpinnerTypes.Dark:
-            spinner.classList.add("text-dark");
-            break;
-        // Info
-        case SpinnerTypes.Info:
-            spinner.classList.add("text-info");
-            break;
-        // Light
-        case SpinnerTypes.Light:
-            spinner.classList.add("text-light");
-            break;
-        // Secondary
-        case SpinnerTypes.Secondary:
-            spinner.classList.add("text-secondary");
-            break;
-        // Success
-        case SpinnerTypes.Success:
-            spinner.classList.add("text-success");
-            break;
-        // Warning
-        case SpinnerTypes.Warning:
-            spinner.classList.add("text-warning");
-            break;
-        // Default - Primary
-        default:
-            spinner.classList.add("text-primary");
-            break;
-    }
-
-    // Set the loading text
-    if (props.text) {
-        // Create the span
-        let loadingText = document.createElement("span");
-        loadingText.classList.add("sr-only");
-        loadingText.innerHTML = props.text;
-
-        // Append the element
-        spinner.appendChild(loadingText);
-    }
-
-    // Create the element
-    let el = document.createElement("div");
-    el.appendChild(spinner);
-
-    // See if we are rendering it to an element
-    if (props.el) {
-        // Ensure the class list exists and it's not the body element
-        if (props.el.classList && props.el.tagName != "BODY") {
-            // Set the bootstrap class
-            props.el.classList.contains("bs") ? null : props.el.classList.add("bs");
+        // Set the class name
+        if (this.props.isGrowing) {
+            // Set the class
+            this.el.classList.add("spinner-grow" + (this.props.isSmall ? "-sm" : ""));
+        } else {
+            // Set the class
+            this.el.classList.add("spinner-border" + (this.props.isSmall ? "-sm" : ""));
         }
 
-        // Append the elements
-        while (el.children.length > 0) {
-            props.el.appendChild(el.children[0]);
+        // Set the class name
+        this.el.classList.add(SpinnerClassNames.getByType(this.props.type) || SpinnerClassNames.getByType(SpinnerTypes.Primary));
+
+        // See if text is defined
+        if (this.props.text) {
+            // Update the text
+            this.el.querySelector("span").innerHTML = this.props.text;
         }
-
-        // Update the element
-        el = props.el as any;
-    } else {
-        // Set the bootstrap class
-        el.classList.add("bs");
     }
-
-    // Return the spinner
-    return {
-        el: spinner,
-        hide: () => { Common.hide(spinner); },
-        show: () => { Common.show(spinner); }
-    };
 }
+export const Spinner = (props: ISpinnerProps): ISpinner => { return new _Spinner(props); }
