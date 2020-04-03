@@ -1,6 +1,7 @@
 import { IForm, IFormProps } from "../../../@types/components/form";
 import { IFormControl, IFormControlProps } from "../../../@types/components/formControl";
 import { Base } from "../base";
+import { FormControl as Control } from "./control";
 import { FormGroup } from "./group";
 import { FormRow } from "./row";
 import * as HTML from "./index.html";
@@ -132,15 +133,16 @@ export const Form = (props: IFormProps): IForm => { return new _Form(props); }
 /**
  * Form Control
  */
-export class FormControl {
-    private static _customTypes = {};
+export const FormControl = (props: IFormControlProps) => { return new Control(props); }
 
-    // Gets the event by type
-    static getByType(key: number): (props?: IFormControlProps) => void { return this._customTypes[key]; }
+// Custom Control Types
+FormControl["_customTypes"] = {};
 
-    // Registers a custom control type
-    static registerType(key: number, event: (props?: IFormControlProps) => void) { this._customTypes[key] = event; }
-}
+// Gets the event by type
+FormControl["getByType"] = (key: number): (props?: IFormControlProps) => void => { return FormControl["_customTypes"][key]; }
+
+// Registers a custom control type
+FormControl["registerType"] = (key: number, event: (props?: IFormControlProps) => void) => { FormControl["_customTypes"][key] = event; }
 
 /**
  * Form Control Types

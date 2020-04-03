@@ -242,7 +242,7 @@ export class FormControl implements IFormControl {
                 this._el = document.createElement("div");
 
                 // See if there is a custom type
-                let custom = CustomControls.getByType(this._props.type);
+                let custom = CustomControls["getByType"](this._props.type);
                 if (custom && typeof (custom) === "function") {
                     // Execute the event
                     custom(this._props);
