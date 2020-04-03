@@ -129,10 +129,13 @@
                 text: "Loading...",
                 type: GD.Components.SpinnerTypes.Danger
             });
+            var btnPopover = GD.Components.Button({
+                el: document.getElementById("popover"),
+                text: "Popover Demo",
+            });
             GD.Components.Popover({
                 el: document.getElementById("popover"),
-                isDismissible: true,
-                btnProps: { text: "Popover Demo" },
+                target: btnPopover.el,
                 options: {
                     content: "This is the content.",
                     container: "body",
@@ -142,7 +145,7 @@
             });
             GD.Components.Popover({
                 el: document.querySelector("#popover1"),
-                btnProps: { text: "Popover Demo" },
+                btnProps: { text: "Popover Demo", type: 3 },
                 isDismissible: true,
                 options: {
                     html: true,

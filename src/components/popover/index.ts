@@ -2,7 +2,6 @@ import * as jQuery from "jquery";
 import { Button } from "../button";
 import { IPopover, IPopoverProps } from "../../../@types/components/popover";
 import { Base } from "../base";
-import * as HTML from "./index.html";
 
 /**
  * Popover Types
@@ -18,13 +17,18 @@ export enum PopoverTypes {
 /**
  * Popover
  */
-class _Popover extends Base<IPopoverProps> {//implements IPopover {
+class _Popover extends Base<IPopoverProps> implements IPopover {
+    private _popovers: HTMLDivElement = null;
+
     // Constructor
     constructor(props: IPopoverProps) {
-        super(HTML, props);
+        super("", props);
 
         // Configure the collapse
         this.configure();
+
+        // Configure the events
+        this.configureEvents();
 
         // Configure the parent
         this.configureParent();
@@ -32,112 +36,108 @@ class _Popover extends Base<IPopoverProps> {//implements IPopover {
 
     // Configure the card group
     private configure() {
-    }
-}
-export const Popover = (props: IPopoverProps): IPopover => {
-    // Set the popover options
-    let options = props.options || {};
+        // Ensure the main popover element exists
+        // This will ensure the popovers are wrapped with a parent element with the "bs" class applied to it.
+        this._popovers = document.querySelector("#bs-popovers");
+        if (this._popovers == null) {
+            // Create the main element
+            this._popovers = document.createElement("div");
+            this._popovers.classList.add("bs");
+            this._popovers.id = "bs-popovers";
 
-    // Ensure the main popover element exists
-    // This will ensure the popovers are wrapped with a parent element with the "bs" class applied to it.
-    let elParent = document.querySelector("#bs-popovers");
-    if (elParent == null) {
-        // Create the main element
-        elParent = document.createElement("div");
-        elParent.classList.add("bs");
-        elParent.id = "bs-popovers";
-
-        // Add it to the page
-        document.body.appendChild(elParent)
-    }
-
-    // Set the options to target the main popover element
-    options.container = "#bs-popovers";
-
-    // See if the placement needs to be set
-    if (options.placement == null) {
-        // Set the type
-        switch (props.type) {
-            // Auto
-            case PopoverTypes.Auto:
-                options.placement = "auto";
-                break;
-            // Bottom
-            case PopoverTypes.Bottom:
-                options.placement = "bottom";
-                break;
-            // Left
-            case PopoverTypes.Left:
-                options.placement = "left";
-                break;
-            // Right
-            case PopoverTypes.Right:
-                options.placement = "right";
-                break;
-            // Top
-            case PopoverTypes.Top:
-                options.placement = "top";
-                break;
+            // Add it to the page
+            document.body.appendChild(this._popovers)
         }
-    }
 
-    // See if we are targeting an element
-    let popover: HTMLElement = null;
-    if (props.target) {
-        // Set the popover to the target element
-        popover = props.target as HTMLElement;
-        popover.setAttribute("tabindex", "0");
-        popover.setAttribute("toggle", "popover");
-        popover.setAttribute("trigger", "focus");
-    } else {
-        // Create the popover
-        let btnProps = props.btnProps || {};
-        btnProps.isLink = props.isDismissible ? true : false;
-        btnProps.toggle = "popover";
-        btnProps.trigger = "focus";
-        popover = Button(btnProps).el as HTMLElement;
+        // Set the options to target the main popover element
+        let options = this.props.options || {};
+        options.container = "#bs-popovers";
 
-        // Set the attributes
-        popover.setAttribute("tabindex", "0");
-        typeof (options.title) === "string" ? popover.setAttribute("title", options.title) : null;
-        typeof (options.content) === "string" ? popover.setAttribute("data-content", options.content) : null;
+        // See if the placement needs to be set
+        if (options.placement == null) {
+            // Set the type
+            switch (this.props.type) {
+                // Auto
+                case PopoverTypes.Auto:
+                    options.placement = "auto";
+                    break;
+                // Bottom
+                case PopoverTypes.Bottom:
+                    options.placement = "bottom";
+                    break;
+                // Left
+                case PopoverTypes.Left:
+                    options.placement = "left";
+                    break;
+                // Right
+                case PopoverTypes.Right:
+                    options.placement = "right";
+                    break;
+                // Top
+                case PopoverTypes.Top:
+                    options.placement = "top";
+                    break;
+            }
+        }
 
-        // Create the element
-        let el = document.createElement("div");
-        el.appendChild(popover);
+        // See if we are targeting an element
+        let popover: HTMLElement = null;
+        if (this.props.target) {
+            // Set the popover to the target element
+            popover = this.props.target as HTMLElement;
 
-        // See if we are rendering it to an element
-        if (props.el) {
-            // Ensure the class list exists and it's not the body element
-            if (props.el.classList && props.el.tagName != "BODY") {
-                // Set the bootstrap class
-                props.el.classList.contains("bs") ? null : props.el.classList.add("bs");
+            // See if this is dissmissible
+            if (this.props.isDismissible) {
+                popover.setAttribute("tabindex", "0");
+                popover.setAttribute("toggle", "popover");
+                popover.setAttribute("trigger", "focus");
             }
 
-            // Append the elements
-            while (el.children.length > 0) {
-                props.el.appendChild(el.children[0]);
-            }
-
-            // Update the element
-            el = props.el as any;
+            // Update this element
+            this["_el"] = popover as any;
         } else {
-            // Set the bootstrap class
-            el.classList.add("bs");
+            // Create the button
+            let btnProps = this.props.btnProps || {};
+            btnProps.isLink = this.props.isDismissible ? true : false;
+            btnProps.toggle = "popover";
+            this.props.isDismissible ? btnProps.trigger = "focus" : null;
+            let button = Button(btnProps);
+
+            // Update this element
+            this["_el"] = button.el as any;
+
+            // Set the popover title and content
+            typeof (options.title) === "string" ? this.el.setAttribute("title", options.title) : null;
+            typeof (options.content) === "string" ? this.el.setAttribute("data-content", options.content) : null;
         }
+
+        // Create the popover
+        jQuery(this.el).popover(options);
     }
 
-    // Create the popover
-    let $popover = jQuery(popover).popover(options);
+    // Configures the events
+    private configureEvents() {
+        // Set a click event
+        this.el.addEventListener("click", ev => {
+            // Prevent the page from moving to the top
+            ev.preventDefault();
+        });
+    }
 
-    // Return the popover
-    return {
-        dispose: () => { $popover.popover("dispose"); },
-        el: popover,
-        hide: () => { $popover.popover("hide"); },
-        show: () => { $popover.popover("show"); },
-        toggle: () => { $popover.popover("toggle"); },
-        toggleEnabled: () => { $popover.popover("toggleEnabled"); },
-        update: () => { $popover.popover("update"); }
-    };
+    /**
+     * Public Interface
+     */
+
+    // Disposes the popover
+    dispose() { jQuery(this.el).popover("dispose"); }
+
+    // Toggles the popover
+    toggle() { jQuery(this.el).popover("toggle"); }
+
+    // Enables toggling 
+    toggleEnabled() { jQuery(this.el).popover("toggleEnabled"); }
+
+    // Updates the popover
+    update() { jQuery(this.el).popover("update"); }
 }
+export const Popover = (props: IPopoverProps): IPopover => { return new _Popover(props); }
