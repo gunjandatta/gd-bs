@@ -13,6 +13,9 @@ export interface IProgress {
     /** Hides the progress. */
     hide: () => void;
 
+    /** The progress bar element */
+    progressBar: HTMLDivElement;
+
     /** Shows the progress. */
     show: () => void;
 }
