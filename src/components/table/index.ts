@@ -78,8 +78,8 @@ class _Table extends Base<ITableProps> implements ITable {
             // Add the click event
             column.addEventListener("click", ev => {
                 // Call the event
-                props.onClickHeader(column, props);
-                this.props.onClickHeader(column, props);
+                props.onClickHeader ? props.onClickHeader(column, props) : null;
+                this.props.onClickHeader ? this.props.onClickHeader(column, props) : null;
             });
         }
     }
@@ -101,13 +101,13 @@ class _Table extends Base<ITableProps> implements ITable {
         // See if there is an event for this column
         if (props.onRenderCell) {
             // Call the event
-            props.onRenderCell(cell, props, row);
+            props.onRenderCell(cell, props, data);
         }
 
         // See if there is an event for this component
         if (this.props.onRenderCell) {
             // Call the event
-            this.props.onRenderCell(cell, props, row);
+            this.props.onRenderCell(cell, props, data);
         }
 
         // See if there is a click event
@@ -115,8 +115,8 @@ class _Table extends Base<ITableProps> implements ITable {
             // Add the click event
             cell.addEventListener("click", ev => {
                 // Call the event
-                props.onClickCell(cell, props, row);
-                this.props.onClickCell(cell, props, row);
+                props.onClickCell ? props.onClickCell(cell, props, data) : null;
+                this.props.onClickCell ? this.props.onClickCell(cell, props, data) : null;
             });
         }
     }
