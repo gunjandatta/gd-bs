@@ -1961,15 +1961,20 @@ declare module 'gd-bs/components/formControl' {
     import { IInputGroup } from "gd-bs/components/inputGroup";
     
     /**
-        * Form Control
+        * Custom Controls
         */
-    export const FormControl: {
+    export const CustomControls: {
             // Gets the event by type
             getByType(key: number): (props?: IFormControlProps) => void;
     
             /** Registers a custom form control type. */
             registerType: (key: number, onRender: (props?: IFormControlProps) => void) => void;
     }
+    
+    /**
+        * Form Control
+        */
+    export const FormControl: (props: IFormControlProps) => IFormControl;
     
     /**
         * Form Control Types
