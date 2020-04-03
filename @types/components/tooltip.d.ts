@@ -61,10 +61,11 @@ export interface ITooltipOptions {
  * Tooltip Properties
  */
 export interface ITooltipProps {
-    btnProps?: IButtonProps;
+    btnType?: number;
     className?: string;
     el?: Element | HTMLElement;
     options?: ITooltipOptions;
+    text?: string;
     type?: number;
 }
 

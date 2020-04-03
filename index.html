@@ -36,6 +36,7 @@
         <div id="myForm"></div>
         <div id="panel"></div>
         <div id="badge"></div>
+        <div id="tooltip"></div>
         <div id="toolbar"></div>
         <div id="ddl"></div>
         <div id="button"></div>
@@ -103,6 +104,16 @@
                 // Update the text
                 btnLoading.setText("Click Me");
             }, 5000);
+
+            GD.Components.Tooltip({
+                el: document.getElementById("tooltip"),
+                btnType: 7,
+                text: "Tooltip",
+                options: {
+                    html: true,
+                    title: function () { var el = document.createElement("div"); el.innerHTML = "<h5>Test HTML</h5><p>This was done via JS</p>"; return el; }
+                }
+            });
 
             window["cbg"] = GD.Components.CheckboxGroup({
                 el: document.getElementById("cbGroup"),

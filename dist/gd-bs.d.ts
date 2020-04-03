@@ -941,7 +941,6 @@ declare module 'gd-bs/components/button' {
             isExpanded?: boolean;
             isLarge?: boolean;
             isLink?: boolean;
-            isOutline?: boolean;
             isSmall?: boolean;
             onClick?: (button?: IButtonProps, ev?: Event) => void;
             spinnerProps?: ISpinnerProps;
@@ -966,6 +965,15 @@ declare module 'gd-bs/components/button' {
             Secondary: number;
             Success: number;
             Warning: number;
+            OutlineDanger: number;
+            OutlineDark: number;
+            OutlineInfo: number;
+            OutlineLight: number;
+            OutlineLink: number;
+            OutlinePrimary: number;
+            OutlineSecondary: number;
+            OutlineSuccess: number;
+            OutlineWarning: number;
     }
 }
 
@@ -1255,6 +1263,7 @@ declare module 'gd-bs/components/checkboxGroup' {
             label?: string;
             name?: string;
             onChange?: (item: ICheckboxGroupItem) => void;
+            type?: number;
     }
     
     /**
@@ -1447,14 +1456,22 @@ declare module 'gd-bs/components/form' {
         * Form
         */
     export interface IForm {
+            /** The form controls */
             controls: Array<IFormControl>;
-            el: HTMLFormElement;
+    
+            /** The form element */
+            el: Element | HTMLElement;
+    
+            /** Gets a control by its name */
             getControl: (name: string) => IFormControl;
+    
+            /** Returns the form values */
             getValues: () => { [key: string]: any };
     
             /** Hides the form. */
             hide: () => void;
     
+            /** Validates the form */
             isValid: () => boolean;
     
             /** Shows the form. */
@@ -1466,6 +1483,7 @@ declare module 'gd-bs/components/form' {
         */
     export interface IFormColumn {
             control: IFormControlProps;
+            isAutoSized?: boolean;
             size?: number;
     }
     
@@ -1474,6 +1492,7 @@ declare module 'gd-bs/components/form' {
         */
     export interface IFormProps {
             className?: string;
+            controls?: Array<IFormControl>;
             el?: Element | HTMLElement,
             rowClassName?: string;
             rows?: Array<IFormRow>;
@@ -1490,8 +1509,6 @@ declare module 'gd-bs/components/form' {
             className?: string;
             isAutoSized?: boolean;
             isCentered?: boolean;
-            control?: IFormControlProps;
-            colSize?: number;
             columns?: Array<IFormColumn>;
     }
 }
@@ -1505,7 +1522,8 @@ declare module 'gd-bs/components/formControl' {
         * Form Control
         */
     export const FormControl: {
-            (control: IFormControlProps): IFormControl;
+            // Gets the event by type
+            getByType(key: number): (props?: IFormControlProps) => void;
     
             /** Registers a custom form control type. */
             registerType: (key: number, onRender: (props?: IFormControlProps) => void) => void;
@@ -1521,17 +1539,20 @@ declare module 'gd-bs/components/formControl' {
         */
     export interface IFormControl {
             el: HTMLElement;
-            get: () => ICheckboxGroup | IDropdown | IInputGroup;
+    
+            checkbox: ICheckboxGroup;
+    
+            control: ICheckboxGroup | IDropdown | IInputGroup;
+    
+            dropdown: IDropdown;
+    
             getValue: () => any;
     
-            /** Hides the form control. */
-            hide: () => void;
+            isValid: boolean;
     
-            /** Shows the form control. */
-            show: () => void;
-    
-            isValid: () => boolean;
             props: IFormControlProps;
+    
+            textbox: IInputGroup;
     }
     
     /**
@@ -1801,7 +1822,7 @@ declare module 'gd-bs/components/listGroup' {
             className?: string;
             colWidth?: number;
             el?: Element | HTMLElement;
-            enableFade?: boolean;
+            fadeTabs?: boolean;
             isFlush?: boolean;
             isTabs?: boolean;
             items?: Array<IListGroupItem>;
@@ -1874,12 +1895,11 @@ declare module 'gd-bs/components/modal' {
         * Modal Properties
         */
     export interface IModalProps {
-            body?: string;
-            button?: IButtonProps;
+            body?: string | Element;
             className?: string;
             el?: Element | HTMLElement;
             disableFade?: boolean;
-            footer?: string;
+            footer?: string | Element;
             hideCloseButton?: boolean;
             id?: string;
             isCentered?: boolean;
@@ -1925,8 +1945,8 @@ declare module 'gd-bs/components/nav' {
             className?: string;
             data?: any;
             el?: Element | HTMLElement;
-            enableFade?: boolean;
             enableFill?: boolean;
+            fadeTabs?: boolean;
             id?: string;
             items?: Array<INavLink>;
             isJustified?: boolean;
@@ -2060,7 +2080,6 @@ declare module 'gd-bs/components/pagination' {
             alignment?: number;
             className?: string;
             el?: Element;
-            icon?: string;
             isLarge?: boolean;
             isSmall?: boolean;
             label?: string;
@@ -2229,6 +2248,9 @@ declare module 'gd-bs/components/progress' {
             /** Hides the progress. */
             hide: () => void;
     
+            /** The progress bar element */
+            progressBar: HTMLDivElement;
+    
             /** Shows the progress. */
             show: () => void;
     }
@@ -2344,7 +2366,8 @@ declare module 'gd-bs/components/table' {
         */
     export interface ITable {
             addRows(rows: Array<any>);
-            el: HTMLTableElement;
+    
+            el: HTMLElement;
     
             /** Hides the table. */
             hide: () => void;
@@ -2411,15 +2434,14 @@ declare module 'gd-bs/components/toast' {
         * Toast Properties
         */
     export interface IToastProps {
-            bodyText?: string;
+            body?: string | Element;
             className?: string;
-            closeButtonHidden?: boolean;
-            closeButtonText?: string;
             data?: any;
             el?: Element | HTMLElement;
             headerImgClass?: string;
             headerImgSrc?: string;
             headerText?: string;
+            hideCloseButton?: boolean;
             mutedText?: string;
             options?: IToastOptions;
             onClick?: (el?: HTMLElement, data?: any) => void;
@@ -2544,10 +2566,11 @@ declare module 'gd-bs/components/tooltip' {
         * Tooltip Properties
         */
     export interface ITooltipProps {
-            btnProps?: IButtonProps;
+            btnType?: number;
             className?: string;
             el?: Element | HTMLElement;
             options?: ITooltipOptions;
+            text?: string;
             type?: number;
     }
     

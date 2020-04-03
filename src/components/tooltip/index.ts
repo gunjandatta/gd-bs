@@ -1,7 +1,7 @@
 import * as jQuery from "jquery";
-import { Button } from "../button";
 import { ITooltip, ITooltipProps } from "../../../@types/components/tooltip";
 import { Base } from "../base";
+import { ButtonClassNames } from "../button";
 import * as HTML from "./index.html";
 
 /**
@@ -30,100 +30,106 @@ class _Tooltip extends Base<ITooltipProps> {//implements ITooltip {
         this.configureParent();
     }
 
-    // Configure the card group
+    // Configure the tooltip
     private configure() {
-    }
-}
-export const Tooltip = (props: ITooltipProps): ITooltip => {
-    // Create the tooltip
-    let btnProps = props.btnProps || {};
-    btnProps.toggle = "tooltip";
-    let tooltip = Button(btnProps).el;
+        // Set the button text
+        this.el.innerHTML = this.props.text || "";
 
-    // Set the tooltip options
-    let options = props.options || {};
-
-    // Set the type
-    switch (props.type) {
-        // Auto
-        case TooltipTypes.Auto:
-            options.placement = "auto";
-            break;
-        // Bottom
-        case TooltipTypes.Bottom:
-            options.placement = "bottom";
-            break;
-        // Left
-        case TooltipTypes.Left:
-            options.placement = "left";
-            break;
-        // Right
-        case TooltipTypes.Right:
-            options.placement = "right";
-            break;
-        // Default - Top
-        default:
-            options.placement = "top";
-            break;
-    }
-
-    // Set the attributes
-    tooltip.setAttribute("title", options.title || "");
-    tooltip.setAttribute("data-placement", options.placement as string || "");
-
-    // Ensure the main tooltip element exists
-    // This will ensure the tooltips are wrapped with a parent element with the "bs" class applied to it.
-    let elParent = document.querySelector("#bs-tooltips");
-    if (elParent == null) {
-        // Create the main element
-        elParent = document.createElement("div");
-        elParent.classList.add("bs");
-        elParent.id = "bs-tooltips";
-
-        // Add it to the page
-        document.body.appendChild(elParent)
-    }
-
-    // Set the options to target the main tooltip element
-    options.container = "#bs-tooltips";
-
-    // Create the element
-    let el = document.createElement("div");
-    el.appendChild(tooltip);
-
-    // See if we are rendering it to an element
-    if (props.el) {
-        // Ensure the class list exists and it's not the body element
-        if (props.el.classList && props.el.tagName != "BODY") {
-            // Set the bootstrap class
-            props.el.classList.contains("bs") ? null : props.el.classList.add("bs");
+        // See if a type was defined
+        let className = ButtonClassNames.getByType(this.props.btnType);
+        if (className) {
+            // Add the class name
+            this.el.classList.add(className);
         }
 
-        // Append the elements
-        while (el.children.length > 0) {
-            props.el.appendChild(el.children[0]);
-        }
-
-        // Update the element
-        el = props.el as any;
-    } else {
-        // Set the bootstrap class
-        el.classList.add("bs");
+        // Configure the options
+        this.configureOptions();
     }
 
-    // Create the tooltip
-    let $tooltip = jQuery(tooltip);
-    $tooltip.tooltip(options);
+    // Configure the options
+    private configureOptions() {
+        // Update the options
+        let options = this.props.options || {};
 
-    // Return the tooltip
-    return {
-        dispose: () => { $tooltip.tooltip("dispose"); },
-        el: tooltip,
-        enable: () => { $tooltip.tooltip("enable"); },
-        hide: () => { $tooltip.tooltip("hide"); },
-        show: () => { $tooltip.tooltip("show"); },
-        toggle: () => { $tooltip.tooltip("toggle"); },
-        toggleEnabled: () => { $tooltip.tooltip("toggleEnabled"); },
-        update: () => { $tooltip.tooltip("update"); }
-    };
+        // See if a container was defined
+        if (typeof (options.container) !== "string") {
+            // Set the default container
+            options.container = "#bs-tooltips";
+
+            // Ensure the main tooltip element exists
+            // This will ensure the tooltips are wrapped with a parent element with the "bs" class applied to it.
+            let elParent = document.querySelector(options.container);
+            if (elParent == null) {
+                // Create the main element
+                elParent = document.createElement("div");
+                elParent.classList.add("bs");
+                elParent.id = "bs-tooltips";
+
+                // Add it to the page
+                document.body.appendChild(elParent)
+            }
+        }
+
+        // Set the type
+        switch (this.props.type) {
+            // Auto
+            case TooltipTypes.Auto:
+                options.placement = "auto";
+                break;
+            // Bottom
+            case TooltipTypes.Bottom:
+                options.placement = "bottom";
+                break;
+            // Left
+            case TooltipTypes.Left:
+                options.placement = "left";
+                break;
+            // Right
+            case TooltipTypes.Right:
+                options.placement = "right";
+                break;
+            // Default - Top
+            default:
+                options.placement = "top";
+                break;
+        }
+
+        // Set the attributes
+        this.el.setAttribute("data-placement", options.placement);
+
+        // See if the title is a string
+        if (typeof (options.title) === "string") {
+            // Set the attribute
+            this.el.setAttribute("title", options.title);
+        }
+
+        // Create the tooltip
+        jQuery(this.el).tooltip(options);
+    }
+
+    /**
+     * Public Interface
+     */
+
+    // Disposes the tooltip
+    dispose() { jQuery(this.el).tooltip("dispose"); }
+
+    // Enables the tooltip
+    enable() { jQuery(this.el).tooltip("enable"); }
+
+    // Hides the tooltip
+    hide() { jQuery(this.el).tooltip("hide"); }
+
+    // Shows the tooltip
+    show() { jQuery(this.el).tooltip("show"); }
+
+    // Toggles the tooltip
+    toggle() { jQuery(this.el).tooltip("toggle"); }
+
+    // Enables the toggle
+    toggleEnabled() { jQuery(this.el).tooltip("toggleEnabled"); }
+
+    // Updates the tooltip
+    update() { jQuery(this.el).tooltip("update"); }
 }
+export const Tooltip = (props: ITooltipProps): ITooltip => { return new _Tooltip(props); }
