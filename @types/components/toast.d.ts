@@ -21,15 +21,14 @@ export interface IToast {
  * Toast Properties
  */
 export interface IToastProps {
-    bodyText?: string;
+    body?: string | Element;
     className?: string;
-    closeButtonHidden?: boolean;
-    closeButtonText?: string;
     data?: any;
     el?: Element | HTMLElement;
     headerImgClass?: string;
     headerImgSrc?: string;
     headerText?: string;
+    hideCloseButton?: boolean;
     mutedText?: string;
     options?: IToastOptions;
     onClick?: (el?: HTMLElement, data?: any) => void;

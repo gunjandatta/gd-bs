@@ -18,7 +18,15 @@ export class Base<IProps = IBaseProps> implements IBase<IProps> {
         this._el = el.firstChild ? el.firstChild as HTMLDivElement : el;
 
         // Set the class names
-        el.className = this._props.className || "";
+        let classNames = (this._props.className || "").split(' ');
+        for (let i = 0; i < classNames.length; i++) {
+            // Ensure the class name exists
+            let className = classNames[i];
+            if (className) {
+                // Add the class
+                this._el.classList.add(className);
+            }
+        }
     }
 
     /**

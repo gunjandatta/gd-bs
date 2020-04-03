@@ -15,144 +15,101 @@ class _Toast extends Base<IToastProps> implements IToast {
         // Configure the collapse
         this.configure();
 
+        // Configure the events
+        this.configureEvents();
+
         // Configure the parent
         this.configureParent();
     }
 
     // Configure the card group
     private configure() {
-    }
-}
-export const Toast = (props: IToastProps): IToast => {
-    // Create the toast
-    let toast = document.createElement("div");
-    toast.setAttribute("aria-live", "assertive");
-    toast.setAttribute("aria-atomic", "true");
-    toast.setAttribute("role", "alert");
+        let header = this.el.querySelector(".toast-header");
 
-    // Set the class names
-    props.className ? toast.className = props.className : null;
-    toast.classList.add("toast");
-
-    // Create the header
-    let header = document.createElement("div");
-    header.classList.add("toast-header");
-    toast.appendChild(header);
-
-    // See if we are rendering an image
-    if (props.headerImgSrc) {
-        // Create the image
-        let img = document.createElement("img");
-        img.className = props.headerImgClass || "";
-        img.src = props.headerImgSrc;
-        header.appendChild(img);
-    }
-
-    // Set the header text
-    let headerText = document.createElement("strong");
-    headerText.classList.add("mr-auto");
-    headerText.innerHTML = props.headerText || "";
-    header.appendChild(headerText);
-
-    // See if there is muted text
-    if (props.mutedText) {
-        // Create the text
-        let mutedText = document.createElement("small");
-        mutedText.classList.add("text-muted");
-        mutedText.innerHTML = props.mutedText;
-        header.appendChild(mutedText);
-    }
-
-    // See if we are creating the close button
-    if (props.closeButtonHidden != true) {
-        // Set the close button text
-        let btnText = document.createElement("small");
-        btnText.innerHTML = props.closeButtonText || "";
-        header.appendChild(btnText);
-
-        // Create the close button
-        let btnClose = document.createElement("button");
-        btnClose.className = "ml-2 mb-1 close";
-        btnClose.type = "button";
-        btnClose.setAttribute("data-dismiss", "toast");
-        btnClose.setAttribute("aria-label", "Close");
-        header.appendChild(btnClose);
-
-        // Set the close button
-        btnText = document.createElement("span");
-        btnText.setAttribute("aria-hidden", "true");
-        btnText.innerHTML = "&times;";
-        btnClose.appendChild(btnText);
-    }
-
-    // Create the body
-    let body = document.createElement("div");
-    body.classList.add("toast-body");
-    body.innerHTML = props.bodyText || "";
-    toast.appendChild(body);
-
-    // See if the render events exist
-    props.onRenderHeader ? props.onRenderHeader(header, props.data) : null;
-    props.onRenderBody ? props.onRenderBody(body, props.data) : null;
-
-    // See if the click event exists
-    if (props.onClick) {
-        // Set the click event
-        toast.addEventListener("click", () => {
-            // Execute the click event
-            props.onClick(toast, props.data);
-        });
-    }
-
-    // Create the element
-    let el = document.createElement("div");
-    el.appendChild(toast);
-
-    // See if we are rendering it to an element
-    if (props.el) {
-        // Ensure the class list exists and it's not the body element
-        if (props.el.classList && props.el.tagName != "BODY") {
-            // Set the bootstrap class
-            props.el.classList.contains("bs") ? null : props.el.classList.add("bs");
+        // See if we are rendering an image
+        let img = header.querySelector("img");
+        if (this.props.headerImgSrc) {
+            // Create the image
+            img.className = this.props.headerImgClass || "";
+            img.src = this.props.headerImgSrc;
+        } else {
+            // Remove the image
+            img.remove();
         }
 
-        // Append the elements
-        while (el.children.length > 0) {
-            props.el.appendChild(el.children[0]);
+        // See if header text is defined
+        let headerText = header.querySelector("strong");
+        if (this.props.headerText) {
+            // Update the header text
+            headerText.innerHTML = this.props.headerText;
+        } else {
+            // Remove the header
+            headerText.remove();
         }
 
-        // Update the element
-        el = props.el as any;
-    } else {
-        // Set the bootstrap class
-        el.classList.add("bs");
+        // See if muted text is defined
+        let mutedText = header.querySelector("small");
+        if (this.props.mutedText) {
+            // Create the text
+            mutedText.innerHTML = this.props.mutedText;
+        } else {
+            // Remove the element
+            mutedText.remove();
+        }
+
+        // See if we are creating the close button
+        let closeButton = header.querySelector("button");
+        if (this.props.hideCloseButton) {
+            // Remove the button
+            closeButton.remove();
+        }
+
+        // Update the body
+        let body = this.el.querySelector(".toast-body");
+        let content = this.props.body || "";
+        if (typeof (content) === "string") {
+            // Set the html
+            body.innerHTML = content;
+        } else {
+            // Append the element
+            body.appendChild(content);
+        }
+
+        // Initialize the toast component
+        let options = this.props.options || {};
+        jQuery(this.el).toast(options);
+
+        // See if we are showing this toast
+        if (options.autohide == false) {
+            // Show the toast
+            this.show();
+        }
     }
 
-    // Method to hide the toast
-    let hide = () => {
-        // Remove the show class
-        toast.classList.remove("show");
+    // Configures the events
+    private configureEvents() {
+        // Execute the render events
+        this.props.onRenderHeader ? this.props.onRenderHeader(this.el.querySelector(".toast-header"), this.props.data) : null;
+        this.props.onRenderBody ? this.props.onRenderBody(this.el.querySelector(".toast-body"), this.props.data) : null;
 
-        // Add the hide class
-        toast.classList.add("hide");
-    };
-
-    // Method to show the toast
-    let show = () => {
-        // Remove the hide class
-        toast.classList.remove("hide");
-
-        // Add the show class
-        toast.classList.add("show");
+        // See if the click event exists
+        if (this.props.onClick) {
+            // Set the click event
+            this.el.addEventListener("click", () => {
+                // Execute the click event
+                this.props.onClick(this.el, this.props.data);
+            });
+        }
     }
 
-    // Initialize the toast component
-    jQuery(toast).toast(props.options);
+    /**
+     * Public Interface
+     */
 
-    // Return the toast component
-    return {
-        el: toast,
-        hide,
-        show
-    };
+    // Hides the toast
+    hide() { jQuery(this.el).toast("hide"); }
+
+    // Shows the toast
+    show() { jQuery(this.el).toast("show"); }
 }
+export const Toast = (props: IToastProps): IToast => { return new _Toast(props); }
