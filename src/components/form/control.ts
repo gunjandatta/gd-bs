@@ -5,7 +5,8 @@ import { IFormControl, IFormControlProps, IFormControlPropsCheckbox, IFormContro
 import { CheckboxGroup, CheckboxGroupTypes } from "../checkboxGroup";
 import { Dropdown } from "../dropdown";
 import { InputGroup, InputGroupTypes } from "../inputGroup";
-import { FormControl as CustomControls, FormControlTypes } from "./index";
+import { CustomControls } from "./custom";
+import { FormControlTypes } from ".";
 
 /**
  * Form Control
@@ -242,7 +243,7 @@ export class FormControl implements IFormControl {
                 this._el = document.createElement("div");
 
                 // See if there is a custom type
-                let custom = CustomControls["getByType"](this._props.type);
+                let custom = CustomControls.getByType(this._props.type);
                 if (custom && typeof (custom) === "function") {
                     // Execute the event
                     custom(this._props);
