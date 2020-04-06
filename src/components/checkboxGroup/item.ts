@@ -37,7 +37,24 @@ export class CheckboxItem {
         let checkbox = this._el.querySelector("input");
         checkbox.disabled = this._props.isDisabled ? true : false;
         checkbox.title = this._parent.title || "";
-        this._parent.isInline ? checkbox.classList.add("form-check-inline") : null;
+
+        // See if the inline flag is set
+        if (this._parent.isInline) {
+            switch (this._props.type || this._parent.type) {
+                case CheckboxGroupTypes.Checkbox:
+                    // Set the class name
+                    this._el.classList.add("form-check-inline");
+                    break;
+                case CheckboxGroupTypes.Radio:
+                    // Set the class name
+                    this._el.classList.add("custom-control-inline");
+                    break;
+                case CheckboxGroupTypes.Switch:
+                    // Set the class name
+                    this._el.classList.add("custom-control-inline");
+                    break;
+            }
+        }
 
         // Set the label
         let label = this._el.querySelector("label");
