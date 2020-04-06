@@ -158,6 +158,9 @@ class _Navbar extends Base<INavbarProps> implements INavbar {
                 let className = ButtonClassNames.getByType(props.btnType);
                 className ? button.classList.add(className) : null;
             }
+        } else {
+            // Remove the searchbox
+            search.remove();
         }
     }
 
