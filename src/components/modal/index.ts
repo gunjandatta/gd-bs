@@ -73,6 +73,16 @@ class _Modal extends Base<IModalProps> implements IModal {
         this.props.onRenderBody ? this.props.onRenderBody(this.el.querySelector(".modal-body")) : null;
         this.props.onRenderFooter ? this.props.onRenderFooter(this.el.querySelector(".modal-footer")) : null;
 
+        // Get the close button
+        let elClose = this.el.querySelector("button.close");
+        if (elClose) {
+            // Add a click event
+            elClose.addEventListener("click", () => {
+                // Hide the modal
+                this.hide();
+            });
+        }
+
         // See if there is a close event
         if (this.props.onClose) {
             // Add a hidden event
@@ -94,12 +104,45 @@ class _Modal extends Base<IModalProps> implements IModal {
     handleUpdate() { jQuery(this.el).modal("handleUpdate"); }
 
     // Hides the modal
-    hide() { if (this.el.classList.contains("show")) { this.toggle(); } }
+    hide() {
+        // See if the modal exists
+        if (jQuery(this.el).modal) {
+            jQuery(this.el).modal("hide");
+        } else {
+            // Update the modal
+            this.el.classList.remove("show");
+            this.el.style.display = "";
+        }
+    }
 
     // Shows the modal
-    show() { jQuery(this.el).modal("show"); }
+    show() {
+        // See if the modal exists
+        if (jQuery(this.el).modal) {
+            jQuery(this.el).modal("show");
+        } else {
+            // Update the modal
+            this.el.classList.add("show");
+            this.el.style.display = "block";
+
+        }
+    }
 
     // Toggles the modal
-    toggle() { jQuery(this.el).modal("toggle"); }
+    toggle() {
+        // See if the modal exists
+        if (jQuery(this.el).modal) {
+            jQuery(this.el).modal("toggle");
+        } else {
+            // See if it's visible
+            if (this.el.classList.contains("show")) {
+                // Hide it
+                this.hide();
+            } else {
+                // Show it
+                this.show();
+            }
+        }
+    }
 }
 export const Modal = (props: IModalProps): IModal => { return new _Modal(props); }

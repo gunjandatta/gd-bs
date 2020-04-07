@@ -77,6 +77,19 @@ class _Panel extends Base<IPanelProps> implements IPanel {
      * Public Interface
      */
 
+    // Disposes the modal
+    dispose() { return this._modal.dispose(); }
+
+    // Hides the modal
+    hide() { return this._modal.hide(); }
+
+    // Returns the modal
     get modal() { return this._modal; }
+
+    // Shows the modal
+    show() { return this._modal.show(); }
+
+    // Toggles the modal
+    toggle() { return this._modal.toggle(); }
 }
 export const Panel = (props: IPanelProps): IPanel => { return new _Panel(props); }
