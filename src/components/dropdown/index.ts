@@ -303,6 +303,16 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
             // Add the item to the menu
             menu.appendChild(item.el);
         }
+
+        // See if this is a form
+        if (isForm) {
+            // Ensure the selected values match the index
+            let idx = (menu as HTMLSelectElement).selectedIndex;
+            if (this._items[idx] && this._items[idx].isSelected == false) {
+                // Select the item
+                this._items[idx].toggle();
+            }
+        }
     }
 
     /**
