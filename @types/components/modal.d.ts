@@ -21,6 +21,9 @@ export interface IModal {
     /** Manually hides a modal. */
     hide: () => void;
 
+    /** Updates the title. */
+    setTitle: (title: string) => void;
+
     /** Manually opens a modal. */
     show: () => void;
 

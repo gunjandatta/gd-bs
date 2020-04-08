@@ -35,8 +35,7 @@ class _Modal extends Base<IModalProps> implements IModal {
         this.props.isSmall ? dialog.classList.add("modal-sm") : null;
 
         // Update the title
-        let title = dialog.querySelector(".modal-title");
-        title.innerHTML = this.props.title || "";
+        this.setTitle(this.props.title);
 
         // See if we are hiding the close button
         if (this.props.hideCloseButton) {
@@ -113,6 +112,15 @@ class _Modal extends Base<IModalProps> implements IModal {
             this.el.classList.remove("show");
             this.el.style.display = "";
         }
+    }
+
+    // Updates the title
+    setTitle(title: string) {
+        // Get the title
+        let elTitle = this.el.querySelector(".modal-title");
+
+        // Set the text
+        elTitle.innerHTML = title || "";
     }
 
     // Shows the modal

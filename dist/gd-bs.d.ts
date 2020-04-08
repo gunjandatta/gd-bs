@@ -2314,6 +2314,9 @@ declare module 'gd-bs/components/modal' {
             /** Manually hides a modal. */
             hide: () => void;
     
+            /** Updates the title. */
+            setTitle: (title: string) => void;
+    
             /** Manually opens a modal. */
             show: () => void;
     
