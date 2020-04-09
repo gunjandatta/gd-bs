@@ -1691,6 +1691,9 @@ declare module 'gd-bs/components/checkboxGroup' {
             /** Hides the checkbox group. */
             hide: () => void;
     
+            /** Sets the dropdown value. */
+            setValue: (value: string | Array<string>) => void;
+    
             /** Shows the checkbox group. */
             show: () => void;
     }

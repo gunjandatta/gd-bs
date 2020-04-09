@@ -124,5 +124,33 @@ class _CheckboxGroup extends Base<ICheckboxGroupProps> implements ICheckboxGroup
         // Return the values
         return this.props.multi ? values : values[0];
     }
+
+    // Method to set the value
+    // Sets the dropdown value
+    setValue(value) {
+        // Ensure it's an array
+        let values = typeof (value.length) === "number" && typeof (value) !== "string" ? value : [value];
+
+        // Parse the items
+        for (let i = 0; i < this._checkboxes.length; i++) {
+            let checkbox = this._checkboxes[i];
+
+            // Toggle checked items
+            checkbox.isChecked ? checkbox.toggle() : null;
+        }
+
+        // Parse the values
+        for (let i = 0; i < values.length; i++) {
+            let value = values[i];
+
+            // Parse the items
+            for (let j = 0; j < this._checkboxes.length; j++) {
+                let checkbox = this._checkboxes[j];
+
+                // Select this checkbox if the label matches
+                checkbox.props.label == value ? checkbox.toggle() : null;
+            }
+        }
+    }
 }
 export const CheckboxGroup = (props: ICheckboxGroupProps): ICheckboxGroup => { return new _CheckboxGroup(props); }
