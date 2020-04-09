@@ -359,6 +359,49 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
         this.renderItems();
     }
 
+    // Sets the dropdown value
+    setValue(value) {
+        // Ensure it's an array
+        let values = typeof (value.length) === "number" && typeof (value) !== "string" ? value : [value];
+
+        // Parse the items
+        for (let i = 0; i < this._items.length; i++) {
+            let item = this._items[i];
+
+            // Toggle checked items
+            item.isSelected ? item.toggle() : null;
+        }
+
+        // Parse the values
+        for (let i = 0; i < values.length; i++) {
+            let value = values[i];
+
+            // Parse the items
+            for (let j = 0; j < this._items.length; j++) {
+                let item = this._items[j];
+
+                // See if this is the target item
+                if (typeof (item.props.value) === "undefined") {
+                    // Select this item if the text matches
+                    item.props.text == value ? item.toggle() : null;
+                } else {
+                    // Select this item if the value matches
+                    item.props.value == value ? item.toggle() : null;
+                }
+            }
+        }
+
+        // See if this is a form
+        let ddl = this.el.querySelector("select");
+        if (ddl) {
+            // Ensure the selected values match the index
+            if (this._items[ddl.selectedIndex] && this._items[ddl.selectedIndex].isSelected == false) {
+                // Select the item
+                this._items[ddl.selectedIndex].toggle();
+            }
+        }
+    }
+
     // Toggles the menu
     toggle() { jQuery(this.el).dropdown("toggle"); }
 

@@ -1821,6 +1821,9 @@ declare module 'gd-bs/components/dropdown' {
             /** Updates the dropdown items. */
             setItems: (items: Array<IDropdownItem>) => void;
     
+            /** Sets the dropdown value. */
+            setValue: (value: any | Array<any>) => void;
+    
             /** Shows the dropdown. */
             show: () => void;
     
