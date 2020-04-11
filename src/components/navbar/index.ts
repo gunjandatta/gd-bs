@@ -59,24 +59,30 @@ class _Navbar extends Base<INavbarProps> implements INavbar {
         toggler.setAttribute("data-target", "#" + navbar.id);
 
         // Add the classes based on the type
+        let btnSearch = this.el.querySelector("button[type='search']") as HTMLButtonElement;
         switch (this.props.type) {
             // Dark
             case NavbarTypes.Dark:
                 // Add the class
                 this.el.classList.add("navbar-dark");
                 this.el.classList.add("bg-dark");
+                btnSearch.classList.add("btn-outline-info")
                 break;
+
             // Primary
             case NavbarTypes.Primary:
                 // Add the class
                 this.el.classList.add("navbar-dark");
                 this.el.classList.add("bg-primary");
+                btnSearch.classList.add("btn-outline-light")
                 break;
+
             // Default - Light
             default:
                 // Add the class
                 this.el.classList.add("navbar-light");
                 this.el.classList.add("bg-light");
+                btnSearch.classList.add("btn-outline-primary")
                 break;
         }
 
