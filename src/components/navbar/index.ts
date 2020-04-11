@@ -59,7 +59,7 @@ class _Navbar extends Base<INavbarProps> implements INavbar {
         toggler.setAttribute("data-target", "#" + navbar.id);
 
         // Add the classes based on the type
-        let btnSearch = this.el.querySelector("button[type='search']") as HTMLButtonElement;
+        let btnSearch = this.el.querySelector("button[type='submit']") as HTMLButtonElement;
         switch (this.props.type) {
             // Dark
             case NavbarTypes.Dark:
