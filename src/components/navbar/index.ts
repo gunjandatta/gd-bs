@@ -129,8 +129,8 @@ class _Navbar extends Base<INavbarProps> implements INavbar {
                 // Edge has a bug where the clear event isn't triggered
                 // See if this is the Edge browser
                 if (window.navigator.userAgent.indexOf("Edge") > 0) {
-                    // Add a click event
-                    searchbox.addEventListener("click", () => {
+                    // Detect the mouse click event
+                    searchbox.addEventListener("mouseup", () => {
                         let currentValue = searchbox.value;
 
                         // Set a timeout to see if the value is cleared
