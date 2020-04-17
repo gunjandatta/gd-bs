@@ -9,6 +9,12 @@ export const Form: (props: IFormProps) => IForm;
  * Form
  */
 export interface IForm {
+    /** Appends controls to the form */
+    appendControls(controls: Array<IFormControl>);
+
+    /** Appends rows to the form */
+    appendRows(rows: Array<IFormRow>);
+
     /** The form controls */
     controls: Array<IFormControl>;
 

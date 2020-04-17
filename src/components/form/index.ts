@@ -1,4 +1,4 @@
-import { IForm, IFormProps } from "../../../@types/components/form";
+import { IForm, IFormProps, IFormRow } from "../../../@types/components/form";
 import { IFormControl, IFormControlProps } from "../../../@types/components/formControl";
 import { Base } from "../base";
 import { FormControl as Control } from "./control";
@@ -32,17 +32,31 @@ class _Form extends Base<IFormProps> implements IForm {
         this._groups = [];
         this._rows = [];
 
+        // Append the controls
+        this.appendControls(this.props.controls)
+
+        // Append the rows
+        this.appendRows(this.props.rows);
+    }
+
+    /**
+     * Public Interface
+     */
+
+    // Append controls to the form
+    appendControls(controls: Array<IFormControl> = []) {
         // Parse the controls
-        let controls = this.props.controls || [];
         for (let i = 0; i < controls.length; i++) {
             // Create the group
             let group = new FormGroup(controls[i]);
             this._groups.push(group);
             this.el.appendChild(group.el);
         }
+    }
 
+    // Append rows to the form
+    appendRows(rows: Array<IFormRow> = []) {
         // Parse the rows
-        let rows = this.props.rows || [];
         for (let i = 0; i < rows.length; i++) {
             // Create the row
             let row = new FormRow(rows[i], this.props);
@@ -50,10 +64,6 @@ class _Form extends Base<IFormProps> implements IForm {
             this.el.appendChild(row.el);
         }
     }
-
-    /**
-     * Public Interface
-     */
 
     // The forms controls
     get controls() {
