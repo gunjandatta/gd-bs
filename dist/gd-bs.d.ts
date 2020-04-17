@@ -1905,7 +1905,7 @@ declare module 'gd-bs/components/form' {
         */
     export interface IForm {
             /** Appends controls to the form */
-            appendControls(controls: Array<IFormControl>);
+            appendControls(controls: Array<IFormControlProps>);
     
             /** Appends rows to the form */
             appendRows(rows: Array<IFormRow>);
@@ -1946,7 +1946,7 @@ declare module 'gd-bs/components/form' {
         */
     export interface IFormProps {
             className?: string;
-            controls?: Array<IFormControl>;
+            controls?: Array<IFormControlProps>;
             el?: Element | HTMLElement,
             rowClassName?: string;
             rows?: Array<IFormRow>;

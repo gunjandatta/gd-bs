@@ -44,7 +44,7 @@ class _Form extends Base<IFormProps> implements IForm {
      */
 
     // Append controls to the form
-    appendControls(controls: Array<IFormControl> = []) {
+    appendControls(controls: Array<IFormControlProps> = []) {
         // Parse the controls
         for (let i = 0; i < controls.length; i++) {
             // Create the group

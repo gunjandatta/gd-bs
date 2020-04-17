@@ -10,7 +10,7 @@ export const Form: (props: IFormProps) => IForm;
  */
 export interface IForm {
     /** Appends controls to the form */
-    appendControls(controls: Array<IFormControl>);
+    appendControls(controls: Array<IFormControlProps>);
 
     /** Appends rows to the form */
     appendRows(rows: Array<IFormRow>);
@@ -51,7 +51,7 @@ export interface IFormColumn {
  */
 export interface IFormProps {
     className?: string;
-    controls?: Array<IFormControl>;
+    controls?: Array<IFormControlProps>;
     el?: Element | HTMLElement,
     rowClassName?: string;
     rows?: Array<IFormRow>;
