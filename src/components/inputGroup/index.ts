@@ -85,7 +85,7 @@ class _InputGroup extends Base<IInputGroupProps> implements IInputGroup {
             // Add the button
             appendedButtons.push({
                 id: "range-value",
-                text: this.props.value || ""
+                text: this.props.value == null ? "" : this.props.value
             });
         }
 
