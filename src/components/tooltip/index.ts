@@ -33,7 +33,7 @@ class _Tooltip extends Base<ITooltipProps> {//implements ITooltip {
     // Configure the tooltip
     private configure() {
         // Set the button text
-        this.el.innerHTML = this.props.text || "";
+        this.el.innerHTML = this.props.text == null ? "" : this.props.text;
 
         // See if a type was defined
         let className = ButtonClassNames.getByType(this.props.btnType);

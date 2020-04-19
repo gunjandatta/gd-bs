@@ -43,10 +43,10 @@ export class BreadcrumbItem {
         if (this._elLink) {
             // Configure the link
             this._elLink.href = this._props.href;
-            this._elLink.innerHTML = this._props.text || "";
+            this._elLink.innerHTML = this._props.text == null ? "" : this._props.text;
         } else {
             // Configure the item
-            this._el.innerHTML = this._props.text || "";
+            this._el.innerHTML = this._props.text == null ? "" : this._props.text;
         }
     }
 

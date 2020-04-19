@@ -86,7 +86,7 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
     // Configures the dropdown
     private configureDefault() {
         // Set the attributes
-        this.el.title = this.props.title || "";
+        this.el.title = this.props.title == null ? "" : this.props.title;
         this.props.dropLeft ? this.el.classList.add("dropleft") : null;
         this.props.dropRight ? this.el.classList.add("dropright") : null;
         this.props.dropUp ? this.el.classList.add("dropup") : null;
@@ -100,14 +100,14 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
             let label = this.el.querySelector("button");
             label.classList.add(btnType);
             label.disabled = this.props.isReadonly ? true : false;
-            label.innerHTML = this.props.label || "";
+            label.innerHTML = this.props.label == null ? "" : this.props.label;
 
             // Set the click event to disable the postback
             label.addEventListener("click", ev => { ev.preventDefault(); });
         } else {
             // Update the label
             let label = this.el.querySelector(".dropdown-toggle");
-            label.innerHTML = this.props.label || "";
+            label.innerHTML = this.props.label == null ? "" : this.props.label;
         }
 
         // Update the dropdown
@@ -210,7 +210,7 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
     private configureForm() {
         // Update the label
         let label = this.el.querySelector("label");
-        label.innerHTML = this.props.label || "";
+        label.innerHTML = this.props.label == null ? "" : this.props.label;
 
         // Update the dropdown
         let dropdown = this.el.querySelector("select");
@@ -218,7 +218,7 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
         dropdown.classList.add("form-control");
         dropdown.disabled = this.props.isReadonly ? true : false;
         dropdown.multiple = this.props.multi ? true : false;
-        dropdown.title = this.props.title || "";
+        dropdown.title = this.props.title == null ? "" : this.props.title;
     }
 
     // Configure the item events
@@ -260,10 +260,10 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
     private configureNavBar() {
         // Update the link
         let link = this.el.querySelector("a");
-        link.id = "navbarDDL_" + (this.props.label || "");
-        link.title = this.props.title || "";
+        link.id = "navbarDDL_" + (this.props.label == null ? "" : this.props.label);
+        link.title = this.props.title == null ? "" : this.props.title;
         this.props.isReadonly ? link.setAttribute("aria-disabled", "true") : null;
-        link.innerHTML = this.props.label || "";
+        link.innerHTML = this.props.label == null ? "" : this.props.label;
 
         // See if we are rendering the menu only
         let menu = this.el.querySelector(".dropdown-menu");

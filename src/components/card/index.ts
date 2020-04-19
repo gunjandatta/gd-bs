@@ -26,9 +26,9 @@ class _Card extends Base<ICardProps> implements ICard {
         if (this.props.imgTop) {
             // Add the top image
             let img = document.createElement("img");
-            img.alt = this.props.imgTop.alt || "";
+            img.alt = this.props.imgTop.alt == null ? "" : this.props.imgTop.alt;
             img.className = "card-img-top";
-            img.src = this.props.imgTop.src || "";
+            img.src = this.props.imgTop.src == null ? "" : this.props.imgTop.src;
             this.el.appendChild(img);
         }
 
@@ -45,9 +45,9 @@ class _Card extends Base<ICardProps> implements ICard {
         if (this.props.imgBottom) {
             // Add the bottom image
             let img = document.createElement("img");
-            img.alt = this.props.imgBottom.alt || "";
+            img.alt = this.props.imgBottom.alt == null ? "" : this.props.imgBottom.alt;
             img.className = "card-img-bottom";
-            img.src = this.props.imgBottom.src || "";
+            img.src = this.props.imgBottom.src == null ? "" : this.props.imgBottom.src;
             this.el.appendChild(img);
         }
     }
@@ -88,7 +88,7 @@ class _Card extends Base<ICardProps> implements ICard {
                 this.el.appendChild(header);
 
                 // Set the content
-                let content = this.props.header.content || "";
+                let content = this.props.header.content == null ? "" : this.props.header.content;
                 if (typeof (content) === "string") {
                     // Set the html
                     header.innerHTML = content;
@@ -111,7 +111,7 @@ class _Card extends Base<ICardProps> implements ICard {
             this.el.appendChild(footer);
 
             // Set the content
-            let content = this.props.footer.content || "";
+            let content = this.props.footer.content == null ? "" : this.props.footer.content;
             if (typeof (content) === "string") {
                 // Set the html
                 footer.innerHTML = content;

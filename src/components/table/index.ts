@@ -89,7 +89,7 @@ class _Table extends Base<ITableProps> implements ITable {
         // Create the cell
         let cell = document.createElement("td");
         cell.className = props.className || "";
-        cell.innerHTML = data[props.name] || "";
+        cell.innerHTML = data[props.name] == null ? "" : data[props.name];
         row.appendChild(cell);
 
         // See if there is a scope
@@ -171,7 +171,8 @@ class _Table extends Base<ITableProps> implements ITable {
         let body = this.el.querySelector("tbody");
         while (++idx < body.children.length) {
             let elRow = body.children[idx] as HTMLTableRowElement;
-            let value = ((elRow.children[colIdx] as HTMLTableDataCellElement).innerText || "").toLowerCase();
+            let text = (elRow.children[colIdx] as HTMLTableDataCellElement).innerText;
+            let value = (text == null ? "" : text).toString().toLowerCase();
 
             // Loop through the previous items
             let counter = idx;

@@ -43,7 +43,7 @@ class _Navbar extends Base<INavbarProps> implements INavbar {
         if (this.props.brand) {
             // Update the brand
             this.props.brandUrl ? brand.href = this.props.brandUrl : null;
-            brand.innerHTML = this.props.brand || "";
+            brand.innerHTML = this.props.brand == null ? "" : this.props.brand;
         } else {
             // Remove the brand
             this.el.removeChild(brand);

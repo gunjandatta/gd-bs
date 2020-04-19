@@ -146,7 +146,7 @@ class _Media extends Base<IMediaProps> implements IMedia {
             // Set the properties
             image.alt = this.props.image.alt;
             image.className = this.props.image.className || "";
-            image.src = this.props.image.src || "";
+            image.src = this.props.image.src == null ? "" : this.props.image.src;
 
             // Get the image type
             let className = MediaImagesClassNames.getByType(this.props.icon.type);

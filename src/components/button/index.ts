@@ -141,7 +141,7 @@ class _Button extends Base<IButtonProps> implements IButton {
         while (this.el.firstChild) { this.el.removeChild(this.el.firstChild); }
 
         // Set the text
-        let elText = document.createTextNode(btnText || "");
+        let elText = document.createTextNode(btnText == null ? "" : btnText);
 
         // Append the text
         this.el.appendChild(elText);

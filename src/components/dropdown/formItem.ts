@@ -34,13 +34,13 @@ export class DropdownFormItem {
             this._el = document.createElement("optgroup");
             this._el.className = this._props.className || "";
             this._el.classList.add("dropdown-header");
-            this._el.label = this._props.text || "";
+            this._el.label = this._props.text == null ? "" : this._props.text;
         } else {
             // Create the option
             this._el = document.createElement("option");
             this._el.className = this._props.className || "";
             this._el.disabled = this._props.isDisabled ? true : false;
-            this._el.innerHTML = this._props.text || "";
+            this._el.innerHTML = this._props.text == null ? "" : this._props.text;
 
             // See if the item is selected
             if (this._props.isSelected) {

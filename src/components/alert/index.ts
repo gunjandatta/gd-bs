@@ -114,7 +114,7 @@ class _Alert extends Base<IAlertProps> implements IAlert {
         while (this.el.firstChild) { this.el.removeChild(this.el.firstChild); }
 
         // Set the text
-        let elText = document.createTextNode(alertText || "");
+        let elText = document.createTextNode(alertText == null ? "" : alertText);
 
         // Append the text
         this.el.appendChild(elText);

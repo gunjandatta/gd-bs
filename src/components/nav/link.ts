@@ -35,7 +35,7 @@ export class NavLink extends Base<INavLink> {
         this._elLink = this.el.querySelector("a.nav-link");
         this.props.isActive ? this._elLink.classList.add("active") : null;
         this.props.isDisabled ? this._elLink.classList.add("disabled") : null;
-        this._elLink.innerHTML = this.props.title || "";
+        this._elLink.innerHTML = this.props.title == null ? "" : this.props.title;
 
         // See if this is a tab
         if (this._elTab) {
@@ -45,7 +45,7 @@ export class NavLink extends Base<INavLink> {
             this._elLink.setAttribute("href", "#" + tabId);
             this._elLink.setAttribute("data-toggle", "tab");
             this._elLink.setAttribute("aria-controls", tabId);
-            this._elLink.innerHTML = this.props.title || "";
+            this._elLink.innerHTML = this.props.title == null ? "" : this.props.title;
 
             // Update the tab
             this._elTab.id = tabId;

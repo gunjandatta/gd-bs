@@ -14,7 +14,7 @@ export class Base<IProps = IBaseProps> implements IBase<IProps> {
 
         // Create the element
         let el = document.createElement("div");
-        el.innerHTML = html || "";
+        el.innerHTML = html == null ? "" : html;
         this._el = el.firstChild ? el.firstChild as HTMLDivElement : el;
 
         // Set the class names

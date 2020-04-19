@@ -50,7 +50,7 @@ export class NavbarItem {
             let link = this._el.querySelector("a");
             this._props.isActive ? link.classList.add("active") : link.removeChild(link.querySelector('span'));
             this._props.isDisabled ? link.classList.add("disabled") : null;
-            link.innerHTML = this._props.text || "";
+            link.innerHTML = this._props.text == null ? "" : this._props.text;
         }
     }
 

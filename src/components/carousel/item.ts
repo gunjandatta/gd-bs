@@ -34,11 +34,11 @@ export class CarouselItem {
         // See if we are rendering an image
         if (this._props.imageUrl) {
             // Set the image properties
-            img.alt = this._props.imageAlt || "";
-            img.src = this._props.imageUrl || "";
+            img.alt = this._props.imageAlt == null ? "" : this._props.imageAlt;
+            img.src = this._props.imageUrl == null ? "" : this._props.imageUrl;
 
             // Set the captions
-            captions.innerHTML = this._props.captions || "";
+            captions.innerHTML = this._props.captions == null ? "" : this._props.captions;
         } else {
             // Remove the elements
             this._el.removeChild(captions);

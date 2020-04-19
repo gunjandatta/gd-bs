@@ -33,7 +33,7 @@ export class CardAction {
     private configure() {
         // Set the attributes
         this._el.href = this._props.href || this._el.href;
-        this._el.innerHTML = this._props.text || "";
+        this._el.innerHTML = this._props.text == null ? "" : this._props.text;
 
         // Set the default type
         let defaultType = ButtonClassNames[this._props.buttonType - 1] || "card-link";

@@ -120,7 +120,7 @@ class _Modal extends Base<IModalProps> implements IModal {
         let elTitle = this.el.querySelector(".modal-title");
 
         // Set the text
-        elTitle.innerHTML = title || "";
+        elTitle.innerHTML = title == null ? "" : title;
     }
 
     // Shows the modal
