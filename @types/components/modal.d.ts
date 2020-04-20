@@ -62,6 +62,7 @@ export interface IModalProps {
     isCentered?: boolean;
     isLarge?: boolean;
     isSmall?: boolean;
+    isStatic?: boolean;
     onClose?: (el: HTMLDivElement) => void;
     onRenderBody?: (el: HTMLDivElement) => void;
     onRenderFooter?: (el: HTMLDivElement) => void;

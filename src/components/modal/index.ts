@@ -27,6 +27,7 @@ class _Modal extends Base<IModalProps> implements IModal {
         // Set the modal attributes
         this.props.id ? this.el.id = this.props.id : null;
         this.props.disableFade ? null : this.el.classList.add("fade");
+        this.props.isStatic ? this.el.setAttribute("data-backdrop", "static") : null;
 
         // Update the dialog
         let dialog = this.el.querySelector(".modal-dialog");
