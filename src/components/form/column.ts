@@ -41,7 +41,7 @@ export class FormColumn {
         }
 
         // Set the value
-        this._props.control.value = this._props.control.value == null ? formValue[this._props.control.name] : this._props.control.value;
+        this._props.control.value = this._props.control.value == null && formValue ? formValue[this._props.control.name] : this._props.control.value;
 
         // Create the form control
         this._formGroup = new FormGroup(this._props.control);
