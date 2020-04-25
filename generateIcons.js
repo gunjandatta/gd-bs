@@ -69,7 +69,7 @@ fs.readdir(dirIcons, function (err, files) {
  *     window.addEventListener("load", function() {
  *         // Create the icon and append it to the target element
  *         var elIcon = $REST.Icons($REST.IconTypes.Alarm, 32, 32);
- *         document.querySelector("#demo).appendChild(elIcon);
+ *         document.querySelector("#demo").appendChild(elIcon);
  *     });
  * </script>
 */`,
