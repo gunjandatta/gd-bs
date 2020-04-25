@@ -1,7 +1,49 @@
-import { IButtonProps } from "./button";
+/**
+ * <div id="demo"></div>
+ * <script type="text/javascript" src="https://unpkg.com/gd-sprest-bs/dist/gd-sprest-bs-icons.js"></script>
+ * <script type="text/javascript">
+ *     // Wait for the window to be loaded
+ *     window.addEventListener("load", function() {
+ *         // Render the popover
+ *         $REST.Components.Popover({
+ *             el: document.querySelector("#demo"),
+ *             isDismissible: true,
+ *             btnProps: {
+ *                 text: "Popover Demo"
+ *             },
+ *             options: {
+ *                 container: "body",
+ *                 content: "This is the popover content.",
+ *                 title: "My Popover",
+ *                 trigger: "hover"
+ *             }
+ *         });
+ *     });
+ * </script>
+ */
 
 /**
- * Popover
+ * ### Popover
+ * 
+ * ```ts
+ * import { Components } from "gd-sprest-bs";
+ * 
+ * // Create the popover
+ * let el = document.querySelector("#popover");
+ * let popover = Components.Popover({
+ *     el: el,
+ *     isDismissible: true,
+ *     btnProps: {
+ *         text: "Popover Demo"
+ *     },
+ *     options: {
+ *         container: "body",
+ *         content: "This is the popover content.",
+ *         title: "My Popover",
+ *         trigger: "hover"
+ *     }
+ * });
+ * ```
  */
 export const Popover: (props: IPopoverProps) => IPopover;
 
@@ -9,6 +51,8 @@ export const Popover: (props: IPopoverProps) => IPopover;
  * Popover Types
  */
 export const PopoverTypes: IPopoverTypes;
+
+import { IButtonProps } from "./button";
 
 /**
  * Popover

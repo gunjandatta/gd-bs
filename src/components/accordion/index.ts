@@ -8,6 +8,8 @@ import { AccordionItem } from "./item";
  * Accordion
  */
 class _Accordion extends Base<IAccordionProps> implements IAccordion {
+    private _items: Array<AccordionItem> = null;
+
     // Constructor
     constructor(props: IAccordionProps) {
         super(HTML, props);
@@ -25,14 +27,49 @@ class _Accordion extends Base<IAccordionProps> implements IAccordion {
         props.options ? jQuery(this.el).collapse(props.options) : null;
     }
 
+    // Configure the events
+    private configureEvents(accordionItem: AccordionItem) {
+        // Create a click event
+        accordionItem.el.addEventListener("click", ev => {
+            // See if we are auto-closing items
+            if (this.props.autoCollapse) {
+                // Parse the items
+                for (let i = 0; i < this._items.length; i++) {
+                    let item = this._items[i];
+
+                    // See if it's this item
+                    if (item.id == accordionItem.id) {
+                        // Toggle this item
+                        item.toggle();
+                    }
+                    // Else, see if this item is expanded
+                    else if (item.isExpanded) {
+                        // Toggle the item
+                        item.toggle();
+                    }
+                }
+            } else {
+                // Toggle this item
+                accordionItem.toggle();
+            }
+        });
+    }
+
     // Renders the items
     private renderItems() {
+        // Clear the items
+        this._items = [];
+
         // Parse the items
         let items = this.props.items || [];
         for (let i = 0; i < items.length; i++) {
             // Create the item and append it to the card
             let item = new AccordionItem(this.el.id, this.el.id + "_" + i, items[i]);
+            this._items.push(item);
             this.el.appendChild(item.el);
+
+            // Configure the events
+            this.configureEvents(item);
         }
     }
 }

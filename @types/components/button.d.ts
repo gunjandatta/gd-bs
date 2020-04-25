@@ -1,8 +1,34 @@
-import { IBadgeProps } from "./badge";
-import { ISpinnerProps } from "./spinner";
+/**
+ * <div id="demo"></div>
+ * <script src="https://unpkg.com/gd-sprest-bs/dist/gd-sprest-bs.js"></script>
+ * <script type="text/javascript">
+ *     // Wait for the window to be loaded
+ *     window.addEventListener("load", function() {
+ *         // Render the button
+ *         $REST.Components.Button({
+ *             el: document.querySelector("#demo"),
+ *             text: "Button"
+ *         });
+ *     });
+ * </script>
+ */
 
 /**
- * Button
+ * ### Button
+ * 
+ * ```ts
+ * import { Components } from "gd-sprest-bs";
+ * 
+ * // Create the button
+ * let el = document.querySelector("#btn");
+ * let btn = Components.Button({
+ *     el: el,
+ *     text: "Button",
+ *     onClick: (ev) => {
+ *         alert("The button was clicked.");
+ *     }
+ * });
+ * ```
  */
 export const Button: (props: IButtonProps) => IButton;
 
@@ -10,6 +36,9 @@ export const Button: (props: IButtonProps) => IButton;
  * Button Types
  */
 export const ButtonTypes: IButtonTypes;
+
+import { IBadgeProps } from "./badge";
+import { ISpinnerProps } from "./spinner";
 
 /**
  * Button

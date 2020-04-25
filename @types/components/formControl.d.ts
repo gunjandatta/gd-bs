@@ -1,3 +1,25 @@
+/**
+ * <div id="demo"></div>
+ * <script type="text/javascript" src="https://unpkg.com/gd-sprest-bs/dist/gd-sprest-bs-icons.js"></script>
+ * <script type="text/javascript">
+ *     // Wait for the window to be loaded
+ *     window.addEventListener("load", function() {
+ *         // Render the form
+ *         $REST.Components.FormControl({
+ *             el: document.querySelector("#demo"),
+ *             label: "First Name:",
+ *             name: "FName",
+ *             type: $REST.Components.FormControlTypes.TextField
+ *         });
+ *     });
+ * </script>
+ */
+
+/**
+ * ### Form Control
+ */
+export const FormControl: (props: IFormControlProps) => IFormControl;
+
 import { ICheckboxGroup, ICheckboxGroupItem } from "./checkboxGroup";
 import { IDropdown, IDropdownItem } from "./dropdown";
 import { IInputGroup } from "./inputGroup";
@@ -12,11 +34,6 @@ export const CustomControls: {
     /** Registers a custom form control type. */
     registerType: (key: number, onRender: (props?: IFormControlProps) => void) => void;
 }
-
-/**
- * Form Control
- */
-export const FormControl: (props: IFormControlProps) => IFormControl;
 
 /**
  * Form Control Types

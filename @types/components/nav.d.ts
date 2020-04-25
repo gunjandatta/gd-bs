@@ -1,5 +1,49 @@
 /**
- * Navigation
+ * <div id="demo"></div>
+ * <script type="text/javascript" src="https://unpkg.com/gd-sprest-bs/dist/gd-sprest-bs-icons.js"></script>
+ * <script type="text/javascript">
+ *     // Wait for the window to be loaded
+ *     window.addEventListener("load", function() {
+ *         // See if a navigation exists
+ *         var navigation = document.querySelector("#demo");
+ *         if(navigation) {
+ *             // Render the navigation
+ *             $REST.Components.Nav({
+ *                 el: navigation,
+ *                 isPills: true,
+ *                 items: [
+ *                     { title: "Nav 1", isActive: true },
+ *                     { title: "Nav 2" },
+ *                     { title: "Nav 3" },
+ *                     { title: "Nav 4" },
+ *                     { title: "Nav 5" }
+ *                 ]
+ *             });
+ *         }
+ *     });
+ * </script>
+ */
+
+/**
+ * ### Navigation
+ * 
+ * ```ts
+ * import { Components } from "gd-sprest-bs";
+
+ * // Create the navigation
+ * let el = document.querySelector("#navigation");
+ * let nav = Components.Nav({
+ *     el: el,
+ *     isPills: true,
+ *     items: [
+ *         { title: "Nav 1", isActive: true },
+ *         { title: "Nav 2" },
+ *         { title: "Nav 3" },
+ *         { title: "Nav 4" },
+ *         { title: "Nav 5" }
+ *     ]
+ * });
+ * ```
  */
 export const Nav: (props: INavProps) => INav;
 

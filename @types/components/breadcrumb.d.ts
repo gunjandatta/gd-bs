@@ -1,5 +1,39 @@
 /**
- * Breadcrumb
+ * <div id="demo"></div>
+ * <script type="text/javascript" src="https://unpkg.com/gd-sprest-bs/dist/gd-sprest-bs-icons.js"></script>
+ * <script type="text/javascript">
+ *     // Wait for the window to be loaded
+ *     window.addEventListener("load", function() {
+ *         // Render the breadcrumb
+ *         $REST.Components.Breadcrumb({
+ *             el: document.querySelector("#demo"),
+ *             items: [
+ *                 { text: "Root", href: "/" },
+ *                 { text: "Web 1", href: "/web" },
+ *                 { text: "Web 1-1", href: "/web/1" }
+ *             ]
+ *         });
+ *     });
+ * </script>
+ */
+
+/**
+ * ### Breadcrumb
+ * 
+ * ```ts
+ * import { Components } from "gd-sprest-bs";
+ * 
+ * // Create the breadcrumb
+ * let el = document.querySelector("#breadcrumb");
+ * let breadcrumb = Components.Breadcrumb({
+ *     el: el,
+ *     items: [
+ *         { text: "Root", href: "/" },
+ *         { text: "Web 1", href: "/web" },
+ *         { text: "Web 1-1", href: "/web/1" }
+ *     ]
+ * });
+ * ```
  */
 export const Breadcrumb: (props: IBreadcrumbProps) => IBreadcrumb;
 

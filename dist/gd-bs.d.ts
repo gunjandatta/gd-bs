@@ -1127,14 +1127,41 @@ declare module 'gd-bs/icons' {
 }
 
 declare module 'gd-bs/components/accordion' {
+    
+    /**
+        * ### Accordion
+        * 
+        * ```ts
+        * import { Components } from "gd-sprest-bs";
+        * 
+        * // Create the accordion
+        * let el = document.querySelector("#accordion");
+        * let accordion = Components.Accordion({
+        *     autoCollapse: true,
+        *     el: el,
+        *     id: "demoAccordion",
+        *     items: [
+        *         {
+        *             btnProps: { text: "Item 1" },
+        *             content: "This is the content for item 1."
+        *         },
+        *         {
+        *             btnProps: { text: "Item 2" },
+        *             content: "This is the content for item 2."
+        *         },
+        *         {
+        *             btnProps: { text: "Item 3" },
+        *             content: "This is the content for item 3."
+        *         }
+        *     ]
+        * });
+        * ```
+        */
+    export const Accordion: (props: IAccordionProps) => IAccordion;
+    
     import { IBase, IBaseProps } from "gd-bs/base";
     import { IButtonProps } from "gd-bs/components/button";
     import { ICollapseOptions } from "gd-bs/components/collapse";
-    
-    /**
-        * Accordion
-        */
-    export const Accordion: (props: IAccordionProps) => IAccordion;
     
     /**
         * Accordion
@@ -1162,6 +1189,7 @@ declare module 'gd-bs/components/accordion' {
         * Accordion Properties
         */
     export interface IAccordionProps extends IBaseProps {
+            autoCollapse?: boolean;
             id?: string;
             items?: Array<IAccordionItem>;
             options?: IAccordionOptions;
@@ -1169,10 +1197,20 @@ declare module 'gd-bs/components/accordion' {
 }
 
 declare module 'gd-bs/components/alert' {
-    import { IBase, IBaseProps } from "gd-bs/base";
     
     /**
-        * Alert
+        * ### Alert
+        * 
+        * ```ts
+        * import { Components } from "gd-sprest-bs";
+        * 
+        * // Create the alert
+        * let el = document.querySelector("#alert");
+        * let alert = Components.Alert({
+        *     el: el,
+        *     content: "This is an alert."
+        * });
+        * ```
         */
     export const Alert: (props: IAlertProps) => IAlert;
     
@@ -1180,6 +1218,8 @@ declare module 'gd-bs/components/alert' {
         * Alert Types
         */
     export const AlertTypes: IAlertTypes;
+    
+    import { IBase, IBaseProps } from "gd-bs/base";
     
     /**
         * Alert
@@ -1224,10 +1264,20 @@ declare module 'gd-bs/components/alert' {
 }
 
 declare module 'gd-bs/components/badge' {
-    import { IBase, IBaseProps } from 'gd-bs/base';
     
     /**
-        * Badge
+        * ### Badge
+        * 
+        * ```ts
+        * import { Components } from "gd-sprest-bs";
+        * 
+        * // Create the badge
+        * let el = document.querySelector("#badge");
+        * let badge = Components.Badge({
+        *     el: el,
+        *     content: "Badge"
+        * });
+        * ```
         */
     export const Badge: (props: IBadgeProps) => IBadge;
     
@@ -1235,6 +1285,8 @@ declare module 'gd-bs/components/badge' {
         * Badge Types
         */
     export const BadgeTypes: IBadgeTypes;
+    
+    import { IBase, IBaseProps } from 'gd-bs/base';
     
     /**
         * Badge
@@ -1273,8 +1325,24 @@ declare module 'gd-bs/components/badge' {
 }
 
 declare module 'gd-bs/components/breadcrumb' {
+    
     /**
-        * Breadcrumb
+        * ### Breadcrumb
+        * 
+        * ```ts
+        * import { Components } from "gd-sprest-bs";
+        * 
+        * // Create the breadcrumb
+        * let el = document.querySelector("#breadcrumb");
+        * let breadcrumb = Components.Breadcrumb({
+        *     el: el,
+        *     items: [
+        *         { text: "Root", href: "/" },
+        *         { text: "Web 1", href: "/web" },
+        *         { text: "Web 1-1", href: "/web/1" }
+        *     ]
+        * });
+        * ```
         */
     export const Breadcrumb: (props: IBreadcrumbProps) => IBreadcrumb;
     
@@ -1328,11 +1396,23 @@ declare module 'gd-bs/components/breadcrumb' {
 }
 
 declare module 'gd-bs/components/button' {
-    import { IBadgeProps } from "gd-bs/components/badge";
-    import { ISpinnerProps } from "gd-bs/components/spinner";
     
     /**
-        * Button
+        * ### Button
+        * 
+        * ```ts
+        * import { Components } from "gd-sprest-bs";
+        * 
+        * // Create the button
+        * let el = document.querySelector("#btn");
+        * let btn = Components.Button({
+        *     el: el,
+        *     text: "Button",
+        *     onClick: (ev) => {
+        *         alert("The button was clicked.");
+        *     }
+        * });
+        * ```
         */
     export const Button: (props: IButtonProps) => IButton;
     
@@ -1340,6 +1420,9 @@ declare module 'gd-bs/components/button' {
         * Button Types
         */
     export const ButtonTypes: IButtonTypes;
+    
+    import { IBadgeProps } from "gd-bs/components/badge";
+    import { ISpinnerProps } from "gd-bs/components/spinner";
     
     /**
         * Button
@@ -1420,12 +1503,29 @@ declare module 'gd-bs/components/button' {
 }
 
 declare module 'gd-bs/components/buttonGroup' {
-    import { IButtonProps } from "gd-bs/components";
     
     /**
-        * Button Group
+        * ### Button Group
+        * 
+        * ```ts
+        * import { Components } from "gd-sprest-bs";
+        * 
+        * // Create the buttonGroup
+        * let el = document.querySelector("#buttonGroup");
+        * let buttonGroup = Components.ButtonGroup({
+        *     el: el,
+        *     buttonType: $REST.Components.ButtonTypes.Primary,
+        *     buttons: [
+        *         { text: "Left" },
+        *         { text: "Middle" },
+        *         { text: "Right" }
+        *     ]
+        * });
+        * ```
         */
     export const ButtonGroup: (props: IButtonGroupProps) => IButtonGroup;
+    
+    import { IButtonProps } from "gd-bs/components/button";
     
     /**
         * Button Group
@@ -1458,13 +1558,37 @@ declare module 'gd-bs/components/buttonGroup' {
 }
 
 declare module 'gd-bs/components/card' {
-    import { IButtonProps } from "gd-bs/components/button";
-    import { INavProps } from "gd-bs/components/nav";
     
     /**
-        * Card
+        * ### Card
+        * 
+        * ```ts
+        * import { Components } from "gd-sprest-bs";
+        * 
+        * // Create the card
+        * let el = document.querySelector("#card");
+        * let card = Components.Card({
+        *     el: el,
+        *     className: "w-25",
+        *     body: [
+        *         {
+        *             title: "Card Title",
+        *             text: "This is the card contents.",
+        *             actions: [
+        *                 {
+        *                     text: "Card Action",
+        *                     buttonType: $REST.Components.ButtonTypes.Primary
+        *                 }
+        *             ]
+        *         }
+        *     ]
+        * });
+        * ```
         */
     export const Card: (props: ICardProps) => ICard;
+    
+    import { IButtonProps } from "gd-bs/components/button";
+    import { INavProps } from "gd-bs/components/nav";
     
     /**
         * Card
@@ -1548,12 +1672,49 @@ declare module 'gd-bs/components/card' {
 }
 
 declare module 'gd-bs/components/cardGroup' {
-    import { ICardProps } from "gd-bs/components";
     
     /**
-        * Card Group
+        * ### Card Group
+        * 
+        * ```ts
+        * import { Components } from "gd-sprest-bs";
+        * 
+        * // Create the cardGroup
+        * let el = document.querySelector("#cardGroup");
+        * let cardGroup = Components.CardGroup({
+        *     el: el,
+        *     cards: [
+        *         {
+        *             body: [
+        *                 {
+        *                     title: "Card 1",
+        *                     text: "This is the first card."
+        *                 }
+        *             ]
+        *         },
+        *         {
+        *             body: [
+        *                 {
+        *                     title: "Card 2",
+        *                     text: "This is the second card."
+        *                 }
+        *             ]
+        *         },
+        *         {
+        *             body: [
+        *                 {
+        *                     title: "Card 3",
+        *                     text: "This is the third card."
+        *                 }
+        *             ]
+        *         }
+        *     ]
+        * });
+        * ```
         */
     export const CardGroup: (props: ICardGroupProps) => ICardGroup;
+    
+    import { ICardProps } from "gd-bs/components/card";
     
     /**
         * Card Group
@@ -1581,8 +1742,40 @@ declare module 'gd-bs/components/cardGroup' {
 }
 
 declare module 'gd-bs/components/carousel' {
+    
     /**
-        * Carousel
+        * ### Carousel
+        * 
+        * ```ts
+        * import { Components } from "gd-sprest-bs";
+        * 
+        * // Create the carousel
+        * let el = document.querySelector("#carousel");
+        * let carousel = Components.Carousel({
+        *     el: el,
+        *     enableControls: true,
+        *     enableIndicators: true,
+        *     id: "carouselDemo",
+        *     items: [
+        *         {
+        *             captions: "<h5>First Slide</h5>",
+        *             imageUrl: "https://via.placeholder.com/400x200",
+        *             imageAlt: "First Slide",
+        *             isActive: true
+        *         },
+        *         {
+        *             captions: "<h5>Second Slide</h5>",
+        *             imageUrl: "https://via.placeholder.com/400x200",
+        *             imageAlt: "Second Slide"
+        *         },
+        *         {
+        *             captions: "<h5>Third Slide</h5>",
+        *             imageUrl: "https://via.placeholder.com/400x200",
+        *             imageAlt: "Third Slide"
+        *         }
+        *     ]
+        * });
+        * ```
         */
     export const Carousel: (props: ICarouselProps) => ICarousel;
     
@@ -1668,8 +1861,24 @@ declare module 'gd-bs/components/carousel' {
 }
 
 declare module 'gd-bs/components/checkboxGroup' {
+    
     /**
-        * Checkbox Group
+        * ### Checkbox Group
+        * 
+        * ```ts
+        * import { Components } from "gd-sprest-bs";
+        * 
+        * // Create the buttonGroup
+        * let el = document.querySelector("#cbGroup");
+        * let cbGroup = Components.CheckboxGroup({
+        *     el: el,
+        *     items: [
+        *         { label: "Option 1" },
+        *         { label: "Option 2" },
+        *         { label: "Option 3" }
+        *     ]
+        * });
+        * ```
         */
     export const CheckboxGroup: (props: ICheckboxGroupProps) => ICheckboxGroup;
     
@@ -1741,12 +1950,33 @@ declare module 'gd-bs/components/checkboxGroup' {
 }
 
 declare module 'gd-bs/components/collapse' {
-    import { IButtonProps } from "gd-bs/components/button";
     
     /**
-        * Collapse
+        * ### Collapse
+        * 
+        * ```ts
+        * import { Components } from "gd-sprest-bs";
+        * 
+        * // Create the button to toggle the collapse
+        * let btn = Components.Button({
+        *     el: document.querySelector("#btnCollapse"),
+        *     target: "#demoCollapse",
+        *     toggle: "collapse",
+        *     text: "Collapse Demo"
+        * });
+        * 
+        * // Create the collapse
+        * let el = document.querySelector("#collapse");
+        * let collapse = Components.Collapse({
+        *     el: el,
+        *      id: "demoCollapse",
+        *     content: "This is the content to be collapsed."
+        * });
+        * ```
         */
     export const Collapse: (props: ICollapseProps) => ICollapse;
+    
+    import { IButtonProps } from "gd-bs/components/button";
     
     /**
         * Collapse
@@ -1792,8 +2022,30 @@ declare module 'gd-bs/components/collapse' {
 }
 
 declare module 'gd-bs/components/dropdown' {
+    
     /**
-        * Dropdown
+        * ### Dropdown
+        * 
+        * ```ts
+        * import { Components } from "gd-sprest-bs";
+        * 
+        * // Create the dropdown
+        * let el = document.querySelector("#dropdown");
+        * let dropdown = Components.Dropdown({
+        *     el: el,
+        *     label: "Select a Choice",
+        *     items: [
+        *         { text: "Choice 1", value: "1" },
+        *         { text: "Choice 2", value: "2" },
+        *         { text: "Choice 3", value: "3" },
+        *         { text: "Choice 4", value: "4" },
+        *         { text: "Choice 5", value: "5" }
+        *     ],
+        *     onChange: (item, ev) => {
+        *         console.log("The selected value is: " + item.text);
+        *     }
+        * });
+        * ```
         */
     export const Dropdown: (props: IDropdownProps) => IDropdown;
     
@@ -1893,12 +2145,58 @@ declare module 'gd-bs/components/dropdown' {
 }
 
 declare module 'gd-bs/components/form' {
-    import { IFormControl, IFormControlProps, IFormControlTypes } from "gd-bs/components/formControl";
     
     /**
-        * Form
+        * ### Form
+        * 
+        * ```ts
+        * import { Components } from "gd-sprest-bs";
+        * 
+        * // Create the form
+        * let el = document.querySelector("#myForm");
+        * let form = Components.Form({
+        *     el: el,
+        *     rows: [
+        *         {
+        *             control: {
+        *                 label: "First Name:",
+        *                 name: "FName",
+        *                 type: Components.FormControlTypes.TextField
+        *             }
+        *         },
+        *         {
+        *             control: {
+        *                 label: "Last Name:",
+        *                 name: "LName",
+        *                 type: Components.FormControlTypes.TextField
+        *             }
+        *         },
+        *         {
+        *             control: {
+        *                 label: "Choices:",
+        *                 name: "Choice",
+        *                 type: Components.FormControlTypes.Dropdown,
+        *                 items: [
+        *                     { text: "Choice 1", value: "1" },
+        *                     { text: "Choice 2", value: "2" },
+        *                     { text: "Choice 3", value: "3" },
+        *                     { text: "Choice 4", value: "4" },
+        *                     { text: "Choice 5", value: "5" }
+        *                 ]
+        *             }
+        *         }
+        *     ],
+        *     value: {
+        *         FName: "Gunjan",
+        *         LName: "Datta",
+        *         Choice: "3"
+        *     }
+        * });
+        * ```
         */
     export const Form: (props: IFormProps) => IForm;
+    
+    import { IFormControl, IFormControlProps, IFormControlTypes } from "gd-bs/components/formControl";
     
     /**
         * Form
@@ -1968,6 +2266,12 @@ declare module 'gd-bs/components/form' {
 }
 
 declare module 'gd-bs/components/formControl' {
+    
+    /**
+        * ### Form Control
+        */
+    export const FormControl: (props: IFormControlProps) => IFormControl;
+    
     import { ICheckboxGroup, ICheckboxGroupItem } from "gd-bs/components/checkboxGroup";
     import { IDropdown, IDropdownItem } from "gd-bs/components/dropdown";
     import { IInputGroup } from "gd-bs/components/inputGroup";
@@ -1982,11 +2286,6 @@ declare module 'gd-bs/components/formControl' {
             /** Registers a custom form control type. */
             registerType: (key: number, onRender: (props?: IFormControlProps) => void) => void;
     }
-    
-    /**
-        * Form Control
-        */
-    export const FormControl: (props: IFormControlProps) => IFormControl;
     
     /**
         * Form Control Types
@@ -2117,10 +2416,21 @@ declare module 'gd-bs/components/formControl' {
 }
 
 declare module 'gd-bs/components/inputGroup' {
-    import { IButtonProps } from "gd-bs/components/button";
     
     /**
-        * Input Group
+        * ### Input Group
+        * 
+        * ```ts
+        * import { Components } from "gd-sprest-bs";
+        * 
+        * // Create the inputGroup
+        * let el = document.querySelector("#inputGroup");
+        * let inputGroup = Components.inputGroup({
+        *     el: el,
+        *     label: "My Name:",
+        *     value: "First Last"
+        * });
+        * ```
         */
     export const InputGroup: (props: IInputGroupProps) => IInputGroup;
     
@@ -2128,6 +2438,8 @@ declare module 'gd-bs/components/inputGroup' {
         * Input Group Types
         */
     export const InputGroupTypes: IInputGroupTypes;
+    
+    import { IButtonProps } from "gd-bs/components/button";
     
     /**
         * Button Group
@@ -2194,8 +2506,21 @@ declare module 'gd-bs/components/inputGroup' {
 }
 
 declare module 'gd-bs/components/jumbotron' {
+    
     /**
-        * Jumbotron
+        * ### Jumbotron
+        * 
+        * ```ts
+        * import { Components } from "gd-sprest-bs";
+        * 
+        * // Create the jumbotron
+        * let el = document.querySelector("#jumbotron");
+        * let jumbotron = Components.Jumbotron({
+        *     el: el,
+        *     title: "My Jumbotron",
+        *     lead: "This is a jumbotron"
+        * });
+        * ```
         */
     export const Jumbotron: (props: IJumbotronProps) => IJumbotron;
     
@@ -2228,10 +2553,28 @@ declare module 'gd-bs/components/jumbotron' {
 }
 
 declare module 'gd-bs/components/listGroup' {
-    import { IBadgeProps } from "gd-bs/components/badge";
     
     /**
-        * List Group
+        * ### List Group
+        * 
+        * ```ts
+        * import { Components } from "gd-sprest-bs";
+        * 
+        * // Create the listGroup
+        * let el = document.querySelector("#listGroup");
+        * let listGroup = Components.listGroup({
+        *     el: el,
+        *     colWidth: 4,
+        *     isTabs: true,
+        *     items: [
+        *         { tabName: "Tab 1", content: "This is the content for tab 1.", isActive: true },
+        *         { tabName: "Tab 2", content: "This is the content for tab 2.", badge: { content: "10", type: 4 } },
+        *         { tabName: "Tab 3", content: "This is the content for tab 3." },
+        *         { tabName: "Tab 4", content: "This is the content for tab 4." },
+        *         { tabName: "Tab 5", content: "This is the content for tab 5." }
+        *     ]
+        * });
+        * ```
         */
     export const ListGroup: (props: IListGroupProps) => IListGroup;
     
@@ -2239,6 +2582,8 @@ declare module 'gd-bs/components/listGroup' {
         * List Group Item Types
         */
     export const ListGroupItemTypes: IListGroupItemTypes;
+    
+    import { IBadgeProps } from "gd-bs/components/badge";
     
     /**
         * List Group
@@ -2303,12 +2648,31 @@ declare module 'gd-bs/components/listGroup' {
 }
 
 declare module 'gd-bs/components/modal' {
-    import { IButtonProps } from "gd-bs/components/button";
     
     /**
-        * Modal
+        * ### Modal
+        * 
+        * ```ts
+        * import { Components } from "gd-sprest-bs";
+        * 
+        * // Create the modal
+        * let el = document.querySelector("#modalDemo");
+        * let modal = Components.Modal({
+        *     el: el,
+        *     id: "bsModalDemo",
+        *     title: "Modal Demo",
+        *     body: "This is the body of the modal.",
+        *     button: {
+        *         text: "Open Modal",
+        *         toggle: "modal",
+        *         target: "#bsModalDemo"
+        *     }
+        * });
+        * ```
         */
     export const Modal: (props: IModalProps) => IModal;
+    
+    import { IButtonProps } from "gd-bs/components/button";
     
     /**
         * Modal
@@ -2376,8 +2740,27 @@ declare module 'gd-bs/components/modal' {
 }
 
 declare module 'gd-bs/components/nav' {
+    
     /**
-        * Navigation
+        * ### Navigation
+        * 
+        * ```ts
+        * import { Components } from "gd-sprest-bs";
+    
+        * // Create the navigation
+        * let el = document.querySelector("#navigation");
+        * let nav = Components.Nav({
+        *     el: el,
+        *     isPills: true,
+        *     items: [
+        *         { title: "Nav 1", isActive: true },
+        *         { title: "Nav 2" },
+        *         { title: "Nav 3" },
+        *         { title: "Nav 4" },
+        *         { title: "Nav 5" }
+        *     ]
+        * });
+        * ```
         */
     export const Nav: (props: INavProps) => INav;
     
@@ -2434,11 +2817,53 @@ declare module 'gd-bs/components/nav' {
 }
 
 declare module 'gd-bs/components/navbar' {
-    import { IButtonProps } from "gd-bs/components/button";
-    import { IDropdownItem } from "gd-bs/components/dropdown";
     
     /**
-        * Navbar
+        * ### Navbar
+        * 
+        * ```ts
+        * import { Components } from "gd-sprest-bs";
+        * 
+        * // Create the navbar
+        * let el = document.querySelector("#navbar");
+        * let navbar = Components.Navbar({
+        *     el: el,
+        *     brand: "Navbar",
+        *     searchBox: {
+        *         onChange: (value) => {
+        *             // Log the value
+        *             console.log("The search value is: " + value);
+        *         },
+        *         onSearch: (value) => {
+        *             // Log the value
+        *             console.log("The search value is: " + value);
+        *         }
+        *     },
+        *     items: [
+        *         {
+        *             text: "Home",
+        *             isActive: true
+        *         },
+        *         {
+        *             text: "Link"
+        *         },
+        *         {
+        *             text: "Disabled Link",
+        *             isDisabled: true
+        *         },
+        *         {
+        *             text: "Dropdown Link",
+        *             items: [
+        *                 { text: "Link 1" },
+        *                 { text: "Link 2" },
+        *                 { text: "Link 3" },
+        *                 { text: "Link 4" },
+        *                 { text: "Link 5" }
+        *             ]
+        *         }
+        *     ]
+        * });
+        * ```
         */
     export const Navbar: (props: INavbarProps) => INavbar;
     
@@ -2446,6 +2871,9 @@ declare module 'gd-bs/components/navbar' {
         * Navbar Types
         */
     export const NavbarTypes: INavbarTypes;
+    
+    import { IButtonProps } from "gd-bs/components/button";
+    import { IDropdownItem } from "gd-bs/components/dropdown";
     
     /**
         * Navbar
@@ -2512,8 +2940,24 @@ declare module 'gd-bs/components/navbar' {
 }
 
 declare module 'gd-bs/components/pagination' {
+    
     /**
-        * Pagination
+        * ### Pagination
+        * 
+        * ```ts
+        * import { Components } from "gd-sprest-bs";
+        * 
+        * // Create the pagination
+        * let el = document.querySelector("#pagination");
+        * let pagination = Components.Pagination({
+        *     el: el,
+        *     numberOfPages: 5,
+        *     onClick: (index, ev) => {
+        *         // Log the index
+        *         console.log("The page number selected is: " + index);
+        *     }
+        * });
+        * ```
         */
     export const Pagination: (props: IPaginationProps) => IPagination;
     
@@ -2561,10 +3005,28 @@ declare module 'gd-bs/components/pagination' {
 }
 
 declare module 'gd-bs/components/panel' {
-    import { IModal, IModalProps } from "gd-bs/components/modal";
     
     /**
-        * Panel
+        * ### Panel
+        * 
+        * ```ts
+        * import { Components } from "gd-sprest-bs";
+        * 
+        * // Create the panel
+        * let el = document.querySelector("#panel");
+        * let panel = Components.Panel({
+        *     el: el,
+        *     type: Components.PanelTypes.Large,
+        *     modalProps: {
+        *         button: { text: "Show Panel" },
+        *         id: "my-panel",
+        *         title: "Panel Demo",
+        *         onRenderBody: (el) => {
+        *             // Render the body
+        *         }
+        *     }
+        * });
+        * ```
         */
     export const Panel: (props: IPanelProps) => IPanel;
     
@@ -2572,6 +3034,8 @@ declare module 'gd-bs/components/panel' {
         * Panel Types
         */
     export const PanelTypes: IPanelTypes;
+    
+    import { IModal, IModalProps } from "gd-bs/components/modal";
     
     /**
         * Panel
@@ -2613,10 +3077,29 @@ declare module 'gd-bs/components/panel' {
 }
 
 declare module 'gd-bs/components/popover' {
-    import { IButtonProps } from "gd-bs/components/button";
     
     /**
-        * Popover
+        * ### Popover
+        * 
+        * ```ts
+        * import { Components } from "gd-sprest-bs";
+        * 
+        * // Create the popover
+        * let el = document.querySelector("#popover");
+        * let popover = Components.Popover({
+        *     el: el,
+        *     isDismissible: true,
+        *     btnProps: {
+        *         text: "Popover Demo"
+        *     },
+        *     options: {
+        *         container: "body",
+        *         content: "This is the popover content.",
+        *         title: "My Popover",
+        *         trigger: "hover"
+        *     }
+        * });
+        * ```
         */
     export const Popover: (props: IPopoverProps) => IPopover;
     
@@ -2624,6 +3107,8 @@ declare module 'gd-bs/components/popover' {
         * Popover Types
         */
     export const PopoverTypes: IPopoverTypes;
+    
+    import { IButtonProps } from "gd-bs/components/button";
     
     /**
         * Popover
@@ -2696,8 +3181,21 @@ declare module 'gd-bs/components/popover' {
 }
 
 declare module 'gd-bs/components/progress' {
+    
     /**
-        * Progress
+        * ### Progress
+        * 
+        * ```ts
+        * import { Components } from "gd-sprest-bs";
+        * 
+        * // Create the progress
+        * let el = document.querySelector("#progress");
+        * let progress = Components.Progress({
+        *     el: el,
+        *     size: 25,
+        *     label: "25%"
+        * });
+        * ```
         */
     export const Progress: (props: IProgressProps) => IProgress;
     
@@ -2734,12 +3232,36 @@ declare module 'gd-bs/components/progress' {
 }
 
 declare module 'gd-bs/components/progressGroup' {
-    import { IProgressProps } from "gd-bs/components/progress";
     
     /**
-        * Progress Group
+        * ### Progress Group
+        * 
+        * ```ts
+        * import { Components } from "gd-sprest-bs";
+        * 
+        * // Create the progress group
+        * let el = document.querySelector("#progressGroup");
+        * let progressGroup = Components.ProgressGroup({
+        *     el: el,
+        *     progressbars: [
+        *         {
+        *             size: 25,
+        *             isStriped: true,
+        *             label: "25%"
+        *         },
+        *         {
+        *             size: 50,
+        *             isAnimated: true,
+        *             isStriped: true,
+        *             label: "50%"
+        *         }
+        *     ]
+        * });
+        * ```
         */
     export const ProgressGroup: (props: IProgressGroupProps) => IProgressGroup;
+    
+    import { IProgressProps } from "gd-bs/components/progress";
     
     /**
         * Progress Group
@@ -2768,7 +3290,7 @@ declare module 'gd-bs/components/progressGroup' {
 
 declare module 'gd-bs/components/spinner' {
     /**
-        * Spinner
+        * ### Spinner
         */
     export const Spinner: (props: ISpinnerProps) => ISpinner;
     
@@ -2819,8 +3341,37 @@ declare module 'gd-bs/components/spinner' {
 }
 
 declare module 'gd-bs/components/table' {
+    
     /**
-        * Table
+        * ### Table
+        * 
+        * ```ts
+        * import { Components } from "gd-sprest-bs";
+        * 
+        * // Create the table
+        * let el = document.querySelector("#table");
+        * let table = Components.Table({
+        *     el: el,
+        *     className: "table-sm is-striped",
+        *     columns: [
+        *         { name: "a0", title: "Actions", isHidden: true },
+        *         { name: "a1", title: "Col 1" },
+        *         { name: "a2", title: "Col 2" },
+        *         { name: "a3", title: "Col 3" }
+        *     ],
+        *     rows: [
+        *         { a0: "1", a1: "1.1", a2: "1.2", a3: "1.3" },
+        *         { a0: "2", a1: "2.1", a2: "2.2", a3: "2.3" },
+        *         { a0: "3", a1: "3.1", a2: "3.2", a3: "3.3" },
+        *         { a0: "4", a1: "4.1", a2: "4.2", a3: "4.3" },
+        *         { a0: "5", a1: "5.1", a2: "5.2", a3: "5.3" },
+        *         { a0: "6", a1: "6.1", a2: "6.2", a3: "6.3" },
+        *         { a0: "7", a1: "7.1", a2: "7.2", a3: "7.3" },
+        *         { a0: "8", a1: "8.1", a2: "8.2", a3: "8.3" },
+        *         { a0: "9", a1: "9.1", a2: "9.2", a3: "9.3" }
+        *     ]
+        * });
+        * ```
         */
     export const Table: (props: ITableProps) => ITable
     
@@ -2875,7 +3426,7 @@ declare module 'gd-bs/components/table' {
 
 declare module 'gd-bs/components/toast' {
     /**
-        * Toast
+        * ### Toast
         */
     export const Toast: (props: IToastProps) => IToast;
     
@@ -2927,7 +3478,7 @@ declare module 'gd-bs/components/toolbar' {
     import { IInputGroupProps } from "gd-bs/components/inputGroup";
     
     /**
-        * Toolbar
+        * ### Toolbar
         */
     export const Toolbar: (props: IToolbarProps) => IToolbar;
     
@@ -2966,10 +3517,25 @@ declare module 'gd-bs/components/toolbar' {
 }
 
 declare module 'gd-bs/components/tooltip' {
-    import { IButtonProps } from "gd-bs/components/button";
     
     /**
-        * Tooltip
+        * ### Tooltip
+        * 
+        * ```ts
+    import { Components } from "gd-sprest-bs";
+    
+    // Create the tooltip
+    let el = document.querySelector("#tooltip");
+    let tooltip = Components.Tooltip({
+            el: el,
+            btnProps: {
+                    text: "Tooltip Demo"
+            },
+            options: {
+                    title: "My Tooltip",
+            }
+    });
+    ```
         */
     export const Tooltip: (props: ITooltipProps) => ITooltip;
     
@@ -2977,6 +3543,8 @@ declare module 'gd-bs/components/tooltip' {
         * Tooltip Types
         */
     export const TooltipTypes: ITooltipTypes;
+    
+    import { IButtonProps } from "gd-bs/components/button";
     
     /**
         * Tooltip

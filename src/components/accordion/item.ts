@@ -7,6 +7,7 @@ import * as HTML from "./item.html";
  */
 export class AccordionItem {
     private _el: HTMLDivElement = null;
+    private _id: string = null;
     private _itemId: string = null;
     private _parentId: string = null;
     private _props: IAccordionItem = null;
@@ -14,6 +15,7 @@ export class AccordionItem {
     // Constructor
     constructor(parentId: string, itemId: string, props: IAccordionItem) {
         // Save the properties
+        this._id = "collapse_" + itemId;
         this._itemId = itemId;
         this._parentId = parentId;
         this._props = props;
@@ -42,7 +44,7 @@ export class AccordionItem {
         this._props.showFl ? elCollapse.classList.add("show") : null;
         elCollapse.setAttribute("aria-labelledby", this._itemId);
         elCollapse.setAttribute("data-parent", "#" + this._parentId);
-        elCollapse.id = "collapse_" + this._itemId;
+        elCollapse.id = this._id;
     }
 
     // Configures the events
@@ -97,4 +99,29 @@ export class AccordionItem {
 
     // The component HTML element
     get el(): HTMLDivElement { return this._el; }
+
+    // The item id
+    get id(): string { return this._id; }
+
+    // Returns true if the item is expanded
+    get isExpanded(): boolean {
+        let elCollapse = this._el.querySelector(".collapse");
+
+        // See if the item is expanded
+        return elCollapse.classList.contains("show");
+    }
+
+    // Toggles the item
+    toggle() {
+        let elCollapse = this._el.querySelector(".collapse");
+
+        // See if it's expanded
+        if (elCollapse.classList.contains("show")) {
+            // Hide it
+            elCollapse.classList.remove("show");
+        } else {
+            // Show it
+            elCollapse.classList.add("show");
+        }
+    }
 }

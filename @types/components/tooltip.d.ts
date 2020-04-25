@@ -1,7 +1,41 @@
-import { IButtonProps } from "./button";
+/**
+ * <div id="demo"></div>
+ * <script type="text/javascript" src="https://unpkg.com/gd-sprest-bs/dist/gd-sprest-bs.js"></script>
+ * <script type="text/javascript">
+ *     // Wait for the window to be loaded
+ *     window.addEventListener("load", function() {
+ *         // Render the tooltip
+ *         $REST.Components.Tooltip({
+ *             el: document.querySelector("#demo"),
+ *             btnProps: {
+ *                 text: "Tooltip Demo"
+ *             },
+ *             options: {
+ *                 title: "My Tooltip",
+ *             }
+ *         });
+ *     });
+ * </script>
+ */
 
 /**
- * Tooltip
+ * ### Tooltip
+ * 
+ * ```ts
+import { Components } from "gd-sprest-bs";
+
+// Create the tooltip
+let el = document.querySelector("#tooltip");
+let tooltip = Components.Tooltip({
+    el: el,
+    btnProps: {
+        text: "Tooltip Demo"
+    },
+    options: {
+        title: "My Tooltip",
+    }
+});
+```
  */
 export const Tooltip: (props: ITooltipProps) => ITooltip;
 
@@ -9,6 +43,8 @@ export const Tooltip: (props: ITooltipProps) => ITooltip;
  * Tooltip Types
  */
 export const TooltipTypes: ITooltipTypes;
+
+import { IButtonProps } from "./button";
 
 /**
  * Tooltip

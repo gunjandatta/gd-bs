@@ -1,5 +1,39 @@
 /**
- * Checkbox Group
+ * <div id="demo"></div>
+ * <script type="text/javascript" src="https://unpkg.com/gd-sprest-bs/dist/gd-sprest-bs-icons.js"></script>
+ * <script type="text/javascript">
+ *     // Wait for the window to be loaded
+ *     window.addEventListener("load", function() {
+ *         // Render the checkbox group
+ *         $REST.Components.CheckboxGroup({
+ *             el: document.querySelector("#demo"),
+ *             items: [
+ *                 { label: "Option 1" },
+ *                 { label: "Option 2" },
+ *                 { label: "Option 3" }
+ *             ]
+ *         });
+ *     });
+ * </script>
+ */
+
+/**
+ * ### Checkbox Group
+ * 
+ * ```ts
+ * import { Components } from "gd-sprest-bs";
+ * 
+ * // Create the buttonGroup
+ * let el = document.querySelector("#cbGroup");
+ * let cbGroup = Components.CheckboxGroup({
+ *     el: el,
+ *     items: [
+ *         { label: "Option 1" },
+ *         { label: "Option 2" },
+ *         { label: "Option 3" }
+ *     ]
+ * });
+ * ```
  */
 export const CheckboxGroup: (props: ICheckboxGroupProps) => ICheckboxGroup;
 

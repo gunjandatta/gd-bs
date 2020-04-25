@@ -1,9 +1,53 @@
-import { IButtonProps } from "./button";
+/**
+ * <div id="demo"></div>
+ * <script type="text/javascript" src="https://unpkg.com/gd-sprest-bs/dist/gd-sprest-bs-icons.js"></script>
+ * <script type="text/javascript">
+ *     // Wait for the window to be loaded
+ *     window.addEventListener("load", function() {
+ *         // Create the button to toggle the collapse
+ *         $REST.Components.Button({
+ *             el: document.querySelector("#demo"),
+ *             target: "#demoCollapse",
+ *             toggle: "collapse",
+ *             text: "Collapse Demo"
+ *         });
+ * 
+ *         // Render the collapse
+ *         $REST.Components.Collapse({
+ *             el: document.querySelector("#demo"),
+ *             id: "demoCollapse",
+ *             content: "This is the content to be collapsed."
+ *         });
+ *     });
+ * </script>
+ */
 
 /**
- * Collapse
+ * ### Collapse
+ * 
+ * ```ts
+ * import { Components } from "gd-sprest-bs";
+ * 
+ * // Create the button to toggle the collapse
+ * let btn = Components.Button({
+ *     el: document.querySelector("#btnCollapse"),
+ *     target: "#demoCollapse",
+ *     toggle: "collapse",
+ *     text: "Collapse Demo"
+ * });
+ * 
+ * // Create the collapse
+ * let el = document.querySelector("#collapse");
+ * let collapse = Components.Collapse({
+ *     el: el,
+ *      id: "demoCollapse",
+ *     content: "This is the content to be collapsed."
+ * });
+ * ```
  */
 export const Collapse: (props: ICollapseProps) => ICollapse;
+
+import { IButtonProps } from "./button";
 
 /**
  * Collapse

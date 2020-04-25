@@ -1,7 +1,33 @@
-import { IButtonProps } from "./button";
+/**
+ * <div id="demo"></div>
+ * <script type="text/javascript" src="https://unpkg.com/gd-sprest-bs/dist/gd-sprest-bs-icons.js"></script>
+ * <script type="text/javascript">
+ *     // Wait for the window to be loaded
+ *     window.addEventListener("load", function() {
+ *         // Render the inputGroup
+ *         $REST.Components.InputGroup({
+ *             el: document.querySelector("#demo"),
+ *             label: "My Name:",
+ *             value: "First Last"
+ *         });
+ *     });
+ * </script>
+ */
 
 /**
- * Input Group
+ * ### Input Group
+ * 
+ * ```ts
+ * import { Components } from "gd-sprest-bs";
+ * 
+ * // Create the inputGroup
+ * let el = document.querySelector("#inputGroup");
+ * let inputGroup = Components.inputGroup({
+ *     el: el,
+ *     label: "My Name:",
+ *     value: "First Last"
+ * });
+ * ```
  */
 export const InputGroup: (props: IInputGroupProps) => IInputGroup;
 
@@ -9,6 +35,8 @@ export const InputGroup: (props: IInputGroupProps) => IInputGroup;
  * Input Group Types
  */
 export const InputGroupTypes: IInputGroupTypes;
+
+import { IButtonProps } from "./button";
 
 /**
  * Button Group

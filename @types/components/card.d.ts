@@ -1,10 +1,57 @@
-import { IButtonProps } from "./button";
-import { INavProps } from "./nav";
+/**
+ * <div id="demo"></div>
+ * <script type="text/javascript" src="https://unpkg.com/gd-sprest-bs/dist/gd-sprest-bs-icons.js"></script>
+ * <script type="text/javascript">
+ *     // Wait for the window to be loaded
+ *     window.addEventListener("load", function() {
+ *         // Render the card
+ *         $REST.Components.Card({
+ *             className: "w-25",
+ *             el: document.querySelector("#demo"),
+ *             body: [
+ *                 {
+ *                     "title": "Card Title",
+ *                     "text": "This is the card contents.",
+ *                     "actions": [
+ *                         { "text": "Card Action", "buttonType": $REST.Components.ButtonTypes.Primary }
+ *                     ]
+ *                 }
+ *             ]
+ *         });
+ *     });
+ * </script>
+ */
 
 /**
- * Card
+ * ### Card
+ * 
+ * ```ts
+ * import { Components } from "gd-sprest-bs";
+ * 
+ * // Create the card
+ * let el = document.querySelector("#card");
+ * let card = Components.Card({
+ *     el: el,
+ *     className: "w-25",
+ *     body: [
+ *         {
+ *             title: "Card Title",
+ *             text: "This is the card contents.",
+ *             actions: [
+ *                 {
+ *                     text: "Card Action",
+ *                     buttonType: $REST.Components.ButtonTypes.Primary
+ *                 }
+ *             ]
+ *         }
+ *     ]
+ * });
+ * ```
  */
 export const Card: (props: ICardProps) => ICard;
+
+import { IButtonProps } from "./button";
+import { INavProps } from "./nav";
 
 /**
  * Card

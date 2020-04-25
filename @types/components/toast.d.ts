@@ -1,5 +1,5 @@
 /**
- * Toast
+ * ### Toast
  */
 export const Toast: (props: IToastProps) => IToast;
 

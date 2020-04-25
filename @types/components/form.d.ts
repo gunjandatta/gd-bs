@@ -1,9 +1,103 @@
-import { IFormControl, IFormControlProps, IFormControlTypes } from "./formControl";
+/**
+ * <div id="demo"></div>
+ * <script type="text/javascript" src="https://unpkg.com/gd-sprest-bs/dist/gd-sprest-bs-icons.js"></script>
+ * <script type="text/javascript">
+ *     // Wait for the window to be loaded
+ *     window.addEventListener("load", function() {
+ *         // Render the form
+ *         $REST.Components.Form({
+ *             el: document.querySelector("#demo"),
+ *             rows: [
+ *                 {
+ *                     control: {
+ *                         label: "First Name:",
+ *                         name: "FName",
+ *                         type: $REST.Components.FormControlTypes.TextField
+ *                     }
+ *                 },
+ *                 {
+ *                     control: {
+ *                         label: "Last Name:",
+ *                         name: "LName",
+ *                         type: $REST.Components.FormControlTypes.TextField
+ *                     }
+ *                 },
+ *                 {
+ *                     control: {
+ *                         label: "Choices:",
+ *                         name: "Choice",
+ *                         type: $REST.Components.FormControlTypes.Dropdown,
+ *                         items: [
+ *                             { text: "Choice 1", value: "1" },
+ *                             { text: "Choice 2", value: "2" },
+ *                             { text: "Choice 3", value: "3" },
+ *                             { text: "Choice 4", value: "4" },
+ *                             { text: "Choice 5", value: "5" }
+ *                         ]
+ *                     }
+ *                 }
+ *             ],
+ *             value: {
+ *                 FName: "Gunjan",
+ *                 LName: "Datta",
+ *                 Choice: "3"
+ *             }
+ *         });
+ *     });
+ * </script>
+ */
 
 /**
- * Form
+ * ### Form
+ * 
+ * ```ts
+ * import { Components } from "gd-sprest-bs";
+ * 
+ * // Create the form
+ * let el = document.querySelector("#myForm");
+ * let form = Components.Form({
+ *     el: el,
+ *     rows: [
+ *         {
+ *             control: {
+ *                 label: "First Name:",
+ *                 name: "FName",
+ *                 type: Components.FormControlTypes.TextField
+ *             }
+ *         },
+ *         {
+ *             control: {
+ *                 label: "Last Name:",
+ *                 name: "LName",
+ *                 type: Components.FormControlTypes.TextField
+ *             }
+ *         },
+ *         {
+ *             control: {
+ *                 label: "Choices:",
+ *                 name: "Choice",
+ *                 type: Components.FormControlTypes.Dropdown,
+ *                 items: [
+ *                     { text: "Choice 1", value: "1" },
+ *                     { text: "Choice 2", value: "2" },
+ *                     { text: "Choice 3", value: "3" },
+ *                     { text: "Choice 4", value: "4" },
+ *                     { text: "Choice 5", value: "5" }
+ *                 ]
+ *             }
+ *         }
+ *     ],
+ *     value: {
+ *         FName: "Gunjan",
+ *         LName: "Datta",
+ *         Choice: "3"
+ *     }
+ * });
+ * ```
  */
 export const Form: (props: IFormProps) => IForm;
+
+import { IFormControl, IFormControlProps, IFormControlTypes } from "./formControl";
 
 /**
  * Form

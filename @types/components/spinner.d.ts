@@ -1,5 +1,5 @@
 /**
- * Spinner
+ * ### Spinner
  */
 export const Spinner: (props: ISpinnerProps) => ISpinner;
 

@@ -1,9 +1,45 @@
-import { IButtonProps } from ".";
+/**
+ * <div id="demo"></div>
+ * <script type="text/javascript" src="https://unpkg.com/gd-sprest-bs/dist/gd-sprest-bs-icons.js"></script>
+ * <script type="text/javascript">
+ *     // Wait for the window to be loaded
+ *     window.addEventListener("load", function() {
+ *         // Render the buttonGroup
+ *         $REST.Components.ButtonGroup({
+ *             el: document.querySelector("#demo"),
+ *             buttonType: $REST.Components.ButtonTypes.Primary,
+ *             buttons: [
+ *                 { text: "Left" },
+ *                 { text: "Middle" },
+ *                 { text: "Right" }
+ *             ]
+ *         });
+ *     });
+ * </script>
+ */
 
 /**
- * Button Group
+ * ### Button Group
+ * 
+ * ```ts
+ * import { Components } from "gd-sprest-bs";
+ * 
+ * // Create the buttonGroup
+ * let el = document.querySelector("#buttonGroup");
+ * let buttonGroup = Components.ButtonGroup({
+ *     el: el,
+ *     buttonType: $REST.Components.ButtonTypes.Primary,
+ *     buttons: [
+ *         { text: "Left" },
+ *         { text: "Middle" },
+ *         { text: "Right" }
+ *     ]
+ * });
+ * ```
  */
 export const ButtonGroup: (props: IButtonGroupProps) => IButtonGroup;
+
+import { IButtonProps } from "./button";
 
 /**
  * Button Group

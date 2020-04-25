@@ -1,7 +1,35 @@
-import { IBase, IBaseProps } from "../base";
+/**
+ * <div id="demo"></div>
+ * <script type="text/javascript" src="https://unpkg.com/gd-sprest-bs/dist/gd-sprest-bs-icons.js"></script>
+ * <script type="text/javascript">
+ *     // Wait for the window to be loaded
+ *     window.addEventListener("load", function() {
+ *         // See if a alert exists
+ *         var alert = document.querySelector("#demo");
+ *         if(alert) {
+ *             // Render the alert
+ *             $REST.Components.Alert({
+ *                 el: alert,
+ *                 content: "This is an alert."
+ *             });
+ *         }
+ *     });
+ * </script>
+ */
 
 /**
- * Alert
+ * ### Alert
+ * 
+ * ```ts
+ * import { Components } from "gd-sprest-bs";
+ * 
+ * // Create the alert
+ * let el = document.querySelector("#alert");
+ * let alert = Components.Alert({
+ *     el: el,
+ *     content: "This is an alert."
+ * });
+ * ```
  */
 export const Alert: (props: IAlertProps) => IAlert;
 
@@ -9,6 +37,8 @@ export const Alert: (props: IAlertProps) => IAlert;
  * Alert Types
  */
 export const AlertTypes: IAlertTypes;
+
+import { IBase, IBaseProps } from "../base";
 
 /**
  * Alert

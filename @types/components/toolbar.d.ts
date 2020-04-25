@@ -2,7 +2,7 @@ import { IButtonProps } from "./button";
 import { IInputGroupProps } from "./inputGroup";
 
 /**
- * Toolbar
+ * ### Toolbar
  */
 export const Toolbar: (props: IToolbarProps) => IToolbar;
 

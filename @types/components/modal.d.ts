@@ -1,9 +1,51 @@
-import { IButtonProps } from "./button";
+/**
+ * <style>
+ *     #bsModalDemo, #wcModalDemo {
+ *         margin-top: 100px;
+ *         margin-left: 0px;
+ *     }
+ * </style>
+ * <div id="demo"></div>
+ * <script type="text/javascript" src="https://unpkg.com/gd-sprest-bs/dist/gd-sprest-bs-icons.js"></script>
+ * <script type="text/javascript">
+ *     // Wait for the window to be loaded
+ *     window.addEventListener("load", function() {
+ *         // Create the modal
+ *         var modal = $REST.Components.Modal({
+ *             el: document.querySelector("#demo"),
+ *             id: "bsModalDemo",
+ *             title: "Modal Demo",
+ *             body: "This is the body of the modal.",
+ *             button: { text: "Open Modal" }
+ *         });
+ *     });
+ * </script>
+ */
 
 /**
- * Modal
+ * ### Modal
+ * 
+ * ```ts
+ * import { Components } from "gd-sprest-bs";
+ * 
+ * // Create the modal
+ * let el = document.querySelector("#modalDemo");
+ * let modal = Components.Modal({
+ *     el: el,
+ *     id: "bsModalDemo",
+ *     title: "Modal Demo",
+ *     body: "This is the body of the modal.",
+ *     button: {
+ *         text: "Open Modal",
+ *         toggle: "modal",
+ *         target: "#bsModalDemo"
+ *     }
+ * });
+ * ```
  */
 export const Modal: (props: IModalProps) => IModal;
+
+import { IButtonProps } from "./button";
 
 /**
  * Modal

@@ -1,5 +1,48 @@
 /**
- * Dropdown
+ * <div id="demo"></div>
+ * <script type="text/javascript" src="https://unpkg.com/gd-sprest-bs/dist/gd-sprest-bs-icons.js"></script>
+ * <script type="text/javascript">
+ *     // Wait for the window to be loaded
+ *     window.addEventListener("load", function() {
+ *         // Render the dropdown
+ *         $REST.Components.Dropdown({
+ *             el: document.querySelector("#demo"),
+ *             label: "Select a Choice",
+ *             items: [
+ *                 { text: "Choice 1", value: "1" },
+ *                 { text: "Choice 2", value: "2" },
+ *                 { text: "Choice 3", value: "3" },
+ *                 { text: "Choice 4", value: "4" },
+ *                 { text: "Choice 5", value: "5" }
+ *             ]
+ *         });
+ *     });
+ * </script>
+ */
+
+/**
+ * ### Dropdown
+ * 
+ * ```ts
+ * import { Components } from "gd-sprest-bs";
+ * 
+ * // Create the dropdown
+ * let el = document.querySelector("#dropdown");
+ * let dropdown = Components.Dropdown({
+ *     el: el,
+ *     label: "Select a Choice",
+ *     items: [
+ *         { text: "Choice 1", value: "1" },
+ *         { text: "Choice 2", value: "2" },
+ *         { text: "Choice 3", value: "3" },
+ *         { text: "Choice 4", value: "4" },
+ *         { text: "Choice 5", value: "5" }
+ *     ],
+ *     onChange: (item, ev) => {
+ *         console.log("The selected value is: " + item.text);
+ *     }
+ * });
+ * ```
  */
 export const Dropdown: (props: IDropdownProps) => IDropdown;
 
