@@ -48,8 +48,24 @@ declare module 'gd-bs/components' {
 
 declare module 'gd-bs/icons' {
     
+    /**
+      * ### Icons
+      * 
+      * Renders an icon by type
+      * 
+      * ```ts
+      * import { Icons, IconTypes } from "gd-sprest-bs";
+      * 
+      * // Create the icon and append it to the target element
+      * let elIcon = Icons(IconTypes.Alarm, 32, 32);
+      * document.querySelector("#icon").appendChild(elIcon);
+      * ```
+      */
     export const Icons: (iconType:number, height?:number, width?:number) => HTMLElement;
     
+    /**
+      * Icon Types
+     */
     export const IconTypes: {
         // alarm-fill.svg
         AlarmFill: number;
@@ -1456,7 +1472,7 @@ declare module 'gd-bs/components/button' {
     export interface IButtonProps {
             badge?: IBadgeProps;
             className?: string;
-            controls?: Array<string>;
+            controls?: string | Array<string>;
             data?: any;
             el?: Element | HTMLElement;
             href?: string;
@@ -1569,7 +1585,6 @@ declare module 'gd-bs/components/card' {
         * let el = document.querySelector("#card");
         * let card = Components.Card({
         *     el: el,
-        *     className: "w-25",
         *     body: [
         *         {
         *             title: "Card Title",
@@ -2655,18 +2670,21 @@ declare module 'gd-bs/components/modal' {
         * ```ts
         * import { Components } from "gd-sprest-bs";
         * 
+        * // Create the button
+        * Components.Button({
+        *     el: document.querySelector("#modalDemo"),
+        *     target: "#bsModalDemo",
+        *     text: "Show Modal",
+        *     toggle: "modal"
+        * });
+        * 
         * // Create the modal
         * let el = document.querySelector("#modalDemo");
         * let modal = Components.Modal({
         *     el: el,
         *     id: "bsModalDemo",
         *     title: "Modal Demo",
-        *     body: "This is the body of the modal.",
-        *     button: {
-        *         text: "Open Modal",
-        *         toggle: "modal",
-        *         target: "#bsModalDemo"
-        *     }
+        *     body: "This is the body of the modal."
         * });
         * ```
         */
@@ -3012,6 +3030,14 @@ declare module 'gd-bs/components/panel' {
         * ```ts
         * import { Components } from "gd-sprest-bs";
         * 
+        * // Create the button
+        * Components.Button({
+        *     el: document.querySelector("#panel"),
+        *     target: "#my-panel",
+        *     text: "Show Panel",
+        *     toggle: "modal"
+        * });
+        * 
         * // Create the panel
         * let el = document.querySelector("#panel");
         * let panel = Components.Panel({
@@ -3289,8 +3315,21 @@ declare module 'gd-bs/components/progressGroup' {
 }
 
 declare module 'gd-bs/components/spinner' {
+    
     /**
         * ### Spinner
+        * 
+        * ```ts
+        * import { Components } from "gd-sprest-bs";
+        * 
+        * // Create a spinner
+        * let el = document.querySelector("#spinner");
+        * Components.Spinner({
+        *     el,
+        *     text: "Loading...",
+        *     type: Components.SpinnerTypes.Danger
+        * });
+        * ```
         */
     export const Spinner: (props: ISpinnerProps) => ISpinner;
     
@@ -3425,8 +3464,23 @@ declare module 'gd-bs/components/table' {
 }
 
 declare module 'gd-bs/components/toast' {
+    
     /**
         * ### Toast
+        * 
+        * ```ts
+        * import { Components } from "gd-sprest-bs";
+        * 
+        * // Create a toast
+        * let el = document.querySelector("#toast");
+        * Components.Toast({
+        *     el,
+        *     headerText: "Header",
+        *     body: "This is the body of the toast.",
+        *     mutedText: "2 seconds ago",
+        *     options: { autohide: false }
+        * });
+        * ```
         */
     export const Toast: (props: IToastProps) => IToast;
     
@@ -3474,11 +3528,27 @@ declare module 'gd-bs/components/toast' {
 }
 
 declare module 'gd-bs/components/toolbar' {
-    import { IButtonProps } from "gd-bs/components/button";
-    import { IInputGroupProps } from "gd-bs/components/inputGroup";
     
     /**
         * ### Toolbar
+        * 
+        * ```ts
+        * import { Components } from "gd-sprest-bs";
+        * 
+        * // Create a toolbar
+        * let el = document.querySelector("#toolbar");
+        * Components.Toolbar({
+        *     el,
+        *     spacing: 3,
+        *     items: [
+        *         { buttons: [{ text: "Button 1" }] },
+        *         { buttons: [{ text: "Button 2" }] },
+        *         { buttons: [{ text: "Button 3" }] },
+        *         { buttons: [{ text: "Button 4" }] },
+        *         { buttons: [{ text: "Button 5" }] }
+        *     ]
+        * });
+        * ```
         */
     export const Toolbar: (props: IToolbarProps) => IToolbar;
     
@@ -3495,6 +3565,9 @@ declare module 'gd-bs/components/toolbar' {
             /** Shows the toolbar. */
             show: () => void;
     }
+    
+    import { IButtonProps } from "gd-bs/components/button";
+    import { IInputGroupProps } from "gd-bs/components/inputGroup";
     
     /**
         * Toolbar Item
@@ -3528,10 +3601,9 @@ declare module 'gd-bs/components/tooltip' {
     let el = document.querySelector("#tooltip");
     let tooltip = Components.Tooltip({
             el: el,
-            btnProps: {
-                    text: "Tooltip Demo"
-            },
+            text: "Tooltip Demo"
             options: {
+                    html: true,
                     title: "My Tooltip",
             }
     });

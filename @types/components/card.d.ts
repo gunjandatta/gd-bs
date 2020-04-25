@@ -6,7 +6,6 @@
  *     window.addEventListener("load", function() {
  *         // Render the card
  *         $REST.Components.Card({
- *             className: "w-25",
  *             el: document.querySelector("#demo"),
  *             body: [
  *                 {
@@ -32,7 +31,6 @@
  * let el = document.querySelector("#card");
  * let card = Components.Card({
  *     el: el,
- *     className: "w-25",
  *     body: [
  *         {
  *             title: "Card Title",

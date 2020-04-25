@@ -5,12 +5,12 @@
  *     // Wait for the window to be loaded
  *     window.addEventListener("load", function() {
  *         // Render the form
- *         $REST.Components.FormControl({
- *             el: document.querySelector("#demo"),
+ *         var control = $REST.Components.FormControl({
  *             label: "First Name:",
  *             name: "FName",
  *             type: $REST.Components.FormControlTypes.TextField
  *         });
+ *         document.querySelector("#demo").appendChild(control.el);
  *     });
  * </script>
  */

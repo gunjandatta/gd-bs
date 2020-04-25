@@ -9,32 +9,36 @@
  *             el: document.querySelector("#demo"),
  *             rows: [
  *                 {
- *                     control: {
- *                         label: "First Name:",
- *                         name: "FName",
- *                         type: $REST.Components.FormControlTypes.TextField
- *                     }
- *                 },
- *                 {
- *                     control: {
- *                         label: "Last Name:",
- *                         name: "LName",
- *                         type: $REST.Components.FormControlTypes.TextField
- *                     }
- *                 },
- *                 {
- *                     control: {
- *                         label: "Choices:",
- *                         name: "Choice",
- *                         type: $REST.Components.FormControlTypes.Dropdown,
- *                         items: [
- *                             { text: "Choice 1", value: "1" },
- *                             { text: "Choice 2", value: "2" },
- *                             { text: "Choice 3", value: "3" },
- *                             { text: "Choice 4", value: "4" },
- *                             { text: "Choice 5", value: "5" }
- *                         ]
- *                     }
+ *                   columns: [
+ *                       {
+ *                           control: {
+ *                               label: "First Name:",
+ *                               name: "FName",
+ *                               type: $REST.Components.FormControlTypes.TextField
+ *                           }
+ *                       },
+ *                       {
+ *                           control: {
+ *                               label: "Last Name:",
+ *                               name: "LName",
+ *                               type: $REST.Components.FormControlTypes.TextField
+ *                           }
+ *                       },
+ *                       {
+ *                           control: {
+ *                               label: "Choices:",
+ *                               name: "Choice",
+ *                               type: $REST.Components.FormControlTypes.Dropdown,
+ *                               items: [
+ *                                   { text: "Choice 1", value: "1" },
+ *                                   { text: "Choice 2", value: "2" },
+ *                                   { text: "Choice 3", value: "3" },
+ *                                   { text: "Choice 4", value: "4" },
+ *                                   { text: "Choice 5", value: "5" }
+ *                               ]
+ *                           }
+ *                       }
+ *                   ]
  *                 }
  *             ],
  *             value: {

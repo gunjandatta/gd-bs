@@ -1,8 +1,34 @@
+/**
+ * <div id="demo"></div>
+ * <script type="text/javascript" src="https://unpkg.com/gd-sprest-bs/dist/gd-sprest-bs-icons.js"></script>
+ * <script type="text/javascript">
+ *     // Wait for the window to be loaded
+ *     window.addEventListener("load", function() {
+ *         // Create the icon and append it to the target element
+ *         var elIcon = $REST.Icons($REST.IconTypes.Alarm, 32, 32);
+ *         document.querySelector("#demo).appendChild(elIcon);
+ *     });
+ * </script>
+*/
 
-// Renders an icon by type
+/**
+ * ### Icons
+ * 
+ * Renders an icon by type
+ * 
+ * ```ts
+ * import { Icons, IconTypes } from "gd-sprest-bs";
+ * 
+ * // Create the icon and append it to the target element
+ * let elIcon = Icons(IconTypes.Alarm, 32, 32);
+ * document.querySelector("#icon").appendChild(elIcon);
+ * ```
+ */
 export const Icons: (iconType:number, height?:number, width?:number) => HTMLElement;
 
-// Icon Types
+/**
+ * Icon Types
+*/
 export const IconTypes: {
 	// alarm-fill.svg
 	AlarmFill: number;

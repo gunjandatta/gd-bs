@@ -61,9 +61,35 @@ fs.readdir(dirIcons, function (err, files) {
     // Generate the file
     var stream = fs.createWriteStream("./@types/icons.d.ts");
     stream.write([
-        "\n// Renders an icon by type",
+`/**
+ * <div id="demo"></div>
+ * <script type="text/javascript" src="https://unpkg.com/gd-sprest-bs/dist/gd-sprest-bs-icons.js"></script>
+ * <script type="text/javascript">
+ *     // Wait for the window to be loaded
+ *     window.addEventListener("load", function() {
+ *         // Create the icon and append it to the target element
+ *         var elIcon = $REST.Icons($REST.IconTypes.Alarm, 32, 32);
+ *         document.querySelector("#demo).appendChild(elIcon);
+ *     });
+ * </script>
+*/`,
+`\n/**
+ * ### Icons
+ * 
+ * Renders an icon by type
+ * 
+ * \`\`\`ts
+ * import { Icons, IconTypes } from "gd-sprest-bs";
+ * 
+ * // Create the icon and append it to the target element
+ * let elIcon = Icons(IconTypes.Alarm, 32, 32);
+ * document.querySelector("#icon").appendChild(elIcon);
+ * \`\`\`
+ */`,
         "export const Icons: (iconType:number, height?:number, width?:number) => HTMLElement;",
-        "\n// Icon Types",
+`\n/**
+ * Icon Types
+*/`,
         "export const IconTypes: {",
         typeDefs.join('\n'),
         "}"

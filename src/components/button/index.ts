@@ -92,7 +92,18 @@ class _Button extends Base<IButtonProps> implements IButton {
         this.props.toggle ? this.el.setAttribute("data-toggle", this.props.toggle) : null;
         this.props.trigger ? this.el.setAttribute("data-trigger", this.props.trigger) : null;
         typeof (this.props.isExpanded) === "boolean" ? this.el.setAttribute("aria-expanded", this.props.isExpanded ? "true" : "false") : null;
-        this.props.controls ? this.el.setAttribute("aria-controls", this.props.controls.join(' ')) : null;
+
+        // See if controls are defined
+        if (this.props.controls) {
+            // See if this is a string
+            if (typeof (this.props.controls) === "string") {
+                // Set the controls
+                this.el.setAttribute("aria-controls", this.props.controls);
+            } else {
+                // Set the controls
+                this.el.setAttribute("aria-controls", this.props.controls.join(' '));
+            }
+        }
 
         // Set the text
         this.setText(this.props.text);
@@ -118,6 +129,31 @@ class _Button extends Base<IButtonProps> implements IButton {
 
     // Configure the events
     private configureEvents() {
+        // See if we are controlling another element
+        if (this.props.target) {
+            // Add a click event
+            this.el.addEventListener("click", ev => {
+                // Get the target element
+                let elTarget = document.querySelector(this.props.target);
+                if (elTarget) {
+                    // Do something based on the toggle
+                    switch (this.el.getAttribute("data-toggle")) {
+                        // Collapse
+                        case "collapse":
+                            // See if it's displayed
+                            if (elTarget.classList.contains("show")) {
+                                // Hide the target
+                                elTarget.classList.remove("show");
+                            } else {
+                                // Show the target
+                                elTarget.classList.add("show");
+                            }
+                            break;
+                    }
+                }
+            });
+        }
+
         // See if there is a click event
         if (this.props.onClick) {
             // Add a click event

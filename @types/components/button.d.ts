@@ -72,7 +72,7 @@ export interface IButton {
 export interface IButtonProps {
     badge?: IBadgeProps;
     className?: string;
-    controls?: Array<string>;
+    controls?: string | Array<string>;
     data?: any;
     el?: Element | HTMLElement;
     href?: string;

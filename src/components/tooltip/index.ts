@@ -1,7 +1,7 @@
 import * as jQuery from "jquery";
 import { ITooltip, ITooltipProps } from "../../../@types/components/tooltip";
 import { Base } from "../base";
-import { ButtonClassNames } from "../button";
+import { ButtonClassNames, ButtonTypes } from "../button";
 import * as HTML from "./index.html";
 
 /**
@@ -36,7 +36,7 @@ class _Tooltip extends Base<ITooltipProps> {//implements ITooltip {
         this.el.innerHTML = this.props.text == null ? "" : this.props.text;
 
         // See if a type was defined
-        let className = ButtonClassNames.getByType(this.props.btnType);
+        let className = ButtonClassNames.getByType(this.props.btnType) || ButtonClassNames.getByType(ButtonTypes.Primary);
         if (className) {
             // Add the class name
             this.el.classList.add(className);

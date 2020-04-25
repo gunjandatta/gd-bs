@@ -7,10 +7,9 @@
  *         // Render the tooltip
  *         $REST.Components.Tooltip({
  *             el: document.querySelector("#demo"),
- *             btnProps: {
- *                 text: "Tooltip Demo"
- *             },
+ *             text: "Tooltip",
  *             options: {
+ *                 html: true,
  *                 title: "My Tooltip",
  *             }
  *         });
@@ -28,10 +27,9 @@ import { Components } from "gd-sprest-bs";
 let el = document.querySelector("#tooltip");
 let tooltip = Components.Tooltip({
     el: el,
-    btnProps: {
-        text: "Tooltip Demo"
-    },
+    text: "Tooltip Demo"
     options: {
+        html: true,
         title: "My Tooltip",
     }
 });

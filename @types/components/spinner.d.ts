@@ -1,5 +1,33 @@
 /**
+ * <div id="demo"></div>
+ * <script type="text/javascript" src="https://unpkg.com/gd-sprest-bs/dist/gd-sprest-bs-icons.js"></script>
+ * <script type="text/javascript">
+ *     // Wait for the window to be loaded
+ *     window.addEventListener("load", function() {
+ *         // Create the spinner
+ *         $REST.Components.Spinner({
+ *             el: document.querySelector("#demo"),
+ *             text: "Loading...",
+ *             type: $REST.Components.SpinnerTypes.Danger
+ *         });
+ *     });
+ * </script>
+ */
+
+/**
  * ### Spinner
+ * 
+ * ```ts
+ * import { Components } from "gd-sprest-bs";
+ * 
+ * // Create a spinner
+ * let el = document.querySelector("#spinner");
+ * Components.Spinner({
+ *     el,
+ *     text: "Loading...",
+ *     type: Components.SpinnerTypes.Danger
+ * });
+ * ```
  */
 export const Spinner: (props: ISpinnerProps) => ISpinner;
 

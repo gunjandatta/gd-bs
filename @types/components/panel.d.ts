@@ -1,15 +1,16 @@
 /**
- * <style>
- *     #my-panel {
- *         margin: 0px;
- *         margin-top: 100px;
- *     }
- * </style>
  * <div id="demo"></div>
  * <script type="text/javascript" src="https://unpkg.com/gd-sprest-bs/dist/gd-sprest-bs-icons.js"></script>
  * <script type="text/javascript">
  *     // Wait for the window to be loaded
  *     window.addEventListener("load", function() {
+ *         // Create the button
+ *         $REST.Components.Button({
+ *             el: document.querySelector("#demo"),
+ *             target: "#my-panel",
+ *             text: "Show Panel",
+ *             toggle: "modal"
+ *         });
  *         // Render the panel
  *         var panel = $REST.Components.Panel({
  *             el: document.querySelector("#demo"),
@@ -32,6 +33,14 @@
  * 
  * ```ts
  * import { Components } from "gd-sprest-bs";
+ * 
+ * // Create the button
+ * Components.Button({
+ *     el: document.querySelector("#panel"),
+ *     target: "#my-panel",
+ *     text: "Show Panel",
+ *     toggle: "modal"
+ * });
  * 
  * // Create the panel
  * let el = document.querySelector("#panel");

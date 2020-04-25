@@ -11,7 +11,6 @@
  *             toggle: "collapse",
  *             text: "Collapse Demo"
  *         });
- * 
  *         // Render the collapse
  *         $REST.Components.Collapse({
  *             el: document.querySelector("#demo"),
