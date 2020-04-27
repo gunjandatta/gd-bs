@@ -66,6 +66,9 @@ export interface IModal {
     /** Manually hides a modal. */
     hide: () => void;
 
+    /** Returns true if the modal is visible. */
+    isVisible: boolean;
+
     /** Updates the title. */
     setTitle: (title: string) => void;
 

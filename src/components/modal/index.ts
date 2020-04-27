@@ -105,15 +105,13 @@ class _Modal extends Base<IModalProps> implements IModal {
 
     // Hides the modal
     hide() {
-        // See if the modal exists
-        if (jQuery(this.el).modal) {
-            jQuery(this.el).modal("hide");
-        } else {
-            // Update the modal
-            this.el.classList.remove("show");
-            this.el.style.display = "";
-        }
+        // Update the modal
+        this.el.classList.remove("show");
+        this.el.style.display = "";
     }
+
+    // Returns true if the modal is visible
+    get isVisible() { return this.el.classList.contains("show"); }
 
     // Updates the title
     setTitle(title: string) {
@@ -126,31 +124,20 @@ class _Modal extends Base<IModalProps> implements IModal {
 
     // Shows the modal
     show() {
-        // See if the modal exists
-        if (jQuery(this.el).modal) {
-            jQuery(this.el).modal("show");
-        } else {
-            // Update the modal
-            this.el.classList.add("show");
-            this.el.style.display = "block";
-
-        }
+        // Update the modal
+        this.el.classList.add("show");
+        this.el.style.display = "block";
     }
 
     // Toggles the modal
     toggle() {
-        // See if the modal exists
-        if (jQuery(this.el).modal) {
-            jQuery(this.el).modal("toggle");
+        // See if it's visible
+        if (this.el.classList.contains("show")) {
+            // Hide it
+            this.hide();
         } else {
-            // See if it's visible
-            if (this.el.classList.contains("show")) {
-                // Hide it
-                this.hide();
-            } else {
-                // Show it
-                this.show();
-            }
+            // Show it
+            this.show();
         }
     }
 }
