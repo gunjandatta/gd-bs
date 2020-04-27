@@ -108,6 +108,9 @@ class _Modal extends Base<IModalProps> implements IModal {
         // Update the modal
         this.el.classList.remove("show");
         this.el.style.display = "";
+
+        // Call the close event
+        this.props.onClose ? this.props.onClose(this.el) : null;
     }
 
     // Returns true if the modal is visible
