@@ -52,17 +52,18 @@ export class FormGroup {
     // Renders the control
     private render() {
         // Update the label
-        let label = this._el.querySelector("label");
-        if (this._props.label) {
+        let elLabel = this._el.querySelector("label");
+        let label = this._props.label || (this._control && this._control.props.label);
+        if (label) {
             // Set the text
-            label.innerHTML = this._props.label;
+            elLabel.innerHTML = label;
         } else {
-            // Hide the label
-            this._el.removeChild(label);
+            // Remove the label
+            this._el.removeChild(elLabel);
         }
 
         // Create the control
-        this._control = new FormControl(this._props, label);
+        this._control = new FormControl(this._props, elLabel);
         this._el.appendChild(this._control.el);
 
         // Execute the rendered event

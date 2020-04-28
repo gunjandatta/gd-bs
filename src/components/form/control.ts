@@ -71,25 +71,13 @@ export class FormControl implements IFormControl {
             case FormControlTypes.Checkbox:
                 let cbProps = this._props as IFormControlPropsCheckbox;
 
-                // Ensure items exist
-                let items = cbProps.items || [];
-                if (items.length == 0) {
-                    // Add the item
-                    items.push({
-                        label: cbProps.isInline ? this._props.label : null,
-                        name: this._props.name,
-                        isSelected: this._props.value ? true : false
-                    });
-                }
-
                 // Add the checkbox group
                 this._cb = CheckboxGroup({
                     className,
                     hideLabel: true,
                     isInline: cbProps.isInline,
                     isReadonly: this._props.isReadonly,
-                    items,
-                    label: items.length == 0 ? null : this._props.label,
+                    items: cbProps.items,
                     multi: cbProps.multi,
                     onChange: cbProps.onChange,
                     title: this._props.title,
@@ -174,7 +162,6 @@ export class FormControl implements IFormControl {
                     hideLabel: true,
                     isReadonly: this._props.isReadonly,
                     items: (this._props as IFormControlPropsCheckbox).items,
-                    label: this._props.label,
                     multi: (this._props as IFormControlPropsCheckbox).multi,
                     onChange: (this._props as IFormControlPropsCheckbox).onChange,
                     title: this._props.title,
@@ -207,7 +194,6 @@ export class FormControl implements IFormControl {
                     hideLabel: true,
                     isReadonly: this._props.isReadonly,
                     items: (this._props as IFormControlPropsCheckbox).items,
-                    label: this._props.label,
                     multi: (this._props as IFormControlPropsCheckbox).multi,
                     onChange: (this._props as IFormControlPropsCheckbox).onChange,
                     title: this._props.title,
