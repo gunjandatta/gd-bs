@@ -62,7 +62,7 @@ export class FormGroup {
         }
 
         // Create the control
-        this._control = new FormControl(this._props);
+        this._control = new FormControl(this._props, label);
         this._el.appendChild(this._control.el);
 
         // Execute the rendered event

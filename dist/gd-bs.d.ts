@@ -2326,6 +2326,10 @@ declare module 'gd-bs/components/formControl' {
             props: IFormControlProps;
     
             textbox: IInputGroup;
+    
+            setLabel: (value: string) => void;
+    
+            setValue: (value) => void;
     }
     
     /**

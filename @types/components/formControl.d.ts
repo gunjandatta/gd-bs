@@ -59,6 +59,10 @@ export interface IFormControl {
     props: IFormControlProps;
 
     textbox: IInputGroup;
+
+    setLabel: (value: string) => void;
+
+    setValue: (value) => void;
 }
 
 /**

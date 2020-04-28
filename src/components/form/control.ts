@@ -14,14 +14,16 @@ import { FormControlTypes } from ".";
 export class FormControl implements IFormControl {
     private _cb: ICheckboxGroup = null;
     private _el: HTMLElement = null;
+    private _elLabel: HTMLLabelElement = null;
     private _ddl: IDropdown = null;
     private _props: IFormControlProps;
     private _tb: IInputGroup = null;
 
     // Constructor
-    constructor(props: IFormControlProps) {
+    constructor(props: IFormControlProps, elLabel?: HTMLLabelElement) {
         // Save the parameters
         this._props = props;
+        this._elLabel = elLabel;
 
         // Create the control
         this.create();
@@ -405,4 +407,16 @@ export class FormControl implements IFormControl {
 
     // The form control properties
     get props(): IFormControlProps { return this._props; }
+
+    // Sets the form control label
+    setLabel(value: string) {
+        // Update the label
+        this._elLabel ? this._elLabel.innerHTML = value || "" : null;
+    }
+
+    // Sets the form control value
+    setValue(value) {
+        // Set the value
+        this.control ? this.control.setValue(value) : null;
+    }
 }
