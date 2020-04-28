@@ -1,6 +1,6 @@
 {
   "name": "gd-bs",
-  "version": "2.1.6",
+  "version": "2.1.7",
   "description": "Bootstrap JavaScript, TypeScript and Web Components library.",
   "main": "dist/gd-bs.js",
   "typings": "dist/gd-bs.d.ts",

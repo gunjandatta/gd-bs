@@ -51,6 +51,12 @@ export class FormControl implements IFormControl {
                     elGroup.appendChild(elErrorMessage);
                 }
             }
+
+            // See if an element was defined to render to
+            if (this._props.el) {
+                // Append the control to the element
+                this._props.el.appendChild(this._el);
+            }
         }
     }
 
