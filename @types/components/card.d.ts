@@ -89,9 +89,10 @@ export interface ICardBody {
     data?: any;
     onClick?: (card?: ICardProps, ev?: Event) => void;
     onRender?: (el?: HTMLElement, card?: ICardBody) => void;
+    onRenderTitle?: (el?: HTMLElement, card?: ICardBody) => void;
     subTitle?: string;
     text?: string;
-    title?: string;
+    title?: string | Element;
 }
 
 /**

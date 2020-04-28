@@ -34,13 +34,23 @@ export class CardBody {
         }
 
         // Update the title
-        let title = this._el.querySelector(".card-title");
-        if (this._props.title) {
-            // Set the title
-            title.innerHTML = this._props.title;
+        let elTitle = this._el.querySelector(".card-title") as HTMLElement;
+        if (this._props.title || this._props.onRenderTitle) {
+            // See if the title is a string
+            let title = this._props.title || "";
+            if (typeof (title) === "string") {
+                // Set the title
+                elTitle.innerHTML += title;
+            } else {
+                // Append the element
+                elTitle.appendChild(title);
+            }
+
+            // Call the render event
+            this._props.onRenderTitle ? this._props.onRenderTitle(elTitle, this._props) : null;
         } else {
             // Remove the title
-            this._el.removeChild(title);
+            this._el.removeChild(elTitle);
         }
 
         // Update the sub-title
