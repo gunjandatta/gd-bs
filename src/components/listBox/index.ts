@@ -57,8 +57,23 @@ class _ListBox extends Base<IListBoxProps> implements IListBox {
                                 items: this.props.items,
                                 type: FormControlTypes.MultiDropdown,
                                 onChange: (items: Array<IDropdownItem>) => {
-                                    // Set the values
-                                    this.configureValuesDDL(this.props.multi ? items : [items[0]]);
+                                    // See if we are allowing multiple values
+                                    if (this.props.multi) {
+                                        // Get the items and sort them
+                                        let allItems = (this._ddlValues.getValue() as Array<IDropdownItem>).concat(items).sort((a, b) => {
+                                            if (a.text < b.text) { return -1; }
+                                            if (a.text > b.text) { return 1; }
+                                            return 0;
+                                        });
+
+                                        // Remove any duplicates and update the values dropdown
+                                        this.configureValuesDDL(allItems.filter((item, idx) => {
+                                            return allItems.indexOf(item) === idx;
+                                        }));
+                                    } else {
+                                        // Set the values
+                                        this.configureValuesDDL([items[0]]);
+                                    }
 
                                     // Clear this dropdown
                                     this._ddlItems.setValue([]);
