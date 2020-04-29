@@ -3,7 +3,6 @@ import { IFormControlPropsDropdown, IFormControlPropsTextField } from "../../../
 import { IListBox, IListBoxProps } from "../../../@types/components/listBox";
 import { Base } from "../base";
 import { Form, FormControlTypes } from "../form";
-import { Dropdown } from "../dropdown";
 import * as HTML from "./index.html";
 
 /**
@@ -56,6 +55,9 @@ class _ListBox extends Base<IListBoxProps> implements IListBox {
 
                                     // Clear this dropdown
                                     this._ddlItems.setValue([]);
+
+                                    // Call the change event
+                                    this.props.onChange ? this.props.onChange(items) : null;
                                 },
                                 onControlRendered: ctrl => {
                                     // Set the dropdown
@@ -96,21 +98,9 @@ class _ListBox extends Base<IListBoxProps> implements IListBox {
             }
         ] as Array<IDropdownItem>).concat(values);
 
-        // See if the dropdown exists
-        if (this._ddlValues) {
-            // Update the dropdown
-            this._ddlValues.setItems(values);
-            this._ddlValues.setValue(values);
-        } else {
-            // Render the dropdown
-            this._ddlValues = Dropdown({
-                el: this.el.querySelector(".listbox-values"),
-                formFl: true,
-                multi: true,
-                isReadonly: true,
-                items: values
-            });
-        }
+        // Update the dropdown
+        this._ddlValues.setItems(values);
+        this._ddlValues.setValue(values);
     }
 
     // Filters the dropdown menu items
@@ -143,6 +133,18 @@ class _ListBox extends Base<IListBoxProps> implements IListBox {
      * Public Interface
      */
 
-    getValue() { return this._ddlValues.getValue(); }
+    getValue() { return this._ddlValues.getValue() as Array<IDropdownItem>; }
+
+    setValue(value) {
+        // Get the items
+        this._ddlItems.setValue(value);
+        let items = this._ddlItems.getValue() as Array<IDropdownItem>;
+
+        // Set the value
+        this.configureValuesDDL(items);
+
+        // Clear the items
+        this._ddlItems.setValue();
+    }
 }
 export const ListBox = (props: IListBoxProps): IListBox => { return new _ListBox(props); }

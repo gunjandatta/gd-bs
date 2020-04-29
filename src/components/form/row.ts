@@ -51,12 +51,13 @@ export class FormRow {
         for (let i = 0; i < columns.length; i++) {
             let columnProps = columns[i];
 
-            // See if a parent value is set
+            // Set the value
             let value = columnProps.control.value;
             if (this._parent.value) {
                 // Set the value
                 value = this._parent.value[columnProps.control.name] || value;
             }
+            columnProps.control.value = value;
 
             // Create the column
             let column = new FormGroup(columnProps.control);

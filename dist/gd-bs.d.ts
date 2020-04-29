@@ -2292,6 +2292,7 @@ declare module 'gd-bs/components/formControl' {
     import { ICheckboxGroup, ICheckboxGroupItem } from "gd-bs/components/checkboxGroup";
     import { IDropdown, IDropdownItem } from "gd-bs/components/dropdown";
     import { IInputGroup } from "gd-bs/components/inputGroup";
+    import { IListBox } from "gd-bs/components/listBox";
     
     /**
         * Custom Controls
@@ -2317,7 +2318,7 @@ declare module 'gd-bs/components/formControl' {
     
             checkbox: ICheckboxGroup;
     
-            control: ICheckboxGroup | IDropdown | IInputGroup;
+            control: ICheckboxGroup | IDropdown | IInputGroup | IListBox;
     
             dropdown: IDropdown;
     
@@ -2380,6 +2381,16 @@ declare module 'gd-bs/components/formControl' {
     }
     
     /**
+        * Form Control Properties - List Box
+        */
+    export interface IFormControlPropsListBox extends IFormControlProps {
+            items?: Array<IDropdownItem>;
+            multi?: boolean;
+            onChange?: (items: Array<IDropdownItem>) => void;
+            placeholder?: string;
+    }
+    
+    /**
         * Form Control Properties - Number Field
         */
     export interface IFormControlPropsNumberField extends IFormControlPropsTextField {
@@ -2416,6 +2427,7 @@ declare module 'gd-bs/components/formControl' {
             Email: number;
             Dropdown: number;
             File: number;
+            ListBox: number;
             MultiDropdown: number;
             Password: number;
             Radio: number;
@@ -2574,13 +2586,20 @@ declare module 'gd-bs/components/jumbotron' {
 }
 
 declare module 'gd-bs/components/listBox' {
-    import { IDropdownItem } from "gd-bs/components/dropdown";
+    import { IDropdown, IDropdownItem } from "gd-bs/components/dropdown";
     
     /**
         * List Box
         */
     export interface IListBox {
+            /** The element. */
+            el: Element;
     
+            /** The selected listbox items. */
+            getValue: () => Array<IDropdownItem>;
+    
+            /** Sets the listbox value. */
+            setValue: (value?: any | Array<any>) => void;
     }
     
     /**

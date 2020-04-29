@@ -1,11 +1,16 @@
 import { ICheckboxGroup } from "../../../@types/components/checkboxGroup";
 import { IDropdown } from "../../../@types/components/dropdown";
 import { IInputGroup } from "../../../@types/components/inputGroup";
-import { IFormControl, IFormControlProps, IFormControlPropsCheckbox, IFormControlPropsDropdown, IFormControlPropsRange, IFormControlPropsTextField, IFormControlValidationResult } from "../../../@types/components/formControl";
+import {
+    IFormControl, IFormControlProps, IFormControlPropsCheckbox, IFormControlPropsDropdown, IFormControlPropsListBox,
+    IFormControlPropsRange, IFormControlPropsTextField, IFormControlValidationResult
+} from "../../../@types/components/formControl";
+import { IListBox } from "../../../@types/components/listBox";
 import { CheckboxGroup, CheckboxGroupTypes } from "../checkboxGroup";
+import { CustomControls } from "./custom";
 import { Dropdown } from "../dropdown";
 import { InputGroup, InputGroupTypes } from "../inputGroup";
-import { CustomControls } from "./custom";
+import { ListBox } from "../listBox";
 import { FormControlTypes } from ".";
 
 /**
@@ -16,6 +21,7 @@ export class FormControl implements IFormControl {
     private _el: HTMLElement = null;
     private _elLabel: HTMLLabelElement = null;
     private _ddl: IDropdown = null;
+    private _lb: IListBox = null;
     private _props: IFormControlProps;
     private _tb: IInputGroup = null;
 
@@ -123,6 +129,17 @@ export class FormControl implements IFormControl {
                     placeholder: (this._props as IFormControlPropsTextField).placeholder,
                     title: this._props.title,
                     type: InputGroupTypes.File,
+                    value: this._props.value
+                });
+                break;
+            // List Box
+            case FormControlTypes.ListBox:
+                // Add the list box
+                this._lb = ListBox({
+                    items: (this._props as IFormControlPropsListBox).items,
+                    multi: (this._props as IFormControlPropsListBox).multi,
+                    onChange: (this._props as IFormControlPropsListBox).onChange,
+                    placeholder: (this._props as IFormControlPropsListBox).placeholder,
                     value: this._props.value
                 });
                 break;
@@ -259,7 +276,10 @@ export class FormControl implements IFormControl {
     get dropdown() { return this._ddl; }
 
     // The textbox control
-    get control() { return this._cb || this._ddl || this._tb }
+    get control() { return this._cb || this._ddl || this._lb || this._tb }
+
+    // The listbox control
+    get listbox() { return this._lb; }
 
     // The textbox control
     get textbox() { return this._tb; }
@@ -289,6 +309,12 @@ export class FormControl implements IFormControl {
             return this._ddl.getValue();
         }
 
+        // See if this is a list box
+        if (this._lb) {
+            // Return the value
+            return this._lb.getValue();
+        }
+
         // See if this is a textbox
         if (this._tb) {
             // Return the value
@@ -301,7 +327,7 @@ export class FormControl implements IFormControl {
         let validation: IFormControlValidationResult = { isValid: true };
 
         // Get the element and value
-        let elControl = (this._cb || this._ddl || this._tb) ? (this._cb || this._ddl || this._tb).el : this._el;
+        let elControl = (this._cb || this._ddl || this._lb || this._tb) ? (this._cb || this._ddl || this._lb || this._tb).el : this._el;
         let value = this.getValue();
 
         // See if this control is required

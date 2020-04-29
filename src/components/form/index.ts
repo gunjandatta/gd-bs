@@ -154,12 +154,13 @@ export enum FormControlTypes {
     Email = 2,
     Dropdown = 3,
     File = 4,
-    MultiDropdown = 5,
-    Password = 6,
-    Radio = 7,
-    Range = 8,
-    Readonly = 9,
-    Switch = 10,
-    TextArea = 11,
-    TextField = 12
+    ListBox = 5,
+    MultiDropdown = 6,
+    Password = 7,
+    Radio = 8,
+    Range = 9,
+    Readonly = 10,
+    Switch = 11,
+    TextArea = 12,
+    TextField = 13
 }

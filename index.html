@@ -185,7 +185,8 @@
                     CBInlineExample: true,
                     FName: "Datta",
                     LName: "Base",
-                    TestDelay: null
+                    TestDelay: null,
+                    ListBox: "Value 2"
                 },
                 onRendered: function () { console.log("The form has been rendered..."); },
                 rowClassName: "class1 class2",
@@ -290,6 +291,20 @@
                                             validMessage: "This is valid"
                                         };
                                     }
+                                }
+                            },
+                            {
+                                control: {
+                                    name: "ListBox",
+                                    label: "List Box Example:",
+                                    type: GD.Components.FormControlTypes.ListBox,
+                                    items: [
+                                        { text: "Value 1" },
+                                        { text: "Value 2" },
+                                        { text: "Value 3" },
+                                        { text: "Value 4" },
+                                        { text: "Value 5" }
+                                    ]
                                 }
                             }
                         ],

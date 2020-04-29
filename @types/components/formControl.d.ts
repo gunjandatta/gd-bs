@@ -23,6 +23,7 @@ export const FormControl: (props: IFormControlProps) => IFormControl;
 import { ICheckboxGroup, ICheckboxGroupItem } from "./checkboxGroup";
 import { IDropdown, IDropdownItem } from "./dropdown";
 import { IInputGroup } from "./inputGroup";
+import { IListBox } from "./listBox";
 
 /**
  * Custom Controls
@@ -48,7 +49,7 @@ export interface IFormControl {
 
     checkbox: ICheckboxGroup;
 
-    control: ICheckboxGroup | IDropdown | IInputGroup;
+    control: ICheckboxGroup | IDropdown | IInputGroup | IListBox;
 
     dropdown: IDropdown;
 
@@ -111,6 +112,16 @@ export interface IFormControlPropsDropdown extends IFormControlProps {
 }
 
 /**
+ * Form Control Properties - List Box
+ */
+export interface IFormControlPropsListBox extends IFormControlProps {
+    items?: Array<IDropdownItem>;
+    multi?: boolean;
+    onChange?: (items: Array<IDropdownItem>) => void;
+    placeholder?: string;
+}
+
+/**
  * Form Control Properties - Number Field
  */
 export interface IFormControlPropsNumberField extends IFormControlPropsTextField {
@@ -147,6 +158,7 @@ export type IFormControlTypes = {
     Email: number;
     Dropdown: number;
     File: number;
+    ListBox: number;
     MultiDropdown: number;
     Password: number;
     Radio: number;
