@@ -1,13 +1,13 @@
 import { IFormProps, IFormRow } from "../../../@types/components/form";
 import { IFormControl } from "../../../@types/components/formControl";
-import { FormColumn } from "./column";
+import { FormGroup } from "./group";
 import * as HTML from "./row.html";
 
 /**
  * Form Row
  */
 export class FormRow {
-    private _columns: Array<FormColumn> = null;
+    private _columns: Array<FormGroup> = null;
     private _el: HTMLDivElement = null;
     private _parent: IFormProps = null;
     private _props: IFormRow = null;
@@ -48,11 +48,37 @@ export class FormRow {
     private renderColumns() {
         // Parse the columns
         let columns = this._props.columns || [];
-        for (let j = 0; j < columns.length; j++) {
+        for (let i = 0; i < columns.length; i++) {
+            let columnProps = columns[i];
+
+            // See if a parent value is set
+            let value = columnProps.control.value;
+            if (this._parent.value) {
+                // Set the value
+                value = this._parent.value[columnProps.control.name] || value;
+            }
+
             // Create the column
-            let column = new FormColumn(columns[j], this._props, this.parent.value);
+            let column = new FormGroup(columnProps.control);
             this._columns.push(column);
             this._el.appendChild(column.el);
+
+            // Create the column
+            let colSize = columnProps.size > 0 && columnProps.size < 13 ? columnProps.size : 0;
+
+            // See if this column is auto sized
+            if (columnProps.isAutoSized || this.props.isAutoSized || this.props.isCentered) {
+                // Add the class name
+                column.el.classList.add("col-auto");
+            }
+            // Else, see if a size is defined
+            else if (colSize > 0 && colSize < 13) {
+                // Add the class name based on the size
+                column.el.classList.add("col-" + colSize);
+            } else {
+                // Default the size
+                column.el.classList.add("col");
+            }
         }
 
     }
@@ -80,7 +106,4 @@ export class FormRow {
 
     // The component properties
     get props(): IFormRow { return this._props; }
-
-    // The parent properties
-    get parent(): IFormProps { return this._parent; }
 }
