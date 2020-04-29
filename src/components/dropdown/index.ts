@@ -369,7 +369,7 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
     // Sets the dropdown value
     setValue(value) {
         // Ensure it's an array
-        let values = typeof (value.length) === "number" && typeof (value) !== "string" ? value : [value];
+        let values = value == null ? [] : (typeof (value.length) === "number" && typeof (value) !== "string" ? value : [value]);
 
         // Parse the items
         for (let i = 0; i < this._items.length; i++) {
@@ -382,6 +382,8 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
         // Parse the values
         for (let i = 0; i < values.length; i++) {
             let value = values[i];
+            let ddlText = value ? value.text || value : null;
+            let ddlValue = value ? value.value || value : null;
 
             // Parse the items
             for (let j = 0; j < this._items.length; j++) {
@@ -390,10 +392,10 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
                 // See if this is the target item
                 if (typeof (item.props.value) === "undefined") {
                     // Select this item if the text matches
-                    item.props.text == value ? item.toggle() : null;
+                    item.props.text == ddlText ? item.toggle() : null;
                 } else {
                     // Select this item if the value matches
-                    item.props.value == value ? item.toggle() : null;
+                    item.props.value == ddlValue ? item.toggle() : null;
                 }
             }
         }

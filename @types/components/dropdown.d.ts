@@ -74,7 +74,7 @@ export interface IDropdown {
     setItems: (items: Array<IDropdownItem>) => void;
 
     /** Sets the dropdown value. */
-    setValue: (value: any | Array<any>) => void;
+    setValue: (value?: any | Array<any>) => void;
 
     /** Shows the dropdown. */
     show: () => void;
