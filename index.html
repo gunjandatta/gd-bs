@@ -42,6 +42,7 @@
         <div id="button"></div>
         <div id="buttonGroup"></div>
         <div id="cbGroup"></div>
+        <div id="listbox"></div>
         <div id="modal"></div>
         <div id="textbox"></div>
         <div id="multi-textbox"></div>
@@ -64,6 +65,17 @@
     </form>
     <script type="text/javascript">
         window.addEventListener("load", function () {
+            GD.Components.ListBox({
+                el: document.getElementById("listbox"),
+                label: "List Box Example:",
+                items: [
+                    { text: "Value 1" },
+                    { text: "Value 2" },
+                    { text: "Value 3" },
+                    { text: "Value 4" },
+                    { text: "Value 5" }
+                ]
+            });
             GD.Components.Alert({
                 el: document.getElementById("alert"),
                 isDismissible: true,

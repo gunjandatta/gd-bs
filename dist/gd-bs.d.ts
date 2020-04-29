@@ -30,6 +30,7 @@ declare module 'gd-bs/components' {
     export * from "gd-bs/components/formControl";
     export * from "gd-bs/components/inputGroup";
     export * from "gd-bs/components/jumbotron";
+    export * from "gd-bs/components/listBox";
     export * from "gd-bs/components/listGroup";
     export * from "gd-bs/components/modal";
     export * from "gd-bs/components/nav";
@@ -2093,7 +2094,7 @@ declare module 'gd-bs/components/dropdown' {
             setItems: (items: Array<IDropdownItem>) => void;
     
             /** Sets the dropdown value. */
-            setValue: (value: any | Array<any>) => void;
+            setValue: (value?: any | Array<any>) => void;
     
             /** Shows the dropdown. */
             show: () => void;
@@ -2569,6 +2570,29 @@ declare module 'gd-bs/components/jumbotron' {
             lead?: string;
             onRenderContent?: (el?: HTMLElement) => void;
             title?: string;
+    }
+}
+
+declare module 'gd-bs/components/listBox' {
+    import { IDropdownItem } from "gd-bs/components/dropdown";
+    
+    /**
+        * List Box
+        */
+    export interface IListBox {
+    
+    }
+    
+    /**
+        * List Box Properties
+        */
+    export interface IListBoxProps {
+            label?: string;
+            items: Array<IDropdownItem>;
+            multi?: boolean;
+            placeholder?: string;
+            onChange?: (items: Array<IDropdownItem>) => void;
+            value?: any;
     }
 }
 
