@@ -6,6 +6,10 @@ import { Form, FormControlTypes } from "../form";
 import * as HTML from "./index.html";
 
 /**
+ * TODO - Figure out how to remove a selected item
+ */
+
+/**
  * List Box
  * @property props - The list box properties.
  */
@@ -26,6 +30,9 @@ class _ListBox extends Base<IListBoxProps> implements IListBox {
 
     // Configures the list box
     private configure() {
+        // Set the placeholder
+        let placeholder = typeof (this.props.placeholder) === "undefined" ? "Search" : this.props.placeholder;
+
         // Render a form to this element
         Form({
             el: this.el,
@@ -34,7 +41,7 @@ class _ListBox extends Base<IListBoxProps> implements IListBox {
                     columns: [{
                         control: {
                             label: this.props.label,
-                            placeholder: this.props.placeholder,
+                            placeholder,
                             type: FormControlTypes.TextField,
                             onChange: value => {
                                 // Filter the items
@@ -92,15 +99,33 @@ class _ListBox extends Base<IListBoxProps> implements IListBox {
     // Configures the values dropdown
     private configureValuesDDL(values: Array<IDropdownItem>) {
         // Add the header
-        values = ([
+        let items = ([
             {
                 isHeader: true, text: "Selected Items"
             }
         ] as Array<IDropdownItem>).concat(values);
 
         // Update the dropdown
-        this._ddlValues.setItems(values);
-        this._ddlValues.setValue(values);
+        this._ddlValues.setItems(items);
+        this._ddlValues.setValue(items);
+
+        // Parse the options
+        let options = this._ddlValues.el.querySelectorAll("option");
+        for (let i = 0; i < options.length; i++) {
+            let option = options[i];
+
+            // Add a click event
+            option.setAttribute("data-idx", i.toString());
+            option.addEventListener("mouseup", ev => {
+                let idx = parseInt((ev.currentTarget as HTMLElement).getAttribute("data-idx"));
+
+                // Remove the item
+                values.splice(idx, 1);
+
+                // Update the values
+                this.configureValuesDDL(values);
+            });
+        }
     }
 
     // Filters the dropdown menu items
