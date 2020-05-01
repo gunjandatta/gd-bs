@@ -37,20 +37,14 @@ class _Accordion extends Base<IAccordionProps> implements IAccordion {
                 for (let i = 0; i < this._items.length; i++) {
                     let item = this._items[i];
 
-                    // See if it's this item
-                    if (item.id == accordionItem.id) {
-                        // Toggle this item
-                        item.toggle();
-                    }
+                    // Skip this item
+                    if (item.id == accordionItem.id) { continue; }
                     // Else, see if this item is expanded
                     else if (item.isExpanded) {
                         // Toggle the item
                         item.toggle();
                     }
                 }
-            } else {
-                // Toggle this item
-                accordionItem.toggle();
             }
         });
     }
