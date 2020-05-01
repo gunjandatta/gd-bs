@@ -43,6 +43,11 @@ export class NavbarItem {
                     ev.preventDefault();
                 }
             }).el as HTMLElement;
+
+            // Update the link
+            let link = this._el.querySelector(".nav-link");
+            this._props.isActive ? link.classList.add("active") : null;
+            this._props.isDisabled ? link.classList.add("disabled") : null;
         }
         // Else, ensure there is text
         else if (this._props.text) {
