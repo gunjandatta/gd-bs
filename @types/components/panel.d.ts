@@ -16,7 +16,6 @@
  *             el: document.querySelector("#demo"),
  *             type: $REST.Components.PanelTypes.Large,
  *             modalProps: {
- *                 button: { text: "Show Panel" },
  *                 id: "my-panel",
  *                 title: "Panel Demo",
  *                 onRenderBody: function(el) {
@@ -48,7 +47,6 @@
  *     el: el,
  *     type: Components.PanelTypes.Large,
  *     modalProps: {
- *         button: { text: "Show Panel" },
  *         id: "my-panel",
  *         title: "Panel Demo",
  *         onRenderBody: (el) => {
