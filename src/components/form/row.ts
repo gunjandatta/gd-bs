@@ -60,7 +60,7 @@ export class FormRow {
             columnProps.control.value = value;
 
             // Create the column
-            let column = new FormGroup(columnProps.control);
+            let column = new FormGroup(columnProps.control, this._parent);
             this._columns.push(column);
             this._el.appendChild(column.el);
 

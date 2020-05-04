@@ -153,8 +153,8 @@ export interface IFormProps {
     el?: Element | HTMLElement,
     rowClassName?: string;
     rows?: Array<IFormRow>;
-    onControlRendering?: (control: IFormControlProps) => void | Promise<IFormControlProps>;
-    onControlRendered?: (control: IFormControl) => void | Promise<IFormControl>;
+    onControlRendering?: (control: IFormControlProps) => void | PromiseLike<IFormControlProps>;
+    onControlRendered?: (control: IFormControl) => void | PromiseLike<IFormControl>;
     onRendered?: (controls: Array<IFormControl>) => void;
     value?: any;
 }

@@ -99,16 +99,17 @@ class _ListBox extends Base<IListBoxProps> implements IListBox {
                         }
                     ]
                 }
-            ]
+            ],
+            onRendered: () => {
+                // Get the selected items
+                this._ddlItems.setValue(this.props.value);
+                let items = this._ddlItems.getValue() as Array<IDropdownItem>;
+                this._ddlItems.setValue([]);
+
+                // Configure the values dropdown
+                this.configureValuesDDL(items);
+            }
         });
-
-        // Get the selected items
-        this._ddlItems.setValue(this.props.value);
-        let items = this._ddlItems.getValue() as Array<IDropdownItem>;
-        this._ddlItems.setValue([]);
-
-        // Configure the values dropdown
-        this.configureValuesDDL(items);
     }
 
     // Configures the values dropdown

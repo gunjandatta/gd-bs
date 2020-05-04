@@ -188,6 +188,8 @@
                     TestDelay: null,
                     ListBox: "Value 2"
                 },
+                onControlRendering: function(ctrlProps) { console.log("The control property '" + ctrlProps.name + "' is rendering..."); },
+                onControlRendered: function (ctrl) { console.log("The control '" + ctrl.props.name + "' has been rendered..."); },
                 onRendered: function () { console.log("The form has been rendered..."); },
                 rowClassName: "class1 class2",
                 rows: [

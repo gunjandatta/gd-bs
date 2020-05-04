@@ -22,6 +22,9 @@ class _Form extends Base<IFormProps> implements IForm {
         // Configure the form
         this.configure();
 
+        // Configure the events
+        this.configureEvents();
+
         // Configure the parent
         this.configureParent();
     }
@@ -39,6 +42,15 @@ class _Form extends Base<IFormProps> implements IForm {
         this.appendRows(this.props.rows);
     }
 
+    // Configure the events
+    private configureEvents() {
+        // Wait before executing the rendered event, otherwise the controls will be null
+        setTimeout(() => {
+            // Execute the event
+            this.props.onRendered ? this.props.onRendered(this.controls) : null;
+        }, 10);
+    }
+
     /**
      * Public Interface
      */
@@ -48,7 +60,7 @@ class _Form extends Base<IFormProps> implements IForm {
         // Parse the controls
         for (let i = 0; i < controls.length; i++) {
             // Create the group
-            let group = new FormGroup(controls[i]);
+            let group = new FormGroup(controls[i], this.props);
             this._groups.push(group);
             this.el.appendChild(group.el);
         }

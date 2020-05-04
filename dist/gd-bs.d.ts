@@ -2265,8 +2265,8 @@ declare module 'gd-bs/components/form' {
             el?: Element | HTMLElement,
             rowClassName?: string;
             rows?: Array<IFormRow>;
-            onControlRendering?: (control: IFormControlProps) => void | Promise<IFormControlProps>;
-            onControlRendered?: (control: IFormControl) => void | Promise<IFormControl>;
+            onControlRendering?: (control: IFormControlProps) => void | PromiseLike<IFormControlProps>;
+            onControlRendered?: (control: IFormControl) => void | PromiseLike<IFormControl>;
             onRendered?: (controls: Array<IFormControl>) => void;
             value?: any;
     }
@@ -2350,8 +2350,8 @@ declare module 'gd-bs/components/formControl' {
             label?: string;
             loadingMessage?: string;
             name?: string;
-            onControlRendering?: (control: IFormControlProps) => void | Promise<IFormControlProps>;
-            onControlRendered?: (control: IFormControl) => void | Promise<IFormControl>;
+            onControlRendering?: (control: IFormControlProps) => void | PromiseLike<IFormControlProps>;
+            onControlRendered?: (control: IFormControl) => void | PromiseLike<IFormControl>;
             onGetValue?: (control: IFormControlProps) => any;
             onValidate?: (control: IFormControlProps, value: any) => boolean | IFormControlValidationResult;
             required?: boolean;
@@ -2458,7 +2458,7 @@ declare module 'gd-bs/components/inputGroup' {
         * 
         * // Create the inputGroup
         * let el = document.querySelector("#inputGroup");
-        * let inputGroup = Components.inputGroup({
+        * let inputGroup = Components.InputGroup({
         *     el: el,
         *     label: "My Name:",
         *     value: "First Last"
@@ -3095,7 +3095,6 @@ declare module 'gd-bs/components/panel' {
         *     el: el,
         *     type: Components.PanelTypes.Large,
         *     modalProps: {
-        *         button: { text: "Show Panel" },
         *         id: "my-panel",
         *         title: "Panel Demo",
         *         onRenderBody: (el) => {
