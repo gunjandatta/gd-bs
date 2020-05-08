@@ -1,4 +1,5 @@
 import { IAccordionItem } from "../../../@types/components/accordion";
+import { IButton } from "../../../@types/components/button";
 import { Button, ButtonTypes } from "../button";
 import * as HTML from "./item.html";
 
@@ -7,6 +8,7 @@ import * as HTML from "./item.html";
  */
 export class AccordionItem {
     private _el: HTMLDivElement = null;
+    private _elHeader: IButton = null;
     private _id: string = null;
     private _itemId: string = null;
     private _parentId: string = null;
@@ -90,7 +92,7 @@ export class AccordionItem {
         btnProps.target = '#collapse_' + this._itemId;
         btnProps.toggle = "collapse";
         btnProps.el = elHeader;
-        Button(btnProps);
+        this._elHeader = Button(btnProps);
     }
 
     /**
@@ -100,28 +102,30 @@ export class AccordionItem {
     // The component HTML element
     get el(): HTMLDivElement { return this._el; }
 
+    // The collapse element
+    get elCollapse(): HTMLDivElement { return this._el.querySelector(".collapse") || this._el.querySelector(".collapsing"); }
+
+    // The header element
+    get elHeader(): HTMLButtonElement { return this._elHeader.el as any; }
+
     // The item id
     get id(): string { return this._id; }
 
     // Returns true if the item is expanded
     get isExpanded(): boolean {
-        let elCollapse = this._el.querySelector(".collapse");
-
         // See if the item is expanded
-        return elCollapse.classList.contains("show");
+        return this.elCollapse.classList.contains("show");
     }
 
     // Toggles the item
     toggle() {
-        let elCollapse = this._el.querySelector(".collapse");
-
         // See if it's expanded
-        if (elCollapse.classList.contains("show")) {
+        if (this.elCollapse.classList.contains("show")) {
             // Hide it
-            elCollapse.classList.remove("show");
+            this.elCollapse.classList.remove("show");
         } else {
             // Show it
-            elCollapse.classList.add("show");
+            this.elCollapse.classList.add("show");
         }
     }
 }

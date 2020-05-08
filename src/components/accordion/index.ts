@@ -29,8 +29,9 @@ class _Accordion extends Base<IAccordionProps> implements IAccordion {
 
     // Configure the events
     private configureEvents(accordionItem: AccordionItem) {
+        // v5 - The accordionItem will need to be toggled by default
         // Create a click event
-        accordionItem.el.addEventListener("click", ev => {
+        accordionItem.elHeader.addEventListener("click", ev => {
             // See if we are auto-closing items
             if (this.props.autoCollapse) {
                 // Parse the items
