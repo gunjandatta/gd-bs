@@ -97,9 +97,6 @@ class _Modal extends Base<IModalProps> implements IModal {
      * Public Interface
      */
 
-    // Disposes the modal
-    dispose() { jQuery(this.el).modal("dispose"); }
-
     // Updates the modal
     handleUpdate() { jQuery(this.el).modal("handleUpdate"); }
 

@@ -126,9 +126,6 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
      * Public Interface
      */
 
-    // Disposes the popover
-    dispose() { jQuery(this.el).popover("dispose"); }
-
     // Toggles the popover
     toggle() { jQuery(this.el).popover("toggle"); }
 

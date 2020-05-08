@@ -80,9 +80,6 @@ class _Nav extends Base<INavProps> implements INav {
      * Public Interface
      */
 
-    // Disposes the component
-    dispose() { jQuery(this.el).tab("dispose"); }
-
     // Shows a tab
     showTab(tabId?: string | number) {
         // Ensure tabs exist

@@ -44,9 +44,6 @@ import { ISpinnerProps } from "./spinner";
  * Button
  */
 export interface IButton {
-    /** Destroys an element’s button. */
-    dispose: () => void;
-
     /** The element. */
     el: Element;
 

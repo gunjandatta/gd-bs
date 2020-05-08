@@ -168,9 +168,6 @@ class _Button extends Base<IButtonProps> implements IButton {
      * Public Properties
      */
 
-    // Disposes the component
-    dispose() { jQuery(this.el).button("dispose"); }
-
     // Sets the button text
     setText(btnText?: string) {
         // Clear the element

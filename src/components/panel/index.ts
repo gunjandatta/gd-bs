@@ -77,9 +77,6 @@ class _Panel extends Base<IPanelProps> implements IPanel {
      * Public Interface
      */
 
-    // Disposes the modal
-    dispose() { return this._modal.dispose(); }
-
     // Hides the modal
     hide() { return this._modal.hide(); }
 

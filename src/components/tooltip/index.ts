@@ -111,9 +111,6 @@ class _Tooltip extends Base<ITooltipProps> {//implements ITooltip {
      * Public Interface
      */
 
-    // Disposes the tooltip
-    dispose() { jQuery(this.el).tooltip("dispose"); }
-
     // Enables the tooltip
     enable() { jQuery(this.el).tooltip("enable"); }
 

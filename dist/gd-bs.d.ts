@@ -1245,9 +1245,6 @@ declare module 'gd-bs/components/alert' {
             /** Closes an alert by removing it from the DOM. */
             close: () => void;
     
-            /** Destroys an element’s alert. */
-            dispose: () => void;
-    
             /** Updates the alert text. */
             setText: (alertText?: string) => void;
     
@@ -1445,9 +1442,6 @@ declare module 'gd-bs/components/button' {
         * Button
         */
     export interface IButton {
-            /** Destroys an element’s button. */
-            dispose: () => void;
-    
             /** The element. */
             el: Element;
     
@@ -1610,9 +1604,6 @@ declare module 'gd-bs/components/card' {
         * Card
         */
     export interface ICard {
-            /** Destroys an element’s card. */
-            dispose: () => void;
-    
             /** The element. */
             el: Element;
     
@@ -1805,9 +1796,6 @@ declare module 'gd-bs/components/carousel' {
                 */
             cycle: () => void;
     
-            /** Destroys an element’s tab. */
-            dispose: () => void;
-    
             /** The element. */
             el: Element;
     
@@ -1999,9 +1987,6 @@ declare module 'gd-bs/components/collapse' {
         * Collapse
         */
     export interface ICollapse {
-            /** Destroys an element’s collapse. */
-            dispose: () => void;
-    
             /** The element. */
             el: Element;
     
@@ -2075,9 +2060,6 @@ declare module 'gd-bs/components/dropdown' {
         * Dropdown
         */
     export interface IDropdown {
-            /** Destroys an element’s dropdown. */
-            dispose: () => void;
-    
             /** The element. */
             el: Element;
     
@@ -2744,9 +2726,6 @@ declare module 'gd-bs/components/modal' {
         * Modal
         */
     export interface IModal {
-            /** Destroys an element’s modal. */
-            dispose: () => void;
-    
             /** The element. */
             el: Element,
     
@@ -2837,9 +2816,6 @@ declare module 'gd-bs/components/nav' {
         * Navigation
         */
     export interface INav {
-            /** Destroys an element’s tab. */
-            dispose: () => void;
-    
             /** The element. */
             el: Element;
     
@@ -3190,9 +3166,6 @@ declare module 'gd-bs/components/popover' {
         * Popover
         */
     export interface IPopover {
-            /** Destroys an element’s popover. */
-            dispose: () => void;
-    
             /** The element. */
             el: Element;
     
@@ -3672,9 +3645,6 @@ declare module 'gd-bs/components/tooltip' {
         * Tooltip
         */
     export interface ITooltip {
-            /** Destroys an element’s tooltip. */
-            dispose: () => void;
-    
             /** The element. */
             el: Element;
     

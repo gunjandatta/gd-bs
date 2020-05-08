@@ -48,9 +48,6 @@ import { IButtonProps } from "./button";
  * Tooltip
  */
 export interface ITooltip {
-    /** Destroys an element’s tooltip. */
-    dispose: () => void;
-
     /** The element. */
     el: Element;
 

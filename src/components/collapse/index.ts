@@ -49,9 +49,6 @@ class _Collapse extends Base<ICollapseProps> implements ICollapse {
      * Public Interface
      */
 
-    // Disposes the component
-    dispose() { jQuery(this.el).collapse("dispose"); }
-
     // Toggles the component
     toggle() { jQuery(this.el).collapse("toggle"); }
 }

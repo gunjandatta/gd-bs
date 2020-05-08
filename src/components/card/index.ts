@@ -141,8 +141,5 @@ class _Card extends Base<ICardProps> implements ICard {
     /**
      * Public Interface
      */
-
-    // Disposes the component
-    dispose() { jQuery(this.el).card("dispose"); }
 }
 export const Card = (props: ICardProps): ICard => { return new _Card(props); }

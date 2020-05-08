@@ -81,9 +81,6 @@ export interface ICarousel {
      */
     cycle: () => void;
 
-    /** Destroys an element’s tab. */
-    dispose: () => void;
-
     /** The element. */
     el: Element;
 

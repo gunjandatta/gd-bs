@@ -55,9 +55,6 @@ export const DropdownTypes: IDropdownTypes;
  * Dropdown
  */
 export interface IDropdown {
-    /** Destroys an element’s dropdown. */
-    dispose: () => void;
-
     /** The element. */
     el: Element;
 

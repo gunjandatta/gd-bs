@@ -55,9 +55,6 @@ import { INavProps } from "./nav";
  * Card
  */
 export interface ICard {
-    /** Destroys an element’s card. */
-    dispose: () => void;
-
     /** The element. */
     el: Element;
 

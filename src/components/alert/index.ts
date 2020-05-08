@@ -105,9 +105,6 @@ class _Alert extends Base<IAlertProps> implements IAlert {
     // Closes the alert
     close() { jQuery(this.el).alert("toggle"); }
 
-    // Disposes the alert
-    dispose() { jQuery(this.el).alert("dispose"); }
-
     // Clears the alert and updates the text
     setText(alertText?: string) {
         // Clear the element

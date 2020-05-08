@@ -326,9 +326,6 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
      * Public Interface
      */
 
-    // Disposes the dropdown
-    dispose() { jQuery(this.el).dropdown("dispose"); }
-
     // Gets the value
     getValue() {
         let values = [];

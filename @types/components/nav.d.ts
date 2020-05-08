@@ -51,9 +51,6 @@ export const Nav: (props: INavProps) => INav;
  * Navigation
  */
 export interface INav {
-    /** Destroys an element’s tab. */
-    dispose: () => void;
-
     /** The element. */
     el: Element;
 

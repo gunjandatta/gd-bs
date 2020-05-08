@@ -109,9 +109,6 @@ class _Carousel extends Base<ICarouselProps> implements ICarousel {
     // Cycle the carousel
     cycle() { jQuery(this.el).carousel("cycle"); }
 
-    // Disposes the carousel
-    dispose() { jQuery(this.el).carousel("dispose"); }
-
     // Goes to the next slide
     next() { jQuery(this.el).carousel("next"); }
 

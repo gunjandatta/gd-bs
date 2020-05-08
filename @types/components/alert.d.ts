@@ -47,9 +47,6 @@ export interface IAlert extends IBase<IAlertProps> {
     /** Closes an alert by removing it from the DOM. */
     close: () => void;
 
-    /** Destroys an element’s alert. */
-    dispose: () => void;
-
     /** Updates the alert text. */
     setText: (alertText?: string) => void;
 

@@ -58,9 +58,6 @@ import { IButtonProps } from "./button";
  * Popover
  */
 export interface IPopover {
-    /** Destroys an element’s popover. */
-    dispose: () => void;
-
     /** The element. */
     el: Element;
 
