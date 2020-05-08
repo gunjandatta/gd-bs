@@ -369,21 +369,39 @@ export class FormControl implements IFormControl {
             // Set the class
             elFormControl.classList.add(validation.isValid ? "is-valid" : "is-invalid");
         } else {
-            // Parse the checkboxes
-            let elCheckboxes = elControl.querySelectorAll(".form-check-input");
-            for (let i = 0; i < elCheckboxes.length; i++) {
-                let elCheckbox = elCheckboxes[i];
+            let validateControls = (controls: Array<HTMLElement>) => {
+                // Parse the controls
+                for (let i = 0; i < controls.length; i++) {
+                    let control = controls[i];
 
-                // Clear the invalid/valid classes
-                elCheckbox.classList.remove("is-invalid");
-                elCheckbox.classList.remove("is-valid");
+                    // Clear the invalid/valid classes
+                    control.classList.remove("is-invalid");
+                    control.classList.remove("is-valid");
 
-                // Set the class
-                elCheckbox.classList.add(validation.isValid ? "is-valid" : "is-invalid");
+                    // Set the class
+                    control.classList.add(validation.isValid ? "is-valid" : "is-invalid");
+                }
             }
 
-            // Set the form control
-            elFormControl = elCheckboxes.length > 0 ? elCheckboxes[elCheckboxes.length - 1] as any : elFormControl;
+            // Get the checkboxes
+            let elCheckboxes = elControl.querySelectorAll(".form-check-input");
+            if (elCheckboxes.length > 0) {
+                // Validate the controls
+                validateControls(elCheckboxes as any);
+
+                // Set the form control
+                elFormControl = elCheckboxes.length > 0 ? elCheckboxes[elCheckboxes.length - 1] as any : elFormControl;
+            }
+
+            // Get the custom controls
+            let elCustomControls = elControl.querySelectorAll(".custom-control-input");
+            if (elCustomControls.length > 0) {
+                // Validate the controls
+                validateControls(elCustomControls as any);
+
+                // Set the form control
+                elFormControl = elCustomControls.length > 0 ? elCustomControls[elCustomControls.length - 1] as any : elFormControl;
+            }
         }
 
         // Ensure the form control exists
