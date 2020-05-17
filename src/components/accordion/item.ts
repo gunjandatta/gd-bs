@@ -53,9 +53,6 @@ export class AccordionItem {
     private configureEvents() {
         // Add a click event
         this._elHeader.el.addEventListener("click", () => {
-            // Toggle the item
-            this.toggle();
-
             // See if there is a click event
             if (this._props.onClick) {
                 // Call the click event

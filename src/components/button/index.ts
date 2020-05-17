@@ -129,31 +129,6 @@ class _Button extends Base<IButtonProps> implements IButton {
 
     // Configure the events
     private configureEvents() {
-        // See if we are controlling another element
-        if (this.props.target) {
-            // Add a click event
-            this.el.addEventListener("click", ev => {
-                // Get the target element
-                let elTarget = document.querySelector(this.props.target);
-                if (elTarget) {
-                    // Do something based on the toggle
-                    switch (this.el.getAttribute("data-toggle")) {
-                        // Collapse
-                        case "collapse":
-                            // See if it's displayed
-                            if (elTarget.classList.contains("show")) {
-                                // Hide the target
-                                elTarget.classList.remove("show");
-                            } else {
-                                // Show the target
-                                elTarget.classList.add("show");
-                            }
-                            break;
-                    }
-                }
-            });
-        }
-
         // See if there is a click event
         if (this.props.onClick) {
             // Add a click event
