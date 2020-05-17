@@ -27,29 +27,6 @@ class _Accordion extends Base<IAccordionProps> implements IAccordion {
         props.options ? jQuery(this.el).collapse(props.options) : null;
     }
 
-    // Configure the events
-    private configureEvents(accordionItem: AccordionItem) {
-        // v5 - The accordionItem will need to be toggled by default
-        // Create a click event
-        accordionItem.elHeader.addEventListener("click", ev => {
-            // See if we are auto-closing items
-            if (this.props.autoCollapse) {
-                // Parse the items
-                for (let i = 0; i < this._items.length; i++) {
-                    let item = this._items[i];
-
-                    // Skip this item
-                    if (item.id == accordionItem.id) { continue; }
-                    // Else, see if this item is expanded
-                    else if (item.isExpanded) {
-                        // Toggle the item
-                        item.toggle();
-                    }
-                }
-            }
-        });
-    }
-
     // Renders the items
     private renderItems() {
         // Clear the items
@@ -62,9 +39,6 @@ class _Accordion extends Base<IAccordionProps> implements IAccordion {
             let item = new AccordionItem(this.el.id, this.el.id + "_" + i, items[i]);
             this._items.push(item);
             this.el.appendChild(item.el);
-
-            // Configure the events
-            this.configureEvents(item);
         }
     }
 }

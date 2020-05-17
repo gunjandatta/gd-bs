@@ -51,21 +51,20 @@ export class AccordionItem {
 
     // Configures the events
     private configureEvents() {
-        let elCardBody = this._el.querySelector(".card-body") as HTMLElement;
+        // Add a click event
+        this._elHeader.el.addEventListener("click", () => {
+            // Toggle the item
+            this.toggle();
 
-        // See if there is a click event
-        if (this._props.onClick) {
-            // Add a click event
-            elCardBody.addEventListener("click", ev => {
-                let el = ev.currentTarget as HTMLElement;
-
+            // See if there is a click event
+            if (this._props.onClick) {
                 // Call the click event
-                this._props.onClick(el, this._props);
-            });
-        }
+                this._props.onClick(this._elHeader.el as any, this._props);
+            }
+        });
 
         // Execute the render event
-        this._props.onRender ? this._props.onRender(elCardBody, this._props) : null;
+        this._props.onRender ? this._props.onRender(this._el.querySelector(".card-body"), this._props) : null;
     }
 
     // Renders the content
