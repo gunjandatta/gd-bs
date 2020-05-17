@@ -88,8 +88,10 @@ export class AccordionItem {
         // Render the button to the header
         let btnProps = this._props.btnProps || {};
         typeof (btnProps.type) === "number" ? null : btnProps.type = ButtonTypes.Link;
-        btnProps.target = '#collapse_' + this._itemId;
+        btnProps.controls = "collapse_" + this._itemId;
+        btnProps.target = '#' + btnProps.controls;
         btnProps.toggle = "collapse";
+        btnProps.isExpanded = this._props.showFl;
         btnProps.el = elHeader;
         this._elHeader = Button(btnProps);
     }

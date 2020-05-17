@@ -1206,7 +1206,6 @@ declare module 'gd-bs/components/accordion' {
         * Accordion Properties
         */
     export interface IAccordionProps extends IBaseProps {
-            autoCollapse?: boolean;
             id?: string;
             items?: Array<IAccordionItem>;
             options?: IAccordionOptions;
