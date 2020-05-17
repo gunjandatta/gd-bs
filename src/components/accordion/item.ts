@@ -51,14 +51,14 @@ export class AccordionItem {
 
     // Configures the events
     private configureEvents() {
-        // Add a click event
-        this._elHeader.el.addEventListener("click", () => {
-            // See if there is a click event
-            if (this._props.onClick) {
+        // See if there is a click event
+        if (this._props.onClick) {
+            // Add a click event
+            this._elHeader.el.addEventListener("click", () => {
                 // Call the click event
                 this._props.onClick(this._elHeader.el as any, this._props);
-            }
-        });
+            });
+        }
 
         // Execute the render event
         this._props.onRender ? this._props.onRender(this._el.querySelector(".card-body"), this._props) : null;
@@ -86,9 +86,9 @@ export class AccordionItem {
         let btnProps = this._props.btnProps || {};
         typeof (btnProps.type) === "number" ? null : btnProps.type = ButtonTypes.Link;
         btnProps.controls = "collapse_" + this._itemId;
+        btnProps.isExpanded = this._props.showFl ? true : false;
         btnProps.target = '#' + btnProps.controls;
         btnProps.toggle = "collapse";
-        btnProps.isExpanded = this._props.showFl;
         btnProps.el = elHeader;
         this._elHeader = Button(btnProps);
     }
