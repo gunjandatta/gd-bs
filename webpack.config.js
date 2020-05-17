@@ -1,6 +1,4 @@
-const copyFile = require("copy-webpack-plugin");
 const path = require("path");
-const replace = require("replace-in-file-webpack-plugin");
 
 module.exports = (env, argv) => {
     var isDev = argv.mode === "development";
