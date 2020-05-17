@@ -73,35 +73,6 @@ module.exports = (env, argv) => {
         }
     };
 
-    // See if this is production
-    if (!isDev) {
-        // Set the plugins
-        config.plugins = [
-            // Copy the bootstrap library
-            new copyFile([
-                { from: "node_modules/bootstrap/scss", to: "../scss" },
-                { from: "src/sass/bootstrap.scss", to: "../scss/_gd.scss" }
-            ]),
-            // Replace the reference to bootstrap
-            new replace([
-                {
-                    dir: "scss",
-                    files: ["_gd.scss"],
-                    rules: [
-                        {
-                            search: /~bootstrap\/scss\//g,
-                            replace: ""
-                        },
-                        {
-                            search: /"panel"/,
-                            replace: '"../src/sass/panel"'
-                        }
-                    ]
-                }
-            ])
-        ];
-    }
-
     // Return the configuration
     return config;
 }
