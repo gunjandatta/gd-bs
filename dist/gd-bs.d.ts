@@ -2672,6 +2672,7 @@ declare module 'gd-bs/components/listGroup' {
             el?: Element | HTMLElement;
             fadeTabs?: boolean;
             isFlush?: boolean;
+            isHorizontal?: boolean;
             isTabs?: boolean;
             items?: Array<IListGroupItem>;
     }

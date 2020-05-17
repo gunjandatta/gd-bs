@@ -56,6 +56,7 @@ class _ListGroup extends Base<IListGroupProps> implements IListGroup {
         // Update the list group
         let listGroup = this.el.querySelector(".list-group") || this.el;
         this.props.isFlush ? listGroup.classList.add("list-group-flush") : null;
+        this.props.isHorizontal ? listGroup.classList.add("list-group-horizontal") : null;
         this.props.isTabs ? listGroup.setAttribute("role", "tablist") : null;
 
         // See if the column width is defined

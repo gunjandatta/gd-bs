@@ -96,6 +96,7 @@ export interface IListGroupProps {
     el?: Element | HTMLElement;
     fadeTabs?: boolean;
     isFlush?: boolean;
+    isHorizontal?: boolean;
     isTabs?: boolean;
     items?: Array<IListGroupItem>;
 }
