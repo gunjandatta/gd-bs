@@ -114,9 +114,6 @@ class _Modal extends Base<IModalProps> implements IModal {
     hide() {
         // hide the modal
         jQuery(this.el).modal("hide");
-
-        // Call the close event
-        this.props.onClose ? this.props.onClose(this.el) : null;
     }
 
     // Returns true if the modal is visible
