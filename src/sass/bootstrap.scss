@@ -8,6 +8,10 @@
 
     // Panel
     @import "panel";
+
+    // Fix for Form Validation
+    .is-valid ~ .valid-feedback { display: block; }
+    .is-invalid ~ .invalid-feedback { display: block; }
 }
 
 // Contain the styles under a bootstrap class
