@@ -3169,6 +3169,12 @@ declare module 'gd-bs/components/popover' {
             /** The element. */
             el: Element;
     
+            /** Disables the popover. */
+            disable: () => void;
+    
+            /** Enables the popover. */
+            enable: () => void;
+    
             /** Hides an element’s popover. */
             hide: () => void;
     

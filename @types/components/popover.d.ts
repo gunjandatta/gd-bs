@@ -61,6 +61,12 @@ export interface IPopover {
     /** The element. */
     el: Element;
 
+    /** Disables the popover. */
+    disable: () => void;
+
+    /** Enables the popover. */
+    enable: () => void;
+
     /** Hides an element’s popover. */
     hide: () => void;
 

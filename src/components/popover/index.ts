@@ -126,6 +126,18 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
      * Public Interface
      */
 
+    // Disables the popover
+    disable() { jQuery(this.el).popover("disable"); }
+
+    // Enables the popover
+    enable() { jQuery(this.el).popover("enable"); }
+
+    // Hides the popover
+    hide() { jQuery(this.el).popover("hide"); }
+
+    // Shows the popover
+    show() { jQuery(this.el).popover("show"); }
+
     // Toggles the popover
     toggle() { jQuery(this.el).popover("toggle"); }
 
