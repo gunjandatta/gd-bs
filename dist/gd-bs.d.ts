@@ -2756,16 +2756,16 @@ declare module 'gd-bs/components/modal' {
         */
     export interface IModalOptions {
             /** Includes a modal-backdrop element. Alternatively, specify static for a backdrop which doesn't close the modal on click. */
-            backdrop: boolean | string;
+            backdrop?: boolean | string;
     
             /** Puts the focus on the modal when initialized. */
-            focus: boolean;
+            focus?: boolean;
     
             /** Closes the modal when escape key is pressed. */
-            keyboard: boolean;
+            keyboard?: boolean;
     
             /** Shows the modal when initialized. */
-            show: boolean;
+            show?: boolean;
     }
     
     /**
@@ -2786,6 +2786,7 @@ declare module 'gd-bs/components/modal' {
             onClose?: (el: HTMLDivElement) => void;
             onRenderBody?: (el: HTMLDivElement) => void;
             onRenderFooter?: (el: HTMLDivElement) => void;
+            options?: IModalOptions;
             title?: string;
     }
 }

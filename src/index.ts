@@ -1,7 +1,7 @@
 import "bootstrap";
 import * as jQuery from "jquery";
 import * as Components from "./components";
-import "./sass/bootstrap";
+import "./sass";
 
 export {
     Components,

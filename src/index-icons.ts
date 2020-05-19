@@ -2,7 +2,7 @@ import "bootstrap";
 import * as jQuery from "jquery";
 import * as Components from "./components";
 import { Icons, IconTypes } from "./icons";
-import "./sass/bootstrap";
+import "./sass";
 
 export {
     Components,

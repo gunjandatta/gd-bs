@@ -65,6 +65,16 @@ class _Modal extends Base<IModalProps> implements IModal {
             // Append the element
             footer.appendChild(content);
         }
+
+        // Get the modal options and default the show flag
+        let options = this.props.options || {};
+        if (typeof (options.show) !== "boolean") {
+            // Default the property
+            options.show = false;
+        }
+
+        // Create the modal
+        jQuery(this.el).modal(options);
     }
 
     // Configure the events
@@ -102,9 +112,8 @@ class _Modal extends Base<IModalProps> implements IModal {
 
     // Hides the modal
     hide() {
-        // Update the modal
-        this.el.classList.remove("show");
-        this.el.style.display = "";
+        // hide the modal
+        jQuery(this.el).modal("hide");
 
         // Call the close event
         this.props.onClose ? this.props.onClose(this.el) : null;
@@ -124,21 +133,14 @@ class _Modal extends Base<IModalProps> implements IModal {
 
     // Shows the modal
     show() {
-        // Update the modal
-        this.el.classList.add("show");
-        this.el.style.display = "block";
+        // Show the modal
+        jQuery(this.el).modal("show");
     }
 
     // Toggles the modal
     toggle() {
-        // See if it's visible
-        if (this.el.classList.contains("show")) {
-            // Hide it
-            this.hide();
-        } else {
-            // Show it
-            this.show();
-        }
+        // Toggle the modal
+        jQuery(this.el).modal("toggle");
     }
 }
 export const Modal = (props: IModalProps): IModal => { return new _Modal(props); }
