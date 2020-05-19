@@ -1535,7 +1535,7 @@ declare module 'gd-bs/components/buttonGroup' {
         */
     export const ButtonGroup: (props: IButtonGroupProps) => IButtonGroup;
     
-    import { IButtonProps } from "gd-bs/components/button";
+    import { IButton, IButtonProps } from "gd-bs/components/button";
     
     /**
         * Button Group
@@ -1543,6 +1543,9 @@ declare module 'gd-bs/components/buttonGroup' {
     export interface IButtonGroup {
             /** The element. */
             el: Element;
+    
+            /** The buttons. */
+            buttons: Array<IButton>;
     
             /** Hides the button group. */
             hide: () => void;

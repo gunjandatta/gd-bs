@@ -39,7 +39,7 @@
  */
 export const ButtonGroup: (props: IButtonGroupProps) => IButtonGroup;
 
-import { IButtonProps } from "./button";
+import { IButton, IButtonProps } from "./button";
 
 /**
  * Button Group
@@ -47,6 +47,9 @@ import { IButtonProps } from "./button";
 export interface IButtonGroup {
     /** The element. */
     el: Element;
+
+    /** The buttons. */
+    buttons: Array<IButton>;
 
     /** Hides the button group. */
     hide: () => void;
