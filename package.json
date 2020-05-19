@@ -5,11 +5,11 @@
   "main": "dist/gd-bs.js",
   "typings": "dist/gd-bs.d.ts",
   "scripts": {
-    "all": "npm run icons && npm run build-all && npm run prod-all && npm run typings",
+    "all": "npm run libs && npm run build-all && npm run prod-all && npm run typings",
     "build-all": "npm run build && npm run build-icons",
     "build": "webpack --mode=development",
     "build-icons": "webpack --mode=development --icons=true",
-    "icons": "node generateIcons",
+    "libs": "node generate && node generateIcons",
     "prod-all": "npm run prod && npm run prod-icons",
     "prod": "webpack --mode=production",
     "prod-icons": "webpack --mode=production --icons=true",

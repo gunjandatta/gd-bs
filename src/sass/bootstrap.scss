@@ -1,20 +1,8 @@
-@import "~bootstrap/scss/functions";
-@import "~bootstrap/scss/variables";
+// Bootstrap
+@import "./bs";
 
-// Bootstrap Styles
-%bootstrap {
-    // Bootstrap Framework
-    @import "~bootstrap/scss/bootstrap";
-
+// Wrap everything under a .bs class
+.bs {
     // Panel
     @import "panel";
-
-    // Fix for Form Validation
-    .is-valid ~ .valid-feedback { display: block; }
-    .is-invalid ~ .invalid-feedback { display: block; }
-}
-
-// Contain the styles under a bootstrap class
-.bs {
-    @extend %bootstrap
 }
