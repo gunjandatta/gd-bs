@@ -143,6 +143,12 @@ class _Button extends Base<IButtonProps> implements IButton {
      * Public Properties
      */
 
+    // Disables the button
+    disable() { (this.el as HTMLButtonElement).disabled = true; }
+
+    // Enables the button
+    enable() { (this.el as HTMLButtonElement).disabled = false; }
+
     // Sets the button text
     setText(btnText?: string) {
         // Clear the element

@@ -47,6 +47,12 @@ export interface IButton {
     /** The element. */
     el: HTMLAnchorElement | HTMLButtonElement;
 
+    /** Disables the button. */
+    disable: () => void;
+
+    /** Enables the button. */
+    enable: () => void;
+
     /** Hides the button. */
     hide: () => void;
 
