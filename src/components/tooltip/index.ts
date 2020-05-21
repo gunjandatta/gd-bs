@@ -111,6 +111,9 @@ class _Tooltip extends Base<ITooltipProps> {//implements ITooltip {
      * Bootstrap
      */
 
+    // Disposes the tooltip
+    dispose() { this._bootstrapObj.tooltip("dispose"); }
+
     // Enables the tooltip
     enable() { this._bootstrapObj.tooltip("enable"); }
 

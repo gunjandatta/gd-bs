@@ -107,6 +107,9 @@ class _Modal extends Base<IModalProps> implements IModal {
      * Bootstrap
      */
 
+    // Disposes the modal
+    dispose() { this._bootstrapObj.modal("dispose"); }
+
     // Updates the modal
     handleUpdate() { this._bootstrapObj.modal("handleUpdate"); }
 

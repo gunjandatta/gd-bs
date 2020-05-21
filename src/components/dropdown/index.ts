@@ -329,6 +329,9 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
      * Bootstrap
      */
 
+    // Disposes the dropdown
+    dispose() { this._bootstrapObj.dropdown("dispose"); }
+
     // Toggles the menu
     toggle() { this._bootstrapObj.dropdown("toggle"); }
 

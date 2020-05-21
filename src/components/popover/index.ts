@@ -126,6 +126,9 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
      * Bootstrap
      */
 
+    // Disposes the popover
+    dispose() { this._bootstrapObj.popover("dispose"); }
+
     // Disables the popover
     disable() { this._bootstrapObj.popover("disable"); }
 

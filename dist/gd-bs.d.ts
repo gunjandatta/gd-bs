@@ -1244,6 +1244,9 @@ declare module 'gd-bs/components/alert' {
             /** Closes an alert by removing it from the DOM. */
             close: () => void;
     
+            /** Disposes the alert. */
+            dispose: () => void;
+    
             /** Updates the alert text. */
             setText: (alertText?: string) => void;
     
@@ -1443,6 +1446,9 @@ declare module 'gd-bs/components/button' {
     
             /** Disables the button. */
             disable: () => void;
+    
+            /** Disposes the button. */
+            dispose: () => void;
     
             /** Enables the button. */
             enable: () => void;
@@ -1798,6 +1804,9 @@ declare module 'gd-bs/components/carousel' {
                 */
             cycle: () => void;
     
+            /** Disposes the carousel. */
+            dispose: () => void;
+    
             /** The element. */
             el: Element;
     
@@ -1988,6 +1997,9 @@ declare module 'gd-bs/components/collapse' {
         * Collapse
         */
     export interface ICollapse {
+            /** Disposes the collapse. */
+            dispose: () => void;
+    
             /** The element. */
             el: Element;
     
@@ -2061,6 +2073,9 @@ declare module 'gd-bs/components/dropdown' {
         * Dropdown
         */
     export interface IDropdown {
+            /** Disposes the dropdown. */
+            dispose: () => void;
+    
             /** The element. */
             el: Element;
     
@@ -2740,6 +2755,9 @@ declare module 'gd-bs/components/modal' {
         * Modal
         */
     export interface IModal {
+            /** Disposes the modal. */
+            dispose: () => void;
+    
             /** The element. */
             el: Element,
     
@@ -3106,6 +3124,9 @@ declare module 'gd-bs/components/panel' {
         * Panel
         */
     export interface IPanel {
+            /** Disposes the panel. */
+            dispose: () => void;
+    
             /** The element. */
             el: Element;
     
@@ -3178,11 +3199,14 @@ declare module 'gd-bs/components/popover' {
         * Popover
         */
     export interface IPopover {
-            /** The element. */
-            el: Element;
-    
             /** Disables the popover. */
             disable: () => void;
+    
+            /** Disposes the popover. */
+            dispose: () => void;
+    
+            /** The element. */
+            el: Element;
     
             /** Enables the popover. */
             enable: () => void;
@@ -3660,6 +3684,9 @@ declare module 'gd-bs/components/tooltip' {
         * Tooltip
         */
     export interface ITooltip {
+            /** Disposes the tooltip. */
+            dispose: () => void;
+    
             /** The element. */
             el: HTMLButtonElement;
     

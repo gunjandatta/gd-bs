@@ -146,6 +146,9 @@ class _Button extends Base<IButtonProps> implements IButton {
      * Bootstrap
      */
 
+    // Disposes the button
+    dispose() { this._bootstrapObj.button("dispose"); }
+
     // Toggles the button
     toggle() { this._bootstrapObj.button("toggle"); }
 

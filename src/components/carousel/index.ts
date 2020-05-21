@@ -106,6 +106,9 @@ class _Carousel extends Base<ICarouselProps> implements ICarousel {
     // Cycle the carousel
     cycle() { this._bootstrapObj.carousel("cycle"); }
 
+    // Disposes the carousel
+    dispose() { this._bootstrapObj.carousel("dispose"); }
+
     // Goes to the next slide
     next() { this._bootstrapObj.carousel("next"); }
 

@@ -46,6 +46,9 @@ class _Collapse extends Base<ICollapseProps> implements ICollapse {
      * Bootstrap
      */
 
+    // Disposes the collapse
+    dispose() { this._bootstrapObj.collapse("dispose"); }
+
     // Toggles the component
     toggle() { jQuery(this.el).collapse("toggle"); }
 

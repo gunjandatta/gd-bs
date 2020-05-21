@@ -55,6 +55,9 @@ import { IButtonProps } from "./button";
  * Modal
  */
 export interface IModal {
+    /** Disposes the modal. */
+    dispose: () => void;
+
     /** The element. */
     el: Element,
 

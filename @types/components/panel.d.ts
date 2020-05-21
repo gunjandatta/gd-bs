@@ -70,6 +70,9 @@ import { IModal, IModalProps } from "./modal";
  * Panel
  */
 export interface IPanel {
+    /** Disposes the panel. */
+    dispose: () => void;
+
     /** The element. */
     el: Element;
 

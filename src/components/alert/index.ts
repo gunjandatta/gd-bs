@@ -108,6 +108,9 @@ class _Alert extends Base<IAlertProps> implements IAlert {
     // Closes the alert
     close() { this._bootstrapObj.alert("toggle"); }
 
+    // Disposes the alert
+    dispose() { this._bootstrapObj.alert("dispose"); }
+
     /**
      * Public Properties
      */

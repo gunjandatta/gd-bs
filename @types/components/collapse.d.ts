@@ -53,6 +53,9 @@ import { IButtonProps } from "./button";
  * Collapse
  */
 export interface ICollapse {
+    /** Disposes the collapse. */
+    dispose: () => void;
+
     /** The element. */
     el: Element;
 

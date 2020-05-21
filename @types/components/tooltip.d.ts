@@ -49,6 +49,9 @@ import { IButtonProps } from "./button";
  * Tooltip
  */
 export interface ITooltip {
+    /** Disposes the tooltip. */
+    dispose: () => void;
+
     /** The element. */
     el: HTMLButtonElement;
 

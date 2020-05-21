@@ -83,6 +83,9 @@ export interface ICarousel {
      */
     cycle: () => void;
 
+    /** Disposes the carousel. */
+    dispose: () => void;
+
     /** The element. */
     el: Element;
 
