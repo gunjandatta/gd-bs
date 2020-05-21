@@ -72,6 +72,9 @@ class _Button extends Base<IButtonProps> implements IButton {
 
         // Configure the parent
         this.configureParent();
+
+        // Create the bootstrap object
+        this._bootstrapObj = jQuery(this.el);
     }
 
     // Configure the button
@@ -140,6 +143,13 @@ class _Button extends Base<IButtonProps> implements IButton {
     }
 
     /**
+     * Bootstrap
+     */
+
+    // Toggles the button
+    toggle() { this._bootstrapObj.button("toggle"); }
+
+    /**
      * Public Properties
      */
 
@@ -173,8 +183,5 @@ class _Button extends Base<IButtonProps> implements IButton {
         let className = ButtonClassNames.getByType(buttonType) || ButtonClassNames.getByType(ButtonTypes.Primary);
         this.el.classList.add(className);
     }
-
-    // Toggles the button
-    toggle() { jQuery(this.el).button("toggle"); }
 }
 export const Button = (props: IButtonProps): IButton => { return new _Button(props); }

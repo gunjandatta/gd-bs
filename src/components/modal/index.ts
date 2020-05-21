@@ -74,7 +74,7 @@ class _Modal extends Base<IModalProps> implements IModal {
         }
 
         // Create the modal
-        jQuery(this.el).modal(options);
+        this._bootstrapObj = jQuery(this.el).modal(options);
     }
 
     // Configure the events
@@ -96,7 +96,7 @@ class _Modal extends Base<IModalProps> implements IModal {
         // See if there is a close event
         if (this.props.onClose) {
             // Add a hidden event
-            jQuery(this.el).on("hidden.bs.modal", () => {
+            this._bootstrapObj.on("hidden.bs.modal", () => {
                 // Call the event
                 this.props.onClose(this.el);
             });
@@ -104,17 +104,33 @@ class _Modal extends Base<IModalProps> implements IModal {
     }
 
     /**
-     * Public Interface
+     * Bootstrap
      */
 
     // Updates the modal
-    handleUpdate() { jQuery(this.el).modal("handleUpdate"); }
+    handleUpdate() { this._bootstrapObj.modal("handleUpdate"); }
 
     // Hides the modal
     hide() {
         // hide the modal
-        jQuery(this.el).modal("hide");
+        this._bootstrapObj.modal("hide");
     }
+
+    // Shows the modal
+    show() {
+        // Show the modal
+        this._bootstrapObj.modal("show");
+    }
+
+    // Toggles the modal
+    toggle() {
+        // Toggle the modal
+        this._bootstrapObj.modal("toggle");
+    }
+
+    /**
+     * Public Interface
+     */
 
     // Returns true if the modal is visible
     get isVisible() { return this.el.classList.contains("show"); }
@@ -126,18 +142,6 @@ class _Modal extends Base<IModalProps> implements IModal {
 
         // Set the text
         elTitle.innerHTML = title == null ? "" : title;
-    }
-
-    // Shows the modal
-    show() {
-        // Show the modal
-        jQuery(this.el).modal("show");
-    }
-
-    // Toggles the modal
-    toggle() {
-        // Toggle the modal
-        jQuery(this.el).modal("toggle");
     }
 }
 export const Modal = (props: IModalProps): IModal => { return new _Modal(props); }

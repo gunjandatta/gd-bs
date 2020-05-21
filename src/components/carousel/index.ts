@@ -18,6 +18,9 @@ class _Carousel extends Base<ICarouselProps> implements ICarousel {
 
         // Configure the parent
         this.configureParent();
+
+        // Create the bootstrap object
+        jQuery(this.el).carousel(this.props.options || {});
     }
 
     // Configure the card group
@@ -34,12 +37,6 @@ class _Carousel extends Base<ICarouselProps> implements ICarousel {
 
         // Render the slides
         this.renderSlides();
-
-        // See if options exist
-        if (this.props.options) {
-            // Initialize the carousel options
-            jQuery(this.el).carousel(this.props.options);
-        }
     }
 
     // Renders the controls
@@ -103,22 +100,26 @@ class _Carousel extends Base<ICarouselProps> implements ICarousel {
     }
 
     /**
-     * Public Interface
+     * Bootstrap
      */
 
     // Cycle the carousel
-    cycle() { jQuery(this.el).carousel("cycle"); }
+    cycle() { this._bootstrapObj.carousel("cycle"); }
 
     // Goes to the next slide
-    next() { jQuery(this.el).carousel("next"); }
+    next() { this._bootstrapObj.carousel("next"); }
 
     // Sets the slide by number
-    number(value: number) { jQuery(this.el).carousel(value); }
+    number(value: number) { this._bootstrapObj.carousel(value); }
 
     // Pauses the slide
-    pause() { jQuery(this.el).carousel("pause"); }
+    pause() { this._bootstrapObj.carousel("pause"); }
 
     // Goes to the previous slide
-    previous() { jQuery(this.el).carousel("prev"); }
+    previous() { this._bootstrapObj.carousel("prev"); }
+
+    /**
+     * Public Interface
+     */
 }
 export const Carousel = (props: ICarouselProps): ICarousel => { return new _Carousel(props); }

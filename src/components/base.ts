@@ -4,6 +4,7 @@ import { IBase, IBaseProps } from "../../@types/base";
  * Base Components
  */
 export class Base<IProps = IBaseProps<IBase>> implements IBase<IProps> {
+    _bootstrapObj = null;
     private _el = null;
     private _props: IBaseProps = null;
 

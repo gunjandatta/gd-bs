@@ -110,7 +110,7 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
         }
 
         // Create the popover
-        jQuery(this.el).popover(options);
+        this._bootstrapObj = jQuery(this.el).popover(options);
     }
 
     // Configures the events
@@ -123,28 +123,32 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
     }
 
     /**
-     * Public Interface
+     * Bootstrap
      */
 
     // Disables the popover
-    disable() { jQuery(this.el).popover("disable"); }
+    disable() { this._bootstrapObj.popover("disable"); }
 
     // Enables the popover
-    enable() { jQuery(this.el).popover("enable"); }
+    enable() { this._bootstrapObj.popover("enable"); }
 
     // Hides the popover
-    hide() { jQuery(this.el).popover("hide"); }
+    hide() { this._bootstrapObj.popover("hide"); }
 
     // Shows the popover
-    show() { jQuery(this.el).popover("show"); }
+    show() { this._bootstrapObj.popover("show"); }
 
     // Toggles the popover
-    toggle() { jQuery(this.el).popover("toggle"); }
+    toggle() { this._bootstrapObj.popover("toggle"); }
 
     // Enables toggling 
-    toggleEnabled() { jQuery(this.el).popover("toggleEnabled"); }
+    toggleEnabled() { this._bootstrapObj.popover("toggleEnabled"); }
 
     // Updates the popover
-    update() { jQuery(this.el).popover("update"); }
+    update() { this._bootstrapObj.popover("update"); }
+
+    /**
+     * Public Interface
+     */
 }
 export const Popover = (props: IPopoverProps): IPopover => { return new _Popover(props); }

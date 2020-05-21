@@ -104,29 +104,33 @@ class _Tooltip extends Base<ITooltipProps> {//implements ITooltip {
         }
 
         // Create the tooltip
-        jQuery(this.el).tooltip(options);
+        this._bootstrapObj = jQuery(this.el).tooltip(options);
     }
+
+    /**
+     * Bootstrap
+     */
+
+    // Enables the tooltip
+    enable() { this._bootstrapObj.tooltip("enable"); }
+
+    // Hides the tooltip
+    hide() { this._bootstrapObj.tooltip("hide"); }
+
+    // Shows the tooltip
+    show() { this._bootstrapObj.tooltip("show"); }
+
+    // Toggles the tooltip
+    toggle() { this._bootstrapObj.tooltip("toggle"); }
+
+    // Enables the toggle
+    toggleEnabled() { this._bootstrapObj.tooltip("toggleEnabled"); }
+
+    // Updates the tooltip
+    update() { this._bootstrapObj.tooltip("update"); }
 
     /**
      * Public Interface
      */
-
-    // Enables the tooltip
-    enable() { jQuery(this.el).tooltip("enable"); }
-
-    // Hides the tooltip
-    hide() { jQuery(this.el).tooltip("hide"); }
-
-    // Shows the tooltip
-    show() { jQuery(this.el).tooltip("show"); }
-
-    // Toggles the tooltip
-    toggle() { jQuery(this.el).tooltip("toggle"); }
-
-    // Enables the toggle
-    toggleEnabled() { jQuery(this.el).tooltip("toggleEnabled"); }
-
-    // Updates the tooltip
-    update() { jQuery(this.el).tooltip("update"); }
 }
 export const Tooltip = (props: ITooltipProps): ITooltip => { return new _Tooltip(props); }

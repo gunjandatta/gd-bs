@@ -5,7 +5,7 @@
 declare module 'gd-bs' {
     import * as Components from "gd-bs/components";
     import { Icons, IconTypes } from "gd-bs/icons";
-    import { jQuery } from "../..";
+    import * as jQuery from "jquery";
     export {
         Components,
         Icons, IconTypes,
@@ -3727,6 +3727,9 @@ declare module 'gd-bs/base' {
         * Base
         */
     export interface IBase<IProps = IBaseProps> {
+            /** The bootstrap object */
+            _bootstrapObj?: any;
+    
             /** Internal method to configure the parent element. */
             configureParent(): Element;
     

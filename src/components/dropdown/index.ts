@@ -55,6 +55,9 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
 
         // Configure the parent
         this.configureParent();
+
+        // Create the bootstrap object
+        this._bootstrapObj = jQuery(this.el);
     }
 
     // Configure the card group
@@ -323,6 +326,16 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
     }
 
     /**
+     * Bootstrap
+     */
+
+    // Toggles the menu
+    toggle() { this._bootstrapObj.dropdown("toggle"); }
+
+    // Updates the dropdown
+    update() { this._bootstrapObj.dropdown("update") }
+
+    /**
      * Public Interface
      */
 
@@ -407,11 +420,5 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
             }
         }
     }
-
-    // Toggles the menu
-    toggle() { jQuery(this.el).dropdown("toggle"); }
-
-    // Updates the dropdown
-    update() { jQuery(this.el).dropdown("update") }
 }
 export const Dropdown = (props: IDropdownProps): IDropdown => { return new _Dropdown(props); }

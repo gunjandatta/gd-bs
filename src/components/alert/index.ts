@@ -51,6 +51,9 @@ class _Alert extends Base<IAlertProps> implements IAlert {
 
         // Configure the parent element
         this.configureParent();
+
+        // Create the bootstrap object
+        this._bootstrapObj = jQuery(this.el);
     }
 
     // Configure the alert
@@ -99,11 +102,15 @@ class _Alert extends Base<IAlertProps> implements IAlert {
     }
 
     /**
-     * Public Properties
+     * Bootstrap
      */
 
     // Closes the alert
-    close() { jQuery(this.el).alert("toggle"); }
+    close() { this._bootstrapObj.alert("toggle"); }
+
+    /**
+     * Public Properties
+     */
 
     // Clears the alert and updates the text
     setText(alertText?: string) {
