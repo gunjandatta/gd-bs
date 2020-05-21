@@ -1,4 +1,4 @@
-import * as jQuery from "jquery";
+import { jQuery } from "../..";
 import { IDropdown, IDropdownItem, IDropdownProps } from "../../../@types/components/dropdown";
 import { Base } from "../base";
 import { ButtonClassNames, ButtonTypes } from "../button";

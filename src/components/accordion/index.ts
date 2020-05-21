@@ -1,4 +1,4 @@
-import * as jQuery from "jquery";
+import { jQuery } from "../..";
 import { IAccordion, IAccordionProps } from "../../../@types/components/accordion";
 import { Base } from "../base";
 import * as HTML from "./index.html";

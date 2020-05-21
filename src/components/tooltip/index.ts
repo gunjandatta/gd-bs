@@ -1,4 +1,4 @@
-import * as jQuery from "jquery";
+import { jQuery } from "../..";
 import { ITooltip, ITooltipProps } from "../../../@types/components/tooltip";
 import { Base } from "../base";
 import { ButtonClassNames, ButtonTypes } from "../button";

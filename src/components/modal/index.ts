@@ -1,4 +1,4 @@
-import * as jQuery from "jquery";
+import { jQuery } from "../..";
 import { IModal, IModalProps } from "../../../@types/components/modal";
 import { Base } from "../base";
 import * as HTML from "./index.html";

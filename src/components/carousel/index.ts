@@ -1,4 +1,4 @@
-import * as jQuery from "jquery";
+import { jQuery } from "../..";
 import { Base } from "../base";
 import { ICarousel, ICarouselProps } from "../../../@types/components/carousel";
 import * as HTML from "./index.html";

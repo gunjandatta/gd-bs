@@ -1,4 +1,4 @@
-import * as jQuery from "jquery";
+import { jQuery } from "../..";
 import { IAlert, IAlertProps } from "../../../@types/components/alert";
 import { Base } from "../base";
 import { ClassNames } from "../classNames";

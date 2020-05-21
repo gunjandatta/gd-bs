@@ -1,4 +1,4 @@
-import * as jQuery from "jquery";
+import { jQuery } from "../..";
 import { INav, INavProps } from "../../../@types/components/nav";
 import { Base } from "../base";
 import { NavLink } from "./link";

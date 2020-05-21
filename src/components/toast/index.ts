@@ -1,4 +1,4 @@
-import * as jQuery from "jquery";
+import { jQuery } from "../..";
 import { IToast, IToastProps } from "../../../@types/components/toast";
 import { Base } from "../base";
 import * as HTML from "./index.html";

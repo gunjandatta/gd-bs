@@ -5,7 +5,7 @@
 declare module 'gd-bs' {
     import * as Components from "gd-bs/components";
     import { Icons, IconTypes } from "gd-bs/icons";
-    import * as jQuery from "jquery";
+    import { jQuery } from "../..";
     export {
         Components,
         Icons, IconTypes,

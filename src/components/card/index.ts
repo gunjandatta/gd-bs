@@ -1,4 +1,4 @@
-import * as jQuery from "jquery";
+import { jQuery } from "../..";
 import { ICard, ICardProps } from "../../../@types/components/card";
 import { Base } from "../base";
 import { Nav } from "../nav";
