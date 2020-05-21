@@ -49,7 +49,7 @@ import { IButtonProps } from "./button";
  */
 export interface ITooltip {
     /** The element. */
-    el: Element;
+    el: HTMLButtonElement;
 
     /** Gives an element’s tooltip the ability to be shown. */
     enable: () => void;

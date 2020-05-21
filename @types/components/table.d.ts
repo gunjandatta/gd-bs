@@ -69,7 +69,7 @@ export const Table: (props: ITableProps) => ITable
 export interface ITable {
     addRows(rows: Array<any>);
 
-    el: HTMLElement;
+    el: HTMLTableElement;
 
     /** Hides the table. */
     hide: () => void;

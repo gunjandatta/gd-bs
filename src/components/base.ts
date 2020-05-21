@@ -4,7 +4,7 @@ import { IBase, IBaseProps } from "../../@types/base";
  * Base Components
  */
 export class Base<IProps = IBaseProps> implements IBase<IProps> {
-    private _el: HTMLDivElement = null;
+    private _el = null;
     private _props: IBaseProps = null;
 
     // Constructor

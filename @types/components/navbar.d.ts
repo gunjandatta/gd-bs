@@ -98,7 +98,7 @@ import { IDropdownItem } from "./dropdown";
  */
 export interface INavbar {
     /** The element. */
-    el: Element;
+    el: HTMLBaseElement;
 
     /** Hides the nav bar. */
     hide: () => void;

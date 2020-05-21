@@ -45,7 +45,7 @@ import { ISpinnerProps } from "./spinner";
  */
 export interface IButton {
     /** The element. */
-    el: Element;
+    el: HTMLAnchorElement | HTMLButtonElement;
 
     /** Hides the button. */
     hide: () => void;

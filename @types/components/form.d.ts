@@ -117,7 +117,7 @@ export interface IForm {
     controls: Array<IFormControl>;
 
     /** The form element */
-    el: Element | HTMLElement;
+    el: HTMLFormElement;
 
     /** Gets a control by its name */
     getControl: (name: string) => IFormControl;

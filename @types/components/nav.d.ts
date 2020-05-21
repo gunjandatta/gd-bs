@@ -52,7 +52,7 @@ export const Nav: (props: INavProps) => INav;
  */
 export interface INav {
     /** The element. */
-    el: Element;
+    el: HTMLUListElement;
 
     /** Hides the navigation. */
     hide: () => void;

@@ -43,7 +43,7 @@ export const PaginationAlignment: IPaginationAlignment;
  */
 export interface IPagination {
     /** The element. */
-    el: Element;
+    el: HTMLBaseElement;
 
     /** Hides the pagination. */
     hide: () => void;

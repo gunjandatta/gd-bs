@@ -1442,7 +1442,7 @@ declare module 'gd-bs/components/button' {
         */
     export interface IButton {
             /** The element. */
-            el: Element;
+            el: HTMLAnchorElement | HTMLButtonElement;
     
             /** Hides the button. */
             hide: () => void;
@@ -2213,7 +2213,7 @@ declare module 'gd-bs/components/form' {
             controls: Array<IFormControl>;
     
             /** The form element */
-            el: Element | HTMLElement;
+            el: HTMLFormElement;
     
             /** Gets a control by its name */
             getControl: (name: string) => IFormControl;
@@ -2821,7 +2821,7 @@ declare module 'gd-bs/components/nav' {
         */
     export interface INav {
             /** The element. */
-            el: Element;
+            el: HTMLUListElement;
     
             /** Hides the navigation. */
             hide: () => void;
@@ -2929,7 +2929,7 @@ declare module 'gd-bs/components/navbar' {
         */
     export interface INavbar {
             /** The element. */
-            el: Element;
+            el: HTMLBaseElement;
     
             /** Hides the nav bar. */
             hide: () => void;
@@ -3020,7 +3020,7 @@ declare module 'gd-bs/components/pagination' {
         */
     export interface IPagination {
             /** The element. */
-            el: Element;
+            el: HTMLBaseElement;
     
             /** Hides the pagination. */
             hide: () => void;
@@ -3453,7 +3453,7 @@ declare module 'gd-bs/components/table' {
     export interface ITable {
             addRows(rows: Array<any>);
     
-            el: HTMLElement;
+            el: HTMLTableElement;
     
             /** Hides the table. */
             hide: () => void;
@@ -3656,7 +3656,7 @@ declare module 'gd-bs/components/tooltip' {
         */
     export interface ITooltip {
             /** The element. */
-            el: Element;
+            el: HTMLButtonElement;
     
             /** Gives an element’s tooltip the ability to be shown. */
             enable: () => void;
