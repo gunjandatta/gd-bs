@@ -37,6 +37,8 @@
  */
 export const CheckboxGroup: (props: ICheckboxGroupProps) => ICheckboxGroup;
 
+import { IBaseProps } from "../base";
+
 /**
  * Checkbox Group Types
  */
@@ -78,10 +80,8 @@ export interface ICheckboxGroupItem {
 /**
  * Checkbox Group Properties
  */
-export interface ICheckboxGroupProps {
-    className?: string;
+export interface ICheckboxGroupProps extends IBaseProps<ICheckboxGroup> {
     colSize?: number;
-    el?: Element | HTMLElement;
     hideLabel?: boolean;
     isInline?: boolean;
     isReadonly?: boolean;

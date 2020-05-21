@@ -53,6 +53,7 @@
  */
 export const ProgressGroup: (props: IProgressGroupProps) => IProgressGroup;
 
+import { IBaseProps } from "../base";
 import { IProgressProps } from "./progress";
 
 /**
@@ -72,9 +73,7 @@ export interface IProgressGroup {
 /**
  * Progress Group Properties
  */
-export interface IProgressGroupProps {
-    className?: string;
-    el?: Element | HTMLElement;
+export interface IProgressGroupProps extends IBaseProps<IProgressGroup> {
     isMultiple?: boolean;
     progressbars?: Array<IProgressProps>;
 }

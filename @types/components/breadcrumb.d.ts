@@ -37,6 +37,8 @@
  */
 export const Breadcrumb: (props: IBreadcrumbProps) => IBreadcrumb;
 
+import { IBaseProps } from "../base";
+
 /**
  * Breadcrumb
  */
@@ -71,13 +73,7 @@ export interface IBreadcrumbItem {
 /**
  * Breadcrumb Properties
  */
-export interface IBreadcrumbProps {
-    /** The breadcrumb class name */
-    className?: string;
-
-    /** The element to render the breadcrumb to. */
-    el?: Element | HTMLElement;
-
+export interface IBreadcrumbProps extends IBaseProps {
     /** The breadcrumb items */
     items?: Array<IBreadcrumbItem>
 

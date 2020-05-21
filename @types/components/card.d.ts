@@ -48,6 +48,7 @@
  */
 export const Card: (props: ICardProps) => ICard;
 
+import { IBaseProps } from "../base";
 import { IButtonProps } from "./button";
 import { INavProps } from "./nav";
 
@@ -112,10 +113,8 @@ export interface ICardHeader {
 /**
  * Card Properties
  */
-export interface ICardProps {
+export interface ICardProps extends IBaseProps<ICard> {
     body?: Array<ICardBody>;
-    className?: string;
-    el?: Element | HTMLElement;
     footer?: ICardFooter;
     header?: ICardHeader;
     imgBottom?: {

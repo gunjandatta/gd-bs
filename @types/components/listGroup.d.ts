@@ -51,6 +51,7 @@ export const ListGroup: (props: IListGroupProps) => IListGroup;
  */
 export const ListGroupItemTypes: IListGroupItemTypes;
 
+import { IBaseProps } from "../base";
 import { IBadgeProps } from "./badge";
 
 /**
@@ -90,10 +91,8 @@ export interface IListGroupItem {
 /**
  * List Group Properties
  */
-export interface IListGroupProps {
-    className?: string;
+export interface IListGroupProps extends IBaseProps<IListGroup> {
     colWidth?: number;
-    el?: Element | HTMLElement;
     fadeTabs?: boolean;
     isFlush?: boolean;
     isHorizontal?: boolean;

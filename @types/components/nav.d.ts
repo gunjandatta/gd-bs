@@ -47,6 +47,8 @@
  */
 export const Nav: (props: INavProps) => INav;
 
+import { IBaseProps } from "../base";
+
 /**
  * Navigation
  */
@@ -67,10 +69,8 @@ export interface INav {
 /**
  * Navigation Properties
  */
-export interface INavProps {
-    className?: string;
+export interface INavProps extends IBaseProps<INav> {
     data?: any;
-    el?: Element | HTMLElement;
     enableFill?: boolean;
     fadeTabs?: boolean;
     id?: string;

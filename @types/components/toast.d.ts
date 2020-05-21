@@ -35,6 +35,8 @@
  */
 export const Toast: (props: IToastProps) => IToast;
 
+import { IBaseProps } from "../base";
+
 /**
  * Toast
  */
@@ -52,11 +54,9 @@ export interface IToast {
 /**
  * Toast Properties
  */
-export interface IToastProps {
+export interface IToastProps extends IBaseProps<IToast> {
     body?: string | Element;
-    className?: string;
     data?: any;
-    el?: Element | HTMLElement;
     headerImgClass?: string;
     headerImgSrc?: string;
     headerText?: string;

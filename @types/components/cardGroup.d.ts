@@ -79,6 +79,7 @@
  */
 export const CardGroup: (props: ICardGroupProps) => ICardGroup;
 
+import { IBaseProps } from "../base";
 import { ICardProps } from "./card";
 
 /**
@@ -98,9 +99,7 @@ export interface ICardGroup {
 /**
  * Card Group Properties
  */
-export interface ICardGroupProps {
+export interface ICardGroupProps extends IBaseProps<ICardGroup> {
     cards?: Array<ICardProps>;
-    className?: string;
-    el?: Element | HTMLElement;
     isDeck?: boolean;
 }

@@ -51,7 +51,7 @@ export interface IBadge extends IBase<IBadgeProps> {
 /**
  * Badge Properties
  */
-export interface IBadgeProps extends IBaseProps{
+export interface IBadgeProps extends IBaseProps<IBadge> {
     content?: string | Element;
     data?: any;
     header?: string;

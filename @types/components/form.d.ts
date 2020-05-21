@@ -101,6 +101,7 @@
  */
 export const Form: (props: IFormProps) => IForm;
 
+import { IBaseProps } from "../base";
 import { IFormControl, IFormControlProps, IFormControlTypes } from "./formControl";
 
 /**
@@ -147,10 +148,8 @@ export interface IFormColumn {
 /**
  * Form Properties
  */
-export interface IFormProps {
-    className?: string;
+export interface IFormProps extends IBaseProps<IForm> {
     controls?: Array<IFormControlProps>;
-    el?: Element | HTMLElement,
     rowClassName?: string;
     rows?: Array<IFormRow>;
     onControlRendering?: (control: IFormControlProps) => void | PromiseLike<IFormControlProps>;

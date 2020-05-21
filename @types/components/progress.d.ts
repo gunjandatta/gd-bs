@@ -31,6 +31,8 @@
  */
 export const Progress: (props: IProgressProps) => IProgress;
 
+import { IBaseProps } from "../base";
+
 /**
  * Progress
  */
@@ -51,9 +53,7 @@ export interface IProgress {
 /**
  * Progress Properties
  */
-export interface IProgressProps {
-    className?: string;
-    el?: Element | HTMLElement;
+export interface IProgressProps extends IBaseProps<IProgress> {
     isAnimated?: boolean;
     isStriped?: boolean;
     label?: string;

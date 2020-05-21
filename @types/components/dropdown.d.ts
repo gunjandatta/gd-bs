@@ -46,6 +46,8 @@
  */
 export const Dropdown: (props: IDropdownProps) => IDropdown;
 
+import { IBaseProps } from "../base";
+
 /**
  * Dropdown Types
  */
@@ -103,12 +105,10 @@ export interface IDropdownItem {
 /**
  * Dropdown Properties
  */
-export interface IDropdownProps {
-    className?: string;
+export interface IDropdownProps extends IBaseProps<IDropdown> {
     dropLeft?: boolean;
     dropRight?: boolean;
     dropUp?: boolean;
-    el?: Element | HTMLElement;
     formFl?: boolean;
     id?: string;
     isReadonly?: boolean;

@@ -57,6 +57,7 @@ export interface IToolbar {
     show: () => void;
 }
 
+import { IBaseProps } from "../base";
 import { IButtonProps } from "./button";
 import { IInputGroupProps } from "./inputGroup";
 
@@ -72,9 +73,7 @@ export interface IToolbarItem {
 /**
  * Toolbar Properties
  */
-export interface IToolbarProps {
-    className?: string;
-    el?: Element | HTMLElement;
+export interface IToolbarProps extends IBaseProps<IToolbar> {
     items?: Array<IToolbarItem>;
     spacing?: number;
 }

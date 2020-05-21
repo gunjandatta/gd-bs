@@ -52,6 +52,7 @@ export const Popover: (props: IPopoverProps) => IPopover;
  */
 export const PopoverTypes: IPopoverTypes;
 
+import { IBaseProps } from "../base";
 import { IButtonProps } from "./button";
 
 /**
@@ -105,10 +106,8 @@ export interface IPopoverOptions {
 /**
  * Popover Properties
  */
-export interface IPopoverProps {
+export interface IPopoverProps extends IBaseProps<IPopover> {
     btnProps?: IButtonProps;
-    className?: string;
-    el?: Element | HTMLElement;
     isDismissible?: boolean;
     options?: IPopoverOptions;
     target?: Element,

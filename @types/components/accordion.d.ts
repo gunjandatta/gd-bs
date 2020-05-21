@@ -85,7 +85,7 @@ export interface IAccordionOptions extends ICollapseOptions { }
 /**
  * Accordion Properties
  */
-export interface IAccordionProps extends IBaseProps {
+export interface IAccordionProps extends IBaseProps<IAccordion> {
     id?: string;
     items?: Array<IAccordionItem>;
     options?: IAccordionOptions;

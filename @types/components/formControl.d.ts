@@ -20,6 +20,7 @@
  */
 export const FormControl: (props: IFormControlProps) => IFormControl;
 
+import { IBaseProps } from "../base";
 import { ICheckboxGroup, ICheckboxGroupItem } from "./checkboxGroup";
 import { IDropdown, IDropdownItem } from "./dropdown";
 import { IInputGroup } from "./inputGroup";
@@ -69,12 +70,10 @@ export interface IFormControl {
 /**
  * Form Control Properties
  */
-export interface IFormControlProps {
-    className?: string;
+export interface IFormControlProps extends IBaseProps<IFormControl> {
     controlClassName?: string;
     data?: any;
     description?: string;
-    el?: HTMLElement;
     errorMessage?: string;
     isReadonly?: boolean;
     isPlainText?: boolean;

@@ -36,6 +36,7 @@ export const InputGroup: (props: IInputGroupProps) => IInputGroup;
  */
 export const InputGroupTypes: IInputGroupTypes;
 
+import { IBaseProps } from "../base";
 import { IButtonProps } from "./button";
 
 /**
@@ -61,12 +62,10 @@ export interface IInputGroup {
 /**
  * Input Group Properties
  */
-export interface IInputGroupProps {
+export interface IInputGroupProps extends IBaseProps<IInputGroup> {
     appendedButtons?: Array<IButtonProps>;
     appendedLabel?: string;
-    className?: string;
     description?: string;
-    el?: Element | HTMLElement;
     formFl?: boolean;
     id?: string;
     isLarge?: boolean;

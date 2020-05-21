@@ -31,6 +31,8 @@
  */
 export const Jumbotron: (props: IJumbotronProps) => IJumbotron;
 
+import { IBaseProps } from "../base";
+
 /**
  * Jumbotron
  */
@@ -48,10 +50,8 @@ export interface IJumbotron {
 /**
  * Jumbotron Properties
  */
-export interface IJumbotronProps {
-    className?: string;
+export interface IJumbotronProps extends IBaseProps<IJumbotron> {
     content?: string | Element;
-    el?: Element | HTMLElement;
     isFluid?: boolean;
     lead?: string;
     onRenderContent?: (el?: HTMLElement) => void;

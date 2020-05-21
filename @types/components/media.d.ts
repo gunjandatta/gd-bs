@@ -43,6 +43,8 @@
  */
 export const Media: (props: IMediaProps) => IMedia;
 
+import { IBaseProps } from "../base";
+
 /**
  * Media Image Types
  */
@@ -65,10 +67,8 @@ export interface IMedia {
 /**
  * Media Properties
  */
-export interface IMediaProps {
-    className?: string;
+export interface IMediaProps extends IBaseProps<IMedia> {
     body?: string | Element;
-    el?: Element | HTMLElement;
     data?: any;
     icon?: {
         className?: string;

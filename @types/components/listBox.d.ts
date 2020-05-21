@@ -14,10 +14,12 @@ export interface IListBox {
     setValue: (value?: any | Array<any>) => void;
 }
 
+import { IBaseProps } from "../base";
+
 /**
  * List Box Properties
  */
-export interface IListBoxProps {
+export interface IListBoxProps extends IBaseProps<IListBox> {
     label?: string;
     items: Array<IDropdownItem>;
     multi?: boolean;

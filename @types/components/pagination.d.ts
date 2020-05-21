@@ -33,6 +33,8 @@
  */
 export const Pagination: (props: IPaginationProps) => IPagination;
 
+import { IBaseProps } from "../base";
+
 /**
  * Pagination Alignment
  */
@@ -55,10 +57,8 @@ export interface IPagination {
 /**
  * Pagination Properties
  */
-export interface IPaginationProps {
+export interface IPaginationProps extends IBaseProps<IPagination> {
     alignment?: number;
-    className?: string;
-    el?: Element;
     isLarge?: boolean;
     isSmall?: boolean;
     label?: string;

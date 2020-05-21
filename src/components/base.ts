@@ -3,7 +3,7 @@ import { IBase, IBaseProps } from "../../@types/base";
 /**
  * Base Components
  */
-export class Base<IProps = IBaseProps> implements IBase<IProps> {
+export class Base<IProps = IBaseProps<IBase>> implements IBase<IProps> {
     private _el = null;
     private _props: IBaseProps = null;
 
@@ -27,6 +27,9 @@ export class Base<IProps = IBaseProps> implements IBase<IProps> {
                 this._el.classList.add(className);
             }
         }
+
+        // Execute the assign to event
+        this._props.assignTo ? this._props.assignTo(this) : null;
     }
 
     /**

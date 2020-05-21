@@ -48,6 +48,7 @@
  */
 export const Modal: (props: IModalProps) => IModal;
 
+import { IBaseProps } from "../base";
 import { IButtonProps } from "./button";
 
 /**
@@ -96,10 +97,8 @@ export interface IModalOptions {
 /**
  * Modal Properties
  */
-export interface IModalProps {
+export interface IModalProps extends IBaseProps<IModal> {
     body?: string | Element;
-    className?: string;
-    el?: Element | HTMLElement;
     disableFade?: boolean;
     footer?: string | Element;
     hideCloseButton?: boolean;

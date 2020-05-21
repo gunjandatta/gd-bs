@@ -21,7 +21,10 @@ export interface IBase<IProps = IBaseProps> {
 /**
  * Base Properties
  */
-export interface IBaseProps {
+export interface IBaseProps<IBaseObj = any> {
+    /** Assigns the object to the input parameter. */
+    assignTo?: (obj: IBaseObj) => void;
+
     /** Custom class names. */
     className?: string;
 

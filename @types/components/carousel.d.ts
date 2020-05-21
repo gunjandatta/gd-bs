@@ -72,6 +72,8 @@
  */
 export const Carousel: (props: ICarouselProps) => ICarousel;
 
+import { IBaseProps } from "../base";
+
 /**
  * Carousel
  */
@@ -138,9 +140,7 @@ export interface ICarouselOptions {
 /**
  * Carousel Properties
  */
-export interface ICarouselProps {
-    className?: string;
-    el?: Element | HTMLElement;
+export interface ICarouselProps extends IBaseProps<ICarousel> {
     enableControls?: boolean;
     enableCrossfade?: boolean;
     enableIndicators?: boolean;

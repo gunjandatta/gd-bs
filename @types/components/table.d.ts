@@ -63,6 +63,8 @@
  */
 export const Table: (props: ITableProps) => ITable
 
+import { IBaseProps } from "../base";
+
 /**
  * Table
  */
@@ -81,10 +83,8 @@ export interface ITable {
 /**
  * Table Properties
  */
-export interface ITableProps {
-    className?: string;
+export interface ITableProps extends IBaseProps<ITable> {
     columns?: Array<ITableColumn>;
-    el?: Element | HTMLElement;
     onClickCell?: (el: HTMLTableDataCellElement, column?: ITableColumn, data?: any) => void;
     onClickHeader?: (el: HTMLTableHeaderCellElement, column?: ITableColumn) => void;
     onRenderCell?: (el?: HTMLTableDataCellElement, column?: ITableColumn, data?: any) => void;

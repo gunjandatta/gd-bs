@@ -63,6 +63,7 @@ export const Panel: (props: IPanelProps) => IPanel;
  */
 export const PanelTypes: IPanelTypes;
 
+import { IBaseProps } from "../base";
 import { IModal, IModalProps } from "./modal";
 
 /**
@@ -85,9 +86,7 @@ export interface IPanel {
 /**
  * Panel Properties
  */
-export interface IPanelProps {
-    className?: string;
-    el?: Element | HTMLElement;
+export interface IPanelProps extends IBaseProps<IPanel> {
     modalProps?: IModalProps;
     type?: number;
 }

@@ -57,7 +57,7 @@ export interface IAlert extends IBase<IAlertProps> {
 /**
  * Alert Properties
  */
-export interface IAlertProps extends IBaseProps {
+export interface IAlertProps extends IBaseProps<IAlert> {
     content?: string | Element;
     header?: string;
     isDismissible?: boolean;

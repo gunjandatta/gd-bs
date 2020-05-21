@@ -46,6 +46,7 @@
  */
 export const Collapse: (props: ICollapseProps) => ICollapse;
 
+import { IBaseProps } from "../base";
 import { IButtonProps } from "./button";
 
 /**
@@ -76,11 +77,9 @@ export interface ICollapseOptions {
 /**
  * Collapse Properties
  */
-export interface ICollapseProps {
-    className?: string;
+export interface ICollapseProps extends IBaseProps<ICollapse> {
     content?: string | Element;
     data?: any;
-    el?: Element | HTMLElement;
     id?: string;
     isMulti?: boolean;
     onRender?: (props?: ICollapseProps, el?: HTMLElement) => void;

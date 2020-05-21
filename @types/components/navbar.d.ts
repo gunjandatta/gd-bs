@@ -90,6 +90,7 @@ export const Navbar: (props: INavbarProps) => INavbar;
  */
 export const NavbarTypes: INavbarTypes;
 
+import { IBaseProps } from "../base";
 import { IButtonProps } from "./button";
 import { IDropdownItem } from "./dropdown";
 
@@ -122,11 +123,9 @@ export interface INavbarItem {
 /**
  * Navbar Properties
  */
-export interface INavbarProps {
+export interface INavbarProps extends IBaseProps<INavbar> {
     brand?: string;
     brandUrl?: string;
-    className?: string;
-    el?: Element | HTMLElement;
     enableSearch?: boolean;
     id?: string;
     items?: Array<INavbarItem>;

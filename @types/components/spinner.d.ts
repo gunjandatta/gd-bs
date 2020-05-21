@@ -36,6 +36,8 @@ export const Spinner: (props: ISpinnerProps) => ISpinner;
  */
 export const SpinnerTypes: ISpinnerTypes;
 
+import { IBaseProps } from "../base";
+
 /**
  * Spinner
  */
@@ -53,9 +55,7 @@ export interface ISpinner {
 /**
  * Spinner Properties
  */
-export interface ISpinnerProps {
-    className?: string;
-    el?: Element | HTMLElement;
+export interface ISpinnerProps extends IBaseProps<ISpinner> {
     isGrowing?: boolean;
     isSmall?: boolean;
     text?: string;

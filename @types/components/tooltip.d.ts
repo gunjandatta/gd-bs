@@ -42,6 +42,7 @@ export const Tooltip: (props: ITooltipProps) => ITooltip;
  */
 export const TooltipTypes: ITooltipTypes;
 
+import { IBaseProps } from "../base";
 import { IButtonProps } from "./button";
 
 /**
@@ -91,10 +92,8 @@ export interface ITooltipOptions {
 /**
  * Tooltip Properties
  */
-export interface ITooltipProps {
+export interface ITooltipProps extends IBaseProps<ITooltip> {
     btnType?: number;
-    className?: string;
-    el?: Element | HTMLElement;
     options?: ITooltipOptions;
     text?: string;
     type?: number;

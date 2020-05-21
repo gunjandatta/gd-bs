@@ -39,6 +39,7 @@
  */
 export const ButtonGroup: (props: IButtonGroupProps) => IButtonGroup;
 
+import { IBaseProps } from "../base";
 import { IButton, IButtonProps } from "./button";
 
 /**
@@ -61,11 +62,9 @@ export interface IButtonGroup {
 /**
  * Button Group Properties
  */
-export interface IButtonGroupProps {
+export interface IButtonGroupProps extends IBaseProps<IButtonGroup> {
     buttons?: Array<IButtonProps>;
     buttonType?: number;
-    className?: string;
-    el?: Element | HTMLElement;
     id?: string;
     isLarge?: boolean;
     isSmall?: boolean;

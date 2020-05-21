@@ -109,6 +109,7 @@
  */
 export const MediaList: (props: IMediaListProps) => IMediaList;
 
+import { IBaseProps } from "../base";
 import { IMediaProps } from "./media";
 
 /**
@@ -128,8 +129,6 @@ export interface IMediaList {
 /**
  * Media List Properties
  */
-export interface IMediaListProps {
-    className?: string;
-    el?: Element | HTMLElement;
+export interface IMediaListProps extends IBaseProps<IMediaList> {
     items: Array<IMediaProps>;
 }

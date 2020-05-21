@@ -37,6 +37,7 @@ export const Button: (props: IButtonProps) => IButton;
  */
 export const ButtonTypes: IButtonTypes;
 
+import { IBaseProps } from "../base";
 import { IBadgeProps } from "./badge";
 import { ISpinnerProps } from "./spinner";
 
@@ -72,12 +73,10 @@ export interface IButton {
 /**
  * Button Properties
  */
-export interface IButtonProps {
+export interface IButtonProps extends IBaseProps<IButton> {
     badge?: IBadgeProps;
-    className?: string;
     controls?: string | Array<string>;
     data?: any;
-    el?: Element | HTMLElement;
     href?: string;
     id?: string;
     isBlock?: boolean;
