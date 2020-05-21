@@ -100,6 +100,9 @@ export interface IFormControlPropsCheckbox extends IFormControlProps {
     items?: Array<ICheckboxGroupItem>;
     multi?: boolean;
     onChange?: (item: Array<ICheckboxGroupItem>) => void;
+    onControlRendering?: (control: IFormControlPropsCheckbox) => void | PromiseLike<IFormControlPropsCheckbox>;
+    onGetValue?: (control: IFormControlPropsCheckbox) => any;
+    onValidate?: (control: IFormControlPropsCheckbox, value: any) => boolean | IFormControlValidationResult;
 }
 
 /**
@@ -108,6 +111,9 @@ export interface IFormControlPropsCheckbox extends IFormControlProps {
 export interface IFormControlPropsDropdown extends IFormControlProps {
     items?: Array<IDropdownItem>;
     onChange?: (item: IDropdownItem | Array<IDropdownItem>) => void;
+    onControlRendering?: (control: IFormControlPropsDropdown) => void | PromiseLike<IFormControlPropsDropdown>;
+    onGetValue?: (control: IFormControlPropsDropdown) => any;
+    onValidate?: (control: IFormControlPropsDropdown, value: any) => boolean | IFormControlValidationResult;
 }
 
 /**
@@ -117,6 +123,9 @@ export interface IFormControlPropsListBox extends IFormControlProps {
     items?: Array<IDropdownItem>;
     multi?: boolean;
     onChange?: (items: Array<IDropdownItem>) => void;
+    onControlRendering?: (control: IFormControlPropsListBox) => void | PromiseLike<IFormControlPropsListBox>;
+    onGetValue?: (control: IFormControlPropsListBox) => any;
+    onValidate?: (control: IFormControlPropsListBox, value: any) => boolean | IFormControlValidationResult;
     placeholder?: string;
 }
 
@@ -126,6 +135,9 @@ export interface IFormControlPropsListBox extends IFormControlProps {
 export interface IFormControlPropsNumberField extends IFormControlPropsTextField {
     max?: number;
     min?: number;
+    onControlRendering?: (control: IFormControlPropsNumberField) => void | PromiseLike<IFormControlPropsNumberField>;
+    onGetValue?: (control: IFormControlPropsNumberField) => any;
+    onValidate?: (control: IFormControlPropsNumberField, value: any) => boolean | IFormControlValidationResult;
     step?: number;
 }
 
@@ -145,6 +157,9 @@ export interface IFormControlPropsSwitch extends IFormControlPropsCheckbox { }
 export interface IFormControlPropsTextField extends IFormControlProps {
     el?: HTMLInputElement;
     onChange?: (value: string) => void;
+    onControlRendering?: (control: IFormControlPropsTextField) => void | PromiseLike<IFormControlPropsTextField>;
+    onGetValue?: (control: IFormControlPropsTextField) => any;
+    onValidate?: (control: IFormControlPropsTextField, value: any) => boolean | IFormControlValidationResult;
     placeholder?: string;
     rows?: number;
 }
