@@ -113,14 +113,7 @@ class _ListBox extends Base<IListBoxProps> implements IListBox {
     }
 
     // Configures the values dropdown
-    private configureValuesDDL(values: Array<IDropdownItem>) {
-        // Add the header
-        let items = ([
-            {
-                isHeader: true, text: "Selected Items"
-            }
-        ] as Array<IDropdownItem>).concat(values);
-
+    private configureValuesDDL(items: Array<IDropdownItem>) {
         // Update the dropdown
         this._ddlValues.setItems(items);
         this._ddlValues.setValue(items);
@@ -136,10 +129,10 @@ class _ListBox extends Base<IListBoxProps> implements IListBox {
                 let idx = parseInt((ev.currentTarget as HTMLElement).getAttribute("data-idx"));
 
                 // Remove the item
-                values.splice(idx, 1);
+                items.splice(idx, 1);
 
                 // Update the values
-                this.configureValuesDDL(values);
+                this.configureValuesDDL(items);
             });
         }
     }
