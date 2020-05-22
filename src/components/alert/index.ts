@@ -1,4 +1,5 @@
-import { jQuery } from "../..";
+import "bootstrap/js/dist/alert";
+import { jQuery } from "../../core";
 import { IAlert, IAlertProps } from "../../../@types/components/alert";
 import { Base } from "../base";
 import { ClassNames } from "../classNames";

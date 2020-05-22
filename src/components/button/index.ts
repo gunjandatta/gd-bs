@@ -1,4 +1,5 @@
-import { jQuery } from "../..";
+import "bootstrap/js/dist/button";
+import { jQuery } from "../../core";
 import { Base } from "../base";
 import { ClassNames } from "../classNames";
 import { Badge, BadgeTypes } from "../badge";

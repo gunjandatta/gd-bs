@@ -1,4 +1,6 @@
-import { jQuery } from "../..";
+import "bootstrap/js/dist/dropdown";
+import "popper.js";
+import { jQuery } from "../../core";
 import { IDropdown, IDropdownItem, IDropdownProps } from "../../../@types/components/dropdown";
 import { Base } from "../base";
 import { ButtonClassNames, ButtonTypes } from "../button";

@@ -1,7 +1,7 @@
-import "bootstrap";
 import * as jQuery from "jquery";
 import * as Components from "./components";
 
+// Library
 export {
     Components,
     jQuery

@@ -1,12 +1,12 @@
 {
   "name": "gd-bs",
-  "version": "2.3.9",
+  "version": "2.4.0",
   "description": "Bootstrap JavaScript, TypeScript and Web Components library.",
   "main": "dist/gd-bs.js",
   "typings": "dist/gd-bs.d.ts",
   "scripts": {
     "all": "npm run libs && npm run build-all && npm run prod-all && npm run typings",
-    "build-all": "npm run build && npm run build-icons",
+    "build-all": "npm run build && npm run build-core && npm run build-icons",
     "build": "webpack --mode=development",
     "build-core": "webpack --mode=development --core=true",
     "build-icons": "webpack --mode=development --icons=true",

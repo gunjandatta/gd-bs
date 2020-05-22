@@ -10,7 +10,7 @@ module.exports = (env, argv) => {
     var srcFilename = "./src/index";
     if (isCore) {
         outFilename += "-core";
-        srcFilename += "-core";
+        srcFilename = "./src/core";
     } else if (includeIcons) {
         outFilename += "-icons";
         srcFilename += "-icons";

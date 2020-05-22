@@ -1,4 +1,6 @@
-import { jQuery } from "../..";
+import "bootstrap/js/dist/carousel";
+import "bootstrap/js/dist/util";
+import { jQuery } from "../../core";
 import { Base } from "../base";
 import { ICarousel, ICarouselProps } from "../../../@types/components/carousel";
 import * as HTML from "./index.html";

@@ -1,4 +1,6 @@
-import { jQuery } from "../..";
+import "bootstrap/js/dist/toast";
+import "bootstrap/js/dist/util";
+import { jQuery } from "../../core";
 import { IToast, IToastProps } from "../../../@types/components/toast";
 import { Base } from "../base";
 import * as HTML from "./index.html";

@@ -1,4 +1,5 @@
-import { jQuery } from "../..";
+import "bootstrap/js/dist/modal";
+import { jQuery } from "../../core";
 import { IModal, IModalProps } from "../../../@types/components/modal";
 import { Base } from "../base";
 import * as HTML from "./index.html";

@@ -1,21 +1,10 @@
-import "bootstrap";
-import * as jQuery from "jquery";
-import * as Components from "./components";
-import { Icons, IconTypes } from "./icons";
-import "./sass";
+// gd-bs Library
+export * from "./index";
 
-export {
-    Components,
-    Icons, IconTypes,
-    jQuery
-}
+// Icons
+import { Icons, IconTypes } from "./icons";
+export { Icons, IconTypes }
 
 // Global Library
-window["GD"] = {
-    Components,
-    Icons, IconTypes,
-    jQuery
-}
-
-// Execute a jQuery no conflict by default.
-jQuery.noConflict(true);
+window["GD"].Icons = Icons;
+window["GD"].IconTypes = IconTypes;

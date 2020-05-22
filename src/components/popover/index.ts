@@ -1,4 +1,6 @@
-import { jQuery } from "../..";
+import "bootstrap/js/dist/popover";
+import "popper.js";
+import { jQuery } from "../../core";
 import { Button } from "../button";
 import { IPopover, IPopoverProps } from "../../../@types/components/popover";
 import { Base } from "../base";
