@@ -18,7 +18,7 @@ class _Collapse extends Base<ICollapseProps> implements ICollapse {
         this.configureParent();
 
         // Create the collapse
-        this._bootstrapObj = jQuery(this.el).collapse(this.props.options || {});
+        this._bootstrapObj = jQuery ? jQuery(this.el).collapse(this.props.options || {}) : null;
     }
 
     // Configure the card group
@@ -47,10 +47,10 @@ class _Collapse extends Base<ICollapseProps> implements ICollapse {
      */
 
     // Disposes the collapse
-    dispose() { this._bootstrapObj.collapse("dispose"); }
+    dispose() { this._bootstrapObj ? this._bootstrapObj.collapse("dispose") : null; }
 
     // Toggles the component
-    toggle() { jQuery(this.el).collapse("toggle"); }
+    toggle() { this._bootstrapObj ? this._bootstrapObj.collapse("toggle") : null; }
 
     /**
      * Public Interface

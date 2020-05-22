@@ -104,7 +104,7 @@ class _Tooltip extends Base<ITooltipProps> {//implements ITooltip {
         }
 
         // Create the tooltip
-        this._bootstrapObj = jQuery(this.el).tooltip(options);
+        this._bootstrapObj = jQuery ? jQuery(this.el).tooltip(options) : null;
     }
 
     /**
@@ -112,25 +112,25 @@ class _Tooltip extends Base<ITooltipProps> {//implements ITooltip {
      */
 
     // Disposes the tooltip
-    dispose() { this._bootstrapObj.tooltip("dispose"); }
+    dispose() { this._bootstrapObj ? this._bootstrapObj.tooltip("dispose") : null; }
 
     // Enables the tooltip
-    enable() { this._bootstrapObj.tooltip("enable"); }
+    enable() { this._bootstrapObj ? this._bootstrapObj.tooltip("enable") : null; }
 
     // Hides the tooltip
-    hide() { this._bootstrapObj.tooltip("hide"); }
+    hide() { this._bootstrapObj ? this._bootstrapObj.tooltip("hide") : null; }
 
     // Shows the tooltip
-    show() { this._bootstrapObj.tooltip("show"); }
+    show() { this._bootstrapObj ? this._bootstrapObj.tooltip("show") : null; }
 
     // Toggles the tooltip
-    toggle() { this._bootstrapObj.tooltip("toggle"); }
+    toggle() { this._bootstrapObj ? this._bootstrapObj.tooltip("toggle") : null; }
 
     // Enables the toggle
-    toggleEnabled() { this._bootstrapObj.tooltip("toggleEnabled"); }
+    toggleEnabled() { this._bootstrapObj ? this._bootstrapObj.tooltip("toggleEnabled") : null; }
 
     // Updates the tooltip
-    update() { this._bootstrapObj.tooltip("update"); }
+    update() { this._bootstrapObj ? this._bootstrapObj.tooltip("update") : null; }
 
     /**
      * Public Interface

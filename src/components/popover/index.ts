@@ -110,7 +110,7 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
         }
 
         // Create the popover
-        this._bootstrapObj = jQuery(this.el).popover(options);
+        this._bootstrapObj = jQuery ? jQuery(this.el).popover(options) : null;
     }
 
     // Configures the events
@@ -127,28 +127,28 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
      */
 
     // Disposes the popover
-    dispose() { this._bootstrapObj.popover("dispose"); }
+    dispose() { this._bootstrapObj ? this._bootstrapObj.popover("dispose") : null; }
 
     // Disables the popover
-    disable() { this._bootstrapObj.popover("disable"); }
+    disable() { this._bootstrapObj ? this._bootstrapObj.popover("disable") : null; }
 
     // Enables the popover
-    enable() { this._bootstrapObj.popover("enable"); }
+    enable() { this._bootstrapObj ? this._bootstrapObj.popover("enable") : null; }
 
     // Hides the popover
-    hide() { this._bootstrapObj.popover("hide"); }
+    hide() { this._bootstrapObj ? this._bootstrapObj.popover("hide") : null; }
 
     // Shows the popover
-    show() { this._bootstrapObj.popover("show"); }
+    show() { this._bootstrapObj ? this._bootstrapObj.popover("show") : null; }
 
     // Toggles the popover
-    toggle() { this._bootstrapObj.popover("toggle"); }
+    toggle() { this._bootstrapObj ? this._bootstrapObj.popover("toggle") : null; }
 
     // Enables toggling 
-    toggleEnabled() { this._bootstrapObj.popover("toggleEnabled"); }
+    toggleEnabled() { this._bootstrapObj ? this._bootstrapObj.popover("toggleEnabled") : null; }
 
     // Updates the popover
-    update() { this._bootstrapObj.popover("update"); }
+    update() { this._bootstrapObj ? this._bootstrapObj.popover("update") : null; }
 
     /**
      * Public Interface

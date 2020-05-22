@@ -53,7 +53,7 @@ class _Alert extends Base<IAlertProps> implements IAlert {
         this.configureParent();
 
         // Create the bootstrap object
-        this._bootstrapObj = jQuery(this.el);
+        this._bootstrapObj = jQuery ? jQuery(this.el) : null;
     }
 
     // Configure the alert
@@ -106,10 +106,10 @@ class _Alert extends Base<IAlertProps> implements IAlert {
      */
 
     // Closes the alert
-    close() { this._bootstrapObj.alert("toggle"); }
+    close() { this._bootstrapObj ? this._bootstrapObj.alert("toggle") : null; }
 
     // Disposes the alert
-    dispose() { this._bootstrapObj.alert("dispose"); }
+    dispose() { this._bootstrapObj ? this._bootstrapObj.alert("dispose") : null; }
 
     /**
      * Public Properties

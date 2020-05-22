@@ -74,7 +74,7 @@ class _Button extends Base<IButtonProps> implements IButton {
         this.configureParent();
 
         // Create the bootstrap object
-        this._bootstrapObj = jQuery(this.el);
+        this._bootstrapObj = jQuery ? jQuery(this.el) : null;
     }
 
     // Configure the button
@@ -147,10 +147,10 @@ class _Button extends Base<IButtonProps> implements IButton {
      */
 
     // Disposes the button
-    dispose() { this._bootstrapObj.button("dispose"); }
+    dispose() { this._bootstrapObj ? this._bootstrapObj.button("dispose") : null; }
 
     // Toggles the button
-    toggle() { this._bootstrapObj.button("toggle"); }
+    toggle() { this._bootstrapObj ? this._bootstrapObj.button("toggle") : null; }
 
     /**
      * Public Properties

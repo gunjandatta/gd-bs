@@ -74,7 +74,7 @@ class _Modal extends Base<IModalProps> implements IModal {
         }
 
         // Create the modal
-        this._bootstrapObj = jQuery(this.el).modal(options);
+        this._bootstrapObj = jQuery ? jQuery(this.el).modal(options) : null;
     }
 
     // Configure the events
@@ -96,10 +96,10 @@ class _Modal extends Base<IModalProps> implements IModal {
         // See if there is a close event
         if (this.props.onClose) {
             // Add a hidden event
-            this._bootstrapObj.on("hidden.bs.modal", () => {
+            this._bootstrapObj ? this._bootstrapObj.on("hidden.bs.modal", () => {
                 // Call the event
                 this.props.onClose(this.el);
-            });
+            }) : null;
         }
     }
 
@@ -108,27 +108,27 @@ class _Modal extends Base<IModalProps> implements IModal {
      */
 
     // Disposes the modal
-    dispose() { this._bootstrapObj.modal("dispose"); }
+    dispose() { this._bootstrapObj ? this._bootstrapObj.modal("dispose") : null; }
 
     // Updates the modal
-    handleUpdate() { this._bootstrapObj.modal("handleUpdate"); }
+    handleUpdate() { this._bootstrapObj ? this._bootstrapObj.modal("handleUpdate") : null; }
 
     // Hides the modal
     hide() {
         // hide the modal
-        this._bootstrapObj.modal("hide");
+        this._bootstrapObj ? this._bootstrapObj.modal("hide") : null;
     }
 
     // Shows the modal
     show() {
         // Show the modal
-        this._bootstrapObj.modal("show");
+        this._bootstrapObj ? this._bootstrapObj.modal("show") : null;
     }
 
     // Toggles the modal
     toggle() {
         // Toggle the modal
-        this._bootstrapObj.modal("toggle");
+        this._bootstrapObj ? this._bootstrapObj.modal("toggle") : null;
     }
 
     /**
