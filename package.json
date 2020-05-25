@@ -2,7 +2,7 @@
   "name": "gd-bs",
   "version": "2.4.0",
   "description": "Bootstrap JavaScript, TypeScript and Web Components library.",
-  "main": "dist/gd-bs.js",
+  "main": "dist/gd-bs.min.js",
   "typings": "dist/gd-bs.d.ts",
   "scripts": {
     "all": "npm run libs && npm run build-all && npm run prod-all && npm run typings",
