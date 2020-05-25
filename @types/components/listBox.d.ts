@@ -3,6 +3,11 @@ import { IDropdown, IDropdownItem } from "./dropdown";
 /**
  * List Box
  */
+export const ListBox: (props: IListBoxProps) => IListBox;
+
+/**
+ * List Box
+ */
 export interface IListBox {
     /** The element. */
     el: Element;

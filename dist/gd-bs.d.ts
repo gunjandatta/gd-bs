@@ -2599,6 +2599,11 @@ declare module 'gd-bs/components/listBox' {
     /**
         * List Box
         */
+    export const ListBox: (props: IListBoxProps) => IListBox;
+    
+    /**
+        * List Box
+        */
     export interface IListBox {
             /** The element. */
             el: Element;
