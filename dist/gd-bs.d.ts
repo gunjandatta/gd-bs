@@ -30,6 +30,8 @@ declare module 'gd-bs/components' {
     export * from "gd-bs/components/jumbotron";
     export * from "gd-bs/components/listBox";
     export * from "gd-bs/components/listGroup";
+    export * from "gd-bs/components/media";
+    export * from "gd-bs/components/mediaList";
     export * from "gd-bs/components/modal";
     export * from "gd-bs/components/nav";
     export * from "gd-bs/components/navbar";
@@ -2715,6 +2717,183 @@ declare module 'gd-bs/components/listGroup' {
             Secondary: number;
             Success: number;
             Warning: number;
+    }
+}
+
+declare module 'gd-bs/components/media' {
+    
+    /**
+        * ### Media
+        * 
+        * ```ts
+        * import { Components, IconTypes } from "gd-sprest-bs";
+        * 
+        * // Create the media object
+        * let el = document.querySelector("#icon");
+        * let media = Components.Media({
+        *     el: el,
+        *     icon: {
+        *         icon: IconTypes.BootstrapReboot,
+        *         className: "mr-3"
+        *     },
+        *     body: [
+        *         "<h5>Media Object Example</h5>",
+        *         "This is an example of a media object."
+        *     ].join('\n')
+        * });
+        * ```
+        */
+    export const Media: (props: IMediaProps) => IMedia;
+    
+    import { IBaseProps } from "gd-bs/base";
+    
+    /**
+        * Media Image Types
+        */
+    export const MediaImageTypes: IMediaImageTypes;
+    
+    /**
+        * Media
+        */
+    export interface IMedia {
+            /** The element. */
+            el: HTMLDivElement;
+    
+            /** Hides the media. */
+            hide: () => void;
+    
+            /** Shows the media. */
+            show: () => void;
+    }
+    
+    /**
+        * Media Properties
+        */
+    export interface IMediaProps extends IBaseProps<IMedia> {
+            body?: string | Element;
+            data?: any;
+            icon?: {
+                    className?: string;
+                    height?: number;
+                    icon: number;
+                    onClick?: (ev?: Event) => void;
+                    rightAligned?: boolean;
+                    type?: number;
+                    url?: string;
+                    width?: number;
+            }
+            image?: {
+                    alt?: string;
+                    className?: string;
+                    onClick?: (ev?: Event) => void;
+                    rightAligned?: boolean;
+                    src: string;
+                    type?: number;
+                    url?: string;
+            };
+            items?: Array<IMediaProps>;
+            onRenderBody?: (el?: HTMLElement) => void;
+            order?: number;
+    }
+    
+    /**
+        * Media Image Types
+        */
+    export type IMediaImageTypes = {
+            Bottem: number;
+            Center: number;
+            Top: number;
+    }
+    
+    /**
+        * Media Order Types
+        */
+    export type IMediaOrderTypes = {
+            Left: number;
+            Right: number;
+    }
+}
+
+declare module 'gd-bs/components/mediaList' {
+    
+    /**
+        * ### Media List
+        * 
+        * ```ts
+        * import { Components, IconTypes } from "gd-sprest-bs";
+        * 
+        * // Create the media list object
+        * let el = document.querySelector("#media");
+        * let media = Components.MediaList({
+        *     el,
+        *     items: [
+        *         {
+        *             icon: {
+        *                 icon: IconTypes.BootstrapReboot,
+        *                 className: "mr-3"
+        *             },
+        *             body: "<h5>Default Item</h5>This is the default media object."
+        *         },
+        *         {
+        *             icon: {
+        *                 icon: IconTypes.Bootstrap,
+        *                 className: "mr-3",
+        *                 type: Components.MediaImageTypes.Top
+        *             },
+        *             body: "<h5>Top Aligned Item</h5>This is an example of a media object."
+        *         },
+        *         {
+        *             icon: {
+        *                 icon: IconTypes.BootstrapFill,
+        *                 className: "mr-3",
+        *                 type: Components.MediaImageTypes.Center
+        *             },
+        *             body: "<h5>Center Aligned Item</h5>This is an example of a media object."
+        *         },
+        *         {
+        *             icon: {
+        *                 icon: IconTypes.BootstrapReboot,
+        *                 className: "mr-3",
+        *                 type: Components.MediaImageTypes.Bottom
+        *             },
+        *             body: "<h5>Bottom Aligned Item</h5>This is an example of a media object."
+        *         },
+        *         {
+        *             icon: {
+        *                 icon: IconTypes.Bootstrap,
+        *                 className: "mr-3"
+        *             },
+        *             body: "<h5>Right Aligned Item</h5>This is an example of a media object.",
+        *             order: Components.MediaOrderTypes.Right
+        *         }
+        *     ]
+        * });
+        * ```
+        */
+    export const MediaList: (props: IMediaListProps) => IMediaList;
+    
+    import { IBaseProps } from "gd-bs/base";
+    import { IMediaProps } from "gd-bs/components/media";
+    
+    /**
+        * Media List
+        */
+    export interface IMediaList {
+            /** The element. */
+            el: HTMLElement;
+    
+            /** Hides the media. */
+            hide: () => void;
+    
+            /** Shows the media. */
+            show: () => void;
+    }
+    
+    /**
+        * Media List Properties
+        */
+    export interface IMediaListProps extends IBaseProps<IMediaList> {
+            items: Array<IMediaProps>;
     }
 }
 
