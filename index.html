@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <script src="dist/gd-bs-core.js"></script>
+    <script src="dist/gd-bs-icons.js"></script>
     <style>
         .carousel {
             max-width: 400px;
@@ -634,21 +634,31 @@
                             },
                             {
                                 colSize: 3,
-                                columns: [{
-                                    control: {
-                                        errorMessage: "This is a required field.",
-                                        label: "Comments",
-                                        name: "Comments",
-                                        type: GD.Components.FormControlTypes.TextArea,
-                                        onValidate: function (ctrl, value) {
-                                            return {
-                                                invalidMessage: "A comment is required.",
-                                                validMessage: "Thank you for adding a comment",
-                                                isValid: value ? true : false
+                                columns: [
+                                    {
+                                        control: {
+                                            errorMessage: "This is a required field.",
+                                            label: "Comments",
+                                            name: "Comments",
+                                            type: GD.Components.FormControlTypes.TextArea,
+                                            onValidate: function (ctrl, value) {
+                                                return {
+                                                    invalidMessage: "A comment is required.",
+                                                    validMessage: "Thank you for adding a comment",
+                                                    isValid: value ? true : false
+                                                }
                                             }
                                         }
+                                    },
+                                    {
+                                        control: {
+                                            type: GD.Components.FormControlTypes.Readonly,
+                                            name: "Read-Only",
+                                            label: "Read Only",
+                                            value: "This is a readonly value. This shouldn't be editable."
+                                        }
                                     }
-                                }]
+                                ]
                             },
                             {
                                 colSize: 3,

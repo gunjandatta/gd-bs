@@ -203,6 +203,20 @@ export class FormControl implements IFormControl {
                     value: this._props.value
                 });
                 break;
+            // Read Only
+            case FormControlTypes.Readonly:
+                // Add the input
+                this._tb = InputGroup({
+                    className,
+                    isPlainText: this._props.isPlainText,
+                    isReadonly: true,
+                    onChange: (this._props as IFormControlPropsTextField).onChange,
+                    placeholder: (this._props as IFormControlPropsTextField).placeholder,
+                    title: this._props.title,
+                    type: InputGroupTypes.TextField,
+                    value: this._props.value
+                });
+                break;
             // Switch
             case FormControlTypes.Switch:
                 // Add the checkbox group
