@@ -5,6 +5,10 @@ export * from "./index";
 import { Icons, IconTypes } from "./icons";
 export { Icons, IconTypes }
 
-// Global Library
-window["GD"].Icons = Icons;
-window["GD"].IconTypes = IconTypes;
+// Update the global library
+import * as GD from "./core";
+GD["Icons"] = Icons;
+GD["IconTypes"] = IconTypes;
+window["GD"] = GD;
+
+export default GD;

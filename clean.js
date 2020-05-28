@@ -27,7 +27,6 @@ function deleteDirectory(src) {
 console.log("Cleaning the files...");
 
 // Delete the folders
-deleteDirectory("./build");
 deleteDirectory("./dist");
 
 // Log

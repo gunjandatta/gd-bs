@@ -64,18 +64,52 @@ export const IconTypes: {
 	ArrowClockwise: number;
 	// arrow-counterclockwise.svg
 	ArrowCounterclockwise: number;
+	// arrow-down-circle-fill.svg
+	ArrowDownCircleFill: number;
+	// arrow-down-circle.svg
+	ArrowDownCircle: number;
+	// arrow-down-left-circle-fill.svg
+	ArrowDownLeftCircleFill: number;
+	// arrow-down-left-circle.svg
+	ArrowDownLeftCircle: number;
+	// arrow-down-left-square-fill.svg
+	ArrowDownLeftSquareFill: number;
+	// arrow-down-left-square.svg
+	ArrowDownLeftSquare: number;
 	// arrow-down-left.svg
 	ArrowDownLeft: number;
+	// arrow-down-right-circle-fill.svg
+	ArrowDownRightCircleFill: number;
+	// arrow-down-right-circle.svg
+	ArrowDownRightCircle: number;
+	// arrow-down-right-square-fill.svg
+	ArrowDownRightSquareFill: number;
+	// arrow-down-right-square.svg
+	ArrowDownRightSquare: number;
 	// arrow-down-right.svg
 	ArrowDownRight: number;
 	// arrow-down-short.svg
 	ArrowDownShort: number;
+	// arrow-down-square-fill.svg
+	ArrowDownSquareFill: number;
+	// arrow-down-square.svg
+	ArrowDownSquare: number;
+	// arrow-down-up.svg
+	ArrowDownUp: number;
 	// arrow-down.svg
 	ArrowDown: number;
+	// arrow-left-circle-fill.svg
+	ArrowLeftCircleFill: number;
+	// arrow-left-circle.svg
+	ArrowLeftCircle: number;
 	// arrow-left-right.svg
 	ArrowLeftRight: number;
 	// arrow-left-short.svg
 	ArrowLeftShort: number;
+	// arrow-left-square-fill.svg
+	ArrowLeftSquareFill: number;
+	// arrow-left-square.svg
+	ArrowLeftSquare: number;
 	// arrow-left.svg
 	ArrowLeft: number;
 	// arrow-repeat.svg
@@ -84,18 +118,48 @@ export const IconTypes: {
 	ArrowReturnLeft: number;
 	// arrow-return-right.svg
 	ArrowReturnRight: number;
+	// arrow-right-circle-fill.svg
+	ArrowRightCircleFill: number;
+	// arrow-right-circle.svg
+	ArrowRightCircle: number;
 	// arrow-right-short.svg
 	ArrowRightShort: number;
+	// arrow-right-square-fill.svg
+	ArrowRightSquareFill: number;
+	// arrow-right-square.svg
+	ArrowRightSquare: number;
 	// arrow-right.svg
 	ArrowRight: number;
-	// arrow-up-down.svg
-	ArrowUpDown: number;
+	// arrow-up-circle-fill.svg
+	ArrowUpCircleFill: number;
+	// arrow-up-circle.svg
+	ArrowUpCircle: number;
+	// arrow-up-left-circle-fill.svg
+	ArrowUpLeftCircleFill: number;
+	// arrow-up-left-circle.svg
+	ArrowUpLeftCircle: number;
+	// arrow-up-left-square-fill.svg
+	ArrowUpLeftSquareFill: number;
+	// arrow-up-left-square.svg
+	ArrowUpLeftSquare: number;
 	// arrow-up-left.svg
 	ArrowUpLeft: number;
+	// arrow-up-right-circle-fill.svg
+	ArrowUpRightCircleFill: number;
+	// arrow-up-right-circle.svg
+	ArrowUpRightCircle: number;
+	// arrow-up-right-square-fill.svg
+	ArrowUpRightSquareFill: number;
+	// arrow-up-right-square.svg
+	ArrowUpRightSquare: number;
 	// arrow-up-right.svg
 	ArrowUpRight: number;
 	// arrow-up-short.svg
 	ArrowUpShort: number;
+	// arrow-up-square-fill.svg
+	ArrowUpSquareFill: number;
+	// arrow-up-square.svg
+	ArrowUpSquare: number;
 	// arrow-up.svg
 	ArrowUp: number;
 	// arrows-angle-contract.svg
@@ -114,6 +178,8 @@ export const IconTypes: {
 	AspectRatioFill: number;
 	// aspect-ratio.svg
 	AspectRatio: number;
+	// asterisk.svg
+	Asterisk: number;
 	// at.svg
 	At: number;
 	// award-fill.svg
@@ -128,14 +194,32 @@ export const IconTypes: {
 	BackspaceReverse: number;
 	// backspace.svg
 	Backspace: number;
+	// bag-check.svg
+	BagCheck: number;
+	// bag-dash.svg
+	BagDash: number;
 	// bag-fill.svg
 	BagFill: number;
+	// bag-plus.svg
+	BagPlus: number;
 	// bag.svg
 	Bag: number;
 	// bar-chart-fill.svg
 	BarChartFill: number;
 	// bar-chart.svg
 	BarChart: number;
+	// basket-fill.svg
+	BasketFill: number;
+	// basket.svg
+	Basket: number;
+	// basket2-fill.svg
+	Basket2Fill: number;
+	// basket2.svg
+	Basket2: number;
+	// basket3-fill.svg
+	Basket3Fill: number;
+	// basket3.svg
+	Basket3: number;
 	// battery-charging.svg
 	BatteryCharging: number;
 	// battery-full.svg
@@ -212,6 +296,10 @@ export const IconTypes: {
 	BoxArrowUpRight: number;
 	// box-arrow-up.svg
 	BoxArrowUp: number;
+	// box-seam.svg
+	BoxSeam: number;
+	// box.svg
+	Box: number;
 	// braces.svg
 	Braces: number;
 	// briefcase-fill.svg
@@ -244,12 +332,74 @@ export const IconTypes: {
 	Building: number;
 	// bullseye.svg
 	Bullseye: number;
+	// calendar-check-fill.svg
+	CalendarCheckFill: number;
+	// calendar-check.svg
+	CalendarCheck: number;
+	// calendar-date-fill.svg
+	CalendarDateFill: number;
+	// calendar-date.svg
+	CalendarDate: number;
+	// calendar-day-fill.svg
+	CalendarDayFill: number;
+	// calendar-day.svg
+	CalendarDay: number;
 	// calendar-fill.svg
 	CalendarFill: number;
+	// calendar-minus-fill.svg
+	CalendarMinusFill: number;
+	// calendar-minus.svg
+	CalendarMinus: number;
+	// calendar-month-fill.svg
+	CalendarMonthFill: number;
+	// calendar-month.svg
+	CalendarMonth: number;
+	// calendar-plus-fill.svg
+	CalendarPlusFill: number;
+	// calendar-plus.svg
+	CalendarPlus: number;
 	// calendar.svg
 	Calendar: number;
+	// calendar2-check-fill.svg
+	Calendar2CheckFill: number;
+	// calendar2-check.svg
+	Calendar2Check: number;
+	// calendar2-date-fill.svg
+	Calendar2DateFill: number;
+	// calendar2-date.svg
+	Calendar2Date: number;
+	// calendar2-day-fill.svg
+	Calendar2DayFill: number;
+	// calendar2-day.svg
+	Calendar2Day: number;
+	// calendar2-fill.svg
+	Calendar2Fill: number;
+	// calendar2-minus-fill.svg
+	Calendar2MinusFill: number;
+	// calendar2-minus.svg
+	Calendar2Minus: number;
+	// calendar2-month-fill.svg
+	Calendar2MonthFill: number;
+	// calendar2-month.svg
+	Calendar2Month: number;
+	// calendar2-plus-fill.svg
+	Calendar2PlusFill: number;
+	// calendar2-plus.svg
+	Calendar2Plus: number;
+	// calendar2.svg
+	Calendar2: number;
+	// calendar3-fill.svg
+	Calendar3Fill: number;
+	// calendar3.svg
+	Calendar3: number;
+	// calendar4.svg
+	Calendar4: number;
 	// camera-video-fill.svg
 	CameraVideoFill: number;
+	// camera-video-off-fill.svg
+	CameraVideoOffFill: number;
+	// camera-video-off.svg
+	CameraVideoOff: number;
 	// camera-video.svg
 	CameraVideo: number;
 	// camera.svg
@@ -270,20 +420,52 @@ export const IconTypes: {
 	CardText: number;
 	// caret-down-fill.svg
 	CaretDownFill: number;
+	// caret-down-square-fill.svg
+	CaretDownSquareFill: number;
+	// caret-down-square.svg
+	CaretDownSquare: number;
 	// caret-down.svg
 	CaretDown: number;
 	// caret-left-fill.svg
 	CaretLeftFill: number;
+	// caret-left-square-fill.svg
+	CaretLeftSquareFill: number;
+	// caret-left-square.svg
+	CaretLeftSquare: number;
 	// caret-left.svg
 	CaretLeft: number;
 	// caret-right-fill.svg
 	CaretRightFill: number;
+	// caret-right-square-fill.svg
+	CaretRightSquareFill: number;
+	// caret-right-square.svg
+	CaretRightSquare: number;
 	// caret-right.svg
 	CaretRight: number;
 	// caret-up-fill.svg
 	CaretUpFill: number;
+	// caret-up-square-fill.svg
+	CaretUpSquareFill: number;
+	// caret-up-square.svg
+	CaretUpSquare: number;
 	// caret-up.svg
 	CaretUp: number;
+	// cart-check.svg
+	CartCheck: number;
+	// cart-dash.svg
+	CartDash: number;
+	// cart-fill.svg
+	CartFill: number;
+	// cart-plus.svg
+	CartPlus: number;
+	// cart.svg
+	Cart: number;
+	// cart2.svg
+	Cart2: number;
+	// cart3.svg
+	Cart3: number;
+	// cart4.svg
+	Cart4: number;
 	// chat-dots-fill.svg
 	ChatDotsFill: number;
 	// chat-dots.svg
@@ -310,12 +492,24 @@ export const IconTypes: {
 	Chat: number;
 	// check-all.svg
 	CheckAll: number;
-	// check-box.svg
-	CheckBox: number;
+	// check-circle-fill.svg
+	CheckCircleFill: number;
 	// check-circle.svg
 	CheckCircle: number;
+	// check-square-fill.svg
+	CheckSquareFill: number;
+	// check-square.svg
+	CheckSquare: number;
 	// check.svg
 	Check: number;
+	// check2-all.svg
+	Check2All: number;
+	// check2-circle.svg
+	Check2Circle: number;
+	// check2-square.svg
+	Check2Square: number;
+	// check2.svg
+	Check2: number;
 	// chevron-bar-contract.svg
 	ChevronBarContract: number;
 	// chevron-bar-down.svg
@@ -378,6 +572,10 @@ export const IconTypes: {
 	CloudDownload: number;
 	// cloud-fill.svg
 	CloudFill: number;
+	// cloud-slash-fill.svg
+	CloudSlashFill: number;
+	// cloud-slash.svg
+	CloudSlash: number;
 	// cloud-upload.svg
 	CloudUpload: number;
 	// cloud.svg
@@ -412,6 +610,8 @@ export const IconTypes: {
 	CreditCard: number;
 	// crop.svg
 	Crop: number;
+	// cup.svg
+	Cup: number;
 	// cursor-fill.svg
 	CursorFill: number;
 	// cursor-text.svg
@@ -438,6 +638,10 @@ export const IconTypes: {
 	DisplayFill: number;
 	// display.svg
 	Display: number;
+	// door-closed-fill.svg
+	DoorClosedFill: number;
+	// door-closed.svg
+	DoorClosed: number;
 	// dot.svg
 	Dot: number;
 	// download.svg
@@ -458,6 +662,22 @@ export const IconTypes: {
 	EjectFill: number;
 	// eject.svg
 	Eject: number;
+	// emoji-angry.svg
+	EmojiAngry: number;
+	// emoji-dizzy.svg
+	EmojiDizzy: number;
+	// emoji-frown.svg
+	EmojiFrown: number;
+	// emoji-laughing.svg
+	EmojiLaughing: number;
+	// emoji-neutral.svg
+	EmojiNeutral: number;
+	// emoji-smile-upside-down.svg
+	EmojiSmileUpsideDown: number;
+	// emoji-smile.svg
+	EmojiSmile: number;
+	// emoji-sunglasses.svg
+	EmojiSunglasses: number;
 	// envelope-fill.svg
 	EnvelopeFill: number;
 	// envelope-open-fill.svg
@@ -640,16 +860,40 @@ export const IconTypes: {
 	GridFill: number;
 	// grid.svg
 	Grid: number;
+	// grip-horizontal.svg
+	GripHorizontal: number;
+	// grip-vertical.svg
+	GripVertical: number;
 	// hammer.svg
 	Hammer: number;
+	// hand-index-thumb.svg
+	HandIndexThumb: number;
+	// hand-index.svg
+	HandIndex: number;
+	// hand-thumbs-down.svg
+	HandThumbsDown: number;
+	// hand-thumbs-up.svg
+	HandThumbsUp: number;
+	// handbag-fill.svg
+	HandbagFill: number;
+	// handbag.svg
+	Handbag: number;
 	// hash.svg
 	Hash: number;
+	// headphones.svg
+	Headphones: number;
 	// heart-fill.svg
 	HeartFill: number;
 	// heart-half.svg
 	HeartHalf: number;
 	// heart.svg
 	Heart: number;
+	// hexagon-fill.svg
+	HexagonFill: number;
+	// hexagon-half.svg
+	HexagonHalf: number;
+	// hexagon.svg
+	Hexagon: number;
 	// house-door-fill.svg
 	HouseDoorFill: number;
 	// house-door.svg
@@ -764,6 +1008,10 @@ export const IconTypes: {
 	MicMute: number;
 	// mic.svg
 	Mic: number;
+	// minecart-loaded.svg
+	MinecartLoaded: number;
+	// minecart.svg
+	Minecart: number;
 	// moon.svg
 	Moon: number;
 	// music-note-beamed.svg
@@ -806,8 +1054,6 @@ export const IconTypes: {
 	PentagonHalf: number;
 	// pentagon.svg
 	Pentagon: number;
-	// people-circle.svg
-	PeopleCircle: number;
 	// people-fill.svg
 	PeopleFill: number;
 	// people.svg
@@ -818,6 +1064,8 @@ export const IconTypes: {
 	PersonCheckFill: number;
 	// person-check.svg
 	PersonCheck: number;
+	// person-circle.svg
+	PersonCircle: number;
 	// person-dash-fill.svg
 	PersonDashFill: number;
 	// person-dash.svg
@@ -886,6 +1134,10 @@ export const IconTypes: {
 	QuestionSquare: number;
 	// question.svg
 	Question: number;
+	// receipt-cutoff.svg
+	ReceiptCutoff: number;
+	// receipt.svg
+	Receipt: number;
 	// reply-all-fill.svg
 	ReplyAllFill: number;
 	// reply-all.svg
@@ -908,12 +1160,20 @@ export const IconTypes: {
 	ShieldLock: number;
 	// shield-shaded.svg
 	ShieldShaded: number;
+	// shield-slash-fill.svg
+	ShieldSlashFill: number;
+	// shield-slash.svg
+	ShieldSlash: number;
 	// shield.svg
 	Shield: number;
 	// shift-fill.svg
 	ShiftFill: number;
 	// shift.svg
 	Shift: number;
+	// shop-window.svg
+	ShopWindow: number;
+	// shop.svg
+	Shop: number;
 	// shuffle.svg
 	Shuffle: number;
 	// skip-backward-fill.svg
@@ -1028,6 +1288,10 @@ export const IconTypes: {
 	Triangle: number;
 	// trophy.svg
 	Trophy: number;
+	// truck-flatbed.svg
+	TruckFlatbed: number;
+	// truck.svg
+	Truck: number;
 	// tv-fill.svg
 	TvFill: number;
 	// tv.svg
@@ -1054,6 +1318,10 @@ export const IconTypes: {
 	UnlockFill: number;
 	// unlock.svg
 	Unlock: number;
+	// upc-scan.svg
+	UpcScan: number;
+	// upc.svg
+	Upc: number;
 	// upload.svg
 	Upload: number;
 	// view-list.svg
@@ -1068,6 +1336,10 @@ export const IconTypes: {
 	VolumeMuteFill: number;
 	// volume-mute.svg
 	VolumeMute: number;
+	// volume-off-fill.svg
+	VolumeOffFill: number;
+	// volume-off.svg
+	VolumeOff: number;
 	// volume-up-fill.svg
 	VolumeUpFill: number;
 	// volume-up.svg
@@ -1076,6 +1348,8 @@ export const IconTypes: {
 	Vr: number;
 	// wallet.svg
 	Wallet: number;
+	// wallet2.svg
+	Wallet2: number;
 	// watch.svg
 	Watch: number;
 	// wifi.svg
