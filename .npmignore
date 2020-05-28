@@ -1,4 +1,3 @@
-@types
 src
 *.log*
 package-lock.json
