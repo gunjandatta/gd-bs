@@ -1,0 +1,8 @@
+// Bootstrap
+@import "./bs";
+
+// Wrap everything under a .bs class
+.bs {
+    // Panel
+    @import "panel";
+}

@@ -7,10 +7,10 @@ module.exports = (env, argv) => {
 
     // Determine the filenames
     var outFilename = "gd-bs";
-    var srcFilename = "./src/index";
+    var srcFilename = "./build/index";
     if (isCore) {
         outFilename += "-core";
-        srcFilename = "./src/core";
+        srcFilename = "./build/core";
     } else if (includeIcons) {
         outFilename += "-icons";
         srcFilename += "-icons";
@@ -21,7 +21,7 @@ module.exports = (env, argv) => {
 
     // Return the configuration
     var config = {
-        entry: srcFilename + ".ts",
+        entry: srcFilename + ".js",
         output: {
             path: path.resolve(__dirname, "dist"),
             filename: outFilename + ".js"
@@ -66,9 +66,9 @@ module.exports = (env, argv) => {
                     exclude: "/node_modules/",
                     use: [{ loader: "html-loader" }]
                 },
-                // Handle TypeScript Files
+                // Handle JavaScript Files
                 {
-                    test: /\.tsx?$/,
+                    test: /\.jsx?$/,
                     exclude: /node_modules/,
                     use: [
                         {
@@ -76,9 +76,6 @@ module.exports = (env, argv) => {
                             options: {
                                 presets: ["@babel/preset-env"]
                             }
-                        },
-                        {
-                            loader: "ts-loader"
                         }
                     ]
                 }
