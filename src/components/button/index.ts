@@ -1,10 +1,10 @@
 import "bootstrap/js/dist/button";
+import { IButton, IButtonProps } from "../../../@types/components/button";
 import { jQuery } from "../../core";
 import { Base } from "../base";
 import { ClassNames } from "../classNames";
 import { Badge, BadgeTypes } from "../badge";
 import { Spinner } from "../spinner";
-import { IButton, IButtonProps } from "../../../@types/components/button";
 import * as HTML from "./index.html";
 import * as HTMLLink from "./link.html";
 

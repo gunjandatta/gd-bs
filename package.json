@@ -1,9 +1,9 @@
 {
   "name": "gd-bs",
-  "version": "2.5.1",
+  "version": "2.5.2",
   "description": "Bootstrap JavaScript, TypeScript and Web Components library.",
   "main": "build/index.js",
-  "typings": "build/index.d.ts",
+  "typings": "@types/index.d.ts",
   "scripts": {
     "all": "npm run clean && npm run pre-build && npm run build && npm run prod",
     "build": "npm run build-core && npm run build-no-icons && npm run build-icons",
