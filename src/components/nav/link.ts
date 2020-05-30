@@ -18,7 +18,7 @@ export class NavLink extends Base<INavLink> {
         if (isTab) {
             // Create the tab element
             let el = document.createElement("div");
-            el.innerHTML = HTMLTab as any;
+            el.innerHTML = (HTMLTab as any as string).trim();
             this._elTab = el.firstChild as HTMLDivElement;
         }
 

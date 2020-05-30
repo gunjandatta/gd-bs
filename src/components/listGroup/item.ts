@@ -19,7 +19,7 @@ export class ListGroupItem extends Base<IListGroupItem> {
         if (isTab) {
             // Create the tab element
             let el = document.createElement("div");
-            el.innerHTML = HTMLTab as any;
+            el.innerHTML = (HTMLTab as any as string).trim();
             this._elTab = el.firstChild as HTMLDivElement;
         }
 

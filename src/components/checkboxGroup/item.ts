@@ -21,7 +21,7 @@ export class CheckboxItem {
 
         // Create the element
         let el = document.createElement("div");
-        el.innerHTML = this.getHTML();
+        el.innerHTML = this.getHTML().trim();
         this._el = el.firstChild as HTMLDivElement;
 
         // Configure the item

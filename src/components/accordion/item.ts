@@ -24,7 +24,7 @@ export class AccordionItem {
 
         // Create the item
         let elItem = document.createElement("div");
-        elItem.innerHTML = HTML as any;
+        elItem.innerHTML = (HTML as any as string).trim();
         this._el = elItem.firstChild as HTMLDivElement;
 
         // Render the header

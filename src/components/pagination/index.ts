@@ -156,7 +156,7 @@ class _Pagination extends Base<IPaginationProps> implements IPagination {
     private createItem(text: string): HTMLLIElement {
         // Create the item
         let el = document.createElement("div");
-        el.innerHTML = HTMLItem as any;
+        el.innerHTML = (HTMLItem as any as string).trim();
         let item = el.firstChild as HTMLLIElement;
         this._items.push(item);
 

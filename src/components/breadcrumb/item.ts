@@ -17,7 +17,7 @@ export class BreadcrumbItem {
 
         // Create the item
         let elItem = document.createElement("div");
-        elItem.innerHTML = (props.href && !props.isActive ? HTMLLink : HTML) as any;
+        elItem.innerHTML = ((props.href && !props.isActive ? HTMLLink : HTML) as any as string).trim();
         this._el = elItem.firstChild as HTMLLIElement;
 
         // Configure the item

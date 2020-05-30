@@ -20,7 +20,7 @@ export class FormRow {
 
         // Create the element
         let el = document.createElement("div");
-        el.innerHTML = HTML as any;
+        el.innerHTML = (HTML as any as string).trim();
         this._el = el.firstChild as HTMLDivElement;
 
         // Configure the row

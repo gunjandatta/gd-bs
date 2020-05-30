@@ -24,9 +24,10 @@ function deleteDirectory(src) {
 };
 
 // Log
-console.log("Cleaning the files...");
+console.log("Cleaning the library...");
 
 // Delete the folders
+deleteDirectory("./build");
 deleteDirectory("./dist");
 
 // Log
