@@ -7,21 +7,22 @@ module.exports = (env, argv) => {
 
     // Determine the filenames
     var outFilename = "gd-bs";
-    var srcFilename = "./build/index";
+    var srcFilename = "./build/bootstrap.js";
     if (isCore) {
         outFilename += "-core";
-        srcFilename = "./build/core";
+        srcFilename = "./build/core.js";
     } else if (includeIcons) {
         outFilename += "-icons";
-        srcFilename += "-icons";
+        srcFilename = "./build/index.js";
     }
 
-    // See if tihs is production
+    // See if this is production
     if (!isDev) { outFilename += ".min"; }
 
     // Return the configuration
+    console.log(srcFilename, outFilename);
     var config = {
-        entry: srcFilename + ".js",
+        entry: srcFilename,
         output: {
             path: path.resolve(__dirname, "dist"),
             filename: outFilename + ".js"

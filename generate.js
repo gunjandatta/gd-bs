@@ -6,7 +6,7 @@ const readline = require("readline");
 console.log("Generating the css file");
 
 // See if the library exists
-var dstFile = path.join(__dirname, "src/sass/bs.scss");
+var dstFile = path.join(__dirname, "src/styles/bs.scss");
 if (fs.existsSync(dstFile)) {
     // Log
     console.log("Deleting the library");

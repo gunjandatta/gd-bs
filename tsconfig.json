@@ -4,11 +4,11 @@
             "dom",
             "es2015"
         ],
+        "declaration": true,
         "outDir": "build",
         "target": "es5"
     },
     "include": [
-        "build/**/*",
         "src/**/*.ts"
     ]
 }

@@ -1,9 +1,11 @@
-// The core javascript
-export * from "./core";
+// gd-bs Library
+// The bootstrap library
+export * from "./bootstrap";
 
-// The bootstrap styles
-import "./sass";
+// The bootstrap icons
+import { Icons, IconTypes } from "./icons";
+export { Icons, IconTypes }
 
-// The default library
-import * as GD from "./core";
-export default GD;
+// Update the global library
+window["GD"].Icons = Icons;
+window["GD"].IconTypes = IconTypes;

@@ -3,10 +3,10 @@ const path = require("path");
 module.exports = (env, argv) => {
     // Return the configuration
     return {
-        entry: "./src/sass/index.scss",
+        entry: "./src/styles/index.scss",
         output: {
             path: path.resolve(__dirname, "build"),
-            filename: "sass.js"
+            filename: "styles.js"
         },
         resolve: {
             extensions: [".scss"]

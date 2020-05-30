@@ -4,7 +4,6 @@ const fs = require("fs");
 // Get the icons directory
 const dirIcons = path.join(__dirname, "node_modules/bootstrap-icons/icons");
 
-console.log(dirIcons);
 // Get the icon files
 fs.readdir(dirIcons, function (err, files) {
     var icons = [];
@@ -37,7 +36,7 @@ fs.readdir(dirIcons, function (err, files) {
         var funcName = varName[0].toUpperCase() + varName.substr(1);
 
         // Add the icon reference
-        icons.push("const " + varName + " = require(\"bootstrap-icons/icons/" + file + "\");");
+        icons.push("const " + varName + " = `" + fs.readFileSync(dirIcons + "/" + file) + "`;");
 
         // Add the type
         let iconType = types.length + 1;
