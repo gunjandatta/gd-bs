@@ -67,7 +67,7 @@ export interface IMedia {
 /**
  * Media Properties
  */
-export interface IMediaProps<T=Element> extends IBaseProps<IMedia> {
+export interface IMediaProps<T = Element> extends IBaseProps<IMedia> {
     body?: string | T;
     data?: any;
     icon?: {
@@ -89,7 +89,7 @@ export interface IMediaProps<T=Element> extends IBaseProps<IMedia> {
         type?: number;
         url?: string;
     };
-    items?: Array<IMediaProps>;
+    items?: Array<IMediaProps<T>>;
     onRenderBody?: (el?: HTMLElement) => void;
     order?: number;
 }
