@@ -89,8 +89,8 @@ export interface IPanel {
 /**
  * Panel Properties
  */
-export interface IPanelProps extends IBaseProps<IPanel> {
-    modalProps?: IModalProps;
+export interface IPanelProps<T = Element> extends IBaseProps<IPanel> {
+    modalProps?: IModalProps<T>;
     type?: number;
 }
 
