@@ -99,6 +99,7 @@ export interface ICardBody {
 export interface ICardFooter {
     className?: string;
     content?: string | Element;
+    onRender?: (el?: HTMLElement, card?: ICardFooter) => void;
 }
 
 /**
@@ -107,6 +108,7 @@ export interface ICardFooter {
 export interface ICardHeader {
     className?: string;
     content?: string | Element;
+    onRender?: (el?: HTMLElement, card?: ICardHeader) => void;
     nav?: INavProps;
 }
 

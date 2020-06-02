@@ -95,6 +95,9 @@ class _Card extends Base<ICardProps> implements ICard {
                     // Append the element
                     header.appendChild(content);
                 }
+
+                // Call the render event
+                this.props.header.onRender ? this.props.header.onRender(header, this.props.header) : null;
             }
         }
     }
@@ -118,6 +121,9 @@ class _Card extends Base<ICardProps> implements ICard {
                 // Append the element
                 footer.appendChild(content);
             }
+
+            // Call the render event
+            this.props.footer.onRender ? this.props.footer.onRender(footer, this.props.footer) : null;
         }
     }
 
