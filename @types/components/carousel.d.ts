@@ -120,10 +120,10 @@ export interface ICarousel {
 /**
  * Carousel Item
  */
-export interface ICarouselItem {
+export interface ICarouselItem<T=Element> {
     captions?: string;
     className?: string;
-    content?: string | Element;
+    content?: string | T;
     imageAlt?: string;
     imageUrl?: string;
     isActive?: boolean;
@@ -143,11 +143,11 @@ export interface ICarouselOptions {
 /**
  * Carousel Properties
  */
-export interface ICarouselProps extends IBaseProps<ICarousel> {
+export interface ICarouselProps<T=Element> extends IBaseProps<ICarousel> {
     enableControls?: boolean;
     enableCrossfade?: boolean;
     enableIndicators?: boolean;
     id?: string;
-    items?: Array<ICarouselItem>;
+    items?: Array<ICarouselItem<T>>;
     options?: ICarouselOptions;
 }

@@ -54,8 +54,8 @@ export interface IToast {
 /**
  * Toast Properties
  */
-export interface IToastProps extends IBaseProps<IToast> {
-    body?: string | Element;
+export interface IToastProps<T = Element> extends IBaseProps<IToast> {
+    body?: string | T;
     data?: any;
     headerImgClass?: string;
     headerImgSrc?: string;

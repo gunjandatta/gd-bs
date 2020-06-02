@@ -80,8 +80,8 @@ export interface ICollapseOptions {
 /**
  * Collapse Properties
  */
-export interface ICollapseProps extends IBaseProps<ICollapse> {
-    content?: string | Element;
+export interface ICollapseProps<T=Element> extends IBaseProps<ICollapse> {
+    content?: string | T;
     data?: any;
     id?: string;
     isMulti?: boolean;

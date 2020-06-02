@@ -68,12 +68,12 @@ export interface IAccordion extends IBase<IAccordionProps> { }
 /**
  * Accordion Item
  */
-export interface IAccordionItem {
+export interface IAccordionItem<T=Element> {
     btnProps?: IButtonProps;
     data?: any;
-    content?: string | Element;
-    onClick?: (el?: HTMLElement, item?: IAccordionItem) => void;
-    onRender?: (el?: HTMLElement, item?: IAccordionItem) => void;
+    content?: string | T;
+    onClick?: (el?: HTMLElement, item?: IAccordionItem<T>) => void;
+    onRender?: (el?: HTMLElement, item?: IAccordionItem<T>) => void;
     showFl?: boolean;
 }
 
@@ -85,8 +85,8 @@ export interface IAccordionOptions extends ICollapseOptions { }
 /**
  * Accordion Properties
  */
-export interface IAccordionProps extends IBaseProps<IAccordion> {
+export interface IAccordionProps<T=Element> extends IBaseProps<IAccordion> {
     id?: string;
-    items?: Array<IAccordionItem>;
+    items?: Array<IAccordionItem<T>>;
     options?: IAccordionOptions;
 }

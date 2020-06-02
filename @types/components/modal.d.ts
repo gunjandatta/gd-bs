@@ -100,10 +100,10 @@ export interface IModalOptions {
 /**
  * Modal Properties
  */
-export interface IModalProps extends IBaseProps<IModal> {
-    body?: string | Element;
+export interface IModalProps<T=Element> extends IBaseProps<IModal> {
+    body?: string | T;
     disableFade?: boolean;
-    footer?: string | Element;
+    footer?: string | T;
     hideCloseButton?: boolean;
     id?: string;
     isCentered?: boolean;

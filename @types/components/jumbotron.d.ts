@@ -50,8 +50,8 @@ export interface IJumbotron {
 /**
  * Jumbotron Properties
  */
-export interface IJumbotronProps extends IBaseProps<IJumbotron> {
-    content?: string | Element;
+export interface IJumbotronProps<T=Element> extends IBaseProps<IJumbotron> {
+    content?: string | T;
     isFluid?: boolean;
     lead?: string;
     onRenderContent?: (el?: HTMLElement) => void;

@@ -67,8 +67,8 @@ export interface IMedia {
 /**
  * Media Properties
  */
-export interface IMediaProps extends IBaseProps<IMedia> {
-    body?: string | Element;
+export interface IMediaProps<T=Element> extends IBaseProps<IMedia> {
+    body?: string | T;
     data?: any;
     icon?: {
         className?: string;

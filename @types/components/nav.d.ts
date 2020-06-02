@@ -69,12 +69,12 @@ export interface INav {
 /**
  * Navigation Properties
  */
-export interface INavProps extends IBaseProps<INav> {
+export interface INavProps<T = Element> extends IBaseProps<INav> {
     data?: any;
     enableFill?: boolean;
     fadeTabs?: boolean;
     id?: string;
-    items?: Array<INavLink>;
+    items?: Array<INavLink<T>>;
     isJustified?: boolean;
     isPills?: boolean;
     isTabs?: boolean;
@@ -84,13 +84,13 @@ export interface INavProps extends IBaseProps<INav> {
 /**
  * Navigation Links
  */
-export interface INavLink {
+export interface INavLink<T = Element> {
     isActive?: boolean;
     isDisabled?: boolean;
     data?: any;
     href?: string;
     onClick?: (item?: INavLink, ev?: Event) => void;
     onRenderTab?: (item?: INavLink, el?: HTMLDivElement) => void;
-    tabContent?: string | Element;
+    tabContent?: string | T;
     title?: string;
 }

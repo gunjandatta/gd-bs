@@ -74,10 +74,10 @@ export interface IListGroup {
 /**
  * List Group Item
  */
-export interface IListGroupItem {
+export interface IListGroupItem<T=Element> {
     badge?: IBadgeProps;
     className?: string;
-    content?: string | Element;
+    content?: string | T;
     data?: any;
     href?: string;
     isActive?: boolean;
@@ -91,13 +91,13 @@ export interface IListGroupItem {
 /**
  * List Group Properties
  */
-export interface IListGroupProps extends IBaseProps<IListGroup> {
+export interface IListGroupProps<T=Element> extends IBaseProps<IListGroup> {
     colWidth?: number;
     fadeTabs?: boolean;
     isFlush?: boolean;
     isHorizontal?: boolean;
     isTabs?: boolean;
-    items?: Array<IListGroupItem>;
+    items?: Array<IListGroupItem<T>>;
 }
 
 /**

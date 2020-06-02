@@ -80,34 +80,34 @@ export interface ICardAction {
 /**
  * Card Body
  */
-export interface ICardBody {
+export interface ICardBody<T=Element> {
     actions?: Array<ICardAction>;
     className?: string;
-    content?: string | Element;
+    content?: string | T;
     data?: any;
     onClick?: (card?: ICardProps, ev?: Event) => void;
     onRender?: (el?: HTMLElement, card?: ICardBody) => void;
     onRenderTitle?: (el?: HTMLElement, card?: ICardBody) => void;
     subTitle?: string;
     text?: string;
-    title?: string | Element;
+    title?: string | T;
 }
 
 /**
  * Card Footer
  */
-export interface ICardFooter {
+export interface ICardFooter<T=Element> {
     className?: string;
-    content?: string | Element;
+    content?: string | T;
     onRender?: (el?: HTMLElement, card?: ICardFooter) => void;
 }
 
 /**
  * Card Header
  */
-export interface ICardHeader {
+export interface ICardHeader<T=Element> {
     className?: string;
-    content?: string | Element;
+    content?: string | T;
     onRender?: (el?: HTMLElement, card?: ICardHeader) => void;
     nav?: INavProps;
 }
@@ -115,10 +115,10 @@ export interface ICardHeader {
 /**
  * Card Properties
  */
-export interface ICardProps extends IBaseProps<ICard> {
-    body?: Array<ICardBody>;
-    footer?: ICardFooter;
-    header?: ICardHeader;
+export interface ICardProps<T=Element> extends IBaseProps<ICard> {
+    body?: Array<ICardBody<T>>;
+    footer?: ICardFooter<T>;
+    header?: ICardHeader<T>;
     imgBottom?: {
         alt?: string;
         src?: string;
