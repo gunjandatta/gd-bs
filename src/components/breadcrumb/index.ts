@@ -1,6 +1,6 @@
 import { IBreadcrumb, IBreadcrumbProps } from "../../../@types/components/breadcrumb";
 import { Base } from "../base";
-import * as HTML from "./index.html";
+import { HTML } from "./templates";
 import { BreadcrumbItem } from "./item";
 
 /**

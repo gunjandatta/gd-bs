@@ -1,7 +1,7 @@
 import { IAccordionItem } from "../../../@types/components/accordion";
 import { IButton } from "../../../@types/components/button";
 import { Button, ButtonTypes } from "../button";
-import * as HTML from "./item.html";
+import { HTMLItem } from "./templates";
 
 /**
  * Accordion Item
@@ -24,7 +24,7 @@ export class AccordionItem {
 
         // Create the item
         let elItem = document.createElement("div");
-        elItem.innerHTML = (HTML as any as string).trim();
+        elItem.innerHTML = HTMLItem;
         this._el = elItem.firstChild as HTMLDivElement;
 
         // Render the header

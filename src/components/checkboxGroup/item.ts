@@ -1,8 +1,6 @@
 import { ICheckboxGroupProps, ICheckboxGroupItem } from "../../../@types/components/checkboxGroup";
 import { CheckboxGroupTypes } from ".";
-import * as HTMLCheckbox from "./checkbox.html";
-import * as HTMLRadio from "./radio.html";
-import * as HTMLSwitch from "./switch.html";
+import { HTMLCheckbox, HTMLRadio, HTMLSwitch } from "./templates";
 
 /**
  * Checkbox Item
@@ -103,13 +101,13 @@ export class CheckboxItem {
         switch (this._props.type || this._parent.type) {
             // Radio
             case CheckboxGroupTypes.Radio:
-                return HTMLRadio as any;
+                return HTMLRadio;
             // Switch
             case CheckboxGroupTypes.Switch:
-                return HTMLSwitch as any;
+                return HTMLSwitch;
             // Default to a checkbox
             default:
-                return HTMLCheckbox as any;
+                return HTMLCheckbox;
         }
     }
 

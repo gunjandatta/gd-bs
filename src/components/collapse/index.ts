@@ -2,7 +2,7 @@ import "bootstrap/js/dist/collapse";
 import { jQuery } from "../../core";
 import { ICollapse, ICollapseProps } from "../../../@types/components/collapse";
 import { Base } from "../base";
-import * as HTML from "./index.html";
+import { HTML } from "./templates";
 
 /**
  * Collapse

@@ -1,6 +1,6 @@
 import { INavbarItem, INavbarProps } from "../../../@types/components/navbar";
 import { Dropdown } from "../dropdown";
-import * as HTML from "./item.html";
+import { HTMLItem } from "./templates";
 
 /**
  * Navbar Item
@@ -18,7 +18,7 @@ export class NavbarItem {
 
         // Create the item
         let el = document.createElement("div");
-        el.innerHTML = (HTML as any as string).trim();
+        el.innerHTML = HTMLItem;
         this._el = el.firstChild as HTMLElement;
 
         // Configure the item

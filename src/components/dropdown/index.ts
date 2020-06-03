@@ -6,10 +6,7 @@ import { Base } from "../base";
 import { ButtonClassNames, ButtonTypes } from "../button";
 import { DropdownFormItem } from "./formItem";
 import { DropdownItem } from "./item";
-import * as HTML from "./index.html";
-import * as HTMLForm from "./form.html";
-import * as HTMLNav from "./nav.html";
-import * as HTMLSplit from "./split.html";
+import { HTML, HTMLForm, HTMLNav, HTMLSplit } from "./templates";
 
 /**
  * Dropdown Types

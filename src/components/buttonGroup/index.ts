@@ -2,7 +2,7 @@ import { IButton } from "../../../@types/components";
 import { IButtonGroup, IButtonGroupProps } from "../../../@types/components/buttonGroup";
 import { Base } from "../base";
 import { Button } from "../button";
-import * as HTML from "./index.html";
+import { HTML } from "./templates";
 
 /**
  * Button Group

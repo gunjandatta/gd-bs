@@ -1,7 +1,7 @@
 import { ICheckboxGroup, ICheckboxGroupItem, ICheckboxGroupProps } from "../../../@types/components/checkboxGroup";
 import { Base } from "../base";
-import * as HTML from "./index.html";
 import { CheckboxItem } from "./item";
+import { HTML } from "./templates";
 
 /**
  * Checkbox Group Types

@@ -1,6 +1,5 @@
 import { IBreadcrumbItem } from "../../../@types/components/breadcrumb";
-import * as HTML from "./item.html";
-import * as HTMLLink from "./link.html";
+import { HTMLItem, HTMLLink } from "./templates";
 
 /**
  * Breadcrumb Item
@@ -17,7 +16,7 @@ export class BreadcrumbItem {
 
         // Create the item
         let elItem = document.createElement("div");
-        elItem.innerHTML = ((props.href && !props.isActive ? HTMLLink : HTML) as any as string).trim();
+        elItem.innerHTML = props.href && !props.isActive ? HTMLLink : HTMLItem;
         this._el = elItem.firstChild as HTMLLIElement;
 
         // Configure the item

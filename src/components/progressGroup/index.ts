@@ -1,7 +1,7 @@
 import { IProgressGroup, IProgressGroupProps } from "../../../@types/components/progressGroup";
 import { Base } from "../base";
 import { Progress } from "../progress";
-import * as HTML from "./index.html";
+import { HTML } from "./templates";
 
 /**
  * Progress Group

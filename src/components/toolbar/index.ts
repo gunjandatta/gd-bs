@@ -2,7 +2,7 @@ import { IToolbar, IToolbarProps } from "../../../@types/components/toolbar";
 import { Base } from "../base";
 import { ButtonGroup } from "../buttonGroup";
 import { InputGroup } from "../inputGroup";
-import * as HTML from "./index.html";
+import { HTML } from "./templates";
 
 /**
  * Toolbar

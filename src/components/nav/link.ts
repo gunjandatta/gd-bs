@@ -1,7 +1,6 @@
 import { INavLink } from "../../../@types/components/nav";
 import { Base } from "../base";
-import * as HTML from "./link.html";
-import * as HTMLTab from "./tab.html";
+import { HTMLLink, HTMLTab } from "./templates";
 
 /**
  * Nav Link
@@ -12,13 +11,13 @@ export class NavLink extends Base<INavLink> {
 
     // Constructor
     constructor(props: INavLink, isTab: boolean) {
-        super(HTML, props);
+        super(HTMLLink, props);
 
         // See if this is for a tab
         if (isTab) {
             // Create the tab element
             let el = document.createElement("div");
-            el.innerHTML = (HTMLTab as any as string).trim();
+            el.innerHTML = HTMLTab;
             this._elTab = el.firstChild as HTMLDivElement;
         }
 

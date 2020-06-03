@@ -1,6 +1,6 @@
 import { IFormControlProps, IFormControl, IFormProps } from "../../../@types/components";
 import { FormControl } from "./control";
-import * as HTML from "./group.html";
+import { HTMLGroup } from "./templates";
 
 /**
  * Form Group
@@ -19,7 +19,7 @@ export class FormGroup {
 
         // Create the element
         let el = document.createElement("div");
-        el.innerHTML = (HTML as any as string).trim();
+        el.innerHTML = HTMLGroup;
         this._el = el.firstChild as HTMLDivElement;
 
         // Configure the control

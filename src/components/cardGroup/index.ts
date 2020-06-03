@@ -1,7 +1,7 @@
 import { ICardGroup, ICardGroupProps } from "../../../@types/components/cardGroup";
 import { Base } from "../base";
 import { Card } from "../card";
-import * as HTML from "./index.html";
+import { HTML } from "./templates";
 
 /**
  * Card Group

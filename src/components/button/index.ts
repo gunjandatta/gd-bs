@@ -5,8 +5,7 @@ import { Base } from "../base";
 import { ClassNames } from "../classNames";
 import { Badge, BadgeTypes } from "../badge";
 import { Spinner } from "../spinner";
-import * as HTML from "./index.html";
-import * as HTMLLink from "./link.html";
+import { HTML, HTMLLink } from "./templates";
 
 /**
  * Button Types

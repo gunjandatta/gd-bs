@@ -4,7 +4,7 @@ import { Base } from "../base";
 import { FormControl as Control } from "./control";
 import { FormGroup } from "./group";
 import { FormRow } from "./row";
-import * as HTML from "./index.html";
+import { HTML } from "./templates";
 export * from "./custom";
 
 /**

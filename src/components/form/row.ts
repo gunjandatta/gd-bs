@@ -1,7 +1,7 @@
 import { IFormProps, IFormRow } from "../../../@types/components/form";
 import { IFormControl } from "../../../@types/components/formControl";
 import { FormGroup } from "./group";
-import * as HTML from "./row.html";
+import { HTMLRow } from "./templates";
 
 /**
  * Form Row
@@ -20,7 +20,7 @@ export class FormRow {
 
         // Create the element
         let el = document.createElement("div");
-        el.innerHTML = (HTML as any as string).trim();
+        el.innerHTML = HTMLRow;
         this._el = el.firstChild as HTMLDivElement;
 
         // Configure the row

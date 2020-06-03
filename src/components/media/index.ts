@@ -1,7 +1,7 @@
 import { IMedia, IMediaProps } from "../../../@types/components/media";
 import { Base } from "../base";
 import { ClassNames } from "../classNames";
-import * as HTML from "./index.html";
+import { HTML } from "./templates";
 declare var GD;
 
 /**

@@ -1,0 +1,1 @@
+export const HTML = `<div class="btn-toolbar" role="toolbar"></div>`;

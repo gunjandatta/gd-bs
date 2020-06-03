@@ -1,7 +1,7 @@
 import { IMediaList, IMediaListProps } from "../../../@types/components/mediaList";
 import { Media } from "../media";
 import { Base } from "../base";
-import * as HTML from "./index.html";
+import { HTML } from "./templates";
 
 /**
  * Media List

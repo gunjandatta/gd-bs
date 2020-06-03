@@ -1,7 +1,6 @@
 import { IPagination, IPaginationProps } from "../../../@types/components/pagination";
 import { Base } from "../base";
-import * as HTML from "./index.html";
-import * as HTMLItem from "./item.html";
+import { HTML, HTMLItem } from "./templates";
 
 /**
  * Pagination Alignment
@@ -156,7 +155,7 @@ class _Pagination extends Base<IPaginationProps> implements IPagination {
     private createItem(text: string): HTMLLIElement {
         // Create the item
         let el = document.createElement("div");
-        el.innerHTML = (HTMLItem as any as string).trim();
+        el.innerHTML = HTMLItem;
         let item = el.firstChild as HTMLLIElement;
         this._items.push(item);
 

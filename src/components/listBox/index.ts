@@ -3,7 +3,7 @@ import { IFormControlPropsDropdown, IFormControlPropsTextField } from "../../../
 import { IListBox, IListBoxProps } from "../../../@types/components/listBox";
 import { Base } from "../base";
 import { Form, FormControlTypes } from "../form";
-import * as HTML from "./index.html";
+import { HTML } from "./templates";
 
 /**
  * TODO - Figure out how to remove a selected item

@@ -1,7 +1,7 @@
 import { ISpinner, ISpinnerProps } from "../../../@types/components/spinner";
 import { Base } from "../base";
 import { ClassNames } from "../classNames";
-import * as HTML from "./index.html";
+import { HTML } from "./templates";
 
 /**
  * Spinner Types

@@ -1,5 +1,5 @@
 import { ICarouselItem } from "../../../@types/components/carousel";
-import * as HTML from "./item.html";
+import { HTMLItem } from "./templates";
 
 /**
  * Carousel Item
@@ -15,7 +15,7 @@ export class CarouselItem {
 
         // Create the item
         let elItem = document.createElement("div");
-        elItem.innerHTML = (HTML as any as string).trim();
+        elItem.innerHTML = HTMLItem;
         this._el = elItem.firstChild as HTMLDivElement;
 
         // Configure the item

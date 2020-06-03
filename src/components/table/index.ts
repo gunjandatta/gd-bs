@@ -1,6 +1,6 @@
 import { ITable, ITableProps, ITableColumn } from "../../../@types/components/table";
 import { Base } from "../base";
-import * as HTML from "./index.html";
+import { HTML } from "./templates";
 
 /**
  * Table

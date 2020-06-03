@@ -3,8 +3,7 @@ import { IListGroup, IListGroupProps } from "../../../@types/components/listGrou
 import { Base } from "../base";
 import { ClassNames } from "../classNames";
 import { ListGroupItem } from "./item";
-import * as HTML from "./index.html";
-import * as HTMLTabs from "./tabs.html";
+import { HTML, HTMLTabs } from "./templates";
 
 /**
  * List Group Item Types

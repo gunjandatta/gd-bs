@@ -2,9 +2,7 @@ import "bootstrap/js/dist/tab";
 import { INav, INavProps } from "../../../@types/components/nav";
 import { Base } from "../base";
 import { NavLink } from "./link";
-import * as HTML from "./index.html";
-import * as HTMLTabs from "./tabs.html";
-import * as HTMLVerticalTabs from "./tabsVertical.html";
+import { HTML, HTMLTabs, HTMLVerticalTabs } from "./templates";
 
 /**
  * Navigation

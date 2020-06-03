@@ -3,7 +3,7 @@ import { jQuery } from "../../core";
 import { IAlert, IAlertProps } from "../../../@types/components/alert";
 import { Base } from "../base";
 import { ClassNames } from "../classNames";
-import * as HTML from "./index.html";
+import { HTML } from "./templates";
 
 /**
  * Alert Types

@@ -1,6 +1,6 @@
 import { ICardAction, ICardBody } from "../../../@types/components/card";
-import * as HTML from "./item.html";
 import { CardAction } from "./action";
+import { HTMLItem } from "./templates";
 
 /**
  * Card Body
@@ -16,7 +16,7 @@ export class CardBody {
 
         // Create the item
         let elItem = document.createElement("div");
-        elItem.innerHTML = (HTML as any as string).trim();
+        elItem.innerHTML = HTMLItem;
         this._el = elItem.firstChild as HTMLLIElement;
 
         // Configure the item

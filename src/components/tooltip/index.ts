@@ -4,7 +4,7 @@ import { jQuery } from "../../core";
 import { ITooltip, ITooltipProps } from "../../../@types/components/tooltip";
 import { Base } from "../base";
 import { ButtonClassNames, ButtonTypes } from "../button";
-import * as HTML from "./index.html";
+import { HTML } from "./templates";
 
 /**
  * Tooltip Types

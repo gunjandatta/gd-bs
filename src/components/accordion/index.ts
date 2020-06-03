@@ -1,7 +1,7 @@
 import { jQuery } from "../../core";
 import { IAccordion, IAccordionProps } from "../../../@types/components/accordion";
 import { Base } from "../base";
-import * as HTML from "./index.html";
+import { HTML } from "./templates";
 import { AccordionItem } from "./item";
 
 /**

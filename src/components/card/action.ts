@@ -1,6 +1,6 @@
 import { ICardAction } from "../../../@types/components/card";
-import { ButtonClassNames, ButtonTypes } from "../button";
-import * as HTML from "./action.html";
+import { ButtonClassNames } from "../button";
+import { HTMLAction } from "./templates";
 import { CardBody } from "./item";
 
 /**
@@ -19,7 +19,7 @@ export class CardAction {
 
         // Create the item
         let elItem = document.createElement("div");
-        elItem.innerHTML = (HTML as any as string).trim();
+        elItem.innerHTML = HTMLAction;
         this._el = elItem.firstChild as HTMLAnchorElement;
 
         // Configure the item

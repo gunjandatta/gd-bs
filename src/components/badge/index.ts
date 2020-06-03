@@ -1,8 +1,7 @@
 import { IBadge, IBadgeProps } from "../../../@types/components/badge";
 import { Base } from "../base";
 import { ClassNames } from "../classNames";
-import * as HTMLLink from "./link.html";
-import * as HTMLSpan from "./span.html";
+import { HTMLLink, HTMLSpan } from "./templates";
 
 /**
  * Badge Types

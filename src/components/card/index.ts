@@ -1,7 +1,7 @@
 import { ICard, ICardProps } from "../../../@types/components/card";
 import { Base } from "../base";
 import { Nav } from "../nav";
-import * as HTML from "./index.html";
+import { HTML } from "./templates";
 import { CardBody } from "./item";
 
 /**

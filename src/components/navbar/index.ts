@@ -2,7 +2,7 @@ import { INavbar, INavbarProps } from "../../../@types/components/navbar";
 import { Base } from "../base";
 import { ButtonClassNames } from "../button";
 import { NavbarItem } from "./item";
-import * as HTML from "./index.html";
+import { HTML } from "./templates";
 
 /**
  * Navbar Types

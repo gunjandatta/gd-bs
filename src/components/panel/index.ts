@@ -2,7 +2,7 @@ import { IModal } from "../../../@types/components/modal";
 import { IPanel, IPanelProps } from "../../../@types/components/panel";
 import { Modal } from "../modal";
 import { Base } from "../base";
-import * as HTML from "./index.html";
+import { HTML } from "./templates";
 
 /**
  * Panel Types

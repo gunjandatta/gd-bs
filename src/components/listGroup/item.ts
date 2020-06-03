@@ -2,8 +2,7 @@ import { IListGroupItem } from "../../../@types/components/listGroup";
 import { Base } from "../base";
 import { Badge } from "../badge";
 import { ListGroupClassNames } from ".";
-import * as HTML from "./item.html";
-import * as HTMLTab from "./tab.html";
+import { HTMLItem, HTMLTab } from "./templates";
 
 /**
  * List Group Item
@@ -13,13 +12,13 @@ export class ListGroupItem extends Base<IListGroupItem> {
 
     // Constructor
     constructor(props: IListGroupItem, isTab: boolean = false) {
-        super(HTML, props);
+        super(HTMLItem, props);
 
         // See if this is for a tab
         if (isTab) {
             // Create the tab element
             let el = document.createElement("div");
-            el.innerHTML = (HTMLTab as any as string).trim();
+            el.innerHTML = HTMLTab;
             this._elTab = el.firstChild as HTMLDivElement;
         }
 
