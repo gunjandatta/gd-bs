@@ -1,5 +1,6 @@
 import "bootstrap/js/dist/button";
 import { IButton, IButtonProps } from "../../../@types/components/button";
+import { IconTypes, Icons } from "../../icons";
 import { jQuery } from "../../core";
 import { Base } from "../base";
 import { ClassNames } from "../classNames";
@@ -110,6 +111,15 @@ class _Button extends Base<IButtonProps> implements IButton {
 
         // Set the text
         this.setText(this.props.text);
+
+        // Set the icon
+        if (typeof (this.props.iconType) !== "undefined") {
+            // Append the icon
+            this.el.appendChild(Icons(this.props.iconType));
+
+            // Update the styling of the button
+            this.el.classList.add("btn-icon");
+        }
 
         // See if this is a spinner
         if (this.props.spinnerProps) {

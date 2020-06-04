@@ -3,6 +3,9 @@
 
 // Wrap everything under a .bs class
 .bs {
+    // Button
+    @import "button";
+
     // Panel
     @import "panel";
 }

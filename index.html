@@ -12,20 +12,11 @@
 <body>
     <div id="test"></div>
     <script>
-        window["test"] = GD.Components.Dropdown({
+        window["test"] = GD.Components.Button({
             el: document.getElementById("test"),
-            label: "Dev DDL",
-            items: [
-                { text: "Item 1" }
-            ]
+            iconType: 367,
+            type: 3
         });
-        test.setItems([
-            { text: "Item 1" },
-            { text: "Item 2" },
-            { text: "Item 3" },
-            { text: "Item 4" },
-            { text: "Item 5" }
-        ]);
     </script>
     <h1>Library</h1>
     <form>
