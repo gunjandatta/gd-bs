@@ -1090,7 +1090,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n}); // Helper function to generate the icon element\n\nexports[\"default\"] = function (svg, height, width) {\n  if (height === void 0) {\n    height = 32;\n  }\n\n  if (width === void 0) {\n    width = 32;\n  } // Get the icon element\n\n\n  var elDiv = document.createElement(\"div\");\n  elDiv.innerHTML = svg;\n  var icon = elDiv.firstChild;\n\n  if (icon) {\n    // Set the height/width\n    icon.setAttribute(\"height\", (height ? height : 32).toString());\n    icon.setAttribute(\"width\", (width ? width : 32).toString());\n  } // Return the icon\n\n\n  return icon;\n};\n\n//# sourceURL=webpack:///./build/icons/generate.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n}); // Helper function to generate the icon element\n\nexports[\"default\"] = function (svg, height, width) {\n  if (height === void 0) {\n    height = 32;\n  }\n\n  if (width === void 0) {\n    width = 32;\n  } // Get the icon element\n\n\n  var elDiv = document.createElement(\"div\");\n  elDiv.innerHTML = svg;\n  var icon = elDiv.firstChild;\n\n  if (icon) {\n    // Set the height/width\n    icon.setAttribute(\"height\", (height ? height : 32).toString());\n    icon.setAttribute(\"width\", (width ? width : 32).toString()); // Support for IE\n\n    icon.setAttribute(\"focusable\", \"false\");\n  } // Return the icon\n\n\n  return icon;\n};\n\n//# sourceURL=webpack:///./build/icons/generate.js?");
 
 /***/ }),
 

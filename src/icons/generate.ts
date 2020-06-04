@@ -8,6 +8,9 @@ export default (svg: string, height: number = 32, width: number = 32) => {
         // Set the height/width
         icon.setAttribute("height", (height ? height : 32).toString());
         icon.setAttribute("width", (width ? width : 32).toString());
+
+        // Support for IE
+        icon.setAttribute("focusable", "false");
     }
 
     // Return the icon
