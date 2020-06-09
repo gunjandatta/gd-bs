@@ -1,6 +1,6 @@
 import "bootstrap/js/dist/button";
 import { IButton, IButtonProps } from "../../../@types/components/button";
-import { IconTypes, Icons } from "../../icons";
+import { Icons } from "../../icons";
 import { jQuery } from "../../core";
 import { Base } from "../base";
 import { ClassNames } from "../classNames";

@@ -112,7 +112,7 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
         }
 
         // Create the popover
-        this._bootstrapObj = jQuery ? jQuery(this.el).popover(options) : null;
+        this._bootstrapObj = jQuery && jQuery.prototype.popover ? jQuery(this.el).popover(options) : null;
     }
 
     // Configures the events

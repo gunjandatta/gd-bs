@@ -19,7 +19,7 @@ class _Collapse extends Base<ICollapseProps> implements ICollapse {
         this.configureParent();
 
         // Create the collapse
-        this._bootstrapObj = jQuery ? jQuery(this.el).collapse(this.props.options || {}) : null;
+        this._bootstrapObj = jQuery && jQuery.prototype.collapse ? jQuery(this.el).collapse(this.props.options || {}) : null;
     }
 
     // Configure the card group

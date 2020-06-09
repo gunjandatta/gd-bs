@@ -106,7 +106,7 @@ class _Tooltip extends Base<ITooltipProps> {//implements ITooltip {
         }
 
         // Create the tooltip
-        this._bootstrapObj = jQuery ? jQuery(this.el).tooltip(options) : null;
+        this._bootstrapObj = jQuery && jQuery.prototype.tooltip ? jQuery(this.el).tooltip(options) : null;
     }
 
     /**

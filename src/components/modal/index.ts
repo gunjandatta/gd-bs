@@ -75,7 +75,7 @@ class _Modal extends Base<IModalProps> implements IModal {
         }
 
         // Create the modal
-        this._bootstrapObj = jQuery ? jQuery(this.el).modal(options) : null;
+        this._bootstrapObj = jQuery && jQuery.prototype.modal ? jQuery(this.el).modal(options) : null;
     }
 
     // Configure the events
