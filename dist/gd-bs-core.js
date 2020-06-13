@@ -610,7 +610,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n}); // Get jQuery from the global constant\n// This is a fix for some SPO environments\n\nexports.getLib = function () {\n  return window[\"GD\"].jQuery;\n};\n\n//# sourceURL=webpack:///./build/components/jQuery.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n}); // Get jQuery from the global constant\n// This is a fix for some SPO environments\n\nexports.getLib = function () {\n  return window[\"$REST\"].jQuery || window[\"GD\"].jQuery;\n};\n\n//# sourceURL=webpack:///./build/components/jQuery.js?");
 
 /***/ }),
 
