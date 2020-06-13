@@ -1,8 +1,8 @@
 import "bootstrap/js/dist/button";
 import { IButton, IButtonProps } from "../../../@types/components/button";
 import { Icons } from "../../icons";
-import { jQuery } from "../../core";
 import { Base } from "../base";
+import { getLib } from "../jQuery";
 import { ClassNames } from "../classNames";
 import { Badge, BadgeTypes } from "../badge";
 import { Spinner } from "../spinner";
@@ -61,9 +61,14 @@ export const ButtonClassNames = new ClassNames([
  * @param props The button properties.
  */
 class _Button extends Base<IButtonProps> implements IButton {
+    private _jQuery = null;
+
     // Constructor
     constructor(props: IButtonProps) {
         super(props.href || props.isLink ? HTMLLink : HTML, props);
+
+        // Set jQuery
+        this._jQuery = getLib();
 
         // Configure the button
         this.configure();
@@ -75,7 +80,7 @@ class _Button extends Base<IButtonProps> implements IButton {
         this.configureParent();
 
         // Create the bootstrap object
-        this._bootstrapObj = jQuery ? jQuery(this.el) : null;
+        this._bootstrapObj = this._jQuery ? this._jQuery(this.el) : null;
     }
 
     // Configure the button

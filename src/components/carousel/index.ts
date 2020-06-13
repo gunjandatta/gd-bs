@@ -1,6 +1,6 @@
 import "bootstrap/js/dist/carousel";
 import "bootstrap/js/dist/util";
-import { jQuery } from "../../core";
+import { getLib } from "../jQuery";
 import { Base } from "../base";
 import { ICarousel, ICarouselProps } from "../../../@types/components/carousel";
 import { CarouselItem } from "./item";
@@ -11,9 +11,14 @@ import { HTML } from "./templates";
  * @param props - The carousel properties.
  */
 class _Carousel extends Base<ICarouselProps> implements ICarousel {
+    private _jQuery = null;
+
     // Constructor
     constructor(props: ICarouselProps) {
         super(HTML, props);
+
+        // Set jQuery
+        this._jQuery = getLib();
 
         // Configure the carousel
         this.configure();
@@ -22,7 +27,7 @@ class _Carousel extends Base<ICarouselProps> implements ICarousel {
         this.configureParent();
 
         // Create the bootstrap object
-        this._bootstrapObj = jQuery && jQuery.prototype.carousel ? jQuery(this.el).carousel(this.props.options || {}) : null;
+        this._bootstrapObj = this._jQuery && this._jQuery.prototype.carousel ? this._jQuery(this.el).carousel(this.props.options || {}) : null;
     }
 
     // Configure the card group

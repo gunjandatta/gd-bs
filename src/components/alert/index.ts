@@ -1,5 +1,5 @@
 import "bootstrap/js/dist/alert";
-import { jQuery } from "../../core";
+import { getLib } from "../jQuery";
 import { IAlert, IAlertProps } from "../../../@types/components/alert";
 import { Base } from "../base";
 import { ClassNames } from "../classNames";
@@ -37,9 +37,14 @@ export const AlertClassNames = new ClassNames([
  * Alert
  */
 class _Alert extends Base<IAlertProps> implements IAlert {
+    private _jQuery = null;
+
     // Constructor
     constructor(props: IAlertProps) {
         super(HTML, props);
+
+        // Set jQuery
+        this._jQuery = getLib();
 
         // Set the default styling
         this.el.classList.add(AlertClassNames.getByType(this.props.type) || AlertClassNames.getByType(AlertTypes.Primary));
@@ -54,7 +59,7 @@ class _Alert extends Base<IAlertProps> implements IAlert {
         this.configureParent();
 
         // Create the bootstrap object
-        this._bootstrapObj = jQuery ? jQuery(this.el) : null;
+        this._bootstrapObj = this._jQuery ? this._jQuery(this.el) : null;
     }
 
     // Configure the alert

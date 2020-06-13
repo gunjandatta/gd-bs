@@ -1,6 +1,6 @@
 import "bootstrap/js/dist/dropdown";
 import "popper.js";
-import { jQuery } from "../../core";
+import { getLib } from "../jQuery";
 import { IDropdown, IDropdownItem, IDropdownProps } from "../../../@types/components/dropdown";
 import { Base } from "../base";
 import { ButtonClassNames, ButtonTypes } from "../button";
@@ -41,10 +41,14 @@ const GetHTML = (props: IDropdownProps) => {
  */
 class _Dropdown extends Base<IDropdownProps> implements IDropdown {
     private _items: Array<DropdownFormItem | DropdownItem> = null;
+    private _jQuery = null;
 
     // Constructor
     constructor(props: IDropdownProps) {
         super(GetHTML(props), props);
+
+        // Set jQuery
+        this._jQuery = getLib();
 
         // Configure the dropdown
         this.configure();
@@ -56,7 +60,7 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
         this.configureParent();
 
         // Create the bootstrap object
-        this._bootstrapObj = jQuery ? jQuery(this.el) : null;
+        this._bootstrapObj = this._jQuery ? this._jQuery(this.el) : null;
     }
 
     // Configure the card group

@@ -1,5 +1,5 @@
 import "bootstrap/js/dist/collapse";
-import { jQuery } from "../../core";
+import { getLib } from "../jQuery";
 import { ICollapse, ICollapseProps } from "../../../@types/components/collapse";
 import { Base } from "../base";
 import { HTML } from "./templates";
@@ -8,9 +8,14 @@ import { HTML } from "./templates";
  * Collapse
  */
 class _Collapse extends Base<ICollapseProps> implements ICollapse {
+    private _jQuery = null;
+
     // Constructor
     constructor(props: ICollapseProps) {
         super(HTML, props);
+
+        // Set jQuery
+        this._jQuery = getLib();
 
         // Configure the collapse
         this.configure();
@@ -19,7 +24,7 @@ class _Collapse extends Base<ICollapseProps> implements ICollapse {
         this.configureParent();
 
         // Create the collapse
-        this._bootstrapObj = jQuery && jQuery.prototype.collapse ? jQuery(this.el).collapse(this.props.options || {}) : null;
+        this._bootstrapObj = this._jQuery && this._jQuery.prototype.collapse ? this._jQuery(this.el).collapse(this.props.options || {}) : null;
     }
 
     // Configure the card group

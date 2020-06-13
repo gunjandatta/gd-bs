@@ -1,6 +1,6 @@
 import "bootstrap/js/dist/popover";
 import "popper.js";
-import { jQuery } from "../../core";
+import { getLib } from "../jQuery";
 import { Button } from "../button";
 import { IPopover, IPopoverProps } from "../../../@types/components/popover";
 import { Base } from "../base";
@@ -21,10 +21,14 @@ export enum PopoverTypes {
  */
 class _Popover extends Base<IPopoverProps> implements IPopover {
     private _popovers: HTMLDivElement = null;
+    private _jQuery = null;
 
     // Constructor
     constructor(props: IPopoverProps) {
         super("", props);
+
+        // Set jQuery
+        this._jQuery = getLib();
 
         // Configure the collapse
         this.configure();
@@ -112,7 +116,7 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
         }
 
         // Create the popover
-        this._bootstrapObj = jQuery && jQuery.prototype.popover ? jQuery(this.el).popover(options) : null;
+        this._bootstrapObj = this._jQuery && this._jQuery.prototype.popover ? this._jQuery(this.el).popover(options) : null;
     }
 
     // Configures the events

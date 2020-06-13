@@ -1,5 +1,5 @@
 import "bootstrap/js/dist/modal";
-import { jQuery } from "../../core";
+import { getLib } from "../jQuery";
 import { IModal, IModalProps } from "../../../@types/components/modal";
 import { Base } from "../base";
 import { HTML } from "./templates";
@@ -9,9 +9,14 @@ import { HTML } from "./templates";
  * @param props The modal properties.
  */
 class _Modal extends Base<IModalProps> implements IModal {
+    private _jQuery = null;
+
     // Constructor
     constructor(props: IModalProps) {
         super(HTML, props);
+
+        // Set jQuery
+        this._jQuery = getLib();
 
         // Configure the collapse
         this.configure();
@@ -75,7 +80,7 @@ class _Modal extends Base<IModalProps> implements IModal {
         }
 
         // Create the modal
-        this._bootstrapObj = jQuery && jQuery.prototype.modal ? jQuery(this.el).modal(options) : null;
+        this._bootstrapObj = this._jQuery && this._jQuery.prototype.modal ? this._jQuery(this.el).modal(options) : null;
     }
 
     // Configure the events

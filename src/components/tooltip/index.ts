@@ -1,6 +1,6 @@
 import "bootstrap/js/dist/tooltip";
 import "bootstrap/js/dist/util";
-import { jQuery } from "../../core";
+import { getLib } from "../jQuery";
 import { ITooltip, ITooltipProps } from "../../../@types/components/tooltip";
 import { Base } from "../base";
 import { ButtonClassNames, ButtonTypes } from "../button";
@@ -21,9 +21,14 @@ export enum TooltipTypes {
  * Tooltip
  */
 class _Tooltip extends Base<ITooltipProps> {//implements ITooltip {
+    private _jQuery = null;
+
     // Constructor
     constructor(props: ITooltipProps) {
         super(HTML, props);
+
+        // Set jQuery
+        this._jQuery = getLib();
 
         // Configure the collapse
         this.configure();
@@ -106,7 +111,7 @@ class _Tooltip extends Base<ITooltipProps> {//implements ITooltip {
         }
 
         // Create the tooltip
-        this._bootstrapObj = jQuery && jQuery.prototype.tooltip ? jQuery(this.el).tooltip(options) : null;
+        this._bootstrapObj = this._jQuery && this._jQuery.prototype.tooltip ? this._jQuery(this.el).tooltip(options) : null;
     }
 
     /**
