@@ -28,7 +28,7 @@ class _Tooltip extends Base<ITooltipProps> {//implements ITooltip {
         super(HTML, props);
 
         // Set jQuery
-        this._jQuery = getLib();
+        this._jQuery = getLib("tooltip");
 
         // Configure the collapse
         this.configure();
@@ -111,7 +111,7 @@ class _Tooltip extends Base<ITooltipProps> {//implements ITooltip {
         }
 
         // Create the tooltip
-        this._bootstrapObj = this._jQuery && this._jQuery.prototype.tooltip ? this._jQuery(this.el).tooltip(options) : null;
+        this._bootstrapObj = this._jQuery ? this._jQuery(this.el).tooltip(options) : null;
     }
 
     /**

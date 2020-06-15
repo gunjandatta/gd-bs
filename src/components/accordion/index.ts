@@ -16,7 +16,7 @@ class _Accordion extends Base<IAccordionProps> implements IAccordion {
         super(HTML, props);
 
         // Set jQuery
-        this._jQuery = getLib();
+        this._jQuery = getLib("collapse");
 
         // Ensure the id is set
         this.el.id = props.id || "accordion";
@@ -28,7 +28,7 @@ class _Accordion extends Base<IAccordionProps> implements IAccordion {
         this.configureParent();
 
         // Apply the options if they exist
-        this._bootstrapObj = this._jQuery && this._jQuery.prototype.collapse ? this._jQuery(this.el).collapse(props.options || {}) : null;
+        this._bootstrapObj = this._jQuery ? this._jQuery(this.el).collapse(props.options || {}) : null;
     }
 
     // Renders the items

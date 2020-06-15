@@ -17,7 +17,7 @@ class _Toast extends Base<IToastProps> implements IToast {
         super(HTML, props);
 
         // Set jQuery
-        this._jQuery = getLib();
+        this._jQuery = getLib("toast");
 
         // Configure the collapse
         this.configure();
@@ -84,7 +84,7 @@ class _Toast extends Base<IToastProps> implements IToast {
 
         // Initialize the toast component
         let options = this.props.options || {};
-        this._bootstrapObj = this._jQuery && this._jQuery.prototype.toast ? this._jQuery(this.el).toast(options) : null;
+        this._bootstrapObj = this._jQuery ? this._jQuery(this.el).toast(options) : null;
 
         // See if we are showing this toast
         if (options.autohide == false) {

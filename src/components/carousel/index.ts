@@ -18,7 +18,7 @@ class _Carousel extends Base<ICarouselProps> implements ICarousel {
         super(HTML, props);
 
         // Set jQuery
-        this._jQuery = getLib();
+        this._jQuery = getLib("carousel");
 
         // Configure the carousel
         this.configure();
@@ -27,7 +27,7 @@ class _Carousel extends Base<ICarouselProps> implements ICarousel {
         this.configureParent();
 
         // Create the bootstrap object
-        this._bootstrapObj = this._jQuery && this._jQuery.prototype.carousel ? this._jQuery(this.el).carousel(this.props.options || {}) : null;
+        this._bootstrapObj = this._jQuery ? this._jQuery(this.el).carousel(this.props.options || {}) : null;
     }
 
     // Configure the card group

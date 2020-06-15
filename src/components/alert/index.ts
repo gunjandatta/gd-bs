@@ -44,7 +44,7 @@ class _Alert extends Base<IAlertProps> implements IAlert {
         super(HTML, props);
 
         // Set jQuery
-        this._jQuery = getLib();
+        this._jQuery = getLib("alert");
 
         // Set the default styling
         this.el.classList.add(AlertClassNames.getByType(this.props.type) || AlertClassNames.getByType(AlertTypes.Primary));

@@ -48,7 +48,7 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
         super(GetHTML(props), props);
 
         // Set jQuery
-        this._jQuery = getLib();
+        this._jQuery = getLib("dropdown");
 
         // Configure the dropdown
         this.configure();

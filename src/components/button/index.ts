@@ -68,7 +68,7 @@ class _Button extends Base<IButtonProps> implements IButton {
         super(props.href || props.isLink ? HTMLLink : HTML, props);
 
         // Set jQuery
-        this._jQuery = getLib();
+        this._jQuery = getLib("button");
 
         // Configure the button
         this.configure();

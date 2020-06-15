@@ -28,7 +28,7 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
         super("", props);
 
         // Set jQuery
-        this._jQuery = getLib();
+        this._jQuery = getLib("popover");
 
         // Configure the collapse
         this.configure();
@@ -116,7 +116,7 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
         }
 
         // Create the popover
-        this._bootstrapObj = this._jQuery && this._jQuery.prototype.popover ? this._jQuery(this.el).popover(options) : null;
+        this._bootstrapObj = this._jQuery ? this._jQuery(this.el).popover(options) : null;
     }
 
     // Configures the events

@@ -16,7 +16,7 @@ class _Modal extends Base<IModalProps> implements IModal {
         super(HTML, props);
 
         // Set jQuery
-        this._jQuery = getLib();
+        this._jQuery = getLib("modal");
 
         // Configure the collapse
         this.configure();
@@ -80,7 +80,7 @@ class _Modal extends Base<IModalProps> implements IModal {
         }
 
         // Create the modal
-        this._bootstrapObj = this._jQuery && this._jQuery.prototype.modal ? this._jQuery(this.el).modal(options) : null;
+        this._bootstrapObj = this._jQuery ? this._jQuery(this.el).modal(options) : null;
     }
 
     // Configure the events
