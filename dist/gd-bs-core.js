@@ -610,7 +610,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar jquery_1 = __webpack_require__(/*! jquery */ \"./node_modules/.pnpm/registry.npmjs.org/jquery/3.5.1/node_modules/jquery/dist/jquery.js\"); // Get jQuery from the global constant\n// This is a fix for some SPO environments\n\n\nexports.getLib = function (method) {\n  // Ensure the method exists\n  if (jquery_1[\"default\"].prototype[method]) {\n    return jquery_1[\"default\"];\n  }\n\n  if (window[\"GD\"].jQuery.prototype[method]) {\n    return window[\"GD\"].jQuery;\n  }\n\n  if (window[\"$REST\"].jQuery.prototype[method]) {\n    return window[\"$REST\"].jQuery;\n  }\n};\n\n//# sourceURL=webpack:///./build/components/jQuery.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n}); // Get jQuery from the global constant\n// This is a fix for some SPO environments\n\nexports.getLib = function (method) {\n  // Ensure the method exists\n  if (window[\"GD\"].jQuery.prototype[method]) {\n    return window[\"GD\"].jQuery;\n  }\n\n  if (window[\"$REST\"].jQuery.prototype[method]) {\n    return window[\"$REST\"].jQuery;\n  }\n};\n\n//# sourceURL=webpack:///./build/components/jQuery.js?");
 
 /***/ }),
 
