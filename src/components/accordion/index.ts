@@ -27,8 +27,8 @@ class _Accordion extends Base<IAccordionProps> implements IAccordion {
         // Configure the parent
         this.configureParent();
 
-        // Apply the options if they exist
-        this._bootstrapObj = this._jQuery ? this._jQuery(this.el).collapse(props.options || {}) : null;
+        // Apply the options
+        this._jQuery ? this._jQuery(this.el).collapse(props.options || {}) : null;
     }
 
     // Renders the items

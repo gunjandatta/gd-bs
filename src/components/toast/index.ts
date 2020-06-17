@@ -84,7 +84,7 @@ class _Toast extends Base<IToastProps> implements IToast {
 
         // Initialize the toast component
         let options = this.props.options || {};
-        this._bootstrapObj = this._jQuery ? this._jQuery(this.el).toast(options) : null;
+        this._jQuery ? this._jQuery(this.el).toast(options) : null;
 
         // See if we are showing this toast
         if (options.autohide == false) {
@@ -114,10 +114,10 @@ class _Toast extends Base<IToastProps> implements IToast {
      */
 
     // Hides the toast
-    hide() { this._bootstrapObj ? this._bootstrapObj.toast("hide") : null; }
+    hide() { this._jQuery ? this._jQuery(this.el).toast("hide") : null; }
 
     // Shows the toast
-    show() { this._bootstrapObj ? this._bootstrapObj.toast("show") : null; }
+    show() { this._jQuery ? this._jQuery(this.el).toast("show") : null; }
 
     /**
      * Public Interface

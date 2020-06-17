@@ -27,7 +27,7 @@ class _Carousel extends Base<ICarouselProps> implements ICarousel {
         this.configureParent();
 
         // Create the bootstrap object
-        this._bootstrapObj = this._jQuery ? this._jQuery(this.el).carousel(this.props.options || {}) : null;
+        this._jQuery ? this._jQuery(this.el).carousel(this.props.options || {}) : null;
     }
 
     // Configure the card group
@@ -111,22 +111,22 @@ class _Carousel extends Base<ICarouselProps> implements ICarousel {
      */
 
     // Cycle the carousel
-    cycle() { this._bootstrapObj ? this._bootstrapObj.carousel("cycle") : null; }
+    cycle() { this._jQuery ? this._jQuery(this.el).carousel("cycle") : null; }
 
     // Disposes the carousel
-    dispose() { this._bootstrapObj ? this._bootstrapObj.carousel("dispose") : null; }
+    dispose() { this._jQuery ? this._jQuery(this.el).carousel("dispose") : null; }
 
     // Goes to the next slide
-    next() { this._bootstrapObj ? this._bootstrapObj.carousel("next") : null; }
+    next() { this._jQuery ? this._jQuery(this.el).carousel("next") : null; }
 
     // Sets the slide by number
-    number(value: number) { this._bootstrapObj ? this._bootstrapObj.carousel(value) : null; }
+    number(value: number) { this._jQuery ? this._jQuery(this.el).carousel(value) : null; }
 
     // Pauses the slide
-    pause() { this._bootstrapObj ? this._bootstrapObj.carousel("pause") : null; }
+    pause() { this._jQuery ? this._jQuery(this.el).carousel("pause") : null; }
 
     // Goes to the previous slide
-    previous() { this._bootstrapObj ? this._bootstrapObj.carousel("prev") : null; }
+    previous() { this._jQuery ? this._jQuery(this.el).carousel("prev") : null; }
 
     /**
      * Public Interface

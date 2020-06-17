@@ -116,7 +116,7 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
         }
 
         // Create the popover
-        this._bootstrapObj = this._jQuery ? this._jQuery(this.el).popover(options) : null;
+        this._jQuery ? this._jQuery(this.el).popover(options) : null;
     }
 
     // Configures the events
@@ -133,28 +133,28 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
      */
 
     // Disposes the popover
-    dispose() { this._bootstrapObj ? this._bootstrapObj.popover("dispose") : null; }
+    dispose() { this._jQuery ? this._jQuery(this.el).popover("dispose") : null; }
 
     // Disables the popover
-    disable() { this._bootstrapObj ? this._bootstrapObj.popover("disable") : null; }
+    disable() { this._jQuery ? this._jQuery(this.el).popover("disable") : null; }
 
     // Enables the popover
-    enable() { this._bootstrapObj ? this._bootstrapObj.popover("enable") : null; }
+    enable() { this._jQuery ? this._jQuery(this.el).popover("enable") : null; }
 
     // Hides the popover
-    hide() { this._bootstrapObj ? this._bootstrapObj.popover("hide") : null; }
+    hide() { this._jQuery ? this._jQuery(this.el).popover("hide") : null; }
 
     // Shows the popover
-    show() { this._bootstrapObj ? this._bootstrapObj.popover("show") : null; }
+    show() { this._jQuery ? this._jQuery(this.el).popover("show") : null; }
 
     // Toggles the popover
-    toggle() { this._bootstrapObj ? this._bootstrapObj.popover("toggle") : null; }
+    toggle() { this._jQuery ? this._jQuery(this.el).popover("toggle") : null; }
 
     // Enables toggling 
-    toggleEnabled() { this._bootstrapObj ? this._bootstrapObj.popover("toggleEnabled") : null; }
+    toggleEnabled() { this._jQuery ? this._jQuery(this.el).popover("toggleEnabled") : null; }
 
     // Updates the popover
-    update() { this._bootstrapObj ? this._bootstrapObj.popover("update") : null; }
+    update() { this._jQuery ? this._jQuery(this.el).popover("update") : null; }
 
     /**
      * Public Interface
