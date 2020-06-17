@@ -112,6 +112,7 @@ export interface INavbar {
  * Navbar Item
  */
 export interface INavbarItem {
+    data?: any;
     href?: string;
     isActive?: boolean;
     isDisabled?: boolean;
