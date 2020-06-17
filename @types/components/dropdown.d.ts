@@ -101,7 +101,9 @@ export interface IDropdownItem {
     isSelected?: boolean;
     onClick?: (item?: IDropdownItem, ev?: Event) => void;
     onRender?: (el: HTMLElement, item?: IDropdownItem) => void;
+    target?: string;
     text?: string;
+    toggle?: string;
     value?: string;
 }
 

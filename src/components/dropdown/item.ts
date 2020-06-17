@@ -48,6 +48,8 @@ export class DropdownItem {
                 this._el.className = this._props.className || "";
                 this._el.classList.add("dropdown-item");
                 this._props.isDisabled ? this._el.classList.add("disabled") : null;
+                this._props.target ? this._el.setAttribute("data-target", this._props.target) : null;
+                this._props.toggle ? this._el.setAttribute("data-toggle", this._props.toggle) : null;
                 this._el.href = this._props.href || "#";
                 this._el.innerHTML = this._props.text == null ? "" : this._props.text;
             } else {
@@ -56,6 +58,8 @@ export class DropdownItem {
                 this._el.className = this._props.className || "";
                 this._el.classList.add("dropdown-item");
                 this._props.isDisabled ? this._el.classList.add("disabled") : null;
+                this._props.target ? this._el.setAttribute("data-target", this._props.target) : null;
+                this._props.toggle ? this._el.setAttribute("data-toggle", this._props.toggle) : null;
                 this._el.href = this._props.href || "#";
                 this._el.innerHTML = this._props.text == null ? "" : this._props.text;
 
