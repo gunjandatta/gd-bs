@@ -81,6 +81,7 @@ export interface IButtonProps extends IBaseProps<IButton> {
     controls?: string | Array<string>;
     data?: any;
     href?: string;
+    iconSize?: number;
     iconType?: number;
     id?: string;
     isBlock?: boolean;

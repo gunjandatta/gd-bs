@@ -1,6 +1,6 @@
 {
   "name": "gd-bs",
-  "version": "2.6.9",
+  "version": "2.7.0",
   "description": "Bootstrap JavaScript, TypeScript and Web Components library.",
   "main": "build/index.js",
   "typings": "@types/index.d.ts",
@@ -39,13 +39,13 @@
     "popper.js": "^1.16.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.10.1",
-    "@babel/preset-env": "^7.10.1",
-    "@types/node": "^14.0.5",
+    "@babel/core": "^7.10.2",
+    "@babel/preset-env": "^7.10.2",
+    "@types/node": "^14.0.13",
     "autoprefixer": "^9.8.0",
     "babel-loader": "^8.1.0",
     "bootstrap-icons": "^1.0.0-alpha4",
-    "css-loader": "^3.5.3",
+    "css-loader": "^3.6.0",
     "html-loader": "^1.1.0",
     "node-sass": "^4.14.1",
     "postcss-loader": "^3.0.0",
