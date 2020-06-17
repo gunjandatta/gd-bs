@@ -30,6 +30,8 @@ export class NavbarItem {
 
     // Configures the item
     private configure() {
+        let link: HTMLAnchorElement = null;
+
         // See if this is a dropdown
         if (this._props.items) {
             // Render a dropdown
@@ -45,18 +47,21 @@ export class NavbarItem {
             }).el as HTMLElement;
 
             // Update the link
-            let link = this._el.querySelector(".nav-link");
+            link = this._el.querySelector(".nav-link");
             this._props.isActive ? link.classList.add("active") : null;
-            this._props.isDisabled ? link.classList.add("disabled") : null;
         }
         // Else, ensure there is text
         else if (this._props.text) {
             // Update the link
-            let link = this._el.querySelector("a");
+            link = this._el.querySelector("a");
             this._props.isActive ? link.classList.add("active") : link.removeChild(link.querySelector('span'));
-            this._props.isDisabled ? link.classList.add("disabled") : null;
             link.innerHTML = this._props.text == null ? "" : this._props.text;
         }
+
+        // Update the link
+        this._props.isDisabled ? link.classList.add("disabled") : null;
+        this._props.target ? link.setAttribute("data-target", this._props.target) : null;
+        this._props.toggle ? link.setAttribute("data-toggle", this._props.toggle) : null;
     }
 
     // Configures the events

@@ -118,7 +118,9 @@ export interface INavbarItem {
     isDisabled?: boolean;
     items?: Array<IDropdownItem>;
     onClick?: (item?: INavbarItem, ev?: Event) => void;
+    target?: string;
     text?: string;
+    toggle?: string;
 }
 
 /**

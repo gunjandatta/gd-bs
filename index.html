@@ -945,10 +945,21 @@
                             { text: "Link 2", href: "#" },
                             { text: "Link 3", href: "#" },
                             { text: "Link 4", href: "#" },
-                            { text: "Link 5", href: "#" }
+                            { text: "Link 5", href: "#" },
                         ]
+                    },
+                    {
+                        text: "Collapse",
+                        target: "#collapseNavDemo",
+                        toggle: "collapse"
                     }
                 ]
+            });
+            GD.Components.Collapse({
+                el: document.querySelector("#navbar"),
+                id: "collapseNavDemo",
+                content: "This is being toggled by the navbar.",
+                options: { toggle: false }
             });
             GD.Components.Table({
                 el: document.querySelector("#table"),
