@@ -64,15 +64,6 @@ class _Table extends Base<ITableProps> implements ITable {
             this.props.onRenderHeaderCell(column, props);
         }
 
-        // See if we are sorting this column
-        if (props.enableSort) {
-            // Add a click event
-            column.addEventListener("click", ev => {
-                // Sort the table data
-                this.sortTable(colIdx, column, props);
-            });
-        }
-
         // See if there is a click event
         if (props.onClickHeader || this.props.onClickHeader) {
             // Add the click event
@@ -133,60 +124,6 @@ class _Table extends Base<ITableProps> implements ITable {
         if (this.props.onRenderRow) {
             // Call the event
             this.props.onRenderRow(row, data);
-        }
-    }
-
-    // Sorts the table
-    private sortTable(colIdx: number, column: HTMLTableCellElement, props: ITableColumn) {
-        let sortAscending = true;
-
-        // Get the sort icon
-        let head = this.el.querySelector("thead");
-        let elIcon = head.querySelector(".sort-icon");
-        if (elIcon) {
-            // Remove the sort icon
-            elIcon.parentElement.removeChild(elIcon);
-        }
-
-        // Get the sort attribute
-        if (column.hasAttribute("data-sort-asc")) {
-            // Set the flag
-            sortAscending = false;
-
-            // Remove the attribute
-            column.removeAttribute("data-sort-asc");
-        } else {
-            // Add the attribute
-            column.setAttribute("data-sort-asc", "true");
-        }
-
-        // Create the icon
-        elIcon = document.createElement("i");
-        elIcon.className = "ml-1 sort-icon";
-        elIcon.innerHTML = sortAscending ? "&uarr;" : "&darr;";
-        column.appendChild(elIcon);
-
-        // Parse the table rows
-        let idx = -1;
-        let body = this.el.querySelector("tbody");
-        while (++idx < body.children.length) {
-            let elRow = body.children[idx] as HTMLTableRowElement;
-            let text = (elRow.children[colIdx] as HTMLTableDataCellElement).innerText;
-            let value = (text == null ? "" : text).toString().toLowerCase();
-
-            // Loop through the previous items
-            let counter = idx;
-            while (--counter >= 0) {
-                let elPreviousRow = body.children[counter] as HTMLTableRowElement;
-                let elPreviousCol = elPreviousRow.children[colIdx] as HTMLTableDataCellElement;
-                let prevValue = (elPreviousCol ? elPreviousCol.innerText : "").toLowerCase();
-
-                // Compare the values
-                if (sortAscending ? value < prevValue : value > prevValue) {
-                    // Switch the values
-                    body.insertBefore(elRow, elPreviousRow);
-                } else { break; }
-            }
         }
     }
 
