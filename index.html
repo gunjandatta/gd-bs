@@ -192,7 +192,8 @@
                                     controlClassName: "d-none",
                                     label: "Shouldn't See Me",
                                     title: "This is a dropdown",
-                                    type: GD.Components.FormControlTypes.Dropdown
+                                    type: GD.Components.FormControlTypes.Dropdown,
+                                    description: "This is a test for a dropdown that shouldn't be displayed."
                                 }
                             },
                             {
@@ -209,6 +210,7 @@
                                     name: "DDLExample",
                                     title: "This is a dropdown",
                                     type: GD.Components.FormControlTypes.Dropdown,
+                                    description: "This is a single dropdown option.",
                                     items: [
                                         { text: "Test 1", value: 1 },
                                         { text: "Test 2", value: 2 },
@@ -226,6 +228,7 @@
                                     title: "This is a checkbox",
                                     items: [{ label: "Checkbox Example w/ no label" }],
                                     type: GD.Components.FormControlTypes.Checkbox,
+                                    description: "This is a read-only checkbox",
                                     isReadonly: true
                                 }
                             },

@@ -5,6 +5,7 @@ export const HTML = `<form></form>`;
 export const HTMLGroup = `
 <div class="form-group">
     <label></label>
+    <small class="form-text text-muted"></small>
 </div>`.trim();
 
 // Row

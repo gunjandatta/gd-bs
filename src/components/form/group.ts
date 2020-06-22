@@ -78,11 +78,26 @@ export class FormGroup {
         } else {
             // Remove the label
             this._el.removeChild(elLabel);
+            elLabel = null;
+        }
+
+        // Update the description
+        let elDescription = this._el.querySelector("small");
+        let description = this._props.description || (this._control && this._control.props.description);
+        if (description) {
+            // Set the text
+            elDescription.innerHTML = description;
+        } else {
+            // Remove the description
+            this._el.removeChild(elDescription);
+            elDescription = null;
         }
 
         // Create the control
         this._control = new FormControl(this._props, elLabel);
-        this._el.appendChild(this._control.el);
+
+        // Append the control, after the label
+        elDescription ? this._el.insertBefore(this._control.el, elDescription) : this._el.appendChild(this._control.el);
 
         // Execute the rendered event
         this.onRendered();
