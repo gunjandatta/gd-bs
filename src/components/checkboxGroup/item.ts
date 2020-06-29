@@ -58,8 +58,14 @@ export class CheckboxItem {
         let label = this._el.querySelector("label");
         label.innerHTML = this._props.label || "&nbsp;";
 
-        // See if a value exists for the group
-        if (this._parent.value) {
+        // See if the "isSelected" property is set
+        if (typeof (this._props.isSelected) === "boolean") {
+            // Set the selected property
+            this._isSelected = this._props.isSelected;
+            checkbox.checked = this._isSelected;
+        }
+        // Else, see if a value exists for the group
+        else if (this._parent.value) {
             // Parse the values
             let values = typeof (this._parent.value) === "string" ? [this._parent.value] : this._parent.value;
             for (let j = 0; j < values.length; j++) {
