@@ -1,6 +1,5 @@
-import "bootstrap/js/dist/tooltip";
-import "bootstrap/js/dist/util";
-import { getLib } from "../jQuery";
+import * as tooltip from "bootstrap/js/dist/tooltip";
+import "popper.js";
 import { ITooltip, ITooltipProps } from "../../../@types/components/tooltip";
 import { Base } from "../base";
 import { ButtonClassNames, ButtonTypes } from "../button";
@@ -21,14 +20,10 @@ export enum TooltipTypes {
  * Tooltip
  */
 class _Tooltip extends Base<ITooltipProps> {//implements ITooltip {
-    private _jQuery = null;
 
     // Constructor
     constructor(props: ITooltipProps) {
         super(HTML, props);
-
-        // Set jQuery
-        this._jQuery = getLib("tooltip");
 
         // Configure the collapse
         this.configure();
@@ -111,7 +106,7 @@ class _Tooltip extends Base<ITooltipProps> {//implements ITooltip {
         }
 
         // Create the tooltip
-        this._jQuery ? this._jQuery(this.el).tooltip(options) : null;
+        this._bootstrapObj = new tooltip(this.el, options);
     }
 
     /**
@@ -119,25 +114,25 @@ class _Tooltip extends Base<ITooltipProps> {//implements ITooltip {
      */
 
     // Disposes the tooltip
-    dispose() { this._jQuery ? this._jQuery(this.el).tooltip("dispose") : null; }
+    dispose() { this._bootstrapObj.dispose(); }
 
     // Enables the tooltip
-    enable() { this._jQuery ? this._jQuery(this.el).tooltip("enable") : null; }
+    enable() { this._bootstrapObj.enable(); }
 
     // Hides the tooltip
-    hide() { this._jQuery ? this._jQuery(this.el).tooltip("hide") : null; }
+    hide() { this._bootstrapObj.hide(); }
 
     // Shows the tooltip
-    show() { this._jQuery ? this._jQuery(this.el).tooltip("show") : null; }
+    show() { this._bootstrapObj.show(); }
 
     // Toggles the tooltip
-    toggle() { this._jQuery ? this._jQuery(this.el).tooltip("toggle") : null; }
+    toggle() { this._bootstrapObj.toggle(); }
 
     // Enables the toggle
-    toggleEnabled() { this._jQuery ? this._jQuery(this.el).tooltip("toggleEnabled") : null; }
+    toggleEnabled() { this._bootstrapObj.toggleEnabled(); }
 
     // Updates the tooltip
-    update() { this._jQuery ? this._jQuery(this.el).tooltip("update") : null; }
+    update() { this._bootstrapObj.update(); }
 
     /**
      * Public Interface

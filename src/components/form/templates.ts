@@ -9,4 +9,4 @@ export const HTMLGroup = `
 </div>`.trim();
 
 // Row
-export const HTMLRow = `<div class="form-row"></div>`;
+export const HTMLRow = `<div class="row"></div>`;

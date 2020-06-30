@@ -1,8 +1,6 @@
-import { IDropdown, IDropdownItem } from "../../../@types/components/dropdown";
-import { IFormControlPropsDropdown, IFormControlPropsTextField } from "../../../@types/components/formControl";
+import { IDropdownItem } from "../../../@types/components/dropdown";
 import { IListBox, IListBoxProps } from "../../../@types/components/listBox";
 import { Base } from "../base";
-import { Form, FormControlTypes } from "../form";
 import { HTML } from "./templates";
 
 /**
@@ -14,8 +12,11 @@ import { HTML } from "./templates";
  * @property props - The list box properties.
  */
 class _ListBox extends Base<IListBoxProps> implements IListBox {
-    private _ddlItems: IDropdown = null;
-    private _ddlValues: IDropdown = null;
+    private _elLabel: HTMLLabelElement = null;
+    private _elSearchBox: HTMLInputElement = null;
+    private _elDatalist: HTMLDataListElement = null;
+    private _items: Array<IDropdownItem> = null;
+    private _selectedItem: IDropdownItem = null;
 
     // Constructor
     constructor(props: IListBoxProps) {
@@ -24,142 +25,68 @@ class _ListBox extends Base<IListBoxProps> implements IListBox {
         // Configure the list box
         this.configure();
 
+        // Configure the events
+        this.configureEvents();
+
         // Configure the parent
         this.configureParent();
     }
 
     // Configures the list box
     private configure() {
-        // Set the placeholder
-        let placeholder = typeof (this.props.placeholder) === "undefined" ? "Search" : this.props.placeholder;
+        this._elLabel = this.el.querySelector("label") as HTMLLabelElement;
+        this._elSearchBox = this.el.querySelector("input") as HTMLInputElement;
+        this._elDatalist = this.el.querySelector("datalist") as HTMLDataListElement;
 
-        // Render a form to this element
-        Form({
-            el: this.el,
-            rows: [
-                {
-                    columns: [{
-                        control: {
-                            label: this.props.label,
-                            placeholder,
-                            type: FormControlTypes.TextField,
-                            onChange: value => {
-                                // Filter the items
-                                this.filterItems(value);
-                            }
-                        } as IFormControlPropsTextField
-                    }]
-                },
-                {
-                    columns: [
-                        {
-                            control: {
-                                items: this.props.items,
-                                type: FormControlTypes.MultiDropdown,
-                                onChange: (items: Array<IDropdownItem>) => {
-                                    // See if we are allowing multiple values
-                                    if (this.props.multi) {
-                                        // Get the items and sort them
-                                        let allItems = (this._ddlValues.getValue() as Array<IDropdownItem>).concat(items).sort((a, b) => {
-                                            if (a.text < b.text) { return -1; }
-                                            if (a.text > b.text) { return 1; }
-                                            return 0;
-                                        });
+        // See if the placeholder exists
+        if (this.props.placeholder) {
+            // Update the placeholder
+            this._elSearchBox.placeholder = this.props.placeholder;
+        }
 
-                                        // Remove any duplicates and update the values dropdown
-                                        this.configureValuesDDL(allItems.filter((item, idx) => {
-                                            return allItems.indexOf(item) === idx;
-                                        }));
-                                    } else {
-                                        // Set the values
-                                        this.configureValuesDDL([items[0]]);
-                                    }
+        // See if the id is set
+        if (this.props.id) {
+            // Update the ids
+            this.el.id = this.props.id;
+            this._elLabel.setAttribute("for", this.props.id + "-search");
+            this._elSearchBox.id = this.props.id + "-search";
+            this._elSearchBox.setAttribute("list", this.props.id + "-list");
+            this._elDatalist.id = this.props.id + "-list";
+        }
 
-                                    // Clear this dropdown
-                                    this._ddlItems.setValue([]);
+        // Set the options
+        this.setOptions(this.props.items);
 
-                                    // Call the change event
-                                    this.props.onChange ? this.props.onChange(items) : null;
-                                },
-                                onControlRendered: ctrl => {
-                                    // Set the dropdown
-                                    this._ddlItems = ctrl.dropdown;
-                                }
-                            } as IFormControlPropsDropdown
-                        },
-                        {
-                            control: {
-                                type: FormControlTypes.MultiDropdown,
-                                isReadonly: true,
-                                onControlRendered: ctrl => {
-                                    // Set the dropdown
-                                    this._ddlValues = ctrl.dropdown;
-                                }
-                            } as IFormControlPropsDropdown
-                        }
-                    ]
-                }
-            ],
-            onRendered: () => {
-                // Get the selected items
-                this._ddlItems.setValue(this.props.value);
-                let items = this._ddlItems.getValue() as Array<IDropdownItem>;
-                this._ddlItems.setValue([]);
-
-                // Configure the values dropdown
-                this.configureValuesDDL(items);
-            }
-        });
-    }
-
-    // Configures the values dropdown
-    private configureValuesDDL(items: Array<IDropdownItem>) {
-        // Update the dropdown
-        this._ddlValues.setItems(items);
-        this._ddlValues.setValue(items);
-
-        // Parse the options
-        let options = this._ddlValues.el.querySelectorAll("option");
-        for (let i = 0; i < options.length; i++) {
-            let option = options[i];
-
-            // Add a click event
-            option.setAttribute("data-idx", i.toString());
-            option.addEventListener("mouseup", ev => {
-                let idx = parseInt((ev.currentTarget as HTMLElement).getAttribute("data-idx"));
-
-                // Remove the item
-                items.splice(idx, 1);
-
-                // Update the values
-                this.configureValuesDDL(items);
-            });
+        // Set the value
+        this._elSearchBox.value = this.props.value || "";
+        this._selectedItem = this.getValue();
+        if (this._selectedItem == null) {
+            // Clear the value
+            this._elSearchBox.value = "";
         }
     }
 
-    // Filters the dropdown menu items
-    private filterItems(filter: string) {
-        let filterValue = filter.toLowerCase();
+    // Configures the events
+    private configureEvents() {
+        // See if a change event exists
+        if (this.props.onChange) {
+            // Set the change event on the search box
+            this._elSearchBox.addEventListener("input", ev => {
+                // Get the value
+                let value = this.getValue();
 
-        // Parse the items
-        let elItems = this._ddlItems.el.querySelectorAll("option");
-        for (let i = 0; i < elItems.length; i++) {
-            let elItem = elItems[i] as HTMLElement;
+                // See if it's changed
+                if ((value == null && this._selectedItem != null) ||
+                    (value != null && this._selectedItem == null) ||
+                    (value.text != this._selectedItem.text)
+                ) {
+                    // Set the selected item
+                    this._selectedItem = value;
 
-            // See if the filter exists
-            if (filterValue) {
-                // See if this value contains the filter
-                if (elItem.innerText.toLowerCase().indexOf(filterValue) >= 0) {
-                    // Show the item
-                    elItem.classList.remove("d-none");
-                } else {
-                    // Hide the item
-                    elItem.classList.add("d-none");
+                    // Call the event
+                    this.props.onChange([this._selectedItem]);
                 }
-            } else {
-                // Show the item
-                elItem.classList.remove("d-none");
-            }
+            });
         }
     }
 
@@ -167,18 +94,46 @@ class _ListBox extends Base<IListBoxProps> implements IListBox {
      * Public Interface
      */
 
-    getValue() { return this._ddlValues.getValue() as Array<IDropdownItem>; }
+    getValue() {
+        let value = this._elSearchBox.value;
 
-    setValue(value) {
-        // Get the items
-        this._ddlItems.setValue(value);
-        let items = this._ddlItems.getValue() as Array<IDropdownItem>;
+        // Parse the items
+        for (let i = 0; i < this._items.length; i++) {
+            let item = this._items[i];
 
-        // Set the value
-        this.configureValuesDDL(items);
+            // See if this is the target item
+            if (item.text == value) {
+                // Return the item
+                return item;
+            }
+        }
 
-        // Clear the items
-        this._ddlItems.setValue();
+        // Item not found
+        return null;
     }
+
+    setOptions(items: Array<IDropdownItem> = []) {
+        let elDatalist = this.el.querySelector("datalist") as HTMLDataListElement;
+
+        // Save a reference to the items
+        this._items = items;
+
+        // Clear the options
+        while (elDatalist.options.length > 0) { elDatalist.options[0].remove(); }
+
+        // Clear the value
+        this._elSearchBox.value = "";
+
+        // Parse the items
+        for (let i = 0; i < items.length; i++) {
+            // Add the option
+            let elOption = document.createElement("option");
+            elOption.value = items[i].text;
+            elDatalist.appendChild(elOption);
+        }
+    }
+
+    // Set the value
+    setValue(value) { this._elSearchBox.value = value || ""; }
 }
 export const ListBox = (props: IListBoxProps): IListBox => { return new _ListBox(props); }

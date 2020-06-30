@@ -1,6 +1,4 @@
-import "bootstrap/js/dist/carousel";
-import "bootstrap/js/dist/util";
-import { getLib } from "../jQuery";
+import * as carousel from "bootstrap/js/dist/carousel";
 import { Base } from "../base";
 import { ICarousel, ICarouselProps } from "../../../@types/components/carousel";
 import { CarouselItem } from "./item";
@@ -11,14 +9,10 @@ import { HTML } from "./templates";
  * @param props - The carousel properties.
  */
 class _Carousel extends Base<ICarouselProps> implements ICarousel {
-    private _jQuery = null;
 
     // Constructor
     constructor(props: ICarouselProps) {
         super(HTML, props);
-
-        // Set jQuery
-        this._jQuery = getLib("carousel");
 
         // Configure the carousel
         this.configure();
@@ -27,7 +21,7 @@ class _Carousel extends Base<ICarouselProps> implements ICarousel {
         this.configureParent();
 
         // Create the bootstrap object
-        this._jQuery ? this._jQuery(this.el).carousel(this.props.options || {}) : null;
+        this._bootstrapObj = new carousel(this.el);
     }
 
     // Configure the card group
@@ -111,22 +105,22 @@ class _Carousel extends Base<ICarouselProps> implements ICarousel {
      */
 
     // Cycle the carousel
-    cycle() { this._jQuery ? this._jQuery(this.el).carousel("cycle") : null; }
+    cycle() { this._bootstrapObj.cycle(); }
 
     // Disposes the carousel
-    dispose() { this._jQuery ? this._jQuery(this.el).carousel("dispose") : null; }
+    dispose() { this._bootstrapObj.dispose(); }
 
     // Goes to the next slide
-    next() { this._jQuery ? this._jQuery(this.el).carousel("next") : null; }
+    next() { this._bootstrapObj.next(); }
 
-    // Sets the slide by number
-    number(value: number) { this._jQuery ? this._jQuery(this.el).carousel(value) : null; }
+    // Cycles the carousel to a particular frame
+    nextWhenVisible(value) { this._bootstrapObj.nextWhenVisible(value); }
 
     // Pauses the slide
-    pause() { this._jQuery ? this._jQuery(this.el).carousel("pause") : null; }
+    pause() { this._bootstrapObj.pause(); }
 
     // Goes to the previous slide
-    previous() { this._jQuery ? this._jQuery(this.el).carousel("prev") : null; }
+    previous() { this._bootstrapObj.prev(); }
 
     /**
      * Public Interface

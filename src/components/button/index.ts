@@ -1,8 +1,7 @@
-import "bootstrap/js/dist/button";
+import * as button from "bootstrap/js/dist/button";
 import { IButton, IButtonProps } from "../../../@types/components/button";
 import { Icons } from "../../icons";
 import { Base } from "../base";
-import { getLib } from "../jQuery";
 import { ClassNames } from "../classNames";
 import { Badge, BadgeTypes } from "../badge";
 import { Spinner } from "../spinner";
@@ -61,14 +60,10 @@ export const ButtonClassNames = new ClassNames([
  * @param props The button properties.
  */
 class _Button extends Base<IButtonProps> implements IButton {
-    private _jQuery = null;
 
     // Constructor
     constructor(props: IButtonProps) {
         super(props.href || props.isLink ? HTMLLink : HTML, props);
-
-        // Set jQuery
-        this._jQuery = getLib("button");
 
         // Configure the button
         this.configure();
@@ -78,6 +73,9 @@ class _Button extends Base<IButtonProps> implements IButton {
 
         // Configure the parent
         this.configureParent();
+
+        // Create the bootstrap object
+        this._bootstrapObj = new button(this.el);
     }
 
     // Configure the button
@@ -159,10 +157,10 @@ class _Button extends Base<IButtonProps> implements IButton {
      */
 
     // Disposes the button
-    dispose() { this._jQuery ? this._jQuery(this.el).button("dispose") : null; }
+    dispose() { this._bootstrapObj.dispose(); }
 
     // Toggles the button
-    toggle() { this._jQuery ? this._jQuery(this.el).button("toggle") : null; }
+    toggle() { this._bootstrapObj.toggle(); }
 
     /**
      * Public Properties

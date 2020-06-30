@@ -1,6 +1,5 @@
-import "bootstrap/js/dist/dropdown";
+import * as dropdown from "bootstrap/js/dist/dropdown";
 import "popper.js";
-import { getLib } from "../jQuery";
 import { IDropdown, IDropdownItem, IDropdownProps } from "../../../@types/components/dropdown";
 import { Base } from "../base";
 import { ButtonClassNames, ButtonTypes } from "../button";
@@ -41,14 +40,10 @@ const GetHTML = (props: IDropdownProps) => {
  */
 class _Dropdown extends Base<IDropdownProps> implements IDropdown {
     private _items: Array<DropdownFormItem | DropdownItem> = null;
-    private _jQuery = null;
 
     // Constructor
     constructor(props: IDropdownProps) {
         super(GetHTML(props), props);
-
-        // Set jQuery
-        this._jQuery = getLib("dropdown");
 
         // Configure the dropdown
         this.configure();
@@ -58,6 +53,10 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
 
         // Configure the parent
         this.configureParent();
+
+        // Create the bootstrap object
+        let elToggle = this.el.querySelector("*[data-toggle='dropdown']");
+        this._bootstrapObj = elToggle ? new dropdown(elToggle) : null;
     }
 
     // Configure the card group
@@ -330,13 +329,13 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
      */
 
     // Disposes the dropdown
-    dispose() { this._jQuery ? this._jQuery(this.el).dropdown("dispose") : null; }
+    dispose() { this._bootstrapObj ? this._bootstrapObj.dispose() : null; }
 
     // Toggles the menu
-    toggle() { this._jQuery ? this._jQuery(this.el).dropdown("toggle") : null; }
+    toggle() { this._bootstrapObj ? this._bootstrapObj.toggle() : null; }
 
     // Updates the dropdown
-    update() { this._jQuery ? this._jQuery(this.el).dropdown("update") : null; }
+    update() { this._bootstrapObj ? this._bootstrapObj.update() : null; }
 
     /**
      * Public Interface

@@ -98,12 +98,6 @@ export interface ICarousel {
     next: () => void;
 
     /**
-     * Cycles the carousel to a particular frame.
-     * @prop value - The frame number.
-     */
-    number: (value: number) => void;
-
-    /**
      * Stops the carousel from cycling through items.
      */
     pause: () => void;

@@ -91,6 +91,7 @@ export interface IInputGroupProps extends IBaseProps<IInputGroup> {
  * Input Group Types
  */
 export type IInputGroupTypes = {
+    ColorPicker: number;
     Email: number;
     File: number;
     Password: number;

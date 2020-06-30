@@ -1,6 +1,4 @@
-import "bootstrap/js/dist/toast";
-import "bootstrap/js/dist/util";
-import { getLib } from "../jQuery";
+import * as toast from "bootstrap/js/dist/toast";
 import { IToast, IToastProps } from "../../../@types/components/toast";
 import { Base } from "../base";
 import { HTML } from "./templates";
@@ -10,14 +8,10 @@ import { HTML } from "./templates";
  * @param props - The toast properties.
  */
 class _Toast extends Base<IToastProps> implements IToast {
-    private _jQuery = null;
 
     // Constructor
     constructor(props: IToastProps) {
         super(HTML, props);
-
-        // Set jQuery
-        this._jQuery = getLib("toast");
 
         // Configure the collapse
         this.configure();
@@ -84,7 +78,7 @@ class _Toast extends Base<IToastProps> implements IToast {
 
         // Initialize the toast component
         let options = this.props.options || {};
-        this._jQuery ? this._jQuery(this.el).toast(options) : null;
+        this._bootstrapObj = new toast(this.el, options);
 
         // See if we are showing this toast
         if (options.autohide == false) {
@@ -114,10 +108,10 @@ class _Toast extends Base<IToastProps> implements IToast {
      */
 
     // Hides the toast
-    hide() { this._jQuery ? this._jQuery(this.el).toast("hide") : null; }
+    hide() { this._bootstrapObj.hide(); }
 
     // Shows the toast
-    show() { this._jQuery ? this._jQuery(this.el).toast("show") : null; }
+    show() { this._bootstrapObj.show(); }
 
     /**
      * Public Interface

@@ -1,31 +1,31 @@
-import { IDropdown, IDropdownItem } from "./dropdown";
-
 /**
  * List Box
  */
 export const ListBox: (props: IListBoxProps) => IListBox;
 
+import { IBase } from "../base";
+import { IDropdown, IDropdownItem } from "./dropdown";
+
 /**
  * List Box
  */
-export interface IListBox {
+export interface IListBox extends IBase<IListBoxProps> {
     /** The element. */
     el: Element;
 
     /** The selected listbox items. */
-    getValue: () => Array<IDropdownItem>;
+    getValue: () => IDropdownItem;
 
     /** Sets the listbox value. */
-    setValue: (value?: any | Array<any>) => void;
+    setValue: (value?: any) => void;
 }
-
-import { IBaseProps } from "../base";
 
 /**
  * List Box Properties
  */
-export interface IListBoxProps extends IBaseProps<IListBox> {
+export interface IListBoxProps {
     label?: string;
+    id?: string;
     items: Array<IDropdownItem>;
     multi?: boolean;
     placeholder?: string;

@@ -116,6 +116,7 @@ export interface IDropdownProps extends IBaseProps<IDropdown> {
     dropUp?: boolean;
     formFl?: boolean;
     id?: string;
+    isDatalist?: boolean;
     isReadonly?: boolean;
     isSplit?: boolean;
     items?: Array<IDropdownItem>;

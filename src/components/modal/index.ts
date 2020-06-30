@@ -1,6 +1,5 @@
-import "bootstrap/js/dist/modal";
-import { getLib } from "../jQuery";
-import { IModal, IModalProps } from "../../../@types/components/modal";
+import * as modal from "bootstrap/js/dist/modal";
+import { IModal, IModalProps, IModalOptions } from "../../../@types/components/modal";
 import { Base } from "../base";
 import { HTML } from "./templates";
 
@@ -9,14 +8,10 @@ import { HTML } from "./templates";
  * @param props The modal properties.
  */
 class _Modal extends Base<IModalProps> implements IModal {
-    private _jQuery = null;
 
     // Constructor
     constructor(props: IModalProps) {
         super(HTML, props);
-
-        // Set jQuery
-        this._jQuery = getLib("modal");
 
         // Configure the collapse
         this.configure();
@@ -72,15 +67,17 @@ class _Modal extends Base<IModalProps> implements IModal {
             footer.appendChild(content);
         }
 
-        // Get the modal options and default the show flag
-        let options = this.props.options || {};
-        if (typeof (options.show) !== "boolean") {
-            // Default the property
-            options.show = false;
+        // Get the modal options
+        let options: IModalOptions = this.props.options || {};
+
+        // See if this is a static modal
+        if (this.props.isStatic) {
+            // Set the backdrop
+            options.backdrop = "static";
         }
 
         // Create the modal
-        this._jQuery ? this._jQuery(this.el).modal(options) : null;
+        this._bootstrapObj = new modal(this.el, options);
     }
 
     // Configure the events
@@ -102,10 +99,10 @@ class _Modal extends Base<IModalProps> implements IModal {
         // See if there is a close event
         if (this.props.onClose) {
             // Add a hidden event
-            this._jQuery ? this._jQuery(this.el).on("hidden.bs.modal", () => {
+            this.el.addEventListener("hidden.bs.modal", () => {
                 // Call the event
                 this.props.onClose(this.el);
-            }) : null;
+            });
         }
     }
 
@@ -114,28 +111,19 @@ class _Modal extends Base<IModalProps> implements IModal {
      */
 
     // Disposes the modal
-    dispose() { this._jQuery ? this._jQuery(this.el).modal("dispose") : null; }
+    dispose() { this._bootstrapObj.dispose(); }
 
     // Updates the modal
-    handleUpdate() { this._jQuery ? this._jQuery(this.el).modal("handleUpdate") : null; }
+    handleUpdate() { this._bootstrapObj.handleUpdate(); }
 
     // Hides the modal
-    hide() {
-        // hide the modal
-        this._jQuery ? this._jQuery(this.el).modal("hide") : null;
-    }
+    hide() { this._bootstrapObj.hide(); }
 
     // Shows the modal
-    show() {
-        // Show the modal
-        this._jQuery ? this._jQuery(this.el).modal("show") : null;
-    }
+    show() { this._bootstrapObj.show(); }
 
     // Toggles the modal
-    toggle() {
-        // Toggle the modal
-        this._jQuery ? this._jQuery(this.el).modal("toggle") : null;
-    }
+    toggle() { this._bootstrapObj.toggle(); }
 
     /**
      * Public Interface

@@ -163,16 +163,18 @@ export const FormControl = (props: IFormControlProps) => { return new Control(pr
  */
 export enum FormControlTypes {
     Checkbox = 1,
-    Email = 2,
-    Dropdown = 3,
-    File = 4,
-    ListBox = 5,
-    MultiDropdown = 6,
-    Password = 7,
-    Radio = 8,
-    Range = 9,
-    Readonly = 10,
-    Switch = 11,
-    TextArea = 12,
-    TextField = 13
+    ColorPicker = 2,
+    Email = 3,
+    Datalist = 4,
+    Dropdown = 5,
+    File = 6,
+    ListBox = 7,
+    MultiDropdown = 8,
+    Password = 9,
+    Radio = 10,
+    Range = 11,
+    Readonly = 12,
+    Switch = 13,
+    TextArea = 14,
+    TextField = 15
 }

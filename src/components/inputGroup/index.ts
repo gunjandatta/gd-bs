@@ -7,13 +7,14 @@ import { HTML } from "./templates";
  * Input Group Types
  */
 export enum InputGroupTypes {
-    Email = 1,
-    File = 2,
-    Password = 3,
-    Range = 4,
-    Search = 5,
-    TextArea = 6,
-    TextField = 7
+    ColorPicker = 1,
+    Email = 2,
+    File = 3,
+    Password = 4,
+    Range = 5,
+    Search = 6,
+    TextArea = 7,
+    TextField = 8
 }
 
 /**
@@ -226,28 +227,40 @@ class _InputGroup extends Base<IInputGroupProps> implements IInputGroup {
 
             // Update the type
             switch (this.props.type) {
+                // Color Picker
+                case InputGroupTypes.ColorPicker:
+                    input.classList.add("form-control-color");
+                    input.type = "color";
+                    break;
+
                 // Email
                 case InputGroupTypes.Email:
+                    input.classList.add("form-email");
                     input.type = "email";
                     break;
 
                 // File
                 case InputGroupTypes.File:
+                    input.classList.remove("form-control");
+                    input.classList.add("form-file-input");
                     input.type = "file";
                     break;
 
                 // Password
                 case InputGroupTypes.Password:
+                    input.classList.add("form-password");
                     input.type = "password";
                     break;
 
                 // Range
                 case InputGroupTypes.Range:
+                    input.classList.add("form-range");
                     input.type = "range";
                     break;
 
                 // Search
                 case InputGroupTypes.Search:
+                    input.classList.add("form-search");
                     input.type = "search";
                     input.setAttribute("aria-label", "Search");
                     break;

@@ -169,7 +169,9 @@ export interface IFormControlPropsTextField extends IFormControlProps {
  */
 export type IFormControlTypes = {
     Checkbox: number;
+    ColorPicker: number;
     Email: number;
+    Datalist: number;
     Dropdown: number;
     File: number;
     ListBox: number;

@@ -1,4 +1,3 @@
-import { getLib } from "../jQuery";
 import { IAccordion, IAccordionProps } from "../../../@types/components/accordion";
 import { Base } from "../base";
 import { HTML } from "./templates";
@@ -9,14 +8,10 @@ import { AccordionItem } from "./item";
  */
 class _Accordion extends Base<IAccordionProps> implements IAccordion {
     private _items: Array<AccordionItem> = null;
-    private _jQuery = null;
 
     // Constructor
     constructor(props: IAccordionProps) {
         super(HTML, props);
-
-        // Set jQuery
-        this._jQuery = getLib("collapse");
 
         // Ensure the id is set
         this.el.id = props.id || "accordion";
@@ -26,9 +21,6 @@ class _Accordion extends Base<IAccordionProps> implements IAccordion {
 
         // Configure the parent
         this.configureParent();
-
-        // Apply the options
-        this._jQuery ? this._jQuery(this.el).collapse(props.options || {}) : null;
     }
 
     // Renders the items

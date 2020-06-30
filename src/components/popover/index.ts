@@ -1,6 +1,5 @@
-import "bootstrap/js/dist/popover";
+import * as popover from "bootstrap/js/dist/popover";
 import "popper.js";
-import { getLib } from "../jQuery";
 import { Button } from "../button";
 import { IPopover, IPopoverProps } from "../../../@types/components/popover";
 import { Base } from "../base";
@@ -21,14 +20,10 @@ export enum PopoverTypes {
  */
 class _Popover extends Base<IPopoverProps> implements IPopover {
     private _popovers: HTMLDivElement = null;
-    private _jQuery = null;
 
     // Constructor
     constructor(props: IPopoverProps) {
         super("", props);
-
-        // Set jQuery
-        this._jQuery = getLib("popover");
 
         // Configure the collapse
         this.configure();
@@ -87,18 +82,18 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
         }
 
         // See if we are targeting an element
-        let popover: HTMLElement = null;
+        let elPopover: HTMLElement = null;
         if (this.props.target) {
             // Set the popover to the target element
-            popover = this.props.target as HTMLElement;
+            elPopover = this.props.target as HTMLElement;
 
             // Ensure the attributes are set in the target element
-            popover.setAttribute("tabindex", "0");
-            popover.setAttribute("toggle", "popover");
-            popover.setAttribute("trigger", "focus");
+            elPopover.setAttribute("tabindex", "0");
+            elPopover.setAttribute("toggle", "popover");
+            elPopover.setAttribute("trigger", "focus");
 
             // Update this element
-            this.el = popover as any;
+            this.el = elPopover as any;
         } else {
             // Create the button
             let btnProps = this.props.btnProps || {};
@@ -116,7 +111,7 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
         }
 
         // Create the popover
-        this._jQuery ? this._jQuery(this.el).popover(options) : null;
+        this._bootstrapObj = new popover(this.el, options);
     }
 
     // Configures the events
@@ -133,28 +128,22 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
      */
 
     // Disposes the popover
-    dispose() { this._jQuery ? this._jQuery(this.el).popover("dispose") : null; }
+    dispose() { this._bootstrapObj.dispose(); }
 
     // Disables the popover
-    disable() { this._jQuery ? this._jQuery(this.el).popover("disable") : null; }
+    disable() { this._bootstrapObj.disable(); }
 
     // Enables the popover
-    enable() { this._jQuery ? this._jQuery(this.el).popover("enable") : null; }
-
-    // Hides the popover
-    hide() { this._jQuery ? this._jQuery(this.el).popover("hide") : null; }
-
-    // Shows the popover
-    show() { this._jQuery ? this._jQuery(this.el).popover("show") : null; }
+    enable() { this._bootstrapObj.enable(); }
 
     // Toggles the popover
-    toggle() { this._jQuery ? this._jQuery(this.el).popover("toggle") : null; }
+    toggle() { this._bootstrapObj.toggle(); }
 
     // Enables toggling 
-    toggleEnabled() { this._jQuery ? this._jQuery(this.el).popover("toggleEnabled") : null; }
+    toggleEnabled() { this._bootstrapObj.toggleEnabled(); }
 
     // Updates the popover
-    update() { this._jQuery ? this._jQuery(this.el).popover("update") : null; }
+    update() { this._bootstrapObj.update(); }
 
     /**
      * Public Interface

@@ -91,6 +91,33 @@ export class FormControl implements IFormControl {
                     value: this._props.value
                 });
                 break;
+            // Color Picker
+            case FormControlTypes.ColorPicker:
+                // Add the input
+                this._tb = InputGroup({
+                    className,
+                    isReadonly: this._props.isReadonly,
+                    onChange: (this._props as IFormControlPropsTextField).onChange,
+                    placeholder: (this._props as IFormControlPropsTextField).placeholder,
+                    title: this._props.title,
+                    type: InputGroupTypes.ColorPicker,
+                    value: this._props.value
+                });
+                break;
+            // Datalist
+            case FormControlTypes.Datalist:
+                // Add the dropdown
+                this._ddl = Dropdown({
+                    className,
+                    formFl: true,
+                    isDatalist: true,
+                    isReadonly: this._props.isReadonly,
+                    items: (this._props as IFormControlPropsDropdown).items,
+                    onChange: (this._props as IFormControlPropsDropdown).onChange,
+                    title: this._props.title,
+                    value: this._props.value
+                });
+                break;
             // Dropdown
             case FormControlTypes.Dropdown:
                 // Add the dropdown
@@ -136,6 +163,7 @@ export class FormControl implements IFormControl {
             case FormControlTypes.ListBox:
                 // Add the list box
                 this._lb = ListBox({
+                    id: this._props.name,
                     items: (this._props as IFormControlPropsListBox).items,
                     multi: (this._props as IFormControlPropsListBox).multi,
                     onChange: (this._props as IFormControlPropsListBox).onChange,
