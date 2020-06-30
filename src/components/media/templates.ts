@@ -1,1 +1,0 @@
-export const HTML = `<div class="media"></div>`;

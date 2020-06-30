@@ -52,7 +52,6 @@
         <div id="navbar"></div>
         <div id="table"></div>
         <div id="toast"></div>
-        <div id="mediaList"></div>
     </form>
     <script type="text/javascript">
         window.addEventListener("load", function () {
@@ -230,6 +229,14 @@
                                     type: GD.Components.FormControlTypes.Checkbox,
                                     description: "This is a read-only checkbox",
                                     isReadonly: true
+                                }
+                            },
+                            {
+                                control: {
+                                    name: "CBColor",
+                                    label: "Pick a Color",
+                                    type: GD.Components.FormControlTypes.ColorPicker,
+                                    description: "This is a color picker"
                                 }
                             },
                             {
@@ -446,32 +453,6 @@
                     },
                 ]
             });
-            var mediaList = GD.Components.MediaList({
-                el: document.getElementById("mediaList"),
-                items: [
-                    {
-                        icon: { icon: 1, className: "mr-3" },
-                        body: "<h5>List Item Default</h5>This is test item 1."
-                    },
-                    {
-                        icon: { icon: 2, className: "mr-3", type: 3 },
-                        body: "<h5>List Item Top</h5>This is test item 2."
-                    },
-                    {
-                        icon: { icon: 3, className: "mr-3", type: 2 },
-                        body: "<h5>List Item Center</h5>This is test item 3."
-                    },
-                    {
-                        icon: { icon: 4, className: "mr-3", type: 1 },
-                        body: "<h5>List Item Bottom</h5>This is test item 4."
-                    },
-                    {
-                        icon: { icon: 5, className: "mr-3" },
-                        body: "<h5>List Item Right Aligned</h5>This is test item 5.",
-                        order: 2
-                    }
-                ]
-            })
             GD.Components.Button({
                 el: document.getElementById("panel"),
                 text: "Show Panel",
@@ -775,7 +756,6 @@
             });
             GD.Components.InputGroup({
                 el: document.querySelector("#textbox"),
-                description: "This is a single line textbox.",
                 prependedButtons: [{ text: "Save" }],
                 prependedLabel: "First Name",
                 appendedButtons: [{ text: "Run" }],
@@ -790,7 +770,6 @@
             GD.Components.InputGroup({
                 appendedLabel: "Optional",
                 el: document.querySelector("#multi-textbox"),
-                description: "This is a multi-line textbox.",
                 label: "Address:",
                 type: GD.Components.InputGroupTypes.TextArea,
                 value: "This is a long value. It's supposed to go in a text area.\n\nHopefully this will be on a new line...",

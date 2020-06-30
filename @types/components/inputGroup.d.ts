@@ -65,11 +65,9 @@ export interface IInputGroup {
 export interface IInputGroupProps extends IBaseProps<IInputGroup> {
     appendedButtons?: Array<IButtonProps>;
     appendedLabel?: string;
-    description?: string;
     formFl?: boolean;
     id?: string;
     isLarge?: boolean;
-    isPlainText?: boolean;
     isReadonly?: boolean;
     isSmall?: boolean;
     label?: string;

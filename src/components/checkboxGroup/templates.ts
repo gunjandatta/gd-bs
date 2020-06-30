@@ -14,14 +14,14 @@ export const HTMLCheckbox = `
 
 // Radio
 export const HTMLRadio = `
-<div class="custom-control custom-radio">
-    <input type="radio" class="custom-control-input" />
-    <label class="custom-control-label"></label>
+<div class="form-check">
+    <input type="radio" class="form-check-input" />
+    <label class="form-check-label"></label>
 </div>`.trim();
 
 // Switch
 export const HTMLSwitch = `
-<div class="custom-control custom-switch">
-    <input type="checkbox" class="custom-control-input" />
-    <label class="custom-control-label"></label>
+<div class="form-check form-switch">
+    <input type="checkbox" class="form-check-input" />
+    <label class="form-check-label"></label>
 </div>`.trim();

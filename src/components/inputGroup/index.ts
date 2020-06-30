@@ -41,6 +41,8 @@ class _InputGroup extends Base<IInputGroupProps> implements IInputGroup {
 
     // Configure the card group
     private configure() {
+        let elInput = this.el.querySelector("input");
+
         // Set the class names
         this.props.isLarge ? this.el.classList.add("input-group-lg") : null;
         this.props.isSmall ? this.el.classList.add("input-group-sm") : null;
@@ -56,28 +58,20 @@ class _InputGroup extends Base<IInputGroupProps> implements IInputGroup {
             this.el.removeChild(label);
         }
 
-        // See if we are pre-pending a label or buttons
-        let prepend = this.el.querySelector(".input-group-prepend");
-        if (this.props.prependedButtons || this.props.prependedLabel) {
-            // See if the label exists
-            let label = prepend.querySelector("span");
-            if (this.props.appendedLabel) {
-                // Add the label
-                label.innerHTML = this.props.prependedLabel;
-            } else {
-                // Remove the label
-                prepend.removeChild(label);
-            }
+        // See if the label exists
+        if (this.props.prependedLabel) {
+            // Add the label
+            let label = document.createElement("span");
+            label.classList.add("input-group-text");
+            label.innerHTML = this.props.prependedLabel;
+            this.el.insertBefore(label, elInput);
+        }
 
-            // Parse the buttons
-            let buttons = this.props.prependedButtons || [];
-            for (let i = 0; i < buttons.length; i++) {
-                // Add the button
-                prepend.appendChild(Button(buttons[i]).el);
-            }
-        } else {
-            // Remove the element
-            this.el.removeChild(prepend);
+        // Parse the buttons
+        let buttons = this.props.prependedButtons || [];
+        for (let i = 0; i < buttons.length; i++) {
+            // Add the button
+            this.el.insertBefore(Button(buttons[i]).el, elInput);
         }
 
         // Default the appended buttons
@@ -90,37 +84,19 @@ class _InputGroup extends Base<IInputGroupProps> implements IInputGroup {
             });
         }
 
-        // See if we are appending a label or buttons
-        let append = this.el.querySelector(".input-group-append");
-        if (appendedButtons.length > 0 || this.props.appendedLabel) {
-            // See if the label exists
-            let label = append.querySelector("span");
-            if (this.props.appendedLabel) {
-                // Add the label
-                label.innerHTML = this.props.appendedLabel;
-            } else {
-                // Remove the label
-                append.removeChild(label);
-            }
-
-            // Parse the buttons
-            for (let i = 0; i < appendedButtons.length; i++) {
-                // Add the button
-                append.appendChild(Button(appendedButtons[i]).el);
-            }
-        } else {
-            // Remove the element
-            this.el.removeChild(append);
+        // See if the label exists
+        if (this.props.appendedLabel) {
+            // Add the label
+            let label = document.createElement("span");
+            label.classList.add("input-group-text");
+            label.innerHTML = this.props.appendedLabel;
+            this.el.appendChild(label);
         }
 
-        // See if there is a description
-        let description = this.el.querySelector("small.text-muted");
-        if (this.props.description) {
-            // Add the description
-            description.innerHTML = this.props.description;
-        } else {
-            // Remove the description
-            this.el.removeChild(description);
+        // Parse the buttons
+        for (let i = 0; i < appendedButtons.length; i++) {
+            // Add the button
+            this.el.appendChild(Button(appendedButtons[i]).el);
         }
     }
 
@@ -217,13 +193,6 @@ class _InputGroup extends Base<IInputGroupProps> implements IInputGroup {
             typeof (this.props.min) === "number" ? input.min = this.props.min + "" : null;
             typeof (this.props.max) === "number" ? input.max = this.props.max + "" : null;
             typeof (this.props.step) === "number" ? input.step = this.props.step + "" : null;
-
-            // See if this is plain text
-            if (this.props.isPlainText) {
-                // Update the class names
-                this.el.classList.remove("form-control");
-                this.el.classList.add("form-control-plaintext");
-            }
 
             // Update the type
             switch (this.props.type) {

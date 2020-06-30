@@ -136,7 +136,6 @@ export class FormControl implements IFormControl {
                 // Add the input
                 this._tb = InputGroup({
                     className,
-                    isPlainText: this._props.isPlainText,
                     isReadonly: this._props.isReadonly,
                     onChange: (this._props as IFormControlPropsTextField).onChange,
                     placeholder: (this._props as IFormControlPropsTextField).placeholder,
@@ -150,7 +149,6 @@ export class FormControl implements IFormControl {
                 // Add the input
                 this._tb = InputGroup({
                     className,
-                    isPlainText: this._props.isPlainText,
                     isReadonly: this._props.isReadonly,
                     onChange: (this._props as IFormControlPropsTextField).onChange,
                     placeholder: (this._props as IFormControlPropsTextField).placeholder,
@@ -190,7 +188,6 @@ export class FormControl implements IFormControl {
                 // Add the input
                 this._tb = InputGroup({
                     className,
-                    isPlainText: this._props.isPlainText,
                     isReadonly: this._props.isReadonly,
                     onChange: (this._props as IFormControlPropsTextField).onChange,
                     placeholder: (this._props as IFormControlPropsTextField).placeholder,
@@ -219,7 +216,6 @@ export class FormControl implements IFormControl {
                 // Add the input
                 this._tb = InputGroup({
                     className,
-                    isPlainText: this._props.isPlainText,
                     isReadonly: this._props.isReadonly,
                     min: (this._props as IFormControlPropsRange).min || 0,
                     max: (this._props as IFormControlPropsRange).max || 100,
@@ -236,7 +232,6 @@ export class FormControl implements IFormControl {
                 // Add the input
                 this._tb = InputGroup({
                     className,
-                    isPlainText: this._props.isPlainText,
                     isReadonly: true,
                     onChange: (this._props as IFormControlPropsTextField).onChange,
                     placeholder: (this._props as IFormControlPropsTextField).placeholder,
@@ -265,7 +260,6 @@ export class FormControl implements IFormControl {
                 // Add the input
                 this._tb = InputGroup({
                     className,
-                    isPlainText: this._props.isPlainText,
                     isReadonly: this._props.isReadonly,
                     onChange: (this._props as IFormControlPropsTextField).onChange,
                     placeholder: (this._props as IFormControlPropsTextField).placeholder,
@@ -280,7 +274,6 @@ export class FormControl implements IFormControl {
                 // Add the input
                 this._tb = InputGroup({
                     className,
-                    isPlainText: this._props.isPlainText,
                     isReadonly: this._props.isReadonly,
                     onChange: (this._props as IFormControlPropsTextField).onChange,
                     placeholder: (this._props as IFormControlPropsTextField).placeholder,

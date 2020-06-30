@@ -7,11 +7,11 @@ export const HTML = `
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse">
-        <ul class="navbar-nav mr-auto"></ul>
+        <ul class="navbar-nav mr-auto mb-2 mb-lg-0"></ul>
     </div>
-    <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-        <button class="btn my-2 my-sm-0" type="submit">Search</button>
+    <form class="d-flex">
+        <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search" />
+        <button class="btn" type="submit">Search</button>
     </form>
 </nav>`.trim();
 
