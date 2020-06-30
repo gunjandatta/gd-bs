@@ -89,6 +89,7 @@ export interface ICheckboxGroupProps extends IBaseProps<ICheckboxGroup> {
     items?: Array<ICheckboxGroupItem>;
     multi?: boolean;
     onChange?: (items: ICheckboxGroupItem | Array<ICheckboxGroupItem>) => void;
+    renderRow?: boolean;
     title?: string;
     type?: number;
     value?: any;

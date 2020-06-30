@@ -32,12 +32,19 @@ class _CheckboxGroup extends Base<ICheckboxGroupProps> implements ICheckboxGroup
     // Configure the card group
     private configure() {
         let colSize = this.props.colSize > 0 && this.props.colSize < 13 ? this.props.colSize : (this.props.label ? 10 : 12);
+        let renderRow = typeof (this.props.renderRow) === "boolean" ? this.props.renderRow : true;
+
+        // See if we are not rendering a row
+        if (!renderRow) {
+            // Remove the row class
+            this.el.classList.remove("row");
+        }
 
         // See if a label is defined
         let label = this.el.querySelector("legend");
         if (this.props.label && this.props.hideLabel != true) {
             // Add the label
-            label.classList.add("col-" + (12 - colSize));
+            renderRow ? label.classList.add("col-" + (12 - colSize)) : null;
             label.innerHTML = this.props.label;
         } else {
             // Remove the label
@@ -46,7 +53,7 @@ class _CheckboxGroup extends Base<ICheckboxGroupProps> implements ICheckboxGroup
 
         // Get the group and configure the size
         let group = this.el.querySelector("div");
-        group.classList.add("col-" + colSize);
+        renderRow ? group.classList.add("col-" + colSize) : null;
 
         // Render the checkboxes
         this.renderItems(group);

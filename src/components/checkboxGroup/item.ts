@@ -34,7 +34,12 @@ export class CheckboxItem {
         // Set the attributes
         let checkbox = this._el.querySelector("input");
         checkbox.disabled = this._props.isDisabled ? true : false;
-        checkbox.title = this._parent.title == null ? "" : this._parent.title;
+
+        // See if the title property is defined
+        if (this._parent.title) {
+            // Set the title
+            this._el.title = this._parent.title;
+        }
 
         // See if the inline flag is set
         if (this._parent.isInline) {
