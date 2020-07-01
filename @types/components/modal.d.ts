@@ -48,6 +48,11 @@
  */
 export const Modal: (props: IModalProps) => IModal;
 
+/**
+ * Modal Types
+ */
+export const ModalTypes: IModalTypes;
+
 import { IBaseProps } from "../base";
 import { IButtonProps } from "./button";
 
