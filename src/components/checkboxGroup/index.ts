@@ -53,10 +53,16 @@ class _CheckboxGroup extends Base<ICheckboxGroupProps> implements ICheckboxGroup
 
         // Get the group and configure the size
         let group = this.el.querySelector("div");
-        renderRow ? group.classList.add("col-" + colSize) : null;
+        if (renderRow) {
+            // Set the class
+            group.classList.add("col-" + colSize);
+        } else {
+            // Remove the group element
+            this.el.removeChild(group);
+        }
 
         // Render the checkboxes
-        this.renderItems(group);
+        this.renderItems(renderRow ? group : this.el);
     }
 
     // Configure the events
@@ -99,13 +105,18 @@ class _CheckboxGroup extends Base<ICheckboxGroupProps> implements ICheckboxGroup
         // Parse the items
         let items = this.props.items || [];
         for (let i = 0; i < items.length; i++) {
+            let item = items[i];
+
             // Create the checkbox
-            let checkbox = new CheckboxItem(items[i], this.props);
+            let checkbox = new CheckboxItem(item, this.props);
             this._checkboxes.push(checkbox);
             group.appendChild(checkbox.el);
 
             // Configure the events
             this.configureEvents(checkbox);
+
+            // Execute the render event
+            this.props.onRender ? this.props.onRender(checkbox.el, item) : null;
         }
     }
 

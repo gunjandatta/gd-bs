@@ -7,6 +7,7 @@ import { HTMLCheckbox, HTMLRadio, HTMLSwitch } from "./templates";
  */
 export class CheckboxItem {
     private _el: HTMLDivElement = null;
+    private _elCheckbox: HTMLInputElement = null;
     private _isSelected: boolean = null;
     private _parent: ICheckboxGroupProps = null;
     private _props: ICheckboxGroupItem = null;
@@ -32,8 +33,8 @@ export class CheckboxItem {
     // Configure the item
     private configure() {
         // Set the attributes
-        let checkbox = this._el.querySelector("input");
-        checkbox.disabled = this._props.isDisabled ? true : false;
+        this._elCheckbox = this._el.querySelector("input");
+        this._elCheckbox.disabled = this._props.isDisabled ? true : false;
 
         // See if the title property is defined
         if (this._parent.title) {
@@ -67,7 +68,7 @@ export class CheckboxItem {
         if (typeof (this._props.isSelected) === "boolean") {
             // Set the selected property
             this._isSelected = this._props.isSelected;
-            checkbox.checked = this._isSelected;
+            this._elCheckbox.checked = this._isSelected;
         }
         // Else, see if a value exists for the group
         else if (this._parent.value) {
@@ -77,16 +78,16 @@ export class CheckboxItem {
                 // See if this item is selected
                 if (values[j] == this._props.label) {
                     // Select this item
-                    checkbox.checked = true;
+                    this._elCheckbox.checked = true;
                 }
             }
 
             // Set the value
-            this._isSelected = checkbox.checked;
+            this._isSelected = this._elCheckbox.checked;
         } else {
             // Set the default value
             this._isSelected = this._props.isSelected ? true : false;
-            checkbox.checked = this._isSelected;
+            this._elCheckbox.checked = this._isSelected;
         }
     }
 
@@ -125,6 +126,9 @@ export class CheckboxItem {
     /**
      * Public Properties
      */
+
+    // The checkbox element
+    get checkbox(): HTMLInputElement { return this._elCheckbox; }
 
     // The component HTML element
     get el(): HTMLDivElement { return this._el; }
