@@ -44,20 +44,7 @@ export class CheckboxItem {
 
         // See if the inline flag is set
         if (this._parent.isInline) {
-            switch (this._props.type || this._parent.type) {
-                case CheckboxGroupTypes.Checkbox:
-                    // Set the class name
-                    this._el.classList.add("form-check-inline");
-                    break;
-                case CheckboxGroupTypes.Radio:
-                    // Set the class name
-                    this._el.classList.add("custom-control-inline");
-                    break;
-                case CheckboxGroupTypes.Switch:
-                    // Set the class name
-                    this._el.classList.add("custom-control-inline");
-                    break;
-            }
+            this._el.classList.add("form-check-inline");
         }
 
         // Set the label
