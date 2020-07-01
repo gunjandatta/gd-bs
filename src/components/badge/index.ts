@@ -21,14 +21,14 @@ export enum BadgeTypes {
  * Badge Class Names
  */
 export const BadgeClassNames = new ClassNames([
-    "badge-danger",
-    "badge-dark",
-    "badge-info",
-    "badge-light",
-    "badge-primary",
-    "badge-secondary",
-    "badge-success",
-    "badge-warning"
+    "bg-danger",
+    "bg-dark",
+    "bg-info",
+    "bg-light",
+    "bg-primary",
+    "bg-secondary",
+    "bg-success",
+    "bg-warning"
 ]);
 
 /**
@@ -57,7 +57,7 @@ class _Badge extends Base<IBadgeProps> implements IBadge {
         // See if this is a pill
         if (this.props.isPill) {
             // Add the class name
-            this.el.classList.add("badge-pill");
+            this.el.classList.add("rounded-pill");
         }
 
         // Set the default styling
