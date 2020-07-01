@@ -1,11 +1,7 @@
 import { IDropdownItem } from "../../../@types/components/dropdown";
 import { IListBox, IListBoxProps } from "../../../@types/components/listBox";
 import { Base } from "../base";
-import { HTML } from "./templates";
-
-/**
- * TODO - Figure out how to remove a selected item
- */
+import { HTML, HTMLItem } from "./templates";
 
 /**
  * List Box
@@ -15,8 +11,9 @@ class _ListBox extends Base<IListBoxProps> implements IListBox {
     private _elLabel: HTMLLabelElement = null;
     private _elSearchBox: HTMLInputElement = null;
     private _elDatalist: HTMLDataListElement = null;
+    private _elValues: HTMLUListElement = null;
     private _items: Array<IDropdownItem> = null;
-    private _selectedItem: IDropdownItem = null;
+    private _selectedItems: Array<IDropdownItem> = null;
 
     // Constructor
     constructor(props: IListBoxProps) {
@@ -34,9 +31,10 @@ class _ListBox extends Base<IListBoxProps> implements IListBox {
 
     // Configures the list box
     private configure() {
-        this._elLabel = this.el.querySelector("label") as HTMLLabelElement;
-        this._elSearchBox = this.el.querySelector("input") as HTMLInputElement;
-        this._elDatalist = this.el.querySelector("datalist") as HTMLDataListElement;
+        this._elLabel = this.el.querySelector("label");
+        this._elSearchBox = this.el.querySelector("input");
+        this._elDatalist = this.el.querySelector("datalist");
+        this._elValues = this.el.querySelector("ul");
 
         // See if the placeholder exists
         if (this.props.placeholder) {
@@ -58,59 +56,94 @@ class _ListBox extends Base<IListBoxProps> implements IListBox {
         this.setOptions(this.props.items);
 
         // Set the value
-        this._elSearchBox.value = this.props.value || "";
-        this._selectedItem = this.getValue();
-        if (this._selectedItem == null) {
-            // Clear the value
-            this._elSearchBox.value = "";
-        }
+        this.setValue(this.props.value);
     }
 
     // Configures the events
     private configureEvents() {
-        // See if a change event exists
-        if (this.props.onChange) {
-            // Set the change event on the search box
-            this._elSearchBox.addEventListener("input", ev => {
-                // Get the value
-                let value = this.getValue();
+        // Set the change event on the search box
+        this._elSearchBox.addEventListener("input", ev => {
+            let value = this._elSearchBox.value;
 
-                // See if it's changed
-                if ((value == null && this._selectedItem != null) ||
-                    (value != null && this._selectedItem == null) ||
-                    (value.text != this._selectedItem.text)
-                ) {
-                    // Set the selected item
-                    this._selectedItem = value;
+            // Parse the items
+            for (let i = 0; i < this._items.length; i++) {
+                let item = this._items[i];
 
-                    // Call the event
-                    this.props.onChange([this._selectedItem]);
+                // See if this is the target item
+                if (item.text == value) {
+                    // See if this is a multi-select
+                    if (this.props.multi) {
+                        let existsFl = false;
+
+                        // Parse the selected items
+                        for (let j = 0; j < this._selectedItems.length; j++) {
+                            let selectedItem = this._selectedItems[j];
+
+                            // See if this item is already selected
+                            if (selectedItem.text == item.text) {
+                                // Set the flag
+                                existsFl = true;
+                                break;
+                            }
+                        }
+
+                        // Ensure the item wasn't already selected
+                        if (!existsFl) {
+                            // Set the value
+                            this.setValue(this._selectedItems.concat(item).sort((a, b) => {
+                                if (a.text < b.text) { return -1; }
+                                if (a.text > b.text) { return 1; }
+                                return 0;
+                            }));
+
+                            // Call the change event
+                            this.props.onChange ? this.props.onChange(this._selectedItems) : null;
+                        }
+                    } else {
+                        // Set the value
+                        this.setValue(value);
+
+                        // Call the change event
+                        this.props.onChange ? this.props.onChange(this._selectedItems) : null;
+                    }
+
+                    // Clear the selected value
+                    this._elSearchBox.value = "";
                 }
-            });
-        }
+            }
+        });
+    }
+
+    // Method to configure the item event
+    private configureItemEvent(elItem: HTMLLIElement, item: IDropdownItem) {
+        // Add a click event to the badge
+        elItem.querySelector(".badge").addEventListener("click", () => {
+            // Remove the item
+            this._elValues.removeChild(elItem);
+
+            // Find the selected item
+            for (let i = 0; i < this._selectedItems.length; i++) {
+                let selectedItem = this._selectedItems[i];
+
+                // See if this is the target item
+                if (selectedItem.text == item.text) {
+                    // Remove this item
+                    this._selectedItems.splice(i, 1);
+
+                    // Call the change event
+                    this.props.onChange ? this.props.onChange(this._selectedItems) : null;
+                    break;
+                }
+            }
+        });
+
     }
 
     /**
      * Public Interface
      */
 
-    getValue() {
-        let value = this._elSearchBox.value;
-
-        // Parse the items
-        for (let i = 0; i < this._items.length; i++) {
-            let item = this._items[i];
-
-            // See if this is the target item
-            if (item.text == value) {
-                // Return the item
-                return item;
-            }
-        }
-
-        // Item not found
-        return null;
-    }
+    getValue() { return this._selectedItems; }
 
     setOptions(items: Array<IDropdownItem> = []) {
         let elDatalist = this.el.querySelector("datalist") as HTMLDataListElement;
@@ -119,10 +152,11 @@ class _ListBox extends Base<IListBoxProps> implements IListBox {
         this._items = items;
 
         // Clear the options
-        while (elDatalist.options.length > 0) { elDatalist.options[0].remove(); }
+        while (elDatalist.firstChild) { elDatalist.removeChild(elDatalist.firstChild); }
 
         // Clear the value
         this._elSearchBox.value = "";
+        this._selectedItems = [];
 
         // Parse the items
         for (let i = 0; i < items.length; i++) {
@@ -134,6 +168,49 @@ class _ListBox extends Base<IListBoxProps> implements IListBox {
     }
 
     // Set the value
-    setValue(value) { this._elSearchBox.value = value || ""; }
+    setValue(value) {
+        // Clear the items
+        this._selectedItems = [];
+        while (this._elValues.firstChild) { this._elValues.removeChild(this._elValues.firstChild); }
+
+        // Parse the values
+        if (value) {
+            // Ensure this is an array
+            let values = typeof (value) === "string" ? [value] : value;
+
+            // Parse the values
+            for (let i = 0; i < values.length; i++) {
+                let itemValue = values[i];
+                itemValue = typeof (itemValue) === "string" ? itemValue : itemValue.text;
+
+                // Parse the items
+                for (let j = 0; j < this._items.length; j++) {
+                    let item = this._items[j];
+
+                    // See if this is the target item
+                    if (item.text == itemValue) {
+                        // Add the selected item
+                        this._selectedItems.push(item);
+
+                        // Create the list item
+                        let elItem: HTMLLIElement = document.createElement("div") as any;
+                        elItem.innerHTML = HTMLItem;
+                        elItem = elItem.firstChild as any;
+                        this._elValues.appendChild(elItem);
+
+                        // Set the text value
+                        let text = document.createTextNode(item.text);
+                        elItem.insertBefore(text, elItem.querySelector("span"));
+
+                        // Configure the event for this item
+                        this.configureItemEvent(elItem, item);
+
+                        // Break from the loop
+                        break;
+                    }
+                }
+            }
+        }
+    }
 }
 export const ListBox = (props: IListBoxProps): IListBox => { return new _ListBox(props); }

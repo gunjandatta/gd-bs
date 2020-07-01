@@ -14,10 +14,10 @@ export interface IListBox extends IBase<IListBoxProps> {
     el: Element;
 
     /** The selected listbox items. */
-    getValue: () => IDropdownItem;
+    getValue: () => Array<IDropdownItem>;
 
     /** Sets the listbox value. */
-    setValue: (value?: any) => void;
+    setValue: (value?: string | Array<string> | Array<IDropdownItem>) => void;
 }
 
 /**
@@ -30,5 +30,5 @@ export interface IListBoxProps {
     multi?: boolean;
     placeholder?: string;
     onChange?: (items: Array<IDropdownItem>) => void;
-    value?: any;
+    value?: string | Array<string>;
 }
