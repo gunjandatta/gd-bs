@@ -100,19 +100,37 @@ export interface IModalOptions {
 /**
  * Modal Properties
  */
-export interface IModalProps<T=Element> extends IBaseProps<IModal> {
+export interface IModalProps<T = Element> extends IBaseProps<IModal> {
     body?: string | T;
     disableFade?: boolean;
     footer?: string | T;
     hideCloseButton?: boolean;
     id?: string;
     isCentered?: boolean;
-    isLarge?: boolean;
-    isSmall?: boolean;
     isStatic?: boolean;
     onClose?: (el: HTMLDivElement) => void;
     onRenderBody?: (el: HTMLDivElement) => void;
     onRenderFooter?: (el: HTMLDivElement) => void;
     options?: IModalOptions;
     title?: string;
+    type?: number;
+}
+
+/**
+ * Checkbox Group Types
+ */
+export type IModalTypes = {
+    Small: number;
+    Medium: number;
+    Large: number;
+    XLarge: number;
+    Full: number;
+    FullSmall: number;
+    FullMedium: number;
+    FullLarge: number;
+    FullXLarge: number;
+    PanelSmall: number;
+    PanelMedium: number;
+    PanelLarge: number;
+    PanelXLarge: number;
 }

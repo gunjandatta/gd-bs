@@ -1,7 +1,46 @@
 import * as modal from "bootstrap/js/dist/modal";
 import { IModal, IModalProps, IModalOptions } from "../../../@types/components/modal";
 import { Base } from "../base";
+import { ClassNames } from "../classNames";
 import { HTML } from "./templates";
+
+/**
+ * Modal Types
+ */
+export enum ModalTypes {
+    Small = 1,
+    Medium = 2,
+    Large = 3,
+    XLarge = 4,
+    Full = 5,
+    FullSmall = 6,
+    FullMedium = 7,
+    FullLarge = 8,
+    FullXLarge = 9,
+    PanelSmall = 10,
+    PanelMedium = 11,
+    PanelLarge = 12,
+    PanelXLarge = 13
+}
+
+/**
+ * Modal Classes
+ */
+export const ModalClassNames = new ClassNames([
+    "modal-sm",
+    "",
+    "modal-lg",
+    "modal-xl",
+    "modal-fullscreen",
+    "modal-fullscreen-sm-down",
+    "modal-fullscreen-md-down",
+    "modal-fullscreen-lg-down",
+    "modal-fullscreen-xl-down",
+    "panel-sm",
+    "panel-md",
+    "panel-lg",
+    "panel-xl"
+]);
 
 /**
  * Modal
@@ -31,10 +70,21 @@ class _Modal extends Base<IModalProps> implements IModal {
         this.props.isStatic ? this.el.setAttribute("data-backdrop", "static") : null;
 
         // Update the dialog
-        let dialog = this.el.querySelector(".modal-dialog");
+        let dialog = this.el.querySelector(".modal-dialog") as HTMLElement;
         this.props.isCentered ? dialog.classList.add("modal-dialog-centered") : null;
-        this.props.isLarge ? dialog.classList.add("modal-lg") : null;
-        this.props.isSmall ? dialog.classList.add("modal-sm") : null;
+
+        // See if this is a panel
+        switch (this.props.type) {
+            case ModalTypes.PanelSmall:
+            case ModalTypes.PanelMedium:
+            case ModalTypes.PanelLarge:
+            case ModalTypes.PanelXLarge:
+                dialog.classList.add(ModalClassNames.getByType(ModalTypes.Full));
+                break;
+        }
+
+        // Add the class name, based on the type
+        dialog.classList.add(ModalClassNames.getByType(this.props.type));
 
         // Update the title
         this.setTitle(this.props.title);
@@ -78,6 +128,12 @@ class _Modal extends Base<IModalProps> implements IModal {
 
         // Create the modal
         this._bootstrapObj = new modal(this.el, options);
+
+        // The option to 'show' doesn't seem to work
+        if (options.show) {
+            // Show the modal
+            this.show();
+        }
     }
 
     // Configure the events

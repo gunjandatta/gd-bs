@@ -19,7 +19,6 @@ export * from "./modal";
 export * from "./nav";
 export * from "./navbar";
 export * from "./pagination";
-export * from "./panel";
 export * from "./popover";
 export * from "./progress";
 export * from "./progressGroup";

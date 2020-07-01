@@ -459,23 +459,21 @@
                 target: "#my-panel",
                 toggle: "modal"
             });
-            window["panel"] = GD.Components.Panel({
+            window["panel"] = GD.Components.Modal({
                 el: document.getElementById("panel"),
-                modalProps: {
-                    id: "my-panel",
-                    title: "Panel Example",
-                    hideCloseButton: false,
-                    onRenderBody: function (el) {
-                        // Render a jumbotron
-                        GD.Components.Jumbotron({
-                            el,
-                            title: "My Panel",
-                            lead: "this is a lead",
-                            content: "This is the content of the jumbotron."
-                        });
-                    }
-                },
-                type: 5,
+                id: "my-panel",
+                title: "Panel Example",
+                hideCloseButton: false,
+                type: 12,
+                onRenderBody: function (el) {
+                    // Render a jumbotron
+                    GD.Components.Jumbotron({
+                        el,
+                        title: "My Panel",
+                        lead: "this is a lead",
+                        content: "This is the content of the jumbotron."
+                    });
+                }
             });
             GD.Components.Badge({
                 el: document.getElementById("badge"),
@@ -564,7 +562,9 @@
                 el: document.querySelector("#modal"),
                 id: "my-modal",
                 title: "My Modal",
+                type: 4,
                 isStatic: true,
+                options: { show: false },
                 onClose: function (modal) {
                     console.log("The modal was closed.", modal);
                 },
