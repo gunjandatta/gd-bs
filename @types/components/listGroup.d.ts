@@ -1,7 +1,7 @@
 /**
  * <div id="demo"></div>
  * <div id="demo"></div>
- * <script type="text/javascript" src="https://unpkg.com/gd-sprest-bs/dist/gd-sprest-bs-icons.js"></script>
+ * <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gd-sprest-bs/5.0.3/gd-sprest-bs.min.js"></script>
  * <script type="text/javascript">
  *     // Wait for the window to be loaded
  *     window.addEventListener("load", function() {
