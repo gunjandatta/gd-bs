@@ -1,5 +1,8 @@
 export * from "./iconTypes";
 
+// Icons to import
+import * as SVGIcons from "./svgs";
+
 // Generates the html for an icon
 const generateIcon = (svg: string, height: number = 32, width: number = 32) => {
 	// Get the icon element
@@ -18,10 +21,6 @@ const generateIcon = (svg: string, height: number = 32, width: number = 32) => {
 	// Return the icon
 	return icon;
 }
-
-// Icons to import
-import * as SVGIcons from "./svgs";
-
 
 // Renders an icon by type
 export const Icons = (iconType:number, height?:number, width?:number) => {

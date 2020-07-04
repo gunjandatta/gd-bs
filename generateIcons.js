@@ -112,6 +112,8 @@ fs.readdir(dirIcons, function (err, files) {
     stream = fs.createWriteStream("./src/icons/index.ts");
     stream.write([
         'export * from "./iconTypes";\n',
+        '// Icons to import',
+        'import * as SVGIcons from "./svgs";\n',
         '// Generates the html for an icon',
         'const generateIcon = (svg: string, height: number = 32, width: number = 32) => {',
         '\t// Get the icon element',
@@ -128,9 +130,7 @@ fs.readdir(dirIcons, function (err, files) {
         '\t// Return the icon',
         '\treturn icon;',
         '}\n',
-        '// Icons to import',
-        'import * as SVGIcons from "./svgs";\n',
-        "\n// Renders an icon by type",
+        "// Renders an icon by type",
         "export const Icons = (iconType:number, height?:number, width?:number) => {",
         "\t// See which icon is selected",
         "\tswitch(iconType) {",
