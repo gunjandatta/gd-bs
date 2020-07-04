@@ -1,6 +1,6 @@
 {
   "name": "gd-bs",
-  "version": "3.0.5",
+  "version": "3.0.6",
   "description": "Bootstrap JavaScript, TypeScript and Web Components library.",
   "main": "build/index.js",
   "typings": "@types/index.d.ts",
@@ -11,7 +11,7 @@
     "build-icons": "webpack --mode=development --icons=true",
     "build-no-icons": "webpack --mode=development",
     "clean": "node ./clean.js",
-    "pre-build": "tsc && npm run pre-build-icons && npm run pre-build-sass",
+    "pre-build": "npm run pre-build-icons && tsc && npm run pre-build-sass",
     "pre-build-icons": "node ./generate && node ./generateIcons",
     "pre-build-sass": "webpack --config webpack.sass.js",
     "prod": "npm run prod-core && npm run prod-no-icons && npm run prod-icons",

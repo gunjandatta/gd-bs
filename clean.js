@@ -29,6 +29,11 @@ console.log("Cleaning the library...");
 // Delete the folders
 deleteDirectory("./build");
 deleteDirectory("./dist");
+deleteDirectory("./src/icons");
+
+// Create the icons directory
+fs.mkdirSync("./src/icons");
+fs.mkdirSync("./src/icons/svgs");
 
 // Log
 console.log("Successfully cleaned the library");

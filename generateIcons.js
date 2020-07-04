@@ -35,9 +35,6 @@ fs.readdir(dirIcons, function (err, files) {
         varName = varName.replace(/\.svg$/, '');
         var funcName = varName[0].toUpperCase() + varName.substr(1);
 
-        // Add the icon reference
-        icons.push("const " + varName + " = `" + fs.readFileSync(dirIcons + "/" + file) + "`;");
-
         // Add the type
         let iconType = types.length + 1;
         types.push("\t" + funcName + " = " + iconType);
@@ -45,11 +42,19 @@ fs.readdir(dirIcons, function (err, files) {
         // Add the switch case statement
         switches.push("\t\t// " + file);
         switches.push("\t\tcase " + iconType + ":");
-        switches.push("\t\t\treturn generateIcon(" + varName + ", height, width);");
+        switches.push("\t\t\treturn generateIcon(SVGIcons." + varName + ", height, width);");
 
         // Add the type definition
         typeDefs.push("\t// " + file);
         typeDefs.push("\t" + funcName + ": number;");
+
+        // Convert the svg to a typescript file
+        var stream = fs.createWriteStream("./src/icons/svgs/" + varName + ".ts");
+        stream.write("export const " + varName + " = `" + fs.readFileSync(dirIcons + "/" + file) + "`;");
+        stream.end();
+
+        // Add an export for this file
+        icons.push("export * from \"./" + varName + "\";");
     });
 
     // Delete the files
@@ -60,7 +65,7 @@ fs.readdir(dirIcons, function (err, files) {
     // Generate the file
     var stream = fs.createWriteStream("./@types/icons.d.ts");
     stream.write([
-`/**
+        `/**
  * <div id="demo"></div>
  * <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gd-sprest-bs/5.0.3/gd-sprest-bs.min.js"></script>
  * <script type="text/javascript">
@@ -72,7 +77,7 @@ fs.readdir(dirIcons, function (err, files) {
  *     });
  * </script>
 */`,
-`\n/**
+        `\n/**
  * ### Icons
  * 
  * Renders an icon by type
@@ -86,7 +91,7 @@ fs.readdir(dirIcons, function (err, files) {
  * \`\`\`
  */`,
         "export const Icons: (iconType:number, height?:number, width?:number) => HTMLElement;",
-`\n/**
+        `\n/**
  * Icon Types
 */`,
         "export const IconTypes: {",
@@ -98,12 +103,33 @@ fs.readdir(dirIcons, function (err, files) {
     // Log
     console.log("Icons definition file generated");
 
-    // Generate the file
-    var stream = fs.createWriteStream("./src/icons/icons.ts");
+    // Generate the svgs index file
+    var stream = fs.createWriteStream("./src/icons/svgs/index.ts");
+    stream.write(icons.join('\n'));
+    stream.close();
+
+    // Generate the icons index file
+    stream = fs.createWriteStream("./src/icons/index.ts");
     stream.write([
-        'import generateIcon from "./generate";\n',
+        'export * from "./iconTypes";\n',
+        '// Generates the html for an icon',
+        'const generateIcon = (svg: string, height: number = 32, width: number = 32) => {',
+        '\t// Get the icon element',
+        '\tlet elDiv = document.createElement("div");',
+        '\telDiv.innerHTML = svg;',
+        '\tlet icon = elDiv.firstChild as HTMLElement;',
+        '\tif (icon) {',
+        '\t    // Set the height/width',
+        '\t    icon.setAttribute("height", (height ? height : 32).toString());',
+        '\t    icon.setAttribute("width", (width ? width : 32).toString());\n',
+        '\t    // Support for IE',
+        '\t    icon.setAttribute("focusable", "false");',
+        '\t}\n',
+        '\t// Return the icon',
+        '\treturn icon;',
+        '}\n',
         '// Icons to import',
-        icons.join('\n'),
+        'import * as SVGIcons from "./svgs";\n',
         "\n// Renders an icon by type",
         "export const Icons = (iconType:number, height?:number, width?:number) => {",
         "\t// See which icon is selected",
