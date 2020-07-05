@@ -69,7 +69,7 @@ import { IBaseProps } from "../base";
  * Table
  */
 export interface ITable {
-    addRows(rows: Array<any>);
+    addRows: (rows: Array<any>) => void;
 
     el: HTMLTableElement;
 

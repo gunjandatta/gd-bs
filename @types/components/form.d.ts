@@ -109,10 +109,10 @@ import { IFormControl, IFormControlProps, IFormControlTypes } from "./formContro
  */
 export interface IForm {
     /** Appends controls to the form */
-    appendControls(controls: Array<IFormControlProps>);
+    appendControls: (controls: Array<IFormControlProps>) => void;
 
     /** Appends rows to the form */
-    appendRows(rows: Array<IFormRow>);
+    appendRows: (rows: Array<IFormRow>) => void;
 
     /** The form controls */
     controls: Array<IFormControl>;

@@ -64,7 +64,7 @@ export interface IFormControl {
 
     setLabel: (value: string) => void;
 
-    setValue: (value) => void;
+    setValue: (value: any) => void;
 }
 
 /**
