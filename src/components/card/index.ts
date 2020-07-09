@@ -88,7 +88,7 @@ class _Card extends Base<ICardProps> implements ICard {
 
                 // Set the content
                 let content = this.props.header.content == null ? "" : this.props.header.content;
-                if (typeof (content) === "string") {
+                if (typeof (content) === "string" || typeof (content) === "number") {
                     // Set the html
                     header.innerHTML = content;
                 } else {
@@ -114,7 +114,7 @@ class _Card extends Base<ICardProps> implements ICard {
 
             // Set the content
             let content = this.props.footer.content == null ? "" : this.props.footer.content;
-            if (typeof (content) === "string") {
+            if (typeof (content) === "string" || typeof (content) === "number") {
                 // Set the html
                 footer.innerHTML = content;
             } else {

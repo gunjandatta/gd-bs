@@ -98,7 +98,7 @@ class _Modal extends Base<IModalProps> implements IModal {
         // Update the body
         let body = this.el.querySelector(".modal-body");
         let content = this.props.body || "";
-        if (typeof (content) === "string") {
+        if (typeof (content) === "string" || typeof (content) === "number") {
             // Set the HTML
             body.innerHTML = content;
         } else {
@@ -109,7 +109,7 @@ class _Modal extends Base<IModalProps> implements IModal {
         // Update the footer
         let footer = this.el.querySelector(".modal-footer");
         content = this.props.footer || "";
-        if (typeof (content) === "string") {
+        if (typeof (content) === "string" || typeof (content) === "number") {
             // Set the HTML
             footer.innerHTML = content;
         } else {

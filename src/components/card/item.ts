@@ -38,7 +38,7 @@ export class CardBody {
         if (this._props.title || this._props.onRenderTitle) {
             // See if the title is a string
             let title = this._props.title || "";
-            if (typeof (title) === "string") {
+            if (typeof (title) === "string" || typeof (title) === "number") {
                 // Set the title
                 elTitle.innerHTML += title;
             } else {
@@ -75,7 +75,7 @@ export class CardBody {
 
         // Set the content
         let content = this._props.content || "";
-        if (typeof (content) === "string") {
+        if (typeof (content) === "string" || typeof (content) === "number") {
             // Set the html
             this._el.innerHTML += content;
         } else {

@@ -68,7 +68,7 @@ export class AccordionItem {
     private renderContent() {
         let elCardBody = this._el.querySelector(".card-body") as HTMLElement;
         let content = this._props.content || "";
-        if (typeof (content) === "string") {
+        if (typeof (content) === "string" || typeof (content) === "number") {
             // Set the html
             elCardBody.innerHTML = content;
         } else {

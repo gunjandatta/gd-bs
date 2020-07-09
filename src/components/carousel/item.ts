@@ -46,7 +46,7 @@ export class CarouselItem {
 
             // Set the content
             let content = this._props.content || "";
-            if (typeof (content) === "string") {
+            if (typeof (content) === "string" || typeof (content) === "number") {
                 // Set the html
                 this._el.innerHTML += content;
             } else {

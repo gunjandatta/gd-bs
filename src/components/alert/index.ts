@@ -61,7 +61,7 @@ class _Alert extends Base<IAlertProps> implements IAlert {
         let content = this.props.content || "";
 
         // See if the content is a string
-        if (typeof (content) === "string") {
+        if (typeof (content) === "string" || typeof (content) === "number") {
             // Set the html
             this.el.innerHTML += content;
         } else {

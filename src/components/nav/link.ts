@@ -58,7 +58,7 @@ export class NavLink extends Base<INavLink> {
 
             // Set the content
             let content = this.props.tabContent || "";
-            if (typeof (content) === "string") {
+            if (typeof (content) === "string" || typeof (content) === "number") {
                 // Set the html
                 this._elTab.innerHTML = content;
             } else {

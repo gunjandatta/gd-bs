@@ -65,7 +65,7 @@ class _Badge extends Base<IBadgeProps> implements IBadge {
 
         // Set the content
         let content = this.props.content || "";
-        if (typeof (content) === "string") {
+        if (typeof (content) === "string" || typeof (content) === "number") {
             // Set the html
             this.el.innerHTML = content;
         } else {

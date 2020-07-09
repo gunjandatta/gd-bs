@@ -31,7 +31,7 @@ class _Collapse extends Base<ICollapseProps> implements ICollapse {
         // Set the content
         let content = this.props.content || "";
         let body = this.el.querySelector(".card") as HTMLDivElement;
-        if (typeof (content) === "string") {
+        if (typeof (content) === "string" || typeof (content) === "number") {
             // Set the html
             body.innerHTML = content;
         } else {

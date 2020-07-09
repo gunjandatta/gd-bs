@@ -72,7 +72,7 @@ export class Base<IProps = IBaseProps<IBase>> implements IBase<IProps> {
      */
 
     // The component element
-    get el() { return this._el; }
+    get el():Element { return this._el; }
     set el(el) { this._el = el; }
 
     // Hides the alert

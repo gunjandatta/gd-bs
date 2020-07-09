@@ -69,7 +69,7 @@ export class ListGroupItem extends Base<IListGroupItem> {
         // Set the content
         let content = this.props.content || "";
         let elContent = this._elTab || this.el;
-        if (typeof (content) === "string") {
+        if (typeof (content) === "string" || typeof (content) === "number") {
             // Set the html
             elContent.innerHTML = content;
         } else {

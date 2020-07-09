@@ -68,7 +68,7 @@ class _Toast extends Base<IToastProps> implements IToast {
         // Update the body
         let body = this.el.querySelector(".toast-body");
         let content = this.props.body || "";
-        if (typeof (content) === "string") {
+        if (typeof (content) === "string" || typeof (content) === "number") {
             // Set the html
             body.innerHTML = content;
         } else {
