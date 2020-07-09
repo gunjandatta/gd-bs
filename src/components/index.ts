@@ -22,6 +22,7 @@ export * from "./pagination";
 export * from "./popover";
 export * from "./progress";
 export * from "./progressGroup";
+export * from "./offcanvas";
 export * from "./spinner";
 export * from "./table";
 export * from "./toast";
