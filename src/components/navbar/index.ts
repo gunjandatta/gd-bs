@@ -170,6 +170,7 @@ class _Navbar extends Base<INavbarProps> implements INavbar {
             // Update the searchbox
             let searchbox = search.querySelector("input");
             searchbox.placeholder = props.placeholder || searchbox.placeholder;
+            searchbox.value = props.value || "";
             props.btnText ? searchbox.setAttribute("aria-label", props.btnText) : null;
 
             // See if we are rendering a button

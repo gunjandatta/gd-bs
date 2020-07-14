@@ -91,7 +91,6 @@ export const Navbar: (props: INavbarProps) => INavbar;
 export const NavbarTypes: INavbarTypes;
 
 import { IBaseProps } from "../base";
-import { IButtonProps } from "./button";
 import { IDropdownItem } from "./dropdown";
 
 /**
@@ -156,4 +155,5 @@ export interface INavbarSearchBox {
     onChange?: (value?: string) => void;
     onSearch?: (value?: string) => void;
     placeholder?: string;
+    value?: string;
 }
