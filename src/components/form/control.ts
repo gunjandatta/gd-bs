@@ -394,6 +394,30 @@ export class FormControl implements IFormControl {
             }
         }
 
+        // Update the validation
+        this.updateValidation(elControl, validation);
+
+        // Return the flag
+        return validation.isValid;
+    }
+
+    // The form control properties
+    get props(): IFormControlProps { return this._props; }
+
+    // Sets the form control label
+    setLabel(value: string) {
+        // Update the label
+        this._elLabel ? this._elLabel.innerHTML = value || "" : null;
+    }
+
+    // Sets the form control value
+    setValue(value) {
+        // Set the value
+        this.control ? this.control.setValue(value) : null;
+    }
+
+    // Updates the control validation
+    updateValidation(elControl: Element, validation: IFormControlValidationResult) {
         // Get the form control
         let elFormControl = elControl.querySelector(".form-control") as HTMLElement;
         if (elFormControl) {
@@ -471,23 +495,5 @@ export class FormControl implements IFormControl {
                 elMessage.innerHTML = validation.validMessage;
             }
         }
-
-        // Return the flag
-        return validation.isValid;
-    }
-
-    // The form control properties
-    get props(): IFormControlProps { return this._props; }
-
-    // Sets the form control label
-    setLabel(value: string) {
-        // Update the label
-        this._elLabel ? this._elLabel.innerHTML = value || "" : null;
-    }
-
-    // Sets the form control value
-    setValue(value) {
-        // Set the value
-        this.control ? this.control.setValue(value) : null;
     }
 }
