@@ -83,7 +83,7 @@ export interface IFormControlProps extends IBaseProps<IFormControl> {
     onControlRendering?: (control: IFormControlProps) => void | PromiseLike<IFormControlProps>;
     onControlRendered?: (control: IFormControl) => void | PromiseLike<IFormControl>;
     onGetValue?: (control: IFormControlProps) => any;
-    onValidate?: (control: IFormControlProps, value: any) => boolean | IFormControlValidationResult;
+    onValidate?: (control: IFormControlProps, value: IFormControlValidationResult) => boolean | IFormControlValidationResult;
     required?: boolean;
     title?: string;
     type?: number;
@@ -102,7 +102,7 @@ export interface IFormControlPropsCheckbox extends IFormControlProps {
     onChange?: (item: Array<ICheckboxGroupItem>) => void;
     onControlRendering?: (control: IFormControlPropsCheckbox) => void | PromiseLike<IFormControlPropsCheckbox>;
     onGetValue?: (control: IFormControlPropsCheckbox) => any;
-    onValidate?: (control: IFormControlPropsCheckbox, value: any) => boolean | IFormControlValidationResult;
+    onValidate?: (control: IFormControlPropsCheckbox, value: IFormControlValidationResult) => boolean | IFormControlValidationResult;
 }
 
 /**
@@ -113,7 +113,7 @@ export interface IFormControlPropsDropdown extends IFormControlProps {
     onChange?: (item: IDropdownItem | Array<IDropdownItem>) => void;
     onControlRendering?: (control: IFormControlPropsDropdown) => void | PromiseLike<IFormControlPropsDropdown>;
     onGetValue?: (control: IFormControlPropsDropdown) => any;
-    onValidate?: (control: IFormControlPropsDropdown, value: any) => boolean | IFormControlValidationResult;
+    onValidate?: (control: IFormControlPropsDropdown, value: IFormControlValidationResult) => boolean | IFormControlValidationResult;
 }
 
 /**
@@ -125,7 +125,7 @@ export interface IFormControlPropsListBox extends IFormControlProps {
     onChange?: (items: Array<IDropdownItem>) => void;
     onControlRendering?: (control: IFormControlPropsListBox) => void | PromiseLike<IFormControlPropsListBox>;
     onGetValue?: (control: IFormControlPropsListBox) => any;
-    onValidate?: (control: IFormControlPropsListBox, value: any) => boolean | IFormControlValidationResult;
+    onValidate?: (control: IFormControlPropsListBox, value: IFormControlValidationResult) => boolean | IFormControlValidationResult;
     placeholder?: string;
 }
 
@@ -137,7 +137,7 @@ export interface IFormControlPropsNumberField extends IFormControlPropsTextField
     min?: number;
     onControlRendering?: (control: IFormControlPropsNumberField) => void | PromiseLike<IFormControlPropsNumberField>;
     onGetValue?: (control: IFormControlPropsNumberField) => any;
-    onValidate?: (control: IFormControlPropsNumberField, value: any) => boolean | IFormControlValidationResult;
+    onValidate?: (control: IFormControlPropsNumberField, value: IFormControlValidationResult) => boolean | IFormControlValidationResult;
     step?: number;
 }
 
@@ -159,7 +159,7 @@ export interface IFormControlPropsTextField extends IFormControlProps {
     onChange?: (value: string) => void;
     onControlRendering?: (control: IFormControlPropsTextField) => void | PromiseLike<IFormControlPropsTextField>;
     onGetValue?: (control: IFormControlPropsTextField) => any;
-    onValidate?: (control: IFormControlPropsTextField, value: any) => boolean | IFormControlValidationResult;
+    onValidate?: (control: IFormControlPropsTextField, value: IFormControlValidationResult) => boolean | IFormControlValidationResult;
     placeholder?: string;
     rows?: number;
 }
@@ -192,4 +192,5 @@ export interface IFormControlValidationResult {
     invalidMessage?: string;
     isValid?: boolean;
     validMessage?: string;
+    value?: any;
 }

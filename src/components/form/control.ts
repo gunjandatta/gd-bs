@@ -382,7 +382,7 @@ export class FormControl implements IFormControl {
         // See if an event exists
         if (this._props.onValidate) {
             // Call the event
-            let returnValue = this._props.onValidate(this._props, value);
+            let returnValue = this._props.onValidate(this._props, { value });
             if (typeof (returnValue) === "boolean") {
                 // Set the flag
                 validation.isValid = returnValue;
