@@ -390,7 +390,7 @@ export class FormControl implements IFormControl {
             // Else, ensure it exists
             else if (returnValue) {
                 // Set the validation
-                validation = returnValue;
+                validation = { ...validation, ...returnValue };
             }
         }
 
