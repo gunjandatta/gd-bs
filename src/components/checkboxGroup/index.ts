@@ -70,7 +70,7 @@ class _CheckboxGroup extends Base<ICheckboxGroupProps> implements ICheckboxGroup
         // See if we are not allowing multiple selections
         if (this.props.multi != true) {
             // Add a click event
-            item.el.addEventListener("click", ev => {
+            item.checkbox.addEventListener("click", ev => {
                 // Parse the checkboxes
                 for (let i = 0; i < this._checkboxes.length; i++) {
                     let checkbox = this._checkboxes[i];
@@ -90,7 +90,7 @@ class _CheckboxGroup extends Base<ICheckboxGroupProps> implements ICheckboxGroup
         // See if there is a change event defined
         if (this.props.onChange) {
             // Add a click event
-            item.el.addEventListener("click", ev => {
+            item.checkbox.addEventListener("click", ev => {
                 // Call the event
                 this.props.onChange(this.getValue());
             });

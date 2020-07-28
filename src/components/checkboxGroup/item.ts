@@ -81,10 +81,10 @@ export class CheckboxItem {
     // Configures the events
     private configureEvents() {
         // Add a click event
-        this._el.addEventListener("click", ev => {
+        this._elCheckbox.addEventListener("click", ev => {
             // Update the value
             this._isSelected = !this._isSelected;
-            this._el.querySelector("input").checked = this._isSelected;
+            this._elCheckbox.checked = this._isSelected;
 
             // See if an event is defined
             if (this._props.onChange) {
