@@ -1,6 +1,39 @@
 import { IProgress, IProgressProps } from "../../../@types/components/progress";
+import { ClassNames } from "../classNames";
 import { Base } from "../base";
 import { HTML } from "./templates";
+
+/**
+ * Progress Bar Types
+ */
+export enum ProgressBarTypes {
+    Danger = 1,
+    Dark = 2,
+    Info = 3,
+    Light = 4,
+    Primary = 5,
+    Secondary = 6,
+    Success = 7,
+    Transparent = 8,
+    Warning = 9,
+    White = 10
+}
+
+/**
+ * Progress Bar Class Names
+ */
+export const ProgressBarClassNames = new ClassNames([
+    "bg-danger",
+    "bg-dark",
+    "bg-info",
+    "bg-light",
+    "bg-primary",
+    "bg-secondary",
+    "bg-success",
+    "bg-transparent",
+    "bg-warning",
+    "bg-white"
+]);
 
 /**
  * Progress
@@ -33,6 +66,13 @@ class _Progress extends Base<IProgressProps> implements IProgress {
         this.props.isAnimated ? progressBar.classList.add("progress-bar-animated") : null;
         this.props.isStriped ? progressBar.classList.add("progress-bar-striped") : null;
         this.props.label ? progressBar.innerHTML = this.props.label : null;
+
+        // See if a type exists
+        let className = ProgressBarClassNames.getByType(this.props.type);
+        if (className) {
+            // Add the class name
+            progressBar.classList.add(className);
+        }
     }
 
     /**

@@ -60,4 +60,5 @@ export interface IProgressProps extends IBaseProps<IProgress> {
     max?: number;
     min?: number;
     size?: number;
+    type?: number;
 }
