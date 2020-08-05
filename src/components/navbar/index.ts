@@ -17,6 +17,7 @@ export enum NavbarTypes {
  * Navbar
  */
 class _Navbar extends Base<INavbarProps> implements INavbar {
+    private _btnSearch: HTMLElement;
     private _items: Array<NavbarItem> = null;
 
     // Constructor
@@ -59,32 +60,10 @@ class _Navbar extends Base<INavbarProps> implements INavbar {
         toggler.setAttribute("data-target", "#" + navbar.id);
 
         // Add the classes based on the type
-        let btnSearch = this.el.querySelector("button[type='submit']") as HTMLButtonElement;
-        switch (this.props.type) {
-            // Dark
-            case NavbarTypes.Dark:
-                // Add the class
-                this.el.classList.add("navbar-dark");
-                this.el.classList.add("bg-dark");
-                btnSearch.classList.add("btn-outline-info")
-                break;
+        this._btnSearch = this.el.querySelector("button[type='submit']") as HTMLButtonElement;
 
-            // Primary
-            case NavbarTypes.Primary:
-                // Add the class
-                this.el.classList.add("navbar-dark");
-                this.el.classList.add("bg-primary");
-                btnSearch.classList.add("btn-outline-light")
-                break;
-
-            // Default - Light
-            default:
-                // Add the class
-                this.el.classList.add("navbar-light");
-                this.el.classList.add("bg-light");
-                btnSearch.classList.add("btn-outline-primary")
-                break;
-        }
+        // Set the type
+        this.setType(this.props.type);
 
         // Render the items
         this.renderItems();
@@ -204,6 +183,50 @@ class _Navbar extends Base<INavbarProps> implements INavbar {
             let item = new NavbarItem(items[i], this.props);
             this._items.push(item);
             list.appendChild(item.el);
+        }
+    }
+
+    /**
+     * Public Methods
+     */
+
+    // Updates the navbar template type
+    setType(navbarType: number) {
+        // Remove the classes
+        this.el.classList.remove("navbar-dark");
+        this.el.classList.remove("navbar-light");
+        this.el.classList.remove("bg-dark");
+        this.el.classList.remove("bg-light");
+        this.el.classList.remove("bg-primary");
+        this._btnSearch.classList.remove("btn-outline-info");
+        this._btnSearch.classList.remove("btn-outline-light");
+        this._btnSearch.classList.remove("btn-outline-primary");
+
+        // See which classes to add
+        switch (navbarType) {
+            // Dark
+            case NavbarTypes.Dark:
+                // Add the class
+                this.el.classList.add("navbar-dark");
+                this.el.classList.add("bg-dark");
+                this._btnSearch.classList.add("btn-outline-info")
+                break;
+
+            // Primary
+            case NavbarTypes.Primary:
+                // Add the class
+                this.el.classList.add("navbar-dark");
+                this.el.classList.add("bg-primary");
+                this._btnSearch.classList.add("btn-outline-light")
+                break;
+
+            // Default - Light
+            default:
+                // Add the class
+                this.el.classList.add("navbar-light");
+                this.el.classList.add("bg-light");
+                this._btnSearch.classList.add("btn-outline-primary")
+                break;
         }
     }
 }

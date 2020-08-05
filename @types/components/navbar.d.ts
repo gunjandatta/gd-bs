@@ -103,6 +103,9 @@ export interface INavbar {
     /** Hides the nav bar. */
     hide: () => void;
 
+    /** Updates the navbar type. */
+    setType: (navbarType: number) => void;
+
     /** Shows the nav bar. */
     show: () => void;
 }
