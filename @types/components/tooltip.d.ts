@@ -43,7 +43,6 @@ export const Tooltip: (props: ITooltipProps) => ITooltip;
 export const TooltipTypes: ITooltipTypes;
 
 import { IBaseProps } from "../base";
-import { IButtonProps } from "./button";
 
 /**
  * Tooltip
@@ -79,16 +78,17 @@ export interface ITooltip {
  */
 export interface ITooltipOptions {
     animation?: boolean;
-    boundary?: string;
-    container?: string;
+    boundary?: string | Element;
+    container?: string | Element | Function;
     delay?: number | object;
     fallbackPlacement?: string | Array<string>;
     html?: boolean;
-    offset?: number | string;
+    offset?: number | string | Function;
     placement?: string | Function;
+    popperConfig?: object;
     selector?: string;
     template?: string;
-    title?: string;
+    title?: string | Element | Function;
     trigger?: string;
 }
 

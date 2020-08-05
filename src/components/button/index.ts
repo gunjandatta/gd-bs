@@ -73,9 +73,6 @@ class _Button extends Base<IButtonProps> implements IButton {
 
         // Configure the parent
         this.configureParent();
-
-        // Create the bootstrap object
-        this._bootstrapObj = new button(this.el);
     }
 
     // Configure the button
@@ -157,12 +154,20 @@ class _Button extends Base<IButtonProps> implements IButton {
      * Bootstrap
      */
 
+    // The bootstrap button
+    private get bsButton() {
+        // Create the bootstrap object if it doesn't exist
+        this._bootstrapObj = this._bootstrapObj || new button(this.el);
+
+        // Return the object
+        return this._bootstrapObj;
+    }
+
     // Disposes the button
-    dispose() { this._bootstrapObj.dispose(); }
+    dispose() { this.bsButton.dispose(); }
 
     // Toggles the button
-    toggle() { this._bootstrapObj.toggle(); }
-
+    toggle() { this.bsButton.toggle(); }
     /**
      * Public Properties
      */

@@ -1,5 +1,4 @@
 // gd-bs Library
-// The bootstrap library
 export * from "./bootstrap";
 
 // The bootstrap icons

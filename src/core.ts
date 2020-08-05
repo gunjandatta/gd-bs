@@ -1,7 +1,10 @@
+// The bootstrap library
+import * as bootstrap from "bootstrap";
+
+// JS components
 import * as Components from "./components";
 
-// Bootstrap Components
-export { Components }
+export { bootstrap, Components }
 
-// Global Library
-window["GD"] = { Components }
+// Global library
+window["GD"] = { bootstrap, Components }

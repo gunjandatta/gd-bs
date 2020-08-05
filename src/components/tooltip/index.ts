@@ -20,6 +20,7 @@ export enum TooltipTypes {
  * Tooltip
  */
 class _Tooltip extends Base<ITooltipProps> {//implements ITooltip {
+    private _tooltips: HTMLDivElement = null;
 
     // Constructor
     constructor(props: ITooltipProps) {
@@ -50,8 +51,22 @@ class _Tooltip extends Base<ITooltipProps> {//implements ITooltip {
 
     // Configure the options
     private configureOptions() {
-        // Update the options
+        // Ensure the main tooltips element exists
+        // This will ensure the tooltips are wrapped with a parent element with the "bs" class applied to it.
+        this._tooltips = document.querySelector("#bs-tooltips");
+        if (this._tooltips == null) {
+            // Create the main element
+            this._tooltips = document.createElement("div");
+            this._tooltips.classList.add("bs");
+            this._tooltips.id = "bs-tooltips";
+
+            // Add it to the page
+            document.body.appendChild(this._tooltips)
+        }
+
+        // Set the options to target the main tooltips element
         let options = this.props.options || {};
+        options.container = options.container || this._tooltips;
 
         // See if a container was defined
         if (typeof (options.container) !== "string") {

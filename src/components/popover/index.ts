@@ -52,7 +52,7 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
 
         // Set the options to target the main popover element
         let options = this.props.options || {};
-        options.container = "#bs-popovers";
+        options.container = options.container || this._popovers;
 
         // See if the placement needs to be set
         if (options.placement == null) {

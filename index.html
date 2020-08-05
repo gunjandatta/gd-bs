@@ -55,6 +55,19 @@
     </form>
     <script type="text/javascript">
         window.addEventListener("load", function () {
+            // Dev
+            var elDev = document.getElementById("dev");
+            GD.Components.Popover({
+                el: elDev,
+                btnProps: {
+                    text: "Popover Demo"
+                },
+                options: {
+                    title: "Popover Title",
+                    content: "This is the content.",
+                }
+            });
+
             GD.Components.ListBox({
                 el: document.getElementById("listbox"),
                 label: "List Box Example:",
@@ -71,25 +84,6 @@
                 isDismissible: true,
                 header: "Alert Header",
                 content: "This is an alert."
-            });
-            GD.Components.Card({
-                el: document.getElementById("dev"),
-                body: [
-                    {
-                        title: "Title",
-                        subTitle: "Sub-Title",
-                        text: "This is the card text",
-                        actions: [
-                            {
-                                text: "Click Me",
-                                buttonType: 6,
-                                onClick: () => {
-                                    alert("You clicked on a card.");
-                                }
-                            }
-                        ]
-                    }
-                ]
             });
             var btnLoading = GD.Components.Button({
                 className: "btn-loading",
@@ -151,7 +145,6 @@
                 target: btnPopover.el,
                 options: {
                     content: "This is the content.",
-                    container: "body",
                     title: "My Popover",
                     trigger: "hover"
                 }
