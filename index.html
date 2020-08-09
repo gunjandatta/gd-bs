@@ -216,6 +216,17 @@
                             },
                             {
                                 control: {
+                                    name: "FileExample",
+                                    title: "Select a file",
+                                    type: GD.Components.FormControlTypes.File,
+                                    description: "This is a file selector",
+                                    onChange: function (value) {
+                                        console.log("File selected", value);
+                                    }
+                                }
+                            },
+                            {
+                                control: {
                                     name: "CBExample",
                                     title: "This is a checkbox",
                                     items: [{ label: "Checkbox Example w/ no label" }],

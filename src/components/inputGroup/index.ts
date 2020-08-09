@@ -47,15 +47,31 @@ class _InputGroup extends Base<IInputGroupProps> implements IInputGroup {
         this.props.isLarge ? this.el.classList.add("input-group-lg") : null;
         this.props.isSmall ? this.el.classList.add("input-group-sm") : null;
 
-        // See if a label exists
+        // Update the label
         let label = this.el.querySelector("label");
-        if (this.props.label) {
-            // Update the label
-            this.props.id ? label.setAttribute("for", this.props.id) : null;
-            label.innerHTML = this.props.label;
+        this.props.id ? label.setAttribute("for", this.props.id) : null;
+
+        // See if this is a file
+        if (this.props.type == InputGroupTypes.File) {
+            // Set the class
+            label.classList.add("form-file-label");
+
+            // Set the text
+            let spanText = document.createElement("span");
+            spanText.classList.add("form-file-text");
+            spanText.innerHTML = this.props.label || "Choose a file...";
+            label.appendChild(spanText);
+
+            // Set the button
+            let spanButton = document.createElement("span");
+            spanButton.classList.add("form-file-button");
+            spanButton.innerHTML = "Browse";
+            label.appendChild(spanButton);
         } else {
-            // Remove the label
-            this.el.removeChild(label);
+            // Set the label if it exists
+            if (this.props.label) { label.innerHTML = this.props.label; }
+            // Else, remove it
+            else { this.el.removeChild(label); }
         }
 
         // See if the label exists
@@ -210,6 +226,7 @@ class _InputGroup extends Base<IInputGroupProps> implements IInputGroup {
 
                 // File
                 case InputGroupTypes.File:
+                    this.el.classList.add("form-file");
                     input.classList.remove("form-control");
                     input.classList.add("form-file-input");
                     input.type = "file";

@@ -96,6 +96,7 @@ export class FormControl implements IFormControl {
                 // Add the input
                 this._tb = InputGroup({
                     className,
+                    id: this._props.id,
                     isReadonly: this._props.isReadonly,
                     onChange: (this._props as IFormControlPropsTextField).onChange,
                     placeholder: (this._props as IFormControlPropsTextField).placeholder,
@@ -110,6 +111,7 @@ export class FormControl implements IFormControl {
                 this._ddl = Dropdown({
                     className,
                     formFl: true,
+                    id: this._props.id,
                     isDatalist: true,
                     isReadonly: this._props.isReadonly,
                     items: (this._props as IFormControlPropsDropdown).items,
@@ -124,6 +126,7 @@ export class FormControl implements IFormControl {
                 this._ddl = Dropdown({
                     className,
                     formFl: true,
+                    id: this._props.id,
                     isReadonly: this._props.isReadonly,
                     items: (this._props as IFormControlPropsDropdown).items,
                     onChange: (this._props as IFormControlPropsDropdown).onChange,
@@ -136,6 +139,7 @@ export class FormControl implements IFormControl {
                 // Add the input
                 this._tb = InputGroup({
                     className,
+                    id: this._props.id,
                     isReadonly: this._props.isReadonly,
                     onChange: (this._props as IFormControlPropsTextField).onChange,
                     placeholder: (this._props as IFormControlPropsTextField).placeholder,
@@ -149,6 +153,7 @@ export class FormControl implements IFormControl {
                 // Add the input
                 this._tb = InputGroup({
                     className,
+                    id: this._props.id,
                     isReadonly: this._props.isReadonly,
                     onChange: (this._props as IFormControlPropsTextField).onChange,
                     placeholder: (this._props as IFormControlPropsTextField).placeholder,
@@ -175,6 +180,7 @@ export class FormControl implements IFormControl {
                 this._ddl = Dropdown({
                     className,
                     formFl: true,
+                    id: this._props.id,
                     isReadonly: this._props.isReadonly,
                     items: (this._props as IFormControlPropsDropdown).items,
                     multi: true,
@@ -188,6 +194,7 @@ export class FormControl implements IFormControl {
                 // Add the input
                 this._tb = InputGroup({
                     className,
+                    id: this._props.id,
                     isReadonly: this._props.isReadonly,
                     onChange: (this._props as IFormControlPropsTextField).onChange,
                     placeholder: (this._props as IFormControlPropsTextField).placeholder,
@@ -216,6 +223,7 @@ export class FormControl implements IFormControl {
                 // Add the input
                 this._tb = InputGroup({
                     className,
+                    id: this._props.id,
                     isReadonly: this._props.isReadonly,
                     min: (this._props as IFormControlPropsRange).min || 0,
                     max: (this._props as IFormControlPropsRange).max || 100,
@@ -232,6 +240,7 @@ export class FormControl implements IFormControl {
                 // Add the input
                 this._tb = InputGroup({
                     className,
+                    id: this._props.id,
                     isReadonly: true,
                     onChange: (this._props as IFormControlPropsTextField).onChange,
                     placeholder: (this._props as IFormControlPropsTextField).placeholder,
@@ -260,6 +269,7 @@ export class FormControl implements IFormControl {
                 // Add the input
                 this._tb = InputGroup({
                     className,
+                    id: this._props.id,
                     isReadonly: this._props.isReadonly,
                     onChange: (this._props as IFormControlPropsTextField).onChange,
                     placeholder: (this._props as IFormControlPropsTextField).placeholder,
@@ -274,6 +284,7 @@ export class FormControl implements IFormControl {
                 // Add the input
                 this._tb = InputGroup({
                     className,
+                    id: this._props.id,
                     isReadonly: this._props.isReadonly,
                     onChange: (this._props as IFormControlPropsTextField).onChange,
                     placeholder: (this._props as IFormControlPropsTextField).placeholder,
@@ -295,6 +306,12 @@ export class FormControl implements IFormControl {
                     custom(this._props);
                 }
                 break;
+        }
+
+        // See if a checkbox was rendered and an id was set
+        if (this.control && this._props.id) {
+            // Set the id
+            this.control.el.id = this._props.id;
         }
     }
 
