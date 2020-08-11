@@ -842,7 +842,7 @@
                     }
                 ]
             });
-            GD.Components.Button({
+            window["btnCollapse"] = GD.Components.Button({
                 el: document.querySelector("#btnCollapse"),
                 controls: ["collapseDemo"],
                 isExpanded: false,
@@ -853,7 +853,8 @@
             GD.Components.Collapse({
                 el: document.querySelector("#collapse"),
                 id: "collapseDemo",
-                content: "This is the content to be collapsed."
+                content: "This is the content to be collapsed.",
+                options: { toggle: false }
             });
             GD.Components.Accordion({
                 autoCollapse: false,
