@@ -4,7 +4,8 @@ import { IDropdownItem, IDropdownProps } from "../../../@types/components/dropdo
  * Dropdown Item
  */
 export class DropdownItem {
-    private _el: HTMLAnchorElement | HTMLDivElement = null;
+    private _el: HTMLLIElement | HTMLDivElement = null;
+    private _elLink: HTMLAnchorElement = null;
     private _isSelected: boolean = false;
     private _parent: IDropdownProps = null;
     private _props: IDropdownItem = null;
@@ -43,30 +44,34 @@ export class DropdownItem {
         } else {
             // See if we are rendering this in a nav bar
             if (this._parent.navFl) {
+                // Create the link
+                this._elLink = document.createElement("a");
+                this._elLink.className = this._props.className || "";
+                this._elLink.classList.add("dropdown-item");
+                this._props.isDisabled ? this._elLink.classList.add("disabled") : null;
+                this._props.target ? this._elLink.setAttribute("data-target", this._props.target) : null;
+                this._props.toggle ? this._elLink.setAttribute("data-toggle", this._props.toggle) : null;
+                this._elLink.href = this._props.href || "#";
+                this._elLink.innerHTML = this._props.text == null ? "" : this._props.text;
+
                 // Add the item
-                this._el = document.createElement("a");
-                this._el.className = this._props.className || "";
-                this._el.classList.add("dropdown-item");
-                this._props.isDisabled ? this._el.classList.add("disabled") : null;
-                this._props.target ? this._el.setAttribute("data-target", this._props.target) : null;
-                this._props.toggle ? this._el.setAttribute("data-toggle", this._props.toggle) : null;
-                this._el.href = this._props.href || "#";
-                this._el.innerHTML = this._props.text == null ? "" : this._props.text;
+                this._el = document.createElement("li");
+                this._el.appendChild(this._elLink);
             } else {
                 // Create the item
-                this._el = document.createElement("a");
-                this._el.className = this._props.className || "";
-                this._el.classList.add("dropdown-item");
-                this._props.isDisabled ? this._el.classList.add("disabled") : null;
-                this._props.target ? this._el.setAttribute("data-target", this._props.target) : null;
-                this._props.toggle ? this._el.setAttribute("data-toggle", this._props.toggle) : null;
-                this._el.href = this._props.href || "#";
-                this._el.innerHTML = this._props.text == null ? "" : this._props.text;
+                this._elLink = document.createElement("a");
+                this._elLink.className = this._props.className || "";
+                this._elLink.classList.add("dropdown-item");
+                this._props.isDisabled ? this._elLink.classList.add("disabled") : null;
+                this._props.target ? this._elLink.setAttribute("data-target", this._props.target) : null;
+                this._props.toggle ? this._elLink.setAttribute("data-toggle", this._props.toggle) : null;
+                this._elLink.href = this._props.href || "#";
+                this._elLink.innerHTML = this._props.text == null ? "" : this._props.text;
 
                 // See if this item is selected
                 if (this._props.isSelected) {
                     // Select the item
-                    this._el.classList.add("active");
+                    this._elLink.classList.add("active");
                 }
                 // Else, see if a value exists
                 else if (typeof (this._parent.value) !== "undefined") {
@@ -80,14 +85,18 @@ export class DropdownItem {
                         // See if this item is selected
                         if (value == values[j]) {
                             // Select the item
-                            this._el.classList.add("active");
+                            this._elLink.classList.add("active");
                             break;
                         }
                     }
                 }
 
                 // Set the flag
-                this._isSelected = this._el.classList.contains("active");
+                this._isSelected = this._elLink.classList.contains("active");
+
+                // Add the item
+                this._el = document.createElement("li");
+                this._el.appendChild(this._elLink);
             }
         }
     }
@@ -131,10 +140,10 @@ export class DropdownItem {
         // Update the class
         if (this._isSelected) {
             // Add the active class
-            this._el.classList.add("active");
+            (this._elLink || this._el).classList.add("active");
         } else {
             // Remove the active class
-            this._el.classList.remove("active");
+            (this._elLink || this._el).classList.remove("active");
         }
     }
 }

@@ -1,11 +1,10 @@
-import * as dropdown from "bootstrap/js/dist/dropdown";
 import "popper.js";
 import { IDropdown, IDropdownItem, IDropdownProps } from "../../../@types/components/dropdown";
 import { Base } from "../base";
 import { ButtonClassNames, ButtonTypes } from "../button";
 import { DropdownFormItem } from "./formItem";
 import { DropdownItem } from "./item";
-import { HTML, HTMLForm, HTMLNav, HTMLSplit } from "./templates";
+import { HTML, HTMLForm, HTMLNavItem, HTMLSplit } from "./templates";
 
 /**
  * Dropdown Types
@@ -25,7 +24,7 @@ const GetHTML = (props: IDropdownProps) => {
     if (props.formFl) { return HTMLForm; }
 
     // See if we are rendering for a nav bar
-    if (props.navFl) { return HTMLNav; }
+    if (props.navFl) { return HTMLNavItem; }
 
     // See if we are rendering a split button dropdown
     if (props.isSplit) { return HTMLSplit; }
@@ -53,10 +52,6 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
 
         // Configure the parent
         this.configureParent();
-
-        // Create the bootstrap object
-        let elToggle = this.el.querySelector("*[data-toggle='dropdown']");
-        this._bootstrapObj = elToggle ? new dropdown(elToggle) : null;
     }
 
     // Configure the card group
@@ -269,7 +264,7 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
     private configureNavBar() {
         // Update the link
         let link = this.el.querySelector("a");
-        link.id = "navbarDDL_" + (this.props.label == null ? "" : this.props.label);
+        link.id = ("navbarDDL_" + (this.props.label == null ? "" : this.props.label)).replace(/ /g, '');
         link.title = this.props.title == null ? "" : this.props.title;
         this.props.isReadonly ? link.setAttribute("aria-disabled", "true") : null;
         link.innerHTML = this.props.label == null ? "" : this.props.label;

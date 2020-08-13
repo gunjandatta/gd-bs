@@ -14,10 +14,10 @@ export const HTMLForm = `
 </div>`.trim();
 
 // Navigation
-export const HTMLNav = `
+export const HTMLNavItem = `
 <li class="nav-item dropdown">
-    <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"></a>
-    <div class="dropdown-menu"></div>
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false"></a>
+    <ul class="dropdown-menu"></ul>
 </li>`.trim();
 
 // Split
@@ -28,5 +28,5 @@ export const HTMLSplit = `
         aria-expanded="false">
         <span class="sr-only">Toggle Dropdown</span>
     </button>
-    <div class="dropdown-menu"></div>
+    <ul class="dropdown-menu"></ul>
 </div>`.trim();
