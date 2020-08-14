@@ -109,6 +109,10 @@ class _ListBox extends Base<IListBoxProps> implements IListBox {
 
                     // Clear the selected value
                     this._elSearchBox.value = "";
+
+                    // Bug - Edge (non-chromium)
+                    // The menu is still visible, so we fill force a "blur" to hide the menu after selection
+                    this._elSearchBox.blur();
                 }
             }
         });
