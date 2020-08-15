@@ -102,8 +102,19 @@ class _CheckboxGroup extends Base<ICheckboxGroupProps> implements ICheckboxGroup
         // Clear the checkboxes
         this._checkboxes = [];
 
+        // Set the items
+        let items = this.props.items;
+        if (items == null || typeof (items.length) !== "number") {
+            // Clear the items
+            items = [];
+
+            // Create an item based on the label
+            items.push({
+                label: this.props.label || ""
+            });
+        }
+
         // Parse the items
-        let items = this.props.items || [];
         for (let i = 0; i < items.length; i++) {
             let item = items[i];
 
