@@ -150,6 +150,7 @@ export interface IFormColumn {
  */
 export interface IFormProps extends IBaseProps<IForm> {
     controls?: Array<IFormControlProps>;
+    groupClassName?: string;
     rowClassName?: string;
     rows?: Array<IFormRow>;
     onControlRendering?: (control: IFormControlProps) => void | PromiseLike<IFormControlProps>;

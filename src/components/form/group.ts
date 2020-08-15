@@ -20,6 +20,7 @@ export class FormGroup {
         // Create the element
         let el = document.createElement("div");
         el.innerHTML = HTMLGroup;
+        el.className = formProps.groupClassName = formProps.groupClassName || "";
         this._el = el.firstChild as HTMLDivElement;
 
         // Configure the control
