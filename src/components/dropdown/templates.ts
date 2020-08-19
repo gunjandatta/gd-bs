@@ -10,7 +10,7 @@ export const HTML = `
 export const HTMLForm = `
 <div>
     <label></label>
-    <select class="form-control"></select>
+    <select class="form-select"></select>
 </div>`.trim();
 
 // Navigation

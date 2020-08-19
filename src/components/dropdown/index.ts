@@ -219,7 +219,7 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
         // Update the dropdown
         let dropdown = this.el.querySelector("select");
         dropdown.className = this.props.className || "";
-        dropdown.classList.add("form-control");
+        dropdown.classList.add("form-select");
         dropdown.disabled = this.props.isReadonly ? true : false;
         dropdown.multiple = this.props.multi ? true : false;
         dropdown.title = this.props.title == null ? "" : this.props.title;
