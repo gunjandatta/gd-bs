@@ -140,6 +140,7 @@ export interface IForm {
  * Form Column
  */
 export interface IFormColumn {
+    className?: string;
     control: IFormControlProps;
     isAutoSized?: boolean;
     size?: number;

@@ -64,6 +64,15 @@ export class FormRow {
             this._columns.push(column);
             this._el.appendChild(column.el);
 
+            // Get the class names
+            let classNames = (columnProps.className || "").split(" ");
+            for (let i = 0; i < classNames.length; i++) {
+                let className = classNames[i];
+
+                // Add the class name if it exists
+                className ? column.el.classList.add(className) : null;
+            }
+
             // Create the column
             let colSize = columnProps.size > 0 && columnProps.size < 13 ? columnProps.size : 0;
 
