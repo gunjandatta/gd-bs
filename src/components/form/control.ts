@@ -437,7 +437,7 @@ export class FormControl implements IFormControl {
     // Updates the control validation
     updateValidation(elControl: Element, validation: IFormControlValidationResult) {
         // Get the form control
-        let elFormControl = elControl.querySelector(".form-control") as HTMLElement;
+        let elFormControl: HTMLElement = elControl.querySelector(".form-control") || elControl.querySelector(".form-select");
         if (elFormControl) {
             // Clear the invalid/valid classes
             elFormControl.classList.remove("is-invalid");
