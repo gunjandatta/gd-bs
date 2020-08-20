@@ -298,6 +298,7 @@ export class FormControl implements IFormControl {
             default:
                 // Create the default element
                 this._el = document.createElement("div");
+                this._el.className = className;
 
                 // See if there is a custom type
                 let custom = CustomControls.getByType(this._props.type);
