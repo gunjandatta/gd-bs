@@ -34,7 +34,7 @@ export class CheckboxItem {
     private configure() {
         // Set the attributes
         this._elCheckbox = this._el.querySelector("input");
-        this._elCheckbox.disabled = this._props.isDisabled ? true : false;
+        this._elCheckbox.disabled = this._parent.isReadonly || this._props.isDisabled ? true : false;
 
         // See if the title property is defined
         if (this._parent.title) {

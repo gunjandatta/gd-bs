@@ -15,7 +15,7 @@
         window["testForm"] = GD.Components.Form({
             el: document.getElementById("test"),
             value: {
-                Example1: false
+                Example1: true
             },
             rows: [
                 {
@@ -23,6 +23,7 @@
                         {
                             control: {
                                 isInline: true,
+                                isReadonly: true,
                                 type: GD.Components.FormControlTypes.Checkbox,
                                 label: "Testing Chk",
                                 name: "Example1",
