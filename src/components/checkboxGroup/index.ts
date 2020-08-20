@@ -114,6 +114,15 @@ class _CheckboxGroup extends Base<ICheckboxGroupProps> implements ICheckboxGroup
             });
         }
 
+        // See if this is a single checkbox
+        if (this.props.multi != true && items.length > 0) {
+            // See if this checkbox should be checked
+            if (typeof (this.props.value) === "boolean" && this.props.value) {
+                // Select the item
+                items[0].isSelected = true;
+            }
+        }
+
         // Parse the items
         for (let i = 0; i < items.length; i++) {
             let item = items[i];

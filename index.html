@@ -14,6 +14,9 @@
     <script>
         window["testForm"] = GD.Components.Form({
             el: document.getElementById("test"),
+            value: {
+                Example1: false
+            },
             rows: [
                 {
                     columns: [
@@ -21,16 +24,11 @@
                             control: {
                                 isInline: true,
                                 type: GD.Components.FormControlTypes.Checkbox,
+                                label: "Testing Chk",
                                 name: "Example1",
-                                items: [{
-                                    label: "Testing Chk",
-                                    name: "ExampleItem1",
-                                    type: GD.Components.FormControlTypes.Checkbox,
-                                    onChange: (value) => {
-                                        debugger;
-                                        var showMeTheMonaaaay = value; //Not providing the chk's value
-                                    },
-                                }],
+                                onChange: (value) => {
+                                    var showMeTheMonaaaay = value; //Not providing the chk's value
+                                },
                                 title: "Example"
                             }
                         },
