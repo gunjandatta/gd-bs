@@ -12,10 +12,84 @@
 <body>
     <div id="test"></div>
     <script>
-        window["test"] = GD.Components.Button({
+        window["testForm"] = GD.Components.Form({
             el: document.getElementById("test"),
-            iconType: 367,
-            type: 3
+            rows: [
+                {
+                    columns: [
+                        {
+                            control: {
+                                isInline: true,
+                                type: GD.Components.FormControlTypes.Checkbox,
+                                name: "Example1",
+                                items: [{
+                                    label: "Testing Chk",
+                                    name: "ExampleItem1",
+                                    type: GD.Components.FormControlTypes.Checkbox,
+                                    onChange: (value) => {
+                                        debugger;
+                                        var showMeTheMonaaaay = value; //Not providing the chk's value
+                                    },
+                                }],
+                                title: "Example"
+                            }
+                        },
+                        {
+                            control: {
+                                label: "Testing",
+                                name: "Example2",
+                                type: GD.Components.FormControlTypes.MultiDropdown,
+                                items: [
+                                    {
+                                        text: "Net Estimated Hard",
+                                        value: "EstHard",
+                                        isSelected: true
+                                    },
+                                    {
+                                        text: "Net Estimated WCF",
+                                        value: "EstWCF",
+                                        isSelected: false
+                                    },
+                                    {
+                                        text: "Net Estimated NAF",
+                                        value: "EstNAF",
+                                        isSelected: true
+                                    },
+                                    {
+                                        text: "Net Programmed/Budgeted",
+                                        value: "PB",
+                                        isSelected: false
+                                    },
+                                    {
+                                        text: "Net Actual WCF",
+                                        value: "ActWCF",
+                                        isSelected: true
+                                    },
+                                    {
+                                        text: "Opportunity Cost",
+                                        value: "OppCost",
+                                        isSelected: false
+                                    }
+                                ],
+                                onValidate: control => {
+                                    let allValues = testForm.getValues();
+
+                                    //Get the selected Bins
+                                    let selectedValues = allValues["FinancialValues"].map(item => item.data);
+
+                                    let isValid = selectedValues.length > 0;
+
+                                    //If there is a value, then the control is valid
+                                    return {
+                                        invalidMessage: "At least one Financial Value must be selected",
+                                        isValid
+                                    };
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
         });
     </script>
     <h1>Library</h1>

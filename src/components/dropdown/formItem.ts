@@ -79,6 +79,7 @@ export class DropdownFormItem {
 
     // Returns true if the item is selected
     get isSelected(): boolean { return this._isSelected; }
+    set isSelected(value: boolean) { this._isSelected = value; }
 
     // The component properties
     get props(): IDropdownItem { return this._props; }

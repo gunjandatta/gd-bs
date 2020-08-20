@@ -130,58 +130,21 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
         // See if this is a select element and a change event exists
         let menu = this.el.querySelector("select");
         if (menu) {
-            // See if multiple options are allowed
-            if (this.props.multi == true) {
-                // Add a scroll event
-                menu.addEventListener("click", ev => {
-                    let selectedIdx = -1;
-
-                    // Get the mouse position
-                    let xPos = ev.clientX;
-                    let yPos = ev.clientY;
-
+            // Add a change event
+            menu.addEventListener("change", ev => {
+                // See if multiple options are allowed
+                if (this.props.multi == true) {
                     // Parse the items
                     for (let i = 0; i < this._items.length; i++) {
-                        let item = this._items[i];
-                        let itemPos = item.el.getBoundingClientRect();
+                        let item = this._items[i] as DropdownFormItem;
 
-                        // See if this item was selected
-                        if (xPos >= itemPos.left && xPos <= itemPos.right &&
-                            yPos >= itemPos.top && yPos <= itemPos.bottom) {
-                            // Set the index
-                            selectedIdx = i;
-
-                            // Toggle the item
-                            item.toggle();
-
-                            // Break from the loop
-                            break;
-                        }
+                        // Update the flag
+                        item.isSelected = (item.el as HTMLOptionElement).selected;
                     }
 
-                    // See if an item was selected
-                    if (selectedIdx >= 0) {
-                        // Parse the items
-                        for (let i = 0; i < this._items.length; i++) {
-                            let item = this._items[i];
-
-                            // Skip the selected item
-                            if (selectedIdx == i) { continue; }
-
-                            // See if this item was selected
-                            if (item.isSelected) {
-                                // Ensure the element is still selected
-                                (item.el as HTMLOptionElement).selected = true;
-                            }
-                        }
-
-                        // Call the change event
-                        this.props.onChange ? this.props.onChange(this.getValue(), ev) : null;
-                    }
-                });
-            } else {
-                // Add a change event
-                menu.addEventListener("change", ev => {
+                    // Call the change event
+                    this.props.onChange ? this.props.onChange(this.getValue(), ev) : null;
+                } else {
                     // Parse the items
                     for (let i = 0; i < this._items.length; i++) {
                         let item = this._items[i];
@@ -198,8 +161,8 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
                             if (item.isSelected) { item.toggle(); }
                         }
                     }
-                });
-            }
+                }
+            });
         }
     }
 
