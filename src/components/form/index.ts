@@ -35,6 +35,15 @@ class _Form extends Base<IFormProps> implements IForm {
         this._groups = [];
         this._rows = [];
 
+        // Add the class name
+        let classNames = (this.props.className || "").split(" ");
+        for (let i = 0; i < classNames.length; i++) {
+            let className = classNames[i];
+
+            // Append the class name
+            className ? this.el.classList.add(className) : null;
+        }
+
         // Append the controls
         this.appendControls(this.props.controls)
 
