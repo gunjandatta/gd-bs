@@ -4,7 +4,7 @@
 export const ListBox: (props: IListBoxProps) => IListBox;
 
 import { IBase } from "../base";
-import { IDropdown, IDropdownItem } from "./dropdown";
+import { IDropdownItem } from "./dropdown";
 
 /**
  * List Box

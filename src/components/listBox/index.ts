@@ -52,6 +52,14 @@ class _ListBox extends Base<IListBoxProps> implements IListBox {
             this._elDatalist.id = this.props.id + "-list";
         }
 
+        // See if the label exists
+        if (this.props.label) {
+            this._elLabel.innerHTML = this.props.label;
+        } else {
+            // Remove the label
+            this.el.removeChild(this._elLabel);
+        }
+
         // Set the options
         this.setOptions(this.props.items);
 
