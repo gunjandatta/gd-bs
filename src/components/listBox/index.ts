@@ -60,6 +60,12 @@ class _ListBox extends Base<IListBoxProps> implements IListBox {
             this.el.removeChild(this._elLabel);
         }
 
+        // See if this is read-only
+        if (this.props.isReadonly) {
+            // Disable the search box
+            this._elSearchBox.disabled = true;
+        }
+
         // Set the options
         this.setOptions(this.props.items);
 
@@ -127,28 +133,30 @@ class _ListBox extends Base<IListBoxProps> implements IListBox {
     }
 
     // Method to configure the item event
-    private configureItemEvent(elItem: HTMLLIElement, item: IDropdownItem) {
-        // Add a click event to the badge
-        elItem.querySelector(".badge").addEventListener("click", () => {
-            // Remove the item
-            this._elValues.removeChild(elItem);
+    private configureItemEvent(elRemove: HTMLSpanElement, elItem: HTMLLIElement, item: IDropdownItem) {
+        // Ensure the remove element exists
+        if (elRemove) {
+            // Add a click event to the badge
+            elItem.querySelector(".badge").addEventListener("click", () => {
+                // Remove the item
+                this._elValues.removeChild(elItem);
 
-            // Find the selected item
-            for (let i = 0; i < this._selectedItems.length; i++) {
-                let selectedItem = this._selectedItems[i];
+                // Find the selected item
+                for (let i = 0; i < this._selectedItems.length; i++) {
+                    let selectedItem = this._selectedItems[i];
 
-                // See if this is the target item
-                if (selectedItem.text == item.text) {
-                    // Remove this item
-                    this._selectedItems.splice(i, 1);
+                    // See if this is the target item
+                    if (selectedItem.text == item.text) {
+                        // Remove this item
+                        this._selectedItems.splice(i, 1);
 
-                    // Call the change event
-                    this.props.onChange ? this.props.onChange(this._selectedItems) : null;
-                    break;
+                        // Call the change event
+                        this.props.onChange ? this.props.onChange(this._selectedItems) : null;
+                        break;
+                    }
                 }
-            }
-        });
-
+            });
+        }
     }
 
     /**
@@ -211,11 +219,19 @@ class _ListBox extends Base<IListBoxProps> implements IListBox {
                         this._elValues.appendChild(elItem);
 
                         // Set the text value
+                        let elRemove = elItem.querySelector("span");
                         let text = document.createTextNode(item.text);
-                        elItem.insertBefore(text, elItem.querySelector("span"));
+                        elItem.insertBefore(text, elRemove);
+
+                        // See if this is read-only
+                        if (this.props.isReadonly) {
+                            // Delete the "remove" button
+                            elItem.removeChild(elRemove);
+                            elRemove = null;
+                        }
 
                         // Configure the event for this item
-                        this.configureItemEvent(elItem, item);
+                        this.configureItemEvent(elRemove, elItem, item);
 
                         // Break from the loop
                         break;

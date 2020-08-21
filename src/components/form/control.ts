@@ -167,6 +167,7 @@ export class FormControl implements IFormControl {
                 // Add the list box
                 this._lb = ListBox({
                     id: this._props.name,
+                    isReadonly: this._props.isReadonly,
                     items: (this._props as IFormControlPropsListBox).items,
                     multi: (this._props as IFormControlPropsListBox).multi,
                     onChange: (this._props as IFormControlPropsListBox).onChange,

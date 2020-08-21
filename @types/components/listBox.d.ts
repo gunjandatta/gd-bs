@@ -26,6 +26,7 @@ export interface IListBox extends IBase<IListBoxProps> {
 export interface IListBoxProps {
     label?: string;
     id?: string;
+    isReadonly?: boolean;
     items: Array<IDropdownItem>;
     multi?: boolean;
     placeholder?: string;
