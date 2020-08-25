@@ -17,6 +17,38 @@
             value: {
                 Example1: true
             },
+            onRendered: function (form) {
+                // Create ddl items
+                let items = [
+                    {
+                        text: "Net Estimated Hard",
+                        value: "EstHard"
+                    },
+                    {
+                        text: "Net Estimated WCF",
+                        value: "EstWCF"
+                    },
+                    {
+                        text: "Net Estimated NAF",
+                        value: "EstNAF"
+                    },
+                    {
+                        text: "Net Programmed/Budgeted",
+                        value: "PB"
+                    },
+                    {
+                        text: "Net Actual WCF",
+                        value: "ActWCF"
+                    },
+                    {
+                        text: "Opportunity Cost",
+                        value: "OppCost"
+                    }
+                ];
+
+                // Set items
+                testForm.getControl("Example2").dropdown.setItems(items);
+            },
             rows: [
                 {
                     columns: [
@@ -37,39 +69,8 @@
                             control: {
                                 label: "Testing",
                                 name: "Example2",
-                                type: GD.Components.FormControlTypes.MultiDropdown,
-                                items: [
-                                    {
-                                        text: "Net Estimated Hard",
-                                        value: "EstHard",
-                                        isSelected: true
-                                    },
-                                    {
-                                        text: "Net Estimated WCF",
-                                        value: "EstWCF",
-                                        isSelected: false
-                                    },
-                                    {
-                                        text: "Net Estimated NAF",
-                                        value: "EstNAF",
-                                        isSelected: true
-                                    },
-                                    {
-                                        text: "Net Programmed/Budgeted",
-                                        value: "PB",
-                                        isSelected: false
-                                    },
-                                    {
-                                        text: "Net Actual WCF",
-                                        value: "ActWCF",
-                                        isSelected: true
-                                    },
-                                    {
-                                        text: "Opportunity Cost",
-                                        value: "OppCost",
-                                        isSelected: false
-                                    }
-                                ],
+                                type: GD.Components.FormControlTypes.Dropdown,
+                                items: [],
                                 onValidate: control => {
                                     let allValues = testForm.getValues();
 

@@ -148,9 +148,10 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
                     // Parse the items
                     for (let i = 0; i < this._items.length; i++) {
                         let item = this._items[i];
+                        let selectedValue = ((ev.target as HTMLSelectElement).value || "").trim();
 
                         // See if this item was selected
-                        if ((ev.target as HTMLSelectElement).value == item.props.text) {
+                        if (selectedValue == (item.props.text || "").trim()) {
                             // Ensure this item is selected
                             if (!item.isSelected) { item.toggle(); }
 
