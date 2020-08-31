@@ -242,8 +242,7 @@
                     CBInlineExample: true,
                     FName: "Datta",
                     LName: "Base",
-                    TestDelay: null,
-                    ListBox: "Value 2"
+                    TestDelay: null
                 },
                 onControlRendering: function (ctrlProps) { console.log("The control property '" + ctrlProps.name + "' is rendering..."); },
                 onControlRendered: function (ctrl) { console.log("The control '" + ctrl.props.name + "' has been rendered..."); },
@@ -386,7 +385,7 @@
                                     items: [
                                         { text: "Value 1" },
                                         { text: "Value 2" },
-                                        { text: "Value 3" },
+                                        { text: "Value 3", isSelected: true },
                                         { text: "Value 4" },
                                         { text: "Value 5" }
                                     ]

@@ -69,8 +69,8 @@ class _ListBox extends Base<IListBoxProps> implements IListBox {
         // Set the options
         this.setOptions(this.props.items);
 
-        // Set the value
-        this.setValue(this.props.value);
+        // Set the value if it's been defined
+        if (typeof (this.props.value) !== "undefined") { this.setValue(this.props.value); }
     }
 
     // Configures the events
@@ -180,10 +180,24 @@ class _ListBox extends Base<IListBoxProps> implements IListBox {
 
         // Parse the items
         for (let i = 0; i < items.length; i++) {
+            let props = items[i];
+
             // Add the option
             let elOption = document.createElement("option");
-            elOption.value = items[i].text;
+            elOption.value = props.text;
             elDatalist.appendChild(elOption);
+
+            // See if the item is selected
+            if (props.isSelected) {
+                // Add the selected item
+                this._selectedItems.push(props);
+            }
+        }
+
+        // See if items are selected
+        if (this._selectedItems.length > 0) {
+            // Set the value
+            this.setValue(this._selectedItems);
         }
     }
 
@@ -196,19 +210,19 @@ class _ListBox extends Base<IListBoxProps> implements IListBox {
         // Parse the values
         if (value) {
             // Ensure this is an array
-            let values = typeof (value) === "string" ? [value] : value;
+            let values = typeof (value) === "string" || typeof (value) === "number" ? [value] : value;
 
             // Parse the values
             for (let i = 0; i < values.length; i++) {
                 let itemValue = values[i];
-                itemValue = typeof (itemValue) === "string" ? itemValue : itemValue.text;
+                itemValue = typeof (itemValue) === "string" || typeof (itemValue) === "number" ? itemValue : itemValue.text;
 
                 // Parse the items
                 for (let j = 0; j < this._items.length; j++) {
                     let item = this._items[j];
 
                     // See if this is the target item
-                    if (item.text == itemValue) {
+                    if (item.text == itemValue || item.value == itemValue) {
                         // Add the selected item
                         this._selectedItems.push(item);
 
