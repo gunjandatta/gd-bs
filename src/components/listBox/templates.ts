@@ -7,6 +7,6 @@ export const HTML = `
 </div>`.trim();
 
 export const HTMLItem = `
-<li class="list-group-item d-flex justify-content-between align-items-center">
+<li class="list-group-item d-flex justify-content-between align-items-center active">
     <span class="badge bg-secondary rounded-pill">&times;</span>
 </li>`.trim();

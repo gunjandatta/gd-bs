@@ -658,7 +658,7 @@ eval("\n\nvar __extends = this && this.__extends || function () {\n  var _extend
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.HTML = \"\\n<div class=\\\"listbox\\\">\\n    <label class=\\\"form-label\\\" for=\\\"search-options\\\"></label>\\n    <input class=\\\"form-control\\\" id=\\\"search-options\\\" list=\\\"options\\\" placeholder=\\\"Type to search...\\\">\\n    <datalist id=\\\"options\\\"></datalist>\\n    <ul class=\\\"list-group\\\"></ul>\\n</div>\".trim();\nexports.HTMLItem = \"\\n<li class=\\\"list-group-item d-flex justify-content-between align-items-center\\\">\\n    <span class=\\\"badge bg-secondary rounded-pill\\\">&times;</span>\\n</li>\".trim();\n\n//# sourceURL=webpack:///./build/components/listBox/templates.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.HTML = \"\\n<div class=\\\"listbox\\\">\\n    <label class=\\\"form-label\\\" for=\\\"search-options\\\"></label>\\n    <input class=\\\"form-control\\\" id=\\\"search-options\\\" list=\\\"options\\\" placeholder=\\\"Type to search...\\\">\\n    <datalist id=\\\"options\\\"></datalist>\\n    <ul class=\\\"list-group\\\"></ul>\\n</div>\".trim();\nexports.HTMLItem = \"\\n<li class=\\\"list-group-item d-flex justify-content-between align-items-center active\\\">\\n    <span class=\\\"badge bg-secondary rounded-pill\\\">&times;</span>\\n</li>\".trim();\n\n//# sourceURL=webpack:///./build/components/listBox/templates.js?");
 
 /***/ }),
 
