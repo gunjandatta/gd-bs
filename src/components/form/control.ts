@@ -18,6 +18,7 @@ import { FormControlTypes } from ".";
  */
 export class FormControl implements IFormControl {
     private _cb: ICheckboxGroup = null;
+    private _custom: any = null;
     private _el: HTMLElement = null;
     private _elLabel: HTMLLabelElement = null;
     private _ddl: IDropdown = null;
@@ -305,7 +306,7 @@ export class FormControl implements IFormControl {
                 let custom = CustomControls.getByType(this._props.type);
                 if (custom && typeof (custom) === "function") {
                     // Execute the event
-                    custom(this._props);
+                    this._custom = custom(this._props);
                 }
                 break;
         }
@@ -330,7 +331,7 @@ export class FormControl implements IFormControl {
     get dropdown() { return this._ddl; }
 
     // The textbox control
-    get control() { return this._cb || this._ddl || this._lb || this._tb }
+    get control() { return this._cb || this._ddl || this._lb || this._tb || this._custom }
 
     // The listbox control
     get listbox() { return this._lb; }
