@@ -430,6 +430,12 @@ export class FormControl implements IFormControl {
         this._elLabel ? this._elLabel.innerHTML = value || "" : null;
     }
 
+    // Sets the custom control
+    setControl(control) {
+        // Set the custom control
+        this._custom = control;
+    }
+
     // Sets the form control value
     setValue(value) {
         // Set the value

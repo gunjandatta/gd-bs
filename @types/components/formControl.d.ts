@@ -64,6 +64,8 @@ export interface IFormControl {
 
     setLabel: (value: string) => void;
 
+    setControl: (control: any) => void;
+
     setValue: (value: any) => void;
 
     updateValidation: (elControl: Element, validation: IFormControlValidationResult) => void;
