@@ -76,6 +76,9 @@ export interface IDropdown {
     /** Updates the dropdown items. */
     setItems: (items: Array<IDropdownItem>) => void;
 
+    /** Updates the dropdown type. */
+    setType: (ddlType: number) => void;
+
     /** Sets the dropdown value. */
     setValue: (value?: any | Array<any>) => void;
 

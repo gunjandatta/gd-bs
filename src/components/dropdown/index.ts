@@ -31,6 +31,7 @@ const GetHTML = (props: IDropdownProps) => {
  * @property props - The dropdown properties.
  */
 class _Dropdown extends Base<IDropdownProps> implements IDropdown {
+    private _btn: HTMLButtonElement = null;
     private _items: Array<DropdownFormItem | DropdownItem> = null;
 
     // Constructor
@@ -82,28 +83,28 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
         this.props.dropUp ? this.el.classList.add("dropup") : null;
 
         // Set the type
-        let btnType = ButtonClassNames.getByType(this.props.type) || ButtonClassNames.getByType(ButtonTypes.Primary);
+        let btnType = ButtonClassNames.getByType(this.props.type) || ButtonClassNames.getByType(DropdownTypes.Primary);
 
         // See if this is a split button
         if (this.props.isSplit) {
             // Update a label
-            let label = this.el.querySelector("button");
-            label.classList.add(btnType);
-            label.disabled = this.props.isReadonly ? true : false;
-            label.innerHTML = this.props.label == null ? "" : this.props.label;
+            this._btn = this.el.querySelector("button");
+            this._btn.classList.add(btnType);
+            this._btn.disabled = this.props.isReadonly ? true : false;
+            this._btn.innerHTML = this.props.label == null ? "" : this.props.label;
 
             // Set the click event to disable the postback
-            label.addEventListener("click", ev => { ev.preventDefault(); });
+            this._btn.addEventListener("click", ev => { ev.preventDefault(); });
         } else {
             // Update the label
-            let label = this.el.querySelector(".dropdown-toggle");
-            label.innerHTML = this.props.label == null ? "" : this.props.label;
+            this._btn = this.el.querySelector(".dropdown-toggle");
+            this._btn.innerHTML = this.props.label == null ? "" : this.props.label;
         }
 
         // Update the dropdown
-        let dropdown = this.el.querySelector(".dropdown-toggle") as HTMLButtonElement;
-        dropdown.classList.add(btnType);
-        dropdown.disabled = this.props.isReadonly ? true : false;
+        this._btn = this.el.querySelector(".dropdown-toggle");
+        this._btn.classList.add(btnType);
+        this._btn.disabled = this.props.isReadonly ? true : false;
 
         // See if we are rendering the menu only
         let menu = this.el.querySelector(".dropdown-menu");
@@ -328,6 +329,22 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
 
         // Render the items
         this.renderItems();
+    }
+
+    // Sets the button type
+    setType(ddlType: number) {
+        // Ensure the button element exists
+        if (this._btn) {
+            // Parse the class names
+            ButtonClassNames.parse(className => {
+                // Remove the class names
+                this._btn.classList.remove(className);
+            });
+
+            // Set the class name
+            let className = ButtonClassNames.getByType(ddlType);
+            className ? this.el.classList.add(className) : null;
+        }
     }
 
     // Sets the dropdown value
