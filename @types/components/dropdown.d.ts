@@ -47,11 +47,12 @@
 export const Dropdown: (props: IDropdownProps) => IDropdown;
 
 import { IBaseProps } from "../base";
+import { IButtonTypes } from "./button";
 
 /**
  * Dropdown Types
  */
-export const DropdownTypes: IDropdownTypes;
+export const DropdownTypes: IButtonTypes;
 
 /**
  * Dropdown
@@ -129,16 +130,4 @@ export interface IDropdownProps extends IBaseProps<IDropdown> {
     title?: string;
     type?: number;
     value?: any;
-}
-
-/**
- * Dropdown Types
- */
-export type IDropdownTypes = {
-    Danger: number;
-    Info: number;
-    Primary: number;
-    Secondary: number;
-    Success: number;
-    Warning: number;
 }

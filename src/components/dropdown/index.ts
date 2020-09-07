@@ -9,14 +9,7 @@ import { HTML, HTMLForm, HTMLNavItem, HTMLSplit } from "./templates";
 /**
  * Dropdown Types
  */
-export enum DropdownTypes {
-    Danger = 1,
-    Info = 2,
-    Primary = 3,
-    Secondary = 4,
-    Success = 5,
-    Warning = 6
-}
+export const DropdownTypes = ButtonTypes;
 
 // Gets the template
 const GetHTML = (props: IDropdownProps) => {
