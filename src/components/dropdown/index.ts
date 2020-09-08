@@ -76,7 +76,7 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
     // Configures the dropdown
     private configureDefault() {
         // Set the attributes
-        this.el.title = this.props.title == null ? "" : this.props.title;
+        this.props.title ? this.el.title = this.props.title : null;
         this.props.dropLeft ? this.el.classList.add("dropleft") : null;
         this.props.dropRight ? this.el.classList.add("dropright") : null;
         this.props.dropUp ? this.el.classList.add("dropup") : null;
@@ -116,8 +116,8 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
             this.props.id ? menu.setAttribute("aria-labelledby", this.props.id) : null;
         }
 
-        // See if a class name exists
-        let classNames = (this.props.className || "").split(' ');
+        // See if a button class name exists
+        let classNames = (this.props.btnClassName || "").split(' ');
         for (let i = 0; i < classNames.length; i++) {
             // Ensure the class name exists
             let className = classNames[i];
@@ -189,7 +189,7 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
         dropdown.classList.add("form-select");
         dropdown.disabled = this.props.isReadonly ? true : false;
         dropdown.multiple = this.props.multi ? true : false;
-        dropdown.title = this.props.title == null ? "" : this.props.title;
+        this.props.title ? dropdown.title = this.props.title : null;
     }
 
     // Configure the item events
@@ -232,7 +232,7 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
         // Update the link
         let link = this.el.querySelector("a");
         link.id = ("navbarDDL_" + (this.props.label == null ? "" : this.props.label)).replace(/ /g, '');
-        link.title = this.props.title == null ? "" : this.props.title;
+        this.props.title ? link.title = this.props.title : null;
         this.props.isReadonly ? link.setAttribute("aria-disabled", "true") : null;
         link.innerHTML = this.props.label == null ? "" : this.props.label;
 
