@@ -1,5 +1,4 @@
 import "popper.js";
-import * as dropdown from "bootstrap/js/dist/dropdown";
 import { IDropdown, IDropdownItem, IDropdownProps } from "../../../@types/components/dropdown";
 import { Base } from "../base";
 import { ButtonClassNames, ButtonTypes } from "../button";
@@ -289,23 +288,38 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
 
     /**
      * Bootstrap
+     * Bootstrap object is not being initialized, as it causes the dropdown to not work
      */
 
-    // Bootstrap object
-    get bootstrapObj() {
-        if (this._bootstrapObj) { return this._bootstrapObj; }
-        this._bootstrapObj = new dropdown(this.el.querySelector(".dropdown-toggle"));
-        return this._bootstrapObj;
+    // Disposes the dropdown
+    dispose() {
+        //this._bootstrapObj ? this._bootstrapObj.dispose() : null;
     }
 
-    // Disposes the dropdown
-    dispose() { this.bootstrapObj ? this.bootstrapObj.dispose() : null; }
-
     // Toggles the menu
-    toggle() { this.bootstrapObj ? this.bootstrapObj.toggle() : null; }
+    toggle() {
+        //this._bootstrapObj ? this._bootstrapObj.toggle() : null;
+
+        // Get the menu element
+        let elMenu = this.el.querySelector(".dropdown-toggle");
+        if (elMenu) {
+            // See if the menu is open
+            if (elMenu.classList.contains("show")) {
+                // Hide the menu
+                elMenu.classList.remove("show");
+                elMenu.setAttribute("aria-expanded", "false");
+            } else {
+                // Show the menu
+                elMenu.classList.add("show");
+                elMenu.setAttribute("aria-expanded", "true");
+            }
+        }
+    }
 
     // Updates the dropdown
-    update() { this.bootstrapObj ? this.bootstrapObj.update() : null; }
+    update() {
+        //this._bootstrapObj ? this._bootstrapObj.update() : null;
+    }
 
     /**
      * Public Interface
