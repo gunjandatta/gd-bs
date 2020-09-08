@@ -12,84 +12,27 @@
 <body>
     <div id="test"></div>
     <script>
-        window["testForm"] = GD.Components.Form({
+        window["test"] = GD.Components.Dropdown({
             el: document.getElementById("test"),
-            value: {
-                Example1: true
-            },
-            onRendered: function (form) {
-                // Create ddl items
-                let items = [
-                    {
-                        text: "Net Estimated Hard",
-                        value: "EstHard"
-                    },
-                    {
-                        text: "Net Estimated WCF",
-                        value: "EstWCF"
-                    },
-                    {
-                        text: "Net Estimated NAF",
-                        value: "EstNAF"
-                    },
-                    {
-                        text: "Net Programmed/Budgeted",
-                        value: "PB"
-                    },
-                    {
-                        text: "Net Actual WCF",
-                        value: "ActWCF"
-                    },
-                    {
-                        text: "Opportunity Cost",
-                        value: "OppCost"
-                    }
-                ];
-
-                // Set items
-                testForm.getControl("Example2").dropdown.setItems(items);
-            },
-            rows: [
+            label: "Test DDL",
+            type: GD.Components.DropdownTypes.Dark,
+            items: [
                 {
-                    columns: [
-                        {
-                            control: {
-                                isInline: true,
-                                isReadonly: true,
-                                type: GD.Components.FormControlTypes.Checkbox,
-                                label: "Testing Chk",
-                                name: "Example1",
-                                onChange: (value) => {
-                                    var showMeTheMonaaaay = value; //Not providing the chk's value
-                                },
-                                title: "Example"
-                            }
-                        },
-                        {
-                            control: {
-                                label: "Testing",
-                                name: "Example2",
-                                type: GD.Components.FormControlTypes.Dropdown,
-                                items: [],
-                                onValidate: control => {
-                                    let allValues = testForm.getValues();
-
-                                    //Get the selected Bins
-                                    let selectedValues = allValues["FinancialValues"].map(item => item.data);
-
-                                    let isValid = selectedValues.length > 0;
-
-                                    //If there is a value, then the control is valid
-                                    return {
-                                        invalidMessage: "At least one Financial Value must be selected",
-                                        isValid
-                                    };
-                                }
-                            }
-                        }
-                    ]
+                    text: "Select an Option",
+                    isHeader: true
+                },
+                {
+                    text: "Option 1",
+                    value: "1"
+                },
+                {
+                    text: "Option 2",
+                    value: "2"
                 }
-            ]
+            ],
+            onChange: function (item, ev) {
+                console.log("You selected: " + (item ? item.text : "Nothing"), item);
+            }
         });
     </script>
     <h1>Library</h1>
@@ -547,7 +490,7 @@
                 onRenderBody: function (el) {
                     // Render a jumbotron
                     GD.Components.Jumbotron({
-                        el,
+                        el: el,
                         title: "My Panel",
                         lead: "this is a lead",
                         content: "This is the content of the jumbotron."

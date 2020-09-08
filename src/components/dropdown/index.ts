@@ -31,7 +31,6 @@ const GetHTML = (props: IDropdownProps) => {
  * @property props - The dropdown properties.
  */
 class _Dropdown extends Base<IDropdownProps> implements IDropdown {
-    private _btn: HTMLButtonElement = null;
     private _items: Array<DropdownFormItem | DropdownItem> = null;
 
     // Constructor
@@ -88,23 +87,23 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
         // See if this is a split button
         if (this.props.isSplit) {
             // Update a label
-            this._btn = this.el.querySelector("button");
-            this._btn.classList.add(btnType);
-            this._btn.disabled = this.props.isReadonly ? true : false;
-            this._btn.innerHTML = this.props.label == null ? "" : this.props.label;
+            let label = this.el.querySelector("button");
+            label.classList.add(btnType);
+            label.disabled = this.props.isReadonly ? true : false;
+            label.innerHTML = this.props.label == null ? "" : this.props.label;
 
             // Set the click event to disable the postback
-            this._btn.addEventListener("click", ev => { ev.preventDefault(); });
+            label.addEventListener("click", ev => { ev.preventDefault(); });
         } else {
             // Update the label
-            this._btn = this.el.querySelector(".dropdown-toggle");
-            this._btn.innerHTML = this.props.label == null ? "" : this.props.label;
+            let label = this.el.querySelector(".dropdown-toggle");
+            label.innerHTML = this.props.label == null ? "" : this.props.label;
         }
 
         // Update the dropdown
-        this._btn = this.el.querySelector(".dropdown-toggle");
-        this._btn.classList.add(btnType);
-        this._btn.disabled = this.props.isReadonly ? true : false;
+        let toggle = this.el.querySelector(".dropdown-toggle");
+        toggle.classList.add(btnType);
+        toggle.disabled = this.props.isReadonly ? true : false;
 
         // See if we are rendering the menu only
         let menu = this.el.querySelector(".dropdown-menu");
@@ -333,17 +332,21 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
 
     // Sets the button type
     setType(ddlType: number) {
-        // Ensure the button element exists
-        if (this._btn) {
-            // Parse the class names
-            ButtonClassNames.parse(className => {
-                // Remove the class names
-                this._btn.classList.remove(className);
-            });
+        // Parse the element types to search for
+        let elTypes = ["button", ".dropdown-toggle"];
+        for (let i = 0; i < elTypes.length; i++) {
+            let el = this.el.querySelector(elTypes[i]);
+            if (el) {
+                // Parse the class names
+                ButtonClassNames.parse(className => {
+                    // Remove the class names
+                    el.classList.remove(className);
+                });
 
-            // Set the class name
-            let className = ButtonClassNames.getByType(ddlType);
-            className ? this.el.classList.add(className) : null;
+                // Set the class name
+                let className = ButtonClassNames.getByType(ddlType);
+                className ? el.classList.add(className) : null;
+            }
         }
     }
 
