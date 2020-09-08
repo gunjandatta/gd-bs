@@ -1,4 +1,5 @@
 import "popper.js";
+import * as dropdown from "bootstrap/js/dist/dropdown";
 import { IDropdown, IDropdownItem, IDropdownProps } from "../../../@types/components/dropdown";
 import { Base } from "../base";
 import { ButtonClassNames, ButtonTypes } from "../button";
@@ -290,14 +291,21 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
      * Bootstrap
      */
 
+    // Bootstrap object
+    get bootstrapObj() {
+        if (this._bootstrapObj) { return this._bootstrapObj; }
+        this._bootstrapObj = new dropdown(this.el.querySelector(".dropdown-toggle"));
+        return this._bootstrapObj;
+    }
+
     // Disposes the dropdown
-    dispose() { this._bootstrapObj ? this._bootstrapObj.dispose() : null; }
+    dispose() { this.bootstrapObj ? this.bootstrapObj.dispose() : null; }
 
     // Toggles the menu
-    toggle() { this._bootstrapObj ? this._bootstrapObj.toggle() : null; }
+    toggle() { this.bootstrapObj ? this.bootstrapObj.toggle() : null; }
 
     // Updates the dropdown
-    update() { this._bootstrapObj ? this._bootstrapObj.update() : null; }
+    update() { this.bootstrapObj ? this.bootstrapObj.update() : null; }
 
     /**
      * Public Interface
