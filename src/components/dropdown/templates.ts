@@ -3,7 +3,7 @@ export const HTML = `
 <div class="dropdown">
     <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
         aria-expanded="false"></button>
-    <div class="dropdown-menu"></div>
+    <ul class="dropdown-menu"></ul>
 </div>`.trim();
 
 // Form

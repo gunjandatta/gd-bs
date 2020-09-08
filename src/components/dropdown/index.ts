@@ -110,7 +110,6 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
         if (this.props.menuOnly) {
             // Update the menu
             this.props.id ? menu.id = this.props.id : null;
-            menu.classList.add("dropdown-menu");
         } else {
             // Update the menu
             this.props.id ? menu.setAttribute("aria-labelledby", this.props.id) : null;
