@@ -263,8 +263,17 @@ class _InputGroup extends Base<IInputGroupProps> implements IInputGroup {
 
     getValue() { return this.textbox.value; }
 
-    // Method to set the value
-    setValue(value: string = "") { this.textbox.value = value; }
+    // Sets the textbox value
+    setValue(value: string = "") {
+        // Set the textbox value
+        this.textbox.value = value;
+
+        // See if a change event exists
+        if (this.props.onChange) {
+            // Execute the change event
+            this.props.onChange(value);
+        }
+    }
 
     // Returns the textbox
     get textbox(): HTMLInputElement | HTMLTextAreaElement { return this.el.querySelector("input") || this.el.querySelector("textarea"); }

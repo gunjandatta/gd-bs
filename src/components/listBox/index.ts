@@ -253,6 +253,12 @@ class _ListBox extends Base<IListBoxProps> implements IListBox {
                 }
             }
         }
+
+        // See if a change event exists
+        if (this.props.onChange) {
+            // Execute the change event
+            this.props.onChange(this.getValue());
+        }
     }
 }
 export const ListBox = (props: IListBoxProps): IListBox => { return new _ListBox(props); }

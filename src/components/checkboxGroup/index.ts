@@ -189,6 +189,12 @@ class _CheckboxGroup extends Base<ICheckboxGroupProps> implements ICheckboxGroup
                 checkbox.props.label == value ? checkbox.toggle() : null;
             }
         }
+
+        // See if a change event exists
+        if (this.props.onChange) {
+            // Execute the change event
+            this.props.onChange(this.getValue());
+        }
     }
 }
 export const CheckboxGroup = (props: ICheckboxGroupProps): ICheckboxGroup => { return new _CheckboxGroup(props); }

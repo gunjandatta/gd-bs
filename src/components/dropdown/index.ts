@@ -424,6 +424,12 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
                 this._items[ddl.selectedIndex].toggle();
             }
         }
+
+        // See if a change event exists
+        if (this.props.onChange) {
+            // Execute the change event
+            this.props.onChange(this.getValue());
+        }
     }
 }
 export const Dropdown = (props: IDropdownProps): IDropdown => { return new _Dropdown(props); }
