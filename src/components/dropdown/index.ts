@@ -300,18 +300,10 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
         //this._bootstrapObj ? this._bootstrapObj.toggle() : null;
 
         // Get the menu element
-        let elMenu = this.el.querySelector(".dropdown-toggle");
+        let elMenu = this.el.querySelector(".dropdown-toggle") as HTMLButtonElement;
         if (elMenu) {
-            // See if the menu is open
-            if (elMenu.classList.contains("show")) {
-                // Hide the menu
-                elMenu.classList.remove("show");
-                elMenu.setAttribute("aria-expanded", "false");
-            } else {
-                // Show the menu
-                elMenu.classList.add("show");
-                elMenu.setAttribute("aria-expanded", "true");
-            }
+            // Click the button
+            elMenu.click();
         }
     }
 
