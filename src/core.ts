@@ -1,3 +1,6 @@
+// Import the IE fix
+import "./ie";
+
 // The bootstrap library
 import * as bootstrap from "bootstrap";
 
