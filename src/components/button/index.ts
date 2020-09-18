@@ -86,6 +86,7 @@ class _Button extends Base<IButtonProps> implements IButton {
         this.setType(this.props.type || ButtonTypes.Primary)
 
         // Set the attributes
+        this.props.dismiss ? this.el.setAttribute("data-dismiss", this.props.dismiss) : null;
         this.props.href ? this.el.href = this.props.href : null;
         this.props.id ? this.el.id = this.props.id : null;
         this.props.isDisabled ? this.el.setAttribute("disabled", "disabled") : null;

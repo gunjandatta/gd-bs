@@ -80,6 +80,7 @@ export interface IButtonProps extends IBaseProps<IButton> {
     badge?: IBadgeProps;
     controls?: string | Array<string>;
     data?: any;
+    dismiss?: string;
     href?: string;
     iconSize?: number;
     iconType?: number;
