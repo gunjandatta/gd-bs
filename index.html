@@ -12,27 +12,19 @@
 <body>
     <div id="test"></div>
     <script>
-        window["test"] = GD.Components.Dropdown({
+        window["btn"] = GD.Components.Button({
             el: document.getElementById("test"),
-            label: "Test DDL",
-            type: GD.Components.DropdownTypes.Dark,
-            items: [
-                {
-                    text: "Select an Option",
-                    isHeader: true
-                },
-                {
-                    text: "Option 1",
-                    value: "1"
-                },
-                {
-                    text: "Option 2",
-                    value: "2"
-                }
-            ],
-            onChange: function (item, ev) {
-                console.log("You selected: " + (item ? item.text : "Nothing"), item);
-            }
+            label: "Test Modal",
+            type: GD.Components.ButtonTypes.OutlineSecondary,
+            text: "Open Modal",
+            target: "#settingsModal",
+            toggle: "modal"
+        });
+        GD.Components.Modal({
+            el: document.getElementById("test"),
+            id: "settingsModal",
+            title: "Modal Demo",
+            body: "This is the body of the modal."
         });
     </script>
     <h1>Library</h1>

@@ -84,7 +84,8 @@ class _Modal extends Base<IModalProps> implements IModal {
         }
 
         // Add the class name, based on the type
-        dialog.classList.add(ModalClassNames.getByType(this.props.type));
+        let className = ModalClassNames.getByType(this.props.type);
+        className ? dialog.classList.add(className) : null;
 
         // Update the title
         this.setTitle(this.props.title);
