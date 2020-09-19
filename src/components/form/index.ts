@@ -114,7 +114,7 @@ class _Form extends Base<IFormProps> implements IForm {
             let control = controls[i];
 
             // See if this is the control we are looking for
-            if (control.props.name == name) {
+            if (control && control.props && control.props.name == name) {
                 // Return the control
                 return control;
             }
