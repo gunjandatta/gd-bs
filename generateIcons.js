@@ -124,6 +124,8 @@ fs.readdir(dirIcons, function (err, files) {
         '\t    // Set the height/width',
         '\t    icon.setAttribute("height", (height ? height : 32).toString());',
         '\t    icon.setAttribute("width", (width ? width : 32).toString());\n',
+        '\t    // Update the styling',
+        '\t    icon.style.pointerEvents = "none";\n',
         '\t    // Support for IE',
         '\t    icon.setAttribute("focusable", "false");',
         '\t}\n',
