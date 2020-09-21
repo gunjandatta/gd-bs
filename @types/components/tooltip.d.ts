@@ -43,11 +43,15 @@ export const Tooltip: (props: ITooltipProps) => ITooltip;
 export const TooltipTypes: ITooltipTypes;
 
 import { IBaseProps } from "../base";
+import { IButtonProps, IButton } from "./button";
 
 /**
  * Tooltip
  */
 export interface ITooltip {
+    /** Reference to the button. */
+    button: IButton;
+
     /** Disposes the tooltip. */
     dispose: () => void;
 
@@ -96,9 +100,8 @@ export interface ITooltipOptions {
  * Tooltip Properties
  */
 export interface ITooltipProps extends IBaseProps<ITooltip> {
-    btnType?: number;
+    btnProps?: IButtonProps;
     options?: ITooltipOptions;
-    text?: string;
     type?: number;
 }
 

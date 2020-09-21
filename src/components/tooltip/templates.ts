@@ -1,1 +1,0 @@
-export const HTML = `<button type="button" class="btn" data-toggle="tooltip"></button>`;

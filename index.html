@@ -114,8 +114,10 @@
 
             GD.Components.Tooltip({
                 el: document.getElementById("tooltip"),
-                btnType: 7,
-                text: "Tooltip",
+                btnProps: {
+                    text: "Test Tooltip",
+                    type: 7
+                },
                 options: {
                     html: true,
                     title: function () { var el = document.createElement("div"); el.innerHTML = "<h5>Test HTML</h5><p>This was done via JS</p>"; return el; }

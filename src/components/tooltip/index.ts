@@ -1,9 +1,9 @@
 import * as tooltip from "bootstrap/js/dist/tooltip";
 import "popper.js";
+import { IButton } from "../../../@types/components/button";
 import { ITooltip, ITooltipProps } from "../../../@types/components/tooltip";
 import { Base } from "../base";
-import { ButtonClassNames, ButtonTypes } from "../button";
-import { HTML } from "./templates";
+import { Button } from "../button";
 
 /**
  * Tooltip Types
@@ -19,12 +19,13 @@ export enum TooltipTypes {
 /**
  * Tooltip
  */
-class _Tooltip extends Base<ITooltipProps> {//implements ITooltip {
+class _Tooltip extends Base<ITooltipProps> {
+    private _btn: IButton = null;
     private _tooltips: HTMLDivElement = null;
 
     // Constructor
     constructor(props: ITooltipProps) {
-        super(HTML, props);
+        super("", props);
 
         // Configure the collapse
         this.configure();
@@ -35,15 +36,15 @@ class _Tooltip extends Base<ITooltipProps> {//implements ITooltip {
 
     // Configure the tooltip
     private configure() {
-        // Set the button text
-        this.el.innerHTML = this.props.text == null ? "" : this.props.text;
+        // Default the toggle property for the button
+        let btnProps = this.props.btnProps || {};
+        btnProps.toggle = "tooltip";
 
-        // See if a type was defined
-        let className = ButtonClassNames.getByType(this.props.btnType) || ButtonClassNames.getByType(ButtonTypes.Primary);
-        if (className) {
-            // Add the class name
-            this.el.classList.add(className);
-        }
+        // Create the button
+        this._btn = Button(btnProps);
+
+        // Update the element
+        this.el = this._btn.el;
 
         // Configure the options
         this.configureOptions();
@@ -152,5 +153,8 @@ class _Tooltip extends Base<ITooltipProps> {//implements ITooltip {
     /**
      * Public Interface
      */
+
+    // Reference to the button
+    get button(): IButton { return this._btn; }
 }
 export const Tooltip = (props: ITooltipProps): ITooltip => { return new _Tooltip(props); }
