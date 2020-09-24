@@ -47,7 +47,7 @@ class _Navbar extends Base<INavbarProps> implements INavbar {
             brand.innerHTML = this.props.brand == null ? "" : this.props.brand;
         } else {
             // Remove the brand
-            this.el.removeChild(brand);
+            brand.parentNode.removeChild(brand);
         }
 
         // Update the nav bar
@@ -142,7 +142,7 @@ class _Navbar extends Base<INavbarProps> implements INavbar {
     // Configures search
     private configureSearch() {
         // See if we are rendering a search box
-        let search = this.el.querySelector("form");
+        let search = this.el.querySelector("form") as HTMLElement;
         if (this.props.enableSearch || this.props.searchBox) {
             let props = this.props.searchBox || {};
 
@@ -164,7 +164,7 @@ class _Navbar extends Base<INavbarProps> implements INavbar {
             }
         } else {
             // Remove the searchbox
-            search.remove();
+            search.parentNode.removeChild(search);
         }
     }
 

@@ -172,14 +172,14 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
     // Configures the dropdown for a form
     private configureForm() {
         // Configure the label
-        let elLabel = this.el.querySelector("label");
+        let elLabel = this.el.querySelector("label") as HTMLElement;
         let label = this.props.label == null ? "" : this.props.label;
         if (label) {
             // Set the label
             elLabel.innerHTML = label;
         } else {
             // Remove the label
-            elLabel.remove();
+            elLabel.parentNode.removeChild(elLabel);
         }
 
         // Update the dropdown

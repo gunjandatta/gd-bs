@@ -129,8 +129,8 @@ class _Pagination extends Base<IPaginationProps> implements IPagination {
                     item.classList.remove("active");
 
                     // Remove the active span
-                    let span = item.querySelector("span");
-                    span ? span.remove() : null;
+                    let span = item.querySelector("span") as HTMLSpanElement;
+                    span ? span.parentNode.removeChild(span) : null;
                 }
 
                 // Make this item active

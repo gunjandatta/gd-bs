@@ -28,41 +28,41 @@ class _Toast extends Base<IToastProps> implements IToast {
         let header = this.el.querySelector(".toast-header");
 
         // See if we are rendering an image
-        let img = header.querySelector("img");
+        let img = header.querySelector("img") as HTMLImageElement;
         if (this.props.headerImgSrc) {
             // Create the image
             img.className = this.props.headerImgClass || "";
             img.src = this.props.headerImgSrc;
         } else {
             // Remove the image
-            img.remove();
+            img.parentNode.removeChild(img);
         }
 
         // See if header text is defined
-        let headerText = header.querySelector("strong");
+        let headerText = header.querySelector("strong") as HTMLElement;
         if (this.props.headerText) {
             // Update the header text
             headerText.innerHTML = this.props.headerText;
         } else {
             // Remove the header
-            headerText.remove();
+            headerText.parentNode.removeChild(headerText);
         }
 
         // See if muted text is defined
-        let mutedText = header.querySelector("small");
+        let mutedText = header.querySelector("small") as HTMLElement;
         if (this.props.mutedText) {
             // Create the text
             mutedText.innerHTML = this.props.mutedText;
         } else {
             // Remove the element
-            mutedText.remove();
+            mutedText.parentNode.removeChild(mutedText);
         }
 
         // See if we are creating the close button
-        let closeButton = header.querySelector("button");
+        let closeButton = header.querySelector("button") as HTMLElement;
         if (this.props.hideCloseButton) {
             // Remove the button
-            closeButton.remove();
+            closeButton.parentNode.removeChild(closeButton);
         }
 
         // Update the body

@@ -499,7 +499,7 @@ export class FormControl implements IFormControl {
                     // Create the element
                     elMessage = document.createElement("div");
                     elMessage.className = "invalid-feedback";
-                    elFormControl.parentElement.appendChild(elMessage);
+                    elFormControl.parentNode.appendChild(elMessage);
                 }
 
                 // Set the message
@@ -514,7 +514,7 @@ export class FormControl implements IFormControl {
                     // Create the element
                     elMessage = document.createElement("div");
                     elMessage.className = "valid-feedback";
-                    elFormControl.parentElement.appendChild(elMessage);
+                    elFormControl.parentNode.appendChild(elMessage);
                 }
 
                 // Set the message

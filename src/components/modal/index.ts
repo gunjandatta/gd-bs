@@ -93,7 +93,8 @@ class _Modal extends Base<IModalProps> implements IModal {
         // See if we are hiding the close button
         if (this.props.hideCloseButton) {
             // Remove the close button
-            dialog.querySelector("button.close").remove();
+            let closeButton = dialog.querySelector("button.close") as HTMLElement;
+            closeButton ? closeButton.parentNode.removeChild(closeButton) : null;
         }
 
         // Update the body
