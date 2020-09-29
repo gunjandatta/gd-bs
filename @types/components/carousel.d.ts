@@ -107,6 +107,9 @@ export interface ICarousel {
      */
     previous: () => void;
 
+    /** Enables/Disables the dark theme. */
+    setTheme: (isDark: boolean) => void;
+
     /** Shows the carousel. */
     show: () => void;
 }
@@ -114,7 +117,7 @@ export interface ICarousel {
 /**
  * Carousel Item
  */
-export interface ICarouselItem<T=Element> {
+export interface ICarouselItem<T = Element> {
     captions?: string;
     className?: string;
     content?: string | T;
@@ -137,11 +140,12 @@ export interface ICarouselOptions {
 /**
  * Carousel Properties
  */
-export interface ICarouselProps<T=Element> extends IBaseProps<ICarousel> {
+export interface ICarouselProps<T = Element> extends IBaseProps<ICarousel> {
     enableControls?: boolean;
     enableCrossfade?: boolean;
     enableIndicators?: boolean;
     id?: string;
+    isDark?: boolean;
     items?: Array<ICarouselItem<T>>;
     options?: ICarouselOptions;
 }

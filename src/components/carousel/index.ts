@@ -38,6 +38,9 @@ class _Carousel extends Base<ICarouselProps> implements ICarousel {
 
         // Render the slides
         this.renderSlides();
+
+        // Set the dark theme
+        this.props.isDark ? this.setTheme(true) : null;
     }
 
     // Renders the controls
@@ -125,5 +128,17 @@ class _Carousel extends Base<ICarouselProps> implements ICarousel {
     /**
      * Public Interface
      */
+
+    // Enables/Disables the dark theme
+    setTheme(isDark: boolean) {
+        // See if we are setting the dark theme
+        if (isDark) {
+            // Set the theme
+            this.el.classList.add("carousel-dark");
+        } else {
+            // Set the theme
+            this.el.classList.remove("carousel-dark");
+        }
+    }
 }
 export const Carousel = (props: ICarouselProps): ICarousel => { return new _Carousel(props); }

@@ -22,12 +22,15 @@ module.exports = (env, argv) => {
                         { loader: "css-loader" },
                         // Loader for webpack to process CSS with PostCSS
                         {
-                            loader: "postcss-loader",
+                            // Run postcss actions
+                            loader: 'postcss-loader',
                             options: {
-                                plugins: function () {
-                                    return [
-                                        require("autoprefixer")
-                                    ]
+                                postcssOptions: {
+                                    plugins: function () {
+                                        return [
+                                            require('autoprefixer')
+                                        ];
+                                    }
                                 }
                             }
                         },

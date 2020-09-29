@@ -76,6 +76,9 @@ export interface IDropdown {
     /** Updates the dropdown items. */
     setItems: (items: Array<IDropdownItem>) => void;
 
+    /** Enables/Disables the dark theme. */
+    setTheme: (isDark: boolean) => void;
+
     /** Updates the dropdown type. */
     setType: (ddlType: number) => void;
 
@@ -121,6 +124,7 @@ export interface IDropdownProps extends IBaseProps<IDropdown> {
     dropUp?: boolean;
     formFl?: boolean;
     id?: string;
+    isDark?: boolean;
     isDatalist?: boolean;
     isReadonly?: boolean;
     isSplit?: boolean;

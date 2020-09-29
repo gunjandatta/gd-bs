@@ -31,6 +31,7 @@ const GetHTML = (props: IDropdownProps) => {
  * @property props - The dropdown properties.
  */
 class _Dropdown extends Base<IDropdownProps> implements IDropdown {
+    private _elMenu: HTMLElement;
     private _items: Array<DropdownFormItem | DropdownItem> = null;
 
     // Constructor
@@ -66,11 +67,17 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
         // Render the items
         this.renderItems();
 
+        // Set the menu element
+        this._elMenu = this.el.querySelector(".dropdown-menu");
+
         // See if we are only rendering a menu
         if (this.props.menuOnly) {
             // Update the element
-            this.el = this.el.querySelector(".dropdown-menu");
+            this.el = this._elMenu;
         }
+
+        // Set the dark theme
+        this.props.isDark ? this.setTheme(true) : null;
     }
 
     // Configures the dropdown
@@ -351,6 +358,19 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
 
         // Render the items
         this.renderItems();
+    }
+
+    // Enables/Disables the dark theme
+    setTheme(isDark: boolean) {
+        // Get the menu
+        // See if we are setting the dark theme
+        if (isDark) {
+            // Set the theme
+            this._elMenu.classList.add("carousel-dark");
+        } else {
+            // Set the theme
+            this._elMenu.classList.remove("carousel-dark");
+        }
     }
 
     // Sets the button type
