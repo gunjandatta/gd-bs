@@ -15,14 +15,8 @@ class _Collapse extends Base<ICollapseProps> implements ICollapse {
         // Configure the collapse
         this.configure();
 
-        // Configure the events
-        this.configureEvents();
-
         // Configure the parent
         this.configureParent();
-
-        // Create the collapse
-        this._bootstrapObj = new collapse(this.el, this.props.options);
     }
 
     // Configure the card group
@@ -46,44 +40,24 @@ class _Collapse extends Base<ICollapseProps> implements ICollapse {
         this.props.onRender ? this.props.onRender(this.props, body) : null;
     }
 
-    // Configures the events
-    // The collapse JS isn't working. This is a fix until the core is fixed.
-    private configureEvents() {
-        let isVisible = this.el.classList.contains("show");
-
-        // Create a custom event for watching the style attribute change
-        let watchStyleChanges = new MutationObserver(mutations => {
-            // Wait for the events to complete
-            if (this.el.classList.contains("collapsing")) { return; }
-
-            // See if the element is visible
-            if (isVisible) {
-                // Add the collapsing class for animation
-                this.el.classList.add("collapsing");
-                setTimeout(() => {
-                    // Remove the show class
-                    this.el.classList.remove("show");
-                }, 250);
-            } else {
-                // Remove the show class
-                this.el.classList.add("show");
-            }
-
-            // Update the flag
-            isVisible = !isVisible;
-        });
-        watchStyleChanges.observe(this.el, { attributes: true, attributeFilter: ["style"] });
-    }
-
     /**
      * Bootstrap
      */
 
+    // The bootstrap button
+    private get bsCollapse() {
+        // Create the bootstrap object if it doesn't exist
+        this._bootstrapObj = this._bootstrapObj || new collapse(this.el);
+
+        // Return the object
+        return this._bootstrapObj;
+    }
+
     // Disposes the collapse
-    dispose() { this._bootstrapObj.dispose(); }
+    dispose() { this.bsCollapse ? this.bsCollapse.dispose() : null; }
 
     // Toggles the collapse
-    toggle() { this._bootstrapObj.toggle(); }
+    toggle() { this.bsCollapse ? this.bsCollapse.toggle() : null; }
 
     /**
      * Public Interface
