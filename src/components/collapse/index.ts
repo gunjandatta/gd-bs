@@ -21,8 +21,11 @@ class _Collapse extends Base<ICollapseProps> implements ICollapse {
 
     // Configure the card group
     private configure() {
+        // Set the id
+        let id = this.props.id || "collapse_" + (new Date()).getTime();
+
         // Set the attributes
-        this.props.id ? this.el.id = this.props.id : null;
+        this.el.id = id;
         this.props.isMulti ? this.el.classList.add("multi-collapse") : null;
 
         // Set the content

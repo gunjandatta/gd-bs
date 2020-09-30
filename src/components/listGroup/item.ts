@@ -46,6 +46,7 @@ export class ListGroupItem extends Base<IListGroupItem> {
             let tabId = this.props.tabName.replace(/[^a-zA-Z0-9]/, "");
 
             // Set the properties
+            this.el.id = tabId + "-tab";
             this.el.setAttribute("href", "#" + tabId);
             this.el.setAttribute("data-toggle", "list");
             this.el.setAttribute("aria-controls", tabId);

@@ -49,16 +49,6 @@
         window.addEventListener("load", function () {
             // Dev
             var elDev = document.getElementById("dev");
-            GD.Components.Popover({
-                el: elDev,
-                btnProps: {
-                    text: "Popover Demo"
-                },
-                options: {
-                    title: "Popover Title",
-                    content: "This is the content.",
-                }
-            });
 
             GD.Components.ListBox({
                 el: document.getElementById("listbox"),
@@ -134,6 +124,7 @@
             var btnPopover = GD.Components.Button({
                 el: document.getElementById("popover"),
                 text: "Popover Demo",
+                id: "popover-demo"
             });
             GD.Components.Popover({
                 target: btnPopover.el,
@@ -145,7 +136,7 @@
             });
             GD.Components.Popover({
                 el: document.querySelector("#popover1"),
-                btnProps: { text: "Popover Demo", type: 3 },
+                btnProps: { id:"popover-demo2", text: "Popover Demo", type: 3 },
                 isDismissible: true,
                 options: {
                     html: true,

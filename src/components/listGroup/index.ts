@@ -100,6 +100,7 @@ class _ListGroup extends Base<IListGroupProps> implements IListGroup {
                     if (item.props.isActive) {
                         // Set the class name
                         item.elTab.classList.add("show");
+                        item.elTab.classList.add("active");
                     }
                 }
             }
