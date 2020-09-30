@@ -62,6 +62,7 @@ class _Collapse extends Base<ICollapseProps> implements ICollapse {
                 setTimeout(() => {
                     // Remove the show class	
                     this.el.classList.remove("show");
+                    this.el.classList.remove("collapsing");
                 }, 250);
             } else {
                 // Remove the show class	
