@@ -1,7 +1,7 @@
 /**
  * Offcanvas
  */
-export const Offcanvas: (props: IOffcanvasProps) => IOffcanvas;
+export const Offcanvas: (props: IOffcanvasProps, template?: string) => IOffcanvas;
 
 import { IBaseProps } from "../base";
 

@@ -37,7 +37,7 @@
  * });
  * ```
  */
-export const ButtonGroup: (props: IButtonGroupProps) => IButtonGroup;
+export const ButtonGroup: (props: IButtonGroupProps, template?: string, btnTemplate?: string) => IButtonGroup;
 
 import { IBaseProps } from "../base";
 import { IButton, IButtonProps } from "./button";

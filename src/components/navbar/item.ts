@@ -11,14 +11,14 @@ export class NavbarItem {
     private _props: INavbarItem = null;
 
     // Constructor
-    constructor(props: INavbarItem, parent: INavbarProps) {
+    constructor(props: INavbarItem, parent: INavbarProps, template: string = HTMLItem) {
         // Save the properties
         this._parent = parent;
         this._props = props;
 
         // Create the item
         let el = document.createElement("div");
-        el.innerHTML = HTMLItem;
+        el.innerHTML = template;
         this._el = el.firstChild as HTMLElement;
 
         // Configure the item
@@ -48,20 +48,26 @@ export class NavbarItem {
 
             // Update the link
             link = this._el.querySelector(".nav-link");
-            this._props.isActive ? link.classList.add("active") : null;
+            if (link) {
+                this._props.isActive ? link.classList.add("active") : null;
+            }
         }
         // Else, ensure there is text
         else if (this._props.text) {
             // Update the link
             link = this._el.querySelector("a");
-            this._props.isActive ? link.classList.add("active") : link.removeChild(link.querySelector('span'));
-            link.innerHTML = this._props.text == null ? "" : this._props.text;
+            if (link) {
+                this._props.isActive ? link.classList.add("active") : link.removeChild(link.querySelector('span'));
+                link.innerHTML = this._props.text == null ? "" : this._props.text;
+            }
         }
 
         // Update the link
-        this._props.isDisabled ? link.classList.add("disabled") : null;
-        this._props.target ? link.setAttribute("data-target", this._props.target) : null;
-        this._props.toggle ? link.setAttribute("data-toggle", this._props.toggle) : null;
+        if (link) {
+            this._props.isDisabled ? link.classList.add("disabled") : null;
+            this._props.target ? link.setAttribute("data-target", this._props.target) : null;
+            this._props.toggle ? link.setAttribute("data-toggle", this._props.toggle) : null;
+        }
     }
 
     // Configures the events

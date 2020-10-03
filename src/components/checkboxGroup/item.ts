@@ -13,14 +13,14 @@ export class CheckboxItem {
     private _props: ICheckboxGroupItem = null;
 
     // Constructor
-    constructor(props: ICheckboxGroupItem, parent: ICheckboxGroupProps) {
+    constructor(props: ICheckboxGroupItem, parent: ICheckboxGroupProps, template?: string) {
         // Save the properties
         this._parent = parent;
         this._props = props;
 
         // Create the element
         let el = document.createElement("div");
-        el.innerHTML = this.getHTML().trim();
+        el.innerHTML = template || this.getHTML().trim();
         this._el = el.firstChild as HTMLDivElement;
 
         // Configure the item
@@ -34,7 +34,9 @@ export class CheckboxItem {
     private configure() {
         // Set the attributes
         this._elCheckbox = this._el.querySelector("input");
-        this._elCheckbox.disabled = this._parent.isReadonly || this._props.isDisabled ? true : false;
+        if (this._elCheckbox) {
+            this._elCheckbox.disabled = this._parent.isReadonly || this._props.isDisabled ? true : false;
+        }
 
         // See if the title property is defined
         if (this._parent.title) {
@@ -49,32 +51,37 @@ export class CheckboxItem {
 
         // Set the label
         let label = this._el.querySelector("label");
-        label.innerHTML = this._props.label || "&nbsp;";
-
-        // See if the "isSelected" property is set
-        if (typeof (this._props.isSelected) === "boolean") {
-            // Set the selected property
-            this._isSelected = this._props.isSelected;
-            this._elCheckbox.checked = this._isSelected;
+        if (label) {
+            label.innerHTML = this._props.label || "&nbsp;";
         }
-        // Else, see if a value exists for the group
-        else if (this._parent.value) {
-            // Parse the values
-            let values = typeof (this._parent.value) === "string" ? [this._parent.value] : this._parent.value;
-            for (let j = 0; j < values.length; j++) {
-                // See if this item is selected
-                if (values[j] == this._props.label) {
-                    // Select this item
-                    this._elCheckbox.checked = true;
-                }
-            }
 
-            // Set the value
-            this._isSelected = this._elCheckbox.checked;
-        } else {
-            // Set the default value
-            this._isSelected = this._props.isSelected ? true : false;
-            this._elCheckbox.checked = this._isSelected;
+        // Ensure the checkbox exists
+        if (this._elCheckbox) {
+            // See if the "isSelected" property is set
+            if (typeof (this._props.isSelected) === "boolean") {
+                // Set the selected property
+                this._isSelected = this._props.isSelected;
+                this._elCheckbox.checked = this._isSelected;
+            }
+            // Else, see if a value exists for the group
+            else if (this._parent.value) {
+                // Parse the values
+                let values = typeof (this._parent.value) === "string" ? [this._parent.value] : this._parent.value;
+                for (let j = 0; j < values.length; j++) {
+                    // See if this item is selected
+                    if (values[j] == this._props.label) {
+                        // Select this item
+                        this._elCheckbox.checked = true;
+                    }
+                }
+
+                // Set the value
+                this._isSelected = this._elCheckbox.checked;
+            } else {
+                // Set the default value
+                this._isSelected = this._props.isSelected ? true : false;
+                this._elCheckbox.checked = this._isSelected;
+            }
         }
     }
 
@@ -126,7 +133,7 @@ export class CheckboxItem {
         let cb = this._el.querySelector("input");
 
         // Return the value
-        return cb.checked;
+        return cb ? cb.checked : null;
     }
 
     // The component properties

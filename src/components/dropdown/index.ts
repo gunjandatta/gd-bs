@@ -35,8 +35,8 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
     private _items: Array<DropdownFormItem | DropdownItem> = null;
 
     // Constructor
-    constructor(props: IDropdownProps) {
-        super(GetHTML(props), props);
+    constructor(props: IDropdownProps, template: string = GetHTML(props)) {
+        super(template, props);
 
         // Configure the dropdown
         this.configure();
@@ -69,11 +69,12 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
 
         // Set the menu element
         this._elMenu = this.el.querySelector(".dropdown-menu");
-
-        // See if we are only rendering a menu
-        if (this.props.menuOnly) {
-            // Update the element
-            this.el = this._elMenu;
+        if (this._elMenu) {
+            // See if we are only rendering a menu
+            if (this.props.menuOnly) {
+                // Update the element
+                this.el = this._elMenu;
+            }
         }
 
         // Set the dark theme
@@ -95,41 +96,49 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
         if (this.props.isSplit) {
             // Update a label
             let label = this.el.querySelector("button");
-            label.classList.add(btnType);
-            label.disabled = this.props.isReadonly ? true : false;
-            label.innerHTML = this.props.label == null ? "" : this.props.label;
+            if (label) {
+                label.classList.add(btnType);
+                label.disabled = this.props.isReadonly ? true : false;
+                label.innerHTML = this.props.label == null ? "" : this.props.label;
 
-            // Set the click event to disable the postback
-            label.addEventListener("click", ev => { ev.preventDefault(); });
+                // Set the click event to disable the postback
+                label.addEventListener("click", ev => { ev.preventDefault(); });
+            }
         } else {
             // Update the label
             let label = this.el.querySelector(".dropdown-toggle");
-            label.innerHTML = this.props.label == null ? "" : this.props.label;
+            if (label) {
+                label.innerHTML = this.props.label == null ? "" : this.props.label;
+            }
         }
 
         // Update the dropdown
         let toggle = this.el.querySelector(".dropdown-toggle");
-        toggle.classList.add(btnType);
-        toggle.disabled = this.props.isReadonly ? true : false;
+        if (toggle) {
+            toggle.classList.add(btnType);
+            toggle.disabled = this.props.isReadonly ? true : false;
+        }
 
         // See if we are rendering the menu only
         let menu = this.el.querySelector(".dropdown-menu");
-        if (this.props.menuOnly) {
-            // Update the menu
-            this.props.id ? menu.id = this.props.id : null;
-        } else {
-            // Update the menu
-            this.props.id ? menu.setAttribute("aria-labelledby", this.props.id) : null;
-        }
+        if (menu) {
+            if (this.props.menuOnly) {
+                // Update the menu
+                this.props.id ? menu.id = this.props.id : null;
+            } else {
+                // Update the menu
+                this.props.id ? menu.setAttribute("aria-labelledby", this.props.id) : null;
+            }
 
-        // See if a button class name exists
-        let classNames = (this.props.btnClassName || "").split(' ');
-        for (let i = 0; i < classNames.length; i++) {
-            // Ensure the class name exists
-            let className = classNames[i];
-            if (className) {
-                // Add the class name
-                (this.props.menuOnly ? menu : toggle).classList.add(className);
+            // See if a button class name exists
+            let classNames = (this.props.btnClassName || "").split(' ');
+            for (let i = 0; i < classNames.length; i++) {
+                // Ensure the class name exists
+                let className = classNames[i];
+                if (className) {
+                    // Add the class name
+                    (this.props.menuOnly ? menu : toggle).classList.add(className);
+                }
             }
         }
     }
@@ -180,22 +189,26 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
     private configureForm() {
         // Configure the label
         let elLabel = this.el.querySelector("label") as HTMLElement;
-        let label = this.props.label == null ? "" : this.props.label;
-        if (label) {
-            // Set the label
-            elLabel.innerHTML = label;
-        } else {
-            // Remove the label
-            elLabel.parentNode.removeChild(elLabel);
+        if (elLabel) {
+            let label = this.props.label == null ? "" : this.props.label;
+            if (label) {
+                // Set the label
+                elLabel.innerHTML = label;
+            } else {
+                // Remove the label
+                elLabel.parentNode.removeChild(elLabel);
+            }
         }
 
         // Update the dropdown
         let dropdown = this.el.querySelector("select");
-        dropdown.className = this.props.className || "";
-        dropdown.classList.add("form-select");
-        dropdown.disabled = this.props.isReadonly ? true : false;
-        dropdown.multiple = this.props.multi ? true : false;
-        this.props.title ? dropdown.title = this.props.title : null;
+        if (dropdown) {
+            dropdown.className = this.props.className || "";
+            dropdown.classList.add("form-select");
+            dropdown.disabled = this.props.isReadonly ? true : false;
+            dropdown.multiple = this.props.multi ? true : false;
+            this.props.title ? dropdown.title = this.props.title : null;
+        }
     }
 
     // Configure the item events
@@ -237,21 +250,25 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
     private configureNavBar() {
         // Update the link
         let link = this.el.querySelector("a");
-        link.id = ("navbarDDL_" + (this.props.label == null ? "" : this.props.label)).replace(/ /g, '');
-        this.props.title ? link.title = this.props.title : null;
-        this.props.isReadonly ? link.setAttribute("aria-disabled", "true") : null;
-        link.innerHTML = this.props.label == null ? "" : this.props.label;
+        if (link) {
+            link.id = ("navbarDDL_" + (this.props.label == null ? "" : this.props.label)).replace(/ /g, '');
+            this.props.title ? link.title = this.props.title : null;
+            this.props.isReadonly ? link.setAttribute("aria-disabled", "true") : null;
+            link.innerHTML = this.props.label == null ? "" : this.props.label;
+        }
 
         // See if we are rendering the menu only
         let menu = this.el.querySelector(".dropdown-menu");
-        if (this.props.menuOnly) {
-            // Update the menu
-            this.props.id ? menu.id = this.props.id : null;
-            menu.className = this.props.className ? this.props.className : "";
-            menu.classList.add("dropdown-menu");
-        } else {
-            // Update the menu
-            this.props.id ? menu.setAttribute("aria-labelledby", this.props.id) : null;
+        if (menu) {
+            if (this.props.menuOnly) {
+                // Update the menu
+                this.props.id ? menu.id = this.props.id : null;
+                menu.className = this.props.className ? this.props.className : "";
+                menu.classList.add("dropdown-menu");
+            } else {
+                // Update the menu
+                this.props.id ? menu.setAttribute("aria-labelledby", this.props.id) : null;
+            }
         }
     }
 
@@ -262,32 +279,34 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
 
         // Get the menu
         let menu = this.el.querySelector(".dropdown-menu") || this.el.querySelector("select");
-        let isForm = menu.nodeName == "SELECT";
+        if (menu) {
+            let isForm = menu.nodeName == "SELECT";
 
-        // Parse the items
-        let items = this.props.items || [];
-        for (let i = 0; i < items.length; i++) {
-            // Create the item
-            let item = isForm ? new DropdownFormItem(items[i], this.props) : new DropdownItem(items[i], this.props);
-            this._items.push(item);
+            // Parse the items
+            let items = this.props.items || [];
+            for (let i = 0; i < items.length; i++) {
+                // Create the item
+                let item = isForm ? new DropdownFormItem(items[i], this.props) : new DropdownItem(items[i], this.props);
+                this._items.push(item);
 
-            // See if this isn't for a form
-            if (!isForm) {
-                // Configure the item events
-                this.configureItemEvents(item);
+                // See if this isn't for a form
+                if (!isForm) {
+                    // Configure the item events
+                    this.configureItemEvents(item);
+                }
+
+                // Add the item to the menu
+                menu.appendChild(item.el);
             }
 
-            // Add the item to the menu
-            menu.appendChild(item.el);
-        }
-
-        // See if this is a form
-        if (isForm) {
-            // Ensure the selected values match the index
-            let idx = (menu as HTMLSelectElement).selectedIndex;
-            if (this._items[idx] && this._items[idx].isSelected == false) {
-                // Select the item
-                this._items[idx].toggle();
+            // See if this is a form
+            if (isForm) {
+                // Ensure the selected values match the index
+                let idx = (menu as HTMLSelectElement).selectedIndex;
+                if (this._items[idx] && this._items[idx].isSelected == false) {
+                    // Select the item
+                    this._items[idx].toggle();
+                }
             }
         }
     }
@@ -352,12 +371,13 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
 
         // Get the menu
         let menu = this.el.querySelector(".dropdown-menu") || this.el.querySelector("select");
+        if (menu) {
+            // Clear the menu
+            while (menu.firstChild) { menu.removeChild(menu.firstChild); }
 
-        // Clear the menu
-        while (menu.firstChild) { menu.removeChild(menu.firstChild); }
-
-        // Render the items
-        this.renderItems();
+            // Render the items
+            this.renderItems();
+        }
     }
 
     // Enables/Disables the dark theme
@@ -444,4 +464,4 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
         }
     }
 }
-export const Dropdown = (props: IDropdownProps): IDropdown => { return new _Dropdown(props); }
+export const Dropdown = (props: IDropdownProps, template?: string): IDropdown => { return new _Dropdown(props, template); }

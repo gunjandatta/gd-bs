@@ -77,7 +77,7 @@
  * });
  * ```
  */
-export const CardGroup: (props: ICardGroupProps) => ICardGroup;
+export const CardGroup: (props: ICardGroupProps, template?: string, cardTemplate?: string) => ICardGroup;
 
 import { IBaseProps } from "../base";
 import { ICardProps } from "./card";

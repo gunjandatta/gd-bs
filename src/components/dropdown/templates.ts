@@ -26,7 +26,7 @@ export const HTMLSplit = `
     <button type="button" class="btn"></button>
     <button class="btn dropdown-toggle dropdown-toggle-split" type="button" data-toggle="dropdown" aria-haspopup="true"
         aria-expanded="false">
-        <span class="sr-only">Toggle Dropdown</span>
+        <span class="visually-hidden">Toggle Dropdown</span>
     </button>
     <ul class="dropdown-menu"></ul>
 </div>`.trim();

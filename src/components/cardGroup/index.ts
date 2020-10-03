@@ -9,18 +9,18 @@ import { HTML } from "./templates";
  */
 class _CardGroup extends Base<ICardGroupProps> implements ICardGroup {
     // Constructor
-    constructor(props: ICardGroupProps) {
-        super(HTML, props);
+    constructor(props: ICardGroupProps, template: string = HTML, cardTemplate?: string) {
+        super(template, props);
 
         // Configure the card group
-        this.configure();
+        this.configure(cardTemplate);
 
         // Configure the parent
         this.configureParent();
     }
 
     // Configure the card group
-    private configure() {
+    private configure(cardTemplate: string) {
         // Set the default class
         this.el.classList.add(this.props.isDeck ? "card-deck" : "card-group");
 
@@ -28,8 +28,8 @@ class _CardGroup extends Base<ICardGroupProps> implements ICardGroup {
         let cards = this.props.cards || [];
         for (let i = 0; i < cards.length; i++) {
             // Add the card
-            this.el.appendChild(Card(cards[i]).el);
+            this.el.appendChild(Card(cards[i], cardTemplate).el);
         }
     }
 }
-export const CardGroup = (props: ICardGroupProps): ICardGroup => { return new _CardGroup(props); }
+export const CardGroup = (props: ICardGroupProps, template?: string, cardTemplate?: string): ICardGroup => { return new _CardGroup(props, template, cardTemplate); }

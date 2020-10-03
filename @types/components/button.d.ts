@@ -30,7 +30,7 @@
  * });
  * ```
  */
-export const Button: (props: IButtonProps) => IButton;
+export const Button: (props: IButtonProps, template?: string) => IButton;
 
 /**
  * Button Types

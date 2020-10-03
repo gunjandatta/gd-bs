@@ -1,7 +1,6 @@
 import { IAccordionItem } from "../../../@types/components/accordion";
 import { IButton } from "../../../@types/components/button";
 import { Button, ButtonTypes } from "../button";
-import { HTMLItem } from "./templates";
 
 /**
  * Accordion Item
@@ -15,7 +14,7 @@ export class AccordionItem {
     private _props: IAccordionItem = null;
 
     // Constructor
-    constructor(parentId: string, itemId: string, props: IAccordionItem) {
+    constructor(parentId: string, itemId: string, props: IAccordionItem, template: string) {
         // Save the properties
         this._id = "collapse_" + itemId;
         this._itemId = itemId;
@@ -24,7 +23,7 @@ export class AccordionItem {
 
         // Create the item
         let elItem = document.createElement("div");
-        elItem.innerHTML = HTMLItem;
+        elItem.innerHTML = template;
         this._el = elItem.firstChild as HTMLDivElement;
 
         // Render the header
@@ -43,10 +42,12 @@ export class AccordionItem {
     // Configures the collapse element
     private configureCollapse() {
         let elCollapse = this._el.querySelector(".collapse");
-        this._props.showFl ? elCollapse.classList.add("show") : null;
-        elCollapse.setAttribute("aria-labelledby", this._itemId);
-        elCollapse.setAttribute("data-parent", "#" + this._parentId);
-        elCollapse.id = this._id;
+        if (elCollapse) {
+            this._props.showFl ? elCollapse.classList.add("show") : null;
+            elCollapse.setAttribute("aria-labelledby", this._itemId);
+            elCollapse.setAttribute("data-parent", "#" + this._parentId);
+            elCollapse.id = this._id;
+        }
     }
 
     // Configures the events
@@ -67,20 +68,24 @@ export class AccordionItem {
     // Renders the content
     private renderContent() {
         let elCardBody = this._el.querySelector(".card-body") as HTMLElement;
-        let content = this._props.content || "";
-        if (typeof (content) === "string" || typeof (content) === "number") {
-            // Set the html
-            elCardBody.innerHTML = content;
-        } else {
-            // Append the element
-            elCardBody.appendChild(content);
+        if (elCardBody) {
+            let content = this._props.content || "";
+            if (typeof (content) === "string" || typeof (content) === "number") {
+                // Set the html
+                elCardBody.innerHTML = content;
+            } else {
+                // Append the element
+                elCardBody.appendChild(content);
+            }
         }
     }
 
     // Renders the header
     private renderHeader() {
         let elHeader = this._el.querySelector(".card-header");
-        elHeader.id = this._itemId;
+        if (elHeader) {
+            elHeader.id = this._itemId;
+        }
 
         // Render the button to the header
         let btnProps = this._props.btnProps || {};

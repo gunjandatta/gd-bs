@@ -9,8 +9,8 @@ import { HTML } from "./templates";
 class _Offcanvas extends Base<IOffcanvasProps> implements IOffcanvas {
 
     // Constructor
-    constructor(props: IOffcanvasProps) {
-        super(HTML, props);
+    constructor(props: IOffcanvasProps, template: string = HTML) {
+        super(template, props);
 
         // Configure the offcanvas
         this.configure();
@@ -32,23 +32,27 @@ class _Offcanvas extends Base<IOffcanvasProps> implements IOffcanvas {
         // Set the header
         let title = this.props.title || "";
         let header = this.el.querySelector(".offcanvas-header > div") as HTMLDivElement;
-        if (typeof (title) === "string" || typeof (title) === "number") {
-            // Set the html
-            header.innerHTML = title;
-        } else {
-            // Append the element
-            header.appendChild(title);
+        if (header) {
+            if (typeof (title) === "string" || typeof (title) === "number") {
+                // Set the html
+                header.innerHTML = title;
+            } else {
+                // Append the element
+                header.appendChild(title);
+            }
         }
 
         // Set the body
         let content = this.props.body || "";
         let body = this.el.querySelector(".offcanvas-body") as HTMLDivElement;
-        if (typeof (content) === "string" || typeof (content) === "number") {
-            // Set the html
-            body.innerHTML = content;
-        } else {
-            // Append the element
-            body.appendChild(content);
+        if (body) {
+            if (typeof (content) === "string" || typeof (content) === "number") {
+                // Set the html
+                body.innerHTML = content;
+            } else {
+                // Append the element
+                body.appendChild(content);
+            }
         }
 
         // Execute the events
@@ -73,4 +77,4 @@ class _Offcanvas extends Base<IOffcanvasProps> implements IOffcanvas {
      * Public Interface
      */
 }
-export const Offcanvas = (props: IOffcanvasProps): IOffcanvas => { return new _Offcanvas(props); }
+export const Offcanvas = (props: IOffcanvasProps, template?: string): IOffcanvas => { return new _Offcanvas(props, template); }

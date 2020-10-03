@@ -70,7 +70,7 @@
  * });
  * ```
  */
-export const Carousel: (props: ICarouselProps) => ICarousel;
+export const Carousel: (props: ICarouselProps, template?: string, slideTemplate?: string) => ICarousel;
 
 import { IBaseProps } from "../base";
 

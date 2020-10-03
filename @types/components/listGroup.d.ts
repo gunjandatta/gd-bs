@@ -44,7 +44,7 @@
  * });
  * ```
  */
-export const ListGroup: (props: IListGroupProps) => IListGroup;
+export const ListGroup: (props: IListGroupProps, template?: string, itemTemplate?: string) => IListGroup;
 
 /**
  * List Group Item Types

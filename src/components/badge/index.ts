@@ -36,8 +36,8 @@ export const BadgeClassNames = new ClassNames([
  */
 class _Badge extends Base<IBadgeProps> implements IBadge {
     // Constructor
-    constructor(props: IBadgeProps) {
-        super(props.href || props.onClick ? HTMLLink : HTMLSpan, props);
+    constructor(props: IBadgeProps, template: string = props.href || props.onClick ? HTMLLink : HTMLSpan) {
+        super(template, props);
 
         // Set the href property
         props.href ? this.el.setAttribute("href", props.href) : null;
@@ -83,4 +83,4 @@ class _Badge extends Base<IBadgeProps> implements IBadge {
         }) : null;
     }
 }
-export const Badge = (props: IBadgeProps): IBadge => { return new _Badge(props); }
+export const Badge = (props: IBadgeProps, template?: string): IBadge => { return new _Badge(props, template); }

@@ -29,7 +29,7 @@
  * });
  * ```
  */
-export const Jumbotron: (props: IJumbotronProps) => IJumbotron;
+export const Jumbotron: (props: IJumbotronProps, template?: string) => IJumbotron;
 
 import { IBaseProps } from "../base";
 

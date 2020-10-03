@@ -44,7 +44,7 @@
  * });
  * ```
  */
-export const Dropdown: (props: IDropdownProps) => IDropdown;
+export const Dropdown: (props: IDropdownProps, template?: string) => IDropdown;
 
 import { IBaseProps } from "../base";
 import { IButtonTypes } from "./button";

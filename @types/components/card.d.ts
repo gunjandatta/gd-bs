@@ -46,7 +46,7 @@
  * });
  * ```
  */
-export const Card: (props: ICardProps) => ICard;
+export const Card: (props: ICardProps, template?: string) => ICard;
 
 import { IBaseProps } from "../base";
 import { IButtonProps } from "./button";

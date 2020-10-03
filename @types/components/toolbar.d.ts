@@ -41,7 +41,7 @@
  * });
  * ```
  */
-export const Toolbar: (props: IToolbarProps) => IToolbar;
+export const Toolbar: (props: IToolbarProps, template?: string) => IToolbar;
 
 /**
  * Toolbar

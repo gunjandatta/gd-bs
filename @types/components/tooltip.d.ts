@@ -35,7 +35,7 @@ let tooltip = Components.Tooltip({
 });
 ```
  */
-export const Tooltip: (props: ITooltipProps) => ITooltip;
+export const Tooltip: (props: ITooltipProps, template?: string) => ITooltip;
 
 /**
  * Tooltip Types

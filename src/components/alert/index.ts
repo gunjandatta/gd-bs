@@ -37,8 +37,8 @@ export const AlertClassNames = new ClassNames([
  */
 class _Alert extends Base<IAlertProps> implements IAlert {
     // Constructor
-    constructor(props: IAlertProps) {
-        super(HTML, props);
+    constructor(props: IAlertProps, template: string = HTML) {
+        super(template, props);
 
         // Set the default styling
         this.el.classList.add(AlertClassNames.getByType(this.props.type) || AlertClassNames.getByType(AlertTypes.Primary));
@@ -89,14 +89,15 @@ class _Alert extends Base<IAlertProps> implements IAlert {
     // Render the header
     private renderHeader() {
         let header = this.el.querySelector(".alert-heading");
-
-        // See if a header was defined
-        if (this.props.header) {
-            // Set the heading
-            header.innerHTML = this.props.header;
-        } else {
-            // Remove the element
-            this.el.removeChild(header);
+        if (header) {
+            // See if a header was defined
+            if (this.props.header) {
+                // Set the heading
+                header.innerHTML = this.props.header;
+            } else {
+                // Remove the element
+                this.el.removeChild(header);
+            }
         }
     }
 
@@ -138,4 +139,4 @@ class _Alert extends Base<IAlertProps> implements IAlert {
         this.el.classList.add(AlertClassNames.getByType(alertType) || AlertClassNames.getByType(AlertTypes.Primary));
     }
 }
-export const Alert = (props: IAlertProps): IAlert => { return new _Alert(props); }
+export const Alert = (props: IAlertProps, template?: string): IAlert => { return new _Alert(props, template); }

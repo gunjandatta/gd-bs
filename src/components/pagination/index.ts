@@ -18,40 +18,42 @@ class _Pagination extends Base<IPaginationProps> implements IPagination {
     private _items: Array<HTMLLIElement> = null;
 
     // Constructor
-    constructor(props: IPaginationProps) {
-        super(HTML, props);
+    constructor(props: IPaginationProps, template: string = HTML, itemTemplate: string = HTMLItem) {
+        super(template, props);
 
         // Configure the collapse
-        this.configure();
+        this.configure(itemTemplate);
 
         // Configure the parent
         this.configureParent();
     }
 
     // Configure the card group
-    private configure() {
+    private configure(itemTemplate: string) {
         // Update the nav properties
         this.props.label ? this.el.setAttribute("aria-label", this.props.label) : null;
 
         // Update the list
         let list = this.el.querySelector("ul");
-        this.props.isLarge ? list.classList.add("pagination-lg") : null;
-        this.props.isSmall ? list.classList.add("pagination-sm") : null;
+        if (list) {
+            this.props.isLarge ? list.classList.add("pagination-lg") : null;
+            this.props.isSmall ? list.classList.add("pagination-sm") : null;
 
-        // Read the alignment
-        switch (this.props.alignment) {
-            // Danger
-            case PaginationAlignment.Center:
-                list.classList.add("justify-content-center");
-                break;
-            // Dark
-            case PaginationAlignment.Right:
-                list.classList.add("justify-content-end");
-                break;
+            // Read the alignment
+            switch (this.props.alignment) {
+                // Danger
+                case PaginationAlignment.Center:
+                    list.classList.add("justify-content-center");
+                    break;
+                // Dark
+                case PaginationAlignment.Right:
+                    list.classList.add("justify-content-end");
+                    break;
+            }
+
+            // Render the page numbers
+            this.renderPageNumbers(list, itemTemplate);
         }
-
-        // Render the page numbers
-        this.renderPageNumbers(list);
     }
 
     // Configures the next/previous buttons, based on the active index
@@ -138,7 +140,7 @@ class _Pagination extends Base<IPaginationProps> implements IPagination {
 
                 // Add the span
                 let span = document.createElement("span");
-                span.classList.add("sr-only");
+                span.classList.add("visually-hidden");
                 span.innerHTML = "(current)";
                 item.appendChild(span);
 
@@ -152,17 +154,19 @@ class _Pagination extends Base<IPaginationProps> implements IPagination {
     }
 
     // Creates an page number item
-    private createItem(text: string): HTMLLIElement {
+    private createItem(text: string, itemTemplate: string): HTMLLIElement {
         // Create the item
         let el = document.createElement("div");
-        el.innerHTML = HTMLItem;
+        el.innerHTML = itemTemplate;
         let item = el.firstChild as HTMLLIElement;
         this._items.push(item);
 
         // Update the link
         let link = item.querySelector("a");
-        link.innerHTML = text;
-        link.setAttribute("aria-label", link.innerHTML);
+        if (link) {
+            link.innerHTML = text;
+            link.setAttribute("aria-label", link.innerHTML);
+        }
 
         // Configure the events
         this.configureEvents(item);
@@ -172,12 +176,12 @@ class _Pagination extends Base<IPaginationProps> implements IPagination {
     }
 
     // Renders the page numbers
-    private renderPageNumbers(list: HTMLUListElement) {
+    private renderPageNumbers(list: HTMLUListElement, itemTemplate: string) {
         // Clear the items
         this._items = [];
 
         // Create the previous link
-        let item = this.createItem("Previous");
+        let item = this.createItem("Previous", itemTemplate);
         list.appendChild(item);
 
         // Loop for the number of pages to create
@@ -185,16 +189,16 @@ class _Pagination extends Base<IPaginationProps> implements IPagination {
         let pages = this.props.numberOfPages || 1;
         for (let i = 1; i <= pages; i++) {
             // Create a link
-            item = this.createItem(i.toString());
+            item = this.createItem(i.toString(), itemTemplate);
             list.appendChild(item);
         }
 
         // Create the next link
-        item = this.createItem("Next");
+        item = this.createItem("Next", itemTemplate);
         list.appendChild(item);
 
         // Set the first page number as active
         this._items[1].click();
     }
 }
-export const Pagination = (props: IPaginationProps): IPagination => { return new _Pagination(props); }
+export const Pagination = (props: IPaginationProps, template?: string, itemTemplate?: string): IPagination => { return new _Pagination(props, template, itemTemplate); }

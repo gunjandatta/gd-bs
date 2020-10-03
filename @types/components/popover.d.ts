@@ -45,7 +45,7 @@
  * });
  * ```
  */
-export const Popover: (props: IPopoverProps) => IPopover;
+export const Popover: (props: IPopoverProps, template?: string) => IPopover;
 
 /**
  * Popover Types

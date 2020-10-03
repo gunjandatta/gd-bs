@@ -23,8 +23,8 @@ export enum InputGroupTypes {
  */
 class _InputGroup extends Base<IInputGroupProps> implements IInputGroup {
     // Constructor
-    constructor(props: IInputGroupProps) {
-        super(HTML, props);
+    constructor(props: IInputGroupProps, template: string = HTML) {
+        super(template, props);
 
         // Configure the collapse
         this.configure();
@@ -42,77 +42,80 @@ class _InputGroup extends Base<IInputGroupProps> implements IInputGroup {
     // Configure the card group
     private configure() {
         let elInput = this.el.querySelector("input");
+        if (elInput) {
+            // Set the class names
+            this.props.isLarge ? this.el.classList.add("input-group-lg") : null;
+            this.props.isSmall ? this.el.classList.add("input-group-sm") : null;
 
-        // Set the class names
-        this.props.isLarge ? this.el.classList.add("input-group-lg") : null;
-        this.props.isSmall ? this.el.classList.add("input-group-sm") : null;
+            // Update the label
+            let label = this.el.querySelector("label");
+            if (label) {
+                this.props.id ? label.setAttribute("for", this.props.id) : null;
 
-        // Update the label
-        let label = this.el.querySelector("label");
-        this.props.id ? label.setAttribute("for", this.props.id) : null;
+                // See if this is a file
+                if (this.props.type == InputGroupTypes.File) {
+                    // Set the class
+                    label.classList.add("form-file-label");
 
-        // See if this is a file
-        if (this.props.type == InputGroupTypes.File) {
-            // Set the class
-            label.classList.add("form-file-label");
+                    // Set the text
+                    let spanText = document.createElement("span");
+                    spanText.classList.add("form-file-text");
+                    spanText.innerHTML = this.props.label || "Choose a file...";
+                    label.appendChild(spanText);
 
-            // Set the text
-            let spanText = document.createElement("span");
-            spanText.classList.add("form-file-text");
-            spanText.innerHTML = this.props.label || "Choose a file...";
-            label.appendChild(spanText);
+                    // Set the button
+                    let spanButton = document.createElement("span");
+                    spanButton.classList.add("form-file-button");
+                    spanButton.innerHTML = "Browse";
+                    label.appendChild(spanButton);
+                } else {
+                    // Set the label if it exists
+                    if (this.props.label) { label.innerHTML = this.props.label; }
+                    // Else, remove it
+                    else { this.el.removeChild(label); }
+                }
+            }
 
-            // Set the button
-            let spanButton = document.createElement("span");
-            spanButton.classList.add("form-file-button");
-            spanButton.innerHTML = "Browse";
-            label.appendChild(spanButton);
-        } else {
-            // Set the label if it exists
-            if (this.props.label) { label.innerHTML = this.props.label; }
-            // Else, remove it
-            else { this.el.removeChild(label); }
-        }
+            // See if the label exists
+            if (this.props.prependedLabel) {
+                // Add the label
+                let label = document.createElement("span");
+                label.classList.add("input-group-text");
+                label.innerHTML = this.props.prependedLabel;
+                this.el.insertBefore(label, elInput);
+            }
 
-        // See if the label exists
-        if (this.props.prependedLabel) {
-            // Add the label
-            let label = document.createElement("span");
-            label.classList.add("input-group-text");
-            label.innerHTML = this.props.prependedLabel;
-            this.el.insertBefore(label, elInput);
-        }
+            // Parse the buttons
+            let buttons = this.props.prependedButtons || [];
+            for (let i = 0; i < buttons.length; i++) {
+                // Add the button
+                this.el.insertBefore(Button(buttons[i]).el, elInput);
+            }
 
-        // Parse the buttons
-        let buttons = this.props.prependedButtons || [];
-        for (let i = 0; i < buttons.length; i++) {
-            // Add the button
-            this.el.insertBefore(Button(buttons[i]).el, elInput);
-        }
+            // Default the appended buttons
+            let appendedButtons = this.props.appendedButtons || [];
+            if (this.props.type == InputGroupTypes.Range) {
+                // Add the button
+                appendedButtons.push({
+                    id: "range-value",
+                    text: this.props.value == null ? "" : this.props.value
+                });
+            }
 
-        // Default the appended buttons
-        let appendedButtons = this.props.appendedButtons || [];
-        if (this.props.type == InputGroupTypes.Range) {
-            // Add the button
-            appendedButtons.push({
-                id: "range-value",
-                text: this.props.value == null ? "" : this.props.value
-            });
-        }
+            // See if the label exists
+            if (this.props.appendedLabel) {
+                // Add the label
+                let label = document.createElement("span");
+                label.classList.add("input-group-text");
+                label.innerHTML = this.props.appendedLabel;
+                this.el.appendChild(label);
+            }
 
-        // See if the label exists
-        if (this.props.appendedLabel) {
-            // Add the label
-            let label = document.createElement("span");
-            label.classList.add("input-group-text");
-            label.innerHTML = this.props.appendedLabel;
-            this.el.appendChild(label);
-        }
-
-        // Parse the buttons
-        for (let i = 0; i < appendedButtons.length; i++) {
-            // Add the button
-            this.el.appendChild(Button(appendedButtons[i]).el);
+            // Parse the buttons
+            for (let i = 0; i < appendedButtons.length; i++) {
+                // Add the button
+                this.el.appendChild(Button(appendedButtons[i]).el);
+            }
         }
     }
 
@@ -120,63 +123,64 @@ class _InputGroup extends Base<IInputGroupProps> implements IInputGroup {
     private configureEvents() {
         let isMultiLine = this.props.type == InputGroupTypes.TextArea;
         let elInput = this.el.querySelector("input") || this.el.querySelector("textarea");
+        if (elInput) {
+            // See if a change event exists
+            let callbackValue = null;
+            if (this.props.onChange) {
+                // Add an input event
+                elInput.addEventListener("input", ev => {
+                    // See if we have already executed the change event
+                    if (callbackValue != elInput.value) {
+                        // Set the value
+                        callbackValue = elInput.value;
 
-        // See if a change event exists
-        let callbackValue = null;
-        if (this.props.onChange) {
-            // Add an input event
-            elInput.addEventListener("input", ev => {
-                // See if we have already executed the change event
-                if (callbackValue != elInput.value) {
-                    // Set the value
-                    callbackValue = elInput.value;
-
-                    // Call the change event
-                    this.props.onChange(callbackValue, ev);
-                }
-            });
-        }
-
-        // See if this is a range
-        if (this.props.type == InputGroupTypes.Range) {
-            // Add a change event
-            elInput.addEventListener("input", () => {
-                // Get the button
-                let btn = this.el.querySelector("#range-value");
-                if (btn) {
-                    // Update the value
-                    btn.innerHTML = elInput.value;
-                }
-            })
-        }
-
-        // See if this is not a multi-line
-        if (!isMultiLine) {
-            // Add a mouse up event to detect the clear event
-            elInput.addEventListener("mouseup", ev => {
-                // Get the current value
-                let el = ev.currentTarget as HTMLInputElement;
-                let oldValue = el.value;
-
-                // Wait for the user to stop updating the value
-                setTimeout(() => {
-                    // Get the current value
-                    let currentValue = el.value;
-
-                    // See if the values have changed
-                    if (currentValue != oldValue) {
-                        // See if we have already executed the change event
-                        if (callbackValue != currentValue) {
-                            // Set the value
-                            callbackValue = currentValue;
-
-                            // Call the events
-                            this.props.onChange ? this.props.onChange(callbackValue, ev) : null;
-                            this.props.onClear && callbackValue == "" ? this.props.onClear() : null;
-                        }
+                        // Call the change event
+                        this.props.onChange(callbackValue, ev);
                     }
-                }, 1);
-            });
+                });
+            }
+
+            // See if this is a range
+            if (this.props.type == InputGroupTypes.Range) {
+                // Add a change event
+                elInput.addEventListener("input", () => {
+                    // Get the button
+                    let btn = this.el.querySelector("#range-value");
+                    if (btn) {
+                        // Update the value
+                        btn.innerHTML = elInput.value;
+                    }
+                })
+            }
+
+            // See if this is not a multi-line
+            if (!isMultiLine) {
+                // Add a mouse up event to detect the clear event
+                elInput.addEventListener("mouseup", ev => {
+                    // Get the current value
+                    let el = ev.currentTarget as HTMLInputElement;
+                    let oldValue = el.value;
+
+                    // Wait for the user to stop updating the value
+                    setTimeout(() => {
+                        // Get the current value
+                        let currentValue = el.value;
+
+                        // See if the values have changed
+                        if (currentValue != oldValue) {
+                            // See if we have already executed the change event
+                            if (callbackValue != currentValue) {
+                                // Set the value
+                                callbackValue = currentValue;
+
+                                // Call the events
+                                this.props.onChange ? this.props.onChange(callbackValue, ev) : null;
+                                this.props.onClear && callbackValue == "" ? this.props.onClear() : null;
+                            }
+                        }
+                    }, 1);
+                });
+            }
         }
     }
 
@@ -189,67 +193,73 @@ class _InputGroup extends Base<IInputGroupProps> implements IInputGroup {
         // See if this is a text area
         if (isTextArea) {
             // Remove the input
-            this.el.removeChild(input);
+            input ? this.el.removeChild(input) : null;
 
-            // Update the textbox
-            this.props.id ? textarea.id = this.props.id : null;
-            this.props.placeholder ? textarea.placeholder = this.props.placeholder : null;
-            textarea.readOnly = this.props.isReadonly ? true : false;
-            textarea.rows = this.props.rows;
-            this.props.title ? textarea.title = this.props.title : null;
+            // Ensure the textarea exists
+            if (textarea) {
+                // Update the textbox
+                this.props.id ? textarea.id = this.props.id : null;
+                this.props.placeholder ? textarea.placeholder = this.props.placeholder : null;
+                textarea.readOnly = this.props.isReadonly ? true : false;
+                textarea.rows = this.props.rows;
+                this.props.title ? textarea.title = this.props.title : null;
+            }
         } else {
             // Remove the textarea
-            this.el.removeChild(textarea);
+            textarea ? this.el.removeChild(textarea) : null;
 
-            // Update the textbox
-            this.props.id ? input.id = this.props.id : null;
-            this.props.placeholder ? input.placeholder = this.props.placeholder : null;
-            input.readOnly = this.props.isReadonly ? true : false;
-            this.props.title ? input.title = this.props.title : null;
-            typeof (this.props.min) === "number" ? input.min = this.props.min + "" : null;
-            typeof (this.props.max) === "number" ? input.max = this.props.max + "" : null;
-            typeof (this.props.step) === "number" ? input.step = this.props.step + "" : null;
+            // Ensure the input exists
+            if (input) {
+                // Update the textbox
+                this.props.id ? input.id = this.props.id : null;
+                this.props.placeholder ? input.placeholder = this.props.placeholder : null;
+                input.readOnly = this.props.isReadonly ? true : false;
+                this.props.title ? input.title = this.props.title : null;
+                typeof (this.props.min) === "number" ? input.min = this.props.min + "" : null;
+                typeof (this.props.max) === "number" ? input.max = this.props.max + "" : null;
+                typeof (this.props.step) === "number" ? input.step = this.props.step + "" : null;
 
-            // Update the type
-            switch (this.props.type) {
-                // Color Picker
-                case InputGroupTypes.ColorPicker:
-                    input.classList.add("form-control-color");
-                    input.type = "color";
-                    break;
+                // Update the type
+                switch (this.props.type) {
+                    // Color Picker
+                    case InputGroupTypes.ColorPicker:
+                        input.classList.add("form-control-color");
+                        input.type = "color";
+                        break;
 
-                // Email
-                case InputGroupTypes.Email:
-                    input.classList.add("form-email");
-                    input.type = "email";
-                    break;
+                    // Email
+                    case InputGroupTypes.Email:
+                        input.classList.add("form-email");
+                        input.type = "email";
+                        break;
 
-                // File
-                case InputGroupTypes.File:
-                    this.el.classList.add("form-file");
-                    input.classList.remove("form-control");
-                    input.classList.add("form-file-input");
-                    input.type = "file";
-                    break;
+                    // File
+                    case InputGroupTypes.File:
+                        this.el.classList.add("form-file");
+                        input.classList.remove("form-control");
+                        input.classList.add("form-file-input");
+                        input.type = "file";
+                        break;
 
-                // Password
-                case InputGroupTypes.Password:
-                    input.classList.add("form-password");
-                    input.type = "password";
-                    break;
+                    // Password
+                    case InputGroupTypes.Password:
+                        input.classList.add("form-password");
+                        input.type = "password";
+                        break;
 
-                // Range
-                case InputGroupTypes.Range:
-                    input.classList.add("form-range");
-                    input.type = "range";
-                    break;
+                    // Range
+                    case InputGroupTypes.Range:
+                        input.classList.add("form-range");
+                        input.type = "range";
+                        break;
 
-                // Search
-                case InputGroupTypes.Search:
-                    input.classList.add("form-search");
-                    input.type = "search";
-                    input.setAttribute("aria-label", "Search");
-                    break;
+                    // Search
+                    case InputGroupTypes.Search:
+                        input.classList.add("form-search");
+                        input.type = "search";
+                        input.setAttribute("aria-label", "Search");
+                        break;
+                }
             }
         }
 
@@ -278,4 +288,4 @@ class _InputGroup extends Base<IInputGroupProps> implements IInputGroup {
     // Returns the textbox
     get textbox(): HTMLInputElement | HTMLTextAreaElement { return this.el.querySelector("input") || this.el.querySelector("textarea"); }
 }
-export const InputGroup = (props: IInputGroupProps): IInputGroup => { return new _InputGroup(props); }
+export const InputGroup = (props: IInputGroupProps, template?: string): IInputGroup => { return new _InputGroup(props, template); }

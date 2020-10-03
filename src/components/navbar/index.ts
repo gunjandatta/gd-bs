@@ -21,11 +21,11 @@ class _Navbar extends Base<INavbarProps> implements INavbar {
     private _items: Array<NavbarItem> = null;
 
     // Constructor
-    constructor(props: INavbarProps) {
-        super(HTML, props);
+    constructor(props: INavbarProps, template: string = HTML, itemTemplate?: string) {
+        super(template, props);
 
         // Configure the collapse
-        this.configure();
+        this.configure(itemTemplate);
 
         // Configure search
         this.configureSearch();
@@ -38,26 +38,32 @@ class _Navbar extends Base<INavbarProps> implements INavbar {
     }
 
     // Configure the card group
-    private configure() {
+    private configure(itemTemplate: string) {
         // See if there is a brand
         let brand = this.el.querySelector(".navbar-brand") as HTMLAnchorElement;
-        if (this.props.brand) {
-            // Update the brand
-            this.props.brandUrl ? brand.href = this.props.brandUrl : null;
-            brand.innerHTML = this.props.brand == null ? "" : this.props.brand;
-        } else {
-            // Remove the brand
-            brand.parentNode.removeChild(brand);
+        if (brand) {
+            if (this.props.brand) {
+                // Update the brand
+                this.props.brandUrl ? brand.href = this.props.brandUrl : null;
+                brand.innerHTML = this.props.brand == null ? "" : this.props.brand;
+            } else {
+                // Remove the brand
+                brand.parentNode.removeChild(brand);
+            }
         }
 
         // Update the nav bar
         let navbar = this.el.querySelector(".navbar-collapse");
-        navbar.id = this.props.id || "navbar_content";
+        if (navbar) {
+            navbar.id = this.props.id || "navbar_content";
+        }
 
         // Set the toggle
         let toggler = this.el.querySelector(".navbar-toggler");
-        toggler.setAttribute("aria-controls", navbar.id);
-        toggler.setAttribute("data-target", "#" + navbar.id);
+        if (toggler) {
+            toggler.setAttribute("aria-controls", navbar.id);
+            toggler.setAttribute("data-target", "#" + navbar.id);
+        }
 
         // Add the classes based on the type
         this._btnSearch = this.el.querySelector("button[type='submit']") as HTMLButtonElement;
@@ -66,7 +72,7 @@ class _Navbar extends Base<INavbarProps> implements INavbar {
         this.setType(this.props.type);
 
         // Render the items
-        this.renderItems();
+        this.renderItems(itemTemplate);
     }
 
     // Configure the events
@@ -143,46 +149,49 @@ class _Navbar extends Base<INavbarProps> implements INavbar {
     private configureSearch() {
         // See if we are rendering a search box
         let search = this.el.querySelector("form") as HTMLElement;
-        if (this.props.enableSearch || this.props.searchBox) {
-            let props = this.props.searchBox || {};
+        if (search) {
+            if (this.props.enableSearch || this.props.searchBox) {
+                let props = this.props.searchBox || {};
 
-            // Update the searchbox
-            let searchbox = search.querySelector("input");
-            searchbox.placeholder = props.placeholder || searchbox.placeholder;
-            searchbox.value = props.value || "";
-            props.btnText ? searchbox.setAttribute("aria-label", props.btnText) : null;
+                // Update the searchbox
+                let searchbox = search.querySelector("input");
+                searchbox.placeholder = props.placeholder || searchbox.placeholder;
+                searchbox.value = props.value || "";
+                props.btnText ? searchbox.setAttribute("aria-label", props.btnText) : null;
 
-            // See if we are rendering a button
-            let button = search.querySelector("button");
-            if (props.hideButton == true) {
-                // Remove the button
-                search.removeChild(button);
+                // See if we are rendering a button
+                let button = search.querySelector("button");
+                if (props.hideButton == true) {
+                    // Remove the button
+                    search.removeChild(button);
+                } else {
+                    // Set the button type class name
+                    let className = ButtonClassNames.getByType(props.btnType);
+                    className ? button.classList.add(className) : null;
+                }
             } else {
-                // Set the button type class name
-                let className = ButtonClassNames.getByType(props.btnType);
-                className ? button.classList.add(className) : null;
+                // Remove the searchbox
+                search.parentNode.removeChild(search);
             }
-        } else {
-            // Remove the searchbox
-            search.parentNode.removeChild(search);
         }
     }
 
     // Render the items
-    private renderItems() {
+    private renderItems(itemTemplate: string) {
         // Clear the list
         this._items = [];
 
         // Create the navbar list
         let list = this.el.querySelector("ul.navbar-nav");
-
-        // Parse the items
-        let items = this.props.items || [];
-        for (let i = 0; i < items.length; i++) {
-            // Create the item
-            let item = new NavbarItem(items[i], this.props);
-            this._items.push(item);
-            list.appendChild(item.el);
+        if (list) {
+            // Parse the items
+            let items = this.props.items || [];
+            for (let i = 0; i < items.length; i++) {
+                // Create the item
+                let item = new NavbarItem(items[i], this.props, itemTemplate);
+                this._items.push(item);
+                list.appendChild(item.el);
+            }
         }
     }
 
@@ -230,4 +239,4 @@ class _Navbar extends Base<INavbarProps> implements INavbar {
         }
     }
 }
-export const Navbar = (props: INavbarProps): INavbar => { return new _Navbar(props); }
+export const Navbar = (props: INavbarProps, template?: string, itemTemplate?: string): INavbar => { return new _Navbar(props, template, itemTemplate); }

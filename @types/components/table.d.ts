@@ -61,7 +61,7 @@
  * });
  * ```
  */
-export const Table: (props: ITableProps) => ITable
+export const Table: (props: ITableProps, template?: string) => ITable
 
 import { IBaseProps } from "../base";
 

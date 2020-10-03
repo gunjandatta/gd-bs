@@ -31,7 +31,7 @@
  * });
  * ```
  */
-export const Pagination: (props: IPaginationProps) => IPagination;
+export const Pagination: (props: IPaginationProps, template?: string, itemTemplate?: string) => IPagination;
 
 import { IBaseProps } from "../base";
 

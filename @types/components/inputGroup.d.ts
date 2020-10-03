@@ -29,7 +29,7 @@
  * });
  * ```
  */
-export const InputGroup: (props: IInputGroupProps) => IInputGroup;
+export const InputGroup: (props: IInputGroupProps, template?: string) => IInputGroup;
 
 /**
  * Input Group Types

@@ -10,8 +10,8 @@ export class NavLink extends Base<INavLink> {
     private _elTab: HTMLDivElement = null;
 
     // Constructor
-    constructor(props: INavLink, isTab: boolean) {
-        super(HTMLLink, props);
+    constructor(props: INavLink, isTab: boolean, template: string = HTMLLink) {
+        super(template, props);
 
         // See if this is for a tab
         if (isTab) {
@@ -32,43 +32,45 @@ export class NavLink extends Base<INavLink> {
     private configure() {
         // Update the link
         this._elLink = this.el.querySelector("a.nav-link");
-        this.props.isActive ? this._elLink.classList.add("active") : null;
-        this.props.isDisabled ? this._elLink.classList.add("disabled") : null;
-        this._elLink.innerHTML = this.props.title == null ? "" : this.props.title;
-
-        // See if this is a tab
-        if (this._elTab) {
-            let tabId = this.props.title.replace(/[^a-zA-Z0-9]/, "");
-
-            // Set the properties
-            this._elLink.id = tabId + "-tab";
-            this._elLink.setAttribute("href", "#" + tabId);
-            this._elLink.setAttribute("data-toggle", "tab");
-            this._elLink.setAttribute("aria-controls", tabId);
+        if (this._elLink) {
+            this.props.isActive ? this._elLink.classList.add("active") : null;
+            this.props.isDisabled ? this._elLink.classList.add("disabled") : null;
             this._elLink.innerHTML = this.props.title == null ? "" : this.props.title;
 
-            // Update the tab
-            this._elTab.id = tabId;
-            this._elTab.setAttribute("aria-labelledby", tabId);
+            // See if this is a tab
+            if (this._elTab) {
+                let tabId = this.props.title.replace(/[^a-zA-Z0-9]/, "");
 
-            // See if this tab is active
-            if (this.props.isActive) {
-                // Update the classes
-                this._elTab.classList.add("active")
-            }
+                // Set the properties
+                this._elLink.id = tabId + "-tab";
+                this._elLink.setAttribute("href", "#" + tabId);
+                this._elLink.setAttribute("data-toggle", "tab");
+                this._elLink.setAttribute("aria-controls", tabId);
+                this._elLink.innerHTML = this.props.title == null ? "" : this.props.title;
 
-            // Set the content
-            let content = this.props.tabContent || "";
-            if (typeof (content) === "string" || typeof (content) === "number") {
-                // Set the html
-                this._elTab.innerHTML = content;
+                // Update the tab
+                this._elTab.id = tabId;
+                this._elTab.setAttribute("aria-labelledby", tabId);
+
+                // See if this tab is active
+                if (this.props.isActive) {
+                    // Update the classes
+                    this._elTab.classList.add("active")
+                }
+
+                // Set the content
+                let content = this.props.tabContent || "";
+                if (typeof (content) === "string" || typeof (content) === "number") {
+                    // Set the html
+                    this._elTab.innerHTML = content;
+                } else {
+                    // Append the element
+                    this._elTab.appendChild(content);
+                }
             } else {
-                // Append the element
-                this._elTab.appendChild(content);
+                // Set the properties
+                this._elLink.setAttribute("href", this.props.href || "#");
             }
-        } else {
-            // Set the properties
-            this._elLink.setAttribute("href", this.props.href || "#");
         }
     }
 

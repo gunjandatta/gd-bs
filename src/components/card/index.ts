@@ -9,8 +9,8 @@ import { CardBody } from "./item";
  */
 class _Card extends Base<ICardProps> implements ICard {
     // Constructor
-    constructor(props: ICardProps) {
-        super(HTML, props);
+    constructor(props: ICardProps, template: string = HTML) {
+        super(template, props);
 
         // Configure the card
         this.configure();
@@ -147,4 +147,4 @@ class _Card extends Base<ICardProps> implements ICard {
      * Public Interface
      */
 }
-export const Card = (props: ICardProps): ICard => { return new _Card(props); }
+export const Card = (props: ICardProps, template?: string): ICard => { return new _Card(props, template); }

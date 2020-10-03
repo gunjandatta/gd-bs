@@ -31,7 +31,7 @@
  * });
  * ```
  */
-export const Alert: (props: IAlertProps) => IAlert;
+export const Alert: (props: IAlertProps, template?: string) => IAlert;
 
 /**
  * Alert Types

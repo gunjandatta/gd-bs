@@ -37,8 +37,8 @@ export const SpinnerClassNames = new ClassNames([
  */
 class _Spinner extends Base<ISpinnerProps> implements ISpinner {
     // Constructor
-    constructor(props: ISpinnerProps) {
-        super(HTML, props);
+    constructor(props: ISpinnerProps, template: string = HTML) {
+        super(template, props);
 
         // Configure the collapse
         this.configure();
@@ -64,8 +64,11 @@ class _Spinner extends Base<ISpinnerProps> implements ISpinner {
         // See if text is defined
         if (this.props.text) {
             // Update the text
-            this.el.querySelector("span").innerHTML = this.props.text;
+            let elSpan = this.el.querySelector("span");
+            if (elSpan) {
+                elSpan.innerHTML = this.props.text;
+            }
         }
     }
 }
-export const Spinner = (props: ISpinnerProps): ISpinner => { return new _Spinner(props); }
+export const Spinner = (props: ISpinnerProps, template?: string): ISpinner => { return new _Spinner(props, template); }

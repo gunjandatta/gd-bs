@@ -10,13 +10,13 @@ export class BreadcrumbItem {
     private _props: IBreadcrumbItem = null;
 
     // Constructor
-    constructor(props: IBreadcrumbItem) {
+    constructor(props: IBreadcrumbItem, template: string = props.href && !props.isActive ? HTMLLink : HTMLItem) {
         // Save the properties
         this._props = props;
 
         // Create the item
         let elItem = document.createElement("div");
-        elItem.innerHTML = props.href && !props.isActive ? HTMLLink : HTMLItem;
+        elItem.innerHTML = template;
         this._el = elItem.firstChild as HTMLLIElement;
 
         // Configure the item

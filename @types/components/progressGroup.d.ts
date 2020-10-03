@@ -51,7 +51,7 @@
  * });
  * ```
  */
-export const ProgressGroup: (props: IProgressGroupProps) => IProgressGroup;
+export const ProgressGroup: (props: IProgressGroupProps, template?: string, progressTemplate?: string) => IProgressGroup;
 
 import { IBaseProps } from "../base";
 import { IProgressProps } from "./progress";

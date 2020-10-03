@@ -49,8 +49,8 @@ export const ModalClassNames = new ClassNames([
 class _Modal extends Base<IModalProps> implements IModal {
 
     // Constructor
-    constructor(props: IModalProps) {
-        super(HTML, props);
+    constructor(props: IModalProps, template: string = HTML) {
+        super(template, props);
 
         // Configure the collapse
         this.configure();
@@ -71,52 +71,58 @@ class _Modal extends Base<IModalProps> implements IModal {
 
         // Update the dialog
         let dialog = this.el.querySelector(".modal-dialog") as HTMLElement;
-        this.props.isCentered ? dialog.classList.add("modal-dialog-centered") : null;
+        if (dialog) {
+            this.props.isCentered ? dialog.classList.add("modal-dialog-centered") : null;
 
-        // See if this is a panel
-        switch (this.props.type) {
-            case ModalTypes.PanelSmall:
-            case ModalTypes.PanelMedium:
-            case ModalTypes.PanelLarge:
-            case ModalTypes.PanelXLarge:
-                dialog.classList.add(ModalClassNames.getByType(ModalTypes.Full));
-                break;
-        }
+            // See if this is a panel
+            switch (this.props.type) {
+                case ModalTypes.PanelSmall:
+                case ModalTypes.PanelMedium:
+                case ModalTypes.PanelLarge:
+                case ModalTypes.PanelXLarge:
+                    dialog.classList.add(ModalClassNames.getByType(ModalTypes.Full));
+                    break;
+            }
 
-        // Add the class name, based on the type
-        let className = ModalClassNames.getByType(this.props.type);
-        className ? dialog.classList.add(className) : null;
+            // Add the class name, based on the type
+            let className = ModalClassNames.getByType(this.props.type);
+            className ? dialog.classList.add(className) : null;
 
-        // Update the title
-        this.setTitle(this.props.title);
+            // Update the title
+            this.setTitle(this.props.title);
 
-        // See if we are hiding the close button
-        if (this.props.hideCloseButton) {
-            // Remove the close button
-            let closeButton = dialog.querySelector("button.close") as HTMLElement;
-            closeButton ? closeButton.parentNode.removeChild(closeButton) : null;
+            // See if we are hiding the close button
+            if (this.props.hideCloseButton) {
+                // Remove the close button
+                let closeButton = dialog.querySelector("button.close") as HTMLElement;
+                closeButton ? closeButton.parentNode.removeChild(closeButton) : null;
+            }
         }
 
         // Update the body
         let body = this.el.querySelector(".modal-body");
-        let content = this.props.body || "";
-        if (typeof (content) === "string" || typeof (content) === "number") {
-            // Set the HTML
-            body.innerHTML = content;
-        } else {
-            // Append the element
-            body.appendChild(content);
-        }
+        if (body) {
+            let content = this.props.body || "";
+            if (typeof (content) === "string" || typeof (content) === "number") {
+                // Set the HTML
+                body.innerHTML = content;
+            } else {
+                // Append the element
+                body.appendChild(content);
+            }
 
-        // Update the footer
-        let footer = this.el.querySelector(".modal-footer");
-        content = this.props.footer || "";
-        if (typeof (content) === "string" || typeof (content) === "number") {
-            // Set the HTML
-            footer.innerHTML = content;
-        } else {
-            // Append the element
-            footer.appendChild(content);
+            // Update the footer
+            let footer = this.el.querySelector(".modal-footer");
+            if (footer) {
+                content = this.props.footer || "";
+                if (typeof (content) === "string" || typeof (content) === "number") {
+                    // Set the HTML
+                    footer.innerHTML = content;
+                } else {
+                    // Append the element
+                    footer.appendChild(content);
+                }
+            }
         }
 
         // Get the modal options
@@ -194,9 +200,10 @@ class _Modal extends Base<IModalProps> implements IModal {
     setTitle(title: string) {
         // Get the title
         let elTitle = this.el.querySelector(".modal-title");
-
-        // Set the text
-        elTitle.innerHTML = title == null ? "" : title;
+        if (elTitle) {
+            // Set the text
+            elTitle.innerHTML = title == null ? "" : title;
+        }
     }
 }
-export const Modal = (props: IModalProps): IModal => { return new _Modal(props); }
+export const Modal = (props: IModalProps, template?: string): IModal => { return new _Modal(props, template); }

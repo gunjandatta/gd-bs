@@ -9,13 +9,13 @@ export class CarouselItem {
     private _props: ICarouselItem = null;
 
     // Constructor
-    constructor(props: ICarouselItem) {
+    constructor(props: ICarouselItem, template: string = HTMLItem) {
         // Save the properties
         this._props = props;
 
         // Create the item
         let elItem = document.createElement("div");
-        elItem.innerHTML = HTMLItem;
+        elItem.innerHTML = template;
         this._el = elItem.firstChild as HTMLDivElement;
 
         // Configure the item

@@ -8,8 +8,8 @@ import { HTML } from "./templates";
  */
 class _Collapse extends Base<ICollapseProps> implements ICollapse {
     // Constructor
-    constructor(props: ICollapseProps) {
-        super(HTML, props);
+    constructor(props: ICollapseProps, template: string = HTML) {
+        super(template, props);
 
         // Configure the collapse
         this.configure();
@@ -98,4 +98,4 @@ class _Collapse extends Base<ICollapseProps> implements ICollapse {
      * Public Interface
      */
 }
-export const Collapse = (props: ICollapseProps): ICollapse => { return new _Collapse(props); }
+export const Collapse = (props: ICollapseProps, template?: string): ICollapse => { return new _Collapse(props, template); }

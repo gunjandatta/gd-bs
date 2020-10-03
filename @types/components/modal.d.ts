@@ -46,7 +46,7 @@
  * });
  * ```
  */
-export const Modal: (props: IModalProps) => IModal;
+export const Modal: (props: IModalProps, template?: string) => IModal;
 
 /**
  * Modal Types

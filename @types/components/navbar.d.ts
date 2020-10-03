@@ -83,7 +83,7 @@
  * });
  * ```
  */
-export const Navbar: (props: INavbarProps) => INavbar;
+export const Navbar: (props: INavbarProps, template?: string, itemTemplate?: string) => INavbar;
 
 /**
  * Navbar Types

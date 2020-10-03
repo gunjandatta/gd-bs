@@ -11,11 +11,11 @@ import { HTML } from "./templates";
 class _Carousel extends Base<ICarouselProps> implements ICarousel {
 
     // Constructor
-    constructor(props: ICarouselProps) {
-        super(HTML, props);
+    constructor(props: ICarouselProps, template: string = HTML, slideTemplate?: string) {
+        super(template, props);
 
         // Configure the carousel
-        this.configure();
+        this.configure(slideTemplate);
 
         // Configure the parent
         this.configureParent();
@@ -25,7 +25,7 @@ class _Carousel extends Base<ICarouselProps> implements ICarousel {
     }
 
     // Configure the card group
-    private configure() {
+    private configure(slideTemplate: string) {
         // Set the attributes
         this.el.id = "carousel_" + (this.props.id == null ? "" : this.props.id);
         this.props.enableCrossfade ? this.el.classList.add("carousel-fade") : null;
@@ -37,7 +37,7 @@ class _Carousel extends Base<ICarouselProps> implements ICarousel {
         this.renderControls();
 
         // Render the slides
-        this.renderSlides();
+        this.renderSlides(slideTemplate);
 
         // Set the dark theme
         this.props.isDark ? this.setTheme(true) : null;
@@ -52,12 +52,12 @@ class _Carousel extends Base<ICarouselProps> implements ICarousel {
         // See if we are rendering controls
         if (this.props.enableControls) {
             // Configure the controls
-            nextControl.href = "#" + this.el.id;
-            prevControl.href = "#" + this.el.id;
+            nextControl ? nextControl.href = "#" + this.el.id : null;
+            prevControl ? prevControl.href = "#" + this.el.id : null;
         } else {
             // Remove the controls
-            this.el.removeChild(nextControl);
-            this.el.removeChild(prevControl);
+            nextControl ? this.el.removeChild(nextControl) : null;
+            prevControl ? this.el.removeChild(prevControl) : null;
         }
     }
 
@@ -65,41 +65,43 @@ class _Carousel extends Base<ICarouselProps> implements ICarousel {
     private renderIndicators() {
         // Get the indicators
         let indicators = this.el.querySelector(".carousel-indicators");
+        if (indicators) {
+            // See if we are enabling indicators
+            if (this.props.enableIndicators) {
+                // Parse the items
+                let items = this.props.items || [];
+                for (let i = 0; i < items.length; i++) {
+                    let item = items[i];
 
-        // See if we are enabling indicators
-        if (this.props.enableIndicators) {
-            // Parse the items
-            let items = this.props.items || [];
-            for (let i = 0; i < items.length; i++) {
-                let item = items[i];
+                    // Create the item
+                    let elItem = document.createElement("li");
+                    elItem.setAttribute("data-target", "#" + this.el.id);
+                    elItem.setAttribute("data-slide-to", i.toString());
+                    item.isActive ? elItem.classList.add("active") : null;
 
-                // Create the item
-                let elItem = document.createElement("li");
-                elItem.setAttribute("data-target", "#" + this.el.id);
-                elItem.setAttribute("data-slide-to", i.toString());
-                item.isActive ? elItem.classList.add("active") : null;
-
-                // Add the item
-                indicators.appendChild(elItem);
+                    // Add the item
+                    indicators.appendChild(elItem);
+                }
+            } else {
+                // Remove the indicators
+                this.el.removeChild(indicators);
             }
-        } else {
-            // Remove the indicators
-            this.el.removeChild(indicators);
         }
     }
 
     // Renders the slides
-    private renderSlides() {
+    private renderSlides(slideTemplate: string) {
         // Get the indicators
         let slides = this.el.querySelector(".carousel-inner");
+        if (slides) {
+            // Parse the items
+            let items = this.props.items || [];
+            for (let i = 0; i < items.length; i++) {
+                let slide = new CarouselItem(items[i], slideTemplate);
 
-        // Parse the items
-        let items = this.props.items || [];
-        for (let i = 0; i < items.length; i++) {
-            let slide = new CarouselItem(items[i]);
-
-            // Create the item element
-            slides.appendChild(slide.el);
+                // Create the item element
+                slides.appendChild(slide.el);
+            }
         }
     }
 
@@ -141,4 +143,4 @@ class _Carousel extends Base<ICarouselProps> implements ICarousel {
         }
     }
 }
-export const Carousel = (props: ICarouselProps): ICarousel => { return new _Carousel(props); }
+export const Carousel = (props: ICarouselProps, template?: string, slideTemplate?: string): ICarousel => { return new _Carousel(props, template, slideTemplate); }

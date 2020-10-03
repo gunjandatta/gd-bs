@@ -45,7 +45,7 @@
  * });
  * ```
  */
-export const Nav: (props: INavProps) => INav;
+export const Nav: (props: INavProps, template?: string, itemTemplate?: string) => INav;
 
 import { IBaseProps } from "../base";
 

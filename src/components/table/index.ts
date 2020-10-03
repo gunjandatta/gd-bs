@@ -7,8 +7,8 @@ import { HTML } from "./templates";
  */
 class _Table extends Base<ITableProps> implements ITable {
     // Constructor
-    constructor(props: ITableProps) {
-        super(HTML, props);
+    constructor(props: ITableProps, template: string = HTML) {
+        super(template, props);
 
         // Configure the collapse
         this.configure();
@@ -21,25 +21,27 @@ class _Table extends Base<ITableProps> implements ITable {
     private configure() {
         // See if columns are defined
         let head = this.el.querySelector("thead");
-        if (this.props.columns) {
-            // Append the row
-            let row = document.createElement("tr");
-            head.appendChild(row);
+        if (head) {
+            if (this.props.columns) {
+                // Append the row
+                let row = document.createElement("tr");
+                head.appendChild(row);
 
-            // Parse the columns
-            for (let i = 0; i < this.props.columns.length; i++) {
-                // Append the column
-                let column = document.createElement("th");
-                row.appendChild(column);
+                // Parse the columns
+                for (let i = 0; i < this.props.columns.length; i++) {
+                    // Append the column
+                    let column = document.createElement("th");
+                    row.appendChild(column);
 
-                // Render the column
-                this.renderColumn(i, column, this.props.columns[i]);
-            }
+                    // Render the column
+                    this.renderColumn(i, column, this.props.columns[i]);
+                }
 
-            // See if there is an event
-            if (this.props.onRenderHeaderRow) {
-                // Call the event
-                this.props.onRenderHeaderRow(row);
+                // See if there is an event
+                if (this.props.onRenderHeaderRow) {
+                    // Call the event
+                    this.props.onRenderHeaderRow(row);
+                }
             }
         }
 
@@ -134,16 +136,17 @@ class _Table extends Base<ITableProps> implements ITable {
     // Method to add the rows
     addRows(rows: Array<any> = []) {
         let tbody = this.el.querySelector("tbody");
+        if (tbody) {
+            // Parse the rows
+            for (let i = 0; i < rows.length; i++) {
+                // Create the row
+                let row = document.createElement("tr");
+                tbody.appendChild(row);
 
-        // Parse the rows
-        for (let i = 0; i < rows.length; i++) {
-            // Create the row
-            let row = document.createElement("tr");
-            tbody.appendChild(row);
-
-            // Render the row
-            this.renderRow(row, rows[i]);
+                // Render the row
+                this.renderRow(row, rows[i]);
+            }
         }
     }
 }
-export const Table = (props: ITableProps): ITable => { return new _Table(props); }
+export const Table = (props: ITableProps, template?: string): ITable => { return new _Table(props, template); }

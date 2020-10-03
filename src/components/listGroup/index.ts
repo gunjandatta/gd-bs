@@ -41,23 +41,25 @@ class _ListGroup extends Base<IListGroupProps> implements IListGroup {
     private _items: Array<ListGroupItem> = null;
 
     // Constructor
-    constructor(props: IListGroupProps) {
-        super(props.isTabs && props.colWidth > 0 && props.colWidth < 12 ? HTMLTabs : HTML, props);
+    constructor(props: IListGroupProps, template: string = props.isTabs && props.colWidth > 0 && props.colWidth < 12 ? HTMLTabs : HTML, itemTemplate?: string) {
+        super(template, props);
 
         // Configure the collapse
-        this.configure();
+        this.configure(itemTemplate);
 
         // Configure the parent
         this.configureParent();
     }
 
     // Configure the card group
-    private configure() {
+    private configure(itemTemplate: string) {
         // Update the list group
         let listGroup = this.el.querySelector(".list-group") || this.el;
-        this.props.isFlush ? listGroup.classList.add("list-group-flush") : null;
-        this.props.isHorizontal ? listGroup.classList.add("list-group-horizontal") : null;
-        this.props.isTabs ? listGroup.setAttribute("role", "tablist") : null;
+        if (listGroup) {
+            this.props.isFlush ? listGroup.classList.add("list-group-flush") : null;
+            this.props.isHorizontal ? listGroup.classList.add("list-group-horizontal") : null;
+            this.props.isTabs ? listGroup.setAttribute("role", "tablist") : null;
+        }
 
         // See if the column width is defined
         let column = this.el.querySelector(".col");
@@ -67,40 +69,41 @@ class _ListGroup extends Base<IListGroupProps> implements IListGroup {
         }
 
         // Render the items
-        this.renderItems(listGroup);
+        this.renderItems(listGroup, itemTemplate);
     }
 
     // Render the items
-    private renderItems(listGroup: Element) {
+    private renderItems(listGroup: Element, itemTemplate: string) {
         // Clear the items
         this._items = [];
 
         // Get the tab content element
         let tabs = this.el.querySelector(".tab-content");
+        if (tabs) {
+            // Parse the items
+            let items = this.props.items || [];
+            for (let i = 0; i < items.length; i++) {
+                // Create the item
+                let item = new ListGroupItem(items[i], tabs ? true : false, itemTemplate);
+                this._items.push(item);
+                listGroup.appendChild(item.el);
 
-        // Parse the items
-        let items = this.props.items || [];
-        for (let i = 0; i < items.length; i++) {
-            // Create the item
-            let item = new ListGroupItem(items[i], tabs ? true : false);
-            this._items.push(item);
-            listGroup.appendChild(item.el);
+                // See if we are rendering tabs
+                if (tabs) {
+                    // Add the tab content
+                    tabs.appendChild(item.elTab);
 
-            // See if we are rendering tabs
-            if (tabs) {
-                // Add the tab content
-                tabs.appendChild(item.elTab);
-
-                // See if the fade option is enabled
-                if (this.props.fadeTabs) {
-                    // Set the class name
-                    item.elTab.classList.add("fade");
-
-                    // See if the tab is active
-                    if (item.props.isActive) {
+                    // See if the fade option is enabled
+                    if (this.props.fadeTabs) {
                         // Set the class name
-                        item.elTab.classList.add("show");
-                        item.elTab.classList.add("active");
+                        item.elTab.classList.add("fade");
+
+                        // See if the tab is active
+                        if (item.props.isActive) {
+                            // Set the class name
+                            item.elTab.classList.add("show");
+                            item.elTab.classList.add("active");
+                        }
                     }
                 }
             }
@@ -129,4 +132,4 @@ class _ListGroup extends Base<IListGroupProps> implements IListGroup {
         }
     }
 }
-export const ListGroup = (props: IListGroupProps): IListGroup => { return new _ListGroup(props); }
+export const ListGroup = (props: IListGroupProps, template?: string, itemTemplate?: string): IListGroup => { return new _ListGroup(props, template, itemTemplate); }

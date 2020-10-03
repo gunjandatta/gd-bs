@@ -40,8 +40,8 @@ export const ProgressBarClassNames = new ClassNames([
  */
 class _Progress extends Base<IProgressProps> implements IProgress {
     // Constructor
-    constructor(props: IProgressProps) {
-        super(HTML, props);
+    constructor(props: IProgressProps, template: string = HTML) {
+        super(template, props);
 
         // Configure the collapse
         this.configure();
@@ -59,19 +59,21 @@ class _Progress extends Base<IProgressProps> implements IProgress {
 
         // Update the progress bar
         let progressBar = this.el.querySelector(".progress-bar") as HTMLDivElement;
-        progressBar.style.width = size + "%";
-        progressBar.setAttribute("aria-valuenow", size.toString());
-        progressBar.setAttribute("aria-valuemin", minValue.toString());
-        progressBar.setAttribute("aria-valuemax", maxValue.toString());
-        this.props.isAnimated ? progressBar.classList.add("progress-bar-animated") : null;
-        this.props.isStriped ? progressBar.classList.add("progress-bar-striped") : null;
-        this.props.label ? progressBar.innerHTML = this.props.label : null;
+        if (progressBar) {
+            progressBar.style.width = size + "%";
+            progressBar.setAttribute("aria-valuenow", size.toString());
+            progressBar.setAttribute("aria-valuemin", minValue.toString());
+            progressBar.setAttribute("aria-valuemax", maxValue.toString());
+            this.props.isAnimated ? progressBar.classList.add("progress-bar-animated") : null;
+            this.props.isStriped ? progressBar.classList.add("progress-bar-striped") : null;
+            this.props.label ? progressBar.innerHTML = this.props.label : null;
 
-        // See if a type exists
-        let className = ProgressBarClassNames.getByType(this.props.type);
-        if (className) {
-            // Add the class name
-            progressBar.classList.add(className);
+            // See if a type exists
+            let className = ProgressBarClassNames.getByType(this.props.type);
+            if (className) {
+                // Add the class name
+                progressBar.classList.add(className);
+            }
         }
     }
 
@@ -82,4 +84,4 @@ class _Progress extends Base<IProgressProps> implements IProgress {
     // Return the progress bar element
     get progressBar() { return this.el.querySelector(".progress-bar") as HTMLDivElement; }
 }
-export const Progress = (props: IProgressProps): IProgress => { return new _Progress(props); }
+export const Progress = (props: IProgressProps, template?: string): IProgress => { return new _Progress(props, template); }

@@ -11,8 +11,8 @@ export class ListGroupItem extends Base<IListGroupItem> {
     private _elTab: HTMLDivElement = null;
 
     // Constructor
-    constructor(props: IListGroupItem, isTab: boolean = false) {
-        super(HTMLItem, props);
+    constructor(props: IListGroupItem, isTab: boolean = false, itemTemplate: string = HTMLItem) {
+        super(itemTemplate, props);
 
         // See if this is for a tab
         if (isTab) {

@@ -22,8 +22,8 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
     private _popovers: HTMLDivElement = null;
 
     // Constructor
-    constructor(props: IPopoverProps) {
-        super("", props);
+    constructor(props: IPopoverProps, template: string = "") {
+        super(template, props);
 
         // Configure the collapse
         this.configure();
@@ -149,4 +149,4 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
      * Public Interface
      */
 }
-export const Popover = (props: IPopoverProps): IPopover => { return new _Popover(props); }
+export const Popover = (props: IPopoverProps, template?: string): IPopover => { return new _Popover(props, template); }

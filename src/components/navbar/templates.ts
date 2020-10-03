@@ -21,6 +21,6 @@ export const HTML = `
 export const HTMLItem = `
 <li class="nav-item">
     <a class="nav-link" href="#">
-        <span class="sr-only">(current)</span>
+        <span class="visually-hidden">(current)</span>
     </a>
 </li>`.trim();

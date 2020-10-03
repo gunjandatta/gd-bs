@@ -31,7 +31,7 @@
  * });
  * ```
  */
-export const Badge: (props: IBadgeProps) => IBadge;
+export const Badge: (props: IBadgeProps, template?: string) => IBadge;
 
 /**
  * Badge Types

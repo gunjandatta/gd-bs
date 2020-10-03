@@ -24,8 +24,8 @@ class _Tooltip extends Base<ITooltipProps> {
     private _tooltips: HTMLDivElement = null;
 
     // Constructor
-    constructor(props: ITooltipProps) {
-        super("", props);
+    constructor(props: ITooltipProps, template: string = "") {
+        super(template, props);
 
         // Configure the collapse
         this.configure();
@@ -157,4 +157,4 @@ class _Tooltip extends Base<ITooltipProps> {
     // Reference to the button
     get button(): IButton { return this._btn; }
 }
-export const Tooltip = (props: ITooltipProps): ITooltip => { return new _Tooltip(props); }
+export const Tooltip = (props: ITooltipProps, template?: string): ITooltip => { return new _Tooltip(props, template); }

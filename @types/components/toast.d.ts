@@ -33,7 +33,7 @@
  * });
  * ```
  */
-export const Toast: (props: IToastProps) => IToast;
+export const Toast: (props: IToastProps, template?: string) => IToast;
 
 import { IBaseProps } from "../base";
 

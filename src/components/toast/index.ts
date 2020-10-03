@@ -10,8 +10,8 @@ import { HTML } from "./templates";
 class _Toast extends Base<IToastProps> implements IToast {
 
     // Constructor
-    constructor(props: IToastProps) {
-        super(HTML, props);
+    constructor(props: IToastProps, template: string = HTML) {
+        super(template, props);
 
         // Configure the collapse
         this.configure();
@@ -26,54 +26,66 @@ class _Toast extends Base<IToastProps> implements IToast {
     // Configure the card group
     private configure() {
         let header = this.el.querySelector(".toast-header");
+        if (header) {
+            // See if we are rendering an image
+            let img = header.querySelector("img") as HTMLImageElement;
+            if (img) {
+                if (this.props.headerImgSrc) {
+                    // Create the image
+                    img.className = this.props.headerImgClass || "";
+                    img.src = this.props.headerImgSrc;
+                } else {
+                    // Remove the image
+                    img.parentNode.removeChild(img);
+                }
+            }
 
-        // See if we are rendering an image
-        let img = header.querySelector("img") as HTMLImageElement;
-        if (this.props.headerImgSrc) {
-            // Create the image
-            img.className = this.props.headerImgClass || "";
-            img.src = this.props.headerImgSrc;
-        } else {
-            // Remove the image
-            img.parentNode.removeChild(img);
+            // See if header text is defined
+            let headerText = header.querySelector("strong") as HTMLElement;
+            if (headerText) {
+                if (this.props.headerText) {
+                    // Update the header text
+                    headerText.innerHTML = this.props.headerText;
+                } else {
+                    // Remove the header
+                    headerText.parentNode.removeChild(headerText);
+                }
+            }
+
+            // See if muted text is defined
+            let mutedText = header.querySelector("small") as HTMLElement;
+            if (mutedText) {
+                if (this.props.mutedText) {
+                    // Create the text
+                    mutedText.innerHTML = this.props.mutedText;
+                } else {
+                    // Remove the element
+                    mutedText.parentNode.removeChild(mutedText);
+                }
+            }
+
+            // See if we are creating the close button
+            let closeButton = header.querySelector("button") as HTMLElement;
+            if (closeButton) {
+                if (this.props.hideCloseButton) {
+                    // Remove the button
+                    closeButton.parentNode.removeChild(closeButton);
+                }
+            }
         }
 
-        // See if header text is defined
-        let headerText = header.querySelector("strong") as HTMLElement;
-        if (this.props.headerText) {
-            // Update the header text
-            headerText.innerHTML = this.props.headerText;
-        } else {
-            // Remove the header
-            headerText.parentNode.removeChild(headerText);
-        }
-
-        // See if muted text is defined
-        let mutedText = header.querySelector("small") as HTMLElement;
-        if (this.props.mutedText) {
-            // Create the text
-            mutedText.innerHTML = this.props.mutedText;
-        } else {
-            // Remove the element
-            mutedText.parentNode.removeChild(mutedText);
-        }
-
-        // See if we are creating the close button
-        let closeButton = header.querySelector("button") as HTMLElement;
-        if (this.props.hideCloseButton) {
-            // Remove the button
-            closeButton.parentNode.removeChild(closeButton);
-        }
 
         // Update the body
         let body = this.el.querySelector(".toast-body");
-        let content = this.props.body || "";
-        if (typeof (content) === "string" || typeof (content) === "number") {
-            // Set the html
-            body.innerHTML = content;
-        } else {
-            // Append the element
-            body.appendChild(content);
+        if (body) {
+            let content = this.props.body || "";
+            if (typeof (content) === "string" || typeof (content) === "number") {
+                // Set the html
+                body.innerHTML = content;
+            } else {
+                // Append the element
+                body.appendChild(content);
+            }
         }
 
         // Initialize the toast component
@@ -117,4 +129,4 @@ class _Toast extends Base<IToastProps> implements IToast {
      * Public Interface
      */
 }
-export const Toast = (props: IToastProps): IToast => { return new _Toast(props); }
+export const Toast = (props: IToastProps, template?: string): IToast => { return new _Toast(props, template); }

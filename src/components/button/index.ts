@@ -62,8 +62,8 @@ export const ButtonClassNames = new ClassNames([
 class _Button extends Base<IButtonProps> implements IButton {
 
     // Constructor
-    constructor(props: IButtonProps) {
-        super(props.href || props.isLink ? HTMLLink : HTML, props);
+    constructor(props: IButtonProps, template: string = props.href || props.isLink ? HTMLLink : HTML) {
+        super(template, props);
 
         // Configure the button
         this.configure();
@@ -204,4 +204,4 @@ class _Button extends Base<IButtonProps> implements IButton {
         this.el.classList.add(className);
     }
 }
-export const Button = (props: IButtonProps): IButton => { return new _Button(props); }
+export const Button = (props: IButtonProps, template?: string): IButton => { return new _Button(props, template); }

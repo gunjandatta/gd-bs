@@ -8,11 +8,11 @@ import { BreadcrumbItem } from "./item";
  */
 class _Breadcrumb extends Base<IBreadcrumbProps> implements IBreadcrumb {
     // Constructor
-    constructor(props: IBreadcrumbProps) {
-        super(HTML, props);
+    constructor(props: IBreadcrumbProps, template: string = HTML, itemTemplate?: string) {
+        super(template, props);
 
         // Render the items
-        this.renderItems();
+        this.renderItems(itemTemplate);
 
         // Configure the parent
         this.configureParent();
@@ -31,27 +31,28 @@ class _Breadcrumb extends Base<IBreadcrumbProps> implements IBreadcrumb {
     }
 
     // Renders the breadcrumb items
-    private renderItems() {
+    private renderItems(itemTemplate: string) {
         // Get the list element
         let elList = this.el.querySelector(".breadcrumb");
+        if (elList) {
+            // Parse the item properties
+            let itemProps = this.props.items || [];
+            for (let i = 0; i < itemProps.length; i++) {
+                let itemProp = itemProps[i];
 
-        // Parse the item properties
-        let itemProps = this.props.items || [];
-        for (let i = 0; i < itemProps.length; i++) {
-            let itemProp = itemProps[i];
+                // Set the active flag
+                itemProp.isActive = i == itemProps.length - 1;
 
-            // Set the active flag
-            itemProp.isActive = i == itemProps.length - 1;
+                // Render the item
+                let item = new BreadcrumbItem(itemProp, itemTemplate);
 
-            // Render the item
-            let item = new BreadcrumbItem(itemProp);
+                // Configure the events
+                this.configureEvents(item);
 
-            // Configure the events
-            this.configureEvents(item);
-
-            // Add the item
-            elList.appendChild(item.el);
+                // Add the item
+                elList.appendChild(item.el);
+            }
         }
     }
 }
-export const Breadcrumb = (props: IBreadcrumbProps): IBreadcrumb => { return new _Breadcrumb(props); }
+export const Breadcrumb = (props: IBreadcrumbProps, template?: string, itemTemplate?: string): IBreadcrumb => { return new _Breadcrumb(props, template, itemTemplate); }

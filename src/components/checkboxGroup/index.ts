@@ -19,18 +19,18 @@ class _CheckboxGroup extends Base<ICheckboxGroupProps> implements ICheckboxGroup
     private _checkboxes: Array<CheckboxItem> = null;
 
     // Constructor
-    constructor(props: ICheckboxGroupProps) {
-        super(HTML, props);
+    constructor(props: ICheckboxGroupProps, template: string = HTML, cbTemplate?: string) {
+        super(template, props);
 
         // Configure the checkbox group
-        this.configure();
+        this.configure(cbTemplate);
 
         // Configure the parent
         this.configureParent();
     }
 
     // Configure the card group
-    private configure() {
+    private configure(cbTemplate: string) {
         let colSize = this.props.colSize > 0 && this.props.colSize < 13 ? this.props.colSize : (this.props.label ? 10 : 12);
         let renderRow = typeof (this.props.renderRow) === "boolean" ? this.props.renderRow : true;
 
@@ -42,27 +42,31 @@ class _CheckboxGroup extends Base<ICheckboxGroupProps> implements ICheckboxGroup
 
         // See if a label is defined
         let label = this.el.querySelector("legend");
-        if (this.props.label && this.props.hideLabel != true) {
-            // Add the label
-            renderRow ? label.classList.add("col-" + (12 - colSize)) : null;
-            label.innerHTML = this.props.label;
-        } else {
-            // Remove the label
-            this.el.removeChild(label);
+        if (label) {
+            if (this.props.label && this.props.hideLabel != true) {
+                // Add the label
+                renderRow ? label.classList.add("col-" + (12 - colSize)) : null;
+                label.innerHTML = this.props.label;
+            } else {
+                // Remove the label
+                this.el.removeChild(label);
+            }
         }
 
         // Get the group and configure the size
         let group = this.el.querySelector("div");
-        if (renderRow) {
-            // Set the class
-            group.classList.add("col-" + colSize);
-        } else {
-            // Remove the group element
-            this.el.removeChild(group);
+        if (group) {
+            if (renderRow) {
+                // Set the class
+                group.classList.add("col-" + colSize);
+            } else {
+                // Remove the group element
+                this.el.removeChild(group);
+            }
         }
 
         // Render the checkboxes
-        this.renderItems(renderRow ? group : this.el);
+        this.renderItems(renderRow ? group : this.el, cbTemplate);
     }
 
     // Configure the events
@@ -98,7 +102,7 @@ class _CheckboxGroup extends Base<ICheckboxGroupProps> implements ICheckboxGroup
     }
 
     // Render the checkboxes
-    private renderItems(group: HTMLDivElement) {
+    private renderItems(group: HTMLDivElement, cbTemplate: string) {
         // Clear the checkboxes
         this._checkboxes = [];
 
@@ -128,7 +132,7 @@ class _CheckboxGroup extends Base<ICheckboxGroupProps> implements ICheckboxGroup
             let item = items[i];
 
             // Create the checkbox
-            let checkbox = new CheckboxItem(item, this.props);
+            let checkbox = new CheckboxItem(item, this.props, cbTemplate);
             this._checkboxes.push(checkbox);
             group.appendChild(checkbox.el);
 
@@ -197,4 +201,4 @@ class _CheckboxGroup extends Base<ICheckboxGroupProps> implements ICheckboxGroup
         }
     }
 }
-export const CheckboxGroup = (props: ICheckboxGroupProps): ICheckboxGroup => { return new _CheckboxGroup(props); }
+export const CheckboxGroup = (props: ICheckboxGroupProps, template?: string, cbTemplate?: string): ICheckboxGroup => { return new _CheckboxGroup(props, template, cbTemplate); }

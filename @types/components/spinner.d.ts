@@ -29,7 +29,7 @@
  * });
  * ```
  */
-export const Spinner: (props: ISpinnerProps) => ISpinner;
+export const Spinner: (props: ISpinnerProps, template?: string) => ISpinner;
 
 /**
  * Spinner Types

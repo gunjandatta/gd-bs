@@ -35,7 +35,7 @@
  * });
  * ```
  */
-export const Breadcrumb: (props: IBreadcrumbProps) => IBreadcrumb;
+export const Breadcrumb: (props: IBreadcrumbProps, template?: string) => IBreadcrumb;
 
 import { IBaseProps } from "../base";
 

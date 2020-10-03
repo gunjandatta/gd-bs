@@ -29,7 +29,7 @@
  * });
  * ```
  */
-export const Progress: (props: IProgressProps) => IProgress;
+export const Progress: (props: IProgressProps, template?: string) => IProgress;
 
 import { IBaseProps } from "../base";
 

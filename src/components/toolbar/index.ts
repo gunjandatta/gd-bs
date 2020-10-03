@@ -9,8 +9,8 @@ import { HTML } from "./templates";
  */
 class _Toolbar extends Base<IToolbarProps> implements IToolbar {
     // Constructor
-    constructor(props: IToolbarProps) {
-        super(HTML, props);
+    constructor(props: IToolbarProps, template: string = HTML) {
+        super(template, props);
 
         // Configure the collapse
         this.configure();
@@ -53,4 +53,4 @@ class _Toolbar extends Base<IToolbarProps> implements IToolbar {
         }
     }
 }
-export const Toolbar = (props: IToolbarProps): IToolbar => { return new _Toolbar(props); }
+export const Toolbar = (props: IToolbarProps, template?: string): IToolbar => { return new _Toolbar(props, template); }

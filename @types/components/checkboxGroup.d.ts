@@ -35,7 +35,7 @@
  * });
  * ```
  */
-export const CheckboxGroup: (props: ICheckboxGroupProps) => ICheckboxGroup;
+export const CheckboxGroup: (props: ICheckboxGroupProps, template?: string, cbTemplate?: string) => ICheckboxGroup;
 
 import { IBaseProps } from "../base";
 

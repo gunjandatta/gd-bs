@@ -54,7 +54,7 @@
  * });
  * ```
  */
-export const Accordion: (props: IAccordionProps) => IAccordion;
+export const Accordion: (props: IAccordionProps, template?: string, itemTemplate?: string) => IAccordion;
 
 import { IBase, IBaseProps } from "../base";
 import { IButtonProps } from "./button";
