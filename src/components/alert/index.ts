@@ -76,11 +76,10 @@ class _Alert extends Base<IAlertProps> implements IAlert {
 
             // Create the button
             let btn = document.createElement("button");
-            btn.className = "close";
+            btn.className = "btn-close";
             btn.type = "button";
             btn.setAttribute("data-dismiss", "alert");
             btn.setAttribute("aria-label", "Close");
-            btn.innerHTML = '<span aria-hidden="true">&times;</span>';
 
             // Append the button
             this.el.appendChild(btn);
