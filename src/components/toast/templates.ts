@@ -4,9 +4,7 @@ export const HTML = `
         <img class="rounded mr-2">
         <strong class="mr-auto"></strong>
         <small></small>
-        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
+        <button type="button" class="btn-close" data-dismiss="toast" aria-label="Close"></button>
     </div>
     <div class="toast-body"></div>
 </div>`.trim();
