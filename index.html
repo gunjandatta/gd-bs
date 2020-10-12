@@ -192,7 +192,8 @@
                                         { text: "Test 1", value: 1 },
                                         { text: "Test 2", value: 2 },
                                         { text: "Test 3", value: 3 },
-                                        { text: "Test 4", value: 4 }
+                                        { text: "Test 4", value: 4 },
+                                        { text: "Test 5", value: 5, isDisabled: true }
                                     ],
                                     onChange: function (item) {
                                         item ? alert(item.text + " was selected.") : null;
@@ -521,7 +522,7 @@
                     { text: "Item 2" },
                     { text: "Item 3" },
                     { text: "Item 4" },
-                    { text: "Item 5" },
+                    { text: "Item 5", isDisabled: true },
                     { isHeader: true, text: "Header 2" },
                     { isDivider: true },
                     { text: "Item 6" },

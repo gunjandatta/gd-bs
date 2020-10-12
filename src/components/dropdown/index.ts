@@ -220,6 +220,12 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
         if (this.props.multi != true) {
             // Add a click event
             item.el.addEventListener("click", ev => {
+                // See if an item was selected, and is disabled
+                if (item.props.isDisabled == true) {
+                    // Ignore the click event
+                    return;
+                }
+
                 // Parse the items
                 for (let i = 0; i < this._items.length; i++) {
                     let selectedItem = this._items[i];
