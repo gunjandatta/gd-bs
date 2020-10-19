@@ -1,6 +1,7 @@
 import { IFormControlProps, IFormControl, IFormProps } from "../../../@types/components";
 import { FormControl } from "./control";
 import { HTMLGroup } from "./templates";
+import { Components } from "../../core";
 
 /**
  * Form Group
@@ -97,15 +98,24 @@ export class FormGroup {
         // Create the control
         this._control = new FormControl(this._props, elLabel);
 
-        // See if the id exists
-        if (this._props.id) {
-            let elControl = this._control.control.el;
+        // See if the id/name and control element exists
+        let controlId = this._props.id || this._props.name;
+        let elControl = this._control.control && this._control.control.el ? this._control.control.el : null;
+        elControl = elControl.querySelector("input") || elControl.querySelector("select") || elControl;
+        if (controlId && elControl && this._props.type != Components.FormControlTypes.Checkbox) {
+            // See if the description exists
+            if (elDescription) {
+                // Set the id and aria properties
+                elDescription ? elDescription.id = controlId + "_desc" : null;
+                elControl.setAttribute("aria-describedby", elDescription.id);
+            }
 
-            // Set the id and aria properties
-            elDescription ? elDescription.id = this._props.id + "_desc" : null;
-            elLabel ? elLabel.id = this._props.id + "_label" : null;
-            elControl.setAttribute("aria-describedby", elDescription.id);
-            elControl.setAttribute("aria-labelledby", elLabel.id);
+            // See if the label exists
+            if (elLabel) {
+                // Set the id and aria properties
+                elLabel ? elLabel.id = controlId + "_label" : null;
+                elControl.setAttribute("aria-labelledby", elLabel.id);
+            }
         }
 
         // Append the control, after the label

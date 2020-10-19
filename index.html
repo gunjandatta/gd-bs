@@ -136,7 +136,7 @@
             });
             GD.Components.Popover({
                 el: document.querySelector("#popover1"),
-                btnProps: { id:"popover-demo2", text: "Popover Demo", type: 3 },
+                btnProps: { id: "popover-demo2", text: "Popover Demo", type: 3 },
                 isDismissible: true,
                 options: {
                     html: true,
@@ -166,6 +166,7 @@
                                 control: {
                                     className: "col-header",
                                     controlClassName: "d-none",
+                                    id: "dropdown-ro",
                                     label: "Shouldn't See Me",
                                     title: "This is a dropdown",
                                     type: GD.Components.FormControlTypes.Dropdown,
@@ -175,6 +176,7 @@
                             {
                                 control: {
                                     className: "custom-control",
+                                    id: "custom-control-exp",
                                     onControlRendered: function (control) {
                                         // Render a header
                                         control.el.innerHTML = "<h3>Form Header</h3>";
@@ -184,6 +186,7 @@
                             {
                                 control: {
                                     label: "Dropdown Example",
+                                    id: "DDLExample",
                                     name: "DDLExample",
                                     title: "This is a dropdown",
                                     type: GD.Components.FormControlTypes.Dropdown,
@@ -203,6 +206,7 @@
                             {
                                 control: {
                                     name: "FileExample",
+                                    id: "FileExample",
                                     title: "Select a file",
                                     type: GD.Components.FormControlTypes.File,
                                     description: "This is a file selector",

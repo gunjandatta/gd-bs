@@ -38,7 +38,7 @@ export class CheckboxItem {
             this._elCheckbox.disabled = this._parent.isReadonly || this._props.isDisabled ? true : false;
 
             // Default the title property for the checkbox
-            this._elCheckbox.title = this._parent.title || this.props.label || "";
+            this._elCheckbox.title = this.props.label || this._parent.title || "";
         }
 
         // See if the title property is defined
