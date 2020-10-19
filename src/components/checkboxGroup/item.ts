@@ -38,11 +38,8 @@ export class CheckboxItem {
             this._elCheckbox.disabled = this._parent.isReadonly || this._props.isDisabled ? true : false;
         }
 
-        // See if the title property is defined
-        if (this._parent.title) {
-            // Set the title
-            this._el.title = this._parent.title;
-        }
+        // Set the title
+        this._el.title = this._parent.title || this.props.label || "";
 
         // See if the inline flag is set
         if (this._parent.isInline) {

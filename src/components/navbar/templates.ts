@@ -20,7 +20,7 @@ export const HTML = `
 // Item
 export const HTMLItem = `
 <li class="nav-item">
-    <a class="nav-link" href="#">
+    <a class="nav-link" href="#" role="button">
         <span class="visually-hidden">(current)</span>
     </a>
 </li>`.trim();
