@@ -97,6 +97,17 @@ export class FormGroup {
         // Create the control
         this._control = new FormControl(this._props, elLabel);
 
+        // See if the id exists
+        if (this._props.id) {
+            let elControl = this._control.control.el;
+
+            // Set the id and aria properties
+            elDescription ? elDescription.id = this._props.id + "_desc" : null;
+            elLabel ? elLabel.id = this._props.id + "_label" : null;
+            elControl.setAttribute("aria-describedby", elDescription.id);
+            elControl.setAttribute("aria-labelledby", elLabel.id);
+        }
+
         // Append the control, after the label
         elDescription ? this._el.insertBefore(this._control.el, elDescription) : this._el.appendChild(this._control.el);
 

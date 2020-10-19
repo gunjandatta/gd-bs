@@ -4,8 +4,8 @@ export const HTML = `<form></form>`;
 // Group
 export const HTMLGroup = `
 <div>
-    <label class="form-label"></label>
-    <small class="form-text text-muted"></small>
+    <label class="form-label" tabindex="-1"></label>
+    <small class="form-text text-muted" tabindex="-1"></small>
 </div>`.trim();
 
 // Row
