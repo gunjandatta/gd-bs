@@ -101,7 +101,7 @@ export class FormGroup {
         // See if the id/name and control element exists
         let controlId = this._props.id || this._props.name;
         let elControl = this._control.control && this._control.control.el ? this._control.control.el : null;
-        elControl = elControl.querySelector("input") || elControl.querySelector("select") || elControl;
+        elControl = elControl ? elControl.querySelector("input") || elControl.querySelector("select") || elControl : null;
         if (controlId && elControl && this._props.type != Components.FormControlTypes.Checkbox) {
             // See if the description exists
             if (elDescription) {
