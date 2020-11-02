@@ -99,7 +99,7 @@ export class CheckboxItem {
             // See if an event is defined
             if (this._props.onChange) {
                 // Call the event
-                this._props.onChange(this._isSelected ? this._props : null);
+                this._props.onChange(this._isSelected ? this._props : null, ev);
             }
         });
     }

@@ -92,7 +92,7 @@ class _Navbar extends Base<INavbarProps> implements INavbar {
                     // See if there is a search event
                     if (props.onSearch) {
                         // Call the event
-                        props.onSearch(searchbox.value);
+                        props.onSearch(searchbox.value, ev);
                     }
                 }
             });
@@ -102,13 +102,13 @@ class _Navbar extends Base<INavbarProps> implements INavbar {
                 // Add an input event
                 searchbox.addEventListener("input", ev => {
                     // Call the event
-                    props.onChange(searchbox.value);
+                    props.onChange(searchbox.value, ev);
                 });
 
                 // Add a clear event
                 searchbox.addEventListener("clear", ev => {
                     // Call the event
-                    props.onChange(searchbox.value);
+                    props.onChange(searchbox.value, ev);
                 });
 
                 // Edge has a bug where the clear event isn't triggered

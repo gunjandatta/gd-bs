@@ -113,14 +113,14 @@ class _ListBox extends Base<IListBoxProps> implements IListBox {
                             }));
 
                             // Call the change event
-                            this.props.onChange ? this.props.onChange(this._selectedItems) : null;
+                            this.props.onChange ? this.props.onChange(this._selectedItems, ev) : null;
                         }
                     } else {
                         // Set the value
                         this.setValue(value);
 
                         // Call the change event
-                        this.props.onChange ? this.props.onChange(this._selectedItems) : null;
+                        this.props.onChange ? this.props.onChange(this._selectedItems, ev) : null;
                     }
 
                     // Clear the selected value
@@ -141,7 +141,7 @@ class _ListBox extends Base<IListBoxProps> implements IListBox {
             // Add a click event to the badge
             let badge = elItem.querySelector(".badge")
             if (badge) {
-                badge.addEventListener("click", () => {
+                badge.addEventListener("click", ev => {
                     // Remove the item
                     this._elValues.removeChild(elItem);
 
@@ -155,7 +155,7 @@ class _ListBox extends Base<IListBoxProps> implements IListBox {
                             this._selectedItems.splice(i, 1);
 
                             // Call the change event
-                            this.props.onChange ? this.props.onChange(this._selectedItems) : null;
+                            this.props.onChange ? this.props.onChange(this._selectedItems, ev) : null;
                             break;
                         }
                     }

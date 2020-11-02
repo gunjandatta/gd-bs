@@ -96,7 +96,7 @@ class _CheckboxGroup extends Base<ICheckboxGroupProps> implements ICheckboxGroup
             // Add a click event
             item.checkbox.addEventListener("click", ev => {
                 // Call the event
-                this.props.onChange(this.getValue());
+                this.props.onChange(this.getValue(), ev);
             });
         }
     }

@@ -104,7 +104,7 @@ export interface IFormControlPropsCheckbox extends IFormControlProps {
     isInline?: boolean;
     items?: Array<ICheckboxGroupItem>;
     multi?: boolean;
-    onChange?: (item: Array<ICheckboxGroupItem>) => void;
+    onChange?: (item: Array<ICheckboxGroupItem>, ev?: Event) => void;
     onControlRendering?: (control: IFormControlPropsCheckbox) => void | PromiseLike<IFormControlPropsCheckbox>;
     onGetValue?: (control: IFormControlPropsCheckbox) => any;
     onValidate?: (control: IFormControlPropsCheckbox, value: IFormControlValidationResult) => boolean | IFormControlValidationResult;
@@ -115,7 +115,7 @@ export interface IFormControlPropsCheckbox extends IFormControlProps {
  */
 export interface IFormControlPropsDropdown extends IFormControlProps {
     items?: Array<IDropdownItem>;
-    onChange?: (item: IDropdownItem | Array<IDropdownItem>) => void;
+    onChange?: (item: IDropdownItem | Array<IDropdownItem>, ev?: Event) => void;
     onControlRendering?: (control: IFormControlPropsDropdown) => void | PromiseLike<IFormControlPropsDropdown>;
     onGetValue?: (control: IFormControlPropsDropdown) => any;
     onValidate?: (control: IFormControlPropsDropdown, value: IFormControlValidationResult) => boolean | IFormControlValidationResult;
@@ -127,7 +127,7 @@ export interface IFormControlPropsDropdown extends IFormControlProps {
 export interface IFormControlPropsListBox extends IFormControlProps {
     items?: Array<IDropdownItem>;
     multi?: boolean;
-    onChange?: (items: Array<IDropdownItem>) => void;
+    onChange?: (items: Array<IDropdownItem>, ev?: Event) => void;
     onControlRendering?: (control: IFormControlPropsListBox) => void | PromiseLike<IFormControlPropsListBox>;
     onGetValue?: (control: IFormControlPropsListBox) => any;
     onValidate?: (control: IFormControlPropsListBox, value: IFormControlValidationResult) => boolean | IFormControlValidationResult;
@@ -161,7 +161,7 @@ export interface IFormControlPropsSwitch extends IFormControlPropsCheckbox { }
  */
 export interface IFormControlPropsTextField extends IFormControlProps {
     el?: HTMLInputElement;
-    onChange?: (value: string) => void;
+    onChange?: (value: string, ev?: Event) => void;
     onControlRendering?: (control: IFormControlPropsTextField) => void | PromiseLike<IFormControlPropsTextField>;
     onGetValue?: (control: IFormControlPropsTextField) => any;
     onValidate?: (control: IFormControlPropsTextField, value: IFormControlValidationResult) => boolean | IFormControlValidationResult;

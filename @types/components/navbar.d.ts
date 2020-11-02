@@ -155,8 +155,8 @@ export interface INavbarSearchBox {
     btnType?: number;
     btnText?: string;
     hideButton?: boolean;
-    onChange?: (value?: string) => void;
-    onSearch?: (value?: string) => void;
+    onChange?: (value?: string, ev?: Event) => void;
+    onSearch?: (value?: string, ev?: Event) => void;
     placeholder?: string;
     value?: string;
 }

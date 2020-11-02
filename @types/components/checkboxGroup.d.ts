@@ -73,7 +73,7 @@ export interface ICheckboxGroupItem {
     isSelected?: boolean;
     label?: string;
     name?: string;
-    onChange?: (item: ICheckboxGroupItem) => void;
+    onChange?: (item: ICheckboxGroupItem, ev?: Event) => void;
     type?: number;
 }
 
@@ -89,7 +89,7 @@ export interface ICheckboxGroupProps extends IBaseProps<ICheckboxGroup> {
     items?: Array<ICheckboxGroupItem>;
     multi?: boolean;
     onRender?: (el?: HTMLElement, item?: ICheckboxGroupItem) => void;
-    onChange?: (items: ICheckboxGroupItem | Array<ICheckboxGroupItem>) => void;
+    onChange?: (items: ICheckboxGroupItem | Array<ICheckboxGroupItem>, ev?: Event) => void;
     renderRow?: boolean;
     title?: string;
     type?: number;
