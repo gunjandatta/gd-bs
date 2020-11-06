@@ -62,6 +62,9 @@ export interface ICollapse {
     /** Hides a collapsible element. */
     hide: () => void;
 
+    /** True if the collapse is visible. */
+    isVisible: boolean;
+
     /** Shows a collapsible element. */
     show: () => void;
 
@@ -80,7 +83,7 @@ export interface ICollapseOptions {
 /**
  * Collapse Properties
  */
-export interface ICollapseProps<T=Element> extends IBaseProps<ICollapse> {
+export interface ICollapseProps<T = Element> extends IBaseProps<ICollapse> {
     content?: string | T;
     data?: any;
     id?: string;

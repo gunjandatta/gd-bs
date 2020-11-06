@@ -91,6 +91,9 @@ class _Collapse extends Base<ICollapseProps> implements ICollapse {
     // Disposes the collapse
     dispose() { this.bsCollapse ? this.bsCollapse.dispose() : null; }
 
+    // Flag determining if the collapse is visible
+    get isVisible() { return this.el.classList.contains("show"); }
+
     // Toggles the collapse
     toggle() { this.bsCollapse ? this.bsCollapse.toggle() : null; }
 
