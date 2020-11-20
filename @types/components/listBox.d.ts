@@ -30,6 +30,6 @@ export interface IListBoxProps {
     items: Array<IDropdownItem>;
     multi?: boolean;
     placeholder?: string;
-    onChange?: (items: Array<IDropdownItem>, ev?: Event) => void;
+    onChange?: (items: IDropdownItem | Array<IDropdownItem>, ev?: Event) => void;
     value?: string | Array<string>;
 }

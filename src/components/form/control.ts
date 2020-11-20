@@ -3,6 +3,7 @@ import { IDropdown } from "../../../@types/components/dropdown";
 import { IInputGroup } from "../../../@types/components/inputGroup";
 import {
     IFormControl, IFormControlProps, IFormControlPropsCheckbox, IFormControlPropsDropdown, IFormControlPropsListBox,
+    IFormControlPropsMultiCheckbox, IFormControlPropsMultiDropdown, IFormControlPropsMultiListBox, IFormControlPropsMultiSwitch,
     IFormControlPropsRange, IFormControlPropsTextField, IFormControlValidationResult
 } from "../../../@types/components/formControl";
 import { IListBox } from "../../../@types/components/listBox";
@@ -85,7 +86,6 @@ export class FormControl implements IFormControl {
                     isInline: cbProps.isInline,
                     isReadonly: this._props.isReadonly,
                     items: cbProps.items,
-                    multi: cbProps.multi,
                     onChange: cbProps.onChange,
                     title: this._props.title,
                     type: CheckboxGroupTypes.Checkbox,
@@ -170,9 +170,26 @@ export class FormControl implements IFormControl {
                     id: this._props.name,
                     isReadonly: this._props.isReadonly,
                     items: (this._props as IFormControlPropsListBox).items,
-                    multi: (this._props as IFormControlPropsListBox).multi,
                     onChange: (this._props as IFormControlPropsListBox).onChange,
                     placeholder: (this._props as IFormControlPropsListBox).placeholder,
+                    value: this._props.value
+                });
+                break;
+            // Multi-Checkbox
+            case FormControlTypes.MultiCheckbox:
+                let cbMultiProps = this._props as IFormControlPropsMultiCheckbox;
+
+                // Add the checkbox group
+                this._cb = CheckboxGroup({
+                    className,
+                    hideLabel: true,
+                    isInline: cbMultiProps.isInline,
+                    isReadonly: this._props.isReadonly,
+                    items: cbMultiProps.items,
+                    multi: true,
+                    onChange: cbMultiProps.onChange,
+                    title: this._props.title,
+                    type: CheckboxGroupTypes.Checkbox,
                     value: this._props.value
                 });
                 break;
@@ -188,6 +205,49 @@ export class FormControl implements IFormControl {
                     multi: true,
                     onChange: (this._props as IFormControlPropsDropdown).onChange,
                     title: this._props.title,
+                    value: this._props.value
+                });
+                break;
+            // Multi-List Box
+            case FormControlTypes.MultiListBox:
+                // Add the list box
+                this._lb = ListBox({
+                    id: this._props.name,
+                    isReadonly: this._props.isReadonly,
+                    items: (this._props as IFormControlPropsMultiListBox).items,
+                    multi: true,
+                    onChange: (this._props as IFormControlPropsMultiListBox).onChange,
+                    placeholder: (this._props as IFormControlPropsMultiListBox).placeholder,
+                    value: this._props.value
+                });
+                break;
+            // Multi-Radio
+            case FormControlTypes.MultiRadio:
+                // Add the checkbox group
+                this._cb = CheckboxGroup({
+                    className,
+                    hideLabel: true,
+                    isReadonly: this._props.isReadonly,
+                    items: (this._props as IFormControlPropsMultiCheckbox).items,
+                    multi: true,
+                    onChange: (this._props as IFormControlPropsMultiCheckbox).onChange,
+                    title: this._props.title,
+                    type: CheckboxGroupTypes.Radio,
+                    value: this._props.value
+                });
+                break;
+            // Multi-Switch
+            case FormControlTypes.Switch:
+                // Add the checkbox group
+                this._cb = CheckboxGroup({
+                    className,
+                    hideLabel: true,
+                    isReadonly: this._props.isReadonly,
+                    items: (this._props as IFormControlPropsMultiCheckbox).items,
+                    multi: true,
+                    onChange: (this._props as IFormControlPropsMultiCheckbox).onChange,
+                    title: this._props.title,
+                    type: CheckboxGroupTypes.Switch,
                     value: this._props.value
                 });
                 break;
@@ -213,7 +273,6 @@ export class FormControl implements IFormControl {
                     hideLabel: true,
                     isReadonly: this._props.isReadonly,
                     items: (this._props as IFormControlPropsCheckbox).items,
-                    multi: (this._props as IFormControlPropsCheckbox).multi,
                     onChange: (this._props as IFormControlPropsCheckbox).onChange,
                     title: this._props.title,
                     type: CheckboxGroupTypes.Radio,
@@ -259,7 +318,6 @@ export class FormControl implements IFormControl {
                     hideLabel: true,
                     isReadonly: this._props.isReadonly,
                     items: (this._props as IFormControlPropsCheckbox).items,
-                    multi: (this._props as IFormControlPropsCheckbox).multi,
                     onChange: (this._props as IFormControlPropsCheckbox).onChange,
                     title: this._props.title,
                     type: CheckboxGroupTypes.Switch,

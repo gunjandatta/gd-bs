@@ -103,8 +103,7 @@ export interface IFormControlPropsCheckbox extends IFormControlProps {
     hideLabel?: boolean;
     isInline?: boolean;
     items?: Array<ICheckboxGroupItem>;
-    multi?: boolean;
-    onChange?: (item: Array<ICheckboxGroupItem>, ev?: Event) => void;
+    onChange?: (item: ICheckboxGroupItem, ev?: Event) => void;
     onControlRendering?: (control: IFormControlPropsCheckbox) => void | PromiseLike<IFormControlPropsCheckbox>;
     onGetValue?: (control: IFormControlPropsCheckbox) => any;
     onValidate?: (control: IFormControlPropsCheckbox, value: IFormControlValidationResult) => boolean | IFormControlValidationResult;
@@ -115,7 +114,7 @@ export interface IFormControlPropsCheckbox extends IFormControlProps {
  */
 export interface IFormControlPropsDropdown extends IFormControlProps {
     items?: Array<IDropdownItem>;
-    onChange?: (item: IDropdownItem | Array<IDropdownItem>, ev?: Event) => void;
+    onChange?: (item: IDropdownItem, ev?: Event) => void;
     onControlRendering?: (control: IFormControlPropsDropdown) => void | PromiseLike<IFormControlPropsDropdown>;
     onGetValue?: (control: IFormControlPropsDropdown) => any;
     onValidate?: (control: IFormControlPropsDropdown, value: IFormControlValidationResult) => boolean | IFormControlValidationResult;
@@ -126,13 +125,54 @@ export interface IFormControlPropsDropdown extends IFormControlProps {
  */
 export interface IFormControlPropsListBox extends IFormControlProps {
     items?: Array<IDropdownItem>;
-    multi?: boolean;
+    onChange?: (items: IDropdownItem, ev?: Event) => void;
+    onControlRendering?: (control: IFormControlPropsListBox) => void | PromiseLike<IFormControlPropsListBox>;
+    onGetValue?: (control: IFormControlPropsListBox) => any;
+    onValidate?: (control: IFormControlPropsListBox, value: IFormControlValidationResult) => boolean | IFormControlValidationResult;
+    placeholder?: string;
+}
+
+/**
+ * Form Control Properties - Multiple Checkbox
+ */
+export interface IFormControlPropsMultiCheckbox extends IFormControlProps {
+    el?: HTMLInputElement;
+    hideLabel?: boolean;
+    isInline?: boolean;
+    items?: Array<ICheckboxGroupItem>;
+    onChange?: (item: Array<ICheckboxGroupItem>, ev?: Event) => void;
+    onControlRendering?: (control: IFormControlPropsCheckbox) => void | PromiseLike<IFormControlPropsCheckbox>;
+    onGetValue?: (control: IFormControlPropsCheckbox) => any;
+    onValidate?: (control: IFormControlPropsCheckbox, value: IFormControlValidationResult) => boolean | IFormControlValidationResult;
+}
+
+/**
+ * Form Control Properties - Multiple Dropdown
+ */
+export interface IFormControlPropsMultiDropdown extends IFormControlProps {
+    items?: Array<IDropdownItem>;
+    onChange?: (item: Array<IDropdownItem>, ev?: Event) => void;
+    onControlRendering?: (control: IFormControlPropsDropdown) => void | PromiseLike<IFormControlPropsDropdown>;
+    onGetValue?: (control: IFormControlPropsDropdown) => any;
+    onValidate?: (control: IFormControlPropsDropdown, value: IFormControlValidationResult) => boolean | IFormControlValidationResult;
+}
+
+/**
+ * Form Control Properties - Multiple List Box
+ */
+export interface IFormControlPropsMultiListBox extends IFormControlProps {
+    items?: Array<IDropdownItem>;
     onChange?: (items: Array<IDropdownItem>, ev?: Event) => void;
     onControlRendering?: (control: IFormControlPropsListBox) => void | PromiseLike<IFormControlPropsListBox>;
     onGetValue?: (control: IFormControlPropsListBox) => any;
     onValidate?: (control: IFormControlPropsListBox, value: IFormControlValidationResult) => boolean | IFormControlValidationResult;
     placeholder?: string;
 }
+
+/**
+ * Form Control Properties - Multiple Switch
+ */
+export interface IFormControlPropsMultiSwitch extends IFormControlPropsMultiCheckbox { }
 
 /**
  * Form Control Properties - Number Field
@@ -180,7 +220,10 @@ export type IFormControlTypes = {
     Dropdown: number;
     File: number;
     ListBox: number;
+    MultiCheckbox: number;
     MultiDropdown: number;
+    MultiListBox: number;
+    MultiRadio: number;
     Password: number;
     Radio: number;
     Range: number;
