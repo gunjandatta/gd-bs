@@ -224,6 +224,7 @@ export type IFormControlTypes = {
     MultiDropdown: number;
     MultiListBox: number;
     MultiRadio: number;
+    MultiSwitch: number;
     Password: number;
     Radio: number;
     Range: number;
