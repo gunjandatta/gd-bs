@@ -49,6 +49,27 @@
         window.addEventListener("load", function () {
             // Dev
             var elDev = document.getElementById("dev");
+            GD.Components.FormControl({
+                el: elDev,
+                label: "Dev:",
+                title: "This is a dropdown",
+                type: GD.Components.FormControlTypes.Dropdown,
+                onControlRendered: function (control) {
+                    debugger;
+                },
+                onControlRendering: function (props) {
+                    return new Promise(function (resolve) {
+                        props.items = [
+                            { text: "Item 1", value: 1 },
+                            { text: "Item 2", value: 2 },
+                            { text: "Item 3", value: 3 },
+                            { text: "Item 4", value: 4 },
+                            { text: "Item 5", value: 5 }
+                        ];
+                        resolve(props);
+                    });
+                }
+            })
 
             GD.Components.ListBox({
                 el: document.getElementById("listbox"),

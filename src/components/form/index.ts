@@ -165,7 +165,25 @@ export const Form = (props: IFormProps): IForm => { return new _Form(props); }
 /**
  * Form Control
  */
-export const FormControl = (props: IFormControlProps) => { return new Control(props); }
+export const FormControl = (props: IFormControlProps) => {
+    // Create a base object
+    let base = new Base("", props);
+
+    // Create the control
+    let control = new Control(props);
+
+    // Wait for the control to be loaded
+    control.isLoaded().then(() => {
+        // Set the element
+        base.el = control.el;
+
+        // Configure the parent
+        base.configureParent();
+    });
+
+    // Return the control
+    return control;
+}
 
 /**
  * Form Control Types

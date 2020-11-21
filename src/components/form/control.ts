@@ -13,6 +13,7 @@ import { Dropdown } from "../dropdown";
 import { InputGroup, InputGroupTypes } from "../inputGroup";
 import { ListBox } from "../listBox";
 import { FormControlTypes } from ".";
+import { IForm } from "../../../@types/components";
 
 /**
  * Form Control
@@ -33,11 +34,24 @@ export class FormControl implements IFormControl {
         this._props = props;
         this._elLabel = elLabel;
 
-        // Create the control
-        this.create();
+        // See if there is a rendering event
+        if (typeof (this._props.onControlRendering) === "function") {
+            // Call the event and see if a promise is returned
+            let returnVal = this._props.onControlRendering(this._props);
+            if (typeof (returnVal["then"]) === "function") {
+                // Wait for it to complete
+                returnVal["then"](newProps => {
+                    // Update the properties
+                    this._props = newProps || this._props;
 
-        // Configure the control
-        this.configure();
+                    // Create the control
+                    this.create();
+                });
+            }
+        } else {
+            // Create the control
+            this.create();
+        }
     }
 
     // Configure the control
@@ -374,6 +388,15 @@ export class FormControl implements IFormControl {
             // Set the id
             this.control.el.id = this._props.id;
         }
+
+        // Configure the control
+        this.configure();
+
+        // Wait before executing the rendered event, otherwise the controls will be null
+        setTimeout(() => {
+            // Execute the event
+            this._props.onControlRendered ? this._props.onControlRendered(this) : null;
+        }, 10);
     }
 
     /**
@@ -433,6 +456,24 @@ export class FormControl implements IFormControl {
             // Return the value
             return this._tb.getValue();
         }
+    }
+
+    // Is loaded
+    isLoaded(): PromiseLike<void> {
+        // Return a promise
+        return new Promise(resolve => {
+            // Wait for the control to be created
+            let id = setInterval(() => {
+                // See if the control exists
+                if (this.el) {
+                    // Stop the loop
+                    clearInterval(id);
+
+                    // Resolve the promise
+                    resolve();
+                }
+            }, 10);
+        });
     }
 
     // Validates the control
