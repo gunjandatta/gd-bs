@@ -48,6 +48,10 @@ export class FormControl implements IFormControl {
                     this.create();
                 });
             }
+            else {
+                // Create the control
+                this.create();
+            }
         } else {
             // Create the control
             this.create();
