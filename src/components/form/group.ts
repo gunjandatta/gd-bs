@@ -64,8 +64,7 @@ export class FormGroup {
 
     // Executes after the control is rendered
     private onRendered() {
-        // Execute the rendered events
-        this._props.onControlRendered ? this._props.onControlRendered(this._control) : null;
+        // Execute the form rendered event
         this._formProps.onControlRendered ? this._formProps.onControlRendered(this._control) : null;
     }
 
