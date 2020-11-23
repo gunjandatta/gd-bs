@@ -38,7 +38,7 @@ export class FormControl implements IFormControl {
         if (typeof (this._props.onControlRendering) === "function") {
             // Call the event and see if a promise is returned
             let returnVal = this._props.onControlRendering(this._props);
-            if (typeof (returnVal["then"]) === "function") {
+            if (returnVal && typeof (returnVal["then"]) === "function") {
                 // Wait for it to complete
                 returnVal["then"](newProps => {
                     // Update the properties
