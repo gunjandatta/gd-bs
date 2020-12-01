@@ -56,6 +56,8 @@ export interface IFormControl {
 
     getValue: () => any;
 
+    isLoaded: () => PromiseLike<void>;
+
     isValid: boolean;
 
     props: IFormControlProps;

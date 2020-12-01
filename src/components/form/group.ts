@@ -97,31 +97,34 @@ export class FormGroup {
         // Create the control
         this._control = new FormControl(this._props, elLabel);
 
-        // See if the id/name and control element exists
-        let controlId = this._props.id || this._props.name;
-        let elControl = this._control.control && this._control.control.el ? this._control.control.el : null;
-        elControl = elControl ? elControl.querySelector("input") || elControl.querySelector("select") || elControl : null;
-        if (controlId && elControl && this._props.type != Components.FormControlTypes.Checkbox) {
-            // See if the description exists
-            if (elDescription) {
-                // Set the id and aria properties
-                elDescription ? elDescription.id = controlId + "_desc" : null;
-                elControl.setAttribute("aria-describedby", elDescription.id);
+        // Wait for the control to be created
+        this._control.isLoaded().then(() => {
+            // See if the id/name and control element exists
+            let controlId = this._props.id || this._props.name;
+            let elControl = this._control.control && this._control.control.el ? this._control.control.el : null;
+            elControl = elControl ? elControl.querySelector("input") || elControl.querySelector("select") || elControl : null;
+            if (controlId && elControl && this._props.type != Components.FormControlTypes.Checkbox) {
+                // See if the description exists
+                if (elDescription) {
+                    // Set the id and aria properties
+                    elDescription ? elDescription.id = controlId + "_desc" : null;
+                    elControl.setAttribute("aria-describedby", elDescription.id);
+                }
+
+                // See if the label exists
+                if (elLabel) {
+                    // Set the id and aria properties
+                    elLabel ? elLabel.id = controlId + "_label" : null;
+                    elControl.setAttribute("aria-labelledby", elLabel.id);
+                }
             }
 
-            // See if the label exists
-            if (elLabel) {
-                // Set the id and aria properties
-                elLabel ? elLabel.id = controlId + "_label" : null;
-                elControl.setAttribute("aria-labelledby", elLabel.id);
-            }
-        }
+            // Append the control, after the label
+            elDescription ? this._el.insertBefore(this._control.el, elDescription) : this._el.appendChild(this._control.el);
 
-        // Append the control, after the label
-        elDescription ? this._el.insertBefore(this._control.el, elDescription) : this._el.appendChild(this._control.el);
-
-        // Execute the rendered event
-        this.onRendered();
+            // Execute the rendered event
+            this.onRendered();
+        });
     }
 
     /**
