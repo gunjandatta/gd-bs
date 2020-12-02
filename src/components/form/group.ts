@@ -41,7 +41,7 @@ export class FormGroup {
     }
 
     // Configure the events
-    private configureEvents(event: (control: IFormControlProps) => PromiseLike<IFormControlProps>) {
+    private configureEvents(event: (control: IFormControlProps) => PromiseLike<void>) {
         // Return a promise
         return new Promise((resolve, reject) => {
             // Execute the rendering event
@@ -50,7 +50,7 @@ export class FormGroup {
                 // Wait for the event to complete
                 returnVal.then(props => {
                     // Update the properties
-                    this._props = props;
+                    this._props = props as any;
 
                     // Resolve the promise
                     resolve();
