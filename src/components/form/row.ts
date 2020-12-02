@@ -53,7 +53,7 @@ export class FormRow {
 
             // Set the value
             let value = columnProps.control.value;
-            if (this._parent.value) {
+            if (typeof (value) === "undefined" && this._parent.value) {
                 // Set the value
                 value = this._parent.value[columnProps.control.name] || value;
             }
