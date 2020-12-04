@@ -254,7 +254,7 @@ export class FormControl implements IFormControl {
                 });
                 break;
             // Multi-Switch
-            case FormControlTypes.Switch:
+            case FormControlTypes.MultiSwitch:
                 // Add the checkbox group
                 this._cb = CheckboxGroup({
                     className,
