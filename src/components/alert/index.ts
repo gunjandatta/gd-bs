@@ -49,6 +49,9 @@ class _Alert extends Base<IAlertProps> implements IAlert {
         // Configure the alert
         this.configure();
 
+        // Configure the events
+        this.configureEvents();
+
         // Configure the parent element
         this.configureParent();
 
@@ -83,6 +86,18 @@ class _Alert extends Base<IAlertProps> implements IAlert {
 
             // Append the button
             this.el.appendChild(btn);
+        }
+    }
+
+    // Configure the events
+    private configureEvents() {
+        // See if the close event exists
+        if (this.props.onClose) {
+            // Set the close event
+            this.el.addEventListener("close.bs.alert", () => {
+                // Call the event
+                this.props.onClose(this.props);
+            });
         }
     }
 

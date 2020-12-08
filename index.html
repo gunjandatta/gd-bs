@@ -86,7 +86,10 @@
                 el: document.getElementById("alert"),
                 isDismissible: true,
                 header: "Alert Header",
-                content: "This is an alert."
+                content: "This is an alert.",
+                onClose: (props) => {
+                    console.log("The alert was closed.", props.header);
+                }
             });
             var btnLoading = GD.Components.Button({
                 className: "btn-loading",
