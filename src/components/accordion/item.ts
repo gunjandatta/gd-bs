@@ -7,6 +7,7 @@ import { Button, ButtonTypes } from "../button";
  */
 export class AccordionItem {
     private _el: HTMLDivElement = null;
+    private _elCollapse: HTMLDivElement = null;
     private _elHeader: HTMLButtonElement = null;
     private _id: string = null;
     private _itemId: string = null;
@@ -41,12 +42,12 @@ export class AccordionItem {
 
     // Configures the collapse element
     private configureCollapse() {
-        let elCollapse = this._el.querySelector(".accordion-collapse");
-        if (elCollapse) {
-            this._props.showFl ? elCollapse.classList.add("show") : null;
-            elCollapse.setAttribute("aria-labelledby", this._itemId);
-            elCollapse.setAttribute("data-bs-parent", "#" + this._parentId);
-            elCollapse.id = this._id;
+        this._elCollapse = this._el.querySelector(".accordion-collapse");
+        if (this._elCollapse) {
+            this._props.showFl ? this._elCollapse.classList.add("show") : null;
+            this._elCollapse.setAttribute("aria-labelledby", this._itemId);
+            this._elCollapse.setAttribute("data-bs-parent", "#" + this._parentId);
+            this._elCollapse.id = this._id;
         }
     }
 
@@ -89,16 +90,16 @@ export class AccordionItem {
         }
 
         // Get the button
-        let elButton = this._el.querySelector(".accordion-button") as HTMLButtonElement;
-        if (elButton) {
-            // Set the header reference
-            this._elHeader = elButton;
+        this._elHeader = this._el.querySelector(".accordion-button");
+        if (this._elHeader) {
+            // Set the class
+            this._elHeader.classList.add(this._props.showFl ? "show" : "collapsed");
 
             // Set the properties
-            elButton.setAttribute("aria-controls", "collapse_" + this._itemId);
-            elButton.setAttribute("aria-expanded", this._props.showFl ? "true" : "false");
-            elButton.setAttribute("data-bs-target", '#' + "collapse_" + this._itemId);
-            elButton.innerHTML = this._props.header;
+            this._elHeader.setAttribute("aria-controls", "collapse_" + this._itemId);
+            this._elHeader.setAttribute("aria-expanded", this._props.showFl ? "true" : "false");
+            this._elHeader.setAttribute("data-bs-target", '#' + "collapse_" + this._itemId);
+            this._elHeader.innerHTML = this._props.header;
         }
     }
 
@@ -110,7 +111,7 @@ export class AccordionItem {
     get el(): HTMLDivElement { return this._el; }
 
     // The collapse element
-    get elCollapse(): HTMLDivElement { return this._el.querySelector(".collapse") || this._el.querySelector(".collapsing"); }
+    get elCollapse(): HTMLDivElement { return this._elCollapse; }
 
     // The header element
     get elHeader(): HTMLButtonElement { return this._elHeader; }
