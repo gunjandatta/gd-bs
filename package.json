@@ -6,7 +6,7 @@
   "typings": "@types/index.d.ts",
   "scripts": {
     "all": "npm run clean && npm run pre-build && npm run build && npm run prod",
-    "build": "npm run build-core && npm run build-no-icons && npm run build-icons",
+    "build": "npm run build-icons && npm run build-no-icons && npm run build-core",
     "build-core": "webpack --mode=development --core=true",
     "build-icons": "webpack --mode=development --icons=true",
     "build-no-icons": "webpack --mode=development",
