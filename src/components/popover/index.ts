@@ -27,9 +27,6 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
         // Configure the collapse
         this.configure();
 
-        // Configure the events
-        this.configureEvents();
-
         // Configure the parent, if the target wasn't specified
         this.props.target ? null : this.configureParent();
     }
@@ -97,6 +94,7 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
             // Create the button
             let btnProps = this.props.btnProps || {};
             btnProps.isLink = this.props.isDismissible ? true : false;
+            btnProps.tabIndex = btnProps.tabIndex || 0;
             btnProps.toggle = "popover";
             this.props.isDismissible ? btnProps.trigger = "focus" : null;
             let button = Button(btnProps);
@@ -111,15 +109,6 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
 
         // Create the popover
         this._bootstrapObj = new popover(this.el, options);
-    }
-
-    // Configures the events
-    private configureEvents() {
-        // Set a click event
-        this.el.addEventListener("click", ev => {
-            // Prevent the page from moving to the top
-            ev.preventDefault();
-        });
     }
 
     /**

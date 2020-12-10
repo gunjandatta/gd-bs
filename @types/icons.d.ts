@@ -986,24 +986,50 @@ export const IconTypes: {
 	EjectFill: number;
 	// eject.svg
 	Eject: number;
+	// emoji-angry-fill.svg
+	EmojiAngryFill: number;
 	// emoji-angry.svg
 	EmojiAngry: number;
+	// emoji-dizzy-fill.svg
+	EmojiDizzyFill: number;
 	// emoji-dizzy.svg
 	EmojiDizzy: number;
+	// emoji-expressionless-fill.svg
+	EmojiExpressionlessFill: number;
 	// emoji-expressionless.svg
 	EmojiExpressionless: number;
+	// emoji-frown-fill.svg
+	EmojiFrownFill: number;
 	// emoji-frown.svg
 	EmojiFrown: number;
+	// emoji-heart-eyes-fill.svg
+	EmojiHeartEyesFill: number;
+	// emoji-heart-eyes.svg
+	EmojiHeartEyes: number;
+	// emoji-laughing-fill.svg
+	EmojiLaughingFill: number;
 	// emoji-laughing.svg
 	EmojiLaughing: number;
+	// emoji-neutral-fill.svg
+	EmojiNeutralFill: number;
 	// emoji-neutral.svg
 	EmojiNeutral: number;
+	// emoji-smile-fill.svg
+	EmojiSmileFill: number;
+	// emoji-smile-upside-down-fill.svg
+	EmojiSmileUpsideDownFill: number;
 	// emoji-smile-upside-down.svg
 	EmojiSmileUpsideDown: number;
 	// emoji-smile.svg
 	EmojiSmile: number;
+	// emoji-sunglasses-fill.svg
+	EmojiSunglassesFill: number;
 	// emoji-sunglasses.svg
 	EmojiSunglasses: number;
+	// emoji-wink-fill.svg
+	EmojiWinkFill: number;
+	// emoji-wink.svg
+	EmojiWink: number;
 	// envelope-fill.svg
 	EnvelopeFill: number;
 	// envelope-open-fill.svg
@@ -1054,6 +1080,10 @@ export const IconTypes: {
 	FileArrowUpFill: number;
 	// file-arrow-up.svg
 	FileArrowUp: number;
+	// file-bar-graph-fill.svg
+	FileBarGraphFill: number;
+	// file-bar-graph.svg
+	FileBarGraph: number;
 	// file-binary-fill.svg
 	FileBinaryFill: number;
 	// file-binary.svg
@@ -1082,6 +1112,10 @@ export const IconTypes: {
 	FileEarmarkArrowUpFill: number;
 	// file-earmark-arrow-up.svg
 	FileEarmarkArrowUp: number;
+	// file-earmark-bar-graph-fill.svg
+	FileEarmarkBarGraphFill: number;
+	// file-earmark-bar-graph.svg
+	FileEarmarkBarGraph: number;
 	// file-earmark-binary-fill.svg
 	FileEarmarkBinaryFill: number;
 	// file-earmark-binary.svg
@@ -1106,6 +1140,10 @@ export const IconTypes: {
 	FileEarmarkEaselFill: number;
 	// file-earmark-easel.svg
 	FileEarmarkEasel: number;
+	// file-earmark-excel-fill.svg
+	FileEarmarkExcelFill: number;
+	// file-earmark-excel.svg
+	FileEarmarkExcel: number;
 	// file-earmark-fill.svg
 	FileEarmarkFill: number;
 	// file-earmark-font-fill.svg
@@ -1152,6 +1190,10 @@ export const IconTypes: {
 	FileEarmarkPostFill: number;
 	// file-earmark-post.svg
 	FileEarmarkPost: number;
+	// file-earmark-ppt-fill.svg
+	FileEarmarkPptFill: number;
+	// file-earmark-ppt.svg
+	FileEarmarkPpt: number;
 	// file-earmark-richtext-fill.svg
 	FileEarmarkRichtextFill: number;
 	// file-earmark-richtext.svg
@@ -1172,6 +1214,10 @@ export const IconTypes: {
 	FileEarmarkTextFill: number;
 	// file-earmark-text.svg
 	FileEarmarkText: number;
+	// file-earmark-word-fill.svg
+	FileEarmarkWordFill: number;
+	// file-earmark-word.svg
+	FileEarmarkWord: number;
 	// file-earmark-x-fill.svg
 	FileEarmarkXFill: number;
 	// file-earmark-x.svg
@@ -1186,6 +1232,10 @@ export const IconTypes: {
 	FileEaselFill: number;
 	// file-easel.svg
 	FileEasel: number;
+	// file-excel-fill.svg
+	FileExcelFill: number;
+	// file-excel.svg
+	FileExcel: number;
 	// file-fill.svg
 	FileFill: number;
 	// file-font-fill.svg
@@ -1232,6 +1282,10 @@ export const IconTypes: {
 	FilePostFill: number;
 	// file-post.svg
 	FilePost: number;
+	// file-ppt-fill.svg
+	FilePptFill: number;
+	// file-ppt.svg
+	FilePpt: number;
 	// file-richtext-fill.svg
 	FileRichtextFill: number;
 	// file-richtext.svg
@@ -1252,6 +1306,10 @@ export const IconTypes: {
 	FileTextFill: number;
 	// file-text.svg
 	FileText: number;
+	// file-word-fill.svg
+	FileWordFill: number;
+	// file-word.svg
+	FileWord: number;
 	// file-x-fill.svg
 	FileXFill: number;
 	// file-x.svg
@@ -1492,6 +1550,10 @@ export const IconTypes: {
 	JournalArrowDown: number;
 	// journal-arrow-up.svg
 	JournalArrowUp: number;
+	// journal-bookmark-fill.svg
+	JournalBookmarkFill: number;
+	// journal-bookmark.svg
+	JournalBookmark: number;
 	// journal-check.svg
 	JournalCheck: number;
 	// journal-code.svg

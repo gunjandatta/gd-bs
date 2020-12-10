@@ -90,6 +90,7 @@ class _Button extends Base<IButtonProps> implements IButton {
         this.props.href ? this.el.href = this.props.href : null;
         this.props.id ? this.el.id = this.props.id : null;
         this.props.isDisabled ? this.el.setAttribute("disabled", "disabled") : null;
+        this.props.tabIndex != null ? this.el.setAttribute("tabindex", this.props.tabIndex) : null;
         this.props.target ? this.el.setAttribute("data-bs-target", this.props.target) : null;
         this.props.title ? this.el.title = this.props.title : null;
         this.props.toggle ? this.el.setAttribute("data-bs-toggle", this.props.toggle) : null;

@@ -36,7 +36,7 @@
   "dependencies": {
     "@popperjs/core": "^2.5.4",
     "bootstrap": "^5.0.0-beta1",
-    "bootstrap-icons": "^1.0.0"
+    "bootstrap-icons": "^1.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",

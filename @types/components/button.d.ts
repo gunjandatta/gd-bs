@@ -93,6 +93,7 @@ export interface IButtonProps extends IBaseProps<IButton> {
     isSmall?: boolean;
     onClick?: (button?: IButtonProps, ev?: Event) => void;
     spinnerProps?: ISpinnerProps;
+    tabIndex?: number;
     target?: string;
     text?: string;
     title?: string;

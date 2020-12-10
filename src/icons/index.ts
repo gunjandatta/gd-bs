@@ -1463,1931 +1463,2024 @@ export const Icons = (iconType:number, height?:number, width?:number) => {
 		// eject.svg
 		case 478:
 			return generateIcon(SVGIcons.eject, height, width);
-		// emoji-angry.svg
+		// emoji-angry-fill.svg
 		case 479:
-			return generateIcon(SVGIcons.emojiAngry, height, width);
-		// emoji-dizzy.svg
+			return generateIcon(SVGIcons.emojiAngryFill, height, width);
+		// emoji-angry.svg
 		case 480:
-			return generateIcon(SVGIcons.emojiDizzy, height, width);
-		// emoji-expressionless.svg
+			return generateIcon(SVGIcons.emojiAngry, height, width);
+		// emoji-dizzy-fill.svg
 		case 481:
-			return generateIcon(SVGIcons.emojiExpressionless, height, width);
-		// emoji-frown.svg
+			return generateIcon(SVGIcons.emojiDizzyFill, height, width);
+		// emoji-dizzy.svg
 		case 482:
-			return generateIcon(SVGIcons.emojiFrown, height, width);
-		// emoji-laughing.svg
+			return generateIcon(SVGIcons.emojiDizzy, height, width);
+		// emoji-expressionless-fill.svg
 		case 483:
-			return generateIcon(SVGIcons.emojiLaughing, height, width);
-		// emoji-neutral.svg
+			return generateIcon(SVGIcons.emojiExpressionlessFill, height, width);
+		// emoji-expressionless.svg
 		case 484:
-			return generateIcon(SVGIcons.emojiNeutral, height, width);
-		// emoji-smile-upside-down.svg
+			return generateIcon(SVGIcons.emojiExpressionless, height, width);
+		// emoji-frown-fill.svg
 		case 485:
+			return generateIcon(SVGIcons.emojiFrownFill, height, width);
+		// emoji-frown.svg
+		case 486:
+			return generateIcon(SVGIcons.emojiFrown, height, width);
+		// emoji-heart-eyes-fill.svg
+		case 487:
+			return generateIcon(SVGIcons.emojiHeartEyesFill, height, width);
+		// emoji-heart-eyes.svg
+		case 488:
+			return generateIcon(SVGIcons.emojiHeartEyes, height, width);
+		// emoji-laughing-fill.svg
+		case 489:
+			return generateIcon(SVGIcons.emojiLaughingFill, height, width);
+		// emoji-laughing.svg
+		case 490:
+			return generateIcon(SVGIcons.emojiLaughing, height, width);
+		// emoji-neutral-fill.svg
+		case 491:
+			return generateIcon(SVGIcons.emojiNeutralFill, height, width);
+		// emoji-neutral.svg
+		case 492:
+			return generateIcon(SVGIcons.emojiNeutral, height, width);
+		// emoji-smile-fill.svg
+		case 493:
+			return generateIcon(SVGIcons.emojiSmileFill, height, width);
+		// emoji-smile-upside-down-fill.svg
+		case 494:
+			return generateIcon(SVGIcons.emojiSmileUpsideDownFill, height, width);
+		// emoji-smile-upside-down.svg
+		case 495:
 			return generateIcon(SVGIcons.emojiSmileUpsideDown, height, width);
 		// emoji-smile.svg
-		case 486:
+		case 496:
 			return generateIcon(SVGIcons.emojiSmile, height, width);
+		// emoji-sunglasses-fill.svg
+		case 497:
+			return generateIcon(SVGIcons.emojiSunglassesFill, height, width);
 		// emoji-sunglasses.svg
-		case 487:
+		case 498:
 			return generateIcon(SVGIcons.emojiSunglasses, height, width);
+		// emoji-wink-fill.svg
+		case 499:
+			return generateIcon(SVGIcons.emojiWinkFill, height, width);
+		// emoji-wink.svg
+		case 500:
+			return generateIcon(SVGIcons.emojiWink, height, width);
 		// envelope-fill.svg
-		case 488:
+		case 501:
 			return generateIcon(SVGIcons.envelopeFill, height, width);
 		// envelope-open-fill.svg
-		case 489:
+		case 502:
 			return generateIcon(SVGIcons.envelopeOpenFill, height, width);
 		// envelope-open.svg
-		case 490:
+		case 503:
 			return generateIcon(SVGIcons.envelopeOpen, height, width);
 		// envelope.svg
-		case 491:
+		case 504:
 			return generateIcon(SVGIcons.envelope, height, width);
 		// exclamation-circle-fill.svg
-		case 492:
+		case 505:
 			return generateIcon(SVGIcons.exclamationCircleFill, height, width);
 		// exclamation-circle.svg
-		case 493:
+		case 506:
 			return generateIcon(SVGIcons.exclamationCircle, height, width);
 		// exclamation-diamond-fill.svg
-		case 494:
+		case 507:
 			return generateIcon(SVGIcons.exclamationDiamondFill, height, width);
 		// exclamation-diamond.svg
-		case 495:
+		case 508:
 			return generateIcon(SVGIcons.exclamationDiamond, height, width);
 		// exclamation-octagon-fill.svg
-		case 496:
+		case 509:
 			return generateIcon(SVGIcons.exclamationOctagonFill, height, width);
 		// exclamation-octagon.svg
-		case 497:
+		case 510:
 			return generateIcon(SVGIcons.exclamationOctagon, height, width);
 		// exclamation-square-fill.svg
-		case 498:
+		case 511:
 			return generateIcon(SVGIcons.exclamationSquareFill, height, width);
 		// exclamation-square.svg
-		case 499:
+		case 512:
 			return generateIcon(SVGIcons.exclamationSquare, height, width);
 		// exclamation-triangle-fill.svg
-		case 500:
+		case 513:
 			return generateIcon(SVGIcons.exclamationTriangleFill, height, width);
 		// exclamation-triangle.svg
-		case 501:
+		case 514:
 			return generateIcon(SVGIcons.exclamationTriangle, height, width);
 		// exclamation.svg
-		case 502:
+		case 515:
 			return generateIcon(SVGIcons.exclamation, height, width);
 		// exclude.svg
-		case 503:
+		case 516:
 			return generateIcon(SVGIcons.exclude, height, width);
 		// eye-fill.svg
-		case 504:
+		case 517:
 			return generateIcon(SVGIcons.eyeFill, height, width);
 		// eye-slash-fill.svg
-		case 505:
+		case 518:
 			return generateIcon(SVGIcons.eyeSlashFill, height, width);
 		// eye-slash.svg
-		case 506:
+		case 519:
 			return generateIcon(SVGIcons.eyeSlash, height, width);
 		// eye.svg
-		case 507:
+		case 520:
 			return generateIcon(SVGIcons.eye, height, width);
 		// eyeglasses.svg
-		case 508:
+		case 521:
 			return generateIcon(SVGIcons.eyeglasses, height, width);
 		// file-arrow-down-fill.svg
-		case 509:
+		case 522:
 			return generateIcon(SVGIcons.fileArrowDownFill, height, width);
 		// file-arrow-down.svg
-		case 510:
+		case 523:
 			return generateIcon(SVGIcons.fileArrowDown, height, width);
 		// file-arrow-up-fill.svg
-		case 511:
+		case 524:
 			return generateIcon(SVGIcons.fileArrowUpFill, height, width);
 		// file-arrow-up.svg
-		case 512:
+		case 525:
 			return generateIcon(SVGIcons.fileArrowUp, height, width);
+		// file-bar-graph-fill.svg
+		case 526:
+			return generateIcon(SVGIcons.fileBarGraphFill, height, width);
+		// file-bar-graph.svg
+		case 527:
+			return generateIcon(SVGIcons.fileBarGraph, height, width);
 		// file-binary-fill.svg
-		case 513:
+		case 528:
 			return generateIcon(SVGIcons.fileBinaryFill, height, width);
 		// file-binary.svg
-		case 514:
+		case 529:
 			return generateIcon(SVGIcons.fileBinary, height, width);
 		// file-break-fill.svg
-		case 515:
+		case 530:
 			return generateIcon(SVGIcons.fileBreakFill, height, width);
 		// file-break.svg
-		case 516:
+		case 531:
 			return generateIcon(SVGIcons.fileBreak, height, width);
 		// file-check-fill.svg
-		case 517:
+		case 532:
 			return generateIcon(SVGIcons.fileCheckFill, height, width);
 		// file-check.svg
-		case 518:
+		case 533:
 			return generateIcon(SVGIcons.fileCheck, height, width);
 		// file-code-fill.svg
-		case 519:
+		case 534:
 			return generateIcon(SVGIcons.fileCodeFill, height, width);
 		// file-code.svg
-		case 520:
+		case 535:
 			return generateIcon(SVGIcons.fileCode, height, width);
 		// file-diff-fill.svg
-		case 521:
+		case 536:
 			return generateIcon(SVGIcons.fileDiffFill, height, width);
 		// file-diff.svg
-		case 522:
+		case 537:
 			return generateIcon(SVGIcons.fileDiff, height, width);
 		// file-earmark-arrow-down-fill.svg
-		case 523:
+		case 538:
 			return generateIcon(SVGIcons.fileEarmarkArrowDownFill, height, width);
 		// file-earmark-arrow-down.svg
-		case 524:
+		case 539:
 			return generateIcon(SVGIcons.fileEarmarkArrowDown, height, width);
 		// file-earmark-arrow-up-fill.svg
-		case 525:
+		case 540:
 			return generateIcon(SVGIcons.fileEarmarkArrowUpFill, height, width);
 		// file-earmark-arrow-up.svg
-		case 526:
+		case 541:
 			return generateIcon(SVGIcons.fileEarmarkArrowUp, height, width);
+		// file-earmark-bar-graph-fill.svg
+		case 542:
+			return generateIcon(SVGIcons.fileEarmarkBarGraphFill, height, width);
+		// file-earmark-bar-graph.svg
+		case 543:
+			return generateIcon(SVGIcons.fileEarmarkBarGraph, height, width);
 		// file-earmark-binary-fill.svg
-		case 527:
+		case 544:
 			return generateIcon(SVGIcons.fileEarmarkBinaryFill, height, width);
 		// file-earmark-binary.svg
-		case 528:
+		case 545:
 			return generateIcon(SVGIcons.fileEarmarkBinary, height, width);
 		// file-earmark-break-fill.svg
-		case 529:
+		case 546:
 			return generateIcon(SVGIcons.fileEarmarkBreakFill, height, width);
 		// file-earmark-break.svg
-		case 530:
+		case 547:
 			return generateIcon(SVGIcons.fileEarmarkBreak, height, width);
 		// file-earmark-check-fill.svg
-		case 531:
+		case 548:
 			return generateIcon(SVGIcons.fileEarmarkCheckFill, height, width);
 		// file-earmark-check.svg
-		case 532:
+		case 549:
 			return generateIcon(SVGIcons.fileEarmarkCheck, height, width);
 		// file-earmark-code-fill.svg
-		case 533:
+		case 550:
 			return generateIcon(SVGIcons.fileEarmarkCodeFill, height, width);
 		// file-earmark-code.svg
-		case 534:
+		case 551:
 			return generateIcon(SVGIcons.fileEarmarkCode, height, width);
 		// file-earmark-diff-fill.svg
-		case 535:
+		case 552:
 			return generateIcon(SVGIcons.fileEarmarkDiffFill, height, width);
 		// file-earmark-diff.svg
-		case 536:
+		case 553:
 			return generateIcon(SVGIcons.fileEarmarkDiff, height, width);
 		// file-earmark-easel-fill.svg
-		case 537:
+		case 554:
 			return generateIcon(SVGIcons.fileEarmarkEaselFill, height, width);
 		// file-earmark-easel.svg
-		case 538:
+		case 555:
 			return generateIcon(SVGIcons.fileEarmarkEasel, height, width);
+		// file-earmark-excel-fill.svg
+		case 556:
+			return generateIcon(SVGIcons.fileEarmarkExcelFill, height, width);
+		// file-earmark-excel.svg
+		case 557:
+			return generateIcon(SVGIcons.fileEarmarkExcel, height, width);
 		// file-earmark-fill.svg
-		case 539:
+		case 558:
 			return generateIcon(SVGIcons.fileEarmarkFill, height, width);
 		// file-earmark-font-fill.svg
-		case 540:
+		case 559:
 			return generateIcon(SVGIcons.fileEarmarkFontFill, height, width);
 		// file-earmark-font.svg
-		case 541:
+		case 560:
 			return generateIcon(SVGIcons.fileEarmarkFont, height, width);
 		// file-earmark-image-fill.svg
-		case 542:
+		case 561:
 			return generateIcon(SVGIcons.fileEarmarkImageFill, height, width);
 		// file-earmark-image.svg
-		case 543:
+		case 562:
 			return generateIcon(SVGIcons.fileEarmarkImage, height, width);
 		// file-earmark-lock-fill.svg
-		case 544:
+		case 563:
 			return generateIcon(SVGIcons.fileEarmarkLockFill, height, width);
 		// file-earmark-lock.svg
-		case 545:
+		case 564:
 			return generateIcon(SVGIcons.fileEarmarkLock, height, width);
 		// file-earmark-lock2-fill.svg
-		case 546:
+		case 565:
 			return generateIcon(SVGIcons.fileEarmarkLock2Fill, height, width);
 		// file-earmark-lock2.svg
-		case 547:
+		case 566:
 			return generateIcon(SVGIcons.fileEarmarkLock2, height, width);
 		// file-earmark-medical-fill.svg
-		case 548:
+		case 567:
 			return generateIcon(SVGIcons.fileEarmarkMedicalFill, height, width);
 		// file-earmark-medical.svg
-		case 549:
+		case 568:
 			return generateIcon(SVGIcons.fileEarmarkMedical, height, width);
 		// file-earmark-minus-fill.svg
-		case 550:
+		case 569:
 			return generateIcon(SVGIcons.fileEarmarkMinusFill, height, width);
 		// file-earmark-minus.svg
-		case 551:
+		case 570:
 			return generateIcon(SVGIcons.fileEarmarkMinus, height, width);
 		// file-earmark-music-fill.svg
-		case 552:
+		case 571:
 			return generateIcon(SVGIcons.fileEarmarkMusicFill, height, width);
 		// file-earmark-music.svg
-		case 553:
+		case 572:
 			return generateIcon(SVGIcons.fileEarmarkMusic, height, width);
 		// file-earmark-person-fill.svg
-		case 554:
+		case 573:
 			return generateIcon(SVGIcons.fileEarmarkPersonFill, height, width);
 		// file-earmark-person.svg
-		case 555:
+		case 574:
 			return generateIcon(SVGIcons.fileEarmarkPerson, height, width);
 		// file-earmark-play-fill.svg
-		case 556:
+		case 575:
 			return generateIcon(SVGIcons.fileEarmarkPlayFill, height, width);
 		// file-earmark-play.svg
-		case 557:
+		case 576:
 			return generateIcon(SVGIcons.fileEarmarkPlay, height, width);
 		// file-earmark-plus-fill.svg
-		case 558:
+		case 577:
 			return generateIcon(SVGIcons.fileEarmarkPlusFill, height, width);
 		// file-earmark-plus.svg
-		case 559:
+		case 578:
 			return generateIcon(SVGIcons.fileEarmarkPlus, height, width);
 		// file-earmark-post-fill.svg
-		case 560:
+		case 579:
 			return generateIcon(SVGIcons.fileEarmarkPostFill, height, width);
 		// file-earmark-post.svg
-		case 561:
+		case 580:
 			return generateIcon(SVGIcons.fileEarmarkPost, height, width);
+		// file-earmark-ppt-fill.svg
+		case 581:
+			return generateIcon(SVGIcons.fileEarmarkPptFill, height, width);
+		// file-earmark-ppt.svg
+		case 582:
+			return generateIcon(SVGIcons.fileEarmarkPpt, height, width);
 		// file-earmark-richtext-fill.svg
-		case 562:
+		case 583:
 			return generateIcon(SVGIcons.fileEarmarkRichtextFill, height, width);
 		// file-earmark-richtext.svg
-		case 563:
+		case 584:
 			return generateIcon(SVGIcons.fileEarmarkRichtext, height, width);
 		// file-earmark-ruled-fill.svg
-		case 564:
+		case 585:
 			return generateIcon(SVGIcons.fileEarmarkRuledFill, height, width);
 		// file-earmark-ruled.svg
-		case 565:
+		case 586:
 			return generateIcon(SVGIcons.fileEarmarkRuled, height, width);
 		// file-earmark-slides-fill.svg
-		case 566:
+		case 587:
 			return generateIcon(SVGIcons.fileEarmarkSlidesFill, height, width);
 		// file-earmark-slides.svg
-		case 567:
+		case 588:
 			return generateIcon(SVGIcons.fileEarmarkSlides, height, width);
 		// file-earmark-spreadsheet-fill.svg
-		case 568:
+		case 589:
 			return generateIcon(SVGIcons.fileEarmarkSpreadsheetFill, height, width);
 		// file-earmark-spreadsheet.svg
-		case 569:
+		case 590:
 			return generateIcon(SVGIcons.fileEarmarkSpreadsheet, height, width);
 		// file-earmark-text-fill.svg
-		case 570:
+		case 591:
 			return generateIcon(SVGIcons.fileEarmarkTextFill, height, width);
 		// file-earmark-text.svg
-		case 571:
+		case 592:
 			return generateIcon(SVGIcons.fileEarmarkText, height, width);
+		// file-earmark-word-fill.svg
+		case 593:
+			return generateIcon(SVGIcons.fileEarmarkWordFill, height, width);
+		// file-earmark-word.svg
+		case 594:
+			return generateIcon(SVGIcons.fileEarmarkWord, height, width);
 		// file-earmark-x-fill.svg
-		case 572:
+		case 595:
 			return generateIcon(SVGIcons.fileEarmarkXFill, height, width);
 		// file-earmark-x.svg
-		case 573:
+		case 596:
 			return generateIcon(SVGIcons.fileEarmarkX, height, width);
 		// file-earmark-zip-fill.svg
-		case 574:
+		case 597:
 			return generateIcon(SVGIcons.fileEarmarkZipFill, height, width);
 		// file-earmark-zip.svg
-		case 575:
+		case 598:
 			return generateIcon(SVGIcons.fileEarmarkZip, height, width);
 		// file-earmark.svg
-		case 576:
+		case 599:
 			return generateIcon(SVGIcons.fileEarmark, height, width);
 		// file-easel-fill.svg
-		case 577:
+		case 600:
 			return generateIcon(SVGIcons.fileEaselFill, height, width);
 		// file-easel.svg
-		case 578:
+		case 601:
 			return generateIcon(SVGIcons.fileEasel, height, width);
+		// file-excel-fill.svg
+		case 602:
+			return generateIcon(SVGIcons.fileExcelFill, height, width);
+		// file-excel.svg
+		case 603:
+			return generateIcon(SVGIcons.fileExcel, height, width);
 		// file-fill.svg
-		case 579:
+		case 604:
 			return generateIcon(SVGIcons.fileFill, height, width);
 		// file-font-fill.svg
-		case 580:
+		case 605:
 			return generateIcon(SVGIcons.fileFontFill, height, width);
 		// file-font.svg
-		case 581:
+		case 606:
 			return generateIcon(SVGIcons.fileFont, height, width);
 		// file-image-fill.svg
-		case 582:
+		case 607:
 			return generateIcon(SVGIcons.fileImageFill, height, width);
 		// file-image.svg
-		case 583:
+		case 608:
 			return generateIcon(SVGIcons.fileImage, height, width);
 		// file-lock-fill.svg
-		case 584:
+		case 609:
 			return generateIcon(SVGIcons.fileLockFill, height, width);
 		// file-lock.svg
-		case 585:
+		case 610:
 			return generateIcon(SVGIcons.fileLock, height, width);
 		// file-lock2-fill.svg
-		case 586:
+		case 611:
 			return generateIcon(SVGIcons.fileLock2Fill, height, width);
 		// file-lock2.svg
-		case 587:
+		case 612:
 			return generateIcon(SVGIcons.fileLock2, height, width);
 		// file-medical-fill.svg
-		case 588:
+		case 613:
 			return generateIcon(SVGIcons.fileMedicalFill, height, width);
 		// file-medical.svg
-		case 589:
+		case 614:
 			return generateIcon(SVGIcons.fileMedical, height, width);
 		// file-minus-fill.svg
-		case 590:
+		case 615:
 			return generateIcon(SVGIcons.fileMinusFill, height, width);
 		// file-minus.svg
-		case 591:
+		case 616:
 			return generateIcon(SVGIcons.fileMinus, height, width);
 		// file-music-fill.svg
-		case 592:
+		case 617:
 			return generateIcon(SVGIcons.fileMusicFill, height, width);
 		// file-music.svg
-		case 593:
+		case 618:
 			return generateIcon(SVGIcons.fileMusic, height, width);
 		// file-person-fill.svg
-		case 594:
+		case 619:
 			return generateIcon(SVGIcons.filePersonFill, height, width);
 		// file-person.svg
-		case 595:
+		case 620:
 			return generateIcon(SVGIcons.filePerson, height, width);
 		// file-play-fill.svg
-		case 596:
+		case 621:
 			return generateIcon(SVGIcons.filePlayFill, height, width);
 		// file-play.svg
-		case 597:
+		case 622:
 			return generateIcon(SVGIcons.filePlay, height, width);
 		// file-plus-fill.svg
-		case 598:
+		case 623:
 			return generateIcon(SVGIcons.filePlusFill, height, width);
 		// file-plus.svg
-		case 599:
+		case 624:
 			return generateIcon(SVGIcons.filePlus, height, width);
 		// file-post-fill.svg
-		case 600:
+		case 625:
 			return generateIcon(SVGIcons.filePostFill, height, width);
 		// file-post.svg
-		case 601:
+		case 626:
 			return generateIcon(SVGIcons.filePost, height, width);
+		// file-ppt-fill.svg
+		case 627:
+			return generateIcon(SVGIcons.filePptFill, height, width);
+		// file-ppt.svg
+		case 628:
+			return generateIcon(SVGIcons.filePpt, height, width);
 		// file-richtext-fill.svg
-		case 602:
+		case 629:
 			return generateIcon(SVGIcons.fileRichtextFill, height, width);
 		// file-richtext.svg
-		case 603:
+		case 630:
 			return generateIcon(SVGIcons.fileRichtext, height, width);
 		// file-ruled-fill.svg
-		case 604:
+		case 631:
 			return generateIcon(SVGIcons.fileRuledFill, height, width);
 		// file-ruled.svg
-		case 605:
+		case 632:
 			return generateIcon(SVGIcons.fileRuled, height, width);
 		// file-slides-fill.svg
-		case 606:
+		case 633:
 			return generateIcon(SVGIcons.fileSlidesFill, height, width);
 		// file-slides.svg
-		case 607:
+		case 634:
 			return generateIcon(SVGIcons.fileSlides, height, width);
 		// file-spreadsheet-fill.svg
-		case 608:
+		case 635:
 			return generateIcon(SVGIcons.fileSpreadsheetFill, height, width);
 		// file-spreadsheet.svg
-		case 609:
+		case 636:
 			return generateIcon(SVGIcons.fileSpreadsheet, height, width);
 		// file-text-fill.svg
-		case 610:
+		case 637:
 			return generateIcon(SVGIcons.fileTextFill, height, width);
 		// file-text.svg
-		case 611:
+		case 638:
 			return generateIcon(SVGIcons.fileText, height, width);
+		// file-word-fill.svg
+		case 639:
+			return generateIcon(SVGIcons.fileWordFill, height, width);
+		// file-word.svg
+		case 640:
+			return generateIcon(SVGIcons.fileWord, height, width);
 		// file-x-fill.svg
-		case 612:
+		case 641:
 			return generateIcon(SVGIcons.fileXFill, height, width);
 		// file-x.svg
-		case 613:
+		case 642:
 			return generateIcon(SVGIcons.fileX, height, width);
 		// file-zip-fill.svg
-		case 614:
+		case 643:
 			return generateIcon(SVGIcons.fileZipFill, height, width);
 		// file-zip.svg
-		case 615:
+		case 644:
 			return generateIcon(SVGIcons.fileZip, height, width);
 		// file.svg
-		case 616:
+		case 645:
 			return generateIcon(SVGIcons.file, height, width);
 		// files-alt.svg
-		case 617:
+		case 646:
 			return generateIcon(SVGIcons.filesAlt, height, width);
 		// files.svg
-		case 618:
+		case 647:
 			return generateIcon(SVGIcons.files, height, width);
 		// film.svg
-		case 619:
+		case 648:
 			return generateIcon(SVGIcons.film, height, width);
 		// filter-circle-fill.svg
-		case 620:
+		case 649:
 			return generateIcon(SVGIcons.filterCircleFill, height, width);
 		// filter-circle.svg
-		case 621:
+		case 650:
 			return generateIcon(SVGIcons.filterCircle, height, width);
 		// filter-left.svg
-		case 622:
+		case 651:
 			return generateIcon(SVGIcons.filterLeft, height, width);
 		// filter-right.svg
-		case 623:
+		case 652:
 			return generateIcon(SVGIcons.filterRight, height, width);
 		// filter-square-fill.svg
-		case 624:
+		case 653:
 			return generateIcon(SVGIcons.filterSquareFill, height, width);
 		// filter-square.svg
-		case 625:
+		case 654:
 			return generateIcon(SVGIcons.filterSquare, height, width);
 		// filter.svg
-		case 626:
+		case 655:
 			return generateIcon(SVGIcons.filter, height, width);
 		// flag-fill.svg
-		case 627:
+		case 656:
 			return generateIcon(SVGIcons.flagFill, height, width);
 		// flag.svg
-		case 628:
+		case 657:
 			return generateIcon(SVGIcons.flag, height, width);
 		// flower1.svg
-		case 629:
+		case 658:
 			return generateIcon(SVGIcons.flower1, height, width);
 		// flower2.svg
-		case 630:
+		case 659:
 			return generateIcon(SVGIcons.flower2, height, width);
 		// flower3.svg
-		case 631:
+		case 660:
 			return generateIcon(SVGIcons.flower3, height, width);
 		// folder-check.svg
-		case 632:
+		case 661:
 			return generateIcon(SVGIcons.folderCheck, height, width);
 		// folder-fill.svg
-		case 633:
+		case 662:
 			return generateIcon(SVGIcons.folderFill, height, width);
 		// folder-minus.svg
-		case 634:
+		case 663:
 			return generateIcon(SVGIcons.folderMinus, height, width);
 		// folder-plus.svg
-		case 635:
+		case 664:
 			return generateIcon(SVGIcons.folderPlus, height, width);
 		// folder-symlink-fill.svg
-		case 636:
+		case 665:
 			return generateIcon(SVGIcons.folderSymlinkFill, height, width);
 		// folder-symlink.svg
-		case 637:
+		case 666:
 			return generateIcon(SVGIcons.folderSymlink, height, width);
 		// folder-x.svg
-		case 638:
+		case 667:
 			return generateIcon(SVGIcons.folderX, height, width);
 		// folder.svg
-		case 639:
+		case 668:
 			return generateIcon(SVGIcons.folder, height, width);
 		// folder2-open.svg
-		case 640:
+		case 669:
 			return generateIcon(SVGIcons.folder2Open, height, width);
 		// folder2.svg
-		case 641:
+		case 670:
 			return generateIcon(SVGIcons.folder2, height, width);
 		// fonts.svg
-		case 642:
+		case 671:
 			return generateIcon(SVGIcons.fonts, height, width);
 		// forward-fill.svg
-		case 643:
+		case 672:
 			return generateIcon(SVGIcons.forwardFill, height, width);
 		// forward.svg
-		case 644:
+		case 673:
 			return generateIcon(SVGIcons.forward, height, width);
 		// front.svg
-		case 645:
+		case 674:
 			return generateIcon(SVGIcons.front, height, width);
 		// fullscreen-exit.svg
-		case 646:
+		case 675:
 			return generateIcon(SVGIcons.fullscreenExit, height, width);
 		// fullscreen.svg
-		case 647:
+		case 676:
 			return generateIcon(SVGIcons.fullscreen, height, width);
 		// funnel-fill.svg
-		case 648:
+		case 677:
 			return generateIcon(SVGIcons.funnelFill, height, width);
 		// funnel.svg
-		case 649:
+		case 678:
 			return generateIcon(SVGIcons.funnel, height, width);
 		// gear-fill.svg
-		case 650:
+		case 679:
 			return generateIcon(SVGIcons.gearFill, height, width);
 		// gear-wide-connected.svg
-		case 651:
+		case 680:
 			return generateIcon(SVGIcons.gearWideConnected, height, width);
 		// gear-wide.svg
-		case 652:
+		case 681:
 			return generateIcon(SVGIcons.gearWide, height, width);
 		// gear.svg
-		case 653:
+		case 682:
 			return generateIcon(SVGIcons.gear, height, width);
 		// gem.svg
-		case 654:
+		case 683:
 			return generateIcon(SVGIcons.gem, height, width);
 		// geo-alt-fill.svg
-		case 655:
+		case 684:
 			return generateIcon(SVGIcons.geoAltFill, height, width);
 		// geo-alt.svg
-		case 656:
+		case 685:
 			return generateIcon(SVGIcons.geoAlt, height, width);
 		// geo-fill.svg
-		case 657:
+		case 686:
 			return generateIcon(SVGIcons.geoFill, height, width);
 		// geo.svg
-		case 658:
+		case 687:
 			return generateIcon(SVGIcons.geo, height, width);
 		// gift-fill.svg
-		case 659:
+		case 688:
 			return generateIcon(SVGIcons.giftFill, height, width);
 		// gift.svg
-		case 660:
+		case 689:
 			return generateIcon(SVGIcons.gift, height, width);
 		// globe.svg
-		case 661:
+		case 690:
 			return generateIcon(SVGIcons.globe, height, width);
 		// globe2.svg
-		case 662:
+		case 691:
 			return generateIcon(SVGIcons.globe2, height, width);
 		// graph-down.svg
-		case 663:
+		case 692:
 			return generateIcon(SVGIcons.graphDown, height, width);
 		// graph-up.svg
-		case 664:
+		case 693:
 			return generateIcon(SVGIcons.graphUp, height, width);
 		// grid-1x2-fill.svg
-		case 665:
+		case 694:
 			return generateIcon(SVGIcons.grid1x2Fill, height, width);
 		// grid-1x2.svg
-		case 666:
+		case 695:
 			return generateIcon(SVGIcons.grid1x2, height, width);
 		// grid-3x2-gap-fill.svg
-		case 667:
+		case 696:
 			return generateIcon(SVGIcons.grid3x2GapFill, height, width);
 		// grid-3x2-gap.svg
-		case 668:
+		case 697:
 			return generateIcon(SVGIcons.grid3x2Gap, height, width);
 		// grid-3x2.svg
-		case 669:
+		case 698:
 			return generateIcon(SVGIcons.grid3x2, height, width);
 		// grid-3x3-gap-fill.svg
-		case 670:
+		case 699:
 			return generateIcon(SVGIcons.grid3x3GapFill, height, width);
 		// grid-3x3-gap.svg
-		case 671:
+		case 700:
 			return generateIcon(SVGIcons.grid3x3Gap, height, width);
 		// grid-3x3.svg
-		case 672:
+		case 701:
 			return generateIcon(SVGIcons.grid3x3, height, width);
 		// grid-fill.svg
-		case 673:
+		case 702:
 			return generateIcon(SVGIcons.gridFill, height, width);
 		// grid.svg
-		case 674:
+		case 703:
 			return generateIcon(SVGIcons.grid, height, width);
 		// grip-horizontal.svg
-		case 675:
+		case 704:
 			return generateIcon(SVGIcons.gripHorizontal, height, width);
 		// grip-vertical.svg
-		case 676:
+		case 705:
 			return generateIcon(SVGIcons.gripVertical, height, width);
 		// hammer.svg
-		case 677:
+		case 706:
 			return generateIcon(SVGIcons.hammer, height, width);
 		// hand-index-thumb.svg
-		case 678:
+		case 707:
 			return generateIcon(SVGIcons.handIndexThumb, height, width);
 		// hand-index.svg
-		case 679:
+		case 708:
 			return generateIcon(SVGIcons.handIndex, height, width);
 		// hand-thumbs-down.svg
-		case 680:
+		case 709:
 			return generateIcon(SVGIcons.handThumbsDown, height, width);
 		// hand-thumbs-up.svg
-		case 681:
+		case 710:
 			return generateIcon(SVGIcons.handThumbsUp, height, width);
 		// handbag-fill.svg
-		case 682:
+		case 711:
 			return generateIcon(SVGIcons.handbagFill, height, width);
 		// handbag.svg
-		case 683:
+		case 712:
 			return generateIcon(SVGIcons.handbag, height, width);
 		// hash.svg
-		case 684:
+		case 713:
 			return generateIcon(SVGIcons.hash, height, width);
 		// hdd-fill.svg
-		case 685:
+		case 714:
 			return generateIcon(SVGIcons.hddFill, height, width);
 		// hdd-network-fill.svg
-		case 686:
+		case 715:
 			return generateIcon(SVGIcons.hddNetworkFill, height, width);
 		// hdd-network.svg
-		case 687:
+		case 716:
 			return generateIcon(SVGIcons.hddNetwork, height, width);
 		// hdd-rack-fill.svg
-		case 688:
+		case 717:
 			return generateIcon(SVGIcons.hddRackFill, height, width);
 		// hdd-rack.svg
-		case 689:
+		case 718:
 			return generateIcon(SVGIcons.hddRack, height, width);
 		// hdd-stack-fill.svg
-		case 690:
+		case 719:
 			return generateIcon(SVGIcons.hddStackFill, height, width);
 		// hdd-stack.svg
-		case 691:
+		case 720:
 			return generateIcon(SVGIcons.hddStack, height, width);
 		// hdd.svg
-		case 692:
+		case 721:
 			return generateIcon(SVGIcons.hdd, height, width);
 		// headphones.svg
-		case 693:
+		case 722:
 			return generateIcon(SVGIcons.headphones, height, width);
 		// headset.svg
-		case 694:
+		case 723:
 			return generateIcon(SVGIcons.headset, height, width);
 		// heart-fill.svg
-		case 695:
+		case 724:
 			return generateIcon(SVGIcons.heartFill, height, width);
 		// heart-half.svg
-		case 696:
+		case 725:
 			return generateIcon(SVGIcons.heartHalf, height, width);
 		// heart.svg
-		case 697:
+		case 726:
 			return generateIcon(SVGIcons.heart, height, width);
 		// heptagon-fill.svg
-		case 698:
+		case 727:
 			return generateIcon(SVGIcons.heptagonFill, height, width);
 		// heptagon-half.svg
-		case 699:
+		case 728:
 			return generateIcon(SVGIcons.heptagonHalf, height, width);
 		// heptagon.svg
-		case 700:
+		case 729:
 			return generateIcon(SVGIcons.heptagon, height, width);
 		// hexagon-fill.svg
-		case 701:
+		case 730:
 			return generateIcon(SVGIcons.hexagonFill, height, width);
 		// hexagon-half.svg
-		case 702:
+		case 731:
 			return generateIcon(SVGIcons.hexagonHalf, height, width);
 		// hexagon.svg
-		case 703:
+		case 732:
 			return generateIcon(SVGIcons.hexagon, height, width);
 		// hourglass-bottom.svg
-		case 704:
+		case 733:
 			return generateIcon(SVGIcons.hourglassBottom, height, width);
 		// hourglass-split.svg
-		case 705:
+		case 734:
 			return generateIcon(SVGIcons.hourglassSplit, height, width);
 		// hourglass-top.svg
-		case 706:
+		case 735:
 			return generateIcon(SVGIcons.hourglassTop, height, width);
 		// hourglass.svg
-		case 707:
+		case 736:
 			return generateIcon(SVGIcons.hourglass, height, width);
 		// house-door-fill.svg
-		case 708:
+		case 737:
 			return generateIcon(SVGIcons.houseDoorFill, height, width);
 		// house-door.svg
-		case 709:
+		case 738:
 			return generateIcon(SVGIcons.houseDoor, height, width);
 		// house-fill.svg
-		case 710:
+		case 739:
 			return generateIcon(SVGIcons.houseFill, height, width);
 		// house.svg
-		case 711:
+		case 740:
 			return generateIcon(SVGIcons.house, height, width);
 		// hr.svg
-		case 712:
+		case 741:
 			return generateIcon(SVGIcons.hr, height, width);
 		// image-alt.svg
-		case 713:
+		case 742:
 			return generateIcon(SVGIcons.imageAlt, height, width);
 		// image-fill.svg
-		case 714:
+		case 743:
 			return generateIcon(SVGIcons.imageFill, height, width);
 		// image.svg
-		case 715:
+		case 744:
 			return generateIcon(SVGIcons.image, height, width);
 		// images.svg
-		case 716:
+		case 745:
 			return generateIcon(SVGIcons.images, height, width);
 		// inbox-fill.svg
-		case 717:
+		case 746:
 			return generateIcon(SVGIcons.inboxFill, height, width);
 		// inbox.svg
-		case 718:
+		case 747:
 			return generateIcon(SVGIcons.inbox, height, width);
 		// inboxes-fill.svg
-		case 719:
+		case 748:
 			return generateIcon(SVGIcons.inboxesFill, height, width);
 		// inboxes.svg
-		case 720:
+		case 749:
 			return generateIcon(SVGIcons.inboxes, height, width);
 		// info-circle-fill.svg
-		case 721:
+		case 750:
 			return generateIcon(SVGIcons.infoCircleFill, height, width);
 		// info-circle.svg
-		case 722:
+		case 751:
 			return generateIcon(SVGIcons.infoCircle, height, width);
 		// info-square-fill.svg
-		case 723:
+		case 752:
 			return generateIcon(SVGIcons.infoSquareFill, height, width);
 		// info-square.svg
-		case 724:
+		case 753:
 			return generateIcon(SVGIcons.infoSquare, height, width);
 		// info.svg
-		case 725:
+		case 754:
 			return generateIcon(SVGIcons.info, height, width);
 		// input-cursor-text.svg
-		case 726:
+		case 755:
 			return generateIcon(SVGIcons.inputCursorText, height, width);
 		// input-cursor.svg
-		case 727:
+		case 756:
 			return generateIcon(SVGIcons.inputCursor, height, width);
 		// intersect.svg
-		case 728:
+		case 757:
 			return generateIcon(SVGIcons.intersect, height, width);
 		// journal-album.svg
-		case 729:
+		case 758:
 			return generateIcon(SVGIcons.journalAlbum, height, width);
 		// journal-arrow-down.svg
-		case 730:
+		case 759:
 			return generateIcon(SVGIcons.journalArrowDown, height, width);
 		// journal-arrow-up.svg
-		case 731:
+		case 760:
 			return generateIcon(SVGIcons.journalArrowUp, height, width);
+		// journal-bookmark-fill.svg
+		case 761:
+			return generateIcon(SVGIcons.journalBookmarkFill, height, width);
+		// journal-bookmark.svg
+		case 762:
+			return generateIcon(SVGIcons.journalBookmark, height, width);
 		// journal-check.svg
-		case 732:
+		case 763:
 			return generateIcon(SVGIcons.journalCheck, height, width);
 		// journal-code.svg
-		case 733:
+		case 764:
 			return generateIcon(SVGIcons.journalCode, height, width);
 		// journal-medical.svg
-		case 734:
+		case 765:
 			return generateIcon(SVGIcons.journalMedical, height, width);
 		// journal-minus.svg
-		case 735:
+		case 766:
 			return generateIcon(SVGIcons.journalMinus, height, width);
 		// journal-plus.svg
-		case 736:
+		case 767:
 			return generateIcon(SVGIcons.journalPlus, height, width);
 		// journal-richtext.svg
-		case 737:
+		case 768:
 			return generateIcon(SVGIcons.journalRichtext, height, width);
 		// journal-text.svg
-		case 738:
+		case 769:
 			return generateIcon(SVGIcons.journalText, height, width);
 		// journal-x.svg
-		case 739:
+		case 770:
 			return generateIcon(SVGIcons.journalX, height, width);
 		// journal.svg
-		case 740:
+		case 771:
 			return generateIcon(SVGIcons.journal, height, width);
 		// journals.svg
-		case 741:
+		case 772:
 			return generateIcon(SVGIcons.journals, height, width);
 		// joystick.svg
-		case 742:
+		case 773:
 			return generateIcon(SVGIcons.joystick, height, width);
 		// justify-left.svg
-		case 743:
+		case 774:
 			return generateIcon(SVGIcons.justifyLeft, height, width);
 		// justify-right.svg
-		case 744:
+		case 775:
 			return generateIcon(SVGIcons.justifyRight, height, width);
 		// justify.svg
-		case 745:
+		case 776:
 			return generateIcon(SVGIcons.justify, height, width);
 		// kanban-fill.svg
-		case 746:
+		case 777:
 			return generateIcon(SVGIcons.kanbanFill, height, width);
 		// kanban.svg
-		case 747:
+		case 778:
 			return generateIcon(SVGIcons.kanban, height, width);
 		// key-fill.svg
-		case 748:
+		case 779:
 			return generateIcon(SVGIcons.keyFill, height, width);
 		// key.svg
-		case 749:
+		case 780:
 			return generateIcon(SVGIcons.key, height, width);
 		// keyboard-fill.svg
-		case 750:
+		case 781:
 			return generateIcon(SVGIcons.keyboardFill, height, width);
 		// keyboard.svg
-		case 751:
+		case 782:
 			return generateIcon(SVGIcons.keyboard, height, width);
 		// ladder.svg
-		case 752:
+		case 783:
 			return generateIcon(SVGIcons.ladder, height, width);
 		// lamp-fill.svg
-		case 753:
+		case 784:
 			return generateIcon(SVGIcons.lampFill, height, width);
 		// lamp.svg
-		case 754:
+		case 785:
 			return generateIcon(SVGIcons.lamp, height, width);
 		// laptop-fill.svg
-		case 755:
+		case 786:
 			return generateIcon(SVGIcons.laptopFill, height, width);
 		// laptop.svg
-		case 756:
+		case 787:
 			return generateIcon(SVGIcons.laptop, height, width);
 		// layers-fill.svg
-		case 757:
+		case 788:
 			return generateIcon(SVGIcons.layersFill, height, width);
 		// layers-half.svg
-		case 758:
+		case 789:
 			return generateIcon(SVGIcons.layersHalf, height, width);
 		// layers.svg
-		case 759:
+		case 790:
 			return generateIcon(SVGIcons.layers, height, width);
 		// layout-sidebar-inset-reverse.svg
-		case 760:
+		case 791:
 			return generateIcon(SVGIcons.layoutSidebarInsetReverse, height, width);
 		// layout-sidebar-inset.svg
-		case 761:
+		case 792:
 			return generateIcon(SVGIcons.layoutSidebarInset, height, width);
 		// layout-sidebar-reverse.svg
-		case 762:
+		case 793:
 			return generateIcon(SVGIcons.layoutSidebarReverse, height, width);
 		// layout-sidebar.svg
-		case 763:
+		case 794:
 			return generateIcon(SVGIcons.layoutSidebar, height, width);
 		// layout-split.svg
-		case 764:
+		case 795:
 			return generateIcon(SVGIcons.layoutSplit, height, width);
 		// layout-text-sidebar-reverse.svg
-		case 765:
+		case 796:
 			return generateIcon(SVGIcons.layoutTextSidebarReverse, height, width);
 		// layout-text-sidebar.svg
-		case 766:
+		case 797:
 			return generateIcon(SVGIcons.layoutTextSidebar, height, width);
 		// layout-text-window-reverse.svg
-		case 767:
+		case 798:
 			return generateIcon(SVGIcons.layoutTextWindowReverse, height, width);
 		// layout-text-window.svg
-		case 768:
+		case 799:
 			return generateIcon(SVGIcons.layoutTextWindow, height, width);
 		// layout-three-columns.svg
-		case 769:
+		case 800:
 			return generateIcon(SVGIcons.layoutThreeColumns, height, width);
 		// layout-wtf.svg
-		case 770:
+		case 801:
 			return generateIcon(SVGIcons.layoutWtf, height, width);
 		// life-preserver.svg
-		case 771:
+		case 802:
 			return generateIcon(SVGIcons.lifePreserver, height, width);
 		// lightning-fill.svg
-		case 772:
+		case 803:
 			return generateIcon(SVGIcons.lightningFill, height, width);
 		// lightning.svg
-		case 773:
+		case 804:
 			return generateIcon(SVGIcons.lightning, height, width);
 		// link-45deg.svg
-		case 774:
+		case 805:
 			return generateIcon(SVGIcons.link45deg, height, width);
 		// link.svg
-		case 775:
+		case 806:
 			return generateIcon(SVGIcons.link, height, width);
 		// list-check.svg
-		case 776:
+		case 807:
 			return generateIcon(SVGIcons.listCheck, height, width);
 		// list-nested.svg
-		case 777:
+		case 808:
 			return generateIcon(SVGIcons.listNested, height, width);
 		// list-ol.svg
-		case 778:
+		case 809:
 			return generateIcon(SVGIcons.listOl, height, width);
 		// list-stars.svg
-		case 779:
+		case 810:
 			return generateIcon(SVGIcons.listStars, height, width);
 		// list-task.svg
-		case 780:
+		case 811:
 			return generateIcon(SVGIcons.listTask, height, width);
 		// list-ul.svg
-		case 781:
+		case 812:
 			return generateIcon(SVGIcons.listUl, height, width);
 		// list.svg
-		case 782:
+		case 813:
 			return generateIcon(SVGIcons.list, height, width);
 		// lock-fill.svg
-		case 783:
+		case 814:
 			return generateIcon(SVGIcons.lockFill, height, width);
 		// lock.svg
-		case 784:
+		case 815:
 			return generateIcon(SVGIcons.lock, height, width);
 		// mailbox.svg
-		case 785:
+		case 816:
 			return generateIcon(SVGIcons.mailbox, height, width);
 		// mailbox2.svg
-		case 786:
+		case 817:
 			return generateIcon(SVGIcons.mailbox2, height, width);
 		// map-fill.svg
-		case 787:
+		case 818:
 			return generateIcon(SVGIcons.mapFill, height, width);
 		// map.svg
-		case 788:
+		case 819:
 			return generateIcon(SVGIcons.map, height, width);
 		// markdown-fill.svg
-		case 789:
+		case 820:
 			return generateIcon(SVGIcons.markdownFill, height, width);
 		// markdown.svg
-		case 790:
+		case 821:
 			return generateIcon(SVGIcons.markdown, height, width);
 		// menu-app-fill.svg
-		case 791:
+		case 822:
 			return generateIcon(SVGIcons.menuAppFill, height, width);
 		// menu-app.svg
-		case 792:
+		case 823:
 			return generateIcon(SVGIcons.menuApp, height, width);
 		// menu-button-fill.svg
-		case 793:
+		case 824:
 			return generateIcon(SVGIcons.menuButtonFill, height, width);
 		// menu-button-wide-fill.svg
-		case 794:
+		case 825:
 			return generateIcon(SVGIcons.menuButtonWideFill, height, width);
 		// menu-button-wide.svg
-		case 795:
+		case 826:
 			return generateIcon(SVGIcons.menuButtonWide, height, width);
 		// menu-button.svg
-		case 796:
+		case 827:
 			return generateIcon(SVGIcons.menuButton, height, width);
 		// menu-down.svg
-		case 797:
+		case 828:
 			return generateIcon(SVGIcons.menuDown, height, width);
 		// menu-up.svg
-		case 798:
+		case 829:
 			return generateIcon(SVGIcons.menuUp, height, width);
 		// mic-fill.svg
-		case 799:
+		case 830:
 			return generateIcon(SVGIcons.micFill, height, width);
 		// mic-mute-fill.svg
-		case 800:
+		case 831:
 			return generateIcon(SVGIcons.micMuteFill, height, width);
 		// mic-mute.svg
-		case 801:
+		case 832:
 			return generateIcon(SVGIcons.micMute, height, width);
 		// mic.svg
-		case 802:
+		case 833:
 			return generateIcon(SVGIcons.mic, height, width);
 		// minecart-loaded.svg
-		case 803:
+		case 834:
 			return generateIcon(SVGIcons.minecartLoaded, height, width);
 		// minecart.svg
-		case 804:
+		case 835:
 			return generateIcon(SVGIcons.minecart, height, width);
 		// moon.svg
-		case 805:
+		case 836:
 			return generateIcon(SVGIcons.moon, height, width);
 		// mouse.svg
-		case 806:
+		case 837:
 			return generateIcon(SVGIcons.mouse, height, width);
 		// mouse2.svg
-		case 807:
+		case 838:
 			return generateIcon(SVGIcons.mouse2, height, width);
 		// mouse3.svg
-		case 808:
+		case 839:
 			return generateIcon(SVGIcons.mouse3, height, width);
 		// music-note-beamed.svg
-		case 809:
+		case 840:
 			return generateIcon(SVGIcons.musicNoteBeamed, height, width);
 		// music-note-list.svg
-		case 810:
+		case 841:
 			return generateIcon(SVGIcons.musicNoteList, height, width);
 		// music-note.svg
-		case 811:
+		case 842:
 			return generateIcon(SVGIcons.musicNote, height, width);
 		// music-player-fill.svg
-		case 812:
+		case 843:
 			return generateIcon(SVGIcons.musicPlayerFill, height, width);
 		// music-player.svg
-		case 813:
+		case 844:
 			return generateIcon(SVGIcons.musicPlayer, height, width);
 		// newspaper.svg
-		case 814:
+		case 845:
 			return generateIcon(SVGIcons.newspaper, height, width);
 		// node-minus-fill.svg
-		case 815:
+		case 846:
 			return generateIcon(SVGIcons.nodeMinusFill, height, width);
 		// node-minus.svg
-		case 816:
+		case 847:
 			return generateIcon(SVGIcons.nodeMinus, height, width);
 		// node-plus-fill.svg
-		case 817:
+		case 848:
 			return generateIcon(SVGIcons.nodePlusFill, height, width);
 		// node-plus.svg
-		case 818:
+		case 849:
 			return generateIcon(SVGIcons.nodePlus, height, width);
 		// nut-fill.svg
-		case 819:
+		case 850:
 			return generateIcon(SVGIcons.nutFill, height, width);
 		// nut.svg
-		case 820:
+		case 851:
 			return generateIcon(SVGIcons.nut, height, width);
 		// octagon-fill.svg
-		case 821:
+		case 852:
 			return generateIcon(SVGIcons.octagonFill, height, width);
 		// octagon-half.svg
-		case 822:
+		case 853:
 			return generateIcon(SVGIcons.octagonHalf, height, width);
 		// octagon.svg
-		case 823:
+		case 854:
 			return generateIcon(SVGIcons.octagon, height, width);
 		// option.svg
-		case 824:
+		case 855:
 			return generateIcon(SVGIcons.option, height, width);
 		// outlet.svg
-		case 825:
+		case 856:
 			return generateIcon(SVGIcons.outlet, height, width);
 		// paperclip.svg
-		case 826:
+		case 857:
 			return generateIcon(SVGIcons.paperclip, height, width);
 		// paragraph.svg
-		case 827:
+		case 858:
 			return generateIcon(SVGIcons.paragraph, height, width);
 		// patch-check-fll.svg
-		case 828:
+		case 859:
 			return generateIcon(SVGIcons.patchCheckFll, height, width);
 		// patch-check.svg
-		case 829:
+		case 860:
 			return generateIcon(SVGIcons.patchCheck, height, width);
 		// patch-exclamation-fll.svg
-		case 830:
+		case 861:
 			return generateIcon(SVGIcons.patchExclamationFll, height, width);
 		// patch-exclamation.svg
-		case 831:
+		case 862:
 			return generateIcon(SVGIcons.patchExclamation, height, width);
 		// patch-minus-fll.svg
-		case 832:
+		case 863:
 			return generateIcon(SVGIcons.patchMinusFll, height, width);
 		// patch-minus.svg
-		case 833:
+		case 864:
 			return generateIcon(SVGIcons.patchMinus, height, width);
 		// patch-plus-fll.svg
-		case 834:
+		case 865:
 			return generateIcon(SVGIcons.patchPlusFll, height, width);
 		// patch-plus.svg
-		case 835:
+		case 866:
 			return generateIcon(SVGIcons.patchPlus, height, width);
 		// patch-question-fll.svg
-		case 836:
+		case 867:
 			return generateIcon(SVGIcons.patchQuestionFll, height, width);
 		// patch-question.svg
-		case 837:
+		case 868:
 			return generateIcon(SVGIcons.patchQuestion, height, width);
 		// pause-fill.svg
-		case 838:
+		case 869:
 			return generateIcon(SVGIcons.pauseFill, height, width);
 		// pause.svg
-		case 839:
+		case 870:
 			return generateIcon(SVGIcons.pause, height, width);
 		// peace-fill.svg
-		case 840:
+		case 871:
 			return generateIcon(SVGIcons.peaceFill, height, width);
 		// peace.svg
-		case 841:
+		case 872:
 			return generateIcon(SVGIcons.peace, height, width);
 		// pen-fill.svg
-		case 842:
+		case 873:
 			return generateIcon(SVGIcons.penFill, height, width);
 		// pen.svg
-		case 843:
+		case 874:
 			return generateIcon(SVGIcons.pen, height, width);
 		// pencil-fill.svg
-		case 844:
+		case 875:
 			return generateIcon(SVGIcons.pencilFill, height, width);
 		// pencil-square.svg
-		case 845:
+		case 876:
 			return generateIcon(SVGIcons.pencilSquare, height, width);
 		// pencil.svg
-		case 846:
+		case 877:
 			return generateIcon(SVGIcons.pencil, height, width);
 		// pentagon-fill.svg
-		case 847:
+		case 878:
 			return generateIcon(SVGIcons.pentagonFill, height, width);
 		// pentagon-half.svg
-		case 848:
+		case 879:
 			return generateIcon(SVGIcons.pentagonHalf, height, width);
 		// pentagon.svg
-		case 849:
+		case 880:
 			return generateIcon(SVGIcons.pentagon, height, width);
 		// people-fill.svg
-		case 850:
+		case 881:
 			return generateIcon(SVGIcons.peopleFill, height, width);
 		// people.svg
-		case 851:
+		case 882:
 			return generateIcon(SVGIcons.people, height, width);
 		// percent.svg
-		case 852:
+		case 883:
 			return generateIcon(SVGIcons.percent, height, width);
 		// person-badge-fill.svg
-		case 853:
+		case 884:
 			return generateIcon(SVGIcons.personBadgeFill, height, width);
 		// person-badge.svg
-		case 854:
+		case 885:
 			return generateIcon(SVGIcons.personBadge, height, width);
 		// person-bounding-box.svg
-		case 855:
+		case 886:
 			return generateIcon(SVGIcons.personBoundingBox, height, width);
 		// person-check-fill.svg
-		case 856:
+		case 887:
 			return generateIcon(SVGIcons.personCheckFill, height, width);
 		// person-check.svg
-		case 857:
+		case 888:
 			return generateIcon(SVGIcons.personCheck, height, width);
 		// person-circle.svg
-		case 858:
+		case 889:
 			return generateIcon(SVGIcons.personCircle, height, width);
 		// person-dash-fill.svg
-		case 859:
+		case 890:
 			return generateIcon(SVGIcons.personDashFill, height, width);
 		// person-dash.svg
-		case 860:
+		case 891:
 			return generateIcon(SVGIcons.personDash, height, width);
 		// person-fill.svg
-		case 861:
+		case 892:
 			return generateIcon(SVGIcons.personFill, height, width);
 		// person-lines-fill.svg
-		case 862:
+		case 893:
 			return generateIcon(SVGIcons.personLinesFill, height, width);
 		// person-plus-fill.svg
-		case 863:
+		case 894:
 			return generateIcon(SVGIcons.personPlusFill, height, width);
 		// person-plus.svg
-		case 864:
+		case 895:
 			return generateIcon(SVGIcons.personPlus, height, width);
 		// person-square.svg
-		case 865:
+		case 896:
 			return generateIcon(SVGIcons.personSquare, height, width);
 		// person-x-fill.svg
-		case 866:
+		case 897:
 			return generateIcon(SVGIcons.personXFill, height, width);
 		// person-x.svg
-		case 867:
+		case 898:
 			return generateIcon(SVGIcons.personX, height, width);
 		// person.svg
-		case 868:
+		case 899:
 			return generateIcon(SVGIcons.person, height, width);
 		// phone-fill.svg
-		case 869:
+		case 900:
 			return generateIcon(SVGIcons.phoneFill, height, width);
 		// phone-landscape-fill.svg
-		case 870:
+		case 901:
 			return generateIcon(SVGIcons.phoneLandscapeFill, height, width);
 		// phone-landscape.svg
-		case 871:
+		case 902:
 			return generateIcon(SVGIcons.phoneLandscape, height, width);
 		// phone-vibrate.svg
-		case 872:
+		case 903:
 			return generateIcon(SVGIcons.phoneVibrate, height, width);
 		// phone.svg
-		case 873:
+		case 904:
 			return generateIcon(SVGIcons.phone, height, width);
 		// pie-chart-fill.svg
-		case 874:
+		case 905:
 			return generateIcon(SVGIcons.pieChartFill, height, width);
 		// pie-chart.svg
-		case 875:
+		case 906:
 			return generateIcon(SVGIcons.pieChart, height, width);
 		// pip-fill.svg
-		case 876:
+		case 907:
 			return generateIcon(SVGIcons.pipFill, height, width);
 		// pip.svg
-		case 877:
+		case 908:
 			return generateIcon(SVGIcons.pip, height, width);
 		// play-fill.svg
-		case 878:
+		case 909:
 			return generateIcon(SVGIcons.playFill, height, width);
 		// play.svg
-		case 879:
+		case 910:
 			return generateIcon(SVGIcons.play, height, width);
 		// plug-fill.svg
-		case 880:
+		case 911:
 			return generateIcon(SVGIcons.plugFill, height, width);
 		// plug.svg
-		case 881:
+		case 912:
 			return generateIcon(SVGIcons.plug, height, width);
 		// plus-circle-fill.svg
-		case 882:
+		case 913:
 			return generateIcon(SVGIcons.plusCircleFill, height, width);
 		// plus-circle.svg
-		case 883:
+		case 914:
 			return generateIcon(SVGIcons.plusCircle, height, width);
 		// plus-square-fill.svg
-		case 884:
+		case 915:
 			return generateIcon(SVGIcons.plusSquareFill, height, width);
 		// plus-square.svg
-		case 885:
+		case 916:
 			return generateIcon(SVGIcons.plusSquare, height, width);
 		// plus.svg
-		case 886:
+		case 917:
 			return generateIcon(SVGIcons.plus, height, width);
 		// power.svg
-		case 887:
+		case 918:
 			return generateIcon(SVGIcons.power, height, width);
 		// printer-fill.svg
-		case 888:
+		case 919:
 			return generateIcon(SVGIcons.printerFill, height, width);
 		// printer.svg
-		case 889:
+		case 920:
 			return generateIcon(SVGIcons.printer, height, width);
 		// puzzle-fill.svg
-		case 890:
+		case 921:
 			return generateIcon(SVGIcons.puzzleFill, height, width);
 		// puzzle.svg
-		case 891:
+		case 922:
 			return generateIcon(SVGIcons.puzzle, height, width);
 		// question-circle-fill.svg
-		case 892:
+		case 923:
 			return generateIcon(SVGIcons.questionCircleFill, height, width);
 		// question-circle.svg
-		case 893:
+		case 924:
 			return generateIcon(SVGIcons.questionCircle, height, width);
 		// question-diamond-fill.svg
-		case 894:
+		case 925:
 			return generateIcon(SVGIcons.questionDiamondFill, height, width);
 		// question-diamond.svg
-		case 895:
+		case 926:
 			return generateIcon(SVGIcons.questionDiamond, height, width);
 		// question-octagon-fill.svg
-		case 896:
+		case 927:
 			return generateIcon(SVGIcons.questionOctagonFill, height, width);
 		// question-octagon.svg
-		case 897:
+		case 928:
 			return generateIcon(SVGIcons.questionOctagon, height, width);
 		// question-square-fill.svg
-		case 898:
+		case 929:
 			return generateIcon(SVGIcons.questionSquareFill, height, width);
 		// question-square.svg
-		case 899:
+		case 930:
 			return generateIcon(SVGIcons.questionSquare, height, width);
 		// question.svg
-		case 900:
+		case 931:
 			return generateIcon(SVGIcons.question, height, width);
 		// receipt-cutoff.svg
-		case 901:
+		case 932:
 			return generateIcon(SVGIcons.receiptCutoff, height, width);
 		// receipt.svg
-		case 902:
+		case 933:
 			return generateIcon(SVGIcons.receipt, height, width);
 		// reception-0.svg
-		case 903:
+		case 934:
 			return generateIcon(SVGIcons.reception0, height, width);
 		// reception-1.svg
-		case 904:
+		case 935:
 			return generateIcon(SVGIcons.reception1, height, width);
 		// reception-2.svg
-		case 905:
+		case 936:
 			return generateIcon(SVGIcons.reception2, height, width);
 		// reception-3.svg
-		case 906:
+		case 937:
 			return generateIcon(SVGIcons.reception3, height, width);
 		// reception-4.svg
-		case 907:
+		case 938:
 			return generateIcon(SVGIcons.reception4, height, width);
 		// reply-all-fill.svg
-		case 908:
+		case 939:
 			return generateIcon(SVGIcons.replyAllFill, height, width);
 		// reply-all.svg
-		case 909:
+		case 940:
 			return generateIcon(SVGIcons.replyAll, height, width);
 		// reply-fill.svg
-		case 910:
+		case 941:
 			return generateIcon(SVGIcons.replyFill, height, width);
 		// reply.svg
-		case 911:
+		case 942:
 			return generateIcon(SVGIcons.reply, height, width);
 		// rss-fill.svg
-		case 912:
+		case 943:
 			return generateIcon(SVGIcons.rssFill, height, width);
 		// rss.svg
-		case 913:
+		case 944:
 			return generateIcon(SVGIcons.rss, height, width);
 		// scissors.svg
-		case 914:
+		case 945:
 			return generateIcon(SVGIcons.scissors, height, width);
 		// screwdriver.svg
-		case 915:
+		case 946:
 			return generateIcon(SVGIcons.screwdriver, height, width);
 		// search.svg
-		case 916:
+		case 947:
 			return generateIcon(SVGIcons.search, height, width);
 		// segmented-nav.svg
-		case 917:
+		case 948:
 			return generateIcon(SVGIcons.segmentedNav, height, width);
 		// server.svg
-		case 918:
+		case 949:
 			return generateIcon(SVGIcons.server, height, width);
 		// share-fill.svg
-		case 919:
+		case 950:
 			return generateIcon(SVGIcons.shareFill, height, width);
 		// share.svg
-		case 920:
+		case 951:
 			return generateIcon(SVGIcons.share, height, width);
 		// shield-check.svg
-		case 921:
+		case 952:
 			return generateIcon(SVGIcons.shieldCheck, height, width);
 		// shield-exclamation.svg
-		case 922:
+		case 953:
 			return generateIcon(SVGIcons.shieldExclamation, height, width);
 		// shield-fill-check.svg
-		case 923:
+		case 954:
 			return generateIcon(SVGIcons.shieldFillCheck, height, width);
 		// shield-fill-exclamation.svg
-		case 924:
+		case 955:
 			return generateIcon(SVGIcons.shieldFillExclamation, height, width);
 		// shield-fill-minus.svg
-		case 925:
+		case 956:
 			return generateIcon(SVGIcons.shieldFillMinus, height, width);
 		// shield-fill-plus.svg
-		case 926:
+		case 957:
 			return generateIcon(SVGIcons.shieldFillPlus, height, width);
 		// shield-fill-x.svg
-		case 927:
+		case 958:
 			return generateIcon(SVGIcons.shieldFillX, height, width);
 		// shield-fill.svg
-		case 928:
+		case 959:
 			return generateIcon(SVGIcons.shieldFill, height, width);
 		// shield-lock-fill.svg
-		case 929:
+		case 960:
 			return generateIcon(SVGIcons.shieldLockFill, height, width);
 		// shield-lock.svg
-		case 930:
+		case 961:
 			return generateIcon(SVGIcons.shieldLock, height, width);
 		// shield-minus.svg
-		case 931:
+		case 962:
 			return generateIcon(SVGIcons.shieldMinus, height, width);
 		// shield-plus.svg
-		case 932:
+		case 963:
 			return generateIcon(SVGIcons.shieldPlus, height, width);
 		// shield-shaded.svg
-		case 933:
+		case 964:
 			return generateIcon(SVGIcons.shieldShaded, height, width);
 		// shield-slash-fill.svg
-		case 934:
+		case 965:
 			return generateIcon(SVGIcons.shieldSlashFill, height, width);
 		// shield-slash.svg
-		case 935:
+		case 966:
 			return generateIcon(SVGIcons.shieldSlash, height, width);
 		// shield-x.svg
-		case 936:
+		case 967:
 			return generateIcon(SVGIcons.shieldX, height, width);
 		// shield.svg
-		case 937:
+		case 968:
 			return generateIcon(SVGIcons.shield, height, width);
 		// shift-fill.svg
-		case 938:
+		case 969:
 			return generateIcon(SVGIcons.shiftFill, height, width);
 		// shift.svg
-		case 939:
+		case 970:
 			return generateIcon(SVGIcons.shift, height, width);
 		// shop-window.svg
-		case 940:
+		case 971:
 			return generateIcon(SVGIcons.shopWindow, height, width);
 		// shop.svg
-		case 941:
+		case 972:
 			return generateIcon(SVGIcons.shop, height, width);
 		// shuffle.svg
-		case 942:
+		case 973:
 			return generateIcon(SVGIcons.shuffle, height, width);
 		// signpost-2-fill.svg
-		case 943:
+		case 974:
 			return generateIcon(SVGIcons.signpost2Fill, height, width);
 		// signpost-2.svg
-		case 944:
+		case 975:
 			return generateIcon(SVGIcons.signpost2, height, width);
 		// signpost-fill.svg
-		case 945:
+		case 976:
 			return generateIcon(SVGIcons.signpostFill, height, width);
 		// signpost-split-fill.svg
-		case 946:
+		case 977:
 			return generateIcon(SVGIcons.signpostSplitFill, height, width);
 		// signpost-split.svg
-		case 947:
+		case 978:
 			return generateIcon(SVGIcons.signpostSplit, height, width);
 		// signpost.svg
-		case 948:
+		case 979:
 			return generateIcon(SVGIcons.signpost, height, width);
 		// sim-fill.svg
-		case 949:
+		case 980:
 			return generateIcon(SVGIcons.simFill, height, width);
 		// sim.svg
-		case 950:
+		case 981:
 			return generateIcon(SVGIcons.sim, height, width);
 		// skip-backward-fill.svg
-		case 951:
+		case 982:
 			return generateIcon(SVGIcons.skipBackwardFill, height, width);
 		// skip-backward.svg
-		case 952:
+		case 983:
 			return generateIcon(SVGIcons.skipBackward, height, width);
 		// skip-end-fill.svg
-		case 953:
+		case 984:
 			return generateIcon(SVGIcons.skipEndFill, height, width);
 		// skip-end.svg
-		case 954:
+		case 985:
 			return generateIcon(SVGIcons.skipEnd, height, width);
 		// skip-forward-fill.svg
-		case 955:
+		case 986:
 			return generateIcon(SVGIcons.skipForwardFill, height, width);
 		// skip-forward.svg
-		case 956:
+		case 987:
 			return generateIcon(SVGIcons.skipForward, height, width);
 		// skip-start-fill.svg
-		case 957:
+		case 988:
 			return generateIcon(SVGIcons.skipStartFill, height, width);
 		// skip-start.svg
-		case 958:
+		case 989:
 			return generateIcon(SVGIcons.skipStart, height, width);
 		// slash-circle-fill.svg
-		case 959:
+		case 990:
 			return generateIcon(SVGIcons.slashCircleFill, height, width);
 		// slash-circle.svg
-		case 960:
+		case 991:
 			return generateIcon(SVGIcons.slashCircle, height, width);
 		// slash-square-fill.svg
-		case 961:
+		case 992:
 			return generateIcon(SVGIcons.slashSquareFill, height, width);
 		// slash-square.svg
-		case 962:
+		case 993:
 			return generateIcon(SVGIcons.slashSquare, height, width);
 		// slash.svg
-		case 963:
+		case 994:
 			return generateIcon(SVGIcons.slash, height, width);
 		// sliders.svg
-		case 964:
+		case 995:
 			return generateIcon(SVGIcons.sliders, height, width);
 		// smartwatch.svg
-		case 965:
+		case 996:
 			return generateIcon(SVGIcons.smartwatch, height, width);
 		// sort-alpha-down-alt.svg
-		case 966:
+		case 997:
 			return generateIcon(SVGIcons.sortAlphaDownAlt, height, width);
 		// sort-alpha-down.svg
-		case 967:
+		case 998:
 			return generateIcon(SVGIcons.sortAlphaDown, height, width);
 		// sort-alpha-up-alt.svg
-		case 968:
+		case 999:
 			return generateIcon(SVGIcons.sortAlphaUpAlt, height, width);
 		// sort-alpha-up.svg
-		case 969:
+		case 1000:
 			return generateIcon(SVGIcons.sortAlphaUp, height, width);
 		// sort-down-alt.svg
-		case 970:
+		case 1001:
 			return generateIcon(SVGIcons.sortDownAlt, height, width);
 		// sort-down.svg
-		case 971:
+		case 1002:
 			return generateIcon(SVGIcons.sortDown, height, width);
 		// sort-numeric-down-alt.svg
-		case 972:
+		case 1003:
 			return generateIcon(SVGIcons.sortNumericDownAlt, height, width);
 		// sort-numeric-down.svg
-		case 973:
+		case 1004:
 			return generateIcon(SVGIcons.sortNumericDown, height, width);
 		// sort-numeric-up-alt.svg
-		case 974:
+		case 1005:
 			return generateIcon(SVGIcons.sortNumericUpAlt, height, width);
 		// sort-numeric-up.svg
-		case 975:
+		case 1006:
 			return generateIcon(SVGIcons.sortNumericUp, height, width);
 		// sort-up-alt.svg
-		case 976:
+		case 1007:
 			return generateIcon(SVGIcons.sortUpAlt, height, width);
 		// sort-up.svg
-		case 977:
+		case 1008:
 			return generateIcon(SVGIcons.sortUp, height, width);
 		// soundwave.svg
-		case 978:
+		case 1009:
 			return generateIcon(SVGIcons.soundwave, height, width);
 		// speaker-fill.svg
-		case 979:
+		case 1010:
 			return generateIcon(SVGIcons.speakerFill, height, width);
 		// speaker.svg
-		case 980:
+		case 1011:
 			return generateIcon(SVGIcons.speaker, height, width);
 		// spellcheck.svg
-		case 981:
+		case 1012:
 			return generateIcon(SVGIcons.spellcheck, height, width);
 		// square-fill.svg
-		case 982:
+		case 1013:
 			return generateIcon(SVGIcons.squareFill, height, width);
 		// square-half.svg
-		case 983:
+		case 1014:
 			return generateIcon(SVGIcons.squareHalf, height, width);
 		// square.svg
-		case 984:
+		case 1015:
 			return generateIcon(SVGIcons.square, height, width);
 		// star-fill.svg
-		case 985:
+		case 1016:
 			return generateIcon(SVGIcons.starFill, height, width);
 		// star-half.svg
-		case 986:
+		case 1017:
 			return generateIcon(SVGIcons.starHalf, height, width);
 		// star.svg
-		case 987:
+		case 1018:
 			return generateIcon(SVGIcons.star, height, width);
 		// stickies-fill.svg
-		case 988:
+		case 1019:
 			return generateIcon(SVGIcons.stickiesFill, height, width);
 		// stickies.svg
-		case 989:
+		case 1020:
 			return generateIcon(SVGIcons.stickies, height, width);
 		// sticky-fill.svg
-		case 990:
+		case 1021:
 			return generateIcon(SVGIcons.stickyFill, height, width);
 		// sticky.svg
-		case 991:
+		case 1022:
 			return generateIcon(SVGIcons.sticky, height, width);
 		// stop-fill.svg
-		case 992:
+		case 1023:
 			return generateIcon(SVGIcons.stopFill, height, width);
 		// stop.svg
-		case 993:
+		case 1024:
 			return generateIcon(SVGIcons.stop, height, width);
 		// stoplights-fill.svg
-		case 994:
+		case 1025:
 			return generateIcon(SVGIcons.stoplightsFill, height, width);
 		// stoplights.svg
-		case 995:
+		case 1026:
 			return generateIcon(SVGIcons.stoplights, height, width);
 		// stopwatch-fill.svg
-		case 996:
+		case 1027:
 			return generateIcon(SVGIcons.stopwatchFill, height, width);
 		// stopwatch.svg
-		case 997:
+		case 1028:
 			return generateIcon(SVGIcons.stopwatch, height, width);
 		// subtract.svg
-		case 998:
+		case 1029:
 			return generateIcon(SVGIcons.subtract, height, width);
 		// suit-club-fill.svg
-		case 999:
+		case 1030:
 			return generateIcon(SVGIcons.suitClubFill, height, width);
 		// suit-club.svg
-		case 1000:
+		case 1031:
 			return generateIcon(SVGIcons.suitClub, height, width);
 		// suit-diamond-fill.svg
-		case 1001:
+		case 1032:
 			return generateIcon(SVGIcons.suitDiamondFill, height, width);
 		// suit-diamond.svg
-		case 1002:
+		case 1033:
 			return generateIcon(SVGIcons.suitDiamond, height, width);
 		// suit-heart-fill.svg
-		case 1003:
+		case 1034:
 			return generateIcon(SVGIcons.suitHeartFill, height, width);
 		// suit-heart.svg
-		case 1004:
+		case 1035:
 			return generateIcon(SVGIcons.suitHeart, height, width);
 		// suit-spade-fill.svg
-		case 1005:
+		case 1036:
 			return generateIcon(SVGIcons.suitSpadeFill, height, width);
 		// suit-spade.svg
-		case 1006:
+		case 1037:
 			return generateIcon(SVGIcons.suitSpade, height, width);
 		// sun.svg
-		case 1007:
+		case 1038:
 			return generateIcon(SVGIcons.sun, height, width);
 		// sunglasses.svg
-		case 1008:
+		case 1039:
 			return generateIcon(SVGIcons.sunglasses, height, width);
 		// table.svg
-		case 1009:
+		case 1040:
 			return generateIcon(SVGIcons.table, height, width);
 		// tablet-fill.svg
-		case 1010:
+		case 1041:
 			return generateIcon(SVGIcons.tabletFill, height, width);
 		// tablet-landscape-fill.svg
-		case 1011:
+		case 1042:
 			return generateIcon(SVGIcons.tabletLandscapeFill, height, width);
 		// tablet-landscape.svg
-		case 1012:
+		case 1043:
 			return generateIcon(SVGIcons.tabletLandscape, height, width);
 		// tablet.svg
-		case 1013:
+		case 1044:
 			return generateIcon(SVGIcons.tablet, height, width);
 		// tag-fill.svg
-		case 1014:
+		case 1045:
 			return generateIcon(SVGIcons.tagFill, height, width);
 		// tag.svg
-		case 1015:
+		case 1046:
 			return generateIcon(SVGIcons.tag, height, width);
 		// tags-fill.svg
-		case 1016:
+		case 1047:
 			return generateIcon(SVGIcons.tagsFill, height, width);
 		// tags.svg
-		case 1017:
+		case 1048:
 			return generateIcon(SVGIcons.tags, height, width);
 		// telephone-fill.svg
-		case 1018:
+		case 1049:
 			return generateIcon(SVGIcons.telephoneFill, height, width);
 		// telephone-forward-fill.svg
-		case 1019:
+		case 1050:
 			return generateIcon(SVGIcons.telephoneForwardFill, height, width);
 		// telephone-forward.svg
-		case 1020:
+		case 1051:
 			return generateIcon(SVGIcons.telephoneForward, height, width);
 		// telephone-inbound-fill.svg
-		case 1021:
+		case 1052:
 			return generateIcon(SVGIcons.telephoneInboundFill, height, width);
 		// telephone-inbound.svg
-		case 1022:
+		case 1053:
 			return generateIcon(SVGIcons.telephoneInbound, height, width);
 		// telephone-minus-fill.svg
-		case 1023:
+		case 1054:
 			return generateIcon(SVGIcons.telephoneMinusFill, height, width);
 		// telephone-minus.svg
-		case 1024:
+		case 1055:
 			return generateIcon(SVGIcons.telephoneMinus, height, width);
 		// telephone-outbound-fill.svg
-		case 1025:
+		case 1056:
 			return generateIcon(SVGIcons.telephoneOutboundFill, height, width);
 		// telephone-outbound.svg
-		case 1026:
+		case 1057:
 			return generateIcon(SVGIcons.telephoneOutbound, height, width);
 		// telephone-plus-fill.svg
-		case 1027:
+		case 1058:
 			return generateIcon(SVGIcons.telephonePlusFill, height, width);
 		// telephone-plus.svg
-		case 1028:
+		case 1059:
 			return generateIcon(SVGIcons.telephonePlus, height, width);
 		// telephone-x-fill.svg
-		case 1029:
+		case 1060:
 			return generateIcon(SVGIcons.telephoneXFill, height, width);
 		// telephone-x.svg
-		case 1030:
+		case 1061:
 			return generateIcon(SVGIcons.telephoneX, height, width);
 		// telephone.svg
-		case 1031:
+		case 1062:
 			return generateIcon(SVGIcons.telephone, height, width);
 		// terminal-fill.svg
-		case 1032:
+		case 1063:
 			return generateIcon(SVGIcons.terminalFill, height, width);
 		// terminal.svg
-		case 1033:
+		case 1064:
 			return generateIcon(SVGIcons.terminal, height, width);
 		// text-center.svg
-		case 1034:
+		case 1065:
 			return generateIcon(SVGIcons.textCenter, height, width);
 		// text-indent-left.svg
-		case 1035:
+		case 1066:
 			return generateIcon(SVGIcons.textIndentLeft, height, width);
 		// text-indent-right.svg
-		case 1036:
+		case 1067:
 			return generateIcon(SVGIcons.textIndentRight, height, width);
 		// text-left.svg
-		case 1037:
+		case 1068:
 			return generateIcon(SVGIcons.textLeft, height, width);
 		// text-paragraph.svg
-		case 1038:
+		case 1069:
 			return generateIcon(SVGIcons.textParagraph, height, width);
 		// text-right.svg
-		case 1039:
+		case 1070:
 			return generateIcon(SVGIcons.textRight, height, width);
 		// textarea-resize.svg
-		case 1040:
+		case 1071:
 			return generateIcon(SVGIcons.textareaResize, height, width);
 		// textarea-t.svg
-		case 1041:
+		case 1072:
 			return generateIcon(SVGIcons.textareaT, height, width);
 		// textarea.svg
-		case 1042:
+		case 1073:
 			return generateIcon(SVGIcons.textarea, height, width);
 		// thermometer-half.svg
-		case 1043:
+		case 1074:
 			return generateIcon(SVGIcons.thermometerHalf, height, width);
 		// thermometer.svg
-		case 1044:
+		case 1075:
 			return generateIcon(SVGIcons.thermometer, height, width);
 		// three-dots-vertical.svg
-		case 1045:
+		case 1076:
 			return generateIcon(SVGIcons.threeDotsVertical, height, width);
 		// three-dots.svg
-		case 1046:
+		case 1077:
 			return generateIcon(SVGIcons.threeDots, height, width);
 		// toggle-off.svg
-		case 1047:
+		case 1078:
 			return generateIcon(SVGIcons.toggleOff, height, width);
 		// toggle-on.svg
-		case 1048:
+		case 1079:
 			return generateIcon(SVGIcons.toggleOn, height, width);
 		// toggle2-off.svg
-		case 1049:
+		case 1080:
 			return generateIcon(SVGIcons.toggle2Off, height, width);
 		// toggle2-on.svg
-		case 1050:
+		case 1081:
 			return generateIcon(SVGIcons.toggle2On, height, width);
 		// toggles.svg
-		case 1051:
+		case 1082:
 			return generateIcon(SVGIcons.toggles, height, width);
 		// toggles2.svg
-		case 1052:
+		case 1083:
 			return generateIcon(SVGIcons.toggles2, height, width);
 		// tools.svg
-		case 1053:
+		case 1084:
 			return generateIcon(SVGIcons.tools, height, width);
 		// trash-fill.svg
-		case 1054:
+		case 1085:
 			return generateIcon(SVGIcons.trashFill, height, width);
 		// trash.svg
-		case 1055:
+		case 1086:
 			return generateIcon(SVGIcons.trash, height, width);
 		// trash2-fill.svg
-		case 1056:
+		case 1087:
 			return generateIcon(SVGIcons.trash2Fill, height, width);
 		// trash2.svg
-		case 1057:
+		case 1088:
 			return generateIcon(SVGIcons.trash2, height, width);
 		// tree-fill.svg
-		case 1058:
+		case 1089:
 			return generateIcon(SVGIcons.treeFill, height, width);
 		// tree.svg
-		case 1059:
+		case 1090:
 			return generateIcon(SVGIcons.tree, height, width);
 		// triangle-fill.svg
-		case 1060:
+		case 1091:
 			return generateIcon(SVGIcons.triangleFill, height, width);
 		// triangle-half.svg
-		case 1061:
+		case 1092:
 			return generateIcon(SVGIcons.triangleHalf, height, width);
 		// triangle.svg
-		case 1062:
+		case 1093:
 			return generateIcon(SVGIcons.triangle, height, width);
 		// trophy-fill.svg
-		case 1063:
+		case 1094:
 			return generateIcon(SVGIcons.trophyFill, height, width);
 		// trophy.svg
-		case 1064:
+		case 1095:
 			return generateIcon(SVGIcons.trophy, height, width);
 		// truck-flatbed.svg
-		case 1065:
+		case 1096:
 			return generateIcon(SVGIcons.truckFlatbed, height, width);
 		// truck.svg
-		case 1066:
+		case 1097:
 			return generateIcon(SVGIcons.truck, height, width);
 		// tv-fill.svg
-		case 1067:
+		case 1098:
 			return generateIcon(SVGIcons.tvFill, height, width);
 		// tv.svg
-		case 1068:
+		case 1099:
 			return generateIcon(SVGIcons.tv, height, width);
 		// type-bold.svg
-		case 1069:
+		case 1100:
 			return generateIcon(SVGIcons.typeBold, height, width);
 		// type-h1.svg
-		case 1070:
+		case 1101:
 			return generateIcon(SVGIcons.typeH1, height, width);
 		// type-h2.svg
-		case 1071:
+		case 1102:
 			return generateIcon(SVGIcons.typeH2, height, width);
 		// type-h3.svg
-		case 1072:
+		case 1103:
 			return generateIcon(SVGIcons.typeH3, height, width);
 		// type-italic.svg
-		case 1073:
+		case 1104:
 			return generateIcon(SVGIcons.typeItalic, height, width);
 		// type-strikethrough.svg
-		case 1074:
+		case 1105:
 			return generateIcon(SVGIcons.typeStrikethrough, height, width);
 		// type-underline.svg
-		case 1075:
+		case 1106:
 			return generateIcon(SVGIcons.typeUnderline, height, width);
 		// type.svg
-		case 1076:
+		case 1107:
 			return generateIcon(SVGIcons.type, height, width);
 		// ui-checks-grid.svg
-		case 1077:
+		case 1108:
 			return generateIcon(SVGIcons.uiChecksGrid, height, width);
 		// ui-checks.svg
-		case 1078:
+		case 1109:
 			return generateIcon(SVGIcons.uiChecks, height, width);
 		// ui-radios-grid.svg
-		case 1079:
+		case 1110:
 			return generateIcon(SVGIcons.uiRadiosGrid, height, width);
 		// ui-radios.svg
-		case 1080:
+		case 1111:
 			return generateIcon(SVGIcons.uiRadios, height, width);
 		// union.svg
-		case 1081:
+		case 1112:
 			return generateIcon(SVGIcons.union, height, width);
 		// unlock-fill.svg
-		case 1082:
+		case 1113:
 			return generateIcon(SVGIcons.unlockFill, height, width);
 		// unlock.svg
-		case 1083:
+		case 1114:
 			return generateIcon(SVGIcons.unlock, height, width);
 		// upc-scan.svg
-		case 1084:
+		case 1115:
 			return generateIcon(SVGIcons.upcScan, height, width);
 		// upc.svg
-		case 1085:
+		case 1116:
 			return generateIcon(SVGIcons.upc, height, width);
 		// upload.svg
-		case 1086:
+		case 1117:
 			return generateIcon(SVGIcons.upload, height, width);
 		// vector-pen.svg
-		case 1087:
+		case 1118:
 			return generateIcon(SVGIcons.vectorPen, height, width);
 		// view-list.svg
-		case 1088:
+		case 1119:
 			return generateIcon(SVGIcons.viewList, height, width);
 		// view-stacked.svg
-		case 1089:
+		case 1120:
 			return generateIcon(SVGIcons.viewStacked, height, width);
 		// voicemail.svg
-		case 1090:
+		case 1121:
 			return generateIcon(SVGIcons.voicemail, height, width);
 		// volume-down-fill.svg
-		case 1091:
+		case 1122:
 			return generateIcon(SVGIcons.volumeDownFill, height, width);
 		// volume-down.svg
-		case 1092:
+		case 1123:
 			return generateIcon(SVGIcons.volumeDown, height, width);
 		// volume-mute-fill.svg
-		case 1093:
+		case 1124:
 			return generateIcon(SVGIcons.volumeMuteFill, height, width);
 		// volume-mute.svg
-		case 1094:
+		case 1125:
 			return generateIcon(SVGIcons.volumeMute, height, width);
 		// volume-off-fill.svg
-		case 1095:
+		case 1126:
 			return generateIcon(SVGIcons.volumeOffFill, height, width);
 		// volume-off.svg
-		case 1096:
+		case 1127:
 			return generateIcon(SVGIcons.volumeOff, height, width);
 		// volume-up-fill.svg
-		case 1097:
+		case 1128:
 			return generateIcon(SVGIcons.volumeUpFill, height, width);
 		// volume-up.svg
-		case 1098:
+		case 1129:
 			return generateIcon(SVGIcons.volumeUp, height, width);
 		// vr.svg
-		case 1099:
+		case 1130:
 			return generateIcon(SVGIcons.vr, height, width);
 		// wallet-fill.svg
-		case 1100:
+		case 1131:
 			return generateIcon(SVGIcons.walletFill, height, width);
 		// wallet.svg
-		case 1101:
+		case 1132:
 			return generateIcon(SVGIcons.wallet, height, width);
 		// wallet2.svg
-		case 1102:
+		case 1133:
 			return generateIcon(SVGIcons.wallet2, height, width);
 		// watch.svg
-		case 1103:
+		case 1134:
 			return generateIcon(SVGIcons.watch, height, width);
 		// wifi-1.svg
-		case 1104:
+		case 1135:
 			return generateIcon(SVGIcons.wifi1, height, width);
 		// wifi-2.svg
-		case 1105:
+		case 1136:
 			return generateIcon(SVGIcons.wifi2, height, width);
 		// wifi-off.svg
-		case 1106:
+		case 1137:
 			return generateIcon(SVGIcons.wifiOff, height, width);
 		// wifi.svg
-		case 1107:
+		case 1138:
 			return generateIcon(SVGIcons.wifi, height, width);
 		// window.svg
-		case 1108:
+		case 1139:
 			return generateIcon(SVGIcons.window, height, width);
 		// wrench.svg
-		case 1109:
+		case 1140:
 			return generateIcon(SVGIcons.wrench, height, width);
 		// x-circle-fill.svg
-		case 1110:
+		case 1141:
 			return generateIcon(SVGIcons.xCircleFill, height, width);
 		// x-circle.svg
-		case 1111:
+		case 1142:
 			return generateIcon(SVGIcons.xCircle, height, width);
 		// x-diamond-fill.svg
-		case 1112:
+		case 1143:
 			return generateIcon(SVGIcons.xDiamondFill, height, width);
 		// x-diamond.svg
-		case 1113:
+		case 1144:
 			return generateIcon(SVGIcons.xDiamond, height, width);
 		// x-octagon-fill.svg
-		case 1114:
+		case 1145:
 			return generateIcon(SVGIcons.xOctagonFill, height, width);
 		// x-octagon.svg
-		case 1115:
+		case 1146:
 			return generateIcon(SVGIcons.xOctagon, height, width);
 		// x-square-fill.svg
-		case 1116:
+		case 1147:
 			return generateIcon(SVGIcons.xSquareFill, height, width);
 		// x-square.svg
-		case 1117:
+		case 1148:
 			return generateIcon(SVGIcons.xSquare, height, width);
 		// x.svg
-		case 1118:
+		case 1149:
 			return generateIcon(SVGIcons.x, height, width);
 		// zoom-in.svg
-		case 1119:
+		case 1150:
 			return generateIcon(SVGIcons.zoomIn, height, width);
 		// zoom-out.svg
-		case 1120:
+		case 1151:
 			return generateIcon(SVGIcons.zoomOut, height, width);
 	}
 }
