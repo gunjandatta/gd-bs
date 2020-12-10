@@ -26,8 +26,8 @@ class _Offcanvas extends Base<IOffcanvasProps> implements IOffcanvas {
     private configure() {
         // Set the attributes
         this.props.id ? this.el.id = this.props.id : null;
-        this.props.enableBackdrop ? this.el.setAttribute("data-body", "backdrop") : null;
-        this.props.enableScroll ? this.el.setAttribute("data-body", "scroll") : null;
+        this.props.enableBackdrop ? this.el.setAttribute("data-bs-body", "backdrop") : null;
+        this.props.enableScroll ? this.el.setAttribute("data-bs-body", "scroll") : null;
 
         // Set the header
         let title = this.props.title || "";

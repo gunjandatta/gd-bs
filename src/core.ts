@@ -3,7 +3,7 @@ import "./ie";
 
 // The bootstrap library
 import * as bootstrap from "bootstrap";
-import * as popper from "popper.js";
+import * as popper from "@popperjs/core";
 
 // JS components
 import * as Components from "./components";

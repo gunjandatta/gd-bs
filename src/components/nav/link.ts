@@ -44,7 +44,7 @@ export class NavLink extends Base<INavLink> {
                 // Set the properties
                 this._elLink.id = tabId + "-tab";
                 this._elLink.setAttribute("href", "#" + tabId);
-                this._elLink.setAttribute("data-toggle", "tab");
+                this._elLink.setAttribute("data-bs-toggle", "tab");
                 this._elLink.setAttribute("aria-controls", tabId);
                 this._elLink.innerHTML = this.props.title == null ? "" : this.props.title;
 

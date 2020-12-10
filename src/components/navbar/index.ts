@@ -62,7 +62,7 @@ class _Navbar extends Base<INavbarProps> implements INavbar {
         let toggler = this.el.querySelector(".navbar-toggler");
         if (toggler) {
             toggler.setAttribute("aria-controls", navbar.id);
-            toggler.setAttribute("data-target", "#" + navbar.id);
+            toggler.setAttribute("data-bs-target", "#" + navbar.id);
         }
 
         // Add the classes based on the type

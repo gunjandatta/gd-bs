@@ -49,8 +49,8 @@ export class DropdownItem {
                 this._elLink.className = this._props.className || "";
                 this._elLink.classList.add("dropdown-item");
                 this._props.isDisabled ? this._elLink.classList.add("disabled") : null;
-                this._props.target ? this._elLink.setAttribute("data-target", this._props.target) : null;
-                this._props.toggle ? this._elLink.setAttribute("data-toggle", this._props.toggle) : null;
+                this._props.target ? this._elLink.setAttribute("data-bs-target", this._props.target) : null;
+                this._props.toggle ? this._elLink.setAttribute("data-bs-toggle", this._props.toggle) : null;
                 this._elLink.href = this._props.href || "#";
                 this._elLink.innerHTML = this._props.text == null ? "" : this._props.text;
 
@@ -63,8 +63,8 @@ export class DropdownItem {
                 this._elLink.className = this._props.className || "";
                 this._elLink.classList.add("dropdown-item");
                 this._props.isDisabled ? this._elLink.classList.add("disabled") : null;
-                this._props.target ? this._elLink.setAttribute("data-target", this._props.target) : null;
-                this._props.toggle ? this._elLink.setAttribute("data-toggle", this._props.toggle) : null;
+                this._props.target ? this._elLink.setAttribute("data-bs-target", this._props.target) : null;
+                this._props.toggle ? this._elLink.setAttribute("data-bs-toggle", this._props.toggle) : null;
                 this._elLink.href = this._props.href || "#";
                 this._elLink.innerHTML = this._props.text == null ? "" : this._props.text;
 

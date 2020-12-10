@@ -69,9 +69,9 @@ export interface IAccordion extends IBase<IAccordionProps> { }
  * Accordion Item
  */
 export interface IAccordionItem<T=Element> {
-    btnProps?: IButtonProps;
     data?: any;
     content?: string | T;
+    header?: string;
     onClick?: (el?: HTMLElement, item?: IAccordionItem<T>) => void;
     onRender?: (el?: HTMLElement, item?: IAccordionItem<T>) => void;
     showFl?: boolean;

@@ -81,7 +81,7 @@ class _Alert extends Base<IAlertProps> implements IAlert {
             let btn = document.createElement("button");
             btn.className = "btn-close";
             btn.type = "button";
-            btn.setAttribute("data-dismiss", "alert");
+            btn.setAttribute("data-bs-dismiss", "alert");
             btn.setAttribute("aria-label", "Close");
 
             // Append the button

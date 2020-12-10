@@ -3,7 +3,7 @@ export const HTML = `
 <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
         <a class="navbar-brand" href="#"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false"
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" aria-expanded="false"
             aria-label="Toggle Navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

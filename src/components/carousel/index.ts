@@ -75,8 +75,8 @@ class _Carousel extends Base<ICarouselProps> implements ICarousel {
 
                     // Create the item
                     let elItem = document.createElement("li");
-                    elItem.setAttribute("data-target", "#" + this.el.id);
-                    elItem.setAttribute("data-slide-to", i.toString());
+                    elItem.setAttribute("data-bs-target", "#" + this.el.id);
+                    elItem.setAttribute("data-bs-slide-to", i.toString());
                     item.isActive ? elItem.classList.add("active") : null;
 
                     // Add the item

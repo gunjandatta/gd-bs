@@ -1,5 +1,4 @@
 import * as popover from "bootstrap/js/dist/popover";
-import "popper.js";
 import { Button } from "../button";
 import { IPopover, IPopoverProps } from "../../../@types/components/popover";
 import { Base } from "../base";
@@ -107,7 +106,7 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
 
             // Set the popover title and content
             typeof (options.title) === "string" ? this.el.setAttribute("title", options.title) : null;
-            typeof (options.content) === "string" ? this.el.setAttribute("data-content", options.content) : null;
+            typeof (options.content) === "string" ? this.el.setAttribute("data-bs-content", options.content) : null;
         }
 
         // Create the popover

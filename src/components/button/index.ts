@@ -86,14 +86,14 @@ class _Button extends Base<IButtonProps> implements IButton {
         this.setType(this.props.type || ButtonTypes.Primary)
 
         // Set the attributes
-        this.props.dismiss ? this.el.setAttribute("data-dismiss", this.props.dismiss) : null;
+        this.props.dismiss ? this.el.setAttribute("data-bs-dismiss", this.props.dismiss) : null;
         this.props.href ? this.el.href = this.props.href : null;
         this.props.id ? this.el.id = this.props.id : null;
         this.props.isDisabled ? this.el.setAttribute("disabled", "disabled") : null;
-        this.props.target ? this.el.setAttribute("data-target", this.props.target) : null;
+        this.props.target ? this.el.setAttribute("data-bs-target", this.props.target) : null;
         this.props.title ? this.el.title = this.props.title : null;
-        this.props.toggle ? this.el.setAttribute("data-toggle", this.props.toggle) : null;
-        this.props.trigger ? this.el.setAttribute("data-trigger", this.props.trigger) : null;
+        this.props.toggle ? this.el.setAttribute("data-bs-toggle", this.props.toggle) : null;
+        this.props.trigger ? this.el.setAttribute("data-bs-trigger", this.props.trigger) : null;
         typeof (this.props.isExpanded) === "boolean" ? this.el.setAttribute("aria-expanded", this.props.isExpanded ? "true" : "false") : null;
 
         // See if controls are defined

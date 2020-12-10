@@ -7,7 +7,7 @@ import { Button, ButtonTypes } from "../button";
  */
 export class AccordionItem {
     private _el: HTMLDivElement = null;
-    private _elHeader: IButton = null;
+    private _elHeader: HTMLButtonElement = null;
     private _id: string = null;
     private _itemId: string = null;
     private _parentId: string = null;
@@ -41,11 +41,11 @@ export class AccordionItem {
 
     // Configures the collapse element
     private configureCollapse() {
-        let elCollapse = this._el.querySelector(".collapse");
+        let elCollapse = this._el.querySelector(".accordion-collapse");
         if (elCollapse) {
             this._props.showFl ? elCollapse.classList.add("show") : null;
             elCollapse.setAttribute("aria-labelledby", this._itemId);
-            elCollapse.setAttribute("data-parent", "#" + this._parentId);
+            elCollapse.setAttribute("data-bs-parent", "#" + this._parentId);
             elCollapse.id = this._id;
         }
     }
@@ -55,9 +55,9 @@ export class AccordionItem {
         // See if there is a click event
         if (this._props.onClick) {
             // Add a click event
-            this._elHeader.el.addEventListener("click", () => {
+            this._elHeader.addEventListener("click", () => {
                 // Call the click event
-                this._props.onClick(this._elHeader.el as any, this._props);
+                this._props.onClick(this._elHeader, this._props);
             });
         }
 
@@ -67,7 +67,7 @@ export class AccordionItem {
 
     // Renders the content
     private renderContent() {
-        let elCardBody = this._el.querySelector(".card-body") as HTMLElement;
+        let elCardBody = this._el.querySelector(".accordion-body") as HTMLElement;
         if (elCardBody) {
             let content = this._props.content || "";
             if (typeof (content) === "string" || typeof (content) === "number") {
@@ -82,20 +82,24 @@ export class AccordionItem {
 
     // Renders the header
     private renderHeader() {
-        let elHeader = this._el.querySelector(".card-header");
+        let elHeader = this._el.querySelector(".accordion-header");
         if (elHeader) {
+            // Set the properties
             elHeader.id = this._itemId;
         }
 
-        // Render the button to the header
-        let btnProps = this._props.btnProps || {};
-        typeof (btnProps.type) === "number" ? null : btnProps.type = ButtonTypes.Link;
-        btnProps.controls = "collapse_" + this._itemId;
-        btnProps.isExpanded = this._props.showFl ? true : false;
-        btnProps.target = '#' + btnProps.controls;
-        btnProps.toggle = "collapse";
-        btnProps.el = elHeader;
-        this._elHeader = Button(btnProps);
+        // Get the button
+        let elButton = this._el.querySelector(".accordion-button") as HTMLButtonElement;
+        if (elButton) {
+            // Set the header reference
+            this._elHeader = elButton;
+
+            // Set the properties
+            elButton.setAttribute("aria-controls", "collapse_" + this._itemId);
+            elButton.setAttribute("aria-expanded", this._props.showFl ? "true" : "false");
+            elButton.setAttribute("data-bs-target", '#' + "collapse_" + this._itemId);
+            elButton.innerHTML = this._props.header;
+        }
     }
 
     /**
@@ -109,7 +113,7 @@ export class AccordionItem {
     get elCollapse(): HTMLDivElement { return this._el.querySelector(".collapse") || this._el.querySelector(".collapsing"); }
 
     // The header element
-    get elHeader(): HTMLButtonElement { return this._elHeader.el as any; }
+    get elHeader(): HTMLButtonElement { return this._elHeader; }
 
     // The item id
     get id(): string { return this._id; }

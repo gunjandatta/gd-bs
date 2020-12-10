@@ -65,8 +65,8 @@ export class NavbarItem {
         // Update the link
         if (link) {
             this._props.isDisabled ? link.classList.add("disabled") : null;
-            this._props.target ? link.setAttribute("data-target", this._props.target) : null;
-            this._props.toggle ? link.setAttribute("data-toggle", this._props.toggle) : null;
+            this._props.target ? link.setAttribute("data-bs-target", this._props.target) : null;
+            this._props.toggle ? link.setAttribute("data-bs-toggle", this._props.toggle) : null;
         }
     }
 

@@ -1,5 +1,4 @@
 import * as tooltip from "bootstrap/js/dist/tooltip";
-import "popper.js";
 import { IButton } from "../../../@types/components/button";
 import { ITooltip, ITooltipProps } from "../../../@types/components/tooltip";
 import { Base } from "../base";
@@ -113,7 +112,7 @@ class _Tooltip extends Base<ITooltipProps> {
         }
 
         // Set the attributes
-        this.el.setAttribute("data-placement", options.placement);
+        this.el.setAttribute("data-bs-placement", options.placement);
 
         // See if the title is a string
         if (typeof (options.title) === "string") {
