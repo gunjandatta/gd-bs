@@ -5,7 +5,7 @@ import { Base } from "../base";
 import { ClassNames } from "../classNames";
 import { Badge, BadgeTypes } from "../badge";
 import { Spinner } from "../spinner";
-import { HTML, HTMLLink } from "./templates";
+import { HTML, HTMLBlock, HTMLLink } from "./templates";
 
 /**
  * Button Types
@@ -62,7 +62,7 @@ export const ButtonClassNames = new ClassNames([
 class _Button extends Base<IButtonProps> implements IButton {
 
     // Constructor
-    constructor(props: IButtonProps, template: string = props.href || props.isLink ? HTMLLink : HTML) {
+    constructor(props: IButtonProps, template: string = props.isBlock ? HTMLBlock : (props.href || props.isLink ? HTMLLink : HTML)) {
         super(template, props);
 
         // Configure the button
@@ -78,7 +78,6 @@ class _Button extends Base<IButtonProps> implements IButton {
     // Configure the button
     private configure() {
         // Add the class names
-        this.props.isBlock ? this.el.classList.add("btn-block") : null;
         this.props.isLarge ? this.el.classList.add("btn-lg") : null;
         this.props.isSmall ? this.el.classList.add("btn-sm") : null;
 
