@@ -37,7 +37,7 @@ class _Tooltip extends Base<ITooltipProps> {
     private configure() {
         // Default the toggle property for the button
         let btnProps = this.props.btnProps || {};
-        btnProps.toggle = "tooltip";
+        btnProps.toggle = "data-bs-tooltip";
 
         // Create the button
         this._btn = Button(btnProps);

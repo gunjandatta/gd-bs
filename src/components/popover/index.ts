@@ -85,7 +85,7 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
 
             // Ensure the attributes are set in the target element
             elPopover.setAttribute("tabindex", "0");
-            elPopover.setAttribute("toggle", "popover");
+            elPopover.setAttribute("toggle", "data-bs-popover");
             elPopover.setAttribute("trigger", "focus");
 
             // Update this element
@@ -95,7 +95,7 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
             let btnProps = this.props.btnProps || {};
             btnProps.isLink = this.props.isDismissible ? true : false;
             btnProps.tabIndex = btnProps.tabIndex || 0;
-            btnProps.toggle = "popover";
+            btnProps.toggle = "data-bs-popover";
             this.props.isDismissible ? btnProps.trigger = "focus" : null;
             let button = Button(btnProps);
 
