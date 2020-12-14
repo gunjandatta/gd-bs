@@ -944,6 +944,12 @@ export const IconTypes: {
 	Dice6Fill: number;
 	// dice-6.svg
 	Dice6: number;
+	// disc-fill.svg
+	DiscFill: number;
+	// disc.svg
+	Disc: number;
+	// discord.svg
+	Discord: number;
 	// display-fill.svg
 	DisplayFill: number;
 	// display.svg
@@ -1072,6 +1078,8 @@ export const IconTypes: {
 	Eye: number;
 	// eyeglasses.svg
 	Eyeglasses: number;
+	// facebook.svg
+	Facebook: number;
 	// file-arrow-down-fill.svg
 	FileArrowDownFill: number;
 	// file-arrow-down.svg
@@ -1408,10 +1416,14 @@ export const IconTypes: {
 	GiftFill: number;
 	// gift.svg
 	Gift: number;
+	// github.svg
+	Github: number;
 	// globe.svg
 	Globe: number;
 	// globe2.svg
 	Globe2: number;
+	// google.svg
+	Google: number;
 	// graph-down.svg
 	GraphDown: number;
 	// graph-up.svg
@@ -1542,6 +1554,8 @@ export const IconTypes: {
 	InputCursorText: number;
 	// input-cursor.svg
 	InputCursor: number;
+	// instagram.svg
+	Instagram: number;
 	// intersect.svg
 	Intersect: number;
 	// journal-album.svg
@@ -1642,6 +1656,8 @@ export const IconTypes: {
 	Link45deg: number;
 	// link.svg
 	Link: number;
+	// linkedin.svg
+	Linkedin: number;
 	// list-check.svg
 	ListCheck: number;
 	// list-nested.svg
@@ -1766,6 +1782,14 @@ export const IconTypes: {
 	PatchQuestionFll: number;
 	// patch-question.svg
 	PatchQuestion: number;
+	// pause-btn-fill.svg
+	PauseBtnFill: number;
+	// pause-btn.svg
+	PauseBtn: number;
+	// pause-circle-fill.svg
+	PauseCircleFill: number;
+	// pause-circle.svg
+	PauseCircle: number;
 	// pause-fill.svg
 	PauseFill: number;
 	// pause.svg
@@ -1846,6 +1870,14 @@ export const IconTypes: {
 	PipFill: number;
 	// pip.svg
 	Pip: number;
+	// play-btn-fill.svg
+	PlayBtnFill: number;
+	// play-btn.svg
+	PlayBtn: number;
+	// play-circle-fill.svg
+	PlayCircleFill: number;
+	// play-circle.svg
+	PlayCircle: number;
 	// play-fill.svg
 	PlayFill: number;
 	// play.svg
@@ -1906,6 +1938,22 @@ export const IconTypes: {
 	Reception3: number;
 	// reception-4.svg
 	Reception4: number;
+	// record-btn-fill.svg
+	RecordBtnFill: number;
+	// record-btn.svg
+	RecordBtn: number;
+	// record-circle-fill.svg
+	RecordCircleFill: number;
+	// record-circle.svg
+	RecordCircle: number;
+	// record-fill.svg
+	RecordFill: number;
+	// record.svg
+	Record: number;
+	// record2-fill.svg
+	Record2Fill: number;
+	// record2.svg
+	Record2: number;
 	// reply-all-fill.svg
 	ReplyAllFill: number;
 	// reply-all.svg
@@ -1992,22 +2040,56 @@ export const IconTypes: {
 	SimFill: number;
 	// sim.svg
 	Sim: number;
+	// skip-backward-btn-fill.svg
+	SkipBackwardBtnFill: number;
+	// skip-backward-btn.svg
+	SkipBackwardBtn: number;
+	// skip-backward-circle-fill.svg
+	SkipBackwardCircleFill: number;
+	// skip-backward-circle.svg
+	SkipBackwardCircle: number;
 	// skip-backward-fill.svg
 	SkipBackwardFill: number;
 	// skip-backward.svg
 	SkipBackward: number;
+	// skip-end-btn-fill.svg
+	SkipEndBtnFill: number;
+	// skip-end-btn.svg
+	SkipEndBtn: number;
+	// skip-end-circle-fill.svg
+	SkipEndCircleFill: number;
+	// skip-end-circle.svg
+	SkipEndCircle: number;
 	// skip-end-fill.svg
 	SkipEndFill: number;
 	// skip-end.svg
 	SkipEnd: number;
+	// skip-forward-btn-fill.svg
+	SkipForwardBtnFill: number;
+	// skip-forward-btn.svg
+	SkipForwardBtn: number;
+	// skip-forward-circle-fill.svg
+	SkipForwardCircleFill: number;
+	// skip-forward-circle.svg
+	SkipForwardCircle: number;
 	// skip-forward-fill.svg
 	SkipForwardFill: number;
 	// skip-forward.svg
 	SkipForward: number;
+	// skip-start-btn-fill.svg
+	SkipStartBtnFill: number;
+	// skip-start-btn.svg
+	SkipStartBtn: number;
+	// skip-start-circle-fill.svg
+	SkipStartCircleFill: number;
+	// skip-start-circle.svg
+	SkipStartCircle: number;
 	// skip-start-fill.svg
 	SkipStartFill: number;
 	// skip-start.svg
 	SkipStart: number;
+	// slack.svg
+	Slack: number;
 	// slash-circle-fill.svg
 	SlashCircleFill: number;
 	// slash-circle.svg
@@ -2074,6 +2156,14 @@ export const IconTypes: {
 	StickyFill: number;
 	// sticky.svg
 	Sticky: number;
+	// stop-btn-fill.svg
+	StopBtnFill: number;
+	// stop-btn.svg
+	StopBtn: number;
+	// stop-circle-fill.svg
+	StopCircleFill: number;
+	// stop-circle.svg
+	StopCircle: number;
 	// stop-fill.svg
 	StopFill: number;
 	// stop.svg
@@ -2228,6 +2318,10 @@ export const IconTypes: {
 	TvFill: number;
 	// tv.svg
 	Tv: number;
+	// twitch.svg
+	Twitch: number;
+	// twitter.svg
+	Twitter: number;
 	// type-bold.svg
 	TypeBold: number;
 	// type-h1.svg
@@ -2270,6 +2364,10 @@ export const IconTypes: {
 	ViewList: number;
 	// view-stacked.svg
 	ViewStacked: number;
+	// vinyl-fill.svg
+	VinylFill: number;
+	// vinyl.svg
+	Vinyl: number;
 	// voicemail.svg
 	Voicemail: number;
 	// volume-down-fill.svg
@@ -2328,6 +2426,8 @@ export const IconTypes: {
 	XSquare: number;
 	// x.svg
 	X: number;
+	// youtube.svg
+	Youtube: number;
 	// zoom-in.svg
 	ZoomIn: number;
 	// zoom-out.svg
