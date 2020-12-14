@@ -47,29 +47,17 @@ export const FormControlTypes: IFormControlTypes;
  */
 export interface IFormControl {
     el: HTMLElement;
-
     checkbox: ICheckboxGroup;
-
     control: ICheckboxGroup | IDropdown | IInputGroup | IListBox;
-
     dropdown: IDropdown;
-
     getValue: () => any;
-
     isLoaded: () => PromiseLike<void>;
-
     isValid: boolean;
-
     props: IFormControlProps;
-
     textbox: IInputGroup;
-
     setLabel: (value: string) => void;
-
     setControl: (control: any) => void;
-
     setValue: (value: any) => void;
-
     updateValidation: (elControl: Element, validation: IFormControlValidationResult) => void;
 }
 
@@ -94,6 +82,7 @@ export interface IFormControlProps extends IBaseProps<IFormControl> {
     required?: boolean;
     title?: string;
     type?: number;
+    validationType?: number;
     value?: any;
 }
 

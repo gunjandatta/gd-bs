@@ -105,6 +105,11 @@ import { IBaseProps } from "../base";
 import { IFormControl, IFormControlProps, IFormControlTypes } from "./formControl";
 
 /**
+ * Form Validation Types
+ */
+export const FormValidationTypes: IFormValidationTypes;
+
+/**
  * Form
  */
 export interface IForm {
@@ -152,11 +157,13 @@ export interface IFormColumn {
 export interface IFormProps extends IBaseProps<IForm> {
     controls?: Array<IFormControlProps>;
     groupClassName?: string;
+    isFloating?: boolean;
     rowClassName?: string;
     rows?: Array<IFormRow>;
     onControlRendering?: (control: IFormControlProps) => void | PromiseLike<IFormControlProps>;
     onControlRendered?: (control: IFormControl) => void | PromiseLike<IFormControl>;
     onRendered?: (controls: Array<IFormControl>) => void;
+    validationType?: number;
     value?: any;
 }
 
@@ -168,4 +175,12 @@ export interface IFormRow {
     isAutoSized?: boolean;
     isCentered?: boolean;
     columns?: Array<IFormColumn>;
+}
+
+/**
+ * Form Validation Types
+ */
+export type IFormValidationTypes = {
+    Default: number;
+    Tooltip: number;
 }

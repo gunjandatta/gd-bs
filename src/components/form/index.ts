@@ -44,6 +44,9 @@ class _Form extends Base<IFormProps> implements IForm {
             className ? this.el.classList.add(className) : null;
         }
 
+        // Set the floating class
+        this.props.isFloating ? this.el.classList.add("form-floating") : null;
+
         // Append the controls
         this.appendControls(this.props.controls)
 
@@ -156,6 +159,9 @@ class _Form extends Base<IFormProps> implements IForm {
             }
         }
 
+        // Set the form class
+        this.el.classList.add("was-validated");
+
         // Return the flag
         return isValid;
     }
@@ -170,7 +176,7 @@ export const FormControl = (props: IFormControlProps) => {
     let base = new Base("", props);
 
     // Create the control
-    let control = new Control(props);
+    let control = new Control(props, { validationType: FormValidationTypes.Default });
 
     // Wait for the control to be loaded
     control.isLoaded().then(() => {
@@ -208,4 +214,12 @@ export enum FormControlTypes {
     Switch = 17,
     TextArea = 18,
     TextField = 19
+}
+
+/**
+ * Form Validation Types
+ */
+export enum FormValidationTypes {
+    Default = 1,
+    Tooltip = 2
 }

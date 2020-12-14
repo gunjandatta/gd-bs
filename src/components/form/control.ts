@@ -12,7 +12,8 @@ import { CustomControls } from "./custom";
 import { Dropdown } from "../dropdown";
 import { InputGroup, InputGroupTypes } from "../inputGroup";
 import { ListBox } from "../listBox";
-import { FormControlTypes } from ".";
+import { FormControlTypes, FormValidationTypes } from ".";
+import { IFormProps } from "../../../@types/components";
 
 /**
  * Form Control
@@ -22,14 +23,16 @@ export class FormControl implements IFormControl {
     private _custom: any = null;
     private _el: HTMLElement = null;
     private _elLabel: HTMLLabelElement = null;
+    private _formProps: IFormProps = null;
     private _ddl: IDropdown = null;
     private _lb: IListBox = null;
     private _props: IFormControlProps;
     private _tb: IInputGroup = null;
 
     // Constructor
-    constructor(props: IFormControlProps, elLabel?: HTMLLabelElement) {
+    constructor(props: IFormControlProps, formProps: IFormProps, elLabel?: HTMLLabelElement) {
         // Save the parameters
+        this._formProps = formProps;
         this._props = props;
         this._elLabel = elLabel;
 
@@ -81,6 +84,13 @@ export class FormControl implements IFormControl {
             if (this._props.el) {
                 // Append the control to the element
                 this._props.el.appendChild(this._el);
+            }
+
+
+            // See if the label is set
+            if (this._elLabel && this._formProps.isFloating && this._el.id) {
+                // Set the attributes
+                this._elLabel.setAttribute("for", this._el.id);
             }
         }
     }
@@ -593,14 +603,17 @@ export class FormControl implements IFormControl {
 
         // Ensure the form control exists
         if (elFormControl) {
+            let useTooltip = this._formProps.validationType == FormValidationTypes.Tooltip;
+
             // See if there is invalid feedback
             if (validation.invalidMessage || this._props.errorMessage) {
                 // Get the element
-                let elMessage = elControl.querySelector(".invalid-feedback");
+                let invalidClassName = useTooltip ? "invalid-tooltip" : "invalid-feedback";
+                let elMessage = elFormControl.parentNode.querySelector(invalidClassName);
                 if (elMessage == null) {
                     // Create the element
                     elMessage = document.createElement("div");
-                    elMessage.className = "invalid-feedback";
+                    elMessage.className = invalidClassName;
                     elFormControl.parentNode.appendChild(elMessage);
                 }
 
@@ -611,11 +624,12 @@ export class FormControl implements IFormControl {
             // See if there is valid feedback
             if (validation.validMessage) {
                 // Get the element
-                let elMessage = elControl.querySelector(".valid-feedback");
+                let validClassName = useTooltip ? "valid-tooltip" : "valid-feedback";
+                let elMessage = elFormControl.parentNode.querySelector(validClassName);
                 if (elMessage == null) {
                     // Create the element
                     elMessage = document.createElement("div");
-                    elMessage.className = "valid-feedback";
+                    elMessage.className = validClassName;
                     elFormControl.parentNode.appendChild(elMessage);
                 }
 

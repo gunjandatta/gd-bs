@@ -1,5 +1,5 @@
 // Form
-export const HTML = `<form></form>`;
+export const HTML = `<form class="needs-validation"></form>`;
 
 // Group
 export const HTMLGroup = `

@@ -95,7 +95,7 @@ export class FormGroup {
         }
 
         // Create the control
-        this._control = new FormControl(this._props, elLabel);
+        this._control = new FormControl(this._props, this._formProps, elLabel);
 
         // Wait for the control to be created
         this._control.isLoaded().then(() => {

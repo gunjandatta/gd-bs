@@ -55,7 +55,6 @@
                 title: "This is a dropdown",
                 type: GD.Components.FormControlTypes.Dropdown,
                 onControlRendered: function (control) {
-                    debugger;
                 },
                 onControlRendering: function (props) {
                     return new Promise(function (resolve) {
@@ -586,6 +585,17 @@
                 options: { show: false },
                 onClose: function (modal) {
                     console.log("The modal was closed.", modal);
+                },
+                onRenderFooter: function (el) {
+                    // Render a button
+                    GD.Components.Button({
+                        el: el,
+                        text: "Submit",
+                        onClick: function() {
+                            // Validate the form
+                            console.log(window["modalForm"].isValid());
+                        }
+                    });
                 },
                 onRenderBody: function (el) {
                     // Render a form
