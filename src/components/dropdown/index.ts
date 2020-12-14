@@ -391,10 +391,10 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
         // See if we are setting the dark theme
         if (isDark) {
             // Set the theme
-            this._elMenu.classList.add("carousel-dark");
+            this._elMenu.classList.add("dropdown-menu-dark");
         } else {
             // Set the theme
-            this._elMenu.classList.remove("carousel-dark");
+            this._elMenu.classList.remove("dropdown-menu-dark");
         }
     }
 
