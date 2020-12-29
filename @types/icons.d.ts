@@ -1762,24 +1762,24 @@ export const IconTypes: {
 	Paperclip: number;
 	// paragraph.svg
 	Paragraph: number;
-	// patch-check-fll.svg
-	PatchCheckFll: number;
+	// patch-check-fill.svg
+	PatchCheckFill: number;
 	// patch-check.svg
 	PatchCheck: number;
-	// patch-exclamation-fll.svg
-	PatchExclamationFll: number;
+	// patch-exclamation-fill.svg
+	PatchExclamationFill: number;
 	// patch-exclamation.svg
 	PatchExclamation: number;
-	// patch-minus-fll.svg
-	PatchMinusFll: number;
+	// patch-minus-fill.svg
+	PatchMinusFill: number;
 	// patch-minus.svg
 	PatchMinus: number;
-	// patch-plus-fll.svg
-	PatchPlusFll: number;
+	// patch-plus-fill.svg
+	PatchPlusFill: number;
 	// patch-plus.svg
 	PatchPlus: number;
-	// patch-question-fll.svg
-	PatchQuestionFll: number;
+	// patch-question-fill.svg
+	PatchQuestionFill: number;
 	// patch-question.svg
 	PatchQuestion: number;
 	// pause-btn-fill.svg

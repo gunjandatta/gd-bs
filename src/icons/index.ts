@@ -2627,33 +2627,33 @@ export const Icons = (iconType:number, height?:number, width?:number) => {
 		// paragraph.svg
 		case 866:
 			return generateIcon(SVGIcons.paragraph, height, width);
-		// patch-check-fll.svg
+		// patch-check-fill.svg
 		case 867:
-			return generateIcon(SVGIcons.patchCheckFll, height, width);
+			return generateIcon(SVGIcons.patchCheckFill, height, width);
 		// patch-check.svg
 		case 868:
 			return generateIcon(SVGIcons.patchCheck, height, width);
-		// patch-exclamation-fll.svg
+		// patch-exclamation-fill.svg
 		case 869:
-			return generateIcon(SVGIcons.patchExclamationFll, height, width);
+			return generateIcon(SVGIcons.patchExclamationFill, height, width);
 		// patch-exclamation.svg
 		case 870:
 			return generateIcon(SVGIcons.patchExclamation, height, width);
-		// patch-minus-fll.svg
+		// patch-minus-fill.svg
 		case 871:
-			return generateIcon(SVGIcons.patchMinusFll, height, width);
+			return generateIcon(SVGIcons.patchMinusFill, height, width);
 		// patch-minus.svg
 		case 872:
 			return generateIcon(SVGIcons.patchMinus, height, width);
-		// patch-plus-fll.svg
+		// patch-plus-fill.svg
 		case 873:
-			return generateIcon(SVGIcons.patchPlusFll, height, width);
+			return generateIcon(SVGIcons.patchPlusFill, height, width);
 		// patch-plus.svg
 		case 874:
 			return generateIcon(SVGIcons.patchPlus, height, width);
-		// patch-question-fll.svg
+		// patch-question-fill.svg
 		case 875:
-			return generateIcon(SVGIcons.patchQuestionFll, height, width);
+			return generateIcon(SVGIcons.patchQuestionFill, height, width);
 		// patch-question.svg
 		case 876:
 			return generateIcon(SVGIcons.patchQuestion, height, width);
