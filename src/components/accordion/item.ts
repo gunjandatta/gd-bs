@@ -1,6 +1,4 @@
 import { IAccordionItem } from "../../../@types/components/accordion";
-import { IButton } from "../../../@types/components/button";
-import { Button, ButtonTypes } from "../button";
 
 /**
  * Accordion Item
@@ -44,7 +42,7 @@ export class AccordionItem {
     private configureCollapse() {
         this._elCollapse = this._el.querySelector(".accordion-collapse");
         if (this._elCollapse) {
-            this._props.showFl ? this._elCollapse.classList.add("show") : null;
+            this._elCollapse.classList.add(this._props.showFl ? "show" : "collapsed");
             this._elCollapse.setAttribute("aria-labelledby", this._itemId);
             this._elCollapse.setAttribute("data-bs-parent", "#" + this._parentId);
             this._elCollapse.id = this._id;
