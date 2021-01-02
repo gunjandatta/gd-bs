@@ -42,7 +42,7 @@ export class AccordionItem {
     private configureCollapse() {
         this._elCollapse = this._el.querySelector(".accordion-collapse");
         if (this._elCollapse) {
-            this._elCollapse.classList.add(this._props.showFl ? "show" : "collapsed");
+            this._props.showFl ? this._elCollapse.classList.add("show") : null;
             this._elCollapse.setAttribute("aria-labelledby", this._itemId);
             this._elCollapse.setAttribute("data-bs-parent", "#" + this._parentId);
             this._elCollapse.id = this._id;
@@ -91,7 +91,7 @@ export class AccordionItem {
         this._elHeader = this._el.querySelector(".accordion-button");
         if (this._elHeader) {
             // Set the class
-            this._elHeader.classList.add(this._props.showFl ? "show" : "collapsed");
+            this._props.showFl ? null : this._elHeader.classList.add("collapsed");
 
             // Set the properties
             this._elHeader.setAttribute("aria-controls", "collapse_" + this._itemId);
