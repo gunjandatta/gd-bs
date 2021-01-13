@@ -208,6 +208,10 @@ export const IconTypes: {
 	BackspaceReverse: number;
 	// backspace.svg
 	Backspace: number;
+	// badge-3d-fill.svg
+	Badge3dFill: number;
+	// badge-3d.svg
+	Badge3d: number;
 	// badge-4k-fill.svg
 	Badge4kFill: number;
 	// badge-4k.svg
@@ -220,6 +224,10 @@ export const IconTypes: {
 	BadgeAdFill: number;
 	// badge-ad.svg
 	BadgeAd: number;
+	// badge-ar-fill.svg
+	BadgeArFill: number;
+	// badge-ar.svg
+	BadgeAr: number;
 	// badge-cc-fill.svg
 	BadgeCcFill: number;
 	// badge-cc.svg
@@ -236,6 +244,14 @@ export const IconTypes: {
 	BadgeVoFill: number;
 	// badge-vo.svg
 	BadgeVo: number;
+	// badge-vr-fill.svg
+	BadgeVrFill: number;
+	// badge-vr.svg
+	BadgeVr: number;
+	// badge-wc-fill.svg
+	BadgeWcFill: number;
+	// badge-wc.svg
+	BadgeWc: number;
 	// bag-check-fill.svg
 	BagCheckFill: number;
 	// bag-check.svg
@@ -350,10 +366,30 @@ export const IconTypes: {
 	BootstrapReboot: number;
 	// bootstrap.svg
 	Bootstrap: number;
+	// border-all.svg
+	BorderAll: number;
+	// border-bottom.svg
+	BorderBottom: number;
+	// border-center.svg
+	BorderCenter: number;
+	// border-inner.svg
+	BorderInner: number;
+	// border-left.svg
+	BorderLeft: number;
+	// border-middle.svg
+	BorderMiddle: number;
+	// border-outer.svg
+	BorderOuter: number;
+	// border-right.svg
+	BorderRight: number;
 	// border-style.svg
 	BorderStyle: number;
+	// border-top.svg
+	BorderTop: number;
 	// border-width.svg
 	BorderWidth: number;
+	// border.svg
+	Border: number;
 	// bounding-box-circles.svg
 	BoundingBoxCircles: number;
 	// bounding-box.svg
@@ -896,10 +932,14 @@ export const IconTypes: {
 	CursorText: number;
 	// cursor.svg
 	Cursor: number;
+	// dash-circle-dotted.svg
+	DashCircleDotted: number;
 	// dash-circle-fill.svg
 	DashCircleFill: number;
 	// dash-circle.svg
 	DashCircle: number;
+	// dash-square-dotted.svg
+	DashSquareDotted: number;
 	// dash-square-fill.svg
 	DashSquareFill: number;
 	// dash-square.svg
@@ -1044,6 +1084,10 @@ export const IconTypes: {
 	EnvelopeOpen: number;
 	// envelope.svg
 	Envelope: number;
+	// eraser-fill.svg
+	EraserFill: number;
+	// eraser.svg
+	Eraser: number;
 	// exclamation-circle-fill.svg
 	ExclamationCircleFill: number;
 	// exclamation-circle.svg
@@ -1076,6 +1120,8 @@ export const IconTypes: {
 	EyeSlash: number;
 	// eye.svg
 	Eye: number;
+	// eyedropper.svg
+	Eyedropper: number;
 	// eyeglasses.svg
 	Eyeglasses: number;
 	// facebook.svg
@@ -1454,12 +1500,20 @@ export const IconTypes: {
 	GripVertical: number;
 	// hammer.svg
 	Hammer: number;
+	// hand-index-fill.svg
+	HandIndexFill: number;
+	// hand-index-thumb-fill.svg
+	HandIndexThumbFill: number;
 	// hand-index-thumb.svg
 	HandIndexThumb: number;
 	// hand-index.svg
 	HandIndex: number;
+	// hand-thumbs-down-fill.svg
+	HandThumbsDownFill: number;
 	// hand-thumbs-down.svg
 	HandThumbsDown: number;
+	// hand-thumbs-up-fill.svg
+	HandThumbsUpFill: number;
 	// hand-thumbs-up.svg
 	HandThumbsUp: number;
 	// handbag-fill.svg
@@ -1618,6 +1672,10 @@ export const IconTypes: {
 	LaptopFill: number;
 	// laptop.svg
 	Laptop: number;
+	// layer-backward.svg
+	LayerBackward: number;
+	// layer-forward.svg
+	LayerForward: number;
 	// layers-fill.svg
 	LayersFill: number;
 	// layers-half.svg
@@ -1648,6 +1706,14 @@ export const IconTypes: {
 	LayoutWtf: number;
 	// life-preserver.svg
 	LifePreserver: number;
+	// lightbulb-fill.svg
+	LightbulbFill: number;
+	// lightbulb-off-fill.svg
+	LightbulbOffFill: number;
+	// lightbulb-off.svg
+	LightbulbOff: number;
+	// lightbulb.svg
+	Lightbulb: number;
 	// lightning-fill.svg
 	LightningFill: number;
 	// lightning.svg
@@ -1688,6 +1754,12 @@ export const IconTypes: {
 	MarkdownFill: number;
 	// markdown.svg
 	Markdown: number;
+	// mask.svg
+	Mask: number;
+	// megaphone-fill.svg
+	MegaphoneFill: number;
+	// megaphone.svg
+	Megaphone: number;
 	// menu-app-fill.svg
 	MenuAppFill: number;
 	// menu-app.svg
@@ -1718,10 +1790,16 @@ export const IconTypes: {
 	Minecart: number;
 	// moon.svg
 	Moon: number;
+	// mouse-fill.svg
+	MouseFill: number;
 	// mouse.svg
 	Mouse: number;
+	// mouse2-fill.svg
+	Mouse2Fill: number;
 	// mouse2.svg
 	Mouse2: number;
+	// mouse3-fill.svg
+	Mouse3Fill: number;
 	// mouse3.svg
 	Mouse3: number;
 	// music-note-beamed.svg
@@ -1758,6 +1836,14 @@ export const IconTypes: {
 	Option: number;
 	// outlet.svg
 	Outlet: number;
+	// paint-bucket.svg
+	PaintBucket: number;
+	// palette-fill.svg
+	PaletteFill: number;
+	// palette.svg
+	Palette: number;
+	// palette2.svg
+	Palette2: number;
 	// paperclip.svg
 	Paperclip: number;
 	// paragraph.svg
@@ -1858,6 +1944,8 @@ export const IconTypes: {
 	PhoneLandscapeFill: number;
 	// phone-landscape.svg
 	PhoneLandscape: number;
+	// phone-vibrate-fill.svg
+	PhoneVibrateFill: number;
 	// phone-vibrate.svg
 	PhoneVibrate: number;
 	// phone.svg
@@ -1866,6 +1954,14 @@ export const IconTypes: {
 	PieChartFill: number;
 	// pie-chart.svg
 	PieChart: number;
+	// pin-angle-fill.svg
+	PinAngleFill: number;
+	// pin-angle.svg
+	PinAngle: number;
+	// pin-fill.svg
+	PinFill: number;
+	// pin.svg
+	Pin: number;
 	// pip-fill.svg
 	PipFill: number;
 	// pip.svg
@@ -1886,10 +1982,14 @@ export const IconTypes: {
 	PlugFill: number;
 	// plug.svg
 	Plug: number;
+	// plus-circle-dotted.svg
+	PlusCircleDotted: number;
 	// plus-circle-fill.svg
 	PlusCircleFill: number;
 	// plus-circle.svg
 	PlusCircle: number;
+	// plus-square-dotted.svg
+	PlusSquareDotted: number;
 	// plus-square-fill.svg
 	PlusSquareFill: number;
 	// plus-square.svg
@@ -1966,6 +2066,16 @@ export const IconTypes: {
 	RssFill: number;
 	// rss.svg
 	Rss: number;
+	// rulers.svg
+	Rulers: number;
+	// save-fill.svg
+	SaveFill: number;
+	// save.svg
+	Save: number;
+	// save2-fill.svg
+	Save2Fill: number;
+	// save2.svg
+	Save2: number;
 	// scissors.svg
 	Scissors: number;
 	// screwdriver.svg
@@ -2134,6 +2244,10 @@ export const IconTypes: {
 	SpeakerFill: number;
 	// speaker.svg
 	Speaker: number;
+	// speedometer.svg
+	Speedometer: number;
+	// speedometer2.svg
+	Speedometer2: number;
 	// spellcheck.svg
 	Spellcheck: number;
 	// square-fill.svg
@@ -2142,6 +2256,8 @@ export const IconTypes: {
 	SquareHalf: number;
 	// square.svg
 	Square: number;
+	// stack.svg
+	Stack: number;
 	// star-fill.svg
 	StarFill: number;
 	// star-half.svg
@@ -2198,6 +2314,10 @@ export const IconTypes: {
 	Sun: number;
 	// sunglasses.svg
 	Sunglasses: number;
+	// symmetry-horizontal.svg
+	SymmetryHorizontal: number;
+	// symmetry-vertical.svg
+	SymmetryVertical: number;
 	// table.svg
 	Table: number;
 	// tablet-fill.svg
@@ -2216,6 +2336,8 @@ export const IconTypes: {
 	TagsFill: number;
 	// tags.svg
 	Tags: number;
+	// telegram.svg
+	Telegram: number;
 	// telephone-fill.svg
 	TelephoneFill: number;
 	// telephone-forward-fill.svg
@@ -2396,6 +2518,8 @@ export const IconTypes: {
 	Wallet2: number;
 	// watch.svg
 	Watch: number;
+	// whatsapp.svg
+	Whatsapp: number;
 	// wifi-1.svg
 	Wifi1: number;
 	// wifi-2.svg
@@ -2404,6 +2528,10 @@ export const IconTypes: {
 	WifiOff: number;
 	// wifi.svg
 	Wifi: number;
+	// window-dock.svg
+	WindowDock: number;
+	// window-sidebar.svg
+	WindowSidebar: number;
 	// window.svg
 	Window: number;
 	// wrench.svg
