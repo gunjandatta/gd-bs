@@ -200,7 +200,8 @@ class _InputGroup extends Base<IInputGroupProps> implements IInputGroup {
                 // Update the textbox
                 this.props.id ? textarea.id = this.props.id : null;
                 this.props.placeholder ? textarea.placeholder = this.props.placeholder : null;
-                textarea.readOnly = this.props.isReadonly ? true : false;
+                textarea.disabled = this.props.isReadonly ? true : false;
+                textarea.readOnly = textarea.disabled;
                 textarea.rows = this.props.rows;
                 this.props.title ? textarea.title = this.props.title : null;
             }
@@ -213,7 +214,8 @@ class _InputGroup extends Base<IInputGroupProps> implements IInputGroup {
                 // Update the textbox
                 this.props.id ? input.id = this.props.id : null;
                 this.props.placeholder ? input.placeholder = this.props.placeholder : null;
-                input.readOnly = this.props.isReadonly ? true : false;
+                input.disabled = this.props.isReadonly ? true : false;
+                input.readOnly = input.disabled;
                 this.props.title ? input.title = this.props.title : null;
                 typeof (this.props.min) === "number" ? input.min = this.props.min + "" : null;
                 typeof (this.props.max) === "number" ? input.max = this.props.max + "" : null;
