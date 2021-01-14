@@ -101,5 +101,4 @@ export interface ICardGroup {
  */
 export interface ICardGroupProps extends IBaseProps<ICardGroup> {
     cards?: Array<ICardProps>;
-    isDeck?: boolean;
 }

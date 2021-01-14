@@ -21,9 +21,6 @@ class _CardGroup extends Base<ICardGroupProps> implements ICardGroup {
 
     // Configure the card group
     private configure(cardTemplate: string) {
-        // Set the default class
-        this.el.classList.add(this.props.isDeck ? "card-deck" : "card-group");
-
         // Parse the cards
         let cards = this.props.cards || [];
         for (let i = 0; i < cards.length; i++) {

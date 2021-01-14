@@ -1,1 +1,1 @@
-export const HTML = `<div></div>`;
+export const HTML = `<div class="card-group"></div>`;
