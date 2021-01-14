@@ -56,25 +56,30 @@ class _Form extends Base<IFormProps> implements IForm {
 
     // Configure the events
     private configureEvents() {
-        // Wait before executing the rendered event, otherwise the controls will be null
-        let intervalId = setInterval(() => {
-            let isLoaded = true;
+        // See if an onrendered event exists
+        if (this.props.onRendered) {
+            // Wait before executing the rendered event, otherwise the controls will be null
+            let intervalId = setInterval(() => {
+                let isLoaded = true;
 
-            // Parse the controls
-            for (let i = 0; i < this.controls.length; i++) {
-                // Set the flag
-                isLoaded = isLoaded && this.controls[i].isRendered;
-            }
+                // Parse the controls
+                for (let i = 0; i < this.controls.length; i++) {
+                    let control = this.controls[i];
 
-            // See if the form is loaded
-            if (isLoaded) {
-                // Clear the interval
-                clearInterval(intervalId);
+                    // Set the flag
+                    isLoaded = isLoaded && control && control.isRendered;
+                }
 
-                // Execute the event
-                this.props.onRendered ? this.props.onRendered(this.controls) : null;
-            }
-        }, 10);
+                // See if the form is loaded
+                if (isLoaded) {
+                    // Clear the interval
+                    clearInterval(intervalId);
+
+                    // Execute the event
+                    this.props.onRendered(this.controls);
+                }
+            }, 10);
+        }
     }
 
     /**
