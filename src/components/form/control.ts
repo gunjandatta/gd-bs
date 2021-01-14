@@ -25,6 +25,7 @@ export class FormControl implements IFormControl {
     private _elLabel: HTMLLabelElement = null;
     private _formProps: IFormProps = null;
     private _ddl: IDropdown = null;
+    private _isRendered: boolean = false;
     private _lb: IListBox = null;
     private _props: IFormControlProps;
     private _tb: IInputGroup = null;
@@ -409,6 +410,9 @@ export class FormControl implements IFormControl {
         setTimeout(() => {
             // Execute the event
             this._props.onControlRendered ? this._props.onControlRendered(this) : null;
+
+            // Set the flag
+            this._isRendered = true;
         }, 10);
     }
 
@@ -477,8 +481,8 @@ export class FormControl implements IFormControl {
         return new Promise(resolve => {
             // Wait for the control to be created
             let id = setInterval(() => {
-                // See if the control exists
-                if (this.el) {
+                // See if the control has been rendered
+                if (this.isRendered) {
                     // Stop the loop
                     clearInterval(id);
 
@@ -488,6 +492,9 @@ export class FormControl implements IFormControl {
             }, 10);
         });
     }
+
+    // Flag indicating the control is loaded
+    get isRendered(): boolean { return this._isRendered; }
 
     // Validates the control
     get isValid(): boolean {

@@ -62,12 +62,6 @@ export class FormGroup {
         });
     }
 
-    // Executes after the control is rendered
-    private onRendered() {
-        // Execute the form rendered event
-        this._formProps.onControlRendered ? this._formProps.onControlRendered(this._control) : null;
-    }
-
     // Renders the control
     private render() {
         // Update the label
@@ -121,9 +115,6 @@ export class FormGroup {
 
             // Append the control, after the label
             elDescription ? this._el.insertBefore(this._control.el, elDescription) : this._el.appendChild(this._control.el);
-
-            // Execute the rendered event
-            this.onRendered();
         });
     }
 

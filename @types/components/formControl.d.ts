@@ -52,6 +52,7 @@ export interface IFormControl {
     dropdown: IDropdown;
     getValue: () => any;
     isLoaded: () => PromiseLike<void>;
+    isRendered: boolean;
     isValid: boolean;
     props: IFormControlProps;
     textbox: IInputGroup;
