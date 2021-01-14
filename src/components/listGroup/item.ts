@@ -2,7 +2,7 @@ import { IListGroupItem } from "../../../@types/components/listGroup";
 import { Base } from "../base";
 import { Badge } from "../badge";
 import { ListGroupClassNames } from ".";
-import { HTMLItem, HTMLTab } from "./templates";
+import { HTMLItem, HTMLTab, HTMLTabItem } from "./templates";
 
 /**
  * List Group Item
@@ -11,7 +11,7 @@ export class ListGroupItem extends Base<IListGroupItem> {
     private _elTab: HTMLDivElement = null;
 
     // Constructor
-    constructor(props: IListGroupItem, isTab: boolean = false, itemTemplate: string = HTMLItem) {
+    constructor(props: IListGroupItem, isTab: boolean = false, itemTemplate: string = isTab ? HTMLTabItem : HTMLItem) {
         super(itemTemplate, props);
 
         // See if this is for a tab
@@ -35,7 +35,24 @@ export class ListGroupItem extends Base<IListGroupItem> {
         this.props.badge ? this.el.classList.add("d-flex") : null;
         this.props.badge ? this.el.classList.add("justify-content-between") : null;
         this.props.isActive ? this.el.classList.add("active") : null;
-        this.props.isDisabled ? this.el.classList.add("disabled") : null;
+
+        // See if this item is active
+        if (this.props.isActive) {
+            // Set the class name
+            this.el.classList.add("active");
+
+            // Set the attribute
+            this.el.setAttribute("aria-current", "true");
+        }
+
+        // See if this item is disabled
+        if (this.props.isDisabled) {
+            // Set the class name
+            this.el.classList.add("disabled");
+
+            // Set the attribute
+            this.el.setAttribute("aria-disabled", "true");
+        }
 
         // Set the class name
         let className = ListGroupClassNames.getByType(this.props.type);
@@ -56,9 +73,6 @@ export class ListGroupItem extends Base<IListGroupItem> {
             this._elTab.id = tabId;
             this._elTab.setAttribute("aria-labelledby", tabId);
             this.props.isActive ? this._elTab.classList.add("active") : null;
-        } else {
-            // Set the properties
-            this.el.setAttribute("href", this.props.href || "#");
         }
 
         // Set the content
