@@ -79,31 +79,30 @@ class _ListGroup extends Base<IListGroupProps> implements IListGroup {
 
         // Get the tab content element
         let tabs = this.el.querySelector(".tab-content");
-        if (tabs) {
-            // Parse the items
-            let items = this.props.items || [];
-            for (let i = 0; i < items.length; i++) {
-                // Create the item
-                let item = new ListGroupItem(items[i], tabs ? true : false, itemTemplate);
-                this._items.push(item);
-                listGroup.appendChild(item.el);
 
-                // See if we are rendering tabs
-                if (tabs) {
-                    // Add the tab content
-                    tabs.appendChild(item.elTab);
+        // Parse the items
+        let items = this.props.items || [];
+        for (let i = 0; i < items.length; i++) {
+            // Create the item
+            let item = new ListGroupItem(items[i], tabs ? true : false, itemTemplate);
+            this._items.push(item);
+            listGroup.appendChild(item.el);
 
-                    // See if the fade option is enabled
-                    if (this.props.fadeTabs) {
+            // See if we are rendering tabs
+            if (tabs) {
+                // Add the tab content
+                tabs.appendChild(item.elTab);
+
+                // See if the fade option is enabled
+                if (this.props.fadeTabs) {
+                    // Set the class name
+                    item.elTab.classList.add("fade");
+
+                    // See if the tab is active
+                    if (item.props.isActive) {
                         // Set the class name
-                        item.elTab.classList.add("fade");
-
-                        // See if the tab is active
-                        if (item.props.isActive) {
-                            // Set the class name
-                            item.elTab.classList.add("show");
-                            item.elTab.classList.add("active");
-                        }
+                        item.elTab.classList.add("show");
+                        item.elTab.classList.add("active");
                     }
                 }
             }

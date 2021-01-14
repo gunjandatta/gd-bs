@@ -61,12 +61,6 @@ export class ListGroupItem extends Base<IListGroupItem> {
             this.el.setAttribute("href", this.props.href || "#");
         }
 
-        // See if there is a badge
-        if (this.props.badge) {
-            // Append a badge
-            this.el.appendChild(Badge(this.props.badge).el);
-        }
-
         // Set the content
         let content = this.props.content || "";
         let elContent = this._elTab || this.el;
@@ -76,6 +70,12 @@ export class ListGroupItem extends Base<IListGroupItem> {
         } else {
             // Append the element
             elContent.appendChild(content);
+        }
+
+        // See if there is a badge
+        if (this.props.badge) {
+            // Append a badge
+            this.el.appendChild(Badge(this.props.badge).el);
         }
     }
 
