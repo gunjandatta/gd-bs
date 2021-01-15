@@ -12,6 +12,7 @@ class _ListBox extends Base<IListBoxProps> implements IListBox {
     private _elSearchBox: HTMLInputElement = null;
     private _elDatalist: HTMLDataListElement = null;
     private _elValues: HTMLUListElement = null;
+    private _initFl: boolean = false;
     private _items: Array<IDropdownItem> = null;
     private _selectedItems: Array<IDropdownItem> = null;
 
@@ -27,6 +28,9 @@ class _ListBox extends Base<IListBoxProps> implements IListBox {
 
         // Configure the parent
         this.configureParent();
+
+        // Set the flag
+        this._initFl = true;
     }
 
     // Configures the list box
@@ -263,7 +267,7 @@ class _ListBox extends Base<IListBoxProps> implements IListBox {
         }
 
         // See if a change event exists
-        if (this.props.onChange) {
+        if (this._initFl && this.props.onChange) {
             // Execute the change event
             this.props.onChange(this.getValue());
         }

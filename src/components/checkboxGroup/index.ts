@@ -17,6 +17,7 @@ export enum CheckboxGroupTypes {
  */
 class _CheckboxGroup extends Base<ICheckboxGroupProps> implements ICheckboxGroup {
     private _checkboxes: Array<CheckboxItem> = null;
+    private _initFl: boolean = false;
 
     // Constructor
     constructor(props: ICheckboxGroupProps, template: string = HTML, cbTemplate?: string) {
@@ -27,6 +28,9 @@ class _CheckboxGroup extends Base<ICheckboxGroupProps> implements ICheckboxGroup
 
         // Configure the parent
         this.configureParent();
+
+        // Set the flag
+        this._initFl = true;
     }
 
     // Configure the card group
@@ -195,7 +199,7 @@ class _CheckboxGroup extends Base<ICheckboxGroupProps> implements ICheckboxGroup
         }
 
         // See if a change event exists
-        if (this.props.onChange) {
+        if (this._initFl && this.props.onChange) {
             // Execute the change event
             this.props.onChange(this.getValue());
         }

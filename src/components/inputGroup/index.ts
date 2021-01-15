@@ -22,6 +22,8 @@ export enum InputGroupTypes {
  * @param props The input group properties.
  */
 class _InputGroup extends Base<IInputGroupProps> implements IInputGroup {
+    private _initFl: boolean = false;
+
     // Constructor
     constructor(props: IInputGroupProps, template: string = HTML) {
         super(template, props);
@@ -37,6 +39,9 @@ class _InputGroup extends Base<IInputGroupProps> implements IInputGroup {
 
         // Configure the parent
         this.configureParent();
+
+        // Set the flag
+        this._initFl = true;
     }
 
     // Configure the card group
@@ -281,7 +286,7 @@ class _InputGroup extends Base<IInputGroupProps> implements IInputGroup {
         this.textbox.value = value;
 
         // See if a change event exists
-        if (this.props.onChange) {
+        if (this._initFl && this.props.onChange) {
             // Execute the change event
             this.props.onChange(value);
         }

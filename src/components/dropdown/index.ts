@@ -31,6 +31,7 @@ const GetHTML = (props: IDropdownProps) => {
  */
 class _Dropdown extends Base<IDropdownProps> implements IDropdown {
     private _elMenu: HTMLElement;
+    private _initFl: boolean = false;
     private _items: Array<DropdownFormItem | DropdownItem> = null;
 
     // Constructor
@@ -45,6 +46,9 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
 
         // Configure the parent
         this.configureParent();
+
+        // Set the flag
+        this._initFl = true;
     }
 
     // Configure the card group
@@ -463,7 +467,7 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
         }
 
         // See if a change event exists
-        if (this.props.onChange) {
+        if (this._initFl && this.props.onChange) {
             // Execute the change event
             this.props.onChange(this.getValue());
         }
