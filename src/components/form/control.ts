@@ -408,8 +408,9 @@ export class FormControl implements IFormControl {
 
         // Wait before executing the rendered event, otherwise the controls will be null
         setTimeout(() => {
-            // Execute the event
+            // Execute the events
             this._props.onControlRendered ? this._props.onControlRendered(this) : null;
+            this._formProps.onControlRendered ? this._formProps.onControlRendered(this) : null;
 
             // Set the flag
             this._isRendered = true;
