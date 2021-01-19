@@ -615,7 +615,7 @@ export class FormControl implements IFormControl {
             // See if there is invalid feedback
             if (validation.invalidMessage || this._props.errorMessage) {
                 // Get the element
-                let invalidClassName = useTooltip ? "invalid-tooltip" : "invalid-feedback";
+                let invalidClassName = "." + (useTooltip ? "invalid-tooltip" : "invalid-feedback");
                 let elMessage = elFormControl.parentNode.querySelector(invalidClassName);
                 if (elMessage == null) {
                     // Create the element
@@ -631,7 +631,7 @@ export class FormControl implements IFormControl {
             // See if there is valid feedback
             if (validation.validMessage) {
                 // Get the element
-                let validClassName = useTooltip ? "valid-tooltip" : "valid-feedback";
+                let validClassName = "." + (useTooltip ? "valid-tooltip" : "valid-feedback");
                 let elMessage = elFormControl.parentNode.querySelector(validClassName);
                 if (elMessage == null) {
                     // Create the element
