@@ -178,9 +178,6 @@ class _Form extends Base<IFormProps> implements IForm {
             }
         }
 
-        // Set the form class
-        this.el.classList.add("was-validated");
-
         // Return the flag
         return isValid;
     }
