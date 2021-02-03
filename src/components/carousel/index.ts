@@ -21,7 +21,7 @@ class _Carousel extends Base<ICarouselProps> implements ICarousel {
         this.configureParent();
 
         // Create the bootstrap object
-        this._bootstrapObj = new carousel(this.el);
+        this._bootstrapObj = new carousel(this.el, this.props.options);
     }
 
     // Configure the card group

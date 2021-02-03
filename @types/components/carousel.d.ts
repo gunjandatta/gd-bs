@@ -133,7 +133,8 @@ export interface ICarouselOptions {
     interval?: number | boolean;
     keyboard?: boolean;
     pause?: string | boolean;
-    ride?: string;
+    slide?: string | boolean;
+    touch?: boolean;
     wrap?: boolean;
 }
 
