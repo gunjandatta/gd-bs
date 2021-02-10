@@ -12,7 +12,34 @@
 <body>
     <h1>Library</h1>
     <form>
-        <div id="dev"></div>
+        <div id="dev" class="bs">
+            <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top"
+                title="Tooltip on top">
+                Tooltip on top
+            </button>
+            <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="right"
+                title="Tooltip on right">
+                Tooltip on right
+            </button>
+            <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                title="Tooltip on bottom">
+                Tooltip on bottom
+            </button>
+            <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="left"
+                title="Tooltip on left">
+                Tooltip on left
+            </button>
+            <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-html="true"
+                title="&lt;em&gt;Tooltip&lt;/em&gt; &lt;u&gt;with&lt;/u&gt; &lt;b&gt;HTML&lt;/b&gt;">
+                Tooltip with HTML
+            </button>
+            <script>
+                var tooltipTriggerList = [].slice.call(document.querySelectorAll('#dev > button'))
+                var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                    return new GD.bootstrap.Tooltip(tooltipTriggerEl)
+                })
+            </script>
+        </div>
         <div id="alert"></div>
         <div id="btn-loading"></div>
         <div id="spinner"></div>
@@ -482,7 +509,7 @@
                 el: document.getElementById("panel"),
                 id: "my-panel",
                 title: "Panel Example",
-                hideCloseButton: false,
+                hideCloseButton: true,
                 type: 12,
                 onRenderBody: function (el) {
                     // Render a jumbotron
@@ -592,7 +619,7 @@
                     GD.Components.Button({
                         el: el,
                         text: "Submit",
-                        onClick: function() {
+                        onClick: function () {
                             // Validate the form
                             console.log(window["modalForm"].isValid());
                         }
