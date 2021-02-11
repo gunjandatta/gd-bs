@@ -97,9 +97,6 @@ export interface IModalOptions {
 
     /** Closes the modal when escape key is pressed. */
     keyboard?: boolean;
-
-    /** Shows the modal when initialized. */
-    show?: boolean;
 }
 
 /**

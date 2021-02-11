@@ -64,9 +64,16 @@ export class NavbarItem {
 
         // Update the link
         if (link) {
-            this._props.isDisabled ? link.classList.add("disabled") : null;
             this._props.target ? link.setAttribute("data-bs-target", this._props.target) : null;
             this._props.toggle ? link.setAttribute("data-bs-toggle", this._props.toggle) : null;
+
+            // See if the link is disabled
+            if (this._props.isDisabled) {
+                // Add the class and set the tab index
+                link.classList.add("disabled");
+                link.setAttribute("aria-disabled", "true");
+                link.tabIndex = -1;
+            }
         }
     }
 

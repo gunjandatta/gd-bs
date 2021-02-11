@@ -46,8 +46,8 @@ class _Collapse extends Base<ICollapseProps> implements ICollapse {
      * Bootstrap
      */
 
-    // The bootstrap button
-    private get bsCollapse() {
+    // The bootstrap collapse
+    private get collapse() {
         // Create the bootstrap object if it doesn't exist
         this._bootstrapObj = this._bootstrapObj || new collapse(this.el);
 
@@ -56,13 +56,13 @@ class _Collapse extends Base<ICollapseProps> implements ICollapse {
     }
 
     // Disposes the collapse
-    dispose() { this.bsCollapse ? this.bsCollapse.dispose() : null; }
+    dispose() { this.collapse.dispose(); }
 
     // Flag determining if the collapse is visible
     get isVisible() { return this.el.classList.contains("show"); }
 
     // Toggles the collapse
-    toggle() { this.bsCollapse ? this.bsCollapse.toggle() : null; }
+    toggle() { this.collapse.toggle(); }
 
     /**
      * Public Interface

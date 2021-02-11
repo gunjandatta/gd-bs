@@ -131,6 +131,7 @@ export interface INavbarItem {
 export interface INavbarProps extends IBaseProps<INavbar> {
     brand?: string;
     brandUrl?: string;
+    enableScrolling?: boolean;
     enableSearch?: boolean;
     id?: string;
     items?: Array<INavbarItem>;

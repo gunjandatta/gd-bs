@@ -1,4 +1,3 @@
-import * as alert from "bootstrap/js/dist/alert";
 import { IAlert, IAlertProps } from "../../../@types/components/alert";
 import { Base } from "../base";
 import { ClassNames } from "../classNames";
@@ -54,9 +53,6 @@ class _Alert extends Base<IAlertProps> implements IAlert {
 
         // Configure the parent element
         this.configureParent();
-
-        // Create the bootstrap object
-        this._bootstrapObj = new alert(this.el);
     }
 
     // Configure the alert
@@ -120,11 +116,20 @@ class _Alert extends Base<IAlertProps> implements IAlert {
      * Bootstrap
      */
 
+    // The bootstrap alert
+    private get alert() {
+        // Create the bootstrap object if it doesn't exist
+        this._bootstrapObj = this._bootstrapObj || new alert(this.el);
+
+        // Return the object
+        return this._bootstrapObj;
+    }
+
     // Closes the alert
-    close() { this._bootstrapObj.close(); }
+    close() { this.alert.close(); }
 
     // Disposes the alert
-    dispose() { this._bootstrapObj.dispose(); }
+    dispose() { this.alert.dispose(); }
 
     /**
      * Public Properties

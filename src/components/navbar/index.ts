@@ -65,6 +65,13 @@ class _Navbar extends Base<INavbarProps> implements INavbar {
             toggler.setAttribute("data-bs-target", "#" + navbar.id);
         }
 
+        // Set the scroll
+        let nav = this.el.querySelector(".navbar-nav") as HTMLElement;
+        if(nav && this.props.enableScrolling) {
+            // Add the class
+            nav.classList.add("navbar-nav-scroll");
+        }
+
         // Add the classes based on the type
         this._btnSearch = this.el.querySelector("button[type='submit']") as HTMLButtonElement;
 

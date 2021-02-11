@@ -126,21 +126,24 @@ class _Modal extends Base<IModalProps> implements IModal {
         }
 
         // Get the modal options
-        let options: IModalOptions = this.props.options || {};
-
-        // See if this is a static modal
-        if (this.props.isStatic) {
+        let options: IModalOptions = this.props.options;
+        if (options) {
             // Set the backdrop
-            options.backdrop = "static";
-        }
+            if (typeof (options.backdrop) === "boolean") {
+                this.el.setAttribute("data-bs-backdrop", options.backdrop ? "true" : "false");
+            } else if (typeof (options.backdrop) === "string") {
+                this.el.setAttribute("data-bs-backdrop", options.backdrop);
+            }
 
-        // Create the modal
-        this._bootstrapObj = new modal(this.el, options);
+            // Set the focus
+            if (typeof (options.focus) === "boolean") {
+                this.el.setAttribute("data-bs-focus", options.backdrop ? "true" : "false");
+            }
 
-        // The option to 'show' doesn't seem to work
-        if (options.show) {
-            // Show the modal
-            this.show();
+            // Set the keyboard
+            if (typeof (options.keyboard) === "boolean") {
+                this.el.setAttribute("data-bs-keyboard", options.backdrop ? "true" : "false");
+            }
         }
     }
 
@@ -174,20 +177,29 @@ class _Modal extends Base<IModalProps> implements IModal {
      * Bootstrap
      */
 
+    // The bootstrap modal
+    private get modal() {
+        // Create the bootstrap object if it doesn't exist
+        this._bootstrapObj = this._bootstrapObj || new modal(this.el);
+
+        // Return the object
+        return this._bootstrapObj;
+    }
+
     // Disposes the modal
-    dispose() { this._bootstrapObj.dispose(); }
+    dispose() { this.modal.dispose(); }
 
     // Updates the modal
-    handleUpdate() { this._bootstrapObj.handleUpdate(); }
+    handleUpdate() { this.modal.handleUpdate(); }
 
     // Hides the modal
-    hide() { this._bootstrapObj.hide(); }
+    hide() { this.modal.hide(); }
 
     // Shows the modal
-    show() { this._bootstrapObj.show(); }
+    show() { this.modal.show(); }
 
     // Toggles the modal
-    toggle() { this._bootstrapObj.toggle(); }
+    toggle() { this.modal.toggle(); }
 
     /**
      * Public Interface
