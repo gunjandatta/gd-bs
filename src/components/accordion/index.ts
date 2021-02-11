@@ -32,7 +32,7 @@ class _Accordion extends Base<IAccordionProps> implements IAccordion {
         let items = this.props.items || [];
         for (let i = 0; i < items.length; i++) {
             // Create the item and append it to the card
-            let item = new AccordionItem(this.el.id, this.el.id + "_" + i, items[i], itemTemplate);
+            let item = new AccordionItem(this.el.id, this.el.id + i, items[i], itemTemplate);
             this._items.push(item);
             this.el.appendChild(item.el);
         }

@@ -260,7 +260,7 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
         // Update the link
         let link = this.el.querySelector("a");
         if (link) {
-            link.id = ("navbarDDL_" + (this.props.label == null ? "" : this.props.label)).replace(/ /g, '');
+            link.id = ("navbarDDL" + (this.props.label == null ? "" : this.props.label)).replace(/ /g, '');
             this.props.title ? link.title = this.props.title : null;
             this.props.isReadonly ? link.setAttribute("aria-disabled", "true") : null;
             link.innerHTML = this.props.label == null ? "" : this.props.label;

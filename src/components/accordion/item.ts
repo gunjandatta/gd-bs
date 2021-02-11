@@ -15,7 +15,7 @@ export class AccordionItem {
     // Constructor
     constructor(parentId: string, itemId: string, props: IAccordionItem, template: string) {
         // Save the properties
-        this._id = "collapse_" + itemId;
+        this._id = "collapse" + itemId;
         this._itemId = itemId;
         this._parentId = parentId;
         this._props = props;
@@ -94,9 +94,9 @@ export class AccordionItem {
             this._props.showFl ? null : this._elHeader.classList.add("collapsed");
 
             // Set the properties
-            this._elHeader.setAttribute("aria-controls", "collapse_" + this._itemId);
+            this._elHeader.setAttribute("aria-controls", "collapse" + this._itemId);
             this._elHeader.setAttribute("aria-expanded", this._props.showFl ? "true" : "false");
-            this._elHeader.setAttribute("data-bs-target", '#' + "collapse_" + this._itemId);
+            this._elHeader.setAttribute("data-bs-target", '#' + "collapse" + this._itemId);
             this._elHeader.innerHTML = this._props.header;
         }
     }
