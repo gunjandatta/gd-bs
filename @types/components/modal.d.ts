@@ -78,6 +78,9 @@ export interface IModal {
     /** Updates the title. */
     setTitle: (title: string) => void;
 
+    /** Updates the type. */
+    setType: (modalType: number) => void;
+
     /** Manually opens a modal. */
     show: () => void;
 

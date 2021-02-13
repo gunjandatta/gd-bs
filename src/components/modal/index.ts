@@ -217,5 +217,18 @@ class _Modal extends Base<IModalProps> implements IModal {
             elTitle.innerHTML = title == null ? "" : title;
         }
     }
+
+    // Updates the type
+    setType(modalType: number) {
+        // Parse the class names
+        ModalClassNames.parse(className => {
+            // Remove the class names
+            this.el.classList.remove(className);
+        });
+
+        // Set the class name
+        let className = ModalClassNames.getByType(modalType);
+        className ? this.el.classList.add(className) : null;
+    }
 }
 export const Modal = (props: IModalProps, template?: string): IModal => { return new _Modal(props, template); }
