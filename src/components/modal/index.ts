@@ -223,7 +223,7 @@ class _Modal extends Base<IModalProps> implements IModal {
         // Parse the class names
         ModalClassNames.parse(className => {
             // Remove the class names
-            this.el.classList.remove(className);
+            className ? this.el.classList.remove(className) : null;
         });
 
         // Set the class name
