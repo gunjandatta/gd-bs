@@ -1,11 +1,11 @@
 {
   "name": "gd-bs",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "description": "Bootstrap JavaScript, TypeScript and Web Components library.",
   "main": "dist/gd-bs-icons.min.js",
   "typings": "@types/index.d.ts",
   "scripts": {
-    "all": "npm run clean && npm run pre-build && npm run build && npm run prod",
+    "all": "npm run clean && npm run pre-build && npm run build && npm run prod && npm run typings",
     "build": "npm run build-icons && npm run build-no-icons && npm run build-core",
     "build-core": "webpack --mode=development --config=webpack.core.js",
     "build-icons": "webpack --mode=development --config=webpack.icons.js",
@@ -17,7 +17,8 @@
     "prod": "npm run prod-core && npm run prod-no-icons && npm run prod-icons",
     "prod-core": "webpack --mode=production --config=webpack.core.js",
     "prod-icons": "webpack --mode=production --config=webpack.icons.js",
-    "prod-no-icons": "webpack --mode=production"
+    "prod-no-icons": "webpack --mode=production",
+    "typings": "dts-bundle --configJson dts-bundle.json"
   },
   "repository": {
     "type": "git",
@@ -43,6 +44,7 @@
     "bootstrap": "^5.0.0-beta2",
     "bootstrap-icons": "^1.3.0",
     "css-loader": "^5.0.1",
+    "dts-bundle": "^0.7.3",
     "html-loader": "^1.3.2",
     "node-sass": "^5.0.0",
     "postcss-loader": "^4.1.0",
