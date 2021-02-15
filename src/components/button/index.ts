@@ -1,4 +1,4 @@
-import * as button from "bootstrap/js/dist/button";
+import { bootstrap } from "../../core";
 import { IButton, IButtonProps } from "../../../@types/components/button";
 import { Icons } from "../../icons";
 import { Base } from "../base";
@@ -158,7 +158,7 @@ class _Button extends Base<IButtonProps> implements IButton {
     // The bootstrap button
     private get button() {
         // Create the bootstrap object if it doesn't exist
-        this._bootstrapObj = this._bootstrapObj || new button(this.el);
+        this._bootstrapObj = this._bootstrapObj || new bootstrap.Button(this.el);
 
         // Return the object
         return this._bootstrapObj;

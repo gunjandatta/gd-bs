@@ -1,4 +1,4 @@
-import * as tooltip from "bootstrap/js/dist/tooltip";
+import { bootstrap } from "../../core";
 import { IButton } from "../../../@types/components/button";
 import { ITooltip, ITooltipProps } from "../../../@types/components/tooltip";
 import { Base } from "../base";
@@ -121,7 +121,7 @@ class _Tooltip extends Base<ITooltipProps> {
         }
 
         // Create the tooltip
-        this._bootstrapObj = new tooltip(this.el, options);
+        this._bootstrapObj = new bootstrap.Tooltip(this.el, options);
     }
 
     /**

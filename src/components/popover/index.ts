@@ -1,4 +1,4 @@
-import * as popover from "bootstrap/js/dist/popover";
+import { bootstrap } from "../../core";
 import { Button } from "../button";
 import { IPopover, IPopoverProps } from "../../../@types/components/popover";
 import { Base } from "../base";
@@ -108,7 +108,7 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
         }
 
         // Create the popover
-        this._bootstrapObj = new popover(this.el, options);
+        this._bootstrapObj = new bootstrap.Popover(this.el, options);
     }
 
     /**

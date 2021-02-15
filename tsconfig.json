@@ -8,6 +8,7 @@
         "target": "es5"
     },
     "include": [
+        "libs/**/*",
         "src/**/*.ts"
     ]
 }

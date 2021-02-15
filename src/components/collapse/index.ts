@@ -1,4 +1,4 @@
-import * as collapse from "bootstrap/js/dist/collapse";
+import { bootstrap } from "../../core";
 import { ICollapse, ICollapseProps } from "../../../@types/components/collapse";
 import { Base } from "../base";
 import { HTML } from "./templates";
@@ -49,7 +49,7 @@ class _Collapse extends Base<ICollapseProps> implements ICollapse {
     // The bootstrap collapse
     private get collapse() {
         // Create the bootstrap object if it doesn't exist
-        this._bootstrapObj = this._bootstrapObj || new collapse(this.el);
+        this._bootstrapObj = this._bootstrapObj || new bootstrap.Collapse(this.el);
 
         // Return the object
         return this._bootstrapObj;

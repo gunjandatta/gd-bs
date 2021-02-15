@@ -1,4 +1,4 @@
-import * as carousel from "bootstrap/js/dist/carousel";
+import { bootstrap } from "../../core";
 import { Base } from "../base";
 import { ICarousel, ICarouselProps } from "../../../@types/components/carousel";
 import { CarouselItem } from "./item";
@@ -21,7 +21,7 @@ class _Carousel extends Base<ICarouselProps> implements ICarousel {
         this.configureParent();
 
         // Create the bootstrap object
-        this._bootstrapObj = new carousel(this.el, this.props.options);
+        this._bootstrapObj = new bootstrap.Carousel(this.el, this.props.options);
     }
 
     // Configure the card group

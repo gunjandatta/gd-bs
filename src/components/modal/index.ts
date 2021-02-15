@@ -1,4 +1,4 @@
-import * as modal from "bootstrap/js/dist/modal";
+import { bootstrap } from "../../core";
 import { IModal, IModalProps, IModalOptions } from "../../../@types/components/modal";
 import { Base } from "../base";
 import { ClassNames } from "../classNames";
@@ -180,7 +180,7 @@ class _Modal extends Base<IModalProps> implements IModal {
     // The bootstrap modal
     private get modal() {
         // Create the bootstrap object if it doesn't exist
-        this._bootstrapObj = this._bootstrapObj || new modal(this.el);
+        this._bootstrapObj = this._bootstrapObj || new bootstrap.Modal(this.el);
 
         // Return the object
         return this._bootstrapObj;

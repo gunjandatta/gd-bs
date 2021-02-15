@@ -1,4 +1,4 @@
-import * as toast from "bootstrap/js/dist/toast";
+import { bootstrap } from "../../core";
 import { IToast, IToastProps } from "../../../@types/components/toast";
 import { Base } from "../base";
 import { HTML } from "./templates";
@@ -90,7 +90,7 @@ class _Toast extends Base<IToastProps> implements IToast {
 
         // Initialize the toast component
         let options = this.props.options || {};
-        this._bootstrapObj = new toast(this.el, options);
+        this._bootstrapObj = new bootstrap.Toast(this.el, options);
 
         // See if we are showing this toast
         if (options.autohide == false) {

@@ -1,4 +1,4 @@
-//import * as offcanvas from "bootstrap/js/dist/offcanvas";
+import { bootstrap } from "../../core";
 import { IOffcanvas, IOffcanvasProps } from "../../../@types/components/offcanvas";
 import { Base } from "../base";
 import { HTML } from "./templates";
@@ -19,7 +19,7 @@ class _Offcanvas extends Base<IOffcanvasProps> implements IOffcanvas {
         this.configureParent();
 
         // Create the offcanvas
-        //this._bootstrapObj = new offcanvas(this.el);
+        //this._bootstrapObj = new bootstrap.Offcanvas(this.el);
     }
 
     // Configure the card group
