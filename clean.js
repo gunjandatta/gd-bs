@@ -73,9 +73,14 @@ fs.mkdirSync("./src/icons");
 fs.mkdirSync("./src/icons/svgs");
 fs.mkdirSync("./libs");
 
-// Copy the libraries
+// Copy the popper library
 fs.copyFileSync("node_modules/@popperjs/core/dist/umd/popper.min.js", "libs/popper.min.js");
-fs.copyFileSync("node_modules/bootstrap/dist/js/bootstrap.min.js", "libs/bootstrap.min.js");
+
+// Read the bootstrap library
+var data = fs.readFileSync("node_modules/bootstrap/dist/js/bootstrap.min.js", "utf8");
+
+// Write the bootstrap library
+fs.writeFileSync("libs/bootstrap.min.js", data.replace("@popperjs/core", "./popper.min.js"), "utf8");
 
 // Log
 console.log("Successfully cleaned the library");
