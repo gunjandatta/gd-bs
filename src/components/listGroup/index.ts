@@ -1,4 +1,3 @@
-import "bootstrap/js/dist/tab";
 import { IListGroup, IListGroupProps } from "../../../@types/components/listGroup";
 import { Base } from "../base";
 import { ClassNames } from "../classNames";
