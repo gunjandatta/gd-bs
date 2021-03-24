@@ -4356,6 +4356,7 @@ declare module 'gd-bs/components/listGroup' {
             fadeTabs?: boolean;
             isFlush?: boolean;
             isHorizontal?: boolean;
+            isNumbered?: boolean;
             isTabs?: boolean;
             items?: Array<IListGroupItem<T>>;
     }
@@ -4409,7 +4410,6 @@ declare module 'gd-bs/components/modal' {
     export const ModalTypes: IModalTypes;
     
     import { IBaseProps } from "gd-bs/base";
-    import { IButtonProps } from "gd-bs/components/button";
     
     /**
         * Modal
@@ -4489,10 +4489,6 @@ declare module 'gd-bs/components/modal' {
             FullMedium: number;
             FullLarge: number;
             FullXLarge: number;
-            PanelSmall: number;
-            PanelMedium: number;
-            PanelLarge: number;
-            PanelXLarge: number;
     }
 }
 
@@ -4705,6 +4701,11 @@ declare module 'gd-bs/components/offcanvas' {
         */
     export const Offcanvas: (props: IOffcanvasProps, template?: string) => IOffcanvas;
     
+    /**
+        * Offcanvas Types
+        */
+    export const OffcanvasTypes: IOffcanvasTypes;
+    
     import { IBaseProps } from "gd-bs/base";
     
     /**
@@ -4730,12 +4731,21 @@ declare module 'gd-bs/components/offcanvas' {
     export interface IOffcanvasProps<T = Element> extends IBaseProps<IOffcanvas> {
             body?: string | T;
             data?: any;
-            enableBackdrop?: boolean;
-            enableScroll?: boolean;
             id?: string;
             onRenderBody?: (el?: HTMLDivElement, props?: IOffcanvasProps) => void;
             onRenderHeader?: (el?: HTMLDivElement, props?: IOffcanvasProps) => void;
             title?: string | T;
+            type?: number;
+            options: IOffcanvasOptions;
+    }
+    
+    /**
+        * Offcanvas Options
+        */
+    export interface IOffcanvasOptions {
+            backdrop?: boolean;
+            keyboard?: boolean;
+            scroll?: boolean;
     }
     
     /**

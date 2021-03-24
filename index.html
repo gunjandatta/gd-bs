@@ -26,6 +26,7 @@
         <div id="cbGroup"></div>
         <div id="listbox"></div>
         <div id="modal"></div>
+        <div id="offcanvas"></div>
         <div id="textbox"></div>
         <div id="multi-textbox"></div>
         <div id="list-group"></div>
@@ -782,6 +783,19 @@
                         }
                     })
                 }
+            });
+            GD.Components.Button({
+                el: document.querySelector("#offcanvas"),
+                text: "Offcanvas",
+                target: "#offcanvas-demo",
+                toggle: "offcanvas"
+            });
+            GD.Components.Offcanvas({
+                el: document.querySelector("#offcanvas"),
+                id: "offcanvas-demo",
+                title: "Offcanvas Demo",
+                body: "<h5>Hello Canvas</h5>",
+                type: 1
             });
             GD.Components.InputGroup({
                 el: document.querySelector("#textbox"),
