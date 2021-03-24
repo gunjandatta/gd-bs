@@ -1,7 +1,26 @@
 import { bootstrap } from "../../core";
-import { IOffcanvas, IOffcanvasProps } from "../../../@types/components/offcanvas";
+import { ClassNames } from "../classNames";
+import { IOffcanvas, IOffcanvasOptions, IOffcanvasProps } from "../../../@types/components/offcanvas";
 import { Base } from "../base";
 import { HTML } from "./templates";
+
+/**
+ * Offcanvas Types
+ */
+export enum OffcanvasTypes {
+    Bottom = 1,
+    End = 2,
+    Start = 3
+}
+
+/**
+ * Offcanvas Classes
+ */
+export const OffcanvasClassNames = new ClassNames([
+    "offcanvas-bottom",
+    "offcanvas-end",
+    "offcanvas-start"
+]);
 
 /**
  * Offcanvas
@@ -17,17 +36,26 @@ class _Offcanvas extends Base<IOffcanvasProps> implements IOffcanvas {
 
         // Configure the parent
         this.configureParent();
-
-        // Create the offcanvas
-        //this._bootstrapObj = new bootstrap.Offcanvas(this.el);
     }
 
     // Configure the card group
     private configure() {
         // Set the attributes
         this.props.id ? this.el.id = this.props.id : null;
-        this.props.enableBackdrop ? this.el.setAttribute("data-bs-body", "backdrop") : null;
-        this.props.enableScroll ? this.el.setAttribute("data-bs-body", "scroll") : null;
+
+        // Set the type
+        this.setType(this.props.type);
+
+        // Get the options
+        let options: IOffcanvasOptions = this.props.options || {
+            backdrop: true,
+            keyboard: true,
+            scroll: false
+        };
+
+        // Set the properties
+        options.backdrop ? this.el.setAttribute("data-bs-body", "backdrop") : null;
+        options.scroll ? this.el.setAttribute("data-bs-body", "scroll") : null;
 
         // Set the header
         let title = this.props.title || "";
@@ -58,6 +86,9 @@ class _Offcanvas extends Base<IOffcanvasProps> implements IOffcanvas {
         // Execute the events
         this.props.onRenderHeader ? this.props.onRenderHeader(header, this.props) : null;
         this.props.onRenderBody ? this.props.onRenderBody(body, this.props) : null;
+
+        // Create the offcanvas
+        this._bootstrapObj = new bootstrap.Offcanvas(this.el, options);
     }
 
     /**
@@ -76,5 +107,18 @@ class _Offcanvas extends Base<IOffcanvasProps> implements IOffcanvas {
     /**
      * Public Interface
      */
+
+    // Sets the offcanvas type
+    setType(offcanvasType: number) {
+        // Parse the class names
+        OffcanvasClassNames.parse(className => {
+            // Remove the class names
+            this.el.classList.remove(className);
+        });
+
+        // Set the class name
+        let className = OffcanvasClassNames.getByType(offcanvasType) || OffcanvasClassNames.getByType(OffcanvasTypes.End);
+        this.el.classList.add(className);
+    }
 }
 export const Offcanvas = (props: IOffcanvasProps, template?: string): IOffcanvas => { return new _Offcanvas(props, template); }

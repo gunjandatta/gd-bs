@@ -16,6 +16,7 @@ export * from "./jumbotron";
 export * from "./listBox";
 export * from "./listGroup";
 export * from "./modal";
+export * from "./offcanvas";
 export * from "./nav";
 export * from "./navbar";
 export * from "./pagination";
