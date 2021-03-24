@@ -16,11 +16,7 @@ export enum ModalTypes {
     FullSmall = 6,
     FullMedium = 7,
     FullLarge = 8,
-    FullXLarge = 9,
-    PanelSmall = 10,
-    PanelMedium = 11,
-    PanelLarge = 12,
-    PanelXLarge = 13
+    FullXLarge = 9
 }
 
 /**
@@ -35,11 +31,7 @@ export const ModalClassNames = new ClassNames([
     "modal-fullscreen-sm-down",
     "modal-fullscreen-md-down",
     "modal-fullscreen-lg-down",
-    "modal-fullscreen-xl-down",
-    "panel-sm",
-    "panel-md",
-    "panel-lg",
-    "panel-xl"
+    "modal-fullscreen-xl-down"
 ]);
 
 /**
@@ -73,16 +65,6 @@ class _Modal extends Base<IModalProps> implements IModal {
         let dialog = this.el.querySelector(".modal-dialog") as HTMLElement;
         if (dialog) {
             this.props.isCentered ? dialog.classList.add("modal-dialog-centered") : null;
-
-            // See if this is a panel
-            switch (this.props.type) {
-                case ModalTypes.PanelSmall:
-                case ModalTypes.PanelMedium:
-                case ModalTypes.PanelLarge:
-                case ModalTypes.PanelXLarge:
-                    dialog.classList.add(ModalClassNames.getByType(ModalTypes.Full));
-                    break;
-            }
 
             // Add the class name, based on the type
             let className = ModalClassNames.getByType(this.props.type);
