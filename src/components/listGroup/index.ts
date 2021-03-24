@@ -57,6 +57,7 @@ class _ListGroup extends Base<IListGroupProps> implements IListGroup {
         if (listGroup) {
             this.props.isFlush ? listGroup.classList.add("list-group-flush") : null;
             this.props.isHorizontal ? listGroup.classList.add("list-group-horizontal") : null;
+            this.props.isNumbered ? listGroup.classList.add("list-group-numbered") : null;
             this.props.isTabs ? listGroup.setAttribute("role", "tablist") : null;
         }
 
