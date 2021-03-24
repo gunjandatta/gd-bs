@@ -36,7 +36,7 @@ export interface IOffcanvasProps<T = Element> extends IBaseProps<IOffcanvas> {
     id?: string;
     onRenderBody?: (el?: HTMLDivElement, props?: IOffcanvasProps) => void;
     onRenderHeader?: (el?: HTMLDivElement, props?: IOffcanvasProps) => void;
-    options: IOffcanvasOptions;
+    options?: IOffcanvasOptions;
     title?: string | T;
     type?: number;
 }
