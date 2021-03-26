@@ -175,7 +175,7 @@ class _CheckboxGroup extends Base<ICheckboxGroupProps> implements ICheckboxGroup
     // Sets the dropdown value
     setValue(value) {
         // Ensure it's an array
-        let values = typeof (value.length) === "number" && typeof (value) !== "string" ? value : [value];
+        let values = value ? (typeof (value.length) === "number" && typeof (value) !== "string" ? value : [value]) : [];
 
         // Parse the items
         for (let i = 0; i < this._checkboxes.length; i++) {
