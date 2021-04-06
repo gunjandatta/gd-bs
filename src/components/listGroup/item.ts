@@ -60,7 +60,7 @@ export class ListGroupItem extends Base<IListGroupItem> {
 
         // See if this is a tab
         if (this._elTab) {
-            let tabId = this.props.tabName.replace(/[^a-zA-Z0-9]/, "");
+            let tabId = this.props.tabName.replace(/[^a-zA-Z]/g, "");
 
             // Set the properties
             this.el.id = tabId + "-tab";

@@ -39,7 +39,7 @@ export class NavLink extends Base<INavLink> {
 
             // See if this is a tab
             if (this._elTab) {
-                let tabId = this.props.title.replace(/[^a-zA-Z0-9]/, "");
+                let tabId = this.props.title.replace(/[^a-zA-Z]/g, "");
 
                 // Set the properties
                 this._elLink.id = tabId + "-tab";
