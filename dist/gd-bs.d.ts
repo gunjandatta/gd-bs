@@ -3,13 +3,12 @@
 declare module 'gd-bs' {
     import * as Components from "gd-bs/components";
     import { Icons, IconTypes } from "gd-bs/icons";
-    var bootstrap, popper: any;
+    var bootstrap: any;
     
     export {
         bootstrap,
         Components,
-        Icons, IconTypes,
-        popper
+        Icons, IconTypes
     }
 }
 

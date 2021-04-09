@@ -2,14 +2,13 @@
 import "./ie";
 
 // The bootstrap library
-import * as bootstrap from "../libs/bootstrap.min.js";
-import * as popper from "../libs/popper.min.js";
+import * as bootstrap from "../libs/bootstrap.bundle.min.js";
 
 // JS components
 import * as Components from "./components";
 
 // Global library
-window["GD"] = { bootstrap, Components, popper }
+window["GD"] = { bootstrap, Components }
 
 // Export the core libraries
-export { bootstrap, Components, popper }
+export { bootstrap, Components }
