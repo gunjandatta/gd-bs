@@ -10,6 +10,7 @@ module.exports = (env, argv) => {
             path: path.resolve(__dirname, "dist"),
             filename: "gd-bs-icons" + (isDev ? "" : ".min") + ".js"
         },
+        target: ["web", "es5"],
         module: {
             rules: [
                 // Handle TypeScript Files
