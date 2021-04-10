@@ -5,7 +5,12 @@ module.exports = (env, argv) => {
 
     // Return the configuration
     return {
-        entry: "./build/bootstrap.js",
+        entry: [
+            "./node_modules/core-js/es/promise/index.js",
+            "./node_modules/core-js/es/object/assign.js",
+            "./node_modules/core-js/es/string/index.js",
+            "./build/bootstrap.js"
+        ],
         output: {
             path: path.resolve(__dirname, "dist"),
             filename: "gd-bs" + (isDev ? "" : ".min") + ".js"

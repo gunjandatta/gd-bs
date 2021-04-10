@@ -5,7 +5,12 @@ module.exports = (env, argv) => {
 
     // Return the configuration
     return {
-        entry: "./build/index.js",
+        entry: [
+            "./node_modules/core-js/es/promise/index.js",
+            "./node_modules/core-js/es/object/assign.js",
+            "./node_modules/core-js/es/string/index.js",
+            "./build/index.js"
+        ],
         output: {
             path: path.resolve(__dirname, "dist"),
             filename: "gd-bs-icons" + (isDev ? "" : ".min") + ".js"

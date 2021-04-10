@@ -15479,10 +15479,9 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", ({\n  value: true\n}));
 /*!*********************!*\
   !*** ./build/ie.js ***!
   \*********************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+/***/ (function() {
 
-"use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", ({\n  value: true\n}));\n\n__webpack_require__(/*! core-js/es/promise */ \"./node_modules/.pnpm/core-js@3.10.1/node_modules/core-js/es/promise/index.js\");\n\n__webpack_require__(/*! core-js/es/object/assign */ \"./node_modules/.pnpm/core-js@3.10.1/node_modules/core-js/es/object/assign.js\");\n\n__webpack_require__(/*! core-js/es/string */ \"./node_modules/.pnpm/core-js@3.10.1/node_modules/core-js/es/string/index.js\"); // Fix to ensure the library loads in IE\n\n\n(function () {\n  if (typeof window.CustomEvent === \"function\") return false; //If not IE\n\n  function CustomEvent(event, params) {\n    params = params || {\n      bubbles: false,\n      cancelable: false,\n      detail: undefined\n    };\n    var evt = document.createEvent('CustomEvent');\n    evt.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);\n    return evt;\n  }\n\n  CustomEvent.prototype = window.Event.prototype;\n  window.CustomEvent = CustomEvent;\n})();\n\n//# sourceURL=webpack://gd-bs/./build/ie.js?");
+eval("// Fix to ensure the library loads in IE\n(function () {\n  if (typeof window.CustomEvent === \"function\") return false; //If not IE\n\n  function CustomEvent(event, params) {\n    params = params || {\n      bubbles: false,\n      cancelable: false,\n      detail: undefined\n    };\n    var evt = document.createEvent('CustomEvent');\n    evt.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);\n    return evt;\n  }\n\n  CustomEvent.prototype = window.Event.prototype;\n  window.CustomEvent = CustomEvent;\n})();\n\n//# sourceURL=webpack://gd-bs/./build/ie.js?");
 
 /***/ }),
 
@@ -17139,6 +17138,9 @@ eval("var global = __webpack_require__(/*! ../internals/global */ \"./node_modul
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module is referenced by other modules so it can't be inlined
+/******/ 	__webpack_require__("./node_modules/.pnpm/core-js@3.10.1/node_modules/core-js/es/promise/index.js");
+/******/ 	__webpack_require__("./node_modules/.pnpm/core-js@3.10.1/node_modules/core-js/es/object/assign.js");
+/******/ 	__webpack_require__("./node_modules/.pnpm/core-js@3.10.1/node_modules/core-js/es/string/index.js");
 /******/ 	var __webpack_exports__ = __webpack_require__("./build/bootstrap.js");
 /******/ 	
 /******/ })()
