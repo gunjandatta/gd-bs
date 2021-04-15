@@ -353,6 +353,26 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
      * Public Interface
      */
 
+    // Disables the button
+    disable() {
+        // Get the buttons
+        let buttons = this.el.querySelectorAll("button");
+        for (let i = 0; i < buttons.length; i++) {
+            // Disable the button
+            (buttons[i] as HTMLButtonElement).disabled = true;
+        }
+    }
+
+    // Enables the button
+    enable() {
+        // Get the buttons
+        let buttons = this.el.querySelectorAll("button");
+        for (let i = 0; i < buttons.length; i++) {
+            // Enable the button
+            (buttons[i] as HTMLButtonElement).disabled = false;
+        }
+    }
+
     // Gets the value
     getValue() {
         let values = [];

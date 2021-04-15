@@ -3662,8 +3662,14 @@ declare module 'gd-bs/components/dropdown' {
         * Dropdown
         */
     export interface IDropdown {
+            /** Disables the dropdown. */
+            disable: () => void;
+    
             /** Disposes the dropdown. */
             dispose: () => void;
+    
+            /** Enables the dropdown. */
+            enable: () => void;
     
             /** The element. */
             el: Element;
