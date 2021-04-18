@@ -59,14 +59,8 @@ import { IBaseProps } from "../base";
  * Modal
  */
 export interface IModal {
-    /** Disposes the modal. */
-    dispose: () => void;
-
     /** The element. */
     el: Element,
-
-    /** Manually readjust the modal’s position if the height of a modal changes while it is open (i.e. in case a scrollbar appears). */
-    handleUpdate: () => void;
 
     /** Manually hides a modal. */
     hide: () => void;

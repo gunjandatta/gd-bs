@@ -1,4 +1,3 @@
-import { bootstrap } from "../../core";
 import { IModal, IModalProps, IModalOptions } from "../../../@types/components/modal";
 import { Base } from "../base";
 import { ClassNames } from "../classNames";
@@ -136,56 +135,47 @@ class _Modal extends Base<IModalProps> implements IModal {
         this.props.onRenderFooter ? this.props.onRenderFooter(this.el.querySelector(".modal-footer")) : null;
 
         // Get the close button
-        let elClose = this.el.querySelector("button.close");
+        let elClose = this.el.querySelector(".btn-close");
         if (elClose) {
             // Add a click event
             elClose.addEventListener("click", () => {
                 // Hide the modal
                 this.hide();
-            });
-        }
 
-        // See if there is a close event
-        if (this.props.onClose) {
-            // Add a hidden event
-            this.el.addEventListener("hidden.bs.modal", () => {
                 // Call the event
-                this.props.onClose(this.el);
+                this.props.onClose ? this.props.onClose(this.el) : null;
+            });
+        }
+
+        // See if the modal is not static
+        if (this.props.isStatic != true) {
+            let closeFl = true;
+
+            // Add a click event within the modal
+            this.el.querySelector(".modal-content").addEventListener("click", () => {
+                // Set the flag
+                closeFl = false;
+
+                // Reset the flag
+                setTimeout(() => { closeFl = true; }, 50);
+            });
+
+            // Add a click event outside of the modal
+            this.el.addEventListener("click", () => {
+                if (closeFl) { this.hide(); }
             });
         }
     }
-
-    /**
-     * Bootstrap
-     */
-
-    // The bootstrap modal
-    private get modal() {
-        // Create the bootstrap object if it doesn't exist
-        this._bootstrapObj = this._bootstrapObj || new bootstrap.Modal(this.el);
-
-        // Return the object
-        return this._bootstrapObj;
-    }
-
-    // Disposes the modal
-    dispose() { this.modal.dispose(); }
-
-    // Updates the modal
-    handleUpdate() { this.modal.handleUpdate(); }
-
-    // Hides the modal
-    hide() { this.modal.hide(); }
-
-    // Shows the modal
-    show() { this.modal.show(); }
-
-    // Toggles the modal
-    toggle() { this.modal.toggle(); }
 
     /**
      * Public Interface
      */
+
+    // Hides the modal
+    hide() {
+        // Toggle the modal
+        this.isVisible ? this.toggle() : null;
+    }
 
     // Returns true if the modal is visible
     get isVisible() { return this.el.classList.contains("show"); }
@@ -213,6 +203,41 @@ class _Modal extends Base<IModalProps> implements IModal {
         // Set the class name
         let className = ModalClassNames.getByType(modalType);
         className ? dialog.classList.add(className) : null;
+    }
+
+    // Shows the modal
+    show() {
+        // Toggle the modal
+        this.isVisible ? null : this.toggle();
+    }
+
+    // Toggles the modal
+    toggle() {
+        let backdrop = document.querySelector(".modal-backdrop");
+
+        // See if this modal is visible
+        if (this.isVisible) {
+            // Hide the modal
+            this.el.classList.remove("show");
+            this.el.style.display = "";
+
+            // Remove the backdrop
+            backdrop ? document.body.removeChild(backdrop) : null;
+            backdrop = null;
+        } else {
+            // Create the backdrop
+            if (backdrop == null) {
+                backdrop = document.createElement("div");
+                backdrop.classList.add("modal-backdrop");
+                backdrop.classList.add("fade");
+                backdrop.classList.add("show");
+                document.body.appendChild(backdrop);
+            }
+
+            // Show the modal
+            this.el.classList.add("show");
+            this.el.style.display = "block";
+        }
     }
 }
 export const Modal = (props: IModalProps, template?: string): IModal => { return new _Modal(props, template); }

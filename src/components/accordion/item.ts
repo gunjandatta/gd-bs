@@ -51,14 +51,14 @@ export class AccordionItem {
 
     // Configures the events
     private configureEvents() {
-        // See if there is a click event
-        if (this._props.onClick) {
-            // Add a click event
-            this._elHeader.addEventListener("click", () => {
-                // Call the click event
-                this._props.onClick(this._elHeader, this._props);
-            });
-        }
+        // Add a click event
+        this._elHeader.addEventListener("click", () => {
+            // Toggle the element
+            this.toggle();
+
+            // Call the click event
+            this._props.onClick(this._elHeader, this._props);
+        });
 
         // Execute the render event
         this._props.onRender ? this._props.onRender(this._el.querySelector(".card-body"), this._props) : null;
@@ -120,18 +120,34 @@ export class AccordionItem {
     // Returns true if the item is expanded
     get isExpanded(): boolean {
         // See if the item is expanded
-        return this.elCollapse.classList.contains("show");
+        return this.elCollapse.classList.contains("collapsing") || this.elCollapse.classList.contains("show");
     }
 
     // Toggles the item
     toggle() {
         // See if it's expanded
-        if (this.elCollapse.classList.contains("show")) {
-            // Hide it
+        if (this.isExpanded) {
+            // Start the transition
+            this.elCollapse.classList.add("collapsing");
             this.elCollapse.classList.remove("show");
+
+            setTimeout(() => {
+                // End the transition
+                this.elCollapse.classList.add("collapse");
+                this.elCollapse.classList.remove("collapsing");
+                this.elHeader.classList.add("collapsed");
+            }, 250);
         } else {
-            // Show it
-            this.elCollapse.classList.add("show");
+            // Start the transition
+            this.elCollapse.classList.add("collapsing");
+            this.elCollapse.classList.remove("collapse");
+
+            setTimeout(() => {
+                // End the transition
+                this.elCollapse.classList.add("show");
+                this.elCollapse.classList.remove("collapsing");
+                this.elHeader.classList.remove("collapsed");
+            }, 250);
         }
     }
 }

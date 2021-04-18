@@ -1,4 +1,3 @@
-import { bootstrap } from "../../core";
 import { IToast, IToastProps } from "../../../@types/components/toast";
 import { Base } from "../base";
 import { HTML } from "./templates";
@@ -87,16 +86,6 @@ class _Toast extends Base<IToastProps> implements IToast {
                 body.appendChild(content);
             }
         }
-
-        // Initialize the toast component
-        let options = this.props.options || {};
-        this._bootstrapObj = new bootstrap.Toast(this.el, options);
-
-        // See if we are showing this toast
-        if (options.autohide == false) {
-            // Show the toast
-            this.show();
-        }
     }
 
     // Configures the events
@@ -120,10 +109,14 @@ class _Toast extends Base<IToastProps> implements IToast {
      */
 
     // Hides the toast
-    hide() { this._bootstrapObj.hide(); }
+    hide() {
+        // TODO
+    }
 
     // Shows the toast
-    show() { this._bootstrapObj.show(); }
+    show() {
+        // TODO
+    }
 
     /**
      * Public Interface

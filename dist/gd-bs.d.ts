@@ -3026,9 +3026,6 @@ declare module 'gd-bs/components/button' {
             /** Disables the button. */
             disable: () => void;
     
-            /** Disposes the button. */
-            dispose: () => void;
-    
             /** Enables the button. */
             enable: () => void;
     
@@ -3073,6 +3070,7 @@ declare module 'gd-bs/components/button' {
             text?: string;
             title?: string;
             toggle?: string;
+            toggleObj?: any;
             trigger?: string;
             type?: number;
     }
@@ -3582,9 +3580,6 @@ declare module 'gd-bs/components/collapse' {
         * Collapse
         */
     export interface ICollapse {
-            /** Disposes the collapse. */
-            dispose: () => void;
-    
             /** The element. */
             el: Element;
     
@@ -3592,7 +3587,7 @@ declare module 'gd-bs/components/collapse' {
             hide: () => void;
     
             /** True if the collapse is visible. */
-            isVisible: boolean;
+            isExpanded: boolean;
     
             /** Shows a collapsible element. */
             show: () => void;
@@ -4420,14 +4415,8 @@ declare module 'gd-bs/components/modal' {
         * Modal
         */
     export interface IModal {
-            /** Disposes the modal. */
-            dispose: () => void;
-    
             /** The element. */
             el: Element,
-    
-            /** Manually readjust the modal’s position if the height of a modal changes while it is open (i.e. in case a scrollbar appears). */
-            handleUpdate: () => void;
     
             /** Manually hides a modal. */
             hide: () => void;
@@ -4867,12 +4856,6 @@ declare module 'gd-bs/components/popover' {
         * Popover
         */
     export interface IPopover {
-            /** Disables the popover. */
-            disable: () => void;
-    
-            /** Disposes the popover. */
-            dispose: () => void;
-    
             /** The element. */
             el: Element;
     
@@ -4885,14 +4868,8 @@ declare module 'gd-bs/components/popover' {
             /** Toggles an element's popover. */
             toggle: () => void;
     
-            /** Toggles the ability for an element’s popover to be shown or hidden. */
-            toggleEnabled: () => void;
-    
             /** Reveals an element’s popover. */
             show: () => void;
-    
-            /** Updates the position of an element’s popover. */
-            update: () => void;
     }
     
     /**
@@ -5355,9 +5332,6 @@ declare module 'gd-bs/components/tooltip' {
             /** Reference to the button. */
             button: IButton;
     
-            /** Disposes the tooltip. */
-            dispose: () => void;
-    
             /** The element. */
             el: HTMLButtonElement;
     
@@ -5370,14 +5344,8 @@ declare module 'gd-bs/components/tooltip' {
             /** Toggles an element's tooltip. */
             toggle: () => void;
     
-            /** Toggles the ability for an element’s tooltip to be shown or hidden. */
-            toggleEnabled: () => void;
-    
             /** Reveals an element’s tooltip. */
             show: () => void;
-    
-            /** Updates the position of an element’s tooltip. */
-            update: () => void;
     }
     
     /**

@@ -1,7 +1,7 @@
 import { IFormControlProps, IFormControl, IFormProps } from "../../../@types/components";
 import { FormControl } from "./control";
 import { HTMLGroup } from "./templates";
-import { Components } from "../../core";
+import { FormControlTypes } from "./types";
 
 /**
  * Form Group
@@ -97,7 +97,7 @@ export class FormGroup {
             let controlId = this._props.id || this._props.name;
             let elControl = this._control.control && this._control.control.el ? this._control.control.el : null;
             elControl = elControl ? elControl.querySelector("input") || elControl.querySelector("select") || elControl : null;
-            if (controlId && elControl && this._props.type != Components.FormControlTypes.Checkbox) {
+            if (controlId && elControl && this._props.type != FormControlTypes.Checkbox) {
                 // See if the description exists
                 if (elDescription) {
                     // Set the id and aria properties

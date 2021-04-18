@@ -59,12 +59,6 @@ import { IButtonProps } from "./button";
  * Popover
  */
 export interface IPopover {
-    /** Disables the popover. */
-    disable: () => void;
-
-    /** Disposes the popover. */
-    dispose: () => void;
-
     /** The element. */
     el: Element;
 
@@ -77,14 +71,8 @@ export interface IPopover {
     /** Toggles an element's popover. */
     toggle: () => void;
 
-    /** Toggles the ability for an element’s popover to be shown or hidden. */
-    toggleEnabled: () => void;
-
     /** Reveals an element’s popover. */
     show: () => void;
-
-    /** Updates the position of an element’s popover. */
-    update: () => void;
 }
 
 /**

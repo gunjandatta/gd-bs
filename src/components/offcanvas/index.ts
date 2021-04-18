@@ -1,4 +1,3 @@
-import { bootstrap } from "../../core";
 import { ClassNames } from "../classNames";
 import { IOffcanvas, IOffcanvasOptions, IOffcanvasProps } from "../../../@types/components/offcanvas";
 import { Base } from "../base";
@@ -86,9 +85,6 @@ class _Offcanvas extends Base<IOffcanvasProps> implements IOffcanvas {
         // Execute the events
         this.props.onRenderHeader ? this.props.onRenderHeader(header, this.props) : null;
         this.props.onRenderBody ? this.props.onRenderBody(body, this.props) : null;
-
-        // Create the offcanvas
-        this._bootstrapObj = new bootstrap.Offcanvas(this.el, options);
     }
 
     /**

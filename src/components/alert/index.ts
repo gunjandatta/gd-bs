@@ -87,13 +87,18 @@ class _Alert extends Base<IAlertProps> implements IAlert {
 
     // Configure the events
     private configureEvents() {
-        // See if the close event exists
-        if (this.props.onClose) {
-            // Set the close event
-            this.el.addEventListener("close.bs.alert", () => {
-                // Call the event
-                this.props.onClose(this.props);
+        // See if we are dismissing the alert
+        let btnClose = this.el.querySelector(".btn-close") as HTMLButtonElement;
+        if (btnClose) {
+            // Add a click event
+            btnClose.addEventListener("click", () => {
+                // Add the fade class
+                this.el.classList.add("fade");
+                setTimeout(() => { this.hide(); }, 250);
             });
+
+            // Execute the event
+            this.props.onClose ? this.props.onClose(this.props) : null;
         }
     }
 

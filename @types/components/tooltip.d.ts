@@ -52,9 +52,6 @@ export interface ITooltip {
     /** Reference to the button. */
     button: IButton;
 
-    /** Disposes the tooltip. */
-    dispose: () => void;
-
     /** The element. */
     el: HTMLButtonElement;
 
@@ -67,14 +64,8 @@ export interface ITooltip {
     /** Toggles an element's tooltip. */
     toggle: () => void;
 
-    /** Toggles the ability for an element’s tooltip to be shown or hidden. */
-    toggleEnabled: () => void;
-
     /** Reveals an element’s tooltip. */
     show: () => void;
-
-    /** Updates the position of an element’s tooltip. */
-    update: () => void;
 }
 
 /**

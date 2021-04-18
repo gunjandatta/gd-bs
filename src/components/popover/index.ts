@@ -1,4 +1,3 @@
-import { bootstrap } from "../../core";
 import { Button } from "../button";
 import { IPopover, IPopoverProps } from "../../../@types/components/popover";
 import { Base } from "../base";
@@ -106,32 +105,26 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
             typeof (options.title) === "string" ? this.el.setAttribute("title", options.title) : null;
             typeof (options.content) === "string" ? this.el.setAttribute("data-bs-content", options.content) : null;
         }
-
-        // Create the popover
-        this._bootstrapObj = new bootstrap.Popover(this.el, options);
     }
 
     /**
      * Bootstrap
      */
 
-    // Disposes the popover
-    dispose() { this._bootstrapObj.dispose(); }
-
     // Disables the popover
-    disable() { this._bootstrapObj.disable(); }
+    disable() {
+        // TODO
+    }
 
     // Enables the popover
-    enable() { this._bootstrapObj.enable(); }
+    enable() {
+        // TODO
+    }
 
     // Toggles the popover
-    toggle() { this._bootstrapObj.toggle(); }
-
-    // Enables toggling 
-    toggleEnabled() { this._bootstrapObj.toggleEnabled(); }
-
-    // Updates the popover
-    update() { this._bootstrapObj.update(); }
+    toggle() {
+        // TODO
+    }
 
     /**
      * Public Interface

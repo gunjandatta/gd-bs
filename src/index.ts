@@ -1,10 +1,17 @@
-// gd-bs Library
-export * from "./bootstrap";
+// Bootstrap styles
+import "./styles";
 
-// The bootstrap icons
+// Import the IE fix
+import "./ie";
+
+// Bootstrap Components
+import * as Components from "./components";
+export { Components }
+
+// Icons
 import { Icons, IconTypes } from "./icons";
 export { Icons, IconTypes }
 
-// Update the global library
-window["GD"].Icons = Icons;
-window["GD"].IconTypes = IconTypes;
+// Bootstrap Global library
+const BS = { Components, Icons, IconTypes }
+window["GD"] = window["GD"] || BS;

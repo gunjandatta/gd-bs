@@ -1,4 +1,3 @@
-import { bootstrap } from "../../core";
 import { IButton } from "../../../@types/components/button";
 import { ITooltip, ITooltipProps } from "../../../@types/components/tooltip";
 import { Base } from "../base";
@@ -119,35 +118,31 @@ class _Tooltip extends Base<ITooltipProps> {
             // Set the attribute
             this.el.setAttribute("title", options.title);
         }
-
-        // Create the tooltip
-        this._bootstrapObj = new bootstrap.Tooltip(this.el, options);
     }
 
     /**
      * Bootstrap
      */
 
-    // Disposes the tooltip
-    dispose() { this._bootstrapObj.dispose(); }
-
     // Enables the tooltip
-    enable() { this._bootstrapObj.enable(); }
+    enable() {
+        // TODO
+    }
 
     // Hides the tooltip
-    hide() { this._bootstrapObj.hide(); }
+    hide() {
+        // TODO
+    }
 
     // Shows the tooltip
-    show() { this._bootstrapObj.show(); }
+    show() {
+        // TODO
+    }
 
     // Toggles the tooltip
-    toggle() { this._bootstrapObj.toggle(); }
-
-    // Enables the toggle
-    toggleEnabled() { this._bootstrapObj.toggleEnabled(); }
-
-    // Updates the tooltip
-    update() { this._bootstrapObj.update(); }
+    toggle() {
+        // TODO
+    }
 
     /**
      * Public Interface

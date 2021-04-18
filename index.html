@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <script src="dist/gd-bs-icons.js"></script>
+    <script src="dist/gd-bs.js"></script>
     <!-- script src="../sprest-bs/dist/gd-sprest-bs.js"></script-->
     <style>
         .carousel {
@@ -13,6 +13,7 @@
 <body>
     <h1>Library</h1>
     <form>
+        <div id="dev"></div>
         <div id="alert"></div>
         <div id="btn-loading"></div>
         <div id="spinner"></div>
@@ -51,23 +52,10 @@
         window.addEventListener("load", function () {
             // Dev
             var elDev = document.getElementById("dev");
-            GD.Components.FormControl({
+            window["dev"] = GD.Components.Button({
                 el: elDev,
-                label: "Dev:",
-                title: "This is a dropdown",
-                type: GD.Components.FormControlTypes.Dropdown,
-                onControlRendered: function (control) {
-                },
-                onControlRendering: function (props) {
-                    props.items = [
-                        { text: "Item 1", value: 1 },
-                        { text: "Item 2", value: 2 },
-                        { text: "Item 3", value: 3 },
-                        { text: "Item 4", value: 4 },
-                        { text: "Item 5", value: 5 }
-                    ];
-                }
-            })
+                text: "Test Button"
+            });
 
             GD.Components.ListBox({
                 el: document.getElementById("listbox"),
@@ -470,12 +458,6 @@
                     },
                 ]
             });
-            GD.Components.Button({
-                el: document.getElementById("panel"),
-                text: "Show Panel",
-                target: "#my-panel",
-                toggle: "modal"
-            });
             window["panel"] = GD.Components.Modal({
                 el: document.getElementById("panel"),
                 id: "my-panel",
@@ -492,6 +474,11 @@
                         content: "This is the content of the jumbotron."
                     });
                 }
+            });
+            GD.Components.Button({
+                el: document.getElementById("panel"),
+                text: "Show Panel",
+                toggleObj: window["panel"]
             });
             GD.Components.Badge({
                 el: document.getElementById("badge"),
@@ -570,13 +557,7 @@
                     { text: "File 5.docx", url: "#" },
                 ]
             });
-            GD.Components.Button({
-                el: document.querySelector("#modal"),
-                text: "Modal",
-                target: "#my-modal",
-                toggle: "modal"
-            });
-            GD.Components.Modal({
+            window["modal"] = GD.Components.Modal({
                 el: document.querySelector("#modal"),
                 id: "my-modal",
                 title: "My Modal",
@@ -783,10 +764,9 @@
                 }
             });
             GD.Components.Button({
-                el: document.querySelector("#offcanvas"),
-                text: "Offcanvas",
-                target: "#offcanvas-demo",
-                toggle: "offcanvas"
+                el: document.querySelector("#modal"),
+                text: "Modal",
+                toggleObj: window["modal"]
             });
             window["OffcanvasDemo"] = GD.Components.Offcanvas({
                 el: document.querySelector("#offcanvas"),
@@ -794,6 +774,11 @@
                 title: "Offcanvas Demo",
                 body: "<h5>Hello Canvas</h5>",
                 type: 1
+            });
+            GD.Components.Button({
+                el: document.querySelector("#offcanvas"),
+                text: "Offcanvas",
+                toggleObj: window["OffcanvasDemo"]
             });
             GD.Components.InputGroup({
                 el: document.querySelector("#textbox"),
@@ -890,19 +875,16 @@
                     }
                 ]
             });
-            window["btnCollapse"] = GD.Components.Button({
-                el: document.querySelector("#btnCollapse"),
-                controls: ["collapseDemo"],
-                isExpanded: false,
-                target: "#collapseDemo",
-                toggle: "collapse",
-                text: "Collapse Demo"
-            });
-            GD.Components.Collapse({
+            window["collapse"] = GD.Components.Collapse({
                 el: document.querySelector("#collapse"),
                 id: "collapseDemo",
                 content: "This is the content to be collapsed.",
                 options: { toggle: false }
+            });
+            window["btnCollapse"] = GD.Components.Button({
+                el: document.querySelector("#btnCollapse"),
+                toggleObj: window["collapse"],
+                text: "Collapse Demo"
             });
             GD.Components.Accordion({
                 autoCollapse: false,
