@@ -219,12 +219,21 @@ class _Modal extends Base<IModalProps> implements IModal {
         if (this.isVisible) {
             // Hide the modal
             this.el.classList.remove("show");
-            this.el.style.display = "";
 
-            // Remove the backdrop
-            backdrop ? document.body.removeChild(backdrop) : null;
-            backdrop = null;
+            // Wait for the animation to complete
+            setTimeout(() => {
+                // Hide the modal
+                this.el.style.display = "";
+
+                // Remove the backdrop
+                backdrop ? document.body.removeChild(backdrop) : null;
+                backdrop = null;
+            }, 250);
         } else {
+            // Start the animation
+            this.el.classList.add("modal-open")
+            this.el.style.display = "block";
+
             // Create the backdrop
             if (backdrop == null) {
                 backdrop = document.createElement("div");
@@ -234,9 +243,12 @@ class _Modal extends Base<IModalProps> implements IModal {
                 document.body.appendChild(backdrop);
             }
 
-            // Show the modal
-            this.el.classList.add("show");
-            this.el.style.display = "block";
+            // Wait for the animation to complete
+            setTimeout(() => {
+                // Show the modal
+                this.el.classList.remove("modal-open");
+                this.el.classList.add("show");
+            }, 250);
         }
     }
 }
