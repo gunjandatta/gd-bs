@@ -3,6 +3,9 @@ import { Base } from "../base";
 import { HTML, HTMLItem } from "./templates";
 import { AccordionItem } from "./item";
 
+// Styles
+import "./styles";
+
 /**
  * Accordion
  */

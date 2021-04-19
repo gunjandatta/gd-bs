@@ -2,6 +2,9 @@ import { IJumbotron, IJumbotronProps } from "../../../@types/components/jumbotro
 import { Base } from "../base";
 import { HTML } from "./templates";
 
+// Styles
+import "./styles";
+
 /**
  * Jumbotron
  */

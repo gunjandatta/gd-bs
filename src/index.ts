@@ -1,5 +1,5 @@
 // Bootstrap styles
-import "./styles";
+import "./bs";
 
 // Import the IE fix
 import "./ie";

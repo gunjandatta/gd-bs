@@ -5,6 +5,9 @@ import { DropdownFormItem } from "./formItem";
 import { DropdownItem } from "./item";
 import { HTML, HTMLForm, HTMLNavItem, HTMLSplit } from "./templates";
 
+// Styles
+import "./styles";
+
 /**
  * Dropdown Types
  */

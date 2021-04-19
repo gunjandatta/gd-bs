@@ -2,6 +2,9 @@ import { ITable, ITableProps, ITableColumn } from "../../../@types/components/ta
 import { Base } from "../base";
 import { HTML } from "./templates";
 
+// Styles
+import "./styles";
+
 /**
  * Table
  */

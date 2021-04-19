@@ -3,6 +3,9 @@ import { Base } from "../base";
 import { Progress } from "../progress";
 import { HTML } from "./templates";
 
+// Styles
+import "./styles";
+
 /**
  * Progress Group
  * @param props The progress group properties.

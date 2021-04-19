@@ -9,18 +9,46 @@ module.exports = (env, argv) => {
             "./node_modules/core-js/es/promise/index.js",
             "./node_modules/core-js/es/object/assign.js",
             "./node_modules/core-js/es/string/index.js",
-            "./build/index.js"
+            "./src/index.ts"
         ],
         output: {
             path: path.resolve(__dirname, "dist"),
             filename: "gd-bs" + (isDev ? "" : ".min") + ".js"
         },
         target: ["web", "es5"],
+        resolve: {
+            extensions: [".js", ".scss", ".ts"]
+        },
         module: {
             rules: [
+                {
+                    test: /\.(scss)$/,
+                    use: [
+                        // Inject CSS to the page
+                        { loader: "style-loader" },
+                        // Translate CSS to CommonJS
+                        { loader: "css-loader" },
+                        // Loader for webpack to process CSS with PostCSS
+                        {
+                            // Run postcss actions
+                            loader: 'postcss-loader',
+                            options: {
+                                postcssOptions: {
+                                    plugins: function () {
+                                        return [
+                                            require('autoprefixer')
+                                        ];
+                                    }
+                                }
+                            }
+                        },
+                        // Compile SASS to CSS
+                        { loader: "sass-loader" }
+                    ]
+                },
                 // Handle TypeScript Files
                 {
-                    test: /\.js$/,
+                    test: /\.ts$/,
                     exclude: /node_modules/,
                     use: [
                         {
@@ -28,6 +56,9 @@ module.exports = (env, argv) => {
                             options: {
                                 presets: ["@babel/preset-env"]
                             }
+                        },
+                        {
+                            loader: "ts-loader"
                         }
                     ]
                 }

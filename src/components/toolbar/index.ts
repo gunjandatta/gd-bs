@@ -4,6 +4,9 @@ import { ButtonGroup } from "../buttonGroup";
 import { InputGroup } from "../inputGroup";
 import { HTML } from "./templates";
 
+// Styles
+import "./styles";
+
 /**
  * Toolbar
  */

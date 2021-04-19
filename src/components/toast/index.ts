@@ -2,6 +2,9 @@ import { IToast, IToastProps } from "../../../@types/components/toast";
 import { Base } from "../base";
 import { HTML } from "./templates";
 
+// Styles
+import "./styles";
+
 /**
  * Toast
  * @param props - The toast properties.

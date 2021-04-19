@@ -3,6 +3,9 @@ import { Base } from "../base";
 import { NavLink } from "./link";
 import { HTML, HTMLTabs, HTMLVerticalTabs } from "./templates";
 
+// Styles
+import "./styles";
+
 /**
  * Navigation
  * @param props - The navigation properties.

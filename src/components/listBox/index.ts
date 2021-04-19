@@ -3,6 +3,9 @@ import { IListBox, IListBoxProps } from "../../../@types/components/listBox";
 import { Base } from "../base";
 import { HTML, HTMLItem } from "./templates";
 
+// Styles
+import "./styles";
+
 /**
  * List Box
  * @property props - The list box properties.

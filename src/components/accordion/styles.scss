@@ -1,0 +1,12 @@
+// Wrap everything under a .bs class
+.bs {
+    // Bootstrap Required Libraries
+    @import "bootstrap/scss/functions";
+    @import "bootstrap/scss/variables";
+    @import "bootstrap/scss/mixins";
+
+    // Bootstrap Component Library
+    @import "bootstrap/scss/accordion";
+    @import "bootstrap/scss/reboot";
+    @import "bootstrap/scss/transitions";
+}

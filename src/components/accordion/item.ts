@@ -57,7 +57,7 @@ export class AccordionItem {
             this.toggle();
 
             // Call the click event
-            this._props.onClick(this._elHeader, this._props);
+            this._props.onClick ? this._props.onClick(this._elHeader, this._props) : null;
         });
 
         // Execute the render event

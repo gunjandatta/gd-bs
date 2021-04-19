@@ -2,6 +2,9 @@ import { IPagination, IPaginationProps } from "../../../@types/components/pagina
 import { Base } from "../base";
 import { HTML, HTMLItem } from "./templates";
 
+// Styles
+import "./styles";
+
 /**
  * Pagination Alignment
  */

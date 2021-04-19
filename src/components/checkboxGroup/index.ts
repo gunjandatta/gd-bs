@@ -3,6 +3,9 @@ import { Base } from "../base";
 import { CheckboxItem } from "./item";
 import { HTML } from "./templates";
 
+// Styles
+import "./styles";
+
 /**
  * Checkbox Group Types
  */

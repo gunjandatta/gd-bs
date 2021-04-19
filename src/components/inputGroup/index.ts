@@ -3,6 +3,9 @@ import { Base } from "../base";
 import { Button } from "../button";
 import { HTML } from "./templates";
 
+// Styles
+import "./styles";
+
 /**
  * Input Group Types
  */

@@ -3,6 +3,9 @@ import { Base } from "../base";
 import { ClassNames } from "../classNames";
 import { HTML } from "./templates";
 
+// Styles
+import "./styles";
+
 /**
  * Modal Types
  */

@@ -2,6 +2,9 @@ import { ICollapse, ICollapseProps } from "../../../@types/components/collapse";
 import { Base } from "../base";
 import { HTML } from "./templates";
 
+// Styles
+import "./styles";
+
 /**
  * Collapse
  */

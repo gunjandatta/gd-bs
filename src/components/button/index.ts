@@ -6,6 +6,9 @@ import { Badge, BadgeTypes } from "../badge";
 import { Spinner } from "../spinner";
 import { HTML, HTMLBlock, HTMLLink } from "./templates";
 
+// Styles
+import "./styles";
+
 /**
  * Button Types
  */

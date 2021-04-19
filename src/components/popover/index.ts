@@ -3,6 +3,9 @@ import { Button } from "../button";
 import { IPopover, IPopoverProps } from "../../../@types/components/popover";
 import { Base } from "../base";
 
+// Styles
+import "./styles";
+
 /**
  * Popover Types
  */

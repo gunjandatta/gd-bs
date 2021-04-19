@@ -9,6 +9,9 @@ import { FormValidationTypes } from "./types";
 export * from "./custom";
 export * from "./types";
 
+// Styles
+import "./styles";
+
 /**
  * Form
  * @property props - The form properties.
