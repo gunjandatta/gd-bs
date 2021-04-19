@@ -1,3 +1,4 @@
+import { createPopper } from "../../../libs/popper.min.js";
 import { IButton } from "../../../@types/components/button";
 import { ITooltip, ITooltipProps } from "../../../@types/components/tooltip";
 import { Base } from "../base";
@@ -19,6 +20,7 @@ export enum TooltipTypes {
  */
 class _Tooltip extends Base<ITooltipProps> {
     private _btn: IButton = null;
+    private _elContent: HTMLElement = null;
     private _tooltips: HTMLDivElement = null;
 
     // Constructor
@@ -67,24 +69,12 @@ class _Tooltip extends Base<ITooltipProps> {
         let options = this.props.options || {};
         options.container = options.container || this._tooltips;
 
-        // See if a container was defined
-        if (typeof (options.container) !== "string") {
-            // Set the default container
-            options.container = "#bs-tooltips";
-
-            // Ensure the main tooltip element exists
-            // This will ensure the tooltips are wrapped with a parent element with the "bs" class applied to it.
-            let elParent = document.querySelector(options.container);
-            if (elParent == null) {
-                // Create the main element
-                elParent = document.createElement("div");
-                elParent.classList.add("bs");
-                elParent.id = "bs-tooltips";
-
-                // Add it to the page
-                document.body.appendChild(elParent)
-            }
-        }
+        // Create the popover content element
+        let content = options.title || "";
+        this._elContent = document.createElement("div") as HTMLElement;
+        this._elContent.innerHTML = `<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner">${content}</div></div>`;
+        this._elContent.style.display = "none";
+        this._btn.el.appendChild(this._elContent);
 
         // Set the type
         switch (this.props.type) {
@@ -118,30 +108,27 @@ class _Tooltip extends Base<ITooltipProps> {
             // Set the attribute
             this.el.setAttribute("title", options.title);
         }
-    }
 
-    /**
-     * Bootstrap
-     */
+        // Add an event listener
+        let eventType = options.trigger || "click";
+        if (eventType == "hover") {
+            this.el.addEventListener("mouseover", () => {
+                // Toggle the element
+                this.show();
+            });
+            this.el.addEventListener("mouseout", () => {
+                // Toggle the element
+                this.hide();
+            });
+        } else {
+            this.el.addEventListener(eventType, () => {
+                // Toggle the element
+                this.toggle();
+            });
+        }
 
-    // Enables the tooltip
-    enable() {
-        // TODO
-    }
-
-    // Hides the tooltip
-    hide() {
-        // TODO
-    }
-
-    // Shows the tooltip
-    show() {
-        // TODO
-    }
-
-    // Toggles the tooltip
-    toggle() {
-        // TODO
+        // Create the popper
+        createPopper(this.el, this._elContent, { placement: options.placement as any });
     }
 
     /**
@@ -150,5 +137,44 @@ class _Tooltip extends Base<ITooltipProps> {
 
     // Reference to the button
     get button(): IButton { return this._btn; }
+
+    // Disbles the tooltip
+    disable() {
+        // Disable the button
+        this._btn.disable();
+    }
+
+    // Enables the tooltip
+    enable() {
+        // Enable the button
+        this._btn.enable();
+    }
+
+    // Hides the popover
+    hide() {
+        // See if it's visible
+        if (this.isVisible) { this.toggle(); }
+    }
+
+    // Determines if the popover is visible
+    get isVisible(): boolean { return this._elContent.style.display != "none"; }
+
+    // Shows the popover
+    show() {
+        // See if it's hidden
+        if (!this.isVisible) { this.toggle(); }
+    }
+
+    // Toggles the tooltip
+    toggle() {
+        // Toggle the element
+        if (this.isVisible) {
+            // Hide the element
+            this._elContent.style.display = "none";
+        } else {
+            // Show the element
+            this._elContent.style.display = "";
+        }
+    }
 }
 export const Tooltip = (props: ITooltipProps, template?: string): ITooltip => { return new _Tooltip(props, template); }

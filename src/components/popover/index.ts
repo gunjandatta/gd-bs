@@ -18,6 +18,7 @@ export enum PopoverTypes {
  * Popover
  */
 class _Popover extends Base<IPopoverProps> implements IPopover {
+    private _elContent: HTMLDivElement = null;
     private _popovers: HTMLDivElement = null;
 
     // Constructor
@@ -112,13 +113,13 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
         }
 
         // Create the popover content element
-        let elContent = document.createElement("div") as HTMLElement;
-        elContent.innerHTML = '<div class="popover" role="tooltip"><div class="popover-arrow"></div><h3 class="popover-header"></h3><div class="popover-body"></div></div>';
-        elContent.style.display = "none";
-        this._popovers.appendChild(elContent);
+        this._elContent = document.createElement("div");
+        this._elContent.innerHTML = '<div class="popover" role="tooltip"><div class="popover-arrow"></div><h3 class="popover-header"></h3><div class="popover-body"></div></div>';
+        this._elContent.style.display = "none";
+        this._popovers.appendChild(this._elContent);
 
         // See if we are rendering raw html
-        let elBody = elContent.querySelector(".popover-body");
+        let elBody = this._elContent.querySelector(".popover-body");
         if (typeof (options.content) === "string") {
             // Set the content
             elBody.innerHTML = options.content;
@@ -128,19 +129,25 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
         }
 
         // Add an event listener
-        this.el.addEventListener(options.trigger || "click", () => {
-            // Toggle the element
-            if (elContent.style.display == "none") {
-                // Show the element
-                elContent.style.display = "";
-            } else {
-                // Hide the element
-                elContent.style.display = "none";
-            }
-        });
+        let eventType = options.trigger || "click";
+        if (eventType == "hover") {
+            this.el.addEventListener("mouseover", () => {
+                // Toggle the element
+                this.show();
+            });
+            this.el.addEventListener("mouseout", () => {
+                // Toggle the element
+                this.hide();
+            });
+        } else {
+            this.el.addEventListener(eventType, () => {
+                // Toggle the element
+                this.toggle();
+            });
+        }
 
         // Create the popper
-        createPopper(this.el, elContent, { placement: options.placement as any });
+        createPopper(this.el, this._elContent, { placement: options.placement as any });
     }
 
     /**
@@ -157,9 +164,31 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
         // TODO
     }
 
+    // Hides the popover
+    hide() {
+        // See if it's visible
+        if (this.isVisible) { this.toggle(); }
+    }
+
+    // Determines if the popover is visible
+    get isVisible(): boolean { return this._elContent.style.display != "none"; }
+
+    // Shows the popover
+    show() {
+        // See if it's hidden
+        if (!this.isVisible) { this.toggle(); }
+    }
+
     // Toggles the popover
     toggle() {
-        // TODO
+        // Toggle the element
+        if (this.isVisible) {
+            // Hide the element
+            this._elContent.style.display = "none";
+        } else {
+            // Show the element
+            this._elContent.style.display = "";
+        }
     }
 
     /**
