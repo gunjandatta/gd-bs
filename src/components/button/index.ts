@@ -1,13 +1,11 @@
 import { IButton, IButtonProps } from "../../../@types/components/button";
-import { Icons } from "../../icons";
 import { Base } from "../base";
 import { ClassNames } from "../classNames";
 import { Badge, BadgeTypes } from "../badge";
 import { Spinner } from "../spinner";
 import { HTML, HTMLBlock, HTMLLink } from "./templates";
 
-// Styles
-import "./styles";
+declare var GD;
 
 /**
  * Button Types
@@ -116,7 +114,7 @@ class _Button extends Base<IButtonProps> implements IButton {
         // Set the icon
         if (typeof (this.props.iconType) !== "undefined") {
             // Append the icon
-            this.el.appendChild(Icons(this.props.iconType, this.props.iconSize, this.props.iconSize));
+            GD && GD.Icons ? this.el.appendChild(GD.Icons(this.props.iconType, this.props.iconSize, this.props.iconSize)) : null;
 
             // Update the styling of the button
             this.el.classList.add("btn-icon");

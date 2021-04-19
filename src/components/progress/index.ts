@@ -3,9 +3,6 @@ import { ClassNames } from "../classNames";
 import { Base } from "../base";
 import { HTML } from "./templates";
 
-// Styles
-import "./styles";
-
 /**
  * Progress Bar Types
  */

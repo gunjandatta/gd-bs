@@ -4,9 +4,6 @@ import { ITooltip, ITooltipProps } from "../../../@types/components/tooltip";
 import { Base } from "../base";
 import { Button } from "../button";
 
-// Styles
-import "./styles";
-
 /**
  * Tooltip Types
  */

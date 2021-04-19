@@ -3,9 +3,6 @@ import { IOffcanvas, IOffcanvasOptions, IOffcanvasProps } from "../../../@types/
 import { Base } from "../base";
 import { HTML } from "./templates";
 
-// Styles
-import "./styles";
-
 /**
  * Offcanvas Types
  */

@@ -3,9 +3,6 @@ import { Base } from "../base";
 import { HTML } from "./templates";
 import { BreadcrumbItem } from "./item";
 
-// Styles
-import "./styles";
-
 /**
  * Breadcrumb
  */

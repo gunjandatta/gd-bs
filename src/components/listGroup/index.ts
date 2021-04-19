@@ -4,9 +4,6 @@ import { ClassNames } from "../classNames";
 import { ListGroupItem } from "./item";
 import { HTML, HTMLTabs } from "./templates";
 
-// Styles
-import "./styles";
-
 /**
  * List Group Item Types
  */

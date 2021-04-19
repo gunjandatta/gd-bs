@@ -4,9 +4,6 @@ import { ButtonClassNames } from "../button";
 import { NavbarItem } from "./item";
 import { HTML } from "./templates";
 
-// Styles
-import "./styles";
-
 /**
  * Navbar Types
  */

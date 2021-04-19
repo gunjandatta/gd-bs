@@ -3,9 +3,6 @@ import { Base } from "../base";
 import { Card } from "../card";
 import { HTML } from "./templates";
 
-// Styles
-import "./styles";
-
 /**
  * Card Group
  * @property props - The button group properties.

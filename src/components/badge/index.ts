@@ -3,9 +3,6 @@ import { Base } from "../base";
 import { ClassNames } from "../classNames";
 import { HTMLLink, HTMLSpan } from "./templates";
 
-// Styles
-import "./styles";
-
 /**
  * Badge Types
  */

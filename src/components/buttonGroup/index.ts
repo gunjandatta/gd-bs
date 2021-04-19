@@ -4,9 +4,6 @@ import { Base } from "../base";
 import { Button } from "../button";
 import { HTML } from "./templates";
 
-// Styles
-import "./styles";
-
 /**
  * Button Group
  * @property props - The button group properties.

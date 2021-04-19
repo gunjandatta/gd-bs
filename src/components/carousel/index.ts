@@ -3,9 +3,6 @@ import { ICarousel, ICarouselProps } from "../../../@types/components/carousel";
 import { CarouselItem } from "./item";
 import { HTML } from "./templates";
 
-// Styles
-import "./styles";
-
 /**
  * Carousel
  * @param props - The carousel properties.

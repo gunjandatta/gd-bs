@@ -4,9 +4,6 @@ import { Nav } from "../nav";
 import { HTML } from "./templates";
 import { CardBody } from "./item";
 
-// Styles
-import "./styles";
-
 /**
  * Card
  */
