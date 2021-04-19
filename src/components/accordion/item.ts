@@ -127,25 +127,33 @@ export class AccordionItem {
     toggle() {
         // See if it's expanded
         if (this.isExpanded) {
-            // Start the transition
-            this.elCollapse.classList.add("collapsing");
-            this.elCollapse.classList.remove("show");
-
+            // Start the animation
+            this.elCollapse.style.height = this.el.getBoundingClientRect()["height"] + "px";
             setTimeout(() => {
-                // End the transition
-                this.elCollapse.classList.add("collapse");
+                this.elCollapse.classList.add("collapsing");
+                this.elCollapse.classList.remove("collapse");
+                this.elCollapse.classList.remove("show");
+                this.elCollapse.style.height = "";
+            }, 10);
+
+            // Wait for the animation to complete
+            setTimeout(() => {
                 this.elCollapse.classList.remove("collapsing");
+                this.elCollapse.classList.add("collapse");
                 this.elHeader.classList.add("collapsed");
             }, 250);
         } else {
-            // Start the transition
-            this.elCollapse.classList.add("collapsing");
+            // Start the animation
             this.elCollapse.classList.remove("collapse");
+            this.elCollapse.classList.add("collapsing");
+            this.elCollapse.style.height = this.el.scrollHeight + "px";
 
+            // Wait for the animation to complete
             setTimeout(() => {
-                // End the transition
-                this.elCollapse.classList.add("show");
                 this.elCollapse.classList.remove("collapsing");
+                this.elCollapse.classList.add("collapse");
+                this.elCollapse.classList.add("show");
+                this.elCollapse.style.height = "";
                 this.elHeader.classList.remove("collapsed");
             }, 250);
         }

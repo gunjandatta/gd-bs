@@ -48,7 +48,7 @@ class _Collapse extends Base<ICollapseProps> implements ICollapse {
     }
 
     /**
-     * Bootstrap
+     * Public Interface
      */
 
     // Returns true if the item is expanded
@@ -61,30 +61,34 @@ class _Collapse extends Base<ICollapseProps> implements ICollapse {
     toggle() {
         // See if it's expanded
         if (this.isExpanded) {
-            // Start the transition
-            this.el.classList.add("collapsing");
-            this.el.classList.remove("show");
-
+            // Start the animation
+            this.el.style.height = this.el.getBoundingClientRect()["height"] + "px";
             setTimeout(() => {
-                // End the transition
-                this.el.classList.add("collapse");
+                this.el.classList.add("collapsing");
+                this.el.classList.remove("collapse");
+                this.el.classList.remove("show");
+                this.el.style.height = "";
+            }, 10);
+
+            // Wait for the animation to complete
+            setTimeout(() => {
                 this.el.classList.remove("collapsing");
+                this.el.classList.add("collapse");
             }, 250);
         } else {
-            // Start the transition
-            this.el.classList.add("collapsing");
+            // Start the animation
             this.el.classList.remove("collapse");
+            this.el.classList.add("collapsing");
+            this.el.style.height = this.el.scrollHeight + "px";
 
+            // Wait for the animation to complete
             setTimeout(() => {
-                // End the transition
-                this.el.classList.add("show");
                 this.el.classList.remove("collapsing");
+                this.el.classList.add("collapse");
+                this.el.classList.add("show");
+                this.el.style.height = "";
             }, 250);
         }
     }
-
-    /**
-     * Public Interface
-     */
 }
 export const Collapse = (props: ICollapseProps, template?: string): ICollapse => { return new _Collapse(props, template); }
