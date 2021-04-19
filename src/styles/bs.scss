@@ -20,6 +20,16 @@ opacity: 0;
 .modal-backdrop.show {
 opacity: 0.5;
 }
+.offcanvas-backdrop::before {
+position: fixed;
+top: 0;
+left: 0;
+z-index: 1039;
+width: 100vw;
+height: 100vh;
+content: "";
+background-color: rgba(0, 0, 0, 0.5);
+}
 .bs {
 	@charset "UTF-8";
 	/*!
@@ -6061,16 +6071,6 @@ opacity: 0.5;
 	transform: none;
 	}
 	
-	.offcanvas-backdrop::before {
-	position: fixed;
-	top: 0;
-	left: 0;
-	z-index: 1039;
-	width: 100vw;
-	height: 100vh;
-	content: "";
-	background-color: rgba(0, 0, 0, 0.5);
-	}
 	
 	.clearfix::after {
 	display: block;

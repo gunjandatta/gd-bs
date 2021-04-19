@@ -1,3 +1,4 @@
+import { createPopper } from "../../../libs/popper.min.js";
 import { Button } from "../button";
 import { IPopover, IPopoverProps } from "../../../@types/components/popover";
 import { Base } from "../base";
@@ -73,6 +74,10 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
                 case PopoverTypes.Top:
                     options.placement = "top";
                     break;
+                // Default
+                default:
+                    options.placement = "bottom";
+                    break;
             }
         }
 
@@ -105,6 +110,37 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
             typeof (options.title) === "string" ? this.el.setAttribute("title", options.title) : null;
             typeof (options.content) === "string" ? this.el.setAttribute("data-bs-content", options.content) : null;
         }
+
+        // Create the popover content element
+        let elContent = document.createElement("div") as HTMLElement;
+        elContent.innerHTML = '<div class="popover" role="tooltip"><div class="popover-arrow"></div><h3 class="popover-header"></h3><div class="popover-body"></div></div>';
+        elContent.style.display = "none";
+        this._popovers.appendChild(elContent);
+
+        // See if we are rendering raw html
+        let elBody = elContent.querySelector(".popover-body");
+        if (typeof (options.content) === "string") {
+            // Set the content
+            elBody.innerHTML = options.content;
+        } else {
+            // Append the content
+            elBody.appendChild(options.content as Element);
+        }
+
+        // Add an event listener
+        this.el.addEventListener(options.trigger || "click", () => {
+            // Toggle the element
+            if (elContent.style.display == "none") {
+                // Show the element
+                elContent.style.display = "";
+            } else {
+                // Hide the element
+                elContent.style.display = "none";
+            }
+        });
+
+        // Create the popper
+        createPopper(this.el, elContent, { placement: options.placement as any });
     }
 
     /**

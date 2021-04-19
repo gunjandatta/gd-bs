@@ -34,6 +34,12 @@ srcStream.on("line", function (line) {
         foundFl = true;
     }
 
+    // See if this is the .offcanvas class
+    if (line.indexOf(".offcanvas-backdrop") == 0) {
+        // Set the flag
+        foundFl = true;
+    }
+
     // Append the line
     foundFl ? bodyClass.push(line) : bsClass.push("\t" + line);
 

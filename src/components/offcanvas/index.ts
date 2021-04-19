@@ -33,6 +33,9 @@ class _Offcanvas extends Base<IOffcanvasProps> implements IOffcanvas {
         // Configure the offcanvas
         this.configure();
 
+        // Configure the events
+        this.configureEvents();
+
         // Configure the parent
         this.configureParent();
     }
@@ -81,28 +84,60 @@ class _Offcanvas extends Base<IOffcanvasProps> implements IOffcanvas {
                 body.appendChild(content);
             }
         }
-
-        // Execute the events
-        this.props.onRenderHeader ? this.props.onRenderHeader(header, this.props) : null;
-        this.props.onRenderBody ? this.props.onRenderBody(body, this.props) : null;
     }
 
-    /**
-     * Bootstrap
-     */
+    // Configure the events
+    private configureEvents() {
+        // Execute the events
+        this.props.onRenderHeader ? this.props.onRenderHeader(this.el.querySelector(".offcanvas-header > div"), this.props) : null;
+        this.props.onRenderBody ? this.props.onRenderBody(this.el.querySelector(".offcanvas-body"), this.props) : null;
 
-    // Hides the offcanvas
-    hide() { this._bootstrapObj.hide(); }
+        // Get the close button
+        let elClose = this.el.querySelector(".btn-close");
+        if (elClose) {
+            // Add a click event
+            elClose.addEventListener("click", () => {
+                // Hide the modal
+                this.hide();
+            });
+        }
 
-    // Toggles the offcanvas
-    show() { this._bootstrapObj.show(); }
+        // See if we are not showing the backdrop
+        if (this.props.options == null || this.props.options.backdrop != true) {
+            let closeFl = true;
 
-    // Toggles the offcanvas
-    toggle() { this._bootstrapObj.toggle(); }
+            // Add a click event to the offcanvas
+            document.body.addEventListener("click", () => {
+                // Set the flag
+                closeFl = false;
+
+                // Reset the flag
+                setTimeout(() => { closeFl = true; }, 25);
+            });
+
+            // Add a click event to the body
+            document.body.addEventListener("click", () => {
+                // See if this is visible and we are closing the offcanva
+                if (this.isVisible && closeFl) {
+                    // Close the offcanvas
+                    this.hide();
+                }
+            });
+        }
+    }
 
     /**
      * Public Interface
      */
+
+    // Hides the modal
+    hide() {
+        // Toggle the modal
+        this.isVisible ? this.toggle() : null;
+    }
+
+    // Returns true if the modal is visible
+    get isVisible() { return this.el.classList.contains("show"); }
 
     // Sets the offcanvas type
     setType(offcanvasType: number) {
@@ -115,6 +150,47 @@ class _Offcanvas extends Base<IOffcanvasProps> implements IOffcanvas {
         // Set the class name
         let className = OffcanvasClassNames.getByType(offcanvasType) || OffcanvasClassNames.getByType(OffcanvasTypes.End);
         this.el.classList.add(className);
+    }
+
+    // Shows the modal
+    show() {
+        // Toggle the modal
+        this.isVisible ? null : this.toggle();
+    }
+
+    // Toggles the modal
+    toggle() {
+        // See if this modal is visible
+        if (this.isVisible) {
+            // Hide the modal
+            this.el.classList.add("offcanvas-toggling");
+            this.el.classList.remove("show");
+
+            // Wait for the animation to complete
+            setTimeout(() => {
+                this.el.style.visibility = "hidden";
+                this.el.classList.remove("offcanvas-toggling");
+            }, 250);
+
+            // Remove the backdrop
+            document.body.classList.remove("offcanvas-backdrop");
+        } else {
+            // See if we are showing the backdrop
+            if (this.props.options && this.props.options.backdrop) {
+                // Add the backdrop
+                document.body.classList.add("offcanvas-backdrop");
+            }
+
+            // Show the modal
+            this.el.style.visibility = "visible";
+            this.el.classList.add("offcanvas-toggling");
+            this.el.classList.add("show");
+
+            // Wait for the animation to complete
+            setTimeout(() => {
+                this.el.classList.remove("offcanvas-toggling");
+            }, 250);
+        }
     }
 }
 export const Offcanvas = (props: IOffcanvasProps, template?: string): IOffcanvas => { return new _Offcanvas(props, template); }

@@ -39,6 +39,7 @@ fs.mkdirSync("./libs");
 
 // Copy the popper library
 //fs.copyFileSync("node_modules/bootstrap/dist/js/bootstrap.bundle.min.js", "libs/bootstrap.bundle.min.js");
+fs.copyFileSync("node_modules/@popperjs/core/dist/umd/popper.min.js", "libs/popper.min.js");
 
 // Log
 console.log("Successfully cleaned the library");
