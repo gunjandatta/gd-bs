@@ -38,6 +38,26 @@ class _Nav extends Base<INavProps> implements INav {
         this.renderItems(itemTemplate);
     }
 
+    // Configures the link event
+    private configureEvents(tab: NavLink) {
+        // Add a click event
+        tab.el.addEventListener("click", () => {
+            // Parse the links
+            for (let i = 0; i < this._links.length; i++) {
+                let link = this._links[i];
+
+                // See if it's visible
+                if (link.isVisible) {
+                    // Toggle it
+                    link.toggle(this.props.fadeTabs);
+                }
+            }
+
+            // Toggle the link
+            tab.toggle(this.props.fadeTabs);
+        });
+    }
+
     // Renders the links
     private renderItems(itemTemplate: string) {
         // Clear the links
@@ -58,6 +78,9 @@ class _Nav extends Base<INavProps> implements INav {
 
                 // See if we are rendering tabs
                 if (tabs) {
+                    // Configure the events
+                    this.configureEvents(link);
+
                     // Add the tab content
                     tabs.appendChild(link.elTab);
 
