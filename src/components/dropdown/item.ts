@@ -105,6 +105,9 @@ export class DropdownItem {
     private configureEvents() {
         // Set the click event
         this._el.addEventListener("click", ev => {
+            // Prevent the page from moving to the top
+            ev.preventDefault();
+
             // Toggle the item
             this.toggle();
 
