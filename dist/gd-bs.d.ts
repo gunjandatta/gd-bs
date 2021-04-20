@@ -3660,9 +3660,6 @@ declare module 'gd-bs/components/dropdown' {
             /** Disables the dropdown. */
             disable: () => void;
     
-            /** Disposes the dropdown. */
-            dispose: () => void;
-    
             /** Enables the dropdown. */
             enable: () => void;
     
@@ -3695,9 +3692,6 @@ declare module 'gd-bs/components/dropdown' {
     
             /** Toggles the dropdown menu of a given navbar or tabbed navigation. */
             toggle: () => void;
-    
-            /** Updates the position of an element’s dropdown. */
-            update: () => void;
     }
     
     /**

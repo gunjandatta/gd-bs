@@ -2,7 +2,7 @@
   "name": "gd-bs",
   "version": "4.2.9",
   "description": "Bootstrap JavaScript, TypeScript and Web Components library.",
-  "main": "build/index.js",
+  "main": "dist/gd-bs-icons.min.js",
   "typings": "@types/index.d.ts",
   "scripts": {
     "all": "npm run clean && npm run generate-icons && npm run build && npm run build-icons && npm run prod && npm run prod-icons && npm run typings",
