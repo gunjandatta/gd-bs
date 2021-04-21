@@ -109,6 +109,9 @@ export interface ICarousel {
 
     /** Shows the carousel. */
     show: () => void;
+
+    /** Unpauses the carousel. */
+    unpause: () => void;
 }
 
 /**

@@ -8,7 +8,9 @@ import { HTML } from "./templates";
  * @param props - The carousel properties.
  */
 class _Carousel extends Base<ICarouselProps> implements ICarousel {
+    private _eventId = null;
     private _indicators: HTMLElement[] = null;
+    private _pauseFlag = false;
     private _slides: CarouselItem[] = null;
 
     // Constructor
@@ -148,6 +150,24 @@ class _Carousel extends Base<ICarouselProps> implements ICarousel {
         }
     }
 
+    // Starts to move automatically
+    private start(timeToWait = 5000) {
+        // Do nothing if the event already exists
+        if (this._eventId) { return; }
+
+        // Validate the time
+        if (timeToWait < 1000) { timeToWait = 1000; }
+
+        // Start the event
+        this._eventId = setInterval(() => {
+            // Do nothing if we have paused it
+            if (this._pauseFlag) { return; }
+
+            // Move to the next slide
+            this.next();
+        }, timeToWait);
+    }
+
     /**
      * Public Interface
      */
@@ -155,7 +175,8 @@ class _Carousel extends Base<ICarouselProps> implements ICarousel {
 
     // Cycle the carousel
     cycle() {
-        // TODO
+        // Start the event
+        this.start(this.props.options && this.props.options.interval as any)
     }
 
     // Goes to the next slide
@@ -213,7 +234,8 @@ class _Carousel extends Base<ICarouselProps> implements ICarousel {
 
     // Pauses the slide
     pause() {
-        // TODO
+        // Set the flag
+        this._pauseFlag = true;
     }
 
     // Goes to the previous slide
@@ -251,6 +273,12 @@ class _Carousel extends Base<ICarouselProps> implements ICarousel {
             // Set the theme
             this.el.classList.remove("carousel-dark");
         }
+    }
+
+    // Unpauses the carousel
+    unpause() {
+        // Set the flag
+        this._pauseFlag = false;
     }
 }
 export const Carousel = (props: ICarouselProps, template?: string, slideTemplate?: string): ICarousel => { return new _Carousel(props, template, slideTemplate); }
