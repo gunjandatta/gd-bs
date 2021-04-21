@@ -108,11 +108,11 @@ class _ListGroup extends Base<IListGroupProps> implements IListGroup {
             this._items.push(item);
             listGroup.appendChild(item.el);
 
-            // Configure the events
-            this.configureEvents(item);
-
             // See if we are rendering tabs
             if (tabs) {
+                // Configure the events
+                this.configureEvents(item);
+
                 // Add the tab content
                 tabs.appendChild(item.elTab);
 

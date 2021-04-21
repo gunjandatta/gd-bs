@@ -3386,9 +3386,6 @@ declare module 'gd-bs/components/carousel' {
                 */
             cycle: () => void;
     
-            /** Disposes the carousel. */
-            dispose: () => void;
-    
             /** The element. */
             el: Element;
     
@@ -3415,6 +3412,9 @@ declare module 'gd-bs/components/carousel' {
     
             /** Shows the carousel. */
             show: () => void;
+    
+            /** Unpauses the carousel. */
+            unpause: () => void;
     }
     
     /**
