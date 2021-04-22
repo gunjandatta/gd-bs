@@ -208,6 +208,7 @@ class _Carousel extends Base<ICarouselProps> implements ICarousel {
     nextWhenVisible(idx) {
         let currentSlide: CarouselItem = null;
         let nextSlide: CarouselItem = this._slides[idx];
+        let slideRight = true;
 
         // Parse the slides
         for (let i = 0; i < this._slides.length; i++) {
@@ -217,6 +218,9 @@ class _Carousel extends Base<ICarouselProps> implements ICarousel {
             if (slide.isActive) {
                 // Do nothing if we selected the same slide
                 if (idx == i) { return; }
+
+                // Set the flag
+                slideRight = idx > i;
 
                 // Set the current slide
                 currentSlide = slide;
@@ -229,7 +233,7 @@ class _Carousel extends Base<ICarouselProps> implements ICarousel {
         }
 
         // Move to the next slide
-        this.moveToSlide(currentSlide, nextSlide);
+        this.moveToSlide(currentSlide, nextSlide, slideRight);
     }
 
     // Pauses the slide
