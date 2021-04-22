@@ -15485,14 +15485,14 @@ eval("// Fix to ensure the library loads in IE\n(function () {\n  if (typeof win
 
 /***/ }),
 
-/***/ "./src/index.ts":
-/*!**********************!*\
-  !*** ./src/index.ts ***!
-  \**********************/
+/***/ "./src/index-icons.ts":
+/*!****************************!*\
+  !*** ./src/index-icons.ts ***!
+  \****************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", ({\n  value: true\n}));\nexports.IconTypes = exports.Icons = exports.Components = void 0; // Bootstrap styles\n\n__webpack_require__(/*! ./bs */ \"./src/bs.scss\"); // Import the IE fix\n\n\n__webpack_require__(/*! ./ie */ \"./src/ie.ts\"); // Bootstrap Components\n\n\nvar Components = __webpack_require__(/*! ./components */ \"./src/components/index.ts\");\n\nexports.Components = Components; // Icons\n\nvar icons_1 = __webpack_require__(/*! ./icons */ \"./src/icons/index.ts\");\n\nObject.defineProperty(exports, \"Icons\", ({\n  enumerable: true,\n  get: function get() {\n    return icons_1.Icons;\n  }\n}));\nObject.defineProperty(exports, \"IconTypes\", ({\n  enumerable: true,\n  get: function get() {\n    return icons_1.IconTypes;\n  }\n})); // Bootstrap Global library\n\nvar BS = {\n  Components: Components,\n  Icons: icons_1.Icons,\n  IconTypes: icons_1.IconTypes\n};\nwindow[\"GD\"] = window[\"GD\"] || BS;\n\n//# sourceURL=webpack://gd-bs/./src/index.ts?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", ({\n  value: true\n}));\nexports.IconTypes = exports.Icons = exports.Components = void 0; // Bootstrap styles\n\n__webpack_require__(/*! ./bs */ \"./src/bs.scss\"); // Import the IE fix\n\n\n__webpack_require__(/*! ./ie */ \"./src/ie.ts\"); // Bootstrap Components\n\n\nvar Components = __webpack_require__(/*! ./components */ \"./src/components/index.ts\");\n\nexports.Components = Components; // Icons\n\nvar icons_1 = __webpack_require__(/*! ./icons */ \"./src/icons/index.ts\");\n\nObject.defineProperty(exports, \"Icons\", ({\n  enumerable: true,\n  get: function get() {\n    return icons_1.Icons;\n  }\n}));\nObject.defineProperty(exports, \"IconTypes\", ({\n  enumerable: true,\n  get: function get() {\n    return icons_1.IconTypes;\n  }\n})); // Bootstrap Global library\n\nvar BS = {\n  Components: Components,\n  Icons: icons_1.Icons,\n  IconTypes: icons_1.IconTypes\n};\nwindow[\"GD\"] = window[\"GD\"] || BS;\n\n//# sourceURL=webpack://gd-bs/./src/index-icons.ts?");
 
 /***/ }),
 
@@ -17217,7 +17217,7 @@ eval("\n\nvar isOldIE = function isOldIE() {\n  var memo;\n  return function mem
 /******/ 	__webpack_require__("./node_modules/.pnpm/core-js@3.10.2/node_modules/core-js/es/promise/index.js");
 /******/ 	__webpack_require__("./node_modules/.pnpm/core-js@3.10.2/node_modules/core-js/es/object/assign.js");
 /******/ 	__webpack_require__("./node_modules/.pnpm/core-js@3.10.2/node_modules/core-js/es/string/index.js");
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/index.ts");
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/index-icons.ts");
 /******/ 	
 /******/ })()
 ;

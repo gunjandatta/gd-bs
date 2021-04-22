@@ -9,7 +9,7 @@ module.exports = (env, argv) => {
             "./node_modules/core-js/es/promise/index.js",
             "./node_modules/core-js/es/object/assign.js",
             "./node_modules/core-js/es/string/index.js",
-            "./src/index-no-icons.ts"
+            "./src/index.ts"
         ],
         output: {
             path: path.resolve(__dirname, "dist"),
