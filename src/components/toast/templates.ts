@@ -1,5 +1,5 @@
 export const HTML = `
-<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+<div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="toast-header">
         <img class="rounded mr-2">
         <strong class="me-auto"></strong>

@@ -24,6 +24,7 @@ class _Toast extends Base<IToastProps> implements IToast {
 
     // Configure the card group
     private configure() {
+        // Get the header
         let header = this.el.querySelector(".toast-header");
         if (header) {
             // See if we are rendering an image
@@ -94,6 +95,16 @@ class _Toast extends Base<IToastProps> implements IToast {
         this.props.onRenderHeader ? this.props.onRenderHeader(this.el.querySelector(".toast-header"), this.props.data) : null;
         this.props.onRenderBody ? this.props.onRenderBody(this.el.querySelector(".toast-body"), this.props.data) : null;
 
+        // See if we are dismissing the alert
+        let btnClose = this.el.querySelector(".btn-close") as HTMLButtonElement;
+        if (btnClose) {
+            // Add a click event
+            btnClose.addEventListener("click", () => {
+                // Hide the toast
+                this.hide();
+            });
+        }
+
         // See if the click event exists
         if (this.props.onClick) {
             // Set the click event
@@ -110,12 +121,28 @@ class _Toast extends Base<IToastProps> implements IToast {
 
     // Hides the toast
     hide() {
-        // TODO
+        // Start the animation
+        this.el.classList.add("fade");
+        this.el.classList.remove("show");
+        this.el.classList.add("showing");
+        setTimeout(() => {
+            // Remove the classes
+            this.el.classList.add("hide");
+            this.el.classList.remove("fade", "showing");
+        }, 250);
     }
 
     // Shows the toast
     show() {
-        // TODO
+        // Start the animation
+        this.el.classList.add("fade");
+        this.el.classList.remove("hide");
+        this.el.classList.add("showing");
+        setTimeout(() => {
+            // Update the classes
+            this.el.classList.remove("fade", "showing");
+            this.el.classList.add("show");
+        }, 250);
     }
 
     /**
