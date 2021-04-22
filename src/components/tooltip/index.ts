@@ -74,7 +74,7 @@ class _Tooltip extends Base<ITooltipProps> {
         this._elContent = document.createElement("div") as HTMLElement;
         this._elContent.innerHTML = `<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner">${content}</div></div>`;
         this._elContent.style.display = "none";
-        this._btn.el.appendChild(this._elContent);
+        this._tooltips.appendChild(this._elContent);
 
         // Set the type
         switch (this.props.type) {
