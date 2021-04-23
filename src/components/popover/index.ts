@@ -1,3 +1,4 @@
+import { Instance } from "@popperjs/core/lib/types";
 import { createPopper } from "../../../libs/popper.min.js";
 import { Button } from "../button";
 import { IPopover, IPopoverProps } from "../../../@types/components/popover";
@@ -20,6 +21,7 @@ export enum PopoverTypes {
 class _Popover extends Base<IPopoverProps> implements IPopover {
     private _elContent: HTMLDivElement = null;
     private _popovers: HTMLDivElement = null;
+    private _popper: Instance = null;
 
     // Constructor
     constructor(props: IPopoverProps, template: string = "") {
@@ -147,7 +149,7 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
         }
 
         // Create the popper
-        createPopper(this.el, this._elContent, { placement: options.placement as any });
+        this._popper = createPopper(this.el, this._elContent, { placement: options.placement as any });
     }
 
     /**
@@ -181,6 +183,9 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
 
     // Toggles the popover
     toggle() {
+        // Update the popper
+        this._popper.update();
+
         // Toggle the element
         if (this.isVisible) {
             // Hide the element

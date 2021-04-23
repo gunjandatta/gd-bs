@@ -93,7 +93,7 @@
                 btnLoading.setText("Click Me");
             }, 5000);
 
-            GD.Components.Tooltip({
+            window["tooltip"] = GD.Components.Tooltip({
                 el: document.getElementById("tooltip"),
                 btnProps: {
                     text: "Test Tooltip",

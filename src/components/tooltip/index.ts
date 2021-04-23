@@ -1,3 +1,4 @@
+import { Instance } from "@popperjs/core/lib/types";
 import { createPopper } from "../../../libs/popper.min.js";
 import { IButton } from "../../../@types/components/button";
 import { ITooltip, ITooltipProps } from "../../../@types/components/tooltip";
@@ -21,6 +22,7 @@ export enum TooltipTypes {
 class _Tooltip extends Base<ITooltipProps> {
     private _btn: IButton = null;
     private _elContent: HTMLElement = null;
+    private _popper: Instance = null;
     private _tooltips: HTMLDivElement = null;
 
     // Constructor
@@ -73,7 +75,6 @@ class _Tooltip extends Base<ITooltipProps> {
         let content = options.title || "";
         this._elContent = document.createElement("div") as HTMLElement;
         this._elContent.innerHTML = `<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner">${content}</div></div>`;
-        this._elContent.style.display = "none";
         this._tooltips.appendChild(this._elContent);
 
         // Set the type
@@ -96,7 +97,7 @@ class _Tooltip extends Base<ITooltipProps> {
                 break;
             // Default - Top
             default:
-                options.placement = "top";
+                options.placement = "auto";
                 break;
         }
 
@@ -128,7 +129,7 @@ class _Tooltip extends Base<ITooltipProps> {
         }
 
         // Create the popper
-        createPopper(this.el, this._elContent, { placement: options.placement as any });
+        this._popper = createPopper(this.el, this._elContent, { placement: options.placement as any });
     }
 
     /**
@@ -157,7 +158,7 @@ class _Tooltip extends Base<ITooltipProps> {
     }
 
     // Determines if the popover is visible
-    get isVisible(): boolean { return this._elContent.style.display != "none"; }
+    get isVisible(): boolean { return (this._elContent.firstChild as HTMLElement).classList.contains("show"); }
 
     // Shows the popover
     show() {
@@ -167,13 +168,16 @@ class _Tooltip extends Base<ITooltipProps> {
 
     // Toggles the tooltip
     toggle() {
+        // Update the popper
+        this._popper.update();
+
         // Toggle the element
         if (this.isVisible) {
             // Hide the element
-            this._elContent.style.display = "none";
+            (this._elContent.firstChild as HTMLElement).classList.remove("show");
         } else {
             // Show the element
-            this._elContent.style.display = "";
+            (this._elContent.firstChild as HTMLElement).classList.add("show");
         }
     }
 }
