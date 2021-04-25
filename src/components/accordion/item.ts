@@ -4,6 +4,7 @@ import { IAccordionItem } from "../../../@types/components/accordion";
  * Accordion Item
  */
 export class AccordionItem {
+    private _autoCollapse: boolean = null;
     private _el: HTMLDivElement = null;
     private _elCollapse: HTMLDivElement = null;
     private _elHeader: HTMLButtonElement = null;
@@ -13,8 +14,9 @@ export class AccordionItem {
     private _props: IAccordionItem = null;
 
     // Constructor
-    constructor(parentId: string, itemId: string, props: IAccordionItem, template: string) {
+    constructor(parentId: string, itemId: string, props: IAccordionItem, template: string, autoCollapse: boolean) {
         // Save the properties
+        this._autoCollapse = autoCollapse;
         this._id = "collapse" + itemId;
         this._itemId = itemId;
         this._parentId = parentId;
@@ -53,8 +55,11 @@ export class AccordionItem {
     private configureEvents() {
         // Add a click event
         this._elHeader.addEventListener("click", () => {
-            // Toggle the element
-            this.toggle();
+            // See if the auto collapse flag is not set
+            if (!this._autoCollapse) {
+                // Toggle the element
+                this.toggle();
+            }
 
             // Call the click event
             this._props.onClick ? this._props.onClick(this._elHeader, this._props) : null;

@@ -73,7 +73,6 @@ export interface ICollapse {
  * Collapse Options
  */
 export interface ICollapseOptions {
-    parent?: string | Element;
     toggle?: boolean;
 }
 
