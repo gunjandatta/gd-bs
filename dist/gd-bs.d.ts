@@ -3430,11 +3430,10 @@ declare module 'gd-bs/components/carousel' {
         * Carousel Options
         */
     export interface ICarouselOptions {
-            interval?: number | boolean;
+            interval?: number;
             keyboard?: boolean;
-            pause?: string | boolean;
-            slide?: string | boolean;
-            touch?: boolean;
+            pause?: boolean;
+            slide?: number;
             wrap?: boolean;
     }
     

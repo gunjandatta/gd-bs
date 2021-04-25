@@ -12,6 +12,7 @@ class _Carousel extends Base<ICarouselProps> implements ICarousel {
     private _indicators: HTMLElement[] = null;
     private _pauseFlag = false;
     private _slides: CarouselItem[] = null;
+    private _toggle: boolean = false;
 
     // Constructor
     constructor(props: ICarouselProps, template: string = HTML, slideTemplate?: string) {
@@ -19,6 +20,9 @@ class _Carousel extends Base<ICarouselProps> implements ICarousel {
 
         // Configure the carousel
         this.configure(slideTemplate);
+
+        // Configure the events
+        this.configureEvents();
 
         // Configure the parent
         this.configureParent();
@@ -41,10 +45,77 @@ class _Carousel extends Base<ICarouselProps> implements ICarousel {
 
         // Set the dark theme
         this.props.isDark ? this.setTheme(true) : null;
+
+        // Get the options
+        let options = this.props.options;
+        if (options) {
+            // See if the interval is set
+            if (options.interval) {
+                this.start(options.interval);
+            }
+
+            // See if the starting slide is set
+            if (options.slide) {
+                this.nextWhenVisible(options.slide);
+            }
+        }
+    }
+
+    // Configures the events
+    private configureEvents() {
+        let el: HTMLElement = this.el;
+
+        // Get the options
+        let options = this.props.options;
+        if (options) {
+            // See if the keyboard option is set
+            if (options.keyboard) {
+                // Add a keydown event
+                el.addEventListener("keydown", (ev) => {
+                    // See if the left arrow was pressed
+                    if (ev.keyCode == 37) {
+                        // Move to the previous slide
+                        this.previous();
+                    }
+                    // Else, see if the right arrow was pressed
+                    else if (ev.keyCode == 39) {
+                        // Move tot he next slide
+                        this.next();
+                    }
+                });
+            }
+
+            // See if the pause option is set
+            if (options.pause) {
+                // Set the mouse enter event
+                el.addEventListener("mouseenter", () => {
+                    // See if automation exists
+                    if (this._eventId) {
+                        // Pause the automation
+                        this.pause();
+                    }
+                });
+
+                // Set the mouse exit event
+                el.addEventListener("mouseenter", () => {
+                    // See if automation exists
+                    if (this._eventId) {
+                        // Unpause the automation
+                        this.unpause();
+                    }
+                });
+            }
+        }
     }
 
     // Moves to the another slides
     private moveToSlide(current: CarouselItem, next: CarouselItem, slideRight: boolean = true) {
+        // Do nothing if the toggle flag is set
+        if (this._toggle) { return; }
+
+        // Set the flag
+        this._toggle = true;
+
         // Ensure the slides exist
         if (current && next) {
             // Animate the current slide out
@@ -62,6 +133,9 @@ class _Carousel extends Base<ICarouselProps> implements ICarousel {
                     next.el.classList.add("active");
                     current.el.classList.remove("active", "carousel-item-start", "carousel-item-end");
                     next.el.classList.remove("carousel-item-next", "carousel-item-prev", "carousel-item-start", "carousel-item-end");
+
+                    // Set the flag
+                    this._toggle = false;
                 }, 600);
             }, 10);
         }
@@ -183,12 +257,19 @@ class _Carousel extends Base<ICarouselProps> implements ICarousel {
     next() {
         let currentSlide: CarouselItem = null;
         let nextSlide: CarouselItem = null;
+        let options = this.props.options || {};
 
         // Parse the slides
         for (let i = 0; i < this._slides.length; i++) {
             let slide = this._slides[i];
 
             if (slide.isActive) {
+                // See if we are at the end and wrapping is disabled
+                if (i + 1 == this._slides.length && options.wrap == false) {
+                    // Do nothing
+                    return;
+                }
+
                 // Set the slides
                 currentSlide = slide;
                 nextSlide = this._slides[i + 1] || this._slides[0];
@@ -245,6 +326,7 @@ class _Carousel extends Base<ICarouselProps> implements ICarousel {
     // Goes to the previous slide
     previous() {
         let currentSlide: CarouselItem = null;
+        let options = this.props.options || {};
         let prevSlide: CarouselItem = null;
 
         // Parse the slides
@@ -252,6 +334,12 @@ class _Carousel extends Base<ICarouselProps> implements ICarousel {
             let slide = this._slides[i];
 
             if (slide.isActive) {
+                // See if we are at the end and wrapping is disabled
+                if (i - 1 < 0 && options.wrap == false) {
+                    // Do nothing
+                    return;
+                }
+
                 // Set the slides
                 currentSlide = slide;
                 prevSlide = this._slides[i - 1] || this._slides[this._slides.length - 1];
