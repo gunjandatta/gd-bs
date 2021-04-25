@@ -153,17 +153,19 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
     }
 
     /**
-     * Bootstrap
+     * Public Interface
      */
 
     // Disables the popover
     disable() {
-        // TODO
+        // Disable the target element
+        (this.el as HTMLButtonElement).disabled = true;
     }
 
     // Enables the popover
     enable() {
-        // TODO
+        // Enable the target element
+        (this.el as HTMLButtonElement).disabled = false;
     }
 
     // Hides the popover
@@ -198,9 +200,5 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
             this._elContent.style.display = "";
         }
     }
-
-    /**
-     * Public Interface
-     */
 }
 export const Popover = (props: IPopoverProps, template?: string): IPopover => { return new _Popover(props, template); }

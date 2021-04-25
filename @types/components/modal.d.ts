@@ -85,11 +85,8 @@ export interface IModal {
  * Modal Options
  */
 export interface IModalOptions {
-    /** Includes a modal-backdrop element. Alternatively, specify static for a backdrop which doesn't close the modal on click. */
-    backdrop?: boolean | string;
-
-    /** Puts the focus on the modal when initialized. */
-    focus?: boolean;
+    /** True to enable the backdrop when the modal is visible. */
+    backdrop?: boolean;
 
     /** Closes the modal when escape key is pressed. */
     keyboard?: boolean;

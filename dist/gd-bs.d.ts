@@ -2754,7 +2754,6 @@ declare module 'gd-bs/components/accordion' {
     export const Accordion: (props: IAccordionProps, template?: string, itemTemplate?: string) => IAccordion;
     
     import { IBase, IBaseProps } from "gd-bs/base";
-    import { IButtonProps } from "gd-bs/components/button";
     import { ICollapseOptions } from "gd-bs/components/collapse";
     
     /**
@@ -2783,6 +2782,7 @@ declare module 'gd-bs/components/accordion' {
         * Accordion Properties
         */
     export interface IAccordionProps<T=Element> extends IBaseProps<IAccordion> {
+            autoCollapse?: boolean;
             id?: string;
             items?: Array<IAccordionItem<T>>;
             options?: IAccordionOptions;
@@ -2820,9 +2820,6 @@ declare module 'gd-bs/components/alert' {
     export interface IAlert extends IBase<IAlertProps> {
             /** Closes an alert by removing it from the DOM. */
             close: () => void;
-    
-            /** Disposes the alert. */
-            dispose: () => void;
     
             /** Updates the alert text. */
             setText: (alertText?: string) => void;
@@ -3600,7 +3597,6 @@ declare module 'gd-bs/components/collapse' {
         * Collapse Options
         */
     export interface ICollapseOptions {
-            parent?: string | Element;
             toggle?: boolean;
     }
     
@@ -4853,6 +4849,9 @@ declare module 'gd-bs/components/popover' {
             /** The element. */
             el: Element;
     
+            /** The popper instance. */
+            popper: any;
+    
             /** Enables the popover. */
             enable: () => void;
     
@@ -5334,6 +5333,9 @@ declare module 'gd-bs/components/tooltip' {
     
             /** Hides an element’s tooltip. */
             hide: () => void;
+    
+            /** The popper instance. */
+            popper: any;
     
             /** Toggles an element's tooltip. */
             toggle: () => void;

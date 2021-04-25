@@ -116,7 +116,7 @@ class _Toast extends Base<IToastProps> implements IToast {
     }
 
     /**
-     * Bootstrap
+     * Public Interface
      */
 
     // Hides the toast
@@ -144,9 +144,5 @@ class _Toast extends Base<IToastProps> implements IToast {
             this.el.classList.add("show");
         }, 250);
     }
-
-    /**
-     * Public Interface
-     */
 }
 export const Toast = (props: IToastProps, template?: string): IToast => { return new _Toast(props, template); }
