@@ -85,6 +85,9 @@ export interface IModal {
  * Modal Options
  */
 export interface IModalOptions {
+    /** True to automatically close the offcanvas when clicking outside of it. */
+    autoClose?: boolean;
+
     /** True to enable the backdrop when the modal is visible. */
     backdrop?: boolean;
 
@@ -108,7 +111,6 @@ export interface IModalProps<T = Element> extends IBaseProps<IModal> {
     hideCloseButton?: boolean;
     id?: string;
     isCentered?: boolean;
-    isStatic?: boolean;
     onClose?: (el: HTMLDivElement) => void;
     onRenderBody?: (el: HTMLDivElement) => void;
     onRenderFooter?: (el: HTMLDivElement) => void;

@@ -109,7 +109,7 @@ class _Offcanvas extends Base<IOffcanvasProps> implements IOffcanvas {
             });
         }
 
-        // See if we are not showing the backdrop
+        // See if we are auto closing the offcanvas
         let autoClose = this.props.options && typeof (this.props.options.autoClose) === "boolean" ? this.props.options.autoClose : true;
         if (autoClose) {
             // Add a click event to the offcanvas

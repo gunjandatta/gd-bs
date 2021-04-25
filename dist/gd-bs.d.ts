@@ -4430,6 +4430,9 @@ declare module 'gd-bs/components/modal' {
         * Modal Options
         */
     export interface IModalOptions {
+            /** True to automatically close the offcanvas when clicking outside of it. */
+            autoClose?: boolean;
+    
             /** True to enable the backdrop when the modal is visible. */
             backdrop?: boolean;
     
@@ -4453,7 +4456,6 @@ declare module 'gd-bs/components/modal' {
             hideCloseButton?: boolean;
             id?: string;
             isCentered?: boolean;
-            isStatic?: boolean;
             onClose?: (el: HTMLDivElement) => void;
             onRenderBody?: (el: HTMLDivElement) => void;
             onRenderFooter?: (el: HTMLDivElement) => void;
@@ -4729,6 +4731,9 @@ declare module 'gd-bs/components/offcanvas' {
         * Offcanvas Options
         */
     export interface IOffcanvasOptions {
+            /** True to automatically close the offcanvas when clicking outside of it. */
+            autoClose?: boolean;
+    
             /** True to enable the backdrop when the offcanvas is visible. */
             backdrop?: boolean;
     

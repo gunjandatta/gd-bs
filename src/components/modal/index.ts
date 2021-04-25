@@ -39,6 +39,7 @@ export const ModalClassNames = new ClassNames([
  */
 class _Modal extends Base<IModalProps> implements IModal {
     private _options: IModalOptions = null;
+    private _tranisitioningFl: boolean = false;
 
     // Constructor
     constructor(props: IModalProps, template: string = HTML) {
@@ -59,7 +60,6 @@ class _Modal extends Base<IModalProps> implements IModal {
         // Set the modal attributes
         this.props.id ? this.el.id = this.props.id : null;
         this.props.disableFade ? null : this.el.classList.add("fade");
-        this.props.isStatic ? this.el.setAttribute("data-bs-backdrop", "static") : null;
 
         // Update the dialog
         let dialog = this.el.querySelector(".modal-dialog") as HTMLElement;
@@ -164,26 +164,32 @@ class _Modal extends Base<IModalProps> implements IModal {
             });
         }
 
-        // See if the modal is not static
-        if (this.props.isStatic != true) {
-            let closeFl = true;
+        // See if we are auto closing the modal
+        let autoClose = this.props.options && typeof (this.props.options.autoClose) === "boolean" ? this.props.options.autoClose : true;
+        if (autoClose) {
+            // Add a click event to the modal
+            document.body.addEventListener("click", (ev) => {
+                let elContent = (this.el as HTMLElement).querySelector(".modal-content");
 
-            // Add a click event within the modal
-            this.el.querySelector(".modal-content").addEventListener("click", () => {
-                // Set the flag
-                closeFl = false;
+                // Do nothing if we are tranisitionsing
+                if (this._tranisitioningFl) { return; }
 
-                // Reset the flag
-                setTimeout(() => { closeFl = true; }, 50);
-            });
-
-            // Add a click event outside of the modal
-            this.el.addEventListener("click", () => {
-                if (closeFl) { this.hide(); }
+                // Do nothing if we clicked within the modal
+                if (ev.composedPath().includes(elContent)) { return; }
                 else {
-                    // Animate the modal
-                    // TODO - low priority
+                    // Get the mouse coordinates
+                    let x = ev.clientX;
+                    let y = ev.clientY;
+                    let elCoordinate = elContent.getBoundingClientRect();
+
+                    // See if we clicked within the modal
+                    if (x <= elCoordinate.right && x >= elCoordinate.left && y <= elCoordinate.bottom && y >= elCoordinate.top) { return; }
+                    // Else, see if something was selected
+                    else if (x == 0 && y == 0) { return; }
                 }
+
+                // Close the modal if it's visible
+                if (this.isVisible) { this.toggle(); }
             });
         }
     }
@@ -236,6 +242,9 @@ class _Modal extends Base<IModalProps> implements IModal {
     toggle() {
         let backdrop = document.querySelector(".modal-backdrop");
 
+        // Set the flag
+        this._tranisitioningFl = true;
+
         // See if this modal is visible
         if (this.isVisible) {
             // Hide the modal
@@ -249,6 +258,9 @@ class _Modal extends Base<IModalProps> implements IModal {
                 // Remove the backdrop
                 backdrop ? document.body.removeChild(backdrop) : null;
                 backdrop = null;
+
+                // Set the flag
+                this._tranisitioningFl = false;
             }, 250);
         } else {
             // Start the animation
@@ -273,6 +285,9 @@ class _Modal extends Base<IModalProps> implements IModal {
                 // Show the modal
                 this.el.classList.remove("modal-open");
                 this.el.classList.add("show");
+
+                // Set the flag
+                this._tranisitioningFl = false;
             }, 250);
         }
     }
