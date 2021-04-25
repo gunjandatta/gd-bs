@@ -5387,9 +5387,6 @@ declare module 'gd-bs/base' {
         * Base
         */
     export interface IBase<IProps = IBaseProps> {
-            /** The bootstrap object */
-            _bootstrapObj?: any;
-    
             /** Internal method to configure the parent element. */
             configureParent(): Element;
     
