@@ -25,6 +25,7 @@ export const OffcanvasClassNames = new ClassNames([
  * Offcanvas
  */
 class _Offcanvas extends Base<IOffcanvasProps> implements IOffcanvas {
+    private _tranisitioningFl: boolean = false;
 
     // Constructor
     constructor(props: IOffcanvasProps, template: string = HTML) {
@@ -84,6 +85,12 @@ class _Offcanvas extends Base<IOffcanvasProps> implements IOffcanvas {
                 body.appendChild(content);
             }
         }
+
+        // Set the focus
+        if (options.focus) { (this.el as HTMLElement).focus(); }
+
+        // Set the visibility
+        if (options.visible) { this.toggle(); }
     }
 
     // Configure the events
@@ -103,24 +110,40 @@ class _Offcanvas extends Base<IOffcanvasProps> implements IOffcanvas {
         }
 
         // See if we are not showing the backdrop
-        if (this.props.options == null || this.props.options.backdrop != true) {
-            let closeFl = true;
-
+        let autoClose = this.props.options && typeof (this.props.options.autoClose) === "boolean" ? this.props.options.autoClose : true;
+        if (autoClose) {
             // Add a click event to the offcanvas
-            document.body.addEventListener("click", () => {
-                // Set the flag
-                closeFl = false;
+            document.body.addEventListener("click", (ev) => {
+                // Do nothing if we are tranisitionsing
+                if (this._tranisitioningFl) { return; }
 
-                // Reset the flag
-                setTimeout(() => { closeFl = true; }, 25);
+                // Do nothing if we clicked within the offcanvas
+                if (ev.composedPath().includes(this.el)) { return; }
+                else {
+                    // Get the mouse coordinates
+                    let x = ev.clientX;
+                    let y = ev.clientY;
+                    let elCoordinate = (this.el as HTMLElement).getBoundingClientRect();
+
+                    // See if we clicked within the offcanvas
+                    if (x <= elCoordinate.right && x >= elCoordinate.left && y <= elCoordinate.bottom && y >= elCoordinate.top) { return; }
+                    // Else, see if something was selected
+                    else if (x == 0 && y == 0) { return; }
+                }
+
+                // Close the offcanvas if it's visible
+                if (this.isVisible) { this.toggle(); }
             });
+        }
 
-            // Add a click event to the body
-            document.body.addEventListener("click", () => {
-                // See if this is visible and we are closing the offcanva
-                if (this.isVisible && closeFl) {
-                    // Close the offcanvas
-                    this.hide();
+        // See if the keyboard option is set
+        if (this.props.options && this.props.options.keyboard) {
+            // Add a click event
+            (this.el as HTMLElement).addEventListener("keydown", ev => {
+                // See if the escape key was clicked and the modal is visible
+                if (ev.keyCode === 27 && this.isVisible) {
+                    // Toggle the modal
+                    this.toggle();
                 }
             });
         }
@@ -160,6 +183,9 @@ class _Offcanvas extends Base<IOffcanvasProps> implements IOffcanvas {
 
     // Toggles the modal
     toggle() {
+        // Set the flag
+        this._tranisitioningFl = true;
+
         // See if this modal is visible
         if (this.isVisible) {
             // Hide the modal
@@ -170,6 +196,9 @@ class _Offcanvas extends Base<IOffcanvasProps> implements IOffcanvas {
             setTimeout(() => {
                 this.el.style.visibility = "hidden";
                 this.el.classList.remove("offcanvas-toggling");
+
+                // Set the flag
+                this._tranisitioningFl = false;
             }, 250);
 
             // Remove the backdrop
@@ -188,7 +217,11 @@ class _Offcanvas extends Base<IOffcanvasProps> implements IOffcanvas {
 
             // Wait for the animation to complete
             setTimeout(() => {
+                // Update the class
                 this.el.classList.remove("offcanvas-toggling");
+
+                // Set the flag
+                this._tranisitioningFl = false;
             }, 250);
         }
     }

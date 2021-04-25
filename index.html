@@ -1,6 +1,10 @@
 <html>
 
 <head>
+    <!-- Flat Pickr Library -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
     <script src="dist/gd-bs.js"></script>
     <!-- script src="../sprest-bs/dist/gd-sprest-bs.js"></script-->
     <style>
@@ -773,10 +777,18 @@
                 el: document.querySelector("#offcanvas"),
                 id: "offcanvas-demo",
                 title: "Offcanvas Demo",
-                body: "<h5>Hello Canvas</h5>",
-                type: 1,
-                options: { backdrop: true }
+                body: "<h5>Hello Canvas</h5><input />",
+                onRenderBody: function (el) {
+                    flatpickr(el.querySelector("input"), {
+                        altInput: true,
+                        altFormat: "F j, Y",
+                        dateFormat: "Y-m-d"
+                    });
+                },
+                type: 2,
+                options: { backdrop: false }
             });
+
             GD.Components.Button({
                 el: document.querySelector("#offcanvas"),
                 text: "Offcanvas",
