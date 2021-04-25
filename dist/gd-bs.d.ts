@@ -5227,7 +5227,6 @@ declare module 'gd-bs/components/toast' {
             headerImgClass?: string;
             headerImgSrc?: string;
             headerText?: string;
-            hideCloseButton?: boolean;
             mutedText?: string;
             options?: IToastOptions;
             onClick?: (el?: HTMLElement, data?: any) => void;

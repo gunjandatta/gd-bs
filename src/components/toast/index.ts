@@ -64,10 +64,10 @@ class _Toast extends Base<IToastProps> implements IToast {
                 }
             }
 
-            // See if we are creating the close button
+            // Get the close button
             let closeButton = header.querySelector("button") as HTMLElement;
             if (closeButton) {
-                if (this.props.hideCloseButton) {
+                if (this.props.options && this.props.options.autohide == false) {
                     // Remove the button
                     closeButton.parentNode.removeChild(closeButton);
                 }
@@ -121,28 +121,69 @@ class _Toast extends Base<IToastProps> implements IToast {
 
     // Hides the toast
     hide() {
-        // Start the animation
-        this.el.classList.add("fade");
-        this.el.classList.remove("show");
-        this.el.classList.add("showing");
-        setTimeout(() => {
+        // Completes the animation
+        let onComplete = () => {
             // Remove the classes
             this.el.classList.add("hide");
             this.el.classList.remove("fade", "showing");
-        }, 250);
+        };
+
+        // Starts the animation
+        let start = () => {
+            // See if we are not showing animation
+            if (this.props.options && this.props.options.animation == false) {
+                // Update the classes
+                this.el.classList.remove("show");
+
+                // Complete the request
+                onComplete();
+            } else {
+                // Start the animation
+                this.el.classList.add("fade");
+                this.el.classList.remove("show");
+                this.el.classList.add("showing");
+
+                // Complete the animation
+                setTimeout(onComplete, 250);
+            }
+        };
+
+        // See if there is a delay
+        let delay = this.props.options ? this.props.options.delay : null;
+        if (delay > 0) {
+            // Delay the request
+            setTimeout(start, delay);
+        } else {
+            // Start the animation
+            start();
+        }
     }
 
     // Shows the toast
     show() {
-        // Start the animation
-        this.el.classList.add("fade");
-        this.el.classList.remove("hide");
-        this.el.classList.add("showing");
-        setTimeout(() => {
+        // Completes the animation
+        let onComplete = () => {
             // Update the classes
             this.el.classList.remove("fade", "showing");
             this.el.classList.add("show");
-        }, 250);
+        };
+
+        // See if we are not showing animation
+        if (this.props.options && this.props.options.animation == false) {
+            // Update the classes
+            this.el.classList.remove("hide");
+
+            // Complete the request
+            onComplete();
+        } else {
+            // Start the animation
+            this.el.classList.add("fade");
+            this.el.classList.remove("hide");
+            this.el.classList.add("showing");
+
+            // Complete the animation
+            setTimeout(onComplete, 250);
+        }
     }
 }
 export const Toast = (props: IToastProps, template?: string): IToast => { return new _Toast(props, template); }
