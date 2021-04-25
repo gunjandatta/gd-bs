@@ -75,6 +75,7 @@ class _Tooltip extends Base<ITooltipProps> {
         let content = options.title || "";
         this._elContent = document.createElement("div") as HTMLElement;
         this._elContent.innerHTML = `<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner">${content}</div></div>`;
+        let elTarget = this._elContent.firstChild as HTMLElement;
         this._tooltips.appendChild(this._elContent);
 
         // Set the type
@@ -82,22 +83,32 @@ class _Tooltip extends Base<ITooltipProps> {
             // Auto
             case TooltipTypes.Auto:
                 options.placement = "auto";
+                elTarget.classList.add("bs-tooltip-auto");
                 break;
             // Bottom
             case TooltipTypes.Bottom:
                 options.placement = "bottom";
+                elTarget.classList.add("bs-tooltip-bottom");
                 break;
             // Left
             case TooltipTypes.Left:
                 options.placement = "left";
+                elTarget.classList.add("bs-tooltip-start");
                 break;
             // Right
             case TooltipTypes.Right:
                 options.placement = "right";
+                elTarget.classList.add("bs-tooltip-end");
                 break;
-            // Default - Top
+            // Right
+            case TooltipTypes.Top:
+                options.placement = "top";
+                elTarget.classList.add("bs-tooltip-top");
+                break;
+            // Default - Auto
             default:
                 options.placement = "auto";
+                elTarget.classList.add("bs-tooltip-auto");
                 break;
         }
 
@@ -129,7 +140,7 @@ class _Tooltip extends Base<ITooltipProps> {
         }
 
         // Create the popper
-        this._popper = createPopper(this.el, this._elContent, { placement: options.placement as any });
+        this._popper = createPopper(this.el, elTarget, { placement: options.placement as any });
     }
 
     /**

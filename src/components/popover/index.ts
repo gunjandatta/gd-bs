@@ -118,6 +118,7 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
         this._elContent = document.createElement("div");
         this._elContent.innerHTML = '<div class="popover" role="tooltip"><div class="popover-arrow"></div><h3 class="popover-header"></h3><div class="popover-body"></div></div>';
         this._elContent.style.display = "none";
+        let elTarget = this._elContent.firstChild as HTMLElement;
         this._popovers.appendChild(this._elContent);
 
         // See if we are rendering raw html
@@ -149,7 +150,7 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
         }
 
         // Create the popper
-        this._popper = createPopper(this.el, this._elContent, { placement: options.placement as any });
+        this._popper = createPopper(this.el, elTarget, { placement: options.placement as any });
     }
 
     /**
