@@ -175,6 +175,9 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
     // Determines if the popover is visible
     get isVisible(): boolean { return this._elContent.style.display != "none"; }
 
+    // The popper instance
+    popper() { return this._popper; }
+
     // Shows the popover
     show() {
         // See if it's hidden

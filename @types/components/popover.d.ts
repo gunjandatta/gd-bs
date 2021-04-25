@@ -62,6 +62,9 @@ export interface IPopover {
     /** The element. */
     el: Element;
 
+    /** The popper instance. */
+    popper: any;
+
     /** Enables the popover. */
     enable: () => void;
 

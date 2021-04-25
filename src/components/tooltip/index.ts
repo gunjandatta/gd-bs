@@ -160,6 +160,9 @@ class _Tooltip extends Base<ITooltipProps> {
     // Determines if the popover is visible
     get isVisible(): boolean { return (this._elContent.firstChild as HTMLElement).classList.contains("show"); }
 
+    // The popper instance
+    popper() { return this._popper; }
+
     // Shows the popover
     show() {
         // See if it's hidden

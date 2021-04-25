@@ -61,6 +61,9 @@ export interface ITooltip {
     /** Hides an element’s tooltip. */
     hide: () => void;
 
+    /** The popper instance. */
+    popper: any;
+
     /** Toggles an element's tooltip. */
     toggle: () => void;
 
