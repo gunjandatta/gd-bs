@@ -152,6 +152,18 @@ class _Modal extends Base<IModalProps> implements IModal {
             });
         }
 
+        // See if the keyboard option is set
+        if (this._options && this._options.keyboard) {
+            // Add a click event
+            (this.el as HTMLElement).addEventListener("keydown", ev => {
+                // See if the escape key was clicked and the modal is visible
+                if (ev.keyCode === 27 && this.isVisible) {
+                    // Toggle the modal
+                    this.toggle();
+                }
+            });
+        }
+
         // See if the modal is not static
         if (this.props.isStatic != true) {
             let closeFl = true;
@@ -168,6 +180,10 @@ class _Modal extends Base<IModalProps> implements IModal {
             // Add a click event outside of the modal
             this.el.addEventListener("click", () => {
                 if (closeFl) { this.hide(); }
+                else {
+                    // Animate the modal
+                    // TODO - low priority
+                }
             });
         }
     }
@@ -248,6 +264,9 @@ class _Modal extends Base<IModalProps> implements IModal {
                 backdrop.classList.add("show");
                 document.body.appendChild(backdrop);
             }
+
+            // Set the focus
+            (this.el as HTMLElement).focus();
 
             // Wait for the animation to complete
             setTimeout(() => {
