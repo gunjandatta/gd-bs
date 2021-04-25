@@ -88,8 +88,14 @@ export interface IModalOptions {
     /** True to enable the backdrop when the modal is visible. */
     backdrop?: boolean;
 
+    /** Puts the focus on the modal when initialized. */
+    focus?: boolean;
+
     /** Closes the modal when escape key is pressed. */
     keyboard?: boolean;
+
+    /** True to toggle the modal on creation. */
+    visible?: boolean;
 }
 
 /**

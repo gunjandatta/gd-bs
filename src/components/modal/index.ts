@@ -38,6 +38,7 @@ export const ModalClassNames = new ClassNames([
  * @param props The modal properties.
  */
 class _Modal extends Base<IModalProps> implements IModal {
+    private _options: IModalOptions = null;
 
     // Constructor
     constructor(props: IModalProps, template: string = HTML) {
@@ -107,23 +108,27 @@ class _Modal extends Base<IModalProps> implements IModal {
         }
 
         // Get the modal options
-        let options: IModalOptions = this.props.options;
-        if (options) {
+        this._options = this.props.options;
+        if (this._options) {
             // Set the backdrop
-            if (typeof (options.backdrop) === "boolean") {
-                this.el.setAttribute("data-bs-backdrop", options.backdrop ? "true" : "false");
-            } else if (typeof (options.backdrop) === "string") {
-                this.el.setAttribute("data-bs-backdrop", options.backdrop);
+            if (typeof (this._options.backdrop) === "boolean") {
+                this.el.setAttribute("data-bs-backdrop", this._options.backdrop ? "true" : "false");
             }
 
             // Set the focus
-            if (typeof (options.focus) === "boolean") {
-                this.el.setAttribute("data-bs-focus", options.backdrop ? "true" : "false");
+            if (typeof (this._options.focus) === "boolean") {
+                this.el.setAttribute("data-bs-focus", this._options.backdrop ? "true" : "false");
             }
 
             // Set the keyboard
-            if (typeof (options.keyboard) === "boolean") {
-                this.el.setAttribute("data-bs-keyboard", options.backdrop ? "true" : "false");
+            if (typeof (this._options.keyboard) === "boolean") {
+                this.el.setAttribute("data-bs-keyboard", this._options.backdrop ? "true" : "false");
+            }
+
+            // See if we are showing the modal
+            if (this._options.visible) {
+                // Toggle the modal
+                this.toggle();
             }
         }
     }
@@ -234,8 +239,9 @@ class _Modal extends Base<IModalProps> implements IModal {
             this.el.classList.add("modal-open")
             this.el.style.display = "block";
 
-            // Create the backdrop
-            if (backdrop == null) {
+            // Create the backdrop if we are showing it
+            let showBackdrop = this._options && typeof (this._options.backdrop) === "boolean" ? this._options.backdrop : true;
+            if (showBackdrop && backdrop == null) {
                 backdrop = document.createElement("div");
                 backdrop.classList.add("modal-backdrop");
                 backdrop.classList.add("fade");

@@ -4431,14 +4431,17 @@ declare module 'gd-bs/components/modal' {
         * Modal Options
         */
     export interface IModalOptions {
-            /** Includes a modal-backdrop element. Alternatively, specify static for a backdrop which doesn't close the modal on click. */
-            backdrop?: boolean | string;
+            /** True to enable the backdrop when the modal is visible. */
+            backdrop?: boolean;
     
             /** Puts the focus on the modal when initialized. */
             focus?: boolean;
     
             /** Closes the modal when escape key is pressed. */
             keyboard?: boolean;
+    
+            /** True to toggle the modal on creation. */
+            visible?: boolean;
     }
     
     /**
