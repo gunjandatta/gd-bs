@@ -141,7 +141,6 @@ fs.readdir(dirIcons, function (err, files) {
     stream = fs.createWriteStream("./icons/index.ts");
     stream.write([
         'export * from "./iconTypes";',
-        'import { generateIcon } from "./generate";\n',
         '// Icons to import',
         'import * as SVGIcons from "./svgs";\n',
         "// Renders an icon by type",
