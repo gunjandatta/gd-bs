@@ -112,6 +112,7 @@ class _Button extends Base<IButtonProps> implements IButton {
         this.setText(this.props.text);
 
         // Set the icon
+        // TODO - Need to redo this logic to not include all icons by default
         if (typeof (this.props.iconType) !== "undefined") {
             // Append the icon
             GD && GD.Icons ? this.el.appendChild(GD.Icons(this.props.iconType, this.props.iconSize, this.props.iconSize)) : null;
