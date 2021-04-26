@@ -53,7 +53,7 @@ fs.readdir(dirIcons, function (err, files) {
         stream.write([
             'import { generateIcon } from "../generate";',
             'export function ' + varName + '(height, width) {',
-            '\tgenerateIcon(`' + fs.readFileSync(dirIcons + "/" + file) + '`, height, width);',
+            '\treturn generateIcon(`' + fs.readFileSync(dirIcons + "/" + file) + '`, height, width);',
             '}'
         ].join('\n'));
         stream.end();
