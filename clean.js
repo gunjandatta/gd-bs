@@ -29,13 +29,13 @@ console.log("Cleaning the library...");
 // Delete the folders
 deleteDirectory("./build");
 deleteDirectory("./dist");
-deleteDirectory("./icons");
 deleteDirectory("./libs");
+deleteDirectory("./src/icons");
 
 // Create the directories
-fs.mkdirSync("./icons");
-fs.mkdirSync("./icons/svgs");
 fs.mkdirSync("./libs");
+fs.mkdirSync("./src/icons");
+fs.mkdirSync("./src/icons/svgs");
 
 // Copy the popper library
 fs.copyFileSync("node_modules/@popperjs/core/dist/umd/popper.min.js", "libs/popper.min.js");

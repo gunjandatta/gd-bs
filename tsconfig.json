@@ -4,10 +4,10 @@
             "dom",
             "es2015"
         ],
+        "outDir": "build",
         "target": "es5"
     },
     "include": [
-        "icons/**/*",
         "libs/**/*",
         "src/**/*.ts"
     ]

@@ -49,7 +49,7 @@ fs.readdir(dirIcons, function (err, files) {
         typeDefs.push("\t" + funcName + ": number;");
 
         // Convert the svg to a typescript file
-        var stream = fs.createWriteStream("./icons/svgs/" + varName + ".ts");
+        var stream = fs.createWriteStream("./src/icons/svgs/" + varName + ".ts");
         stream.write([
             'import { generateIcon } from "../generate";',
             'export function ' + varName + '(height, width) {',
@@ -64,8 +64,8 @@ fs.readdir(dirIcons, function (err, files) {
 
     // Delete the files
     try { fs.unlinkSync("./@types/icons.d.ts"); } catch { }
-    try { fs.unlinkSync("./icons/icons.ts"); } catch { }
-    try { fs.unlinkSync("./icons/iconTypes.ts"); } catch { }
+    try { fs.unlinkSync("./src/icons/icons.ts"); } catch { }
+    try { fs.unlinkSync("./src/icons/iconTypes.ts"); } catch { }
 
     // Generate the file
     var stream = fs.createWriteStream("./@types/icons.d.ts");
@@ -109,12 +109,12 @@ fs.readdir(dirIcons, function (err, files) {
     console.log("Icons definition file generated");
 
     // Generate the svgs index file
-    var stream = fs.createWriteStream("./icons/svgs/index.ts");
+    var stream = fs.createWriteStream("./src/icons/svgs/index.ts");
     stream.write(icons.join('\n'));
     stream.close();
 
     // Generate the icons index file
-    stream = fs.createWriteStream("./icons/generate.ts");
+    stream = fs.createWriteStream("./src/icons/generate.ts");
     stream.write([
         '// Generates the html for an icon',
         'export const generateIcon = (svg: string, height: number = 32, width: number = 32) => {',
@@ -138,7 +138,7 @@ fs.readdir(dirIcons, function (err, files) {
     stream.end();
 
     // Generate the icons index file
-    stream = fs.createWriteStream("./icons/index.ts");
+    stream = fs.createWriteStream("./src/icons/index.ts");
     stream.write([
         'export * from "./iconTypes";',
         '// Icons to import',
@@ -154,7 +154,7 @@ fs.readdir(dirIcons, function (err, files) {
     stream.end();
 
     // Generate the icon types
-    var stream = fs.createWriteStream("./icons/iconTypes.ts");
+    var stream = fs.createWriteStream("./src/icons/iconTypes.ts");
     stream.write([
         "// Icon Types",
         "export enum IconTypes {",

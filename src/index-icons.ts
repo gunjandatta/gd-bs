@@ -9,7 +9,7 @@ import * as Components from "./components";
 export { Components }
 
 // Icons
-import { Icons, IconTypes } from "../icons";
+import { Icons, IconTypes } from "./icons";
 export { Icons, IconTypes }
 
 // Bootstrap Global library
