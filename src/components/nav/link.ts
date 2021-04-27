@@ -76,14 +76,14 @@ export class NavLink extends Base<INavLink> {
 
     // Configures the events
     private configureEvents() {
-        // See if there is a click event
-        if (this.props.onClick) {
-            // Add a click event
-            this.el.addEventListener("click", ev => {
-                // Execute the event
-                this.props.onClick(this.props, ev);
-            });
-        }
+        // Add a click event
+        (this.el as HTMLElement).addEventListener("click", ev => {
+            // Prevent the page from moving to the top
+            ev.preventDefault();
+
+            // Execute the event
+            this.props.onClick ? this.props.onClick(this.props, ev) : null;
+        });
 
         // Execute the tab render event
         this._elTab && this.props.onRenderTab ? this.props.onRenderTab(this.props, this._elTab) : null;

@@ -1,4 +1,3 @@
-import { bootstrap } from "../../core";
 import { ICollapse, ICollapseProps } from "../../../@types/components/collapse";
 import { Base } from "../base";
 import { HTML } from "./templates";
@@ -40,32 +39,56 @@ class _Collapse extends Base<ICollapseProps> implements ICollapse {
 
         // Execute the render event
         this.props.onRender ? this.props.onRender(this.props, body) : null;
+
+        // See if we are expanding it by default
+        if (this.props.options && this.props.options.toggle) {
+            // Toggle the element
+            this.toggle();
+        }
     }
-
-    /**
-     * Bootstrap
-     */
-
-    // The bootstrap collapse
-    private get collapse() {
-        // Create the bootstrap object if it doesn't exist
-        this._bootstrapObj = this._bootstrapObj || new bootstrap.Collapse(this.el);
-
-        // Return the object
-        return this._bootstrapObj;
-    }
-
-    // Disposes the collapse
-    dispose() { this.collapse.dispose(); }
-
-    // Flag determining if the collapse is visible
-    get isVisible() { return this.el.classList.contains("show"); }
-
-    // Toggles the collapse
-    toggle() { this.collapse.toggle(); }
 
     /**
      * Public Interface
      */
+
+    // Returns true if the item is expanded
+    get isExpanded(): boolean {
+        // See if the item is expanded
+        return this.el.classList.contains("collapsing") || this.el.classList.contains("show");
+    }
+
+    // Toggles the collapse
+    toggle() {
+        // See if it's expanded
+        if (this.isExpanded) {
+            // Start the animation
+            this.el.style.height = this.el.getBoundingClientRect()["height"] + "px";
+            setTimeout(() => {
+                this.el.classList.add("collapsing");
+                this.el.classList.remove("collapse");
+                this.el.classList.remove("show");
+                this.el.style.height = "";
+            }, 10);
+
+            // Wait for the animation to complete
+            setTimeout(() => {
+                this.el.classList.remove("collapsing");
+                this.el.classList.add("collapse");
+            }, 250);
+        } else {
+            // Start the animation
+            this.el.classList.remove("collapse");
+            this.el.classList.add("collapsing");
+            this.el.style.height = this.el.scrollHeight + "px";
+
+            // Wait for the animation to complete
+            setTimeout(() => {
+                this.el.classList.remove("collapsing");
+                this.el.classList.add("collapse");
+                this.el.classList.add("show");
+                this.el.style.height = "";
+            }, 250);
+        }
+    }
 }
 export const Collapse = (props: ICollapseProps, template?: string): ICollapse => { return new _Collapse(props, template); }

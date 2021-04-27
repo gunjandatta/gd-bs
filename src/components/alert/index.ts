@@ -35,6 +35,8 @@ export const AlertClassNames = new ClassNames([
  * Alert
  */
 class _Alert extends Base<IAlertProps> implements IAlert {
+    private _btnClose: HTMLButtonElement = null;
+
     // Constructor
     constructor(props: IAlertProps, template: string = HTML) {
         super(template, props);
@@ -87,13 +89,18 @@ class _Alert extends Base<IAlertProps> implements IAlert {
 
     // Configure the events
     private configureEvents() {
-        // See if the close event exists
-        if (this.props.onClose) {
-            // Set the close event
-            this.el.addEventListener("close.bs.alert", () => {
-                // Call the event
-                this.props.onClose(this.props);
+        // See if we are dismissing the alert
+        this._btnClose = this.el.querySelector(".btn-close") as HTMLButtonElement;
+        if (this._btnClose) {
+            // Add a click event
+            this._btnClose.addEventListener("click", () => {
+                // Add the fade class
+                this.el.classList.add("fade");
+                setTimeout(() => { this.hide(); }, 250);
             });
+
+            // Execute the event
+            this.props.onClose ? this.props.onClose(this.props) : null;
         }
     }
 
@@ -113,27 +120,14 @@ class _Alert extends Base<IAlertProps> implements IAlert {
     }
 
     /**
-     * Bootstrap
-     */
-
-    // The bootstrap alert
-    private get alert() {
-        // Create the bootstrap object if it doesn't exist
-        this._bootstrapObj = this._bootstrapObj || new alert(this.el);
-
-        // Return the object
-        return this._bootstrapObj;
-    }
-
-    // Closes the alert
-    close() { this.alert.close(); }
-
-    // Disposes the alert
-    dispose() { this.alert.dispose(); }
-
-    /**
      * Public Properties
      */
+
+    // Closes the alert
+    close() {
+        // Click the close button
+        this._btnClose ? this._btnClose.click() : null;
+    }
 
     // Clears the alert and updates the text
     setText(alertText?: string) {

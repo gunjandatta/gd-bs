@@ -1,9 +1,6 @@
 import * as Components from "./components";
-import { Icons, IconTypes } from "./icons";
-declare var bootstrap: any;
+declare var createPopper: Function;
 
 export {
-    bootstrap,
-    Components,
-    Icons, IconTypes
+    Components, createPopper
 }

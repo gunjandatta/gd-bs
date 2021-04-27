@@ -34,16 +34,12 @@ export class NavbarItem {
 
         // See if this is a dropdown
         if (this._props.items) {
-            // Render a dropdown
+            // Render a dropdown menu
             this._el = Dropdown({
                 isReadonly: this._props.isDisabled,
                 items: this._props.items,
                 label: this._props.text,
-                navFl: true,
-                onChange: (item, ev) => {
-                    // Prevent the page from moving to the top
-                    ev.preventDefault();
-                }
+                navFl: true
             }).el as HTMLElement;
 
             // Update the link

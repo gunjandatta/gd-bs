@@ -1,4 +1,3 @@
-import { bootstrap } from "../../core";
 import { IModal, IModalProps, IModalOptions } from "../../../@types/components/modal";
 import { Base } from "../base";
 import { ClassNames } from "../classNames";
@@ -39,6 +38,8 @@ export const ModalClassNames = new ClassNames([
  * @param props The modal properties.
  */
 class _Modal extends Base<IModalProps> implements IModal {
+    private _options: IModalOptions = null;
+    private _tranisitioningFl: boolean = false;
 
     // Constructor
     constructor(props: IModalProps, template: string = HTML) {
@@ -59,7 +60,6 @@ class _Modal extends Base<IModalProps> implements IModal {
         // Set the modal attributes
         this.props.id ? this.el.id = this.props.id : null;
         this.props.disableFade ? null : this.el.classList.add("fade");
-        this.props.isStatic ? this.el.setAttribute("data-bs-backdrop", "static") : null;
 
         // Update the dialog
         let dialog = this.el.querySelector(".modal-dialog") as HTMLElement;
@@ -108,23 +108,27 @@ class _Modal extends Base<IModalProps> implements IModal {
         }
 
         // Get the modal options
-        let options: IModalOptions = this.props.options;
-        if (options) {
+        this._options = this.props.options;
+        if (this._options) {
             // Set the backdrop
-            if (typeof (options.backdrop) === "boolean") {
-                this.el.setAttribute("data-bs-backdrop", options.backdrop ? "true" : "false");
-            } else if (typeof (options.backdrop) === "string") {
-                this.el.setAttribute("data-bs-backdrop", options.backdrop);
+            if (typeof (this._options.backdrop) === "boolean") {
+                this.el.setAttribute("data-bs-backdrop", this._options.backdrop ? "true" : "false");
             }
 
             // Set the focus
-            if (typeof (options.focus) === "boolean") {
-                this.el.setAttribute("data-bs-focus", options.backdrop ? "true" : "false");
+            if (typeof (this._options.focus) === "boolean") {
+                this.el.setAttribute("data-bs-focus", this._options.backdrop ? "true" : "false");
             }
 
             // Set the keyboard
-            if (typeof (options.keyboard) === "boolean") {
-                this.el.setAttribute("data-bs-keyboard", options.backdrop ? "true" : "false");
+            if (typeof (this._options.keyboard) === "boolean") {
+                this.el.setAttribute("data-bs-keyboard", this._options.backdrop ? "true" : "false");
+            }
+
+            // See if we are showing the modal
+            if (this._options.visible) {
+                // Toggle the modal
+                this.toggle();
             }
         }
     }
@@ -136,56 +140,69 @@ class _Modal extends Base<IModalProps> implements IModal {
         this.props.onRenderFooter ? this.props.onRenderFooter(this.el.querySelector(".modal-footer")) : null;
 
         // Get the close button
-        let elClose = this.el.querySelector("button.close");
+        let elClose = this.el.querySelector(".btn-close");
         if (elClose) {
             // Add a click event
             elClose.addEventListener("click", () => {
                 // Hide the modal
                 this.hide();
-            });
-        }
 
-        // See if there is a close event
-        if (this.props.onClose) {
-            // Add a hidden event
-            this.el.addEventListener("hidden.bs.modal", () => {
                 // Call the event
-                this.props.onClose(this.el);
+                this.props.onClose ? this.props.onClose(this.el) : null;
+            });
+        }
+
+        // See if the keyboard option is set
+        if (this._options && this._options.keyboard) {
+            // Add a click event
+            (this.el as HTMLElement).addEventListener("keydown", ev => {
+                // See if the escape key was clicked and the modal is visible
+                if (ev.keyCode === 27 && this.isVisible) {
+                    // Toggle the modal
+                    this.toggle();
+                }
+            });
+        }
+
+        // See if we are auto closing the modal
+        let autoClose = this.props.options && typeof (this.props.options.autoClose) === "boolean" ? this.props.options.autoClose : true;
+        if (autoClose) {
+            // Add a click event to the modal
+            document.body.addEventListener("click", (ev) => {
+                let elContent = (this.el as HTMLElement).querySelector(".modal-content");
+
+                // Do nothing if we are tranisitionsing
+                if (this._tranisitioningFl) { return; }
+
+                // Do nothing if we clicked within the modal
+                if (ev.composedPath().includes(elContent)) { return; }
+                else {
+                    // Get the mouse coordinates
+                    let x = ev.clientX;
+                    let y = ev.clientY;
+                    let elCoordinate = elContent.getBoundingClientRect();
+
+                    // See if we clicked within the modal
+                    if (x <= elCoordinate.right && x >= elCoordinate.left && y <= elCoordinate.bottom && y >= elCoordinate.top) { return; }
+                    // Else, see if something was selected
+                    else if (x == 0 && y == 0) { return; }
+                }
+
+                // Close the modal if it's visible
+                if (this.isVisible) { this.toggle(); }
             });
         }
     }
-
-    /**
-     * Bootstrap
-     */
-
-    // The bootstrap modal
-    private get modal() {
-        // Create the bootstrap object if it doesn't exist
-        this._bootstrapObj = this._bootstrapObj || new bootstrap.Modal(this.el);
-
-        // Return the object
-        return this._bootstrapObj;
-    }
-
-    // Disposes the modal
-    dispose() { this.modal.dispose(); }
-
-    // Updates the modal
-    handleUpdate() { this.modal.handleUpdate(); }
-
-    // Hides the modal
-    hide() { this.modal.hide(); }
-
-    // Shows the modal
-    show() { this.modal.show(); }
-
-    // Toggles the modal
-    toggle() { this.modal.toggle(); }
 
     /**
      * Public Interface
      */
+
+    // Hides the modal
+    hide() {
+        // Toggle the modal
+        this.isVisible ? this.toggle() : null;
+    }
 
     // Returns true if the modal is visible
     get isVisible() { return this.el.classList.contains("show"); }
@@ -213,6 +230,66 @@ class _Modal extends Base<IModalProps> implements IModal {
         // Set the class name
         let className = ModalClassNames.getByType(modalType);
         className ? dialog.classList.add(className) : null;
+    }
+
+    // Shows the modal
+    show() {
+        // Toggle the modal
+        this.isVisible ? null : this.toggle();
+    }
+
+    // Toggles the modal
+    toggle() {
+        let backdrop = document.querySelector(".modal-backdrop");
+
+        // Set the flag
+        this._tranisitioningFl = true;
+
+        // See if this modal is visible
+        if (this.isVisible) {
+            // Hide the modal
+            this.el.classList.remove("show");
+
+            // Wait for the animation to complete
+            setTimeout(() => {
+                // Hide the modal
+                this.el.style.display = "";
+
+                // Remove the backdrop
+                backdrop ? document.body.removeChild(backdrop) : null;
+                backdrop = null;
+
+                // Set the flag
+                this._tranisitioningFl = false;
+            }, 250);
+        } else {
+            // Start the animation
+            this.el.classList.add("modal-open")
+            this.el.style.display = "block";
+
+            // Create the backdrop if we are showing it
+            let showBackdrop = this._options && typeof (this._options.backdrop) === "boolean" ? this._options.backdrop : true;
+            if (showBackdrop && backdrop == null) {
+                backdrop = document.createElement("div");
+                backdrop.classList.add("modal-backdrop");
+                backdrop.classList.add("fade");
+                backdrop.classList.add("show");
+                document.body.appendChild(backdrop);
+            }
+
+            // Set the focus
+            (this.el as HTMLElement).focus();
+
+            // Wait for the animation to complete
+            setTimeout(() => {
+                // Show the modal
+                this.el.classList.remove("modal-open");
+                this.el.classList.add("show");
+
+                // Set the flag
+                this._tranisitioningFl = false;
+            }, 250);
+        }
     }
 }
 export const Modal = (props: IModalProps, template?: string): IModal => { return new _Modal(props, template); }

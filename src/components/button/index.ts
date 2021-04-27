@@ -1,11 +1,11 @@
-import { bootstrap } from "../../core";
 import { IButton, IButtonProps } from "../../../@types/components/button";
-import { Icons } from "../../icons";
 import { Base } from "../base";
 import { ClassNames } from "../classNames";
 import { Badge, BadgeTypes } from "../badge";
 import { Spinner } from "../spinner";
 import { HTML, HTMLBlock, HTMLLink } from "./templates";
+
+declare var GD;
 
 /**
  * Button Types
@@ -112,9 +112,10 @@ class _Button extends Base<IButtonProps> implements IButton {
         this.setText(this.props.text);
 
         // Set the icon
+        // TODO - Need to redo this logic to not include all icons by default
         if (typeof (this.props.iconType) !== "undefined") {
             // Append the icon
-            this.el.appendChild(Icons(this.props.iconType, this.props.iconSize, this.props.iconSize));
+            GD && GD.Icons ? this.el.appendChild(GD.Icons(this.props.iconType, this.props.iconSize, this.props.iconSize)) : null;
 
             // Update the styling of the button
             this.el.classList.add("btn-icon");
@@ -149,26 +150,16 @@ class _Button extends Base<IButtonProps> implements IButton {
                 this.props.onClick(this.props, ev);
             });
         }
+
+        // See if we are toggling anything
+        if (this.props.toggleObj && typeof (this.props.toggleObj.toggle) === "function") {
+            // Add a click event
+            this.el.addEventListener("click", ev => {
+                // Toggle the object
+                this.props.toggleObj.toggle();
+            });
+        }
     }
-
-    /**
-     * Bootstrap
-     */
-
-    // The bootstrap button
-    private get button() {
-        // Create the bootstrap object if it doesn't exist
-        this._bootstrapObj = this._bootstrapObj || new bootstrap.Button(this.el);
-
-        // Return the object
-        return this._bootstrapObj;
-    }
-
-    // Disposes the button
-    dispose() { this.button.dispose(); }
-
-    // Toggles the button
-    toggle() { this.button.toggle(); }
 
     /**
      * Public Properties
@@ -203,6 +194,14 @@ class _Button extends Base<IButtonProps> implements IButton {
         // Set the class name
         let className = ButtonClassNames.getByType(buttonType) || ButtonClassNames.getByType(ButtonTypes.Primary);
         this.el.classList.add(className);
+    }
+
+    // Toggles the button
+    toggle() {
+        let btn = this.el as HTMLButtonElement;
+
+        // Toggle the element
+        btn.classList.contains("active") ? btn.classList.remove("active") : btn.classList.add("active");
     }
 }
 export const Button = (props: IButtonProps, template?: string): IButton => { return new _Button(props, template); }

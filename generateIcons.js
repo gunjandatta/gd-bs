@@ -42,15 +42,20 @@ fs.readdir(dirIcons, function (err, files) {
         // Add the switch case statement
         switches.push("\t\t// " + file);
         switches.push("\t\tcase " + iconType + ":");
-        switches.push("\t\t\treturn generateIcon(SVGIcons." + varName + ", height, width);");
+        switches.push("\t\t\treturn SVGIcons." + varName + "(height, width);");
 
         // Add the type definition
         typeDefs.push("\t// " + file);
         typeDefs.push("\t" + funcName + ": number;");
 
         // Convert the svg to a typescript file
-        var stream = fs.createWriteStream("./src/icons/svgs/" + varName + ".ts");
-        stream.write("export const " + varName + " = `" + fs.readFileSync(dirIcons + "/" + file) + "`;");
+        var stream = fs.createWriteStream("./icons/svgs/" + varName + ".ts");
+        stream.write([
+            'import { generateIcon } from "../generate";',
+            'export function ' + varName + '(height, width) {',
+            '\treturn generateIcon(`' + fs.readFileSync(dirIcons + "/" + file) + '`, height, width);',
+            '}'
+        ].join('\n'));
         stream.end();
 
         // Add an export for this file
@@ -59,8 +64,8 @@ fs.readdir(dirIcons, function (err, files) {
 
     // Delete the files
     try { fs.unlinkSync("./@types/icons.d.ts"); } catch { }
-    try { fs.unlinkSync("./src/icons/icons.ts"); } catch { }
-    try { fs.unlinkSync("./src/icons/iconTypes.ts"); } catch { }
+    try { fs.unlinkSync("./icons/icons.ts"); } catch { }
+    try { fs.unlinkSync("./icons/iconTypes.ts"); } catch { }
 
     // Generate the file
     var stream = fs.createWriteStream("./@types/icons.d.ts");
@@ -104,18 +109,15 @@ fs.readdir(dirIcons, function (err, files) {
     console.log("Icons definition file generated");
 
     // Generate the svgs index file
-    var stream = fs.createWriteStream("./src/icons/svgs/index.ts");
+    var stream = fs.createWriteStream("./icons/svgs/index.ts");
     stream.write(icons.join('\n'));
     stream.close();
 
     // Generate the icons index file
-    stream = fs.createWriteStream("./src/icons/index.ts");
+    stream = fs.createWriteStream("./icons/generate.ts");
     stream.write([
-        'export * from "./iconTypes";\n',
-        '// Icons to import',
-        'import * as SVGIcons from "./svgs";\n',
         '// Generates the html for an icon',
-        'const generateIcon = (svg: string, height: number = 32, width: number = 32) => {',
+        'export const generateIcon = (svg: string, height: number = 32, width: number = 32) => {',
         '\t// Get the icon element',
         '\tlet elDiv = document.createElement("div");',
         '\telDiv.innerHTML = svg;',
@@ -131,7 +133,16 @@ fs.readdir(dirIcons, function (err, files) {
         '\t}\n',
         '\t// Return the icon',
         '\treturn icon;',
-        '}\n',
+        '}\n'
+    ].join('\n'));
+    stream.end();
+
+    // Generate the icons index file
+    stream = fs.createWriteStream("./icons/index.ts");
+    stream.write([
+        'export * from "./iconTypes";',
+        '// Icons to import',
+        'import * as SVGIcons from "./svgs";\n',
         "// Renders an icon by type",
         "export const Icons = (iconType:number, height?:number, width?:number) => {",
         "\t// See which icon is selected",
@@ -143,7 +154,7 @@ fs.readdir(dirIcons, function (err, files) {
     stream.end();
 
     // Generate the icon types
-    var stream = fs.createWriteStream("./src/icons/iconTypes.ts");
+    var stream = fs.createWriteStream("./icons/iconTypes.ts");
     stream.write([
         "// Icon Types",
         "export enum IconTypes {",

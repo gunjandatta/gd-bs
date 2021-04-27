@@ -95,14 +95,14 @@ export class ListGroupItem extends Base<IListGroupItem> {
 
     // Configures the events
     private configureEvents() {
-        // See if there is a click event
-        if (this.props.onClick) {
-            // Add a click event
-            this.el.addEventListener("click", ev => {
-                // Execute the event
-                this.props.onClick(this.el, this.props);
-            });
-        }
+        // Add a click event
+        (this.el as HTMLElement).addEventListener("click", ev => {
+            // Prevent the page from moving to the top
+            ev.preventDefault();
+
+            // Execute the event
+            this.props.onClick ? this.props.onClick(this.el, this.props) : null;
+        });
 
         // See if there is a render event
         if (this.props.onRender) {
@@ -127,13 +127,13 @@ export class ListGroupItem extends Base<IListGroupItem> {
         if (this.isVisible) {
             // Hide this link and tab
             this.el.classList.remove("active");
-            this._elTab.classList.remove("active");
-            this._elTab.classList.remove("show");
+            this._elTab ? this._elTab.classList.remove("active") : null;
+            this._elTab ? this._elTab.classList.remove("show") : null;
         } else {
             // Show this link and tab
             this.el.classList.add("active");
-            this._elTab.classList.add("active");
-            fadeTabs ? this._elTab.classList.add("show") : null;
+            this._elTab ? this._elTab.classList.add("active") : null;
+            this._elTab && fadeTabs ? this._elTab.classList.add("show") : null;
         }
     }
 }

@@ -1,5 +1,3 @@
-src/*
-!src/styles
 *.log*
 package-lock.json
 tsconfig.json

@@ -77,6 +77,9 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
             if (this.props.menuOnly) {
                 // Update the element
                 this.el = this._elMenu;
+            } else {
+                // Hide it by default
+                this._elMenu.style.display = "none";
             }
         }
 
@@ -150,6 +153,13 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
 
     // Configure the events
     private configureEvents() {
+        // Get the toggle
+        let toggle = this.el.querySelector(".dropdown-toggle") as HTMLElement;
+        if (toggle) {
+            // Set the click event to toggle the menu
+            toggle.addEventListener("click", ev => { this.toggle(); });
+        }
+
         // See if this is a select element and a change event exists
         let menu = this.el.querySelector("select");
         if (menu) {
@@ -186,6 +196,12 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
                         }
                     }
                 }
+            });
+        } else if (this._elMenu) {
+            // Add a click event to show the dropdown
+            this._elMenu.addEventListener("click", () => {
+                // Show the menu
+                this.isVisible ? null : this.toggle();
             });
         }
     }
@@ -247,14 +263,17 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
             });
         }
 
-        // See if there is a change event
-        if (this.props.onChange) {
-            // Add a click event
-            item.el.addEventListener("click", ev => {
-                // Execute the event
-                this.props.onChange(this.getValue(), ev);
-            });
-        }
+        // Add a click event
+        item.el.addEventListener("click", ev => {
+            // Prevent other events to occur
+            ev.stopPropagation();
+
+            // Toggle the menu if it's visible
+            this.isVisible ? this.toggle() : null;
+
+            // Execute the event
+            this.props.onChange ? this.props.onChange(this.getValue(), ev) : null;
+        });
     }
 
     // Configures the dropdown for a nav bar
@@ -279,6 +298,20 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
             } else {
                 // Update the menu
                 this.props.id ? menu.setAttribute("aria-labelledby", this.props.id) : null;
+            }
+        }
+    }
+
+    // Handles the click event outside of the menu to close it
+    private handleClick = (ev: Event) => {
+        // See if we clicked within the menu
+        if (!ev.composedPath().includes(this._elMenu)) {
+            if (this.isVisible) {
+                // Hide the menu
+                this.toggle();
+            } else {
+                // Remove this event (This shouldn't happen, but to be safe)
+                document.body.removeEventListener("click", this.handleClick);
             }
         }
     }
@@ -320,33 +353,6 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
                 }
             }
         }
-    }
-
-    /**
-     * Bootstrap
-     * Bootstrap object is not being initialized, as it causes the dropdown to not work
-     */
-
-    // Disposes the dropdown
-    dispose() {
-        //this._bootstrapObj ? this._bootstrapObj.dispose() : null;
-    }
-
-    // Toggles the menu
-    toggle() {
-        //this._bootstrapObj ? this._bootstrapObj.toggle() : null;
-
-        // Get the menu element
-        let elMenu = this.el.querySelector(".dropdown-toggle") as HTMLButtonElement;
-        if (elMenu) {
-            // Click the button
-            elMenu.click();
-        }
-    }
-
-    // Updates the dropdown
-    update() {
-        //this._bootstrapObj ? this._bootstrapObj.update() : null;
     }
 
     /**
@@ -394,6 +400,9 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
 
     // Returns true if the dropdown allows multiple selections
     get isMulti(): boolean { return this.props.multi; }
+
+    // Returns true if the dropdown menu is visible
+    get isVisible(): boolean { return this._elMenu && this._elMenu.style.display != "none"; }
 
     // Sets the dropdown items
     setItems(newItems: Array<IDropdownItem> = []) {
@@ -492,6 +501,28 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
         if (this._initFl && this.props.onChange) {
             // Execute the change event
             this.props.onChange(this.getValue());
+        }
+    }
+
+    // Toggles the menu
+    toggle() {
+        // Get the menu element
+        let elMenu = this.el.querySelector(".dropdown-menu") as HTMLElement;
+        if (elMenu) {
+            // See if we are showing the menu
+            if (elMenu.style.display == "none") {
+                // Show the menu
+                elMenu.style.display = "block";
+
+                // Add an event handler
+                setTimeout(() => { document.addEventListener("click", this.handleClick); }, 10);
+            } else {
+                // Hide the menu
+                elMenu.style.display = "none";
+
+                // Remove the event handler
+                document.removeEventListener("click", this.handleClick);
+            }
         }
     }
 }

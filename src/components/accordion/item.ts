@@ -4,6 +4,7 @@ import { IAccordionItem } from "../../../@types/components/accordion";
  * Accordion Item
  */
 export class AccordionItem {
+    private _autoCollapse: boolean = null;
     private _el: HTMLDivElement = null;
     private _elCollapse: HTMLDivElement = null;
     private _elHeader: HTMLButtonElement = null;
@@ -13,8 +14,9 @@ export class AccordionItem {
     private _props: IAccordionItem = null;
 
     // Constructor
-    constructor(parentId: string, itemId: string, props: IAccordionItem, template: string) {
+    constructor(parentId: string, itemId: string, props: IAccordionItem, template: string, autoCollapse: boolean) {
         // Save the properties
+        this._autoCollapse = autoCollapse;
         this._id = "collapse" + itemId;
         this._itemId = itemId;
         this._parentId = parentId;
@@ -51,14 +53,17 @@ export class AccordionItem {
 
     // Configures the events
     private configureEvents() {
-        // See if there is a click event
-        if (this._props.onClick) {
-            // Add a click event
-            this._elHeader.addEventListener("click", () => {
-                // Call the click event
-                this._props.onClick(this._elHeader, this._props);
-            });
-        }
+        // Add a click event
+        this._elHeader.addEventListener("click", () => {
+            // See if the auto collapse flag is not set
+            if (!this._autoCollapse) {
+                // Toggle the element
+                this.toggle();
+            }
+
+            // Call the click event
+            this._props.onClick ? this._props.onClick(this._elHeader, this._props) : null;
+        });
 
         // Execute the render event
         this._props.onRender ? this._props.onRender(this._el.querySelector(".card-body"), this._props) : null;
@@ -120,18 +125,42 @@ export class AccordionItem {
     // Returns true if the item is expanded
     get isExpanded(): boolean {
         // See if the item is expanded
-        return this.elCollapse.classList.contains("show");
+        return this.elCollapse.classList.contains("collapsing") || this.elCollapse.classList.contains("show");
     }
 
     // Toggles the item
     toggle() {
         // See if it's expanded
-        if (this.elCollapse.classList.contains("show")) {
-            // Hide it
-            this.elCollapse.classList.remove("show");
+        if (this.isExpanded) {
+            // Start the animation
+            this.elCollapse.style.height = this.el.getBoundingClientRect()["height"] + "px";
+            setTimeout(() => {
+                this.elCollapse.classList.add("collapsing");
+                this.elCollapse.classList.remove("collapse");
+                this.elCollapse.classList.remove("show");
+                this.elCollapse.style.height = "";
+            }, 10);
+
+            // Wait for the animation to complete
+            setTimeout(() => {
+                this.elCollapse.classList.remove("collapsing");
+                this.elCollapse.classList.add("collapse");
+                this.elHeader.classList.add("collapsed");
+            }, 250);
         } else {
-            // Show it
-            this.elCollapse.classList.add("show");
+            // Start the animation
+            this.elCollapse.classList.remove("collapse");
+            this.elCollapse.classList.add("collapsing");
+            this.elCollapse.style.height = this.el.scrollHeight + "px";
+
+            // Wait for the animation to complete
+            setTimeout(() => {
+                this.elCollapse.classList.remove("collapsing");
+                this.elCollapse.classList.add("collapse");
+                this.elCollapse.classList.add("show");
+                this.elCollapse.style.height = "";
+                this.elHeader.classList.remove("collapsed");
+            }, 250);
         }
     }
 }

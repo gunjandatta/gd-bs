@@ -1,7 +1,11 @@
 <html>
 
 <head>
-    <script src="dist/gd-bs-icons.js"></script>
+    <!-- Flat Pickr Library -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <script src="dist/gd-bs.js"></script>
     <!-- script src="../sprest-bs/dist/gd-sprest-bs.js"></script-->
     <style>
         .carousel {
@@ -13,6 +17,12 @@
 <body>
     <h1>Library</h1>
     <form>
+        <div id="dev">
+            <div id="dev-tooltip" role="tooltip">
+                My Tooltip
+                <div id="arrow" data-popper-arrow></div>
+            </div>
+        </div>
         <div id="alert"></div>
         <div id="btn-loading"></div>
         <div id="spinner"></div>
@@ -47,27 +57,52 @@
         <div id="table"></div>
         <div id="toast"></div>
     </form>
+    <style>
+        #arrow, #arrow::before {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: inherit;
+        }
+        #arrow { visibility: hidden; }
+        #arrow::before {
+            visibility: visible;
+            content: '';
+            transform: rotate(45deg);
+        }
+        #dev-tooltip[data-popper-placement^='top'] > #arrow { bottom: -4px; }
+        #dev-tooltip[data-popper-placement^='bottom'] > #arrow { top: -4px; }
+        #dev-tooltip[data-popper-placement^='left'] > #arrow { right: -4px; }
+        #dev-tooltip[data-popper-placement^='right'] > #arrow { left: -4px; }
+
+        #dev-tooltip {
+            background: #333;
+            color: white;
+            font-weight: bold;
+            padding: 4px 8px;
+            font-size: 13px;
+            border-radius: 4px;
+            z-index: 9999999;
+        }
+    </style>
     <script type="text/javascript">
         window.addEventListener("load", function () {
             // Dev
             var elDev = document.getElementById("dev");
-            GD.Components.FormControl({
+            window["dev"] = GD.Components.Button({
                 el: elDev,
-                label: "Dev:",
-                title: "This is a dropdown",
-                type: GD.Components.FormControlTypes.Dropdown,
-                onControlRendered: function (control) {
-                },
-                onControlRendering: function (props) {
-                    props.items = [
-                        { text: "Item 1", value: 1 },
-                        { text: "Item 2", value: 2 },
-                        { text: "Item 3", value: 3 },
-                        { text: "Item 4", value: 4 },
-                        { text: "Item 5", value: 5 }
-                    ];
-                }
-            })
+                text: "Test Button"
+            });
+            GD.createPopper(window["dev"].el, document.querySelector("#dev-tooltip"), {
+                modifiers: [
+                    {
+                        name: "offset",
+                        options: {
+                            offset: [0, 8]
+                        }
+                    }
+                ]
+            });
 
             GD.Components.ListBox({
                 el: document.getElementById("listbox"),
@@ -105,7 +140,7 @@
                 btnLoading.setText("Click Me");
             }, 5000);
 
-            GD.Components.Tooltip({
+            window["tooltip"] = GD.Components.Tooltip({
                 el: document.getElementById("tooltip"),
                 btnProps: {
                     text: "Test Tooltip",
@@ -113,7 +148,7 @@
                 },
                 options: {
                     html: true,
-                    title: function () { var el = document.createElement("div"); el.innerHTML = "<h5>Test HTML</h5><p>This was done via JS</p>"; return el; }
+                    title: "<h5>Test HTML</h5><p>This was done via JS</p>"
                 }
             });
 
@@ -130,7 +165,7 @@
                 ]
             });
 
-            GD.Components.Toast({
+            window["toast"] = GD.Components.Toast({
                 el: document.getElementById("toast"),
                 headerText: "Header Text",
                 body: "This is the body of the toast.",
@@ -160,6 +195,7 @@
                 el: document.querySelector("#popover1"),
                 btnProps: { id: "popover-demo2", text: "Popover Demo", type: 3 },
                 isDismissible: true,
+                type: 4,
                 options: {
                     html: true,
                     content: GD.Components.Button({ text: "Action", onClick: function () { alert("Take Action"); } }).el,
@@ -470,12 +506,6 @@
                     },
                 ]
             });
-            GD.Components.Button({
-                el: document.getElementById("panel"),
-                text: "Show Panel",
-                target: "#my-panel",
-                toggle: "modal"
-            });
             window["panel"] = GD.Components.Modal({
                 el: document.getElementById("panel"),
                 id: "my-panel",
@@ -492,6 +522,11 @@
                         content: "This is the content of the jumbotron."
                     });
                 }
+            });
+            GD.Components.Button({
+                el: document.getElementById("panel"),
+                text: "Show Panel",
+                toggleObj: window["panel"]
             });
             GD.Components.Badge({
                 el: document.getElementById("badge"),
@@ -570,18 +605,12 @@
                     { text: "File 5.docx", url: "#" },
                 ]
             });
-            GD.Components.Button({
-                el: document.querySelector("#modal"),
-                text: "Modal",
-                target: "#my-modal",
-                toggle: "modal"
-            });
-            GD.Components.Modal({
+            window["modal"] = GD.Components.Modal({
                 el: document.querySelector("#modal"),
                 id: "my-modal",
                 title: "My Modal",
                 type: 4,
-                isStatic: true,
+                options: { keyboard: true, autoClose: false },
                 onClose: function (modal) {
                     console.log("The modal was closed.", modal);
                 },
@@ -783,17 +812,30 @@
                 }
             });
             GD.Components.Button({
-                el: document.querySelector("#offcanvas"),
-                text: "Offcanvas",
-                target: "#offcanvas-demo",
-                toggle: "offcanvas"
+                el: document.querySelector("#modal"),
+                text: "Modal",
+                toggleObj: window["modal"]
             });
             window["OffcanvasDemo"] = GD.Components.Offcanvas({
                 el: document.querySelector("#offcanvas"),
                 id: "offcanvas-demo",
                 title: "Offcanvas Demo",
-                body: "<h5>Hello Canvas</h5>",
-                type: 1
+                body: "<h5>Hello Canvas</h5><input />",
+                onRenderBody: function (el) {
+                    flatpickr(el.querySelector("input"), {
+                        altInput: true,
+                        altFormat: "F j, Y",
+                        dateFormat: "Y-m-d"
+                    });
+                },
+                type: 2,
+                options: { backdrop: false }
+            });
+
+            GD.Components.Button({
+                el: document.querySelector("#offcanvas"),
+                text: "Offcanvas",
+                toggleObj: window["OffcanvasDemo"]
             });
             GD.Components.InputGroup({
                 el: document.querySelector("#textbox"),
@@ -821,12 +863,12 @@
             window["myListGroup"] = GD.Components.ListGroup({
                 el: document.querySelector("#list-group"),
                 items: [
-                    { tabName: "Tab 1", content: "This is the content for tab 1." },
-                    { tabName: "Tab 2", content: "This is the content for tab 2.", badge: { content: "10", type: 1 } },
-                    { tabName: "Tab 3", content: "This is the content for tab 3." },
-                    { tabName: "Tab 4", content: "This is the content for tab 4." },
-                    { tabName: "Tab 5", content: "This is the content for tab 5." },
-                    { tabName: "Tab 6", content: "<a href='#'>This is a Link</a>" }
+                    { content: "This is the content for item 1." },
+                    { content: "This is the content for item 2.", badge: { content: "10", type: 1 } },
+                    { content: "This is the content for item 3." },
+                    { content: "This is the content for item 4." },
+                    { content: "This is the content for item 5." },
+                    { content: "<a href='#'>This is a Link</a>" }
                 ]
             });
             window["myListGroupTabs"] = GD.Components.ListGroup({
@@ -863,11 +905,12 @@
                     { title: "NavTab 5", tabContent: "This is the content for tab 5." }
                 ]
             });
-            GD.Components.Carousel({
+            window["carousel"] = GD.Components.Carousel({
                 el: document.querySelector("#carousel"),
                 enableControls: true,
                 enableIndicators: true,
                 id: "demoCarousel",
+                options: { interval: 2500 },
                 items: [
                     {
                         captions: "<h5>First Slide</h5>",
@@ -890,22 +933,19 @@
                     }
                 ]
             });
-            window["btnCollapse"] = GD.Components.Button({
-                el: document.querySelector("#btnCollapse"),
-                controls: ["collapseDemo"],
-                isExpanded: false,
-                target: "#collapseDemo",
-                toggle: "collapse",
-                text: "Collapse Demo"
-            });
-            GD.Components.Collapse({
+            window["collapse"] = GD.Components.Collapse({
                 el: document.querySelector("#collapse"),
                 id: "collapseDemo",
                 content: "This is the content to be collapsed.",
                 options: { toggle: false }
             });
+            window["btnCollapse"] = GD.Components.Button({
+                el: document.querySelector("#btnCollapse"),
+                toggleObj: window["collapse"],
+                text: "Collapse Demo"
+            });
             GD.Components.Accordion({
-                autoCollapse: false,
+                //autoCollapse: false,
                 el: document.querySelector("#accordion"),
                 id: "accordionDemo",
                 items: [

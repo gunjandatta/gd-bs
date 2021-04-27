@@ -1,4 +1,3 @@
-import { bootstrap } from "../../core";
 import { IToast, IToastProps } from "../../../@types/components/toast";
 import { Base } from "../base";
 import { HTML } from "./templates";
@@ -25,6 +24,7 @@ class _Toast extends Base<IToastProps> implements IToast {
 
     // Configure the card group
     private configure() {
+        // Get the header
         let header = this.el.querySelector(".toast-header");
         if (header) {
             // See if we are rendering an image
@@ -64,10 +64,10 @@ class _Toast extends Base<IToastProps> implements IToast {
                 }
             }
 
-            // See if we are creating the close button
+            // Get the close button
             let closeButton = header.querySelector("button") as HTMLElement;
             if (closeButton) {
-                if (this.props.hideCloseButton) {
+                if (this.props.options && this.props.options.autohide == false) {
                     // Remove the button
                     closeButton.parentNode.removeChild(closeButton);
                 }
@@ -87,16 +87,6 @@ class _Toast extends Base<IToastProps> implements IToast {
                 body.appendChild(content);
             }
         }
-
-        // Initialize the toast component
-        let options = this.props.options || {};
-        this._bootstrapObj = new bootstrap.Toast(this.el, options);
-
-        // See if we are showing this toast
-        if (options.autohide == false) {
-            // Show the toast
-            this.show();
-        }
     }
 
     // Configures the events
@@ -104,6 +94,16 @@ class _Toast extends Base<IToastProps> implements IToast {
         // Execute the render events
         this.props.onRenderHeader ? this.props.onRenderHeader(this.el.querySelector(".toast-header"), this.props.data) : null;
         this.props.onRenderBody ? this.props.onRenderBody(this.el.querySelector(".toast-body"), this.props.data) : null;
+
+        // See if we are dismissing the alert
+        let btnClose = this.el.querySelector(".btn-close") as HTMLButtonElement;
+        if (btnClose) {
+            // Add a click event
+            btnClose.addEventListener("click", () => {
+                // Hide the toast
+                this.hide();
+            });
+        }
 
         // See if the click event exists
         if (this.props.onClick) {
@@ -116,17 +116,74 @@ class _Toast extends Base<IToastProps> implements IToast {
     }
 
     /**
-     * Bootstrap
+     * Public Interface
      */
 
     // Hides the toast
-    hide() { this._bootstrapObj.hide(); }
+    hide() {
+        // Completes the animation
+        let onComplete = () => {
+            // Remove the classes
+            this.el.classList.add("hide");
+            this.el.classList.remove("fade", "showing");
+        };
+
+        // Starts the animation
+        let start = () => {
+            // See if we are not showing animation
+            if (this.props.options && this.props.options.animation == false) {
+                // Update the classes
+                this.el.classList.remove("show");
+
+                // Complete the request
+                onComplete();
+            } else {
+                // Start the animation
+                this.el.classList.add("fade");
+                this.el.classList.remove("show");
+                this.el.classList.add("showing");
+
+                // Complete the animation
+                setTimeout(onComplete, 250);
+            }
+        };
+
+        // See if there is a delay
+        let delay = this.props.options ? this.props.options.delay : null;
+        if (delay > 0) {
+            // Delay the request
+            setTimeout(start, delay);
+        } else {
+            // Start the animation
+            start();
+        }
+    }
 
     // Shows the toast
-    show() { this._bootstrapObj.show(); }
+    show() {
+        // Completes the animation
+        let onComplete = () => {
+            // Update the classes
+            this.el.classList.remove("fade", "showing");
+            this.el.classList.add("show");
+        };
 
-    /**
-     * Public Interface
-     */
+        // See if we are not showing animation
+        if (this.props.options && this.props.options.animation == false) {
+            // Update the classes
+            this.el.classList.remove("hide");
+
+            // Complete the request
+            onComplete();
+        } else {
+            // Start the animation
+            this.el.classList.add("fade");
+            this.el.classList.remove("hide");
+            this.el.classList.add("showing");
+
+            // Complete the animation
+            setTimeout(onComplete, 250);
+        }
+    }
 }
 export const Toast = (props: IToastProps, template?: string): IToast => { return new _Toast(props, template); }

@@ -72,6 +72,26 @@ class _ListGroup extends Base<IListGroupProps> implements IListGroup {
         this.renderItems(listGroup, itemTemplate);
     }
 
+    // Configures the item event
+    private configureEvents(tab: ListGroupItem) {
+        // Add a click event
+        tab.el.addEventListener("click", () => {
+            // Parse the tabs
+            for (let i = 0; i < this._items.length; i++) {
+                let item = this._items[i];
+
+                // See if it's visible
+                if (item.isVisible) {
+                    // Toggle it
+                    item.toggle(this.props.fadeTabs);
+                }
+            }
+
+            // Toggle the link
+            tab.toggle(this.props.fadeTabs);
+        });
+    }
+
     // Render the items
     private renderItems(listGroup: Element, itemTemplate: string) {
         // Clear the items
@@ -90,6 +110,9 @@ class _ListGroup extends Base<IListGroupProps> implements IListGroup {
 
             // See if we are rendering tabs
             if (tabs) {
+                // Configure the events
+                this.configureEvents(item);
+
                 // Add the tab content
                 tabs.appendChild(item.elTab);
 

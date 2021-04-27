@@ -1,4 +1,5 @@
-import { bootstrap } from "../../core";
+import { Instance } from "@popperjs/core/lib/types";
+import { createPopper } from "../../../libs/popper.min.js";
 import { Button } from "../button";
 import { IPopover, IPopoverProps } from "../../../@types/components/popover";
 import { Base } from "../base";
@@ -18,7 +19,9 @@ export enum PopoverTypes {
  * Popover
  */
 class _Popover extends Base<IPopoverProps> implements IPopover {
+    private _elContent: HTMLDivElement = null;
     private _popovers: HTMLDivElement = null;
+    private _popper: Instance = null;
 
     // Constructor
     constructor(props: IPopoverProps, template: string = "") {
@@ -74,6 +77,10 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
                 case PopoverTypes.Top:
                     options.placement = "top";
                     break;
+                // Default
+                default:
+                    options.placement = "bottom";
+                    break;
             }
         }
 
@@ -107,34 +114,125 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
             typeof (options.content) === "string" ? this.el.setAttribute("data-bs-content", options.content) : null;
         }
 
-        // Create the popover
-        this._bootstrapObj = new bootstrap.Popover(this.el, options);
+        // Create the popover content element
+        this._elContent = document.createElement("div");
+        this._elContent.innerHTML = '<div class="popover fade" role="tooltip"><div class="popover-arrow"></div><h3 class="popover-header"></h3><div class="popover-body"></div></div>';
+        this._elContent = this._elContent.firstChild as HTMLDivElement;
+        this._elContent.style.display = "none";
+        this._popovers.appendChild(this._elContent);
+
+        // Set the class name
+        switch (options.placement) {
+            case "auto":
+            case "bottom":
+            case "top":
+                this._elContent.classList.add("bs-popover-" + options.placement);
+                break;
+            case "left":
+                this._elContent.classList.add("bs-popover-start");
+                break;
+            case "right":
+                this._elContent.classList.add("bs-popover-end");
+                break;
+        }
+
+        // See if we are rendering raw html
+        let elBody = this._elContent.querySelector(".popover-body");
+        if (typeof (options.content) === "string") {
+            // Set the content
+            elBody.innerHTML = options.content;
+        } else {
+            // Append the content
+            elBody.appendChild(options.content as Element);
+        }
+
+        // Add an event listener
+        let eventType = options.trigger || "click";
+        if (eventType == "hover") {
+            this.el.addEventListener("mouseover", () => {
+                // Toggle the element
+                this.show();
+            });
+            this.el.addEventListener("mouseout", () => {
+                // Toggle the element
+                this.hide();
+            });
+        } else {
+            this.el.addEventListener(eventType, () => {
+                // Toggle the element
+                this.toggle();
+            });
+        }
+
+        // Create the popper
+        this._popper = createPopper(this.el, this._elContent, {
+            placement: options.placement as any,
+            modifiers: [
+                {
+                    name: "arrow",
+                    options: {
+                        element: ".popover-arrow"
+                    }
+                },
+                {
+                    name: "offset",
+                    options: {
+                        offset: [0, 8]
+                    }
+                }
+            ]
+        });
     }
-
-    /**
-     * Bootstrap
-     */
-
-    // Disposes the popover
-    dispose() { this._bootstrapObj.dispose(); }
-
-    // Disables the popover
-    disable() { this._bootstrapObj.disable(); }
-
-    // Enables the popover
-    enable() { this._bootstrapObj.enable(); }
-
-    // Toggles the popover
-    toggle() { this._bootstrapObj.toggle(); }
-
-    // Enables toggling 
-    toggleEnabled() { this._bootstrapObj.toggleEnabled(); }
-
-    // Updates the popover
-    update() { this._bootstrapObj.update(); }
 
     /**
      * Public Interface
      */
+
+    // Disables the popover
+    disable() {
+        // Disable the target element
+        (this.el as HTMLButtonElement).disabled = true;
+    }
+
+    // Enables the popover
+    enable() {
+        // Enable the target element
+        (this.el as HTMLButtonElement).disabled = false;
+    }
+
+    // Hides the popover
+    hide() {
+        // See if it's visible
+        if (this.isVisible) { this.toggle(); }
+    }
+
+    // Determines if the popover is visible
+    get isVisible(): boolean { return this._elContent.classList.contains("show"); }
+
+    // The popper instance
+    popper() { return this._popper; }
+
+    // Shows the popover
+    show() {
+        // See if it's hidden
+        if (!this.isVisible) { this.toggle(); }
+    }
+
+    // Toggles the popover
+    toggle() {
+        // Update the popper
+        this._popper.update();
+
+        // Toggle the element
+        if (this.isVisible) {
+            // Hide the element
+            this._elContent.classList.remove("show");
+            this._elContent.style.display = "none";
+        } else {
+            // Show the element
+            this._elContent.style.display = "";
+            this._elContent.classList.add("show");
+        }
+    }
 }
 export const Popover = (props: IPopoverProps, template?: string): IPopover => { return new _Popover(props, template); }

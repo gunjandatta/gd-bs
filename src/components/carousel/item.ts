@@ -62,4 +62,7 @@ export class CarouselItem {
 
     // The component HTML element
     get el(): HTMLDivElement { return this._el; }
+
+    // Returns true if this slide is active
+    get isActive(): boolean { return this._el.classList.contains("active"); }
 }

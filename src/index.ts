@@ -1,10 +1,17 @@
-// gd-bs Library
-export * from "./bootstrap";
+// Bootstrap styles
+import "./bs";
 
-// The bootstrap icons
-import { Icons, IconTypes } from "./icons";
-export { Icons, IconTypes }
+// Import the IE fix
+import "./ie";
 
-// Update the global library
-window["GD"].Icons = Icons;
-window["GD"].IconTypes = IconTypes;
+// Bootstrap Components
+import * as Components from "./components";
+export { Components }
+
+// Popper Lib
+import { createPopper } from "../libs/popper.min.js";
+export { createPopper }
+
+// Bootstrap Global library
+const BS = { Components, createPopper }
+window["GD"] = window["GD"] || BS;

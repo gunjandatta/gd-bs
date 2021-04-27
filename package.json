@@ -1,23 +1,17 @@
 {
   "name": "gd-bs",
-  "version": "4.2.9",
+  "version": "4.3.0",
   "description": "Bootstrap JavaScript, TypeScript and Web Components library.",
-  "main": "build/index.js",
+  "main": "dist/gd-bs.min.js",
   "typings": "@types/index.d.ts",
   "scripts": {
-    "all": "npm run clean && npm run pre-build && npm run build && npm run prod && npm run typings",
-    "build": "npm run build-icons && npm run build-no-icons && npm run build-core",
-    "build-core": "webpack --mode=development --config=webpack.core.js",
-    "build-icons": "webpack --mode=development --config=webpack.icons.js",
-    "build-no-icons": "webpack --mode=development",
+    "all": "npm run clean && npm run generate-icons && npm run build && npm run build-icons && npm run prod && npm run prod-icons && npm run typings",
+    "build": "webpack --mode=development",
+    "build-icons": "webpack --mode=development --config webpack.icons.js",
     "clean": "node ./clean.js",
-    "pre-build": "npm run pre-build-icons && tsc && npm run pre-build-sass",
-    "pre-build-icons": "node ./generate && node ./generateIcons",
-    "pre-build-sass": "webpack --mode=production --config webpack.sass.js",
-    "prod": "npm run prod-core && npm run prod-no-icons && npm run prod-icons",
-    "prod-core": "webpack --mode=production --config=webpack.core.js",
-    "prod-icons": "webpack --mode=production --config=webpack.icons.js",
-    "prod-no-icons": "webpack --mode=production",
+    "generate-icons": "node ./generateIcons",
+    "prod": "webpack --mode=production",
+    "prod-icons": "webpack --mode=production --config webpack.icons.js",
     "typings": "dts-bundle --configJson dts-bundle.json"
   },
   "repository": {
@@ -34,24 +28,27 @@
     "url": "https://github.com/gunjandatta/gd-bs/issues"
   },
   "homepage": "https://dattabase.com/extras/bs",
+  "dependencies": {
+    "@popperjs/core": "^2.9.2",
+    "bootstrap": "^5.0.0-beta3",
+    "bootstrap-icons": "^1.4.1",
+    "core-js": "^3.10.2"
+  },
   "devDependencies": {
-    "@babel/core": "^7.13.8",
-    "@babel/preset-env": "^7.13.8",
-    "@types/node": "^14.14.31",
-    "autoprefixer": "^10.2.4",
+    "@babel/core": "^7.13.15",
+    "@babel/preset-env": "^7.13.15",
+    "@types/node": "^14.14.41",
+    "autoprefixer": "^10.2.5",
     "babel-loader": "^8.2.2",
-    "bootstrap": "5.0.0-beta3",
-    "bootstrap-icons": "^1.4.0",
-    "core-js": "^3.10.1",
-    "css-loader": "^5.1.0",
+    "css-loader": "^5.2.4",
     "dts-bundle": "^0.7.3",
-    "html-loader": "^2.1.1",
+    "html-loader": "^2.1.2",
     "node-sass": "^5.0.0",
-    "postcss-loader": "^5.0.0",
+    "postcss-loader": "^5.2.0",
     "sass-loader": "^11.0.1",
     "style-loader": "^2.0.0",
-    "ts-loader": "^8.0.17",
-    "webpack": "^5.24.2",
-    "webpack-cli": "^4.5.0"
+    "ts-loader": "^9.0.0",
+    "webpack": "^5.34.0",
+    "webpack-cli": "^4.6.0"
   }
 }
