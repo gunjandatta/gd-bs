@@ -17,7 +17,12 @@
 <body>
     <h1>Library</h1>
     <form>
-        <div id="dev"></div>
+        <div id="dev">
+            <div id="dev-tooltip" role="tooltip">
+                My Tooltip
+                <div id="arrow" data-popper-arrow></div>
+            </div>
+        </div>
         <div id="alert"></div>
         <div id="btn-loading"></div>
         <div id="spinner"></div>
@@ -52,6 +57,34 @@
         <div id="table"></div>
         <div id="toast"></div>
     </form>
+    <style>
+        #arrow, #arrow::before {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: inherit;
+        }
+        #arrow { visibility: hidden; }
+        #arrow::before {
+            visibility: visible;
+            content: '';
+            transform: rotate(45deg);
+        }
+        #dev-tooltip[data-popper-placement^='top'] > #arrow { bottom: -4px; }
+        #dev-tooltip[data-popper-placement^='bottom'] > #arrow { top: -4px; }
+        #dev-tooltip[data-popper-placement^='left'] > #arrow { right: -4px; }
+        #dev-tooltip[data-popper-placement^='right'] > #arrow { left: -4px; }
+
+        #dev-tooltip {
+            background: #333;
+            color: white;
+            font-weight: bold;
+            padding: 4px 8px;
+            font-size: 13px;
+            border-radius: 4px;
+            z-index: 9999999;
+        }
+    </style>
     <script type="text/javascript">
         window.addEventListener("load", function () {
             // Dev
@@ -59,6 +92,16 @@
             window["dev"] = GD.Components.Button({
                 el: elDev,
                 text: "Test Button"
+            });
+            GD.createPopper(window["dev"].el, document.querySelector("#dev-tooltip"), {
+                modifiers: [
+                    {
+                        name: "offset",
+                        options: {
+                            offset: [0, 8]
+                        }
+                    }
+                ]
             });
 
             GD.Components.ListBox({
@@ -152,6 +195,7 @@
                 el: document.querySelector("#popover1"),
                 btnProps: { id: "popover-demo2", text: "Popover Demo", type: 3 },
                 isDismissible: true,
+                type: 4,
                 options: {
                     html: true,
                     content: GD.Components.Button({ text: "Action", onClick: function () { alert("Take Action"); } }).el,

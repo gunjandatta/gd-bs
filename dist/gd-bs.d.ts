@@ -2,9 +2,10 @@
 
 declare module 'gd-bs' {
     import * as Components from "gd-bs/components";
+    var createPopper: Function;
     
     export {
-        Components
+        Components, createPopper
     }
 }
 

@@ -74,8 +74,9 @@ class _Tooltip extends Base<ITooltipProps> {
         // Create the popover content element
         let content = options.title || "";
         this._elContent = document.createElement("div") as HTMLElement;
-        this._elContent.innerHTML = `<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner">${content}</div></div>`;
-        let elTarget = this._elContent.firstChild as HTMLElement;
+        this._elContent.innerHTML = `<div class="tooltip fade" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner">${content}</div></div>`;
+        this._elContent = this._elContent.firstChild as HTMLElement;
+        this._elContent.style.display = "none";
         this._tooltips.appendChild(this._elContent);
 
         // Set the type
@@ -83,32 +84,32 @@ class _Tooltip extends Base<ITooltipProps> {
             // Auto
             case TooltipTypes.Auto:
                 options.placement = "auto";
-                elTarget.classList.add("bs-tooltip-auto");
+                this._elContent.classList.add("bs-tooltip-auto");
                 break;
             // Bottom
             case TooltipTypes.Bottom:
                 options.placement = "bottom";
-                elTarget.classList.add("bs-tooltip-bottom");
+                this._elContent.classList.add("bs-tooltip-bottom");
                 break;
             // Left
             case TooltipTypes.Left:
                 options.placement = "left";
-                elTarget.classList.add("bs-tooltip-start");
+                this._elContent.classList.add("bs-tooltip-start");
                 break;
             // Right
             case TooltipTypes.Right:
                 options.placement = "right";
-                elTarget.classList.add("bs-tooltip-end");
+                this._elContent.classList.add("bs-tooltip-end");
                 break;
             // Right
             case TooltipTypes.Top:
                 options.placement = "top";
-                elTarget.classList.add("bs-tooltip-top");
+                this._elContent.classList.add("bs-tooltip-top");
                 break;
             // Default - Auto
             default:
                 options.placement = "auto";
-                elTarget.classList.add("bs-tooltip-auto");
+                this._elContent.classList.add("bs-tooltip-auto");
                 break;
         }
 
@@ -140,7 +141,23 @@ class _Tooltip extends Base<ITooltipProps> {
         }
 
         // Create the popper
-        this._popper = createPopper(this.el, elTarget, { placement: options.placement as any });
+        this._popper = createPopper(this.el, this._elContent, {
+            placement: options.placement as any,
+            modifiers: [
+                {
+                    name: "arrow",
+                    options: {
+                        element: ".tooltip-arrow"
+                    }
+                },
+                {
+                    name: "offset",
+                    options: {
+                        offset: [0, 8]
+                    }
+                }
+            ]
+        });
     }
 
     /**
@@ -169,7 +186,7 @@ class _Tooltip extends Base<ITooltipProps> {
     }
 
     // Determines if the popover is visible
-    get isVisible(): boolean { return (this._elContent.firstChild as HTMLElement).classList.contains("show"); }
+    get isVisible(): boolean { return this._elContent.classList.contains("show"); }
 
     // The popper instance
     popper() { return this._popper; }
@@ -188,10 +205,12 @@ class _Tooltip extends Base<ITooltipProps> {
         // Toggle the element
         if (this.isVisible) {
             // Hide the element
-            (this._elContent.firstChild as HTMLElement).classList.remove("show");
+            this._elContent.classList.remove("show");
+            this._elContent.style.display = "none";
         } else {
             // Show the element
-            (this._elContent.firstChild as HTMLElement).classList.add("show");
+            this._elContent.style.display = "";
+            this._elContent.classList.add("show");
         }
     }
 }

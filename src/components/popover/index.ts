@@ -116,10 +116,25 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
 
         // Create the popover content element
         this._elContent = document.createElement("div");
-        this._elContent.innerHTML = '<div class="popover" role="tooltip"><div class="popover-arrow"></div><h3 class="popover-header"></h3><div class="popover-body"></div></div>';
+        this._elContent.innerHTML = '<div class="popover fade" role="tooltip"><div class="popover-arrow"></div><h3 class="popover-header"></h3><div class="popover-body"></div></div>';
+        this._elContent = this._elContent.firstChild as HTMLDivElement;
         this._elContent.style.display = "none";
-        let elTarget = this._elContent.firstChild as HTMLElement;
         this._popovers.appendChild(this._elContent);
+
+        // Set the class name
+        switch (options.placement) {
+            case "auto":
+            case "bottom":
+            case "top":
+                this._elContent.classList.add("bs-popover-" + options.placement);
+                break;
+            case "left":
+                this._elContent.classList.add("bs-popover-start");
+                break;
+            case "right":
+                this._elContent.classList.add("bs-popover-end");
+                break;
+        }
 
         // See if we are rendering raw html
         let elBody = this._elContent.querySelector(".popover-body");
@@ -150,7 +165,23 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
         }
 
         // Create the popper
-        this._popper = createPopper(this.el, elTarget, { placement: options.placement as any });
+        this._popper = createPopper(this.el, this._elContent, {
+            placement: options.placement as any,
+            modifiers: [
+                {
+                    name: "arrow",
+                    options: {
+                        element: ".popover-arrow"
+                    }
+                },
+                {
+                    name: "offset",
+                    options: {
+                        offset: [0, 8]
+                    }
+                }
+            ]
+        });
     }
 
     /**
@@ -176,7 +207,7 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
     }
 
     // Determines if the popover is visible
-    get isVisible(): boolean { return this._elContent.style.display != "none"; }
+    get isVisible(): boolean { return this._elContent.classList.contains("show"); }
 
     // The popper instance
     popper() { return this._popper; }
@@ -195,10 +226,12 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
         // Toggle the element
         if (this.isVisible) {
             // Hide the element
+            this._elContent.classList.remove("show");
             this._elContent.style.display = "none";
         } else {
             // Show the element
             this._elContent.style.display = "";
+            this._elContent.classList.add("show");
         }
     }
 }
