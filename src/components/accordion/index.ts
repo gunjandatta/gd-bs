@@ -51,7 +51,7 @@ class _Accordion extends Base<IAccordionProps> implements IAccordion {
         // Parse the items
         let items = this.props.items || [];
         for (let i = 0; i < items.length; i++) {
-            // Create the item and append it to the card
+            // Create the item and append it to the accordion
             let item = new AccordionItem(this.el.id, this.el.id + i, items[i], itemTemplate, autoCollapse);
             this._items.push(item);
             autoCollapse ? this.configureEvent(item) : null;
