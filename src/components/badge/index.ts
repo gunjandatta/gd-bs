@@ -1,6 +1,7 @@
 import { IBadge, IBadgeProps } from "../../../@types/components/badge";
 import { Base } from "../base";
 import { ClassNames } from "../classNames";
+import { appendContent } from "../common";
 import { HTMLLink, HTMLSpan } from "./templates";
 
 /**
@@ -63,15 +64,8 @@ class _Badge extends Base<IBadgeProps> implements IBadge {
         // Set the default styling
         this.el.classList.add(BadgeClassNames.getByType(this.props.type) || BadgeClassNames.getByType(BadgeTypes.Primary));
 
-        // Set the content
-        let content = this.props.content || "";
-        if (typeof (content) === "string" || typeof (content) === "number") {
-            // Set the html
-            this.el.innerHTML = content;
-        } else {
-            // Append the element
-            this.el.appendChild(content);
-        }
+        // Append the content
+        appendContent(this.el, this.props.content);
     }
 
     // Configures the events

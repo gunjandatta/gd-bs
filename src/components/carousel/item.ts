@@ -1,4 +1,5 @@
 import { ICarouselItem } from "../../../@types/components/carousel";
+import { appendContent } from "../common";
 import { HTMLItem } from "./templates";
 
 /**
@@ -44,15 +45,8 @@ export class CarouselItem {
             this._el.removeChild(captions);
             this._el.removeChild(img);
 
-            // Set the content
-            let content = this._props.content || "";
-            if (typeof (content) === "string" || typeof (content) === "number") {
-                // Set the html
-                this._el.innerHTML += content;
-            } else {
-                // Append the element
-                this._el.appendChild(content);
-            }
+            // Append the content
+            appendContent(this._el, this._props.content);
         }
     }
 

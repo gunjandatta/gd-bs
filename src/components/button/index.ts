@@ -1,7 +1,8 @@
 import { IButton, IButtonProps } from "../../../@types/components/button";
 import { Base } from "../base";
-import { ClassNames } from "../classNames";
 import { Badge, BadgeTypes } from "../badge";
+import { ClassNames } from "../classNames";
+import { appendContent } from "../common";
 import { Spinner } from "../spinner";
 import { HTML, HTMLBlock, HTMLLink } from "./templates";
 

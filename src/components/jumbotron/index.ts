@@ -1,5 +1,6 @@
 import { IJumbotron, IJumbotronProps } from "../../../@types/components/jumbotron";
 import { Base } from "../base";
+import { appendContent } from "../common";
 import { HTML } from "./templates";
 
 /**
@@ -49,15 +50,8 @@ class _Jumbotron extends Base<IJumbotronProps> implements IJumbotron {
             }
         }
 
-        // Set the content
-        let content = this.props.content || "";
-        if (typeof (content) === "string" || typeof (content) === "number") {
-            // Set the html
-            this.el.innerHTML += content;
-        } else {
-            // Append the element
-            this.el.appendChild(content);
-        }
+        // Append the content
+        appendContent(this.el, this.props.content);
     }
 
     // Configures the events

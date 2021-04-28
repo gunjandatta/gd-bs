@@ -1,3 +1,17 @@
+export const appendContent = (elParent: Element, content: string | Element | Function) => {
+    // Return if the parent or content doesn't exist
+    if (elParent == null || content == null) { return; }
+
+    // See if this is a string
+    if (typeof (content) === "string" || typeof (content) === "number") {
+        // Set the html
+        elParent.innerHTML = content;
+    } else {
+        // Append the content
+        elParent.appendChild(typeof (content) === "function" ? content() : content);
+    }
+}
+
 export const hide = (el: HTMLElement) => {
     // Ensure the alert is hidden
     if (el.classList.contains("d-none")) { return; }

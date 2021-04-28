@@ -1,5 +1,6 @@
 import { ICollapse, ICollapseProps } from "../../../@types/components/collapse";
 import { Base } from "../base";
+import { appendContent } from "../common";
 import { HTML } from "./templates";
 
 /**
@@ -26,16 +27,9 @@ class _Collapse extends Base<ICollapseProps> implements ICollapse {
         this.el.id = id;
         this.props.isMulti ? this.el.classList.add("multi-collapse") : null;
 
-        // Set the content
-        let content = this.props.content || "";
-        let body = this.el.querySelector(".card") as HTMLDivElement;
-        if (typeof (content) === "string" || typeof (content) === "number") {
-            // Set the html
-            body.innerHTML = content;
-        } else {
-            // Append the element
-            body.appendChild(content);
-        }
+        // Append the content
+        let body = this.el.querySelector(".card");
+        appendContent(body, this.props.content);
 
         // Execute the render event
         this.props.onRender ? this.props.onRender(this.props, body) : null;

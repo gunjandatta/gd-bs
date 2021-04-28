@@ -1,4 +1,5 @@
 import { ICardAction, ICardBody } from "../../../@types/components/card";
+import { appendContent } from "../common";
 import { CardAction } from "./action";
 import { HTMLItem } from "./templates";
 
@@ -36,15 +37,8 @@ export class CardBody {
         // Update the title
         let elTitle = this._el.querySelector(".card-title") as HTMLElement;
         if (this._props.title || this._props.onRenderTitle) {
-            // See if the title is a string
-            let title = this._props.title || "";
-            if (typeof (title) === "string" || typeof (title) === "number") {
-                // Set the title
-                elTitle.innerHTML += title;
-            } else {
-                // Append the element
-                elTitle.appendChild(title);
-            }
+            // Append the content
+            appendContent(elTitle, this._props.title);
 
             // Call the render event
             this._props.onRenderTitle ? this._props.onRenderTitle(elTitle, this._props) : null;
@@ -73,15 +67,8 @@ export class CardBody {
             this._el.removeChild(text);
         }
 
-        // Set the content
-        let content = this._props.content || "";
-        if (typeof (content) === "string" || typeof (content) === "number") {
-            // Set the html
-            this._el.innerHTML += content;
-        } else {
-            // Append the element
-            this._el.appendChild(content);
-        }
+        // Append the content
+        appendContent(this._el, this._props.content);
 
         // Render the actions
         this.renderActions();

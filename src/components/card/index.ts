@@ -1,5 +1,6 @@
 import { ICard, ICardProps } from "../../../@types/components/card";
 import { Base } from "../base";
+import { appendContent } from "../common";
 import { Nav } from "../nav";
 import { HTML } from "./templates";
 import { CardBody } from "./item";
@@ -86,15 +87,8 @@ class _Card extends Base<ICardProps> implements ICard {
                 header.classList.add("card-header")
                 this.el.appendChild(header);
 
-                // Set the content
-                let content = this.props.header.content == null ? "" : this.props.header.content;
-                if (typeof (content) === "string" || typeof (content) === "number") {
-                    // Set the html
-                    header.innerHTML = content;
-                } else {
-                    // Append the element
-                    header.appendChild(content);
-                }
+                // Append the content
+                appendContent(header, this.props.header.content);
 
                 // Call the render event
                 this.props.header.onRender ? this.props.header.onRender(header, this.props.header) : null;
@@ -112,15 +106,8 @@ class _Card extends Base<ICardProps> implements ICard {
             footer.classList.add("card-footer");
             this.el.appendChild(footer);
 
-            // Set the content
-            let content = this.props.footer.content == null ? "" : this.props.footer.content;
-            if (typeof (content) === "string" || typeof (content) === "number") {
-                // Set the html
-                footer.innerHTML = content;
-            } else {
-                // Append the element
-                footer.appendChild(content);
-            }
+            // Append the content
+            appendContent(footer, this.props.footer.content);
 
             // Call the render event
             this.props.footer.onRender ? this.props.footer.onRender(footer, this.props.footer) : null;

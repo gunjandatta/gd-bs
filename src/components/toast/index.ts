@@ -1,5 +1,6 @@
 import { IToast, IToastProps } from "../../../@types/components/toast";
 import { Base } from "../base";
+import { appendContent } from "../common";
 import { HTML } from "./templates";
 
 /**
@@ -74,19 +75,8 @@ class _Toast extends Base<IToastProps> implements IToast {
             }
         }
 
-
-        // Update the body
-        let body = this.el.querySelector(".toast-body");
-        if (body) {
-            let content = this.props.body || "";
-            if (typeof (content) === "string" || typeof (content) === "number") {
-                // Set the html
-                body.innerHTML = content;
-            } else {
-                // Append the element
-                body.appendChild(content);
-            }
-        }
+        // Set the body
+        appendContent(this.el.querySelector(".toast-body"), this.props.body);
     }
 
     // Configures the events

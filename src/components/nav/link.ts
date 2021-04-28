@@ -1,5 +1,6 @@
 import { INavLink } from "../../../@types/components/nav";
 import { Base } from "../base";
+import { appendContent } from "../common";
 import { HTMLLink, HTMLTab } from "./templates";
 
 /**
@@ -58,15 +59,8 @@ export class NavLink extends Base<INavLink> {
                     this._elTab.classList.add("active")
                 }
 
-                // Set the content
-                let content = this.props.tabContent || "";
-                if (typeof (content) === "string" || typeof (content) === "number") {
-                    // Set the html
-                    this._elTab.innerHTML = content;
-                } else {
-                    // Append the element
-                    this._elTab.appendChild(content);
-                }
+                // Append the content
+                appendContent(this._elTab, this.props.tabContent);
             } else {
                 // Set the properties
                 this._elLink.setAttribute("href", this.props.href || "#");

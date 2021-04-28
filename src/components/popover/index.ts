@@ -1,8 +1,9 @@
 import { Instance } from "@popperjs/core/lib/types";
 import { createPopper } from "../../../libs/popper.min.js";
-import { Button } from "../button";
 import { IPopover, IPopoverProps } from "../../../@types/components/popover";
+import { Button } from "../button";
 import { Base } from "../base";
+import { appendContent } from "../common";
 
 /**
  * Popover Types
@@ -51,7 +52,6 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
 
         // Set the options to target the main popover element
         let options = this.props.options || {};
-        options.container = options.container || this._popovers;
 
         // See if the placement needs to be set
         if (options.placement == null) {
@@ -116,10 +116,18 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
 
         // Create the popover content element
         this._elContent = document.createElement("div");
-        this._elContent.innerHTML = '<div class="popover fade" role="tooltip"><div class="popover-arrow"></div><h3 class="popover-header"></h3><div class="popover-body"></div></div>';
+        this._elContent.innerHTML = options.template || '<div class="popover fade" role="tooltip"><div class="popover-arrow"></div><h3 class="popover-header"></h3><div class="popover-body"></div></div>';
         this._elContent = this._elContent.firstChild as HTMLDivElement;
         this._elContent.style.display = "none";
-        this._popovers.appendChild(this._elContent);
+
+        // See if the container exists
+        if (options.container) {
+            // Append it to the custom container
+            options.container.appendChild(this._elContent);
+        } else {
+            // Append it to the default
+            this._popovers.appendChild(this._elContent);
+        }
 
         // Set the class name
         switch (options.placement) {
@@ -136,15 +144,8 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
                 break;
         }
 
-        // See if we are rendering raw html
-        let elBody = this._elContent.querySelector(".popover-body");
-        if (typeof (options.content) === "string") {
-            // Set the content
-            elBody.innerHTML = options.content;
-        } else {
-            // Append the content
-            elBody.appendChild(options.content as Element);
-        }
+        // Append the content
+        appendContent(this._elContent.querySelector(".popover-body"), options.content);
 
         // Add an event listener
         let eventType = options.trigger || "click";
@@ -164,24 +165,27 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
             });
         }
 
-        // Create the popper
-        this._popper = createPopper(this.el, this._elContent, {
-            placement: options.placement as any,
-            modifiers: [
-                {
-                    name: "arrow",
-                    options: {
-                        element: ".popover-arrow"
-                    }
-                },
-                {
-                    name: "offset",
-                    options: {
-                        offset: [0, 8]
-                    }
+        // Set the modifiers
+        let modifiers: any[] = [
+            {
+                name: "arrow",
+                options: {
+                    element: ".popover-arrow"
                 }
-            ]
-        });
+            },
+            {
+                name: "offset",
+                options: {
+                    offset: options.offset || [0, 8]
+                }
+            }
+        ];
+        if (options.fallbackPlacement) { modifiers.push({ name: "flip", options: { altBoundary: true, fallbackPlacements: options.fallbackPlacement } }); };
+        if (options.boundary) { modifiers.push({ name: "preventOverflow", options: { boundary: options.boundary } }); }
+        if (options.onChange) { modifiers.push({ name: "onChange", enabled: true, phase: "afterWrite", fn: options.onChange }); }
+
+        // Create the popper
+        this._popper = createPopper(this.el, this._elContent, { placement: options.placement, modifiers });
     }
 
     /**

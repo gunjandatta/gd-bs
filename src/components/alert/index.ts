@@ -1,6 +1,7 @@
 import { IAlert, IAlertProps } from "../../../@types/components/alert";
 import { Base } from "../base";
 import { ClassNames } from "../classNames";
+import { appendContent } from "../common";
 import { HTML } from "./templates";
 
 /**
@@ -59,16 +60,8 @@ class _Alert extends Base<IAlertProps> implements IAlert {
 
     // Configure the alert
     private configure() {
-        let content = this.props.content || "";
-
-        // See if the content is a string
-        if (typeof (content) === "string" || typeof (content) === "number") {
-            // Set the html
-            this.el.innerHTML += content;
-        } else {
-            // Append the element
-            this.el.appendChild(content);
-        }
+        // Append the content
+        appendContent(this.el, this.props.content);
 
         // See if we need to add the dismiss icon
         if (this.props.isDismissible) {

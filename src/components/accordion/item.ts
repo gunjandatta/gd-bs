@@ -1,4 +1,5 @@
 import { IAccordionItem } from "../../../@types/components/accordion";
+import { appendContent } from "../common";
 
 /**
  * Accordion Item
@@ -30,8 +31,8 @@ export class AccordionItem {
         // Render the header
         this.renderHeader();
 
-        // Render the content
-        this.renderContent();
+        // Append the content
+        appendContent(this._el.querySelector(".accordion-body"), this._props.content);
 
         // Configure the collapse element
         this.configureCollapse();
@@ -67,21 +68,6 @@ export class AccordionItem {
 
         // Execute the render event
         this._props.onRender ? this._props.onRender(this._el.querySelector(".card-body"), this._props) : null;
-    }
-
-    // Renders the content
-    private renderContent() {
-        let elCardBody = this._el.querySelector(".accordion-body") as HTMLElement;
-        if (elCardBody) {
-            let content = this._props.content || "";
-            if (typeof (content) === "string" || typeof (content) === "number") {
-                // Set the html
-                elCardBody.innerHTML = content;
-            } else {
-                // Append the element
-                elCardBody.appendChild(content);
-            }
-        }
     }
 
     // Renders the header

@@ -1,6 +1,7 @@
 import { IModal, IModalProps, IModalOptions } from "../../../@types/components/modal";
 import { Base } from "../base";
 import { ClassNames } from "../classNames";
+import { appendContent } from "../common";
 import { HTML } from "./templates";
 
 /**
@@ -81,31 +82,11 @@ class _Modal extends Base<IModalProps> implements IModal {
             }
         }
 
-        // Update the body
-        let body = this.el.querySelector(".modal-body");
-        if (body) {
-            let content = this.props.body || "";
-            if (typeof (content) === "string" || typeof (content) === "number") {
-                // Set the HTML
-                body.innerHTML = content;
-            } else {
-                // Append the element
-                body.appendChild(content);
-            }
+        // Set the body
+        appendContent(this.el.querySelector(".modal-body"), this.props.body);
 
-            // Update the footer
-            let footer = this.el.querySelector(".modal-footer");
-            if (footer) {
-                content = this.props.footer || "";
-                if (typeof (content) === "string" || typeof (content) === "number") {
-                    // Set the HTML
-                    footer.innerHTML = content;
-                } else {
-                    // Append the element
-                    footer.appendChild(content);
-                }
-            }
-        }
+        // Set the footer
+        appendContent(this.el.querySelector(".modal-footer"), this.props.footer);
 
         // Get the modal options
         this._options = this.props.options;

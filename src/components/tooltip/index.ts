@@ -4,6 +4,7 @@ import { IButton } from "../../../@types/components/button";
 import { ITooltip, ITooltipProps } from "../../../@types/components/tooltip";
 import { Base } from "../base";
 import { Button } from "../button";
+import { appendContent } from "../common";
 
 /**
  * Tooltip Types
@@ -69,49 +70,62 @@ class _Tooltip extends Base<ITooltipProps> {
 
         // Set the options to target the main tooltips element
         let options = this.props.options || {};
-        options.container = options.container || this._tooltips;
 
         // Create the popover content element
-        let content = options.title || "";
         this._elContent = document.createElement("div") as HTMLElement;
-        this._elContent.innerHTML = `<div class="tooltip fade" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner">${content}</div></div>`;
+        this._elContent.innerHTML = options.template || '<div class="tooltip fade" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>';
         this._elContent = this._elContent.firstChild as HTMLElement;
         this._elContent.style.display = "none";
-        this._tooltips.appendChild(this._elContent);
+
+        // Set the content
+        appendContent(this._elContent.querySelector(".tooltip-inner"), options.title);
+
+        // See if the container exists
+        if (options.container) {
+            // Append it to the custom container
+            options.container.appendChild(this._elContent);
+        } else {
+            // Append it to the default
+            this._tooltips.appendChild(this._elContent);
+        }
 
         // Set the type
+        let placement = null;
         switch (this.props.type) {
             // Auto
             case TooltipTypes.Auto:
-                options.placement = "auto";
+                placement = "auto";
                 this._elContent.classList.add("bs-tooltip-auto");
                 break;
             // Bottom
             case TooltipTypes.Bottom:
-                options.placement = "bottom";
+                placement = "bottom";
                 this._elContent.classList.add("bs-tooltip-bottom");
                 break;
             // Left
             case TooltipTypes.Left:
-                options.placement = "left";
+                placement = "left";
                 this._elContent.classList.add("bs-tooltip-start");
                 break;
             // Right
             case TooltipTypes.Right:
-                options.placement = "right";
+                placement = "right";
                 this._elContent.classList.add("bs-tooltip-end");
                 break;
             // Right
             case TooltipTypes.Top:
-                options.placement = "top";
+                placement = "top";
                 this._elContent.classList.add("bs-tooltip-top");
                 break;
             // Default - Auto
             default:
-                options.placement = "auto";
+                placement = "auto";
                 this._elContent.classList.add("bs-tooltip-auto");
                 break;
         }
+
+        // Default the placement
+        options.placement = options.placement || placement;
 
         // Set the attributes
         this.el.setAttribute("data-bs-placement", options.placement);
@@ -140,24 +154,27 @@ class _Tooltip extends Base<ITooltipProps> {
             });
         }
 
-        // Create the popper
-        this._popper = createPopper(this.el, this._elContent, {
-            placement: options.placement as any,
-            modifiers: [
-                {
-                    name: "arrow",
-                    options: {
-                        element: ".tooltip-arrow"
-                    }
-                },
-                {
-                    name: "offset",
-                    options: {
-                        offset: [0, 8]
-                    }
+        // Set the modifiers
+        let modifiers: any[] = [
+            {
+                name: "arrow",
+                options: {
+                    element: ".popover-arrow"
                 }
-            ]
-        });
+            },
+            {
+                name: "offset",
+                options: {
+                    offset: options.offset || [0, 8]
+                }
+            }
+        ];
+        if (options.fallbackPlacement) { modifiers.push({ name: "flip", options: { altBoundary: true, fallbackPlacements: options.fallbackPlacement } }); };
+        if (options.boundary) { modifiers.push({ name: "preventOverflow", options: { boundary: options.boundary } }); }
+        if (options.onChange) { modifiers.push({ name: "onChange", enabled: true, phase: "afterWrite", fn: options.onChange }); }
+
+        // Create the popper
+        this._popper = createPopper(this.el, this._elContent, { placement: options.placement, modifiers });
     }
 
     /**

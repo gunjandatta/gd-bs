@@ -1,6 +1,7 @@
 import { ClassNames } from "../classNames";
 import { IOffcanvas, IOffcanvasOptions, IOffcanvasProps } from "../../../@types/components/offcanvas";
 import { Base } from "../base";
+import { appendContent } from "../common";
 import { HTML } from "./templates";
 
 /**
@@ -61,30 +62,10 @@ class _Offcanvas extends Base<IOffcanvasProps> implements IOffcanvas {
         options.scroll ? this.el.setAttribute("data-bs-body", "scroll") : null;
 
         // Set the header
-        let title = this.props.title || "";
-        let header = this.el.querySelector(".offcanvas-header > div") as HTMLDivElement;
-        if (header) {
-            if (typeof (title) === "string" || typeof (title) === "number") {
-                // Set the html
-                header.innerHTML = title;
-            } else {
-                // Append the element
-                header.appendChild(title);
-            }
-        }
+        appendContent(this.el.querySelector(".offcanvas-header > div"), this.props.title);
 
         // Set the body
-        let content = this.props.body || "";
-        let body = this.el.querySelector(".offcanvas-body") as HTMLDivElement;
-        if (body) {
-            if (typeof (content) === "string" || typeof (content) === "number") {
-                // Set the html
-                body.innerHTML = content;
-            } else {
-                // Append the element
-                body.appendChild(content);
-            }
-        }
+        appendContent(this.el.querySelector(".offcanvas-body"), this.props.body);
 
         // Set the focus
         if (options.focus) { (this.el as HTMLElement).focus(); }

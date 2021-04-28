@@ -1,6 +1,7 @@
 import { IListGroupItem } from "../../../@types/components/listGroup";
 import { Base } from "../base";
 import { Badge } from "../badge";
+import { appendContent } from "../common";
 import { ListGroupClassNames } from ".";
 import { HTMLItem, HTMLTab, HTMLTabItem } from "./templates";
 
@@ -75,16 +76,8 @@ export class ListGroupItem extends Base<IListGroupItem> {
             this.props.isActive ? this._elTab.classList.add("active") : null;
         }
 
-        // Set the content
-        let content = this.props.content || "";
-        let elContent = this._elTab || this.el;
-        if (typeof (content) === "string" || typeof (content) === "number") {
-            // Set the html
-            elContent.innerHTML = content;
-        } else {
-            // Append the element
-            elContent.appendChild(content);
-        }
+        // Append the content
+        appendContent(this._elTab || this.el, this.props.content);
 
         // See if there is a badge
         if (this.props.badge) {

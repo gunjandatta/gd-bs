@@ -1,6 +1,7 @@
 import { IDropdownItem } from "../../../@types/components/dropdown";
 import { IListBox, IListBoxProps } from "../../../@types/components/listBox";
 import { Base } from "../base";
+import { appendContent } from "../common";
 import { HTML, HTMLItem } from "./templates";
 
 /**
