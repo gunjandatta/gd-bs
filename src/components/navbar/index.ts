@@ -157,7 +157,7 @@ class _Navbar extends Base<INavbarProps> implements INavbar {
         // See if we are rendering a search box
         let search = this.el.querySelector("form") as HTMLElement;
         if (search) {
-            if (this.props.enableSearch || this.props.searchBox) {
+            if (this.props.enableSearch != false && this.props.searchBox) {
                 let props = this.props.searchBox || {};
 
                 // Update the searchbox
