@@ -331,19 +331,19 @@
                                     onControlRendered: function (control) {
                                         control.dropdown.setItems([
                                             { isHeader: true, text: "Header 1" },
-                                            { text: "Update Item 1" },
+                                            { text: "Update Item 1", value: 1 },
                                             { isHeader: true, text: "Header 2" },
-                                            { text: "Update Item 2" },
-                                            { text: "Update Item 3" },
+                                            { text: "Update Item 2", value: 2 },
+                                            { text: "Update Item 3", value: 3 },
                                         ]);
                                     },
                                     onChange: function (item) {
                                         alert("Selected Item: " + item.text);
                                     },
-                                    onValidate: function (props, item) {
+                                    onValidate: function (props, result) {
                                         return {
                                             invalidMessage: "This is invalid.",
-                                            isValid: item.text ? true : false,
+                                            isValid: result.value ? true : false,
                                             validMessage: "This is valid"
                                         };
                                     }
@@ -377,8 +377,8 @@
                                     title: "This is a textfield",
                                     type: GD.Components.FormControlTypes.TextField,
                                     placeholder: "Explain the reason not tested",
-                                    onValidate: function (ctrl, value) {
-                                        if (value && value.length > 0)
+                                    onValidate: function (ctrl, result) {
+                                        if (result.value && result.value.length > 0)
                                             return true;
                                         else
                                             return false;

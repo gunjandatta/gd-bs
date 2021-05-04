@@ -417,6 +417,9 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
 
             // Render the items
             this.renderItems();
+
+            // Clear the current value
+            menu.value = "";
         }
     }
 

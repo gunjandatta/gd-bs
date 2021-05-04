@@ -617,7 +617,7 @@ export class FormControl implements IFormControl {
             if (validation.invalidMessage || this._props.errorMessage) {
                 // Get the element
                 let invalidClassName = useTooltip ? "invalid-tooltip" : "invalid-feedback";
-                let elMessage = elFormControl.parentNode.querySelector("." + invalidClassName);
+                let elMessage = elFormControl.parentNode.querySelector("." + invalidClassName) as HTMLElement;
                 if (elMessage == null) {
                     // Create the element
                     elMessage = document.createElement("div");
@@ -627,13 +627,16 @@ export class FormControl implements IFormControl {
 
                 // Set the message
                 elMessage.innerHTML = validation.invalidMessage || this._props.errorMessage;
+
+                // Update the display
+                elMessage.style.display = validation.isValid ? "" : "block";
             }
 
             // See if there is valid feedback
             if (validation.validMessage) {
                 // Get the element
                 let validClassName = useTooltip ? "valid-tooltip" : "valid-feedback";
-                let elMessage = elFormControl.parentNode.querySelector("." + validClassName);
+                let elMessage = elFormControl.parentNode.querySelector("." + validClassName) as HTMLElement;
                 if (elMessage == null) {
                     // Create the element
                     elMessage = document.createElement("div");
@@ -643,6 +646,9 @@ export class FormControl implements IFormControl {
 
                 // Set the message
                 elMessage.innerHTML = validation.validMessage;
+
+                // Update the display
+                elMessage.style.display = validation.isValid ? "block" : "";
             }
         }
     }
