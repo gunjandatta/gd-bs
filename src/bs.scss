@@ -42,9 +42,19 @@
 
     // Utilities
     @import "bootstrap/scss/utilities/api";
+
+    /** Customizations */
+
+    /** Button Icon - Custom class */
+    .btn-icon {
+        min-width: 0px;
+        padding: 2px;
+    }
 }
 
-// Modal background
+/** Customizations */
+
+/** Modal background - Shouldn't be under the .bs class */
 .modal-backdrop {
     position: fixed;
     top: 0;
