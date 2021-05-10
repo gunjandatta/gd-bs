@@ -6,6 +6,7 @@
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
     <script src="dist/gd-bs.js"></script>
+    <!--script src="dist/gd-bs-icons.js"></script-->
     <!-- script src="../sprest-bs/dist/gd-sprest-bs.js"></script-->
     <style>
         .carousel {
@@ -58,22 +59,39 @@
         <div id="toast"></div>
     </form>
     <style>
-        #arrow, #arrow::before {
+        #arrow,
+        #arrow::before {
             position: absolute;
             width: 8px;
             height: 8px;
             background: inherit;
         }
-        #arrow { visibility: hidden; }
+
+        #arrow {
+            visibility: hidden;
+        }
+
         #arrow::before {
             visibility: visible;
             content: '';
             transform: rotate(45deg);
         }
-        #dev-tooltip[data-popper-placement^='top'] > #arrow { bottom: -4px; }
-        #dev-tooltip[data-popper-placement^='bottom'] > #arrow { top: -4px; }
-        #dev-tooltip[data-popper-placement^='left'] > #arrow { right: -4px; }
-        #dev-tooltip[data-popper-placement^='right'] > #arrow { left: -4px; }
+
+        #dev-tooltip[data-popper-placement^='top']>#arrow {
+            bottom: -4px;
+        }
+
+        #dev-tooltip[data-popper-placement^='bottom']>#arrow {
+            top: -4px;
+        }
+
+        #dev-tooltip[data-popper-placement^='left']>#arrow {
+            right: -4px;
+        }
+
+        #dev-tooltip[data-popper-placement^='right']>#arrow {
+            left: -4px;
+        }
 
         #dev-tooltip {
             background: #333;
@@ -181,7 +199,9 @@
             var btnPopover = GD.Components.Button({
                 el: document.getElementById("popover"),
                 text: "Popover Demo",
-                id: "popover-demo"
+                id: "popover-demo"/*,
+                iconType: function (size) { return GD.Icons(32, size, size); },
+                iconSize: 32*/
             });
             GD.Components.Popover({
                 target: btnPopover.el,

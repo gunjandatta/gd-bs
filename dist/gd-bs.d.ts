@@ -375,7 +375,7 @@ declare module 'gd-bs/components/button' {
             dismiss?: string;
             href?: string;
             iconSize?: number;
-            iconType?: number;
+            iconType?: Function;
             id?: string;
             isBlock?: boolean;
             isDisabled?: boolean;

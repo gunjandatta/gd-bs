@@ -2,7 +2,6 @@ import { IButton, IButtonProps } from "../../../@types/components/button";
 import { Base } from "../base";
 import { Badge, BadgeTypes } from "../badge";
 import { ClassNames } from "../classNames";
-import { appendContent } from "../common";
 import { Spinner } from "../spinner";
 import { HTML, HTMLBlock, HTMLLink } from "./templates";
 
@@ -113,10 +112,9 @@ class _Button extends Base<IButtonProps> implements IButton {
         this.setText(this.props.text);
 
         // Set the icon
-        // TODO - Need to redo this logic to not include all icons by default
-        if (typeof (this.props.iconType) !== "undefined") {
+        if (typeof (this.props.iconType) === "function") {
             // Append the icon
-            GD && GD.Icons ? this.el.appendChild(GD.Icons(this.props.iconType, this.props.iconSize, this.props.iconSize)) : null;
+            this.el.appendChild(this.props.iconType(this.props.iconSize, this.props.iconSize));
 
             // Update the styling of the button
             this.el.classList.add("btn-icon");
