@@ -1,6 +1,7 @@
 import { INavbar, INavbarProps } from "../../../@types/components/navbar";
 import { Base } from "../base";
 import { ButtonClassNames } from "../button";
+import { appendContent } from "../common";
 import { NavbarItem } from "./item";
 import { HTML } from "./templates";
 
@@ -45,7 +46,9 @@ class _Navbar extends Base<INavbarProps> implements INavbar {
             if (this.props.brand) {
                 // Update the brand
                 this.props.brandUrl ? brand.href = this.props.brandUrl : null;
-                brand.innerHTML = this.props.brand == null ? "" : this.props.brand;
+
+                // Append the content
+                appendContent(brand, this.props.brand);
             } else {
                 // Remove the brand
                 brand.parentNode.removeChild(brand);
@@ -67,7 +70,7 @@ class _Navbar extends Base<INavbarProps> implements INavbar {
 
         // Set the scroll
         let nav = this.el.querySelector(".navbar-nav") as HTMLElement;
-        if(nav && this.props.enableScrolling) {
+        if (nav && this.props.enableScrolling) {
             // Add the class
             nav.classList.add("navbar-nav-scroll");
         }
