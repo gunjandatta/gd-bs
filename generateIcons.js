@@ -7,6 +7,7 @@ const dirIcons = path.join(__dirname, "node_modules/bootstrap-icons/icons");
 // Get the icon files
 fs.readdir(dirIcons, function (err, files) {
     var icons = [];
+    var iconDefs = [];
     var switches = [];
     var types = [];
     var typeDefs = [];
@@ -39,6 +40,10 @@ fs.readdir(dirIcons, function (err, files) {
         let iconType = types.length + 1;
         types.push("\t" + funcName + " = " + iconType);
 
+        // Add the icon definition
+        iconDefs.push("// " + file);
+        iconDefs.push("export const " + varName + ": (height?:number, width?:number) => HTMLElement;");
+
         // Add the switch case statement
         switches.push("\t\t// " + file);
         switches.push("\t\tcase " + iconType + ":");
@@ -64,6 +69,7 @@ fs.readdir(dirIcons, function (err, files) {
 
     // Delete the files
     try { fs.unlinkSync("./@types/icons.d.ts"); } catch { }
+    try { fs.unlinkSync("./src/icons/svgs/index.d.ts"); } catch { }
     try { fs.unlinkSync("./src/icons/icons.ts"); } catch { }
     try { fs.unlinkSync("./src/icons/iconTypes.ts"); } catch { }
 
@@ -104,6 +110,11 @@ fs.readdir(dirIcons, function (err, files) {
         "}"
     ].join("\n"));
     stream.end();
+
+    // Generate the svgs definitions file
+    var stream = fs.createWriteStream("./src/icons/svgs/index.d.ts");
+    stream.write(iconDefs.join('\n'));
+    stream.close();
 
     // Log
     console.log("Icons definition file generated");
