@@ -1,5 +1,6 @@
-import { Instance, Props } from "tippy.js";
+import { Instance } from "tippy.js";
 import { tippy } from "../../libs";
+import { ITippyProps } from "../../../@types/libs";
 import { IButton } from "../../../@types/components/button";
 import { ITooltip, ITooltipProps } from "../../../@types/components/tooltip";
 import { Base } from "../base";
@@ -84,12 +85,12 @@ class _Tooltip extends Base<ITooltipProps> {
         }
 
         // Set the options
-        let options: Props = {
+        let options: ITippyProps = {
             ...{
                 allowHTML: true,
                 arrow: true,
                 placement
-            } as Props,
+            },
             ...this.props.options
         };
 
@@ -100,7 +101,7 @@ class _Tooltip extends Base<ITooltipProps> {
         options.content = this._elContent;
 
         // Create the tippy
-        this._tippy = tippy(this.el, options) as any;
+        this._tippy = tippy(this.el, options as any) as any;
     }
 
     /**

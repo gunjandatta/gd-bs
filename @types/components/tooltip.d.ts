@@ -43,7 +43,7 @@ export const Tooltip: (props: ITooltipProps, template?: string) => ITooltip;
 export const TooltipTypes: ITooltipTypes;
 
 import { IBaseProps } from "../base";
-import { ITippyProps } from "../lib";
+import { ITippyProps } from "../libs";
 import { IButtonProps, IButton } from "./button";
 
 /**

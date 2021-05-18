@@ -1,5 +1,6 @@
-import { Instance, Props } from "tippy.js";
+import { Instance } from "tippy.js";
 import { tippy } from "../../libs";
+import { ITippyProps } from "../../../@types/libs";
 import { IPopover, IPopoverProps } from "../../../@types/components/popover";
 import { Button } from "../button";
 import { Base } from "../base";
@@ -66,12 +67,12 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
         }
 
         // Set the options
-        let options: Props = {
+        let options: ITippyProps = {
             ...{
                 allowHTML: true,
                 arrow: true,
                 placement
-            } as Props,
+            } as ITippyProps,
             ...this.props.options
         };
 
@@ -103,7 +104,7 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
         options.content = this._elContent;
 
         // Create the tippy
-        this._tippy = tippy(this.el, options) as any;
+        this._tippy = tippy(this.el, options as any) as any;
     }
 
     /**

@@ -2181,7 +2181,7 @@ declare module 'gd-bs/components/popover' {
     export const PopoverTypes: IPopoverTypes;
     
     import { IBaseProps } from "gd-bs/base";
-    import { ITippyProps } from "gd-bs/lib";
+    import { ITippyProps } from "gd-bs/libs";
     import { IButtonProps } from "gd-bs/components/button";
     
     /**
@@ -2639,7 +2639,7 @@ declare module 'gd-bs/components/tooltip' {
     export const TooltipTypes: ITooltipTypes;
     
     import { IBaseProps } from "gd-bs/base";
-    import { ITippyProps } from "gd-bs/lib";
+    import { ITippyProps } from "gd-bs/libs";
     import { IButtonProps, IButton } from "gd-bs/components/button";
     
     /**
@@ -2725,16 +2725,27 @@ declare module 'gd-bs/base' {
     }
 }
 
-declare module 'gd-bs/lib' {
+declare module 'gd-bs/libs' {
     export interface ITippyProps {
         allowHTML?: boolean;
+        animateFill?: boolean;
         animation?: string | boolean;
         arrow?: boolean | string | SVGElement | DocumentFragment;
         content?: string | Element;
+        delay?: number | [number | null, number | null];
+        duration?: number | [number | null, number | null];
+        followCursor?: boolean | 'horizontal' | 'vertical' | 'initial';
+        hideOnClick?: boolean | 'toggle';
         inertia?: boolean;
         maxWidth?: number | string;
+        placement?: string;
         role?: string;
+        showOnCreate?: boolean;
+        sticky?: boolean | 'reference' | 'popper';
         theme?: string;
+        touch?: boolean | 'hold' | ['hold', number];
+        trigger?: string;
+        triggerTarget?: Element | Element[] | null;
         zIndex?: number;
     }
 }

@@ -53,7 +53,7 @@ export const Popover: (props: IPopoverProps, template?: string) => IPopover;
 export const PopoverTypes: IPopoverTypes;
 
 import { IBaseProps } from "../base";
-import { ITippyProps } from "../lib";
+import { ITippyProps } from "../libs";
 import { IButtonProps } from "./button";
 
 /**
