@@ -1,56 +1,56 @@
 {
-  "name": "gd-bs",
-  "version": "4.4.6",
-  "description": "Bootstrap JavaScript, TypeScript and Web Components library.",
-  "main": "build/index.js",
-  "typings": "@types/index.d.ts",
-  "scripts": {
-    "all": "npm run clean && npm run generate-icons && npm run build && npm run build-icons && npm run prod && npm run prod-icons && npm run typings",
-    "build": "tsc && npm run build-bs && webpack --mode=development && npm run post-build",
-    "build-bs": "webpack --mode=production --config webpack.sass.js",
-    "build-icons": "webpack --mode=development --config webpack.icons.js",
-    "post-build": "node ./post-build",
-    "clean": "node ./clean.js",
-    "generate-icons": "node ./generateIcons",
-    "prod": "webpack --mode=production",
-    "prod-icons": "webpack --mode=production --config webpack.icons.js",
-    "typings": "dts-bundle --configJson dts-bundle.json"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gunjandatta/gd-bs.git"
-  },
-  "keywords": [
-    "Bootstrap",
-    "TypeScript"
-  ],
-  "author": "Gunjan Datta <me@dattabase.com> (https://dattabase.com)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/gunjandatta/gd-bs/issues"
-  },
-  "homepage": "https://dattabase.com/extras/bs",
-  "dependencies": {
-    "bootstrap": "^5.0.1",
-    "bootstrap-icons": "^1.5.0",
-    "core-js": "^3.12.1",
-    "tippy.js": "^6.3.1"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.14.2",
-    "@babel/preset-env": "^7.14.2",
-    "@types/node": "^15.0.3",
-    "autoprefixer": "^10.2.5",
-    "babel-loader": "^8.2.2",
-    "css-loader": "^5.2.4",
-    "dts-bundle": "^0.7.3",
-    "html-loader": "^2.1.2",
-    "node-sass": "^6.0.0",
-    "postcss-loader": "^5.3.0",
-    "sass-loader": "^11.1.1",
-    "style-loader": "^2.0.0",
-    "ts-loader": "^9.1.2",
-    "webpack": "^5.37.0",
-    "webpack-cli": "^4.7.0"
-  }
+    "name": "gd-bs",
+    "version": "4.4.7",
+    "description": "Bootstrap JavaScript, TypeScript and Web Components library.",
+    "main": "build/index.js",
+    "typings": "@types/index.d.ts",
+    "scripts": {
+        "all": "npm run clean && npm run generate-icons && npm run build && npm run build-icons && npm run prod && npm run prod-icons && npm run typings",
+        "build": "tsc && npm run build-bs && webpack --mode=development && npm run post-build",
+        "build-bs": "webpack --mode=production --config webpack.sass.js",
+        "build-icons": "webpack --mode=development --config webpack.icons.js",
+        "post-build": "node ./post-build",
+        "clean": "node ./clean.js",
+        "generate-icons": "node ./generateIcons",
+        "prod": "webpack --mode=production",
+        "prod-icons": "webpack --mode=production --config webpack.icons.js",
+        "typings": "dts-bundle --configJson dts-bundle.json"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gunjandatta/gd-bs.git"
+    },
+    "keywords": [
+        "Bootstrap",
+        "TypeScript"
+    ],
+    "author": "Gunjan Datta <me@dattabase.com> (https://dattabase.com)",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/gunjandatta/gd-bs/issues"
+    },
+    "homepage": "https://dattabase.com/extras/bs",
+    "dependencies": {
+        "bootstrap": "^5.0.1",
+        "bootstrap-icons": "^1.5.0",
+        "core-js": "^3.12.1",
+        "tippy.js": "^6.3.1"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.14.2",
+        "@babel/preset-env": "^7.14.2",
+        "@types/node": "^15.0.3",
+        "autoprefixer": "^10.2.5",
+        "babel-loader": "^8.2.2",
+        "css-loader": "^5.2.4",
+        "dts-bundle": "^0.7.3",
+        "html-loader": "^2.1.2",
+        "node-sass": "^6.0.0",
+        "postcss-loader": "^5.3.0",
+        "sass-loader": "^11.1.1",
+        "style-loader": "^2.0.0",
+        "ts-loader": "^9.1.2",
+        "webpack": "^5.37.0",
+        "webpack-cli": "^4.7.0"
+    }
 }
