@@ -3,19 +3,22 @@ const path = require("path");
 module.exports = (env, argv) => {
     // Return the configuration
     return {
-        entry: "./src/bs.scss",
+        entry: [
+            "./node_modules/tippy.js/dist/tippy.css",
+            "./src/bs.scss"
+        ],
         output: {
             path: path.resolve(__dirname, "build"),
             filename: "bs.js"
         },
         resolve: {
-            extensions: [".scss"]
+            extensions: [".css", ".scss"]
         },
         target: ["web", "es5"],
         module: {
             rules: [
                 {
-                    test: /\.(scss)$/,
+                    test: /\.(s?css)$/,
                     use: [
                         // Inject CSS to the page
                         { loader: "style-loader" },

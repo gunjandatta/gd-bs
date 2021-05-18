@@ -1,10 +1,6 @@
 <html>
 
 <head>
-    <!-- Flat Pickr Library -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-
     <script src="dist/gd-bs.js"></script>
     <!--script src="dist/gd-bs-icons.js"></script-->
     <!-- script src="../sprest-bs/dist/gd-sprest-bs.js"></script-->
@@ -19,10 +15,6 @@
     <h1>Library</h1>
     <form>
         <div id="dev">
-            <div id="dev-tooltip" role="tooltip">
-                My Tooltip
-                <div id="arrow" data-popper-arrow></div>
-            </div>
         </div>
         <div id="alert"></div>
         <div id="btn-loading"></div>
@@ -58,70 +50,11 @@
         <div id="table"></div>
         <div id="toast"></div>
     </form>
-    <style>
-        #arrow,
-        #arrow::before {
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            background: inherit;
-        }
-
-        #arrow {
-            visibility: hidden;
-        }
-
-        #arrow::before {
-            visibility: visible;
-            content: '';
-            transform: rotate(45deg);
-        }
-
-        #dev-tooltip[data-popper-placement^='top']>#arrow {
-            bottom: -4px;
-        }
-
-        #dev-tooltip[data-popper-placement^='bottom']>#arrow {
-            top: -4px;
-        }
-
-        #dev-tooltip[data-popper-placement^='left']>#arrow {
-            right: -4px;
-        }
-
-        #dev-tooltip[data-popper-placement^='right']>#arrow {
-            left: -4px;
-        }
-
-        #dev-tooltip {
-            background: #333;
-            color: white;
-            font-weight: bold;
-            padding: 4px 8px;
-            font-size: 13px;
-            border-radius: 4px;
-            z-index: 9999999;
-        }
-    </style>
     <script type="text/javascript">
         window.addEventListener("load", function () {
             // Dev
-            var elDev = document.getElementById("dev");
-            window["dev"] = GD.Components.Button({
-                el: elDev,
-                text: "Test Button"
-            });
-            GD.createPopper(window["dev"].el, document.querySelector("#dev-tooltip"), {
-                modifiers: [
-                    {
-                        name: "offset",
-                        options: {
-                            offset: [0, 8]
-                        }
-                    }
-                ]
-            });
 
+            // Components
             GD.Components.ListBox({
                 el: document.getElementById("listbox"),
                 label: "List Box Example:",
@@ -165,8 +98,7 @@
                     type: 7
                 },
                 options: {
-                    html: true,
-                    title: "<h5>Test HTML</h5><p>This was done via JS</p>"
+                    content: "<h5>Test HTML</h5><p>This was done via JS</p>"
                 }
             });
 
@@ -199,16 +131,14 @@
             var btnPopover = GD.Components.Button({
                 el: document.getElementById("popover"),
                 text: "Popover Demo",
-                id: "popover-demo"/*,
-                iconType: function (size) { return GD.Icons(32, size, size); },
-                iconSize: 32*/
+                id: "popover-demo"
             });
             GD.Components.Popover({
                 target: btnPopover.el,
+                title: "My Popover",
                 options: {
                     content: "This is the content.",
-                    title: "My Popover",
-                    trigger: "hover"
+                    trigger: "click"
                 }
             });
             GD.Components.Popover({
@@ -217,9 +147,7 @@
                 isDismissible: true,
                 type: 4,
                 options: {
-                    html: true,
-                    content: GD.Components.Button({ text: "Action", onClick: function () { alert("Take Action"); } }).el,
-                    title: (function () { var el = document.createElement("div"); el.innerText = "Title"; return el; })(),
+                    content: GD.Components.Button({ text: "Action", onClick: function () { alert("Take Action"); } }).el
                 }
             });
             window["myForm"] = GD.Components.Form({

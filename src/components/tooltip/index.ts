@@ -1,5 +1,5 @@
-import { Instance } from "@popperjs/core/lib/types";
-import { createPopper } from "../../../libs/popper.min.js";
+import { Instance, Props } from "tippy.js";
+import { tippy } from "../../libs";
 import { IButton } from "../../../@types/components/button";
 import { ITooltip, ITooltipProps } from "../../../@types/components/tooltip";
 import { Base } from "../base";
@@ -23,8 +23,7 @@ export enum TooltipTypes {
 class _Tooltip extends Base<ITooltipProps> {
     private _btn: IButton = null;
     private _elContent: HTMLElement = null;
-    private _popper: Instance = null;
-    private _tooltips: HTMLDivElement = null;
+    private _tippy: Instance = null;
 
     // Constructor
     constructor(props: ITooltipProps, template: string = "") {
@@ -55,126 +54,53 @@ class _Tooltip extends Base<ITooltipProps> {
 
     // Configure the options
     private configureOptions() {
-        // Ensure the main tooltips element exists
-        // This will ensure the tooltips are wrapped with a parent element with the "bs" class applied to it.
-        this._tooltips = document.querySelector("#bs-tooltips");
-        if (this._tooltips == null) {
-            // Create the main element
-            this._tooltips = document.createElement("div");
-            this._tooltips.classList.add("bs");
-            this._tooltips.id = "bs-tooltips";
-
-            // Add it to the page
-            document.body.appendChild(this._tooltips)
-        }
-
-        // Set the options to target the main tooltips element
-        let options = this.props.options || {};
-
-        // Create the popover content element
-        this._elContent = document.createElement("div") as HTMLElement;
-        this._elContent.innerHTML = options.template || '<div class="tooltip fade" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>';
-        this._elContent = this._elContent.firstChild as HTMLElement;
-        this._elContent.style.display = "none";
-
-        // Set the content
-        appendContent(this._elContent.querySelector(".tooltip-inner"), options.title);
-
-        // See if the container exists
-        if (options.container) {
-            // Append it to the custom container
-            options.container.appendChild(this._elContent);
-        } else {
-            // Append it to the default
-            this._tooltips.appendChild(this._elContent);
-        }
-
         // Set the type
         let placement = null;
         switch (this.props.type) {
             // Auto
             case TooltipTypes.Auto:
                 placement = "auto";
-                this._elContent.classList.add("bs-tooltip-auto");
                 break;
             // Bottom
             case TooltipTypes.Bottom:
                 placement = "bottom";
-                this._elContent.classList.add("bs-tooltip-bottom");
                 break;
             // Left
             case TooltipTypes.Left:
                 placement = "left";
-                this._elContent.classList.add("bs-tooltip-start");
                 break;
             // Right
             case TooltipTypes.Right:
                 placement = "right";
-                this._elContent.classList.add("bs-tooltip-end");
                 break;
             // Right
             case TooltipTypes.Top:
                 placement = "top";
-                this._elContent.classList.add("bs-tooltip-top");
                 break;
             // Default - Auto
             default:
                 placement = "auto";
-                this._elContent.classList.add("bs-tooltip-auto");
                 break;
         }
 
-        // Default the placement
-        options.placement = options.placement || placement;
+        // Set the options
+        let options: Props = {
+            ...{
+                allowHTML: true,
+                arrow: true,
+                placement
+            } as Props,
+            ...this.props.options
+        };
 
-        // Set the attributes
-        this.el.setAttribute("data-bs-placement", options.placement);
+        // Create the popover content element
+        this._elContent = document.createElement("div") as HTMLElement;
+        this._elContent.classList.add("bs");
+        appendContent(this._elContent, options.content as any);
+        options.content = this._elContent;
 
-        // See if the title is a string
-        if (typeof (options.title) === "string") {
-            // Set the attribute
-            this.el.setAttribute("title", options.title);
-        }
-
-        // Add an event listener
-        let eventType = options.trigger || "click";
-        if (eventType == "hover") {
-            this.el.addEventListener("mouseover", () => {
-                // Toggle the element
-                this.show();
-            });
-            this.el.addEventListener("mouseout", () => {
-                // Toggle the element
-                this.hide();
-            });
-        } else {
-            this.el.addEventListener(eventType, () => {
-                // Toggle the element
-                this.toggle();
-            });
-        }
-
-        // Set the modifiers
-        let modifiers: any[] = [
-            {
-                name: "arrow",
-                options: {
-                    element: ".popover-arrow"
-                }
-            },
-            {
-                name: "offset",
-                options: {
-                    offset: options.offset || [0, 8]
-                }
-            }
-        ];
-        if (options.fallbackPlacement) { modifiers.push({ name: "flip", options: { altBoundary: true, fallbackPlacements: options.fallbackPlacement } }); };
-        if (options.boundary) { modifiers.push({ name: "preventOverflow", options: { boundary: options.boundary } }); }
-        if (options.onChange) { modifiers.push({ name: "onChange", enabled: true, phase: "afterWrite", fn: options.onChange }); }
-
-        // Create the popper
-        this._popper = createPopper(this.el, this._elContent, { placement: options.placement, modifiers });
+        // Create the tippy
+        this._tippy = tippy(this.el, options) as any;
     }
 
     /**
@@ -199,34 +125,31 @@ class _Tooltip extends Base<ITooltipProps> {
     // Hides the popover
     hide() {
         // See if it's visible
-        if (this.isVisible) { this.toggle(); }
+        if (this.isVisible) { this._tippy.hide(); }
     }
 
     // Determines if the popover is visible
     get isVisible(): boolean { return this._elContent.classList.contains("show"); }
 
-    // The popper instance
-    popper() { return this._popper; }
+    // The tippy instance
+    tippy() { return this._tippy; }
 
     // Shows the popover
     show() {
         // See if it's hidden
-        if (!this.isVisible) { this.toggle(); }
+        if (!this.isVisible) { this._tippy.show(); }
     }
 
     // Toggles the tooltip
     toggle() {
-        // Update the popper
-        this._popper.update();
-
         // Toggle the element
         if (this.isVisible) {
             // Hide the element
+            this.hide();
             this._elContent.classList.remove("show");
-            this._elContent.style.display = "none";
         } else {
             // Show the element
-            this._elContent.style.display = "";
+            this.show();
             this._elContent.classList.add("show");
         }
     }

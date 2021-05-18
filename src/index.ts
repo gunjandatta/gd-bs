@@ -8,10 +8,10 @@ import "./ie";
 import * as Components from "./components";
 export { Components }
 
-// Popper Lib
-import { createPopper } from "../libs/popper.min.js";
-export { createPopper }
+// TippyJS library
+import { tippy } from "./libs";
+export { tippy }
 
 // Bootstrap Global library
-const BS = { Components, createPopper }
+const BS = { Components, tippy }
 window["GD"] = window["GD"] || BS;

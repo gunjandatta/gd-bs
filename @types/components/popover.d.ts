@@ -52,6 +52,7 @@ export const Popover: (props: IPopoverProps, template?: string) => IPopover;
  */
 export const PopoverTypes: IPopoverTypes;
 
+import { Props as TippyProps } from "tippy.js";
 import { IBaseProps } from "../base";
 import { IButtonProps } from "./button";
 
@@ -62,8 +63,8 @@ export interface IPopover {
     /** The element. */
     el: Element;
 
-    /** The popper instance. */
-    popper: any;
+    /** The tippy instance. */
+    tippy: any;
 
     /** Enables the popover. */
     enable: () => void;
@@ -79,30 +80,14 @@ export interface IPopover {
 }
 
 /**
- * Popover Options
- */
-export interface IPopoverOptions {
-    animation?: boolean;
-    boundary?: string | Element;
-    container?: Element;
-    content?: string | Element | Function;
-    fallbackPlacement?: string | Array<string>;
-    offset?: number | string;
-    onChange?: Function;
-    placement?: string | Function;
-    template?: string;
-    title?: string | Element | Function;
-    trigger?: string;
-}
-
-/**
  * Popover Properties
  */
 export interface IPopoverProps extends IBaseProps<IPopover> {
     btnProps?: IButtonProps;
     isDismissible?: boolean;
-    options?: IPopoverOptions;
+    options?: TippyProps;
     target?: Element,
+    title?: string;
     type?: number;
 }
 
