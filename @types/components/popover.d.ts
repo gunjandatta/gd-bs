@@ -52,8 +52,8 @@ export const Popover: (props: IPopoverProps, template?: string) => IPopover;
  */
 export const PopoverTypes: IPopoverTypes;
 
-import { Props as TippyProps } from "tippy.js";
 import { IBaseProps } from "../base";
+import { ITippyProps } from "../lib";
 import { IButtonProps } from "./button";
 
 /**
@@ -85,7 +85,7 @@ export interface IPopover {
 export interface IPopoverProps extends IBaseProps<IPopover> {
     btnProps?: IButtonProps;
     isDismissible?: boolean;
-    options?: TippyProps;
+    options?: ITippyProps;
     target?: Element,
     title?: string;
     type?: number;

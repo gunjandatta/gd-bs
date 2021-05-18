@@ -42,8 +42,8 @@ export const Tooltip: (props: ITooltipProps, template?: string) => ITooltip;
  */
 export const TooltipTypes: ITooltipTypes;
 
-import { Props as TippyProps } from "tippy.js";
 import { IBaseProps } from "../base";
+import { ITippyProps } from "../lib";
 import { IButtonProps, IButton } from "./button";
 
 /**
@@ -77,7 +77,7 @@ export interface ITooltip {
  */
 export interface ITooltipProps extends IBaseProps<ITooltip> {
     btnProps?: IButtonProps;
-    options?: TippyProps;
+    options?: ITippyProps;
     type?: number;
 }
 
