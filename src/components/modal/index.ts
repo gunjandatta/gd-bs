@@ -117,6 +117,7 @@ class _Modal extends Base<IModalProps> implements IModal {
     // Configure the events
     private configureEvents() {
         // Execute the events
+        this.props.onRenderHeader ? this.props.onRenderHeader(this.el.querySelector(".modal-header")) : null;
         this.props.onRenderBody ? this.props.onRenderBody(this.el.querySelector(".modal-body")) : null;
         this.props.onRenderFooter ? this.props.onRenderFooter(this.el.querySelector(".modal-footer")) : null;
 

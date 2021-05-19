@@ -1781,6 +1781,7 @@ declare module 'gd-bs/components/modal' {
             isCentered?: boolean;
             onClose?: (el: HTMLDivElement) => void;
             onRenderBody?: (el: HTMLDivElement) => void;
+            onRenderHeader?: (el: HTMLDivElement) => void;
             onRenderFooter?: (el: HTMLDivElement) => void;
             options?: IModalOptions;
             title?: string;
