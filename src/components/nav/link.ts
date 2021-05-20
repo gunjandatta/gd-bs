@@ -1,6 +1,6 @@
 import { INavLink } from "../../../@types/components/nav";
 import { Base } from "../base";
-import { appendContent } from "../common";
+import { appendContent, setClassNames } from "../common";
 import { HTMLLink, HTMLTab } from "./templates";
 
 /**
@@ -34,8 +34,12 @@ export class NavLink extends Base<INavLink> {
         // Update the link
         this._elLink = this.el.querySelector("a.nav-link");
         if (this._elLink) {
+            // Set the class names
+            setClassNames(this._elLink, this.props.className);
             this.props.isActive ? this._elLink.classList.add("active") : null;
             this.props.isDisabled ? this._elLink.classList.add("disabled") : null;
+
+            // Set the html
             this._elLink.innerHTML = this.props.title == null ? "" : this.props.title;
 
             // See if this is a tab

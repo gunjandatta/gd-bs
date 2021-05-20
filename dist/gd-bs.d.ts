@@ -1869,6 +1869,7 @@ declare module 'gd-bs/components/nav' {
     export interface INavLink<T = Element> {
             isActive?: boolean;
             isDisabled?: boolean;
+            className?: string;
             data?: any;
             href?: string;
             onClick?: (item?: INavLink, ev?: Event) => void;
@@ -1958,6 +1959,7 @@ declare module 'gd-bs/components/navbar' {
         * Navbar Item
         */
     export interface INavbarItem {
+            className?: string;
             data?: any;
             href?: string;
             isActive?: boolean;

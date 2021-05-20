@@ -1,4 +1,5 @@
 import { INavbarItem, INavbarProps } from "../../../@types/components/navbar";
+import { setClassNames } from "../common";
 import { Dropdown } from "../dropdown";
 import { HTMLItem } from "./templates";
 
@@ -31,6 +32,9 @@ export class NavbarItem {
     // Configures the item
     private configure() {
         let link: HTMLAnchorElement = null;
+
+        // Set the class names
+        setClassNames(this._el, this._props.className);
 
         // See if this is a dropdown
         if (this._props.items) {

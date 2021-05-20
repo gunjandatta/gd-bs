@@ -1,4 +1,5 @@
 import { IBase, IBaseProps } from "../../@types/base";
+import { setClassNames } from "./common";
 
 /**
  * Base Components
@@ -18,15 +19,7 @@ export class Base<IProps = IBaseProps<IBase>> implements IBase<IProps> {
         this._el = el.firstChild ? el.firstChild as HTMLDivElement : el;
 
         // Set the class names
-        let classNames = (this._props.className || "").split(' ');
-        for (let i = 0; i < classNames.length; i++) {
-            // Ensure the class name exists
-            let className = classNames[i];
-            if (className) {
-                // Add the class
-                this._el.classList.add(className);
-            }
-        }
+        setClassNames(this._el, this._props.className);
 
         // Execute the assign to event
         this._props.assignTo ? this._props.assignTo(this) : null;

@@ -49,6 +49,19 @@ export const configureParent = (component: Element, parent: Element): Element =>
     return el;
 }
 
+export const setClassNames = (el: HTMLElement, className = "") => {
+    // Set the class names
+    let classNames = className.split(' ');
+    for (let i = 0; i < classNames.length; i++) {
+        // Ensure the class name exists
+        let className = classNames[i];
+        if (className) {
+            // Add the class
+            el.classList.add(className);
+        }
+    }
+}
+
 export const show = (el: HTMLElement) => {
     // Ensure the alert is visible
     if (el.classList.contains("d-none")) {
