@@ -33,10 +33,6 @@ export class NavbarItem {
     private configure() {
         let link: HTMLAnchorElement = null;
 
-        // Set the class names
-        setClassNames(this._el.querySelector(".nav-link"), this._props.className);
-        setClassNames(this._el, this._props.classNameItem);
-
         // See if this is a dropdown
         if (this._props.items) {
             // Render a dropdown menu
@@ -62,6 +58,10 @@ export class NavbarItem {
                 link.innerHTML = this._props.text == null ? "" : this._props.text;
             }
         }
+
+        // Set the class names
+        setClassNames(this._el.querySelector(".nav-link"), this._props.className);
+        setClassNames(this._el, this._props.classNameItem);
 
         // Update the link
         if (link) {
