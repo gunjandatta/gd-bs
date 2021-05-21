@@ -192,7 +192,7 @@ class _Navbar extends Base<INavbarProps> implements INavbar {
         this._items = [];
 
         // Create the navbar list
-        let list = this.el.querySelector("ul.navbar-nav");
+        let list = this.el.querySelector("ul.navbar-nav") as HTMLElement;
         if (list) {
             // Parse the items
             let items = this.props.items || [];
@@ -201,6 +201,25 @@ class _Navbar extends Base<INavbarProps> implements INavbar {
                 let item = new NavbarItem(items[i], this.props, itemTemplate);
                 this._items.push(item);
                 list.appendChild(item.el);
+            }
+        }
+
+        // Create the navbar right list
+        list = this.el.querySelectorAll("ul.navbar-nav")[1] as HTMLElement;
+        if (list) {
+            // See if no items exist
+            let items = this.props.itemsEnd || [];
+            if (items.length == 0) {
+                // Remove the element
+                list.remove();
+            } else {
+                // Parse the items
+                for (let i = 0; i < items.length; i++) {
+                    // Create the item
+                    let item = new NavbarItem(items[i], this.props, itemTemplate);
+                    this._items.push(item);
+                    list.appendChild(item.el);
+                }
             }
         }
     }

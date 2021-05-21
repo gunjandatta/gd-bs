@@ -44,7 +44,7 @@ class _Toolbar extends Base<IToolbarProps> implements IToolbar {
                 // See if there is a spacing value defined, and this is not the last element
                 if (this.props.spacing > 0 && i < items.length - 1) {
                     // Add the spacing
-                    el.classList.add("mr-" + this.props.spacing);
+                    el.classList.add("me-" + this.props.spacing);
                 }
 
                 // Append the element
