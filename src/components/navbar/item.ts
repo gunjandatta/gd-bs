@@ -34,7 +34,8 @@ export class NavbarItem {
         let link: HTMLAnchorElement = null;
 
         // Set the class names
-        setClassNames(this._el, this._props.className);
+        setClassNames(this._el.querySelector(".nav-link"), this._props.className);
+        setClassNames(this._el, this._props.classNameItem);
 
         // See if this is a dropdown
         if (this._props.items) {

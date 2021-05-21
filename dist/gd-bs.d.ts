@@ -1960,6 +1960,7 @@ declare module 'gd-bs/components/navbar' {
         */
     export interface INavbarItem {
             className?: string;
+            classNameItem?: string;
             data?: any;
             href?: string;
             isActive?: boolean;
