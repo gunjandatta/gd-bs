@@ -893,7 +893,6 @@ declare module 'gd-bs/components/collapse' {
     export const Collapse: (props: ICollapseProps, template?: string) => ICollapse;
     
     import { IBaseProps } from "gd-bs/base";
-    import { IButtonProps } from "gd-bs/components/button";
     
     /**
         * Collapse
@@ -1228,10 +1227,10 @@ declare module 'gd-bs/components/formControl' {
         * Form Control
         */
     export interface IFormControl {
-            el: HTMLElement;
             checkbox: ICheckboxGroup;
             control: ICheckboxGroup | IDropdown | IInputGroup | IListBox;
             dropdown: IDropdown;
+            el: HTMLElement;
             getValue: () => any;
             isLoaded: () => PromiseLike<void>;
             isRendered: boolean;

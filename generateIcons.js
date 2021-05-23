@@ -5,7 +5,7 @@ const fs = require("fs");
 const dirIcons = path.join(__dirname, "node_modules/bootstrap-icons/icons");
 
 // Get the icon files
-fs.readdir(dirIcons, function (err, files) {
+fs.readdir(dirIcons, function(err, files) {
     var icons = [];
     var iconDefs = [];
     var switches = [];
@@ -20,7 +20,7 @@ fs.readdir(dirIcons, function (err, files) {
     }
 
     // Parse the files
-    files.forEach(function (file) {
+    files.forEach(function(file) {
         // Ensure it's an svg
         if (!file.endsWith(".svg")) { return; }
 
@@ -53,6 +53,9 @@ fs.readdir(dirIcons, function (err, files) {
         typeDefs.push("\t// " + file);
         typeDefs.push("\t" + funcName + ": number;");
 
+        // Add an export for this file
+        icons.push("export * from \"./" + varName + "\";");
+
         // Convert the svg to a typescript file
         var stream = fs.createWriteStream("./src/icons/svgs/" + varName + ".ts");
         stream.write([
@@ -63,15 +66,17 @@ fs.readdir(dirIcons, function (err, files) {
         ].join('\n'));
         stream.end();
 
-        // Add an export for this file
-        icons.push("export * from \"./" + varName + "\";");
+        // Convert the svg to a typescript definition file
+        stream = fs.createWriteStream("./src/icons/svgs/" + varName + ".d.ts");
+        stream.write("export const " + varName + ": (height?:number, width?:number) => HTMLElement;");
+        stream.end();
     });
 
     // Delete the files
-    try { fs.unlinkSync("./@types/icons.d.ts"); } catch { }
-    try { fs.unlinkSync("./src/icons/svgs/index.d.ts"); } catch { }
-    try { fs.unlinkSync("./src/icons/icons.ts"); } catch { }
-    try { fs.unlinkSync("./src/icons/iconTypes.ts"); } catch { }
+    try { fs.unlinkSync("./@types/icons.d.ts"); } catch {}
+    try { fs.unlinkSync("./src/icons/svgs/index.d.ts"); } catch {}
+    try { fs.unlinkSync("./src/icons/icons.ts"); } catch {}
+    try { fs.unlinkSync("./src/icons/iconTypes.ts"); } catch {}
 
     // Generate the file
     var stream = fs.createWriteStream("./@types/icons.d.ts");
