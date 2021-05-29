@@ -153,6 +153,48 @@ class _Navbar extends Base<INavbarProps> implements INavbar {
                 props.onSearch(searchbox.value);
             });
         }
+
+        // See if the toggle exists
+        let btnToggle = this.el.querySelector(".navbar-toggler") as HTMLButtonElement;
+        if (btnToggle) {
+            // Add a click event
+            btnToggle.addEventListener("click", ev => {
+                let elNav = this.el.querySelector(".navbar-collapse") as HTMLElement;
+
+                // See if it's visible
+                if (!btnToggle.classList.contains("collapsed") && elNav.classList.contains("show")) {
+                    // Start the animation
+                    elNav.style.height = elNav.getBoundingClientRect()["height"] + "px";
+                    setTimeout(() => {
+                        elNav.classList.add("collapsing");
+                        elNav.classList.remove("collapse");
+                        elNav.classList.remove("show");
+                        elNav.style.height = "";
+                        btnToggle.classList.add("collapsed");
+                    }, 10);
+
+                    // Wait for the animation to complete
+                    setTimeout(() => {
+                        elNav.classList.remove("collapsing");
+                        elNav.classList.add("collapse");
+                    }, 250);
+                } else {
+                    // Start the animation
+                    elNav.classList.remove("collapse");
+                    elNav.classList.add("collapsing");
+                    elNav.style.height = this.el.scrollHeight + "px";
+                    btnToggle.classList.remove("collapsed");
+
+                    // Wait for the animation to complete
+                    setTimeout(() => {
+                        elNav.classList.remove("collapsing");
+                        elNav.classList.add("collapse");
+                        elNav.classList.add("show");
+                        elNav.style.height = "";
+                    }, 250);
+                }
+            });
+        }
     }
 
     // Configures search
