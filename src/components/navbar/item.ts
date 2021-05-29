@@ -1,7 +1,7 @@
 import { INavbarItem, INavbarProps } from "../../../@types/components/navbar";
 import { setClassNames } from "../common";
 import { Dropdown } from "../dropdown";
-import { HTMLItem } from "./templates";
+import { HTMLItem, HTMLItemButton } from "./templates";
 
 /**
  * Navbar Item
@@ -12,7 +12,7 @@ export class NavbarItem {
     private _props: INavbarItem = null;
 
     // Constructor
-    constructor(props: INavbarItem, parent: INavbarProps, template: string = HTMLItem) {
+    constructor(props: INavbarItem, parent: INavbarProps, template: string = props.isButton ? HTMLItemButton : HTMLItem) {
         // Save the properties
         this._parent = parent;
         this._props = props;
@@ -47,6 +47,13 @@ export class NavbarItem {
             link = this._el.querySelector(".nav-link");
             if (link) {
                 this._props.isActive ? link.classList.add("active") : null;
+
+                // See if this is a button
+                if (this._props.isButton) {
+                    link.classList.remove("nav-link");
+                    link.classList.add("btn");
+                    link.classList.add("m-1");
+                }
             }
         }
         // Else, ensure there is text
@@ -60,7 +67,7 @@ export class NavbarItem {
         }
 
         // Set the class names
-        setClassNames(this._el.querySelector(".nav-link"), this._props.className);
+        setClassNames(link, this._props.className);
         setClassNames(this._el, this._props.classNameItem);
 
         // Update the link
@@ -87,6 +94,12 @@ export class NavbarItem {
         this._el.addEventListener("click", ev => {
             // Prevent the page from moving to the top
             ev.preventDefault();
+
+            // See if we are toggling anything
+            if (this._props.toggleObj && typeof (this._props.toggleObj.toggle) === "function") {
+                // Toggle the object
+                this._props.toggleObj.toggle();
+            }
 
             // Call the events
             this._props.onClick ? this._props.onClick(this._props, ev) : null;

@@ -25,3 +25,11 @@ export const HTMLItem = `
         <span class="visually-hidden">(current)</span>
     </a>
 </li>`.trim();
+
+// Item
+export const HTMLItemButton = `
+<li class="nav-item">
+    <a class="btn m-1" href="#" role="button">
+        <span class="visually-hidden">(current)</span>
+    </a>
+</li>`.trim();

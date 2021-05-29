@@ -47,6 +47,7 @@
         <div id="progress"></div>
         <div id="progressGroup"></div>
         <div id="navbar"></div>
+        <div id="navbar-collapse"></div>
         <div id="table"></div>
         <div id="toast"></div>
     </form>
@@ -1131,6 +1132,14 @@
                     type: 2
                 }]
             });
+            window["navbarCollapse"] = GD.Components.Collapse({
+                el: document.querySelector("#navbar-collapse"),
+                id: "collapseNavDemo",
+                content: "This is being toggled by the navbar.",
+                options: {
+                    toggle: false
+                }
+            });
             window["navbar"] = GD.Components.Navbar({
                 el: document.querySelector("#navbar"),
                 onClick: function(item) {
@@ -1155,8 +1164,9 @@
                     text: "Disabled Link",
                     isDisabled: true
                 }, {
+                    className: "btn-outline-dark",
                     text: "Dropdown Link",
-                    isActive: true,
+                    isButton: true,
                     items: [{
                         text: "Link 1",
                         href: "#",
@@ -1178,8 +1188,9 @@
                     }, ]
                 }, {
                     text: "Collapse",
-                    target: "#collapseNavDemo",
-                    toggle: "collapse"
+                    toggleObj: window["navbarCollapse"],
+                    isButton: true,
+                    className: "btn-outline-primary"
                 }],
                 itemsEnd: [{
                     text: "Support",
@@ -1188,14 +1199,6 @@
                     text: "Help",
                     isActive: true
                 }]
-            });
-            GD.Components.Collapse({
-                el: document.querySelector("#navbar"),
-                id: "collapseNavDemo",
-                content: "This is being toggled by the navbar.",
-                options: {
-                    toggle: false
-                }
             });
             GD.Components.Table({
                 el: document.querySelector("#table"),
