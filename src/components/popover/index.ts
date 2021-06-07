@@ -71,8 +71,9 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
             ...{
                 allowHTML: true,
                 arrow: true,
+                interactive: true,
                 placement
-            } as ITippyProps,
+            },
             ...this.props.options
         };
 
