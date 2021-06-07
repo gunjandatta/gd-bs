@@ -131,10 +131,10 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
     }
 
     // Determines if the popover is visible
-    get isVisible(): boolean { return this._elContent.classList.contains("show"); }
+    get isVisible(): boolean { return this._tippy.state.isVisible; }
 
     // The tippy instance
-    tippy() { return this._tippy; }
+    get tippy() { return this._tippy; }
 
     // Shows the popover
     show() {
