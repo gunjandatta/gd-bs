@@ -178,13 +178,18 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
                     // Call the change event
                     this.props.onChange ? this.props.onChange(this.getValue(), ev) : null;
                 } else {
+                    // Get the selected value
+                    let selectedValue = ((ev.target as HTMLSelectElement).value || "").trim();
+
                     // Parse the items
                     for (let i = 0; i < this._items.length; i++) {
                         let item = this._items[i];
-                        let selectedValue = ((ev.target as HTMLSelectElement).value || "").trim();
+
+                        // Replace special characters
+                        let value = (item.props.text || "").trim().replace(/&amp;/g, "&").replace(/&gt;/g, ">").replace(/&lt;/g, "<").replace(/&quot;/g, "\"");
 
                         // See if this item was selected
-                        if (selectedValue == (item.props.text || "").trim()) {
+                        if (selectedValue == value) {
                             // Ensure this item is selected
                             if (!item.isSelected) { item.toggle(); }
 
