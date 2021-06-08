@@ -89,7 +89,7 @@ class _Tooltip extends Base<ITooltipProps> {
             ...{
                 allowHTML: true,
                 arrow: true,
-                interactive: true,
+                interactive: false,
                 placement
             },
             ...this.props.options
