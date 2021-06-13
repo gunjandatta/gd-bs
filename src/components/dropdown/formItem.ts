@@ -40,7 +40,7 @@ export class DropdownFormItem {
             this._el = document.createElement("option");
             this._el.className = this._props.className || "";
             this._el.disabled = this._props.isDisabled ? true : false;
-            this._el.innerHTML = this._props.text == null ? "" : this._props.text;
+            this._el.innerText = this._props.text == null ? "" : this._props.text;
 
             // See if the item is selected
             if (this._props.isSelected) {

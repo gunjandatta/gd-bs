@@ -186,7 +186,7 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
                         let item = this._items[i];
 
                         // Replace special characters
-                        let value = (item.props.text || "").trim().replace(/&amp;/g, "&").replace(/&gt;/g, ">").replace(/&lt;/g, "<").replace(/&quot;/g, "\"");
+                        let value = (item.props.text || "");
 
                         // See if this item was selected
                         if (selectedValue == value) {
