@@ -415,16 +415,27 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
         this.props.items = newItems;
 
         // Get the menu
-        let menu = this.el.querySelector(".dropdown-menu") || this.el.querySelector("select");
+        let menu: HTMLSelectElement = this.el.querySelector(".dropdown-menu") || this.el.querySelector("select");
         if (menu) {
             // Clear the menu
             while (menu.firstChild) { menu.removeChild(menu.firstChild); }
 
+            // Clear the current value
+            menu.value = "";
+
             // Render the items
             this.renderItems();
 
-            // Clear the current value
-            menu.value = "";
+            // Parse the items
+            for (let i = 0; i < newItems.length; i++) {
+                let item = newItems[i];
+
+                // See if the item is selected
+                if (item.isSelected) {
+                    menu.value = item.text;
+                    break;
+                }
+            }
         }
     }
 
