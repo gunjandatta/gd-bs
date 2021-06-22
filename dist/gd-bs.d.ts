@@ -1018,6 +1018,8 @@ declare module 'gd-bs/components/dropdown' {
             className?: string;
             data?: any;
             href?: string;
+            iconSize?: number;
+            iconType?: Function;
             isDisabled?: boolean;
             isDivider?: boolean;
             isHeader?: boolean;
@@ -1962,6 +1964,8 @@ declare module 'gd-bs/components/navbar' {
             classNameItem?: string;
             data?: any;
             href?: string;
+            iconSize?: number;
+            iconType?: Function;
             isActive?: boolean;
             isButton?: boolean;
             isDisabled?: boolean;

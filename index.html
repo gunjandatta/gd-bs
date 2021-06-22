@@ -1,8 +1,8 @@
 <html>
 
 <head>
-    <script src="dist/gd-bs.js"></script>
-    <!--script src="dist/gd-bs-icons.js"></script-->
+    <!--script src="dist/gd-bs.js"></script-->
+    <script src="dist/gd-bs-icons.js"></script>
     <!-- script src="../sprest-bs/dist/gd-sprest-bs.js"></script-->
     <style>
         .carousel {
@@ -14,8 +14,7 @@
 <body>
     <h1>Library</h1>
     <form>
-        <div id="dev">
-        </div>
+        <div id="dev"></div>
         <div id="alert"></div>
         <div id="btn-loading"></div>
         <div id="spinner"></div>
@@ -84,6 +83,7 @@
                 className: "btn-loading",
                 el: document.getElementById("btn-loading"),
                 text: "Loading...",
+                iconType: GD.Icons(GD.IconTypes.Badge3d),
                 onClick: function() {
                     alert("The loading button was clicked...");
                 },
@@ -1159,7 +1159,8 @@
                 },
                 items: [{
                     text: "Home",
-                    isActive: true
+                    isActive: true,
+                    iconType: GD.Icons(GD.IconTypes.HouseDoor, 16, 16)
                 }, {
                     text: "Link"
                 }, {
@@ -1172,15 +1173,18 @@
                     items: [{
                         text: "Link 1",
                         href: "#",
+                        iconType: GD.Icons(GD.IconTypes.Diagram2, 16, 16),
                         onChange: function(item) {
                             console.log("Nav DDL Item Clicked: " + item.text);
                         }
                     }, {
                         text: "Link 2",
-                        href: "#"
+                        href: "#",
+                        iconType: GD.Icons(GD.IconTypes.Diagram2Fill, 16, 16)
                     }, {
                         text: "Link 3",
-                        href: "#"
+                        href: "#",
+                        iconType: GD.Icons(GD.IconTypes.Diagram3, 16, 16)
                     }, {
                         text: "Link 4",
                         href: "#"

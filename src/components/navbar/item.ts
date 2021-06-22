@@ -82,6 +82,22 @@ export class NavbarItem {
                 link.setAttribute("aria-disabled", "true");
                 link.tabIndex = -1;
             }
+
+            // Set the icon if it exists
+            if (this._props.iconType) {
+                let iconSize = this._props.iconSize || 16;
+
+                // See if it's a function
+                if (typeof (this._props.iconType) === "function") {
+                    // Append the icon
+                    link.prepend(this._props.iconType(iconSize, iconSize));
+                }
+                // Else, it's an element
+                else if (typeof (this._props.iconType === "object")) {
+                    // Append the icon
+                    link.prepend(this._props.iconType);
+                }
+            }
         }
     }
 

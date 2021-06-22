@@ -99,6 +99,23 @@ export class DropdownItem {
                 this._el.appendChild(this._elLink);
             }
         }
+
+        // Set the icon if it exists
+        if (this.props.iconType) {
+            let elItem = this._elLink || this._el;
+            let iconSize = this.props.iconSize || 16;
+
+            // See if it's a function
+            if (typeof (this.props.iconType) === "function") {
+                // Append the icon
+                elItem.prepend(this.props.iconType(iconSize, iconSize));
+            }
+            // Else, it's an element
+            else if (typeof (this.props.iconType === "object")) {
+                // Append the icon
+                elItem.prepend(this.props.iconType);
+            }
+        }
     }
 
     // Configures the events

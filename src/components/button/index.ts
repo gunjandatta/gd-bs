@@ -111,13 +111,20 @@ class _Button extends Base<IButtonProps> implements IButton {
         // Set the text
         this.setText(this.props.text);
 
-        // Set the icon
-        if (typeof (this.props.iconType) === "function") {
-            // Append the icon
-            this.el.appendChild(this.props.iconType(this.props.iconSize, this.props.iconSize));
+        // Set the icon if it exists
+        if (this.props.iconType) {
+            if (typeof (this.props.iconType) === "function") {
+                // Append the icon
+                this.el.prepend(this.props.iconType(this.props.iconSize, this.props.iconSize));
 
-            // Update the styling of the button
-            this.el.classList.add("btn-icon");
+                // Update the styling of the button
+                this.el.classList.add("btn-icon");
+            }
+            // Else, it's an element
+            else if (typeof (this.props.iconType === "object")) {
+                // Append the icon
+                this.el.prepend(this.props.iconType);
+            }
         }
 
         // See if this is a spinner
