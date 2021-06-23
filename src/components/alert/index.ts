@@ -45,9 +45,6 @@ class _Alert extends Base<IAlertProps> implements IAlert {
         // Set the default styling
         this.el.classList.add(AlertClassNames.getByType(this.props.type) || AlertClassNames.getByType(AlertTypes.Primary));
 
-        // Render the header
-        this.renderHeader();
-
         // Configure the alert
         this.configure();
 
@@ -62,6 +59,15 @@ class _Alert extends Base<IAlertProps> implements IAlert {
     private configure() {
         // Append the content
         appendContent(this.el, this.props.content);
+
+        // See if a header was defined
+        if (this.props.header) {
+            // Create the header
+            let elHeader = document.createElement("h4");
+            elHeader.classList.add("alert-heading");
+            elHeader.innerHTML = this.props.header;
+            this.el.prepend(elHeader);
+        }
 
         // See if we need to add the dismiss icon
         if (this.props.isDismissible) {
@@ -94,21 +100,6 @@ class _Alert extends Base<IAlertProps> implements IAlert {
 
             // Execute the event
             this.props.onClose ? this.props.onClose(this.props) : null;
-        }
-    }
-
-    // Render the header
-    private renderHeader() {
-        let header = this.el.querySelector(".alert-heading");
-        if (header) {
-            // See if a header was defined
-            if (this.props.header) {
-                // Set the heading
-                header.innerHTML = this.props.header;
-            } else {
-                // Remove the element
-                this.el.removeChild(header);
-            }
         }
     }
 
