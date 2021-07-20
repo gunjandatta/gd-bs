@@ -29,7 +29,7 @@ export const HTMLItem = `
 // Item
 export const HTMLItemButton = `
 <li class="nav-item">
-    <a class="btn m-1" href="#" role="button">
+    <a class="btn" href="#" role="button">
         <span class="visually-hidden">(current)</span>
     </a>
 </li>`.trim();
