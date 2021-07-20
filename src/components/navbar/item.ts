@@ -52,7 +52,7 @@ export class NavbarItem {
                 if (this._props.isButton) {
                     link.classList.remove("nav-link");
                     link.classList.add("btn");
-                    link.classList.add("m-1");
+                    this._props.iconType ? link.classList.add("nav-icon") : null;
                 }
             }
         }
