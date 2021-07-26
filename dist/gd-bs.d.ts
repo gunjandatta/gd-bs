@@ -1862,6 +1862,8 @@ declare module 'gd-bs/components/nav' {
             isPills?: boolean;
             isTabs?: boolean;
             isVertical?: boolean;
+            onLinkRendered?: (el?: HTMLElement, item?: INavLink) => void;
+            onTabRendered?: (el?: HTMLElement, item?: INavLink) => void;
     }
     
     /**
@@ -1874,6 +1876,7 @@ declare module 'gd-bs/components/nav' {
             data?: any;
             href?: string;
             onClick?: (item?: INavLink, ev?: Event) => void;
+            onRender?: (el?: HTMLElement, item?: INavLink) => void;
             onRenderTab?: (item?: INavLink, el?: HTMLDivElement) => void;
             tabContent?: string | T;
             title?: string;
@@ -1971,6 +1974,7 @@ declare module 'gd-bs/components/navbar' {
             isDisabled?: boolean;
             items?: Array<IDropdownItem>;
             onClick?: (item?: INavbarItem, ev?: Event) => void;
+            onRender?: (el?: HTMLElement, item?: INavbarItem) => void;
             target?: string;
             text?: string;
             toggle?: string;
@@ -1980,7 +1984,7 @@ declare module 'gd-bs/components/navbar' {
     /**
         * Navbar Properties
         */
-    export interface INavbarProps<T=Element> extends IBaseProps<INavbar> {
+    export interface INavbarProps<T = Element> extends IBaseProps<INavbar> {
             brand?: string | T;
             brandUrl?: string;
             enableScrolling?: boolean;
@@ -1989,6 +1993,7 @@ declare module 'gd-bs/components/navbar' {
             items?: Array<INavbarItem>;
             itemsEnd?: Array<INavbarItem>;
             onClick?: (item?: INavbarItem, ev?: Event) => void;
+            onItemRendered?: (el?: HTMLElement, item?: INavbarItem) => void;
             searchBox?: INavbarSearchBox;
             type?: number;
     }

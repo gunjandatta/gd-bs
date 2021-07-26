@@ -96,6 +96,10 @@ class _Nav extends Base<INavProps> implements INav {
                         }
                     }
                 }
+
+                // Call the render events
+                this.props.onLinkRendered ? this.props.onLinkRendered(link.el, links[i]) : null;
+                this.props.onTabRendered ? this.props.onTabRendered(link.elTab, links[i]) : null;
             }
         }
     }

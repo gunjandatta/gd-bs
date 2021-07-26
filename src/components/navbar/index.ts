@@ -243,6 +243,9 @@ class _Navbar extends Base<INavbarProps> implements INavbar {
                 let item = new NavbarItem(items[i], this.props, itemTemplate);
                 this._items.push(item);
                 list.appendChild(item.el);
+
+                // Call the render events
+                this.props.onItemRendered ? this.props.onItemRendered(item.el, items[i]) : null;
             }
         }
 

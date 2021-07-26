@@ -121,6 +121,9 @@ export class NavbarItem {
             this._props.onClick ? this._props.onClick(this._props, ev) : null;
             this._parent.onClick ? this._parent.onClick(this._props, ev) : null;
         });
+
+        // Execute the render events
+        this._props.onRender ? this._props.onRender(this._el, this._props) : null;
     }
 
     /**

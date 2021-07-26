@@ -83,7 +83,8 @@ export class NavLink extends Base<INavLink> {
             this.props.onClick ? this.props.onClick(this.props, ev) : null;
         });
 
-        // Execute the tab render event
+        // Execute the render events
+        this.props.onRender ? this.props.onRender(this._elLink, this.props) : null;
         this._elTab && this.props.onRenderTab ? this.props.onRenderTab(this.props, this._elTab) : null;
     }
 
