@@ -31,8 +31,10 @@ export class AccordionItem {
         // Set the class name
         let classNames = (this._props.className || "").trim().split(" ");
         for (let i = 0; i < classNames.length; i++) {
+            let className = classNames[i];
+
             // Add the class name
-            this._el.classList.add(classNames[i]);
+            className ? this._el.classList.add(className) : null;
         }
 
         // Render the header
