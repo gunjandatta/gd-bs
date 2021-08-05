@@ -28,6 +28,13 @@ export class AccordionItem {
         elItem.innerHTML = template;
         this._el = elItem.firstChild as HTMLDivElement;
 
+        // Set the class name
+        let classNames = (this._props.className || "").trim().split(" ");
+        for (let i = 0; i < classNames.length; i++) {
+            // Add the class name
+            this._el.classList.add(classNames[i]);
+        }
+
         // Render the header
         this.renderHeader();
 
