@@ -1112,7 +1112,11 @@
                 el: document.querySelector("#collapse"),
                 id: "collapseDemo",
                 isHorizontal: true,
-                content: "This is the content to be collapsed.",
+                onRender: function(el) {
+                    el.innerHTML = "This is the content to be collapsed.";
+                    el.style.width = "300px";
+                    el.style.minHeight = "100px";
+                },
                 options: {
                     toggle: false
                 }

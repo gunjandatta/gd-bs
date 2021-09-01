@@ -33,7 +33,7 @@ class _Collapse extends Base<ICollapseProps> implements ICollapse {
         appendContent(body, this.props.content);
 
         // Execute the render event
-        this.props.onRender ? this.props.onRender(this.props, body) : null;
+        this.props.onRender ? this.props.onRender(body, this.props) : null;
 
         // See if we are expanding it by default
         if (this.props.options && this.props.options.toggle) {
