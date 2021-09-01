@@ -176,7 +176,7 @@ class _Offcanvas extends Base<IOffcanvasProps> implements IOffcanvas {
 
     // Toggles the modal
     toggle() {
-        let backdrop = document.querySelector(".modal-backdrop");
+        let backdrop = document.querySelector(".offcanvas-backdrop");
 
         // Set the flag
         this._tranisitioningFl = true;
@@ -204,7 +204,7 @@ class _Offcanvas extends Base<IOffcanvasProps> implements IOffcanvas {
             let showBackdrop = this.props.options && typeof (this.props.options.backdrop) === "boolean" ? this.props.options.backdrop : true;
             if (showBackdrop && backdrop == null) {
                 backdrop = document.createElement("div");
-                backdrop.classList.add("modal-backdrop");
+                backdrop.classList.add("offcanvas-backdrop");
                 backdrop.classList.add("fade");
                 backdrop.classList.add("show");
                 document.body.appendChild(backdrop);

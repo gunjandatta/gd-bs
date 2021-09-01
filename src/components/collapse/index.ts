@@ -25,6 +25,7 @@ class _Collapse extends Base<ICollapseProps> implements ICollapse {
 
         // Set the attributes
         this.el.id = id;
+        this.props.isHorizontal ? this.el.classList.add("collapse-horizontal") : null;
         this.props.isMulti ? this.el.classList.add("multi-collapse") : null;
 
         // Append the content

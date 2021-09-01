@@ -929,6 +929,7 @@ declare module 'gd-bs/components/collapse' {
             content?: string | T;
             data?: any;
             id?: string;
+            isHorizontal?: boolean;
             isMulti?: boolean;
             onRender?: (props?: ICollapseProps, el?: HTMLElement) => void;
             options?: ICollapseOptions;
