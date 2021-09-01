@@ -30,9 +30,14 @@
     @import "bootstrap/scss/close";
     @import "bootstrap/scss/toasts";
     @import "bootstrap/scss/modal";
+    /* We are using tippyjs styling
+    @import "bootstrap/scss/tooltip";
+    @import "bootstrap/scss/popover";
+    */
     @import "bootstrap/scss/carousel";
     @import "bootstrap/scss/spinners";
     @import "bootstrap/scss/offcanvas";
+    @import "bootstrap/scss/placeholders";
     // Helpers
     @import "bootstrap/scss/helpers";
     // Utilities
