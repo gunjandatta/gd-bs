@@ -14,7 +14,11 @@
 <body>
     <h1>Library</h1>
     <form>
-        <div id="dev"></div>
+        <div id="dev" class="bs">
+            <div class="bg-dark text-white">
+                <p>This is some sample content.</p>
+            </div>
+        </div>
         <div id="alert"></div>
         <div id="btn-loading"></div>
         <div id="spinner"></div>
@@ -75,6 +79,7 @@
                 isDismissible: true,
                 header: "Alert Header",
                 content: "This is an alert.",
+                type: GD.Components.AlertTypes.Danger,
                 onClose: function(props) {
                     console.log("The alert was closed.", props.header);
                 }
