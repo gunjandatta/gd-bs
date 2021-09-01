@@ -149,8 +149,8 @@ class _Modal extends Base<IModalProps> implements IModal {
         // See if we are auto closing the modal
         let autoClose = this.props.options && typeof (this.props.options.autoClose) === "boolean" ? this.props.options.autoClose : true;
         if (autoClose) {
-            // Add a click event to the modal
-            document.body.addEventListener("click", (ev) => {
+            // Click event
+            let clickEvent = (ev: MouseEvent) => {
                 let elContent = (this.el as HTMLElement).querySelector(".modal-content");
 
                 // Do nothing if we are tranisitionsing
@@ -172,7 +172,19 @@ class _Modal extends Base<IModalProps> implements IModal {
 
                 // Close the modal if it's visible
                 if (this.isVisible) { this.toggle(); }
-            });
+            };
+
+            // Ensure the body exists
+            if (document.body) {
+                // Add a click event to the modal
+                document.body.addEventListener("click", clickEvent);
+            } else {
+                // Add the load event
+                window.addEventListener("load", () => {
+                    // Add a click event to the modal
+                    document.body.addEventListener("click", clickEvent);
+                });
+            }
         }
     }
 

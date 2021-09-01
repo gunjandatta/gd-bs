@@ -93,8 +93,8 @@ class _Offcanvas extends Base<IOffcanvasProps> implements IOffcanvas {
         // See if we are auto closing the offcanvas
         let autoClose = this.props.options && typeof (this.props.options.autoClose) === "boolean" ? this.props.options.autoClose : true;
         if (autoClose) {
-            // Add a click event to the offcanvas
-            document.body.addEventListener("click", (ev) => {
+            // Define the click event
+            let clickEvent = (ev: MouseEvent) => {
                 // Do nothing if we are tranisitionsing
                 if (this._tranisitioningFl) { return; }
 
@@ -114,7 +114,19 @@ class _Offcanvas extends Base<IOffcanvasProps> implements IOffcanvas {
 
                 // Close the offcanvas if it's visible
                 if (this.isVisible) { this.toggle(); }
-            });
+            };
+
+            // Ensure the body exists
+            if (document.body) {
+                // Add a click event to the offcanvas
+                document.body.addEventListener("click", clickEvent);
+            } else {
+                // Add a load event
+                window.addEventListener("load", () => {
+                    // Add a click event to the offcanvas
+                    document.body.addEventListener("click", clickEvent);
+                });
+            }
         }
 
         // See if the keyboard option is set
