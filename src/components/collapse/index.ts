@@ -57,12 +57,12 @@ class _Collapse extends Base<ICollapseProps> implements ICollapse {
         // See if it's expanded
         if (this.isExpanded) {
             // Start the animation
-            this.el.style.height = this.el.getBoundingClientRect()["height"] + "px";
+            this.el.style[this.props.isHorizontal ? "width" : "height"] = this.el.getBoundingClientRect()[this.props.isHorizontal ? "width" : "height"] + "px";
             setTimeout(() => {
                 this.el.classList.add("collapsing");
                 this.el.classList.remove("collapse");
                 this.el.classList.remove("show");
-                this.el.style.height = "";
+                this.el.style[this.props.isHorizontal ? "width" : "height"] = "";
             }, 10);
 
             // Wait for the animation to complete
@@ -74,14 +74,14 @@ class _Collapse extends Base<ICollapseProps> implements ICollapse {
             // Start the animation
             this.el.classList.remove("collapse");
             this.el.classList.add("collapsing");
-            this.el.style.height = this.el.scrollHeight + "px";
+            this.el.style[this.props.isHorizontal ? "width" : "height"] = (this.props.isHorizontal ? this.el.scrollWidth : this.el.scrollHeight) + "px";
 
             // Wait for the animation to complete
             setTimeout(() => {
                 this.el.classList.remove("collapsing");
                 this.el.classList.add("collapse");
                 this.el.classList.add("show");
-                this.el.style.height = "";
+                this.el.style[this.props.isHorizontal ? "width" : "height"] = "";
             }, 250);
         }
     }

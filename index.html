@@ -1108,6 +1108,20 @@
                 toggleObj: window["collapse"],
                 text: "Collapse Demo"
             });
+            window["collapseH"] = GD.Components.Collapse({
+                el: document.querySelector("#collapse"),
+                id: "collapseDemo",
+                isHorizontal: true,
+                content: "This is the content to be collapsed.",
+                options: {
+                    toggle: false
+                }
+            });
+            window["btnCollapseH"] = GD.Components.Button({
+                el: document.querySelector("#btnCollapse"),
+                toggleObj: window["collapseH"],
+                text: "Collapse Horizontal Demo"
+            });
             GD.Components.Accordion({
                 //autoCollapse: false,
                 el: document.querySelector("#accordion"),
