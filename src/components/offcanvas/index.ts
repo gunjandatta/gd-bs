@@ -26,6 +26,8 @@ export const OffcanvasClassNames = new ClassNames([
  * Offcanvas
  */
 class _Offcanvas extends Base<IOffcanvasProps> implements IOffcanvas {
+    private _autoClose: boolean = null;
+    private _eventCreated: boolean = false;
     private _tranisitioningFl: boolean = false;
 
     // Constructor
@@ -74,6 +76,50 @@ class _Offcanvas extends Base<IOffcanvasProps> implements IOffcanvas {
         if (options.visible) { this.toggle(); }
     }
 
+    // Configures the auto-close event
+    private configureAutoCloseEvent() {
+        // See if the event exists
+        if (this._eventCreated) { return; }
+
+        // Ensure the body exists
+        if (document.body) {
+            // Add a click event to the modal
+            document.body.addEventListener("click", (ev: MouseEvent) => {
+                // See if the auto close flag is set
+                if (this._autoClose) {
+                    // Do nothing if we are tranisitionsing
+                    if (this._tranisitioningFl) { return; }
+
+                    // Do nothing if we clicked within the offcanvas
+                    if (ev.composedPath().includes(this.el)) { return; }
+                    else {
+                        // Get the mouse coordinates
+                        let x = ev.clientX;
+                        let y = ev.clientY;
+                        let elCoordinate = (this.el as HTMLElement).getBoundingClientRect();
+
+                        // See if we clicked within the offcanvas
+                        if (x <= elCoordinate.right && x >= elCoordinate.left && y <= elCoordinate.bottom && y >= elCoordinate.top) { return; }
+                        // Else, see if something was selected
+                        else if (x == 0 && y == 0) { return; }
+                    }
+
+                    // Close the offcanvas if it's visible
+                    if (this.isVisible) { this.toggle(); }
+                }
+            });
+
+            // Set the flag
+            this._eventCreated = true;
+        } else {
+            // Add the load event
+            window.addEventListener("load", () => {
+                // Configure the event
+                this.configureAutoCloseEvent();
+            });
+        }
+    }
+
     // Configure the events
     private configureEvents() {
         // Execute the events
@@ -90,44 +136,8 @@ class _Offcanvas extends Base<IOffcanvasProps> implements IOffcanvas {
             });
         }
 
-        // See if we are auto closing the offcanvas
-        let autoClose = this.props.options && typeof (this.props.options.autoClose) === "boolean" ? this.props.options.autoClose : true;
-        if (autoClose) {
-            // Define the click event
-            let clickEvent = (ev: MouseEvent) => {
-                // Do nothing if we are tranisitionsing
-                if (this._tranisitioningFl) { return; }
-
-                // Do nothing if we clicked within the offcanvas
-                if (ev.composedPath().includes(this.el)) { return; }
-                else {
-                    // Get the mouse coordinates
-                    let x = ev.clientX;
-                    let y = ev.clientY;
-                    let elCoordinate = (this.el as HTMLElement).getBoundingClientRect();
-
-                    // See if we clicked within the offcanvas
-                    if (x <= elCoordinate.right && x >= elCoordinate.left && y <= elCoordinate.bottom && y >= elCoordinate.top) { return; }
-                    // Else, see if something was selected
-                    else if (x == 0 && y == 0) { return; }
-                }
-
-                // Close the offcanvas if it's visible
-                if (this.isVisible) { this.toggle(); }
-            };
-
-            // Ensure the body exists
-            if (document.body) {
-                // Add a click event to the offcanvas
-                document.body.addEventListener("click", clickEvent);
-            } else {
-                // Add a load event
-                window.addEventListener("load", () => {
-                    // Add a click event to the offcanvas
-                    document.body.addEventListener("click", clickEvent);
-                });
-            }
-        }
+        // Set the flag to determine if the modal is sticky
+        this.setAutoClose(this.props.options && typeof (this.props.options.autoClose) === "boolean" ? this.props.options.autoClose : true);
 
         // See if the keyboard option is set
         if (this.props.options && this.props.options.keyboard) {
@@ -154,6 +164,15 @@ class _Offcanvas extends Base<IOffcanvasProps> implements IOffcanvas {
 
     // Returns true if the modal is visible
     get isVisible() { return this.el.classList.contains("show"); }
+
+    // Updates the auto close flag
+    setAutoClose(value: boolean) {
+        // Set the flag
+        this._autoClose = value;
+
+        // Configure the event if we are setting the value
+        this._autoClose ? this.configureAutoCloseEvent() : null;
+    }
 
     // Sets the offcanvas type
     setType(offcanvasType: number) {

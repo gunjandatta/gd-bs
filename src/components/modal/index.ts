@@ -39,6 +39,8 @@ export const ModalClassNames = new ClassNames([
  * @param props The modal properties.
  */
 class _Modal extends Base<IModalProps> implements IModal {
+    private _autoClose: boolean = null;
+    private _eventCreated: boolean = false;
     private _options: IModalOptions = null;
     private _tranisitioningFl: boolean = false;
 
@@ -114,6 +116,52 @@ class _Modal extends Base<IModalProps> implements IModal {
         }
     }
 
+    // Configures the auto-close event
+    private configureAutoCloseEvent() {
+        // See if the event exists
+        if (this._eventCreated) { return; }
+
+        // Ensure the body exists
+        if (document.body) {
+            // Add a click event to the modal
+            document.body.addEventListener("click", (ev: MouseEvent) => {
+                // See if the auto close flag is set
+                if (this._autoClose) {
+                    let elContent = (this.el as HTMLElement).querySelector(".modal-content");
+
+                    // Do nothing if we are tranisitionsing
+                    if (this._tranisitioningFl) { return; }
+
+                    // Do nothing if we clicked within the modal
+                    if (ev.composedPath().includes(elContent)) { return; }
+                    else {
+                        // Get the mouse coordinates
+                        let x = ev.clientX;
+                        let y = ev.clientY;
+                        let elCoordinate = elContent.getBoundingClientRect();
+
+                        // See if we clicked within the modal
+                        if (x <= elCoordinate.right && x >= elCoordinate.left && y <= elCoordinate.bottom && y >= elCoordinate.top) { return; }
+                        // Else, see if something was selected
+                        else if (x == 0 && y == 0) { return; }
+                    }
+
+                    // Close the modal if it's visible
+                    if (this.isVisible) { this.toggle(); }
+                }
+            });
+
+            // Set the flag
+            this._eventCreated = true;
+        } else {
+            // Add the load event
+            window.addEventListener("load", () => {
+                // Configure the event
+                this.configureAutoCloseEvent();
+            });
+        }
+    }
+
     // Configure the events
     private configureEvents() {
         // Execute the events
@@ -146,46 +194,8 @@ class _Modal extends Base<IModalProps> implements IModal {
             });
         }
 
-        // See if we are auto closing the modal
-        let autoClose = this.props.options && typeof (this.props.options.autoClose) === "boolean" ? this.props.options.autoClose : true;
-        if (autoClose) {
-            // Click event
-            let clickEvent = (ev: MouseEvent) => {
-                let elContent = (this.el as HTMLElement).querySelector(".modal-content");
-
-                // Do nothing if we are tranisitionsing
-                if (this._tranisitioningFl) { return; }
-
-                // Do nothing if we clicked within the modal
-                if (ev.composedPath().includes(elContent)) { return; }
-                else {
-                    // Get the mouse coordinates
-                    let x = ev.clientX;
-                    let y = ev.clientY;
-                    let elCoordinate = elContent.getBoundingClientRect();
-
-                    // See if we clicked within the modal
-                    if (x <= elCoordinate.right && x >= elCoordinate.left && y <= elCoordinate.bottom && y >= elCoordinate.top) { return; }
-                    // Else, see if something was selected
-                    else if (x == 0 && y == 0) { return; }
-                }
-
-                // Close the modal if it's visible
-                if (this.isVisible) { this.toggle(); }
-            };
-
-            // Ensure the body exists
-            if (document.body) {
-                // Add a click event to the modal
-                document.body.addEventListener("click", clickEvent);
-            } else {
-                // Add the load event
-                window.addEventListener("load", () => {
-                    // Add a click event to the modal
-                    document.body.addEventListener("click", clickEvent);
-                });
-            }
-        }
+        // Set the flag to determine if the modal is sticky
+        this.setAutoClose(this.props.options && typeof (this.props.options.autoClose) === "boolean" ? this.props.options.autoClose : true);
     }
 
     /**
@@ -200,6 +210,15 @@ class _Modal extends Base<IModalProps> implements IModal {
 
     // Returns true if the modal is visible
     get isVisible() { return this.el.classList.contains("show"); }
+
+    // Updates the auto close flag
+    setAutoClose(value: boolean) {
+        // Set the flag
+        this._autoClose = value;
+
+        // Configure the event if we are setting the value
+        this._autoClose ? this.configureAutoCloseEvent() : null;
+    }
 
     // Updates the title
     setTitle(title: string) {
