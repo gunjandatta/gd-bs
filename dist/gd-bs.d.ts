@@ -2740,6 +2740,7 @@ declare module 'gd-bs/components/tooltip' {
         */
     export interface ITooltipProps extends IBaseProps<ITooltip> {
             btnProps?: IButtonProps;
+            content?: string | Element;
             options?: ITippyProps;
             placement?: number;
             type?: number;

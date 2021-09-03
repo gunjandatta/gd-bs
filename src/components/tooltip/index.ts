@@ -175,6 +175,7 @@ class _Tooltip extends Base<ITooltipProps> {
                 allowHTML: false,
                 animation: "scale",
                 arrow: true,
+                content: this.props.content,
                 delay: 100,
                 inertia: true,
                 interactive: false,
