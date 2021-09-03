@@ -117,7 +117,7 @@ class _Nav extends Base<INavProps> implements INav {
                 let link = this._links[i];
 
                 // See if this is the target tab
-                if (tabId === i + 1 || link.elTab.title == tabId) {
+                if (tabId === i + 1 || link.elTab.getAttribute("data-title") == tabId) {
                     // Toggle it if it's not visible
                     link.isVisible ? null : link.toggle(this.props.fadeTabs);
                 }

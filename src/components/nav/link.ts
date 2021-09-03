@@ -55,8 +55,8 @@ export class NavLink extends Base<INavLink> {
 
                 // Update the tab
                 this._elTab.id = tabId;
-                this._elTab.title = this.props.title || "";
                 this._elTab.setAttribute("aria-labelledby", tabId);
+                this._elTab.setAttribute("data-title", this.props.title || "");
 
                 // See if this tab is active
                 if (this.props.isActive) {
