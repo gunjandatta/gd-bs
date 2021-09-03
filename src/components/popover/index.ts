@@ -9,12 +9,34 @@ import { appendContent } from "../common";
 /**
  * Popover Types
  */
-export enum PopoverTypes {
+ export enum PopoverTypes {
+    Light = 1,
+    LightBorder = 2,
+    Material = 3,
+    Primary = 4,
+    Secondary = 5,
+    Translucent = 6
+}
+
+/**
+ * Popover Placements
+ */
+export enum PopoverPlacements {
     Auto = 1,
-    Bottom = 2,
-    Left = 3,
-    Right = 4,
-    Top = 5
+    AutoStart = 2,
+    AutoEnd = 3,
+    Bottom = 4,
+    BottomStart = 5,
+    BottomEnd = 6,
+    Left = 7,
+    LeftStart = 8,
+    LeftEnd = 9,
+    Right = 10,
+    RightStart = 11,
+    RightEnd = 12,
+    Top = 13,
+    TopStart = 14,
+    TopEnd = 15
 }
 
 /**
@@ -37,32 +59,94 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
 
     // Configure the card group
     private configure() {
-        // Set the type
-        let placement = "";
-        switch (this.props.type) {
+        // Set the placement
+        let placement = null;
+        switch (this.props.placement) {
             // Auto
-            case PopoverTypes.Auto:
+            case PopoverPlacements.Auto:
                 placement = "auto";
                 break;
+            case PopoverPlacements.AutoEnd:
+                placement = "auto-end";
+                break;
+            case PopoverPlacements.AutoStart:
+                placement = "auto-start";
+                break;
             // Bottom
-            case PopoverTypes.Bottom:
+            case PopoverPlacements.Bottom:
                 placement = "bottom";
+                break;
+            case PopoverPlacements.BottomEnd:
+                placement = "bottom-end";
+                break;
+            case PopoverPlacements.BottomStart:
+                placement = "bottom-start";
                 break;
             // Left
-            case PopoverTypes.Left:
+            case PopoverPlacements.Left:
                 placement = "left";
                 break;
+            case PopoverPlacements.LeftEnd:
+                placement = "left-end";
+                break;
+            case PopoverPlacements.LeftStart:
+                placement = "left-start";
+                break;
             // Right
-            case PopoverTypes.Right:
+            case PopoverPlacements.Right:
                 placement = "right";
                 break;
+            case PopoverPlacements.RightEnd:
+                placement = "right-end";
+                break;
+            case PopoverPlacements.RightStart:
+                placement = "right-start";
+                break;
             // Top
-            case PopoverTypes.Top:
+            case PopoverPlacements.Top:
                 placement = "top";
                 break;
-            // Default
+            case PopoverPlacements.TopEnd:
+                placement = "top-end";
+                break;
+            case PopoverPlacements.TopStart:
+                placement = "top-start";
+                break;
+            // Default - Auto
             default:
-                placement = "bottom";
+                placement = "top";
+                break;
+        }
+
+        // Set the theme
+        let theme = null;
+        switch (this.props.type) {
+            // Light
+            case PopoverTypes.Light:
+                theme = "light";
+                break;
+            case PopoverTypes.LightBorder:
+                theme = "light-border";
+                break;
+            // Material
+            case PopoverTypes.Material:
+                theme = "material";
+                break;
+            // Primary
+            case PopoverTypes.Primary:
+                theme = "primary";
+                break;
+            // Secondary
+            case PopoverTypes.Secondary:
+                theme = "secondary";
+                break;
+            // Translucent
+            case PopoverTypes.Translucent:
+                theme = "translucent";
+                break;
+            // Default - Light Border
+            default:
+                theme = "light-border";
                 break;
         }
 
@@ -70,9 +154,14 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
         let options: ITippyProps = {
             ...{
                 allowHTML: true,
+                animation: "scale",
                 arrow: true,
+                delay: 100,
+                hideOnClick: false,
+                inertia: true,
                 interactive: true,
-                placement
+                placement,
+                theme
             },
             ...this.props.options
         };

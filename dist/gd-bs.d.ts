@@ -2248,6 +2248,7 @@ declare module 'gd-bs/components/popover' {
             btnProps?: IButtonProps;
             isDismissible?: boolean;
             options?: ITippyProps;
+            placement?: number;
             target?: Element,
             title?: string;
             type?: number;
