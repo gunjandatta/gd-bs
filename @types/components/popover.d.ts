@@ -48,6 +48,11 @@
 export const Popover: (props: IPopoverProps, template?: string) => IPopover;
 
 /**
+ * Popover Placements
+ */
+ export const PopoverPlacements: IPopoverPlacements;
+
+/**
  * Popover Types
  */
 export const PopoverTypes: IPopoverTypes;

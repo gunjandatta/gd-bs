@@ -2210,6 +2210,11 @@ declare module 'gd-bs/components/popover' {
     export const Popover: (props: IPopoverProps, template?: string) => IPopover;
     
     /**
+        * Popover Placements
+        */
+     export const PopoverPlacements: IPopoverPlacements;
+    
+    /**
         * Popover Types
         */
     export const PopoverTypes: IPopoverTypes;
@@ -2689,6 +2694,11 @@ declare module 'gd-bs/components/tooltip' {
     ```
         */
     export const Tooltip: (props: ITooltipProps, template?: string) => ITooltip;
+    
+    /**
+        * Tooltip Placements
+        */
+     export const TooltipPlacements: ITooltipPlacements;
     
     /**
         * Tooltip Types

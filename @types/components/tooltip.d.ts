@@ -38,6 +38,11 @@ let tooltip = Components.Tooltip({
 export const Tooltip: (props: ITooltipProps, template?: string) => ITooltip;
 
 /**
+ * Tooltip Placements
+ */
+ export const TooltipPlacements: ITooltipPlacements;
+
+/**
  * Tooltip Types
  */
 export const TooltipTypes: ITooltipTypes;
