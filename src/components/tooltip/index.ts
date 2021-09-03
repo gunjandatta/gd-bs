@@ -4,18 +4,40 @@ import { ITippyProps } from "../../../@types/libs";
 import { IButton } from "../../../@types/components/button";
 import { ITooltip, ITooltipProps } from "../../../@types/components/tooltip";
 import { Base } from "../base";
-import { Button } from "../button";
+import { Button, ButtonTypes } from "../button";
 import { appendContent } from "../common";
 
 /**
  * Tooltip Types
  */
 export enum TooltipTypes {
+    Light = 1,
+    LightBorder = 2,
+    Material = 3,
+    Primary = 4,
+    Secondary = 5,
+    Translucent = 6
+}
+
+/**
+ * Tooltip Placements
+ */
+export enum TooltipPlacements {
     Auto = 1,
-    Bottom = 2,
-    Left = 3,
-    Right = 4,
-    Top = 5
+    AutoStart = 2,
+    AutoEnd = 3,
+    Bottom = 4,
+    BottomStart = 5,
+    BottomEnd = 6,
+    Left = 7,
+    LeftStart = 8,
+    LeftEnd = 9,
+    Right = 10,
+    RightStart = 11,
+    RightEnd = 12,
+    Top = 13,
+    TopStart = 14,
+    TopEnd = 15
 }
 
 /**
@@ -42,6 +64,7 @@ class _Tooltip extends Base<ITooltipProps> {
         // Default the toggle property for the button
         let btnProps = this.props.btnProps || {};
         btnProps.toggle = "tooltip";
+        btnProps.type = btnProps.type || ButtonTypes.OutlineSecondary
 
         // Create the button
         this._btn = Button(btnProps);
@@ -55,42 +78,108 @@ class _Tooltip extends Base<ITooltipProps> {
 
     // Configure the options
     private configureOptions() {
-        // Set the type
+        // Set the placement
         let placement = null;
-        switch (this.props.type) {
+        switch (this.props.placement) {
             // Auto
-            case TooltipTypes.Auto:
+            case TooltipPlacements.Auto:
                 placement = "auto";
                 break;
+            case TooltipPlacements.AutoEnd:
+                placement = "auto-end";
+                break;
+            case TooltipPlacements.AutoStart:
+                placement = "auto-start";
+                break;
             // Bottom
-            case TooltipTypes.Bottom:
+            case TooltipPlacements.Bottom:
                 placement = "bottom";
                 break;
+            case TooltipPlacements.BottomEnd:
+                placement = "bottom-end";
+                break;
+            case TooltipPlacements.BottomStart:
+                placement = "bottom-start";
+                break;
             // Left
-            case TooltipTypes.Left:
+            case TooltipPlacements.Left:
                 placement = "left";
                 break;
-            // Right
-            case TooltipTypes.Right:
-                placement = "right";
+            case TooltipPlacements.LeftEnd:
+                placement = "left-end";
+                break;
+            case TooltipPlacements.LeftStart:
+                placement = "left-start";
                 break;
             // Right
-            case TooltipTypes.Top:
+            case TooltipPlacements.Right:
+                placement = "right";
+                break;
+            case TooltipPlacements.RightEnd:
+                placement = "right-end";
+                break;
+            case TooltipPlacements.RightStart:
+                placement = "right-start";
+                break;
+            // Top
+            case TooltipPlacements.Top:
                 placement = "top";
+                break;
+            case TooltipPlacements.TopEnd:
+                placement = "top-end";
+                break;
+            case TooltipPlacements.TopStart:
+                placement = "top-start";
                 break;
             // Default - Auto
             default:
-                placement = "auto";
+                placement = "top";
+                break;
+        }
+
+        // Set the theme
+        let theme = null;
+        switch (this.props.type) {
+            // Light
+            case TooltipTypes.Light:
+                theme = "light";
+                break;
+            case TooltipTypes.LightBorder:
+                theme = "light-border";
+                break;
+            // Material
+            case TooltipTypes.Material:
+                theme = "material";
+                break;
+            // Primary
+            case TooltipTypes.Primary:
+                theme = "primary";
+                break;
+            // Secondary
+            case TooltipTypes.Secondary:
+                theme = "secondary";
+                break;
+            // Translucent
+            case TooltipTypes.Translucent:
+                theme = "translucent";
+                break;
+            // Default - Secondary
+            default:
+                theme = "secondary";
                 break;
         }
 
         // Set the options
         let options: ITippyProps = {
             ...{
-                allowHTML: true,
+                allowHTML: false,
+                animation: "scale",
                 arrow: true,
+                delay: 100,
+                inertia: true,
                 interactive: false,
-                placement
+                placement,
+                theme
             },
             ...this.props.options
         };
