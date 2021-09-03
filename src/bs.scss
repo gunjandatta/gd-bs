@@ -214,3 +214,73 @@ table.dataTable thead .sorting_asc {
 table.dataTable thead .sorting_desc {
     background-image: url("data:image/svg+xml,<svg viewBox='0 0 16 16' fill='%236c757d' xmlns='http://www.w3.org/2000/svg'><path d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/></svg>");
 }
+
+
+/* Tippy Tooltip primary theme color */
+
+.tippy-box[data-theme~='primary'] {
+    background-color: #0078d4;
+}
+
+
+/* Tippy Tooltip primary theme color */
+
+.tippy-box[data-theme~='primary'][data-placement^='top']>.tippy-arrow::before {
+    border-top-color: #0078d4;
+}
+
+
+/* Tippy Tooltip primary theme color */
+
+.tippy-box[data-theme~='primary'][data-placement^='bottom']>.tippy-arrow::before {
+    border-bottom-color: #0078d4;
+}
+
+
+/* Tippy Tooltip primary theme color */
+
+.tippy-box[data-theme~='primary'][data-placement^='left']>.tippy-arrow::before {
+    border-left-color: #0078d4;
+}
+
+
+/* Tippy Tooltip primary theme color */
+
+.tippy-box[data-theme~='primary'][data-placement^='right']>.tippy-arrow::before {
+    border-right-color: #0078d4;
+}
+
+
+/* Tippy Tooltip secondary theme color */
+
+.tippy-box[data-theme~='secondary'] {
+    background-color: #6c757d;
+}
+
+
+/* Tippy Tooltip secondary theme color */
+
+.tippy-box[data-theme~='secondary'][data-placement^='top']>.tippy-arrow::before {
+    border-top-color: #6c757d;
+}
+
+
+/* Tippy Tooltip secondary theme color */
+
+.tippy-box[data-theme~='secondary'][data-placement^='bottom']>.tippy-arrow::before {
+    border-bottom-color: #6c757d;
+}
+
+
+/* Tippy Tooltip secondary theme color */
+
+.tippy-box[data-theme~='secondary'][data-placement^='left']>.tippy-arrow::before {
+    border-left-color: #6c757d;
+}
+
+
+/* Tippy Tooltip secondary theme color */
+
+.tippy-box[data-theme~='secondary'][data-placement^='right']>.tippy-arrow::before {
+    border-right-color: #6c757d;
+}
