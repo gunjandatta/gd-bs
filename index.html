@@ -158,9 +158,10 @@
             GD.Components.Popover({
                 target: btnPopover.el,
                 title: "My Popover",
+                placement: 10,
                 options: {
                     content: "This is the content.",
-                    theme: "material"
+                    trigger: "mouseenter"
                 }
             });
             GD.Components.Popover({
@@ -171,9 +172,8 @@
                     type: 3
                 },
                 isDismissible: true,
-                type: 4,
+                placement: 4,
                 options: {
-                    trigger: "click",
                     content: GD.Components.Button({
                         text: "Action",
                         onClick: function() {

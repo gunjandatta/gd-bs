@@ -9,7 +9,7 @@ import { appendContent } from "../common";
 /**
  * Popover Types
  */
- export enum PopoverTypes {
+export enum PopoverTypes {
     Light = 1,
     LightBorder = 2,
     Material = 3,
@@ -187,11 +187,33 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
 
         // Create the popover content element
         this._elContent = document.createElement("div") as HTMLDivElement;
-        this._elContent.classList.add("bs");
+        this._elContent.classList.add("popover-content");
         this._elContent.innerHTML = '<h5 class="popover-header"></h5><div class="popover-body"></div>';
         appendContent(this._elContent.querySelector(".popover-header"), this.props.title);
         appendContent(this._elContent.querySelector(".popover-body"), options.content as any);
         options.content = this._elContent;
+
+        // Set the on create event
+        options["onCreate"] = (tippyObj) => {
+            // Get the content element
+            let elContent = tippyObj.popper.querySelector(".tippy-content") as HTMLElement;
+            if (elContent) {
+                // Set the class
+                elContent.classList.add("bs");
+
+                // Get the custom class name(s)
+                let custom = (this.props.className || "").trim().split(" ");
+                for (let i = 0; i < custom.length; i++) {
+                    let className = custom[i];
+
+                    // Add the custom class name
+                    className ? elContent.classList.add(custom[i]) : null;
+                }
+            }
+
+            // Call the custom event if it's defined
+            this.props.options && this.props.options.onCreate ? this.props.options.onCreate(tippyObj) : null;
+        }
 
         // Create the tippy
         this._tippy = tippy(this.el, options as any) as any;

@@ -187,9 +187,31 @@ class _Tooltip extends Base<ITooltipProps> {
 
         // Create the popover content element
         this._elContent = document.createElement("div") as HTMLElement;
-        this._elContent.classList.add("bs");
+        this._elContent.classList.add("tooltip-content");
         appendContent(this._elContent, options.content as any);
         options.content = this._elContent;
+
+        // Set the on create event
+        options["onCreate"] = (tippyObj) => {
+            // Get the content element
+            let elContent = tippyObj.popper.querySelector(".tippy-content") as HTMLElement;
+            if (elContent) {
+                // Set the class
+                elContent.classList.add("bs");
+
+                // Get the custom class name(s)
+                let custom = (this.props.className || "").trim().split(" ");
+                for (let i = 0; i < custom.length; i++) {
+                    let className = custom[i];
+
+                    // Add the custom class name
+                    className ? elContent.classList.add(custom[i]) : null;
+                }
+            }
+
+            // Call the custom event if it's defined
+            this.props.options && this.props.options.onCreate ? this.props.options.onCreate(tippyObj) : null;
+        }
 
         // Create the tippy
         this._tippy = tippy(this.el, options as any) as any;

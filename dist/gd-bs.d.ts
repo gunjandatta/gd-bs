@@ -2830,6 +2830,15 @@ declare module 'gd-bs/libs' {
         inertia?: boolean;
         interactive?: boolean;
         maxWidth?: number | string;
+        onCreate?: (tippyObj?) => void;
+        onDestroy?: (tippyObj?) => void;
+        onHidden?: (tippyObj?) => void;
+        onHide?: (tippyObj?) => void;
+        onMount?: (tippyObj?) => void;
+        onShow?: (tippyObj?) => void;
+        onShown?: (tippyObj?) => void;
+        onTrigger?: (tippyObj?, ev?) => void;
+        onUntrigger?: (tippyObj?, ev?) => void;
         placement?: string;
         role?: string;
         showOnCreate?: boolean;
