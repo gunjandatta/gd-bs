@@ -91,8 +91,8 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
     private configureDefault() {
         // Set the attributes
         this.props.title ? this.el.title = this.props.title : null;
-        this.props.dropLeft ? this.el.classList.add("dropleft") : null;
-        this.props.dropRight ? this.el.classList.add("dropright") : null;
+        this.props.dropLeft ? this.el.classList.add("dropstart") : null;
+        this.props.dropRight ? this.el.classList.add("dropend") : null;
         this.props.dropUp ? this.el.classList.add("dropup") : null;
 
         // Set the type
