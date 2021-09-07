@@ -34,6 +34,7 @@ fs.readdir(dirIcons, function(err, files) {
 
         // Determine the variable and function names
         varName = varName.replace(/\.svg$/, '');
+        varName = varName == "window" ? "appWindow" : varName;
         var funcName = varName[0].toUpperCase() + varName.substr(1);
 
         // Add the type
