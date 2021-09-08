@@ -209,7 +209,7 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
                     arrow: false,
                     trigger: "click",
                     content: this._elMenu,
-                    offset: [4, -20],
+                    offset: [4, 0],
                     popperOptions: {
                         modifiers: [
                             {
