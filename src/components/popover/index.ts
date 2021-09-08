@@ -157,7 +157,6 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
                 animation: "scale",
                 arrow: true,
                 delay: 100,
-                hideOnClick: false,
                 inertia: true,
                 interactive: true,
                 placement,
@@ -188,7 +187,7 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
         // Create the popover content element
         this._elContent = document.createElement("div") as HTMLDivElement;
         this._elContent.classList.add("popover-content");
-        this._elContent.innerHTML = '<h5 class="popover-header"></h5><div class="popover-body"></div>';
+        this._elContent.innerHTML = '<h5 class="popover-header m-0"></h5><div class="popover-body"></div>';
         appendContent(this._elContent.querySelector(".popover-header"), this.props.title);
         appendContent(this._elContent.querySelector(".popover-body"), options.content as any);
         options.content = this._elContent;
