@@ -2847,7 +2847,7 @@ declare module 'gd-bs/libs' {
         interactiveDebounce?: number;
         maxWidth?: number | string;
         moveTransition?: string;
-        offset?: [number];
+        offset?: number[];
         onAfterUpdate?: (tippyObj?, props?) => void;
         onBeforeUpdate?: (tippyObj?, props?) => void;
         onClickOutside?: (tippyObj?, ev?) => void;
