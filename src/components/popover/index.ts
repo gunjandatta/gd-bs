@@ -200,6 +200,9 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
                 // Set the class
                 elContent.classList.add("bs");
 
+                // Set the styling
+                elContent.style.padding = "0";
+
                 // Get the custom class name(s)
                 let custom = (this.props.className || "").trim().split(" ");
                 for (let i = 0; i < custom.length; i++) {
