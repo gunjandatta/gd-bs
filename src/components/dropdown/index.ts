@@ -207,8 +207,8 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
                 }
             };
 
-            // Call the event
-            props = this.props.onRenderPopover ? this.props.onRenderPopover(props) : props;
+            // Call the render event
+            props = this.props.onMenuRendering ? this.props.onMenuRendering(props) : props;
 
             // Create a popover to display the menu
             this._popover = Popover(props);

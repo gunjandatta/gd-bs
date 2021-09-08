@@ -1055,7 +1055,7 @@ declare module 'gd-bs/components/dropdown' {
             multi?: boolean;
             navFl?: boolean;
             onChange?: (item?: IDropdownItem | Array<IDropdownItem>, ev?: Event) => void;
-            onRenderPopover?: (props: IPopoverProps) => IPopoverProps;
+            onMenuRendering?: (props: IPopoverProps) => IPopoverProps;
             setLabelToValue?: boolean;
             title?: string;
             type?: number;
@@ -1212,6 +1212,7 @@ declare module 'gd-bs/components/formControl' {
     import { IDropdown, IDropdownItem } from "gd-bs/components/dropdown";
     import { IInputGroup } from "gd-bs/components/inputGroup";
     import { IListBox } from "gd-bs/components/listBox";
+    import { IPopoverProps } from "gd-bs/components/popover";
     
     /**
         * Custom Controls
@@ -1295,6 +1296,7 @@ declare module 'gd-bs/components/formControl' {
             items?: Array<IDropdownItem>;
             onChange?: (item: IDropdownItem, ev?: Event) => void;
             onControlRendering?: (control: IFormControlPropsDropdown) => void | PromiseLike<IFormControlPropsDropdown>;
+            onMenuRendering?: (props: IPopoverProps) => IPopoverProps;
             onGetValue?: (control: IFormControlPropsDropdown) => any;
             onValidate?: (control: IFormControlPropsDropdown, value: IFormControlValidationResult) => boolean | IFormControlValidationResult;
     }
@@ -1332,6 +1334,7 @@ declare module 'gd-bs/components/formControl' {
             items?: Array<IDropdownItem>;
             onChange?: (item: Array<IDropdownItem>, ev?: Event) => void;
             onControlRendering?: (control: IFormControlPropsDropdown) => void | PromiseLike<IFormControlPropsDropdown>;
+            onMenuRendering?: (props: IPopoverProps) => IPopoverProps;
             onGetValue?: (control: IFormControlPropsDropdown) => any;
             onValidate?: (control: IFormControlPropsDropdown, value: IFormControlValidationResult) => boolean | IFormControlValidationResult;
     }
@@ -1953,6 +1956,7 @@ declare module 'gd-bs/components/navbar' {
     
     import { IBaseProps } from "gd-bs/base";
     import { IDropdownItem } from "gd-bs/components/dropdown";
+    import { IPopoverProps } from "gd-bs/components/popover";
     
     /**
         * Navbar
@@ -2006,6 +2010,7 @@ declare module 'gd-bs/components/navbar' {
             itemsEnd?: Array<INavbarItem>;
             onClick?: (item?: INavbarItem, ev?: Event) => void;
             onItemRendered?: (el?: HTMLElement, item?: INavbarItem) => void;
+            onMenuRendering?: (props: IPopoverProps) => IPopoverProps;
             searchBox?: INavbarSearchBox;
             type?: number;
     }
