@@ -48,7 +48,7 @@ export const Dropdown: (props: IDropdownProps, template?: string) => IDropdown;
 
 import { IBaseProps } from "../base";
 import { IButtonTypes } from "./button";
-import { IPopoverProps } from "./popover";
+import { IPopover, IPopoverProps } from "./popover";
 
 /**
  * Dropdown Types
@@ -76,6 +76,9 @@ export interface IDropdown {
 
     /** True if the dropdown is a multi-select. */
     isMulti: boolean;
+
+    /** The popover menu. */
+    popover: IPopover;
 
     /** Updates the dropdown items. */
     setItems: (items: Array<IDropdownItem>) => void;

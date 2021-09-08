@@ -413,6 +413,9 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
     // Returns true if the dropdown menu is visible
     get isVisible(): boolean { return this._popover.tippy.state.isVisible; }
 
+    // The popover menu
+    get popover(): IPopover { return this._popover; }
+
     // Sets the dropdown items
     setItems(newItems: Array<IDropdownItem> = []) {
         // Update the properties

@@ -966,7 +966,7 @@ declare module 'gd-bs/components/dropdown' {
     
     import { IBaseProps } from "gd-bs/base";
     import { IButtonTypes } from "gd-bs/components/button";
-    import { IPopoverProps } from "gd-bs/components/popover";
+    import { IPopover, IPopoverProps } from "gd-bs/components/popover";
     
     /**
         * Dropdown Types
@@ -994,6 +994,9 @@ declare module 'gd-bs/components/dropdown' {
     
             /** True if the dropdown is a multi-select. */
             isMulti: boolean;
+    
+            /** The popover menu. */
+            popover: IPopover;
     
             /** Updates the dropdown items. */
             setItems: (items: Array<IDropdownItem>) => void;
