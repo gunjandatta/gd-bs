@@ -40,7 +40,8 @@ export class NavbarItem {
                 isReadonly: this._props.isDisabled,
                 items: this._props.items,
                 label: this._props.text,
-                navFl: true
+                navFl: true,
+                onMenuRendering: this._props.onMenuRendering
             }).el as HTMLElement;
 
             // Update the link

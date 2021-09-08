@@ -1296,8 +1296,8 @@ declare module 'gd-bs/components/formControl' {
             items?: Array<IDropdownItem>;
             onChange?: (item: IDropdownItem, ev?: Event) => void;
             onControlRendering?: (control: IFormControlPropsDropdown) => void | PromiseLike<IFormControlPropsDropdown>;
-            onMenuRendering?: (props: IPopoverProps) => IPopoverProps;
             onGetValue?: (control: IFormControlPropsDropdown) => any;
+            onMenuRendering?: (props: IPopoverProps) => IPopoverProps;
             onValidate?: (control: IFormControlPropsDropdown, value: IFormControlValidationResult) => boolean | IFormControlValidationResult;
     }
     
@@ -1334,8 +1334,8 @@ declare module 'gd-bs/components/formControl' {
             items?: Array<IDropdownItem>;
             onChange?: (item: Array<IDropdownItem>, ev?: Event) => void;
             onControlRendering?: (control: IFormControlPropsDropdown) => void | PromiseLike<IFormControlPropsDropdown>;
-            onMenuRendering?: (props: IPopoverProps) => IPopoverProps;
             onGetValue?: (control: IFormControlPropsDropdown) => any;
+            onMenuRendering?: (props: IPopoverProps) => IPopoverProps;
             onValidate?: (control: IFormControlPropsDropdown, value: IFormControlValidationResult) => boolean | IFormControlValidationResult;
     }
     
@@ -1990,6 +1990,7 @@ declare module 'gd-bs/components/navbar' {
             isDisabled?: boolean;
             items?: Array<IDropdownItem>;
             onClick?: (item?: INavbarItem, ev?: Event) => void;
+            onMenuRendering?: (props: IPopoverProps) => IPopoverProps;
             onRender?: (el?: HTMLElement, item?: INavbarItem) => void;
             target?: string;
             text?: string;
@@ -2010,7 +2011,6 @@ declare module 'gd-bs/components/navbar' {
             itemsEnd?: Array<INavbarItem>;
             onClick?: (item?: INavbarItem, ev?: Event) => void;
             onItemRendered?: (el?: HTMLElement, item?: INavbarItem) => void;
-            onMenuRendering?: (props: IPopoverProps) => IPopoverProps;
             searchBox?: INavbarSearchBox;
             type?: number;
     }
