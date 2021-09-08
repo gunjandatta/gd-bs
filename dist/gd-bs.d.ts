@@ -966,6 +966,7 @@ declare module 'gd-bs/components/dropdown' {
     
     import { IBaseProps } from "gd-bs/base";
     import { IButtonTypes } from "gd-bs/components/button";
+    import { IPopoverProps } from "gd-bs/components/popover";
     
     /**
         * Dropdown Types
@@ -1039,9 +1040,6 @@ declare module 'gd-bs/components/dropdown' {
         */
     export interface IDropdownProps extends IBaseProps<IDropdown> {
             btnClassName?: string;
-            dropLeft?: boolean;
-            dropRight?: boolean;
-            dropUp?: boolean;
             formFl?: boolean;
             id?: string;
             isDark?: boolean;
@@ -1054,6 +1052,7 @@ declare module 'gd-bs/components/dropdown' {
             multi?: boolean;
             navFl?: boolean;
             onChange?: (item?: IDropdownItem | Array<IDropdownItem>, ev?: Event) => void;
+            onRenderPopover?: (props: IPopoverProps) => IPopoverProps;
             setLabelToValue?: boolean;
             title?: string;
             type?: number;

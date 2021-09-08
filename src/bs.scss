@@ -64,6 +64,10 @@
     .btn-close {
         min-width: auto;
     }
+    /* Dropdown Menu - Using the popover component for the menu, so we don't need to hide it by default */
+    .dropdown-menu {
+        display: inherit;
+    }
     /* Show the toggles as buttons */
     .form-check-input {
         cursor: pointer;

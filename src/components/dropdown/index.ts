@@ -1,6 +1,8 @@
 import { IDropdown, IDropdownItem, IDropdownProps } from "../../../@types/components/dropdown";
+import { IPopover, IPopoverProps } from "../../../@types/components/popover";
 import { Base } from "../base";
 import { ButtonClassNames, ButtonTypes } from "../button";
+import { Popover, PopoverPlacements, PopoverTypes } from "../popover";
 import { DropdownFormItem } from "./formItem";
 import { DropdownItem } from "./item";
 import { HTML, HTMLForm, HTMLNavItem, HTMLSplit } from "./templates";
@@ -33,6 +35,7 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
     private _elMenu: HTMLElement;
     private _initFl: boolean = false;
     private _items: Array<DropdownFormItem | DropdownItem> = null;
+    private _popover: IPopover = null;
 
     // Constructor
     constructor(props: IDropdownProps, template: string = GetHTML(props)) {
@@ -77,9 +80,6 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
             if (this.props.menuOnly) {
                 // Update the element
                 this.el = this._elMenu;
-            } else {
-                // Hide it by default
-                this._elMenu.style.display = "none";
             }
         }
 
@@ -91,9 +91,6 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
     private configureDefault() {
         // Set the attributes
         this.props.title ? this.el.title = this.props.title : null;
-        this.props.dropLeft ? this.el.classList.add("dropstart") : null;
-        this.props.dropRight ? this.el.classList.add("dropend") : null;
-        this.props.dropUp ? this.el.classList.add("dropup") : null;
 
         // Set the type
         let btnType = ButtonClassNames.getByType(this.props.type) || ButtonClassNames.getByType(DropdownTypes.Primary);
@@ -153,13 +150,6 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
 
     // Configure the events
     private configureEvents() {
-        // Get the toggle
-        let toggle = this.el.querySelector(".dropdown-toggle") as HTMLElement;
-        if (toggle) {
-            // Set the click event to toggle the menu
-            toggle.addEventListener("click", ev => { this.toggle(); });
-        }
-
         // See if this is a select element and a change event exists
         let menu = this.el.querySelector("select");
         if (menu) {
@@ -202,12 +192,26 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
                     }
                 }
             });
-        } else if (this._elMenu) {
-            // Add a click event to show the dropdown
-            this._elMenu.addEventListener("click", () => {
-                // Show the menu
-                this.isVisible ? null : this.toggle();
-            });
+        }
+
+        // Get the toggle
+        let toggle = this.el.querySelector(".dropdown-toggle") as HTMLElement;
+        if (toggle && this._elMenu) {
+            // Create the props
+            let props: IPopoverProps = {
+                target: toggle,
+                type: PopoverPlacements.AutoEnd,
+                options: {
+                    trigger: "click",
+                    content: this._elMenu
+                }
+            };
+
+            // Call the event
+            props = this.props.onRenderPopover ? this.props.onRenderPopover(props) : props;
+
+            // Create a popover to display the menu
+            this._popover = Popover(props);
         }
     }
 
@@ -407,7 +411,7 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
     get isMulti(): boolean { return this.props.multi; }
 
     // Returns true if the dropdown menu is visible
-    get isVisible(): boolean { return this._elMenu && this._elMenu.style.display != "none"; }
+    get isVisible(): boolean { return this._popover.tippy.state.isVisible; }
 
     // Sets the dropdown items
     setItems(newItems: Array<IDropdownItem> = []) {
@@ -525,24 +529,8 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
 
     // Toggles the menu
     toggle() {
-        // Get the menu element
-        let elMenu = this.el.querySelector(".dropdown-menu") as HTMLElement;
-        if (elMenu) {
-            // See if we are showing the menu
-            if (elMenu.style.display == "none") {
-                // Show the menu
-                elMenu.style.display = "block";
-
-                // Add an event handler
-                setTimeout(() => { document.addEventListener("click", this.handleClick); }, 10);
-            } else {
-                // Hide the menu
-                elMenu.style.display = "none";
-
-                // Remove the event handler
-                document.removeEventListener("click", this.handleClick);
-            }
-        }
+        // Toggle the popover
+        this._popover ? this._popover.toggle() : null;
     }
 }
 export const Dropdown = (props: IDropdownProps, template?: string): IDropdown => { return new _Dropdown(props, template); }
