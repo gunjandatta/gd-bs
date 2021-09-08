@@ -200,10 +200,24 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
             // Create the props
             let props: IPopoverProps = {
                 target: toggle,
-                type: PopoverPlacements.AutoEnd,
+                placement: PopoverPlacements.LeftEnd,
+                type: PopoverTypes.Light,
                 options: {
+                    arrow: false,
                     trigger: "click",
-                    content: this._elMenu
+                    content: this._elMenu,
+                    theme: "light",
+                    popperOptions: {
+                        modifiers: [
+                            {
+                                name: "preventOverflow",
+                                options: {
+                                    altAxis: true,
+                                    tether: false
+                                }
+                            }
+                        ]
+                    }
                 }
             };
 
