@@ -34,8 +34,15 @@ export class FormGroup {
         this.configureEvents(this._props.onControlRendering as any).then(() => {
             // Execute the parent rendering event
             this.configureEvents(this._formProps.onControlRendering as any).then(() => {
+                // Remove the rendering event to prevent a duplicate run
+                let onControlRendering = this._props.onControlRendering;
+                this._props.onControlRendering = null;
+
                 // Render the control
                 this.render();
+
+                // Update the property
+                this._props.onControlRendering = onControlRendering;
             })
         });
     }
