@@ -54,7 +54,7 @@ export class DropdownFormItem {
 
                 // Parse the values
                 for (let i = 0; i < values.length; i++) {
-                    let value = typeof (this._props.value) === "undefined" ? this._props.text : this._props.value;
+                    let value = this._props.value == undefined ? this._props.text : this._props.value;
 
                     // See if this item is selected
                     if (value == values[i]) {

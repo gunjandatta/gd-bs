@@ -80,7 +80,7 @@ export class DropdownItem {
 
                     // Parse the values
                     for (let j = 0; j < values.length; j++) {
-                        let value = typeof (this._props.value) === "undefined" ? this._props.text : this._props.value;
+                        let value = this._props.value == undefined ? this._props.text : this._props.value;
 
                         // See if this item is selected
                         if (value == values[j]) {

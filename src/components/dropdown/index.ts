@@ -94,7 +94,7 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
         this.props.dropLeft ? this.el.classList.add("dropstart") : null;
         this.props.dropRight ? this.el.classList.add("dropend") : null;
         this.props.dropUp ? this.el.classList.add("dropup") : null;
-        
+
         // Set the type
         let btnType = ButtonClassNames.getByType(this.props.type) || ButtonClassNames.getByType(DropdownTypes.Primary);
 
@@ -520,7 +520,7 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
                 let item = this._items[j];
 
                 // See if this is the target item
-                if (typeof (item.props.value) === "undefined") {
+                if (item.props.value == undefined) {
                     // Select this item if the text matches
                     item.props.text == ddlText ? item.toggle() : null;
                 } else {
