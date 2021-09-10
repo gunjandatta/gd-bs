@@ -77,7 +77,7 @@ class _ListBox extends Base<IListBoxProps> implements IListBox {
         this.setOptions(this.props.items);
 
         // Set the value if it's been defined
-        if (typeof (this.props.value) !== "undefined") { this.setValue(this.props.value); }
+        if (this.props.value != undefined) { this.setValue(this.props.value); }
     }
 
     // Configures the events

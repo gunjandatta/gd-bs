@@ -48,7 +48,7 @@ export class DropdownFormItem {
                 (this._el as HTMLOptionElement).selected = true;
             }
             // Else, see if a value exists
-            else if (typeof (this._parent.value) !== "undefined") {
+            else if (this._parent.value != undefined) {
                 // Ensure it's an array
                 let values = this._parent.value && this._parent.value.length && typeof (this._parent.value) !== "string" ? this._parent.value : [this._parent.value];
 
