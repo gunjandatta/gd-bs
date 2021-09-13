@@ -14,10 +14,8 @@
 <body>
     <h1>Library</h1>
     <form>
-        <div id="dev" class="bs">
-            <div class="bg-dark text-white">
-                <p>This is some sample content.</p>
-            </div>
+        <div id="dev">
+            <input id="dev-tooltip" type="search" placeholder="Search the page..." class="bg-dark text-white" />
         </div>
         <div id="alert"></div>
         <div id="btn-loading"></div>
@@ -57,6 +55,12 @@
     <script type="text/javascript">
         window.addEventListener("load", function() {
             // Dev
+            GD.Components.Tooltip({
+                target: document.querySelector("#dev-tooltip"),
+                placement: GD.Components.TooltipPlacements.Right,
+                type: GD.Components.TooltipTypes.LightBorder,
+                content: "This is a tooltip on a custom element"
+            });
 
             // Components
             GD.Components.ListBox({

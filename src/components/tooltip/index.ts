@@ -61,16 +61,19 @@ class _Tooltip extends Base<ITooltipProps> {
 
     // Configure the tooltip
     private configure() {
-        // Default the toggle property for the button
-        let btnProps = this.props.btnProps || {};
-        btnProps.toggle = "tooltip";
-        btnProps.type = btnProps.type || ButtonTypes.OutlineSecondary
+        // See if the target element was not defined
+        if (this.props.target == null) {
+            // Default the toggle property for the button
+            let btnProps = this.props.btnProps || {};
+            btnProps.toggle = "tooltip";
+            btnProps.type = btnProps.type || ButtonTypes.OutlineSecondary
 
-        // Create the button
-        this._btn = Button(btnProps);
+            // Create the button
+            this._btn = Button(btnProps);
 
-        // Update the element
-        this.el = this._btn.el;
+            // Update the element
+            this.el = this._btn.el;
+        }
 
         // Configure the options
         this.configureOptions();
@@ -214,7 +217,7 @@ class _Tooltip extends Base<ITooltipProps> {
         }
 
         // Create the tippy
-        this._tippy = tippy(this.el, options as any) as any;
+        this._tippy = tippy(this.props.target || this.el, options as any) as any;
     }
 
     /**
@@ -227,13 +230,13 @@ class _Tooltip extends Base<ITooltipProps> {
     // Disbles the tooltip
     disable() {
         // Disable the button
-        this._btn.disable();
+        this._btn ? this._btn.disable() : null;
     }
 
     // Enables the tooltip
     enable() {
         // Enable the button
-        this._btn.enable();
+        this._btn ? this._btn.enable() : null;
     }
 
     // Hides the popover
@@ -260,11 +263,9 @@ class _Tooltip extends Base<ITooltipProps> {
         if (this.isVisible) {
             // Hide the element
             this.hide();
-            this._elContent.classList.remove("show");
         } else {
             // Show the element
             this.show();
-            this._elContent.classList.add("show");
         }
     }
 }
