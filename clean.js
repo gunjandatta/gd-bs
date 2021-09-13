@@ -5,7 +5,7 @@ function deleteDirectory(src) {
     // Ensure the directory exists
     if (fs.existsSync(src) && fs.lstatSync(src).isDirectory()) {
         // Get each item in the directory
-        fs.readdirSync(src).forEach(function (item) {
+        fs.readdirSync(src).forEach(function(item) {
             var srcPath = src + "/" + item;
 
             // See if this is a directory
@@ -29,6 +29,7 @@ console.log("Cleaning the library...");
 // Delete the folders
 deleteDirectory("./build");
 deleteDirectory("./dist");
+deleteDirectory("./docs");
 deleteDirectory("./src/icons");
 
 // Create the directories

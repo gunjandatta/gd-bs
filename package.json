@@ -5,12 +5,13 @@
     "main": "build/index.js",
     "typings": "@src/index.d.ts",
     "scripts": {
-        "all": "npm run clean && npm run generate-icons && npm run build && npm run build-icons && npm run prod && npm run prod-icons && npm run typings",
+        "all": "npm run clean && npm run generate-icons && npm run build && npm run build-icons && npm run prod && npm run prod-icons && npm run typings && npm run docs",
         "build": "tsc && npm run build-bs && webpack --mode=development && npm run post-build",
         "build-bs": "webpack --mode=production --config webpack.sass.js",
         "build-icons": "webpack --mode=development --config webpack.icons.js",
         "post-build": "node ./post-build",
         "clean": "node ./clean.js",
+        "docs": "typedoc",
         "generate-icons": "node ./generateIcons",
         "prod": "webpack --mode=production",
         "prod-icons": "webpack --mode=production --config webpack.icons.js",
@@ -50,6 +51,7 @@
         "sass-loader": "^12.1.0",
         "style-loader": "^3.2.1",
         "ts-loader": "^9.2.5",
+        "typedoc": "^0.22.3",
         "webpack": "^5.51.1",
         "webpack-cli": "^4.8.0"
     }
