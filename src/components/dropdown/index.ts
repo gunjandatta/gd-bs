@@ -1,5 +1,5 @@
-import { IDropdown, IDropdownItem, IDropdownProps } from "../../../@types/components/dropdown";
-import { IPopover, IPopoverProps } from "../../../@types/components/popover";
+import { IDropdown, IDropdownItem, IDropdownProps } from "./types";
+import { IPopover, IPopoverProps } from "../popover/types";
 import { Base } from "../base";
 import { ButtonClassNames, ButtonTypes } from "../button";
 import { Popover, PopoverPlacements, PopoverTypes } from "../popover";

@@ -1,4 +1,4 @@
-import { IPagination, IPaginationProps } from "../../../@types/components/pagination";
+import { IPagination, IPaginationProps } from "./types";
 import { Base } from "../base";
 import { HTML, HTMLItem } from "./templates";
 

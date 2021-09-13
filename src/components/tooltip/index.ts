@@ -1,8 +1,8 @@
 import { Instance } from "tippy.js";
 import { tippy } from "../../libs";
-import { ITippyProps } from "../../../@types/libs";
-import { IButton } from "../../../@types/components/button";
-import { ITooltip, ITooltipProps } from "../../../@types/components/tooltip";
+import { ITippyProps } from "../../types";
+import { ITooltip, ITooltipProps } from "./types";
+import { IButton } from "../button/types";
 import { Base } from "../base";
 import { Button, ButtonTypes } from "../button";
 import { appendContent } from "../common";

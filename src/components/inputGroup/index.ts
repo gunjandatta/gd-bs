@@ -1,4 +1,4 @@
-import { IInputGroup, IInputGroupProps } from "../../../@types/components/inputGroup";
+import { IInputGroup, IInputGroupProps } from "./types";
 import { Base } from "../base";
 import { Button } from "../button";
 import { HTML } from "./templates";

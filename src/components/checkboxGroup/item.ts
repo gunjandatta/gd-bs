@@ -1,5 +1,4 @@
-import { ICheckboxGroupProps, ICheckboxGroupItem } from "../../../@types/components/checkboxGroup";
-import { appendContent } from "../common";
+import { ICheckboxGroupProps, ICheckboxGroupItem } from "./types";
 import { CheckboxGroupTypes } from ".";
 import { HTMLCheckbox, HTMLRadio, HTMLSwitch } from "./templates";
 

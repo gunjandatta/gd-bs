@@ -1,5 +1,5 @@
-import { IButton } from "../../../@types/components";
-import { IButtonGroup, IButtonGroupProps } from "../../../@types/components/buttonGroup";
+import { IButton } from "../button/types";
+import { IButtonGroup, IButtonGroupProps } from "./types";
 import { Base } from "../base";
 import { Button } from "../button";
 import { HTML } from "./templates";

@@ -1,4 +1,4 @@
-import { IAccordion, IAccordionProps } from "../../../@types/components/accordion";
+import { IAccordion, IAccordionProps } from "./types";
 import { Base } from "../base";
 import { HTML, HTMLItem } from "./templates";
 import { AccordionItem } from "./item";

@@ -1,4 +1,5 @@
-import { IFormControlProps, IFormControl, IFormProps } from "../../../@types/components";
+import { IFormControlProps, IFormControl } from "./controlTypes";
+import { IFormProps } from "./formTypes";
 import { FormControl } from "./control";
 import { HTMLGroup } from "./templates";
 import { FormControlTypes } from "./types";

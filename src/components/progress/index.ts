@@ -1,4 +1,4 @@
-import { IProgress, IProgressProps } from "../../../@types/components/progress";
+import { IProgress, IProgressProps } from "./types";
 import { ClassNames } from "../classNames";
 import { Base } from "../base";
 import { HTML } from "./templates";

@@ -1,4 +1,4 @@
-import { IToolbar, IToolbarProps } from "../../../@types/components/toolbar";
+import { IToolbar, IToolbarProps } from "./types";
 import { Base } from "../base";
 import { ButtonGroup } from "../buttonGroup";
 import { InputGroup } from "../inputGroup";

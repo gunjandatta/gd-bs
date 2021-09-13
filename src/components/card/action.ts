@@ -1,4 +1,4 @@
-import { ICardAction } from "../../../@types/components/card";
+import { ICardAction } from "./types";
 import { ButtonClassNames } from "../button";
 import { HTMLAction } from "./templates";
 import { CardBody } from "./item";

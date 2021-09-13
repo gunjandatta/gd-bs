@@ -1,4 +1,4 @@
-import { IAlert, IAlertProps } from "../../../@types/components/alert";
+import { IAlert, IAlertProps } from "./types";
 import { Base } from "../base";
 import { ClassNames } from "../classNames";
 import { appendContent } from "../common";

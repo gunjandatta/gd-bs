@@ -1,4 +1,4 @@
-import { INav, INavProps } from "../../../@types/components/nav";
+import { INav, INavProps } from "./types";
 import { Base } from "../base";
 import { NavLink } from "./link";
 import { HTML, HTMLTabs, HTMLVerticalTabs } from "./templates";

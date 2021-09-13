@@ -1,5 +1,5 @@
-import { IForm, IFormProps, IFormRow } from "../../../@types/components/form";
-import { IFormControl, IFormControlProps } from "../../../@types/components/formControl";
+import { IForm, IFormProps, IFormRow } from "./formTypes";
+import { IFormControl, IFormControlProps } from "./controlTypes";
 import { Base } from "../base";
 import { FormControl as Control } from "./control";
 import { FormGroup } from "./group";

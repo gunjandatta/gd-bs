@@ -1,5 +1,5 @@
-import { IFormProps, IFormRow } from "../../../@types/components/form";
-import { IFormControl } from "../../../@types/components/formControl";
+import { IFormProps, IFormRow } from "./formTypes";
+import { IFormControl } from "./controlTypes";
 import { FormGroup } from "./group";
 import { HTMLRow } from "./templates";
 

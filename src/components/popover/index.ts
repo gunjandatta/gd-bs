@@ -1,7 +1,7 @@
 import { Instance } from "tippy.js";
 import { tippy } from "../../libs";
-import { ITippyProps } from "../../../@types/libs";
-import { IPopover, IPopoverProps } from "../../../@types/components/popover";
+import { ITippyProps } from "../../types";
+import { IPopover, IPopoverProps } from "./types";
 import { Button } from "../button";
 import { Base } from "../base";
 import { appendContent } from "../common";

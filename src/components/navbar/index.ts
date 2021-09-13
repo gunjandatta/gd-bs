@@ -1,4 +1,4 @@
-import { INavbar, INavbarProps } from "../../../@types/components/navbar";
+import { INavbar, INavbarProps } from "./types";
 import { Base } from "../base";
 import { ButtonClassNames } from "../button";
 import { appendContent } from "../common";

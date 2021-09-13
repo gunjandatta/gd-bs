@@ -1,4 +1,4 @@
-import { ICardGroup, ICardGroupProps } from "../../../@types/components/cardGroup";
+import { ICardGroup, ICardGroupProps } from "./types";
 import { Base } from "../base";
 import { Card } from "../card";
 import { HTML } from "./templates";

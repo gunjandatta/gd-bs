@@ -3,7 +3,7 @@
     "version": "5.0.2",
     "description": "Bootstrap JavaScript, TypeScript and Web Components library.",
     "main": "build/index.js",
-    "typings": "@types/index.d.ts",
+    "typings": "@src/index.d.ts",
     "scripts": {
         "all": "npm run clean && npm run generate-icons && npm run build && npm run build-icons && npm run prod && npm run prod-icons && npm run typings",
         "build": "tsc && npm run build-bs && webpack --mode=development && npm run post-build",

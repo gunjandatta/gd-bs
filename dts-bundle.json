@@ -1,5 +1,5 @@
 {
     "out": "../dist/gd-bs.d.ts",
     "name": "gd-bs",
-    "main": "./@types/index.d.ts"
+    "main": "./src/index.d.ts"
 }

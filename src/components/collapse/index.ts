@@ -1,4 +1,4 @@
-import { ICollapse, ICollapseProps } from "../../../@types/components/collapse";
+import { ICollapse, ICollapseProps } from "./types";
 import { Base } from "../base";
 import { appendContent } from "../common";
 import { HTML } from "./templates";

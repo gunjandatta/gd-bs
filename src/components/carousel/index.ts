@@ -1,5 +1,5 @@
 import { Base } from "../base";
-import { ICarousel, ICarouselProps } from "../../../@types/components/carousel";
+import { ICarousel, ICarouselProps } from "./types";
 import { CarouselItem } from "./item";
 import { HTML } from "./templates";
 

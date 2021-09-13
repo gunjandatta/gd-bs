@@ -1,4 +1,4 @@
-import { ITable, ITableProps, ITableColumn } from "../../../@types/components/table";
+import { ITable, ITableProps, ITableColumn } from "./types";
 import { Base } from "../base";
 import { HTML } from "./templates";
 

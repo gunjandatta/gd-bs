@@ -1,4 +1,4 @@
-import { ICheckboxGroup, ICheckboxGroupItem, ICheckboxGroupProps } from "../../../@types/components/checkboxGroup";
+import { ICheckboxGroup, ICheckboxGroupItem, ICheckboxGroupProps } from "./types";
 import { Base } from "../base";
 import { CheckboxItem } from "./item";
 import { HTML } from "./templates";

@@ -1,4 +1,4 @@
-import { ISpinner, ISpinnerProps } from "../../../@types/components/spinner";
+import { ISpinner, ISpinnerProps } from "./types";
 import { Base } from "../base";
 import { ClassNames } from "../classNames";
 import { HTML } from "./templates";

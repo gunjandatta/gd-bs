@@ -1,4 +1,4 @@
-import { IToast, IToastProps } from "../../../@types/components/toast";
+import { IToast, IToastProps } from "./types";
 import { Base } from "../base";
 import { appendContent } from "../common";
 import { HTML } from "./templates";

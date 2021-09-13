@@ -10,40 +10,40 @@ declare module 'gd-bs' {
 }
 
 declare module 'gd-bs/components' {
-    export * from "gd-bs/components/accordion";
-    export * from "gd-bs/components/alert";
-    export * from "gd-bs/components/badge";
-    export * from "gd-bs/components/breadcrumb";
-    export * from "gd-bs/components/button";
-    export * from "gd-bs/components/buttonGroup";
-    export * from "gd-bs/components/card";
-    export * from "gd-bs/components/cardGroup";
-    export * from "gd-bs/components/carousel";
-    export * from "gd-bs/components/checkboxGroup";
-    export * from "gd-bs/components/collapse";
-    export * from "gd-bs/components/dropdown";
-    export * from "gd-bs/components/form";
-    export * from "gd-bs/components/formControl";
-    export * from "gd-bs/components/inputGroup";
-    export * from "gd-bs/components/jumbotron";
-    export * from "gd-bs/components/listBox";
-    export * from "gd-bs/components/listGroup";
-    export * from "gd-bs/components/modal";
-    export * from "gd-bs/components/nav";
-    export * from "gd-bs/components/navbar";
-    export * from "gd-bs/components/offcanvas";
-    export * from "gd-bs/components/pagination";
-    export * from "gd-bs/components/popover";
-    export * from "gd-bs/components/progress";
-    export * from "gd-bs/components/progressGroup";
-    export * from "gd-bs/components/spinner";
-    export * from "gd-bs/components/table";
-    export * from "gd-bs/components/toast";
-    export * from "gd-bs/components/toolbar";
-    export * from "gd-bs/components/tooltip";
+    export * from "gd-bs/components/accordion/types";
+    export * from "gd-bs/components/alert/types";
+    export * from "gd-bs/components/badge/types";
+    export * from "gd-bs/components/breadcrumb/types";
+    export * from "gd-bs/components/button/types";
+    export * from "gd-bs/components/buttonGroup/types";
+    export * from "gd-bs/components/card/types";
+    export * from "gd-bs/components/cardGroup/types";
+    export * from "gd-bs/components/carousel/types";
+    export * from "gd-bs/components/checkboxGroup/types";
+    export * from "gd-bs/components/collapse/types";
+    export * from "gd-bs/components/dropdown/types";
+    export * from "gd-bs/components/form/controlTypes";
+    export * from "gd-bs/components/form/formTypes";
+    export * from "gd-bs/components/inputGroup/types";
+    export * from "gd-bs/components/jumbotron/types";
+    export * from "gd-bs/components/listBox/types";
+    export * from "gd-bs/components/listGroup/types";
+    export * from "gd-bs/components/modal/types";
+    export * from "gd-bs/components/nav/types";
+    export * from "gd-bs/components/navbar/types";
+    export * from "gd-bs/components/offcanvas/types";
+    export * from "gd-bs/components/pagination/types";
+    export * from "gd-bs/components/popover/types";
+    export * from "gd-bs/components/progress/types";
+    export * from "gd-bs/components/progressGroup/types";
+    export * from "gd-bs/components/spinner/types";
+    export * from "gd-bs/components/table/types";
+    export * from "gd-bs/components/toast/types";
+    export * from "gd-bs/components/toolbar/types";
+    export * from "gd-bs/components/tooltip/types";
 }
 
-declare module 'gd-bs/components/accordion' {
+declare module 'gd-bs/components/accordion/types' {
     
     /**
         * ### Accordion
@@ -76,8 +76,8 @@ declare module 'gd-bs/components/accordion' {
         */
     export const Accordion: (props: IAccordionProps, template?: string, itemTemplate?: string) => IAccordion;
     
-    import { IBase, IBaseProps } from "gd-bs/base";
-    import { ICollapseOptions } from "gd-bs/components/collapse";
+    import { IBase, IBaseProps } from "gd-bs/components/types";
+    import { ICollapseOptions } from "gd-bs/components/collapse/types";
     
     /**
         * Accordion
@@ -113,7 +113,7 @@ declare module 'gd-bs/components/accordion' {
     }
 }
 
-declare module 'gd-bs/components/alert' {
+declare module 'gd-bs/components/alert/types' {
     
     /**
         * ### Alert
@@ -136,7 +136,7 @@ declare module 'gd-bs/components/alert' {
         */
     export const AlertTypes: IAlertTypes;
     
-    import { IBase, IBaseProps } from "gd-bs/base";
+    import { IBase, IBaseProps } from "gd-bs/components/types";
     
     /**
         * Alert
@@ -179,7 +179,7 @@ declare module 'gd-bs/components/alert' {
     }
 }
 
-declare module 'gd-bs/components/badge' {
+declare module 'gd-bs/components/badge/types' {
     
     /**
         * ### Badge
@@ -202,7 +202,7 @@ declare module 'gd-bs/components/badge' {
         */
     export const BadgeTypes: IBadgeTypes;
     
-    import { IBase, IBaseProps } from 'gd-bs/base';
+    import { IBase, IBaseProps } from 'gd-bs/components/types';
     
     /**
         * Badge
@@ -240,7 +240,7 @@ declare module 'gd-bs/components/badge' {
     }
 }
 
-declare module 'gd-bs/components/breadcrumb' {
+declare module 'gd-bs/components/breadcrumb/types' {
     
     /**
         * ### Breadcrumb
@@ -262,7 +262,7 @@ declare module 'gd-bs/components/breadcrumb' {
         */
     export const Breadcrumb: (props: IBreadcrumbProps, template?: string) => IBreadcrumb;
     
-    import { IBaseProps } from "gd-bs/base";
+    import { IBaseProps } from "gd-bs/components/types";
     
     /**
         * Breadcrumb
@@ -307,7 +307,7 @@ declare module 'gd-bs/components/breadcrumb' {
     }
 }
 
-declare module 'gd-bs/components/button' {
+declare module 'gd-bs/components/button/types' {
     
     /**
         * ### Button
@@ -333,9 +333,9 @@ declare module 'gd-bs/components/button' {
         */
     export const ButtonTypes: IButtonTypes;
     
-    import { IBaseProps } from "gd-bs/base";
-    import { IBadgeProps } from "gd-bs/components/badge";
-    import { ISpinnerProps } from "gd-bs/components/spinner";
+    import { IBaseProps } from "gd-bs/components/types";
+    import { IBadgeProps } from "gd-bs/components/badge/types";
+    import { ISpinnerProps } from "gd-bs/components/spinner/types";
     
     /**
         * Button
@@ -421,7 +421,7 @@ declare module 'gd-bs/components/button' {
     }
 }
 
-declare module 'gd-bs/components/buttonGroup' {
+declare module 'gd-bs/components/buttonGroup/types' {
     
     /**
         * ### Button Group
@@ -444,8 +444,8 @@ declare module 'gd-bs/components/buttonGroup' {
         */
     export const ButtonGroup: (props: IButtonGroupProps, template?: string, btnTemplate?: string) => IButtonGroup;
     
-    import { IBaseProps } from "gd-bs/base";
-    import { IButton, IButtonProps } from "gd-bs/components/button";
+    import { IBaseProps } from "gd-bs/components/types";
+    import { IButton, IButtonProps } from "gd-bs/components/button/types";
     
     /**
         * Button Group
@@ -478,7 +478,7 @@ declare module 'gd-bs/components/buttonGroup' {
     }
 }
 
-declare module 'gd-bs/components/card' {
+declare module 'gd-bs/components/card/types' {
     
     /**
         * ### Card
@@ -507,9 +507,8 @@ declare module 'gd-bs/components/card' {
         */
     export const Card: (props: ICardProps, template?: string) => ICard;
     
-    import { IBaseProps } from "gd-bs/base";
-    import { IButtonProps } from "gd-bs/components/button";
-    import { INavProps } from "gd-bs/components/nav";
+    import { IBaseProps } from "gd-bs/components/types";
+    import { INavProps } from "gd-bs/components/nav/types";
     
     /**
         * Card
@@ -590,7 +589,7 @@ declare module 'gd-bs/components/card' {
     }
 }
 
-declare module 'gd-bs/components/cardGroup' {
+declare module 'gd-bs/components/cardGroup/types' {
     
     /**
         * ### Card Group
@@ -633,8 +632,8 @@ declare module 'gd-bs/components/cardGroup' {
         */
     export const CardGroup: (props: ICardGroupProps, template?: string, cardTemplate?: string) => ICardGroup;
     
-    import { IBaseProps } from "gd-bs/base";
-    import { ICardProps } from "gd-bs/components/card";
+    import { IBaseProps } from "gd-bs/components/types";
+    import { ICardProps } from "gd-bs/components/card/types";
     
     /**
         * Card Group
@@ -658,7 +657,7 @@ declare module 'gd-bs/components/cardGroup' {
     }
 }
 
-declare module 'gd-bs/components/carousel' {
+declare module 'gd-bs/components/carousel/types' {
     
     /**
         * ### Carousel
@@ -696,7 +695,7 @@ declare module 'gd-bs/components/carousel' {
         */
     export const Carousel: (props: ICarouselProps, template?: string, slideTemplate?: string) => ICarousel;
     
-    import { IBaseProps } from "gd-bs/base";
+    import { IBaseProps } from "gd-bs/components/types";
     
     /**
         * Carousel
@@ -775,7 +774,7 @@ declare module 'gd-bs/components/carousel' {
     }
 }
 
-declare module 'gd-bs/components/checkboxGroup' {
+declare module 'gd-bs/components/checkboxGroup/types' {
     
     /**
         * ### Checkbox Group
@@ -797,7 +796,7 @@ declare module 'gd-bs/components/checkboxGroup' {
         */
     export const CheckboxGroup: (props: ICheckboxGroupProps, template?: string, cbTemplate?: string) => ICheckboxGroup;
     
-    import { IBaseProps } from "gd-bs/base";
+    import { IBaseProps } from "gd-bs/components/types";
     
     /**
         * Checkbox Group Types
@@ -866,7 +865,7 @@ declare module 'gd-bs/components/checkboxGroup' {
     }
 }
 
-declare module 'gd-bs/components/collapse' {
+declare module 'gd-bs/components/collapse/types' {
     
     /**
         * ### Collapse
@@ -893,7 +892,7 @@ declare module 'gd-bs/components/collapse' {
         */
     export const Collapse: (props: ICollapseProps, template?: string) => ICollapse;
     
-    import { IBaseProps } from "gd-bs/base";
+    import { IBaseProps } from "gd-bs/components/types";
     
     /**
         * Collapse
@@ -936,7 +935,7 @@ declare module 'gd-bs/components/collapse' {
     }
 }
 
-declare module 'gd-bs/components/dropdown' {
+declare module 'gd-bs/components/dropdown/types' {
     
     /**
         * ### Dropdown
@@ -964,9 +963,9 @@ declare module 'gd-bs/components/dropdown' {
         */
     export const Dropdown: (props: IDropdownProps, template?: string) => IDropdown;
     
-    import { IBaseProps } from "gd-bs/base";
-    import { IButtonTypes } from "gd-bs/components/button";
-    import { IPopover, IPopoverProps } from "gd-bs/components/popover";
+    import { IBaseProps } from "gd-bs/components/types";
+    import { IButtonTypes } from "gd-bs/components/button/types";
+    import { IPopover, IPopoverProps } from "gd-bs/components/popover/types";
     
     /**
         * Dropdown Types
@@ -1066,156 +1065,19 @@ declare module 'gd-bs/components/dropdown' {
     }
 }
 
-declare module 'gd-bs/components/form' {
-    
-    /**
-        * ### Form
-        * 
-        * ```ts
-        * import { Components } from "gd-sprest-bs";
-        * 
-        * // Create the form
-        * let el = document.querySelector("#myForm");
-        * let form = Components.Form({
-        *     el: el,
-        *     rows: [
-        *         {
-        *             control: {
-        *                 label: "First Name:",
-        *                 name: "FName",
-        *                 type: Components.FormControlTypes.TextField
-        *             }
-        *         },
-        *         {
-        *             control: {
-        *                 label: "Last Name:",
-        *                 name: "LName",
-        *                 type: Components.FormControlTypes.TextField
-        *             }
-        *         },
-        *         {
-        *             control: {
-        *                 label: "Choices:",
-        *                 name: "Choice",
-        *                 type: Components.FormControlTypes.Dropdown,
-        *                 items: [
-        *                     { text: "Choice 1", value: "1" },
-        *                     { text: "Choice 2", value: "2" },
-        *                     { text: "Choice 3", value: "3" },
-        *                     { text: "Choice 4", value: "4" },
-        *                     { text: "Choice 5", value: "5" }
-        *                 ]
-        *             }
-        *         }
-        *     ],
-        *     value: {
-        *         FName: "Gunjan",
-        *         LName: "Datta",
-        *         Choice: "3"
-        *     }
-        * });
-        * ```
-        */
-    export const Form: (props: IFormProps) => IForm;
-    
-    import { IBaseProps } from "gd-bs/base";
-    import { IFormControl, IFormControlProps, IFormControlTypes } from "gd-bs/components/formControl";
-    
-    /**
-        * Form Validation Types
-        */
-    export const FormValidationTypes: IFormValidationTypes;
-    
-    /**
-        * Form
-        */
-    export interface IForm {
-            /** Appends controls to the form */
-            appendControls: (controls: Array<IFormControlProps>) => void;
-    
-            /** Appends rows to the form */
-            appendRows: (rows: Array<IFormRow>) => void;
-    
-            /** The form controls */
-            controls: Array<IFormControl>;
-    
-            /** The form element */
-            el: HTMLFormElement;
-    
-            /** Gets a control by its name */
-            getControl: (name: string) => IFormControl;
-    
-            /** Returns the form values */
-            getValues: () => { [key: string]: any };
-    
-            /** Hides the form. */
-            hide: () => void;
-    
-            /** Validates the form */
-            isValid: () => boolean;
-    
-            /** Shows the form. */
-            show: () => void;
-    }
-    
-    /**
-        * Form Column
-        */
-    export interface IFormColumn {
-            className?: string;
-            control: IFormControlProps;
-            isAutoSized?: boolean;
-            size?: number;
-    }
-    
-    /**
-        * Form Properties
-        */
-    export interface IFormProps extends IBaseProps<IForm> {
-            controls?: Array<IFormControlProps>;
-            groupClassName?: string;
-            isFloating?: boolean;
-            rowClassName?: string;
-            rows?: Array<IFormRow>;
-            onControlRendering?: (control: IFormControlProps) => void | PromiseLike<IFormControlProps>;
-            onControlRendered?: (control: IFormControl) => void | PromiseLike<IFormControl>;
-            onRendered?: (controls: Array<IFormControl>) => void;
-            validationType?: number;
-            value?: any;
-    }
-    
-    /**
-        * Form Row
-        */
-    export interface IFormRow {
-            className?: string;
-            isAutoSized?: boolean;
-            isCentered?: boolean;
-            columns?: Array<IFormColumn>;
-    }
-    
-    /**
-        * Form Validation Types
-        */
-    export type IFormValidationTypes = {
-            Default: number;
-            Tooltip: number;
-    }
-}
-
-declare module 'gd-bs/components/formControl' {
+declare module 'gd-bs/components/form/controlTypes' {
     
     /**
         * ### Form Control
         */
     export const FormControl: (props: IFormControlProps) => IFormControl;
     
-    import { IBaseProps } from "gd-bs/base";
-    import { ICheckboxGroup, ICheckboxGroupItem } from "gd-bs/components/checkboxGroup";
-    import { IDropdown, IDropdownItem } from "gd-bs/components/dropdown";
-    import { IInputGroup } from "gd-bs/components/inputGroup";
-    import { IListBox } from "gd-bs/components/listBox";
-    import { IPopoverProps } from "gd-bs/components/popover";
+    import { IBaseProps } from "gd-bs/components/types";
+    import { ICheckboxGroup, ICheckboxGroupItem } from "gd-bs/components/checkboxGroup/types";
+    import { IDropdown, IDropdownItem } from "gd-bs/components/dropdown/types";
+    import { IInputGroup } from "gd-bs/components/inputGroup/types";
+    import { IListBox } from "gd-bs/components/listBox/types";
+    import { IPopoverProps } from "gd-bs/components/popover/types";
     
     /**
         * Custom Controls
@@ -1430,7 +1292,144 @@ declare module 'gd-bs/components/formControl' {
     }
 }
 
-declare module 'gd-bs/components/inputGroup' {
+declare module 'gd-bs/components/form/formTypes' {
+    
+    /**
+        * ### Form
+        * 
+        * ```ts
+        * import { Components } from "gd-sprest-bs";
+        * 
+        * // Create the form
+        * let el = document.querySelector("#myForm");
+        * let form = Components.Form({
+        *     el: el,
+        *     rows: [
+        *         {
+        *             control: {
+        *                 label: "First Name:",
+        *                 name: "FName",
+        *                 type: Components.FormControlTypes.TextField
+        *             }
+        *         },
+        *         {
+        *             control: {
+        *                 label: "Last Name:",
+        *                 name: "LName",
+        *                 type: Components.FormControlTypes.TextField
+        *             }
+        *         },
+        *         {
+        *             control: {
+        *                 label: "Choices:",
+        *                 name: "Choice",
+        *                 type: Components.FormControlTypes.Dropdown,
+        *                 items: [
+        *                     { text: "Choice 1", value: "1" },
+        *                     { text: "Choice 2", value: "2" },
+        *                     { text: "Choice 3", value: "3" },
+        *                     { text: "Choice 4", value: "4" },
+        *                     { text: "Choice 5", value: "5" }
+        *                 ]
+        *             }
+        *         }
+        *     ],
+        *     value: {
+        *         FName: "Gunjan",
+        *         LName: "Datta",
+        *         Choice: "3"
+        *     }
+        * });
+        * ```
+        */
+    export const Form: (props: IFormProps) => IForm;
+    
+    import { IBaseProps } from "gd-bs/components/types";
+    import { IFormControl, IFormControlProps } from "gd-bs/components/form/controlTypes";
+    
+    /**
+        * Form Validation Types
+        */
+    export const FormValidationTypes: IFormValidationTypes;
+    
+    /**
+        * Form
+        */
+    export interface IForm {
+            /** Appends controls to the form */
+            appendControls: (controls: Array<IFormControlProps>) => void;
+    
+            /** Appends rows to the form */
+            appendRows: (rows: Array<IFormRow>) => void;
+    
+            /** The form controls */
+            controls: Array<IFormControl>;
+    
+            /** The form element */
+            el: HTMLFormElement;
+    
+            /** Gets a control by its name */
+            getControl: (name: string) => IFormControl;
+    
+            /** Returns the form values */
+            getValues: () => { [key: string]: any };
+    
+            /** Hides the form. */
+            hide: () => void;
+    
+            /** Validates the form */
+            isValid: () => boolean;
+    
+            /** Shows the form. */
+            show: () => void;
+    }
+    
+    /**
+        * Form Column
+        */
+    export interface IFormColumn {
+            className?: string;
+            control: IFormControlProps;
+            isAutoSized?: boolean;
+            size?: number;
+    }
+    
+    /**
+        * Form Properties
+        */
+    export interface IFormProps extends IBaseProps<IForm> {
+            controls?: Array<IFormControlProps>;
+            groupClassName?: string;
+            isFloating?: boolean;
+            rowClassName?: string;
+            rows?: Array<IFormRow>;
+            onControlRendering?: (control: IFormControlProps) => void | PromiseLike<IFormControlProps>;
+            onControlRendered?: (control: IFormControl) => void | PromiseLike<IFormControl>;
+            onRendered?: (controls: Array<IFormControl>) => void;
+            validationType?: number;
+            value?: any;
+    }
+    
+    /**
+        * Form Row
+        */
+    export interface IFormRow {
+            className?: string;
+            isAutoSized?: boolean;
+            isCentered?: boolean;
+            columns?: Array<IFormColumn>;
+    }
+    
+    /**
+        * Form Validation Types
+        */
+    export type IFormValidationTypes = {
+            Default: number;
+            Tooltip: number;
+    }
+}
+
+declare module 'gd-bs/components/inputGroup/types' {
     
     /**
         * ### Input Group
@@ -1454,8 +1453,8 @@ declare module 'gd-bs/components/inputGroup' {
         */
     export const InputGroupTypes: IInputGroupTypes;
     
-    import { IBaseProps } from "gd-bs/base";
-    import { IButtonProps } from "gd-bs/components/button";
+    import { IBaseProps } from "gd-bs/components/types";
+    import { IButtonProps } from "gd-bs/components/button/types";
     
     /**
         * Button Group
@@ -1518,7 +1517,7 @@ declare module 'gd-bs/components/inputGroup' {
     }
 }
 
-declare module 'gd-bs/components/jumbotron' {
+declare module 'gd-bs/components/jumbotron/types' {
     
     /**
         * ### Jumbotron
@@ -1537,7 +1536,7 @@ declare module 'gd-bs/components/jumbotron' {
         */
     export const Jumbotron: (props: IJumbotronProps, template?: string) => IJumbotron;
     
-    import { IBaseProps } from "gd-bs/base";
+    import { IBaseProps } from "gd-bs/components/types";
     
     /**
         * Jumbotron
@@ -1565,14 +1564,14 @@ declare module 'gd-bs/components/jumbotron' {
     }
 }
 
-declare module 'gd-bs/components/listBox' {
+declare module 'gd-bs/components/listBox/types' {
     /**
         * List Box
         */
     export const ListBox: (props: IListBoxProps, template?: string) => IListBox;
     
-    import { IBase } from "gd-bs/base";
-    import { IDropdownItem } from "gd-bs/components/dropdown";
+    import { IBase } from "gd-bs/components/types";
+    import { IDropdownItem } from "gd-bs/components/dropdown/types";
     
     /**
         * List Box
@@ -1603,7 +1602,7 @@ declare module 'gd-bs/components/listBox' {
     }
 }
 
-declare module 'gd-bs/components/listGroup' {
+declare module 'gd-bs/components/listGroup/types' {
     
     /**
         * ### List Group
@@ -1634,8 +1633,8 @@ declare module 'gd-bs/components/listGroup' {
         */
     export const ListGroupItemTypes: IListGroupItemTypes;
     
-    import { IBaseProps } from "gd-bs/base";
-    import { IBadgeProps } from "gd-bs/components/badge";
+    import { IBaseProps } from "gd-bs/components/types";
+    import { IBadgeProps } from "gd-bs/components/badge/types";
     
     /**
         * List Group
@@ -1699,7 +1698,7 @@ declare module 'gd-bs/components/listGroup' {
     }
 }
 
-declare module 'gd-bs/components/modal' {
+declare module 'gd-bs/components/modal/types' {
     
     /**
         * ### Modal
@@ -1732,7 +1731,7 @@ declare module 'gd-bs/components/modal' {
         */
     export const ModalTypes: IModalTypes;
     
-    import { IBaseProps } from "gd-bs/base";
+    import { IBaseProps } from "gd-bs/components/types";
     
     /**
         * Modal
@@ -1818,7 +1817,7 @@ declare module 'gd-bs/components/modal' {
     }
 }
 
-declare module 'gd-bs/components/nav' {
+declare module 'gd-bs/components/nav/types' {
     
     /**
         * ### Navigation
@@ -1843,7 +1842,7 @@ declare module 'gd-bs/components/nav' {
         */
     export const Nav: (props: INavProps, template?: string, itemTemplate?: string) => INav;
     
-    import { IBaseProps } from "gd-bs/base";
+    import { IBaseProps } from "gd-bs/components/types";
     
     /**
         * Navigation
@@ -1901,7 +1900,7 @@ declare module 'gd-bs/components/nav' {
     }
 }
 
-declare module 'gd-bs/components/navbar' {
+declare module 'gd-bs/components/navbar/types' {
     
     /**
         * ### Navbar
@@ -1957,9 +1956,9 @@ declare module 'gd-bs/components/navbar' {
         */
     export const NavbarTypes: INavbarTypes;
     
-    import { IBaseProps } from "gd-bs/base";
-    import { IDropdownItem } from "gd-bs/components/dropdown";
-    import { IPopoverProps } from "gd-bs/components/popover";
+    import { IBaseProps } from "gd-bs/components/types";
+    import { IDropdownItem } from "gd-bs/components/dropdown/types";
+    import { IPopoverProps } from "gd-bs/components/popover/types";
     
     /**
         * Navbar
@@ -2041,7 +2040,7 @@ declare module 'gd-bs/components/navbar' {
     }
 }
 
-declare module 'gd-bs/components/offcanvas' {
+declare module 'gd-bs/components/offcanvas/types' {
     /**
         * Offcanvas
         */
@@ -2052,7 +2051,7 @@ declare module 'gd-bs/components/offcanvas' {
         */
     export const OffcanvasTypes: IOffcanvasTypes;
     
-    import { IBaseProps } from "gd-bs/base";
+    import { IBaseProps } from "gd-bs/components/types";
     
     /**
         * Offcanvas
@@ -2127,7 +2126,7 @@ declare module 'gd-bs/components/offcanvas' {
     }
 }
 
-declare module 'gd-bs/components/pagination' {
+declare module 'gd-bs/components/pagination/types' {
     
     /**
         * ### Pagination
@@ -2149,7 +2148,7 @@ declare module 'gd-bs/components/pagination' {
         */
     export const Pagination: (props: IPaginationProps, template?: string, itemTemplate?: string) => IPagination;
     
-    import { IBaseProps } from "gd-bs/base";
+    import { IBaseProps } from "gd-bs/components/types";
     
     /**
         * Pagination Alignment
@@ -2192,7 +2191,7 @@ declare module 'gd-bs/components/pagination' {
     }
 }
 
-declare module 'gd-bs/components/popover' {
+declare module 'gd-bs/components/popover/types' {
     
     /**
         * ### Popover
@@ -2229,9 +2228,9 @@ declare module 'gd-bs/components/popover' {
         */
     export const PopoverTypes: IPopoverTypes;
     
-    import { IBaseProps } from "gd-bs/base";
-    import { ITippyProps } from "gd-bs/libs";
-    import { IButtonProps } from "gd-bs/components/button";
+    import { IBaseProps } from "gd-bs/components/types";
+    import { ITippyProps } from "gd-bs/types";
+    import { IButtonProps } from "gd-bs/components/button/types";
     
     /**
         * Popover
@@ -2303,7 +2302,7 @@ declare module 'gd-bs/components/popover' {
     }
 }
 
-declare module 'gd-bs/components/progress' {
+declare module 'gd-bs/components/progress/types' {
     
     /**
         * ### Progress
@@ -2322,7 +2321,7 @@ declare module 'gd-bs/components/progress' {
         */
     export const Progress: (props: IProgressProps, template?: string) => IProgress;
     
-    import { IBaseProps } from "gd-bs/base";
+    import { IBaseProps } from "gd-bs/components/types";
     
     /**
         * Progress
@@ -2355,7 +2354,7 @@ declare module 'gd-bs/components/progress' {
     }
 }
 
-declare module 'gd-bs/components/progressGroup' {
+declare module 'gd-bs/components/progressGroup/types' {
     
     /**
         * ### Progress Group
@@ -2385,8 +2384,8 @@ declare module 'gd-bs/components/progressGroup' {
         */
     export const ProgressGroup: (props: IProgressGroupProps, template?: string, progressTemplate?: string) => IProgressGroup;
     
-    import { IBaseProps } from "gd-bs/base";
-    import { IProgressProps } from "gd-bs/components/progress";
+    import { IBaseProps } from "gd-bs/components/types";
+    import { IProgressProps } from "gd-bs/components/progress/types";
     
     /**
         * Progress Group
@@ -2411,7 +2410,7 @@ declare module 'gd-bs/components/progressGroup' {
     }
 }
 
-declare module 'gd-bs/components/spinner' {
+declare module 'gd-bs/components/spinner/types' {
     
     /**
         * ### Spinner
@@ -2435,7 +2434,7 @@ declare module 'gd-bs/components/spinner' {
         */
     export const SpinnerTypes: ISpinnerTypes;
     
-    import { IBaseProps } from "gd-bs/base";
+    import { IBaseProps } from "gd-bs/components/types";
     
     /**
         * Spinner
@@ -2476,7 +2475,7 @@ declare module 'gd-bs/components/spinner' {
     }
 }
 
-declare module 'gd-bs/components/table' {
+declare module 'gd-bs/components/table/types' {
     
     /**
         * ### Table
@@ -2511,7 +2510,7 @@ declare module 'gd-bs/components/table' {
         */
     export const Table: (props: ITableProps, template?: string) => ITable
     
-    import { IBaseProps } from "gd-bs/base";
+    import { IBaseProps } from "gd-bs/components/types";
     
     /**
         * Table
@@ -2559,7 +2558,7 @@ declare module 'gd-bs/components/table' {
     }
 }
 
-declare module 'gd-bs/components/toast' {
+declare module 'gd-bs/components/toast/types' {
     
     /**
         * ### Toast
@@ -2580,7 +2579,7 @@ declare module 'gd-bs/components/toast' {
         */
     export const Toast: (props: IToastProps, template?: string) => IToast;
     
-    import { IBaseProps } from "gd-bs/base";
+    import { IBaseProps } from "gd-bs/components/types";
     
     /**
         * Toast
@@ -2622,7 +2621,7 @@ declare module 'gd-bs/components/toast' {
     }
 }
 
-declare module 'gd-bs/components/toolbar' {
+declare module 'gd-bs/components/toolbar/types' {
     
     /**
         * ### Toolbar
@@ -2661,9 +2660,9 @@ declare module 'gd-bs/components/toolbar' {
             show: () => void;
     }
     
-    import { IBaseProps } from "gd-bs/base";
-    import { IButtonProps } from "gd-bs/components/button";
-    import { IInputGroupProps } from "gd-bs/components/inputGroup";
+    import { IBaseProps } from "gd-bs/components/types";
+    import { IButtonProps } from "gd-bs/components/button/types";
+    import { IInputGroupProps } from "gd-bs/components/inputGroup/types";
     
     /**
         * Toolbar Item
@@ -2683,7 +2682,7 @@ declare module 'gd-bs/components/toolbar' {
     }
 }
 
-declare module 'gd-bs/components/tooltip' {
+declare module 'gd-bs/components/tooltip/types' {
     
     /**
         * ### Tooltip
@@ -2715,9 +2714,9 @@ declare module 'gd-bs/components/tooltip' {
         */
     export const TooltipTypes: ITooltipTypes;
     
-    import { IBaseProps } from "gd-bs/base";
-    import { ITippyProps } from "gd-bs/libs";
-    import { IButtonProps, IButton } from "gd-bs/components/button";
+    import { IBaseProps } from "gd-bs/components/types";
+    import { ITippyProps } from "gd-bs/types";
+    import { IButtonProps, IButton } from "gd-bs/components/button/types";
     
     /**
         * Tooltip
@@ -2791,7 +2790,7 @@ declare module 'gd-bs/components/tooltip' {
     }
 }
 
-declare module 'gd-bs/base' {
+declare module 'gd-bs/components/types' {
     /**
         * Base
         */
@@ -2827,7 +2826,7 @@ declare module 'gd-bs/base' {
     }
 }
 
-declare module 'gd-bs/libs' {
+declare module 'gd-bs/types' {
     export interface ITippyProps {
         allowHTML?: boolean;
         animateFill?: boolean;

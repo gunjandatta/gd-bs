@@ -1,4 +1,4 @@
-import { IListGroupItem } from "../../../@types/components/listGroup";
+import { IListGroupItem } from "./types";
 import { Base } from "../base";
 import { Badge } from "../badge";
 import { appendContent } from "../common";

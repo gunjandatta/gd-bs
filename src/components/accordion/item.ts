@@ -1,4 +1,4 @@
-import { IAccordionItem } from "../../../@types/components/accordion";
+import { IAccordionItem } from "./types";
 import { appendContent } from "../common";
 
 /**

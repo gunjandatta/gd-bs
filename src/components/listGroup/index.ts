@@ -1,4 +1,4 @@
-import { IListGroup, IListGroupProps } from "../../../@types/components/listGroup";
+import { IListGroup, IListGroupProps } from "./types";
 import { Base } from "../base";
 import { ClassNames } from "../classNames";
 import { ListGroupItem } from "./item";

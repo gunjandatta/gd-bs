@@ -1,19 +1,19 @@
-import { ICheckboxGroup } from "../../../@types/components/checkboxGroup";
-import { IDropdown } from "../../../@types/components/dropdown";
-import { IInputGroup } from "../../../@types/components/inputGroup";
 import {
     IFormControl, IFormControlProps, IFormControlPropsCheckbox, IFormControlPropsDropdown, IFormControlPropsListBox,
     IFormControlPropsMultiCheckbox, IFormControlPropsMultiDropdown, IFormControlPropsMultiListBox, IFormControlPropsMultiSwitch,
     IFormControlPropsRange, IFormControlPropsTextField, IFormControlValidationResult
-} from "../../../@types/components/formControl";
-import { IListBox } from "../../../@types/components/listBox";
+} from "./controlTypes";
+import { ICheckboxGroup } from "../checkboxGroup/types";
+import { IDropdown } from "../dropdown/types";
+import { IInputGroup } from "../inputGroup/types";
+import { IListBox } from "../listBox/types";
 import { CheckboxGroup, CheckboxGroupTypes } from "../checkboxGroup";
 import { CustomControls } from "./custom";
 import { Dropdown } from "../dropdown";
 import { InputGroup, InputGroupTypes } from "../inputGroup";
 import { ListBox } from "../listBox";
 import { FormControlTypes, FormValidationTypes } from ".";
-import { IFormProps } from "../../../@types/components";
+import { IFormProps } from "./formTypes";
 
 /**
  * Form Control

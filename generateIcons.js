@@ -74,13 +74,13 @@ fs.readdir(dirIcons, function(err, files) {
     });
 
     // Delete the files
-    try { fs.unlinkSync("./@types/icons.d.ts"); } catch {}
     try { fs.unlinkSync("./src/icons/svgs/index.d.ts"); } catch {}
-    try { fs.unlinkSync("./src/icons/icons.ts"); } catch {}
+    try { fs.unlinkSync("./src/icons/index.ts"); } catch {}
+    try { fs.unlinkSync("./src/icons/index.d.ts"); } catch {}
     try { fs.unlinkSync("./src/icons/iconTypes.ts"); } catch {}
 
     // Generate the file
-    var stream = fs.createWriteStream("./@types/icons.d.ts");
+    var stream = fs.createWriteStream("./src/icons/index.d.ts");
     stream.write([
         `/**
  * <div id="demo"></div>

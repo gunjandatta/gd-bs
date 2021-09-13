@@ -1,4 +1,4 @@
-import { ICard, ICardProps } from "../../../@types/components/card";
+import { ICard, ICardProps } from "./types";
 import { Base } from "../base";
 import { appendContent } from "../common";
 import { Nav } from "../nav";

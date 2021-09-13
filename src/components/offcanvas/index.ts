@@ -1,5 +1,5 @@
+import { IOffcanvas, IOffcanvasOptions, IOffcanvasProps } from "./types";
 import { ClassNames } from "../classNames";
-import { IOffcanvas, IOffcanvasOptions, IOffcanvasProps } from "../../../@types/components/offcanvas";
 import { Base } from "../base";
 import { appendContent } from "../common";
 import { HTML } from "./templates";

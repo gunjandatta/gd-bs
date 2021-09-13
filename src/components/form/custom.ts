@@ -1,4 +1,4 @@
-import { IFormControlProps } from "../../../@types/components/formControl";
+import { IFormControlProps } from "./controlTypes";
 
 /**
  * Custom Controls

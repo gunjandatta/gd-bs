@@ -1,4 +1,4 @@
-import { IBadge, IBadgeProps } from "../../../@types/components/badge";
+import { IBadge, IBadgeProps } from "./types";
 import { Base } from "../base";
 import { ClassNames } from "../classNames";
 import { appendContent } from "../common";

@@ -1,4 +1,4 @@
-import { IDropdownItem, IDropdownProps } from "../../../@types/components/dropdown";
+import { IDropdownItem, IDropdownProps } from "./types";
 
 /**
  * Dropdown Item

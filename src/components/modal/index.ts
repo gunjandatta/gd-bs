@@ -1,4 +1,4 @@
-import { IModal, IModalProps, IModalOptions } from "../../../@types/components/modal";
+import { IModal, IModalProps, IModalOptions } from "./types";
 import { Base } from "../base";
 import { ClassNames } from "../classNames";
 import { appendContent } from "../common";

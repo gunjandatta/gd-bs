@@ -1,4 +1,4 @@
-import { IBreadcrumbItem } from "../../../@types/components/breadcrumb";
+import { IBreadcrumbItem } from "./types";
 import { HTMLItem, HTMLLink } from "./templates";
 
 /**

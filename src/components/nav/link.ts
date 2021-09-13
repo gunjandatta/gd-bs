@@ -1,4 +1,4 @@
-import { INavLink } from "../../../@types/components/nav";
+import { INavLink } from "./types";
 import { Base } from "../base";
 import { appendContent, setClassNames } from "../common";
 import { HTMLLink, HTMLTab } from "./templates";

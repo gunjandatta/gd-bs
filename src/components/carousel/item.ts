@@ -1,4 +1,4 @@
-import { ICarouselItem } from "../../../@types/components/carousel";
+import { ICarouselItem } from "./types";
 import { appendContent } from "../common";
 import { HTMLItem } from "./templates";
 

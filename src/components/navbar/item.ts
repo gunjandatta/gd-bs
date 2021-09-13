@@ -1,4 +1,4 @@
-import { INavbarItem, INavbarProps } from "../../../@types/components/navbar";
+import { INavbarItem, INavbarProps } from "./types";
 import { setClassNames } from "../common";
 import { Dropdown } from "../dropdown";
 import { HTMLItem, HTMLItemButton } from "./templates";

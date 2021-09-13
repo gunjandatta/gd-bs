@@ -1,4 +1,4 @@
-import { IBase, IBaseProps } from "../../@types/base";
+import { IBase, IBaseProps } from "./types";
 import { setClassNames } from "./common";
 
 /**

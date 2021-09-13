@@ -1,4 +1,4 @@
-import { IJumbotron, IJumbotronProps } from "../../../@types/components/jumbotron";
+import { IJumbotron, IJumbotronProps } from "./types";
 import { Base } from "../base";
 import { appendContent } from "../common";
 import { HTML } from "./templates";

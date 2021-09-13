@@ -1,4 +1,4 @@
-import { IButton, IButtonProps } from "../../../@types/components/button";
+import { IButton, IButtonProps } from "./types";
 import { Base } from "../base";
 import { Badge, BadgeTypes } from "../badge";
 import { ClassNames } from "../classNames";
