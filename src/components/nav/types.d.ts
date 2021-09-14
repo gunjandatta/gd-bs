@@ -96,8 +96,10 @@ export interface INavProps<T = Element> extends IBaseProps<INav> {
  * Navigation Link
  */
 export interface INavLink {
-    elTab: HTMLDivElement;
+    elTab: HTMLAnchorElement;
+    elTabContent: HTMLDivElement;
     isActive: boolean;
+    tabName: string;
     toggle: (fadeTabs?: boolean) => void;
 }
 

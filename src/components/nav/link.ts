@@ -94,10 +94,17 @@ export class NavLink extends Base<INavLinkProps> implements INavLink {
      */
 
     // The HTML tab element
-    get elTab(): HTMLDivElement { return this._elTab; }
+    get elTab(): HTMLAnchorElement { return this._elLink; }
+
+    // The HTML tab content element
+    get elTabContent(): HTMLDivElement { return this._elTab; }
 
     // Returns true if the link is active
     get isActive(): boolean { return this._elLink.classList.contains("active"); }
+
+    // Gets the tab name
+    get tabName(): string { return this._elLink.innerHTML.trim(); }
+    set tabName(value: string) { this._elLink.innerHTML = (value || "").trim(); }
 
     // Toggles a link
     toggle(fadeTabs?: boolean) {
