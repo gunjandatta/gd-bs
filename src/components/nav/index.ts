@@ -91,24 +91,24 @@ class _Nav extends Base<INavProps> implements INav {
                     this.configureEvents(link);
 
                     // Add the tab content
-                    tabs.appendChild(link.elTab);
+                    tabs.appendChild(link.elTabContent);
 
                     // See if the fade option is enabled
                     if (this.props.fadeTabs) {
                         // Set the class name
-                        link.elTab.classList.add("fade");
+                        link.elTabContent.classList.add("fade");
 
                         // See if the tab is active
                         if (link.props.isActive) {
                             // Set the class name
-                            link.elTab.classList.add("show");
+                            link.elTabContent.classList.add("show");
                         }
                     }
                 }
 
                 // Call the render events
-                this.props.onLinkRendered ? this.props.onLinkRendered(link.el, links[i]) : null;
-                this.props.onTabRendered ? this.props.onTabRendered(link.elTab, links[i]) : null;
+                this.props.onLinkRendered ? this.props.onLinkRendered(link.elTab, links[i]) : null;
+                this.props.onTabRendered ? this.props.onTabRendered(link.elTabContent, links[i]) : null;
             }
         }
     }
@@ -143,7 +143,7 @@ class _Nav extends Base<INavProps> implements INav {
                 let link = this._links[i];
 
                 // See if this is the target tab
-                if (tabId === i + 1 || link.elTab.getAttribute("data-title") == tabId) {
+                if (tabId === i + 1 || link.elTabContent.getAttribute("data-title") == tabId) {
                     // Toggle it if it's not active
                     link.isActive ? null : link.toggle(this.props.fadeTabs);
                 }
