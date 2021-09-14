@@ -1,4 +1,4 @@
-import { INavLink } from "./types";
+import { INavLink, INavLinkProps } from "./types";
 import { Base } from "../base";
 import { appendContent, setClassNames } from "../common";
 import { HTMLLink, HTMLTab } from "./templates";
@@ -6,12 +6,12 @@ import { HTMLLink, HTMLTab } from "./templates";
 /**
  * Nav Link
  */
-export class NavLink extends Base<INavLink> {
+export class NavLink extends Base<INavLinkProps> implements INavLink {
     private _elLink: HTMLAnchorElement = null;
     private _elTab: HTMLDivElement = null;
 
     // Constructor
-    constructor(props: INavLink, isTab: boolean, template: string = HTMLLink) {
+    constructor(props: INavLinkProps, isTab: boolean, template: string = HTMLLink) {
         super(template, props);
 
         // See if this is for a tab
@@ -96,13 +96,13 @@ export class NavLink extends Base<INavLink> {
     // The HTML tab element
     get elTab(): HTMLDivElement { return this._elTab; }
 
-    // Returns true if the link is visible
-    get isVisible(): boolean { return this._elLink.classList.contains("active"); }
+    // Returns true if the link is active
+    get isActive(): boolean { return this._elLink.classList.contains("active"); }
 
     // Toggles a link
-    toggle(fadeTabs: boolean) {
+    toggle(fadeTabs?: boolean) {
         // See if this item is currently active
-        if (this.isVisible) {
+        if (this.isActive) {
             // Hide this link and tab
             this._elLink.classList.remove("active");
             this._elTab.classList.remove("active");

@@ -53,6 +53,9 @@ import { IBaseProps } from "../types";
  * Navigation
  */
 export interface INav {
+    /** The active tab. */
+    activeTab: INavLink;
+
     /** The element. */
     el: HTMLUListElement;
 
@@ -79,27 +82,37 @@ export interface INavProps<T = Element> extends IBaseProps<INav> {
     enableFill?: boolean;
     fadeTabs?: boolean;
     id?: string;
-    items?: Array<INavLink<T>>;
+    items?: Array<INavLinkProps<T>>;
     isJustified?: boolean;
     isPills?: boolean;
     isTabs?: boolean;
     isVertical?: boolean;
-    onLinkRendered?: (el?: HTMLElement, item?: INavLink) => void;
-    onTabRendered?: (el?: HTMLElement, item?: INavLink) => void;
+    onClick?: (newTab?: INavLink, prevTab?: INavLink) => void;
+    onLinkRendered?: (el?: HTMLElement, item?: INavLinkProps) => void;
+    onTabRendered?: (el?: HTMLElement, item?: INavLinkProps) => void;
 }
 
 /**
- * Navigation Links
+ * Navigation Link
  */
-export interface INavLink<T = Element> {
+export interface INavLink {
+    elTab: HTMLDivElement;
+    isActive: boolean;
+    toggle: (fadeTabs?: boolean) => void;
+}
+
+/**
+ * Navigation Link Properties
+ */
+export interface INavLinkProps<T = Element> extends IBaseProps<INavLink> {
     isActive?: boolean;
     isDisabled?: boolean;
     className?: string;
     data?: any;
     href?: string;
-    onClick?: (item?: INavLink, ev?: Event) => void;
-    onRender?: (el?: HTMLElement, item?: INavLink) => void;
-    onRenderTab?: (item?: INavLink, el?: HTMLDivElement) => void;
+    onClick?: (item?: INavLinkProps, ev?: Event) => void;
+    onRender?: (el?: HTMLElement, item?: INavLinkProps) => void;
+    onRenderTab?: (item?: INavLinkProps, el?: HTMLDivElement) => void;
     tabContent?: string | T;
     title?: string;
 }

@@ -1,4 +1,4 @@
-import { INav, INavProps } from "./types";
+import { INav, INavLink, INavProps } from "./types";
 import { Base } from "../base";
 import { NavLink } from "./link";
 import { HTML, HTMLTabs, HTMLVerticalTabs } from "./templates";
@@ -42,12 +42,18 @@ class _Nav extends Base<INavProps> implements INav {
     private configureEvents(tab: NavLink) {
         // Add a click event
         tab.el.addEventListener("click", () => {
+            let prevTab: INavLink = null;
+            let newTab: INavLink = tab;
+
             // Parse the links
             for (let i = 0; i < this._links.length; i++) {
                 let link = this._links[i];
 
-                // See if it's visible
-                if (link.isVisible) {
+                // See if it's active
+                if (link.isActive) {
+                    // Set the old tab
+                    prevTab = link;
+
                     // Toggle it
                     link.toggle(this.props.fadeTabs);
                 }
@@ -55,6 +61,9 @@ class _Nav extends Base<INavProps> implements INav {
 
             // Toggle the link
             tab.toggle(this.props.fadeTabs);
+
+            // Call the click event
+            this.props.onClick ? this.props.onClick(newTab, prevTab) : null;
         });
     }
 
@@ -108,6 +117,23 @@ class _Nav extends Base<INavProps> implements INav {
      * Public Interface
      */
 
+    // The active tab
+    get activeTab(): INavLink {
+        // Parse the links
+        for (let i = 0; i < this._links.length; i++) {
+            let link = this._links[i];
+
+            // See if it's active
+            if (link.isActive) {
+                // Return the link
+                return link;
+            }
+        }
+
+        // Active tab not found
+        return null;
+    }
+
     // Shows a tab
     showTab(tabId?: string | number) {
         // Ensure tabs exist
@@ -118,11 +144,11 @@ class _Nav extends Base<INavProps> implements INav {
 
                 // See if this is the target tab
                 if (tabId === i + 1 || link.elTab.getAttribute("data-title") == tabId) {
-                    // Toggle it if it's not visible
-                    link.isVisible ? null : link.toggle(this.props.fadeTabs);
+                    // Toggle it if it's not active
+                    link.isActive ? null : link.toggle(this.props.fadeTabs);
                 }
-                // Else, see if it's visible
-                else if (link.isVisible) {
+                // Else, see if it's active
+                else if (link.isActive) {
                     // Toggle it
                     link.toggle(this.props.fadeTabs);
                 }
