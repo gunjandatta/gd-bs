@@ -1,4 +1,4 @@
-import * as Components from "./components";
+import * as Components from "./components/components";
 import { Icons, IconTypes } from "./icons";
 declare var tippy: Function;
 
