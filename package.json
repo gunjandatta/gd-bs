@@ -1,9 +1,9 @@
 {
     "name": "gd-bs",
-    "version": "5.0.3",
+    "version": "5.0.4",
     "description": "Bootstrap JavaScript, TypeScript and Web Components library.",
     "main": "build/index.js",
-    "typings": "@src/index.d.ts",
+    "typings": "src/index.d.ts",
     "scripts": {
         "all": "npm run clean && npm run generate-icons && npm run build && npm run build-icons && npm run prod && npm run prod-icons && npm run typings && npm run docs",
         "build": "tsc && npm run build-bs && webpack --mode=development && npm run post-build",
