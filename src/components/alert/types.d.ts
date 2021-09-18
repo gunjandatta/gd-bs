@@ -10,7 +10,10 @@
  *             // Render the alert
  *             $REST.Components.Alert({
  *                 el: alert,
- *                 content: "This is an alert."
+ *                 header: "Demo",
+ *                 content: "This is an alert.",
+ *                 isDismissible: true,
+ *                 type: $REST.Components.AlertTypes.Success
  *             });
  *         }
  *     });
@@ -27,7 +30,10 @@
  * let el = document.querySelector("#alert");
  * let alert = Components.Alert({
  *     el: el,
- *     content: "This is an alert."
+ *     header: "Demo",
+ *     content: "This is an alert.",
+ *     isDismissible: true,
+ *     type: Components.AlertTypes.Success
  * });
  * ```
  */

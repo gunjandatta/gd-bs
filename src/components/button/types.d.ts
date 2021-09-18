@@ -7,7 +7,12 @@
  *         // Render the button
  *         $REST.Components.Button({
  *             el: document.querySelector("#demo"),
- *             text: "Button"
+ *             text: "Button",
+ *             type: $REST.Components.ButtonTypes.OutlineSuccess,
+ *             isLarge: true,
+ *             onClick: function(ev) {
+ *                  alert("The button was clicked.");
+ *             }
  *         });
  *     });
  * </script>
@@ -23,9 +28,10 @@
  * let el = document.querySelector("#btn");
  * let btn = Components.Button({
  *     el: el,
- *     text: "Button",
- *     onClick: (ev) => {
- *         alert("The button was clicked.");
+ *     type: Components.ButtonTypes.OutlineSuccess,
+ *     isLarge: true,
+ *     onClick: function(ev) {
+ *          alert("The button was clicked.");
  *     }
  * });
  * ```

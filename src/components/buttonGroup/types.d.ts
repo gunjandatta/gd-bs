@@ -9,9 +9,9 @@
  *             el: document.querySelector("#demo"),
  *             buttonType: $REST.Components.ButtonTypes.Primary,
  *             buttons: [
- *                 { text: "Left" },
- *                 { text: "Middle" },
- *                 { text: "Right" }
+ *                 { text: "Left", onClick: function() { alert("Left button was clicked."); } },
+ *                 { text: "Middle", onClick: function() { alert("Middle button was clicked."); } },
+ *                 { text: "Right", onClick: function() { alert("Right button was clicked."); } }
  *             ]
  *         });
  *     });
@@ -30,9 +30,9 @@
  *     el: el,
  *     buttonType: $REST.Components.ButtonTypes.Primary,
  *     buttons: [
- *         { text: "Left" },
- *         { text: "Middle" },
- *         { text: "Right" }
+ *          { text: "Left", onClick: function() { alert("Left button was clicked."); } },
+ *          { text: "Middle", onClick: function() { alert("Middle button was clicked."); } },
+ *          { text: "Right", onClick: function() { alert("Right button was clicked."); } }
  *     ]
  * });
  * ```

@@ -12,7 +12,11 @@
  *                     "title": "Card Title",
  *                     "text": "This is the card contents.",
  *                     "actions": [
- *                         { "text": "Card Action", "buttonType": $REST.Components.ButtonTypes.Primary }
+ *                         {
+ *                              "text": "Card Action",
+ *                              "buttonType": $REST.Components.ButtonTypes.Primary,
+ *                              "onClick": function(action, card) { alert(card.title + " was clicked.");
+ *                         }
  *                     ]
  *                 }
  *             ]
@@ -38,7 +42,8 @@
  *             actions: [
  *                 {
  *                     text: "Card Action",
- *                     buttonType: $REST.Components.ButtonTypes.Primary
+ *                     buttonType: $REST.Components.ButtonTypes.Primary,
+ *                     onClick: function(action, card) { alert(card.title + " was clicked."); }
  *                 }
  *             ]
  *         }

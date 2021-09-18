@@ -10,7 +10,7 @@
  *             items: [
  *                 { text: "Root", href: "/" },
  *                 { text: "Web 1", href: "/web" },
- *                 { text: "Web 1-1", href: "/web/1" }
+ *                 { text: "Web 1-1", href: "/web/1", isActive: true }
  *             ]
  *         });
  *     });
@@ -30,7 +30,7 @@
  *     items: [
  *         { text: "Root", href: "/" },
  *         { text: "Web 1", href: "/web" },
- *         { text: "Web 1-1", href: "/web/1" }
+ *         { text: "Web 1-1", href: "/web/1", isActive: true }
  *     ]
  * });
  * ```

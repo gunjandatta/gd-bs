@@ -7,9 +7,11 @@
  *         // Render the checkbox group
  *         $REST.Components.CheckboxGroup({
  *             el: document.querySelector("#demo"),
+ *             multi: false,
+ *             type: Components.CheckboxGroupTypes.Switch,
  *             items: [
  *                 { label: "Option 1" },
- *                 { label: "Option 2" },
+ *                 { label: "Option 2", isSelected: true },
  *                 { label: "Option 3" }
  *             ]
  *         });
@@ -27,9 +29,11 @@
  * let el = document.querySelector("#cbGroup");
  * let cbGroup = Components.CheckboxGroup({
  *     el: el,
+ *     multi: false,
+ *     type: Components.CheckboxGroupTypes.Switch,
  *     items: [
  *         { label: "Option 1" },
- *         { label: "Option 2" },
+ *         { label: "Option 2", isSelected: true },
  *         { label: "Option 3" }
  *     ]
  * });

@@ -12,6 +12,7 @@
  *                     body: [
  *                         {
  *                             title: "Card 1",
+ *                             subTitle: "SubTitle 1",
  *                             text: "This is the first card."
  *                         }
  *                     ]
@@ -20,6 +21,7 @@
  *                     body: [
  *                         {
  *                             title: "Card 2",
+ *                             subTitle: "SubTitle 2",
  *                             text: "This is the second card."
  *                         }
  *                     ]
@@ -28,6 +30,7 @@
  *                     body: [
  *                         {
  *                             title: "Card 3",
+ *                             subTitle: "SubTitle 3",
  *                             text: "This is the third card."
  *                         }
  *                     ]
@@ -53,6 +56,7 @@
  *             body: [
  *                 {
  *                     title: "Card 1",
+ *                     subTitle: "SubTitle 1",
  *                     text: "This is the first card."
  *                 }
  *             ]
@@ -61,6 +65,7 @@
  *             body: [
  *                 {
  *                     title: "Card 2",
+ *                     subTitle: "SubTitle 2",
  *                     text: "This is the second card."
  *                 }
  *             ]
@@ -69,6 +74,7 @@
  *             body: [
  *                 {
  *                     title: "Card 3",
+ *                     subTitle: "SubTitle 3",
  *                     text: "This is the third card."
  *                 }
  *             ]

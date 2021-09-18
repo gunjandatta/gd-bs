@@ -606,6 +606,7 @@ declare module 'gd-bs/components/cardGroup/types' {
         *             body: [
         *                 {
         *                     title: "Card 1",
+        *                     subTitle: "SubTitle 1",
         *                     text: "This is the first card."
         *                 }
         *             ]
@@ -614,6 +615,7 @@ declare module 'gd-bs/components/cardGroup/types' {
         *             body: [
         *                 {
         *                     title: "Card 2",
+        *                     subTitle: "SubTitle 2",
         *                     text: "This is the second card."
         *                 }
         *             ]
@@ -622,6 +624,7 @@ declare module 'gd-bs/components/cardGroup/types' {
         *             body: [
         *                 {
         *                     title: "Card 3",
+        *                     subTitle: "SubTitle 3",
         *                     text: "This is the third card."
         *                 }
         *             ]
@@ -786,9 +789,11 @@ declare module 'gd-bs/components/checkboxGroup/types' {
         * let el = document.querySelector("#cbGroup");
         * let cbGroup = Components.CheckboxGroup({
         *     el: el,
+        *     multi: false,
+        *     type: Components.CheckboxGroupTypes.Switch,
         *     items: [
         *         { label: "Option 1" },
-        *         { label: "Option 2" },
+        *         { label: "Option 2", isSelected: true },
         *         { label: "Option 3" }
         *     ]
         * });
@@ -873,20 +878,20 @@ declare module 'gd-bs/components/collapse/types' {
         * ```ts
         * import { Components } from "gd-sprest-bs";
         * 
-        * // Create the button to toggle the collapse
-        * let btn = Components.Button({
-        *     el: document.querySelector("#btnCollapse"),
-        *     target: "#demoCollapse",
-        *     toggle: "collapse",
-        *     text: "Collapse Demo"
-        * });
-        * 
         * // Create the collapse
         * let el = document.querySelector("#collapse");
         * let collapse = Components.Collapse({
         *     el: el,
-        *      id: "demoCollapse",
-        *     content: "This is the content to be collapsed."
+        *     id: "demoCollapse",
+        *     content: "This is the content to be collapsed.",
+        *     options: { toggle: true }
+        * });
+        * 
+        * // Create the button to toggle the collapse
+        * let btn = Components.Button({
+        *     el: document.querySelector("#btnCollapse"),
+        *     toggleObj: collapse,
+        *     text: "Collapse Demo"
         * });
         * ```
         */

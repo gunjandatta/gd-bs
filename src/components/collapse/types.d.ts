@@ -4,18 +4,18 @@
  * <script type="text/javascript">
  *     // Wait for the window to be loaded
  *     window.addEventListener("load", function() {
+ *         // Render the collapse
+ *         var collapse = $REST.Components.Collapse({
+ *             el: document.querySelector("#demo"),
+ *             id: "demoCollapse",
+ *             content: "This is the content to be collapsed.",
+ *             options: { toggle: true }
+ *         });
  *         // Create the button to toggle the collapse
  *         $REST.Components.Button({
  *             el: document.querySelector("#demo"),
- *             target: "#demoCollapse",
- *             toggle: "collapse",
+ *             toggleObj: collapse,
  *             text: "Collapse Demo"
- *         });
- *         // Render the collapse
- *         $REST.Components.Collapse({
- *             el: document.querySelector("#demo"),
- *             id: "demoCollapse",
- *             content: "This is the content to be collapsed."
  *         });
  *     });
  * </script>
@@ -27,20 +27,20 @@
  * ```ts
  * import { Components } from "gd-sprest-bs";
  * 
- * // Create the button to toggle the collapse
- * let btn = Components.Button({
- *     el: document.querySelector("#btnCollapse"),
- *     target: "#demoCollapse",
- *     toggle: "collapse",
- *     text: "Collapse Demo"
- * });
- * 
  * // Create the collapse
  * let el = document.querySelector("#collapse");
  * let collapse = Components.Collapse({
  *     el: el,
- *      id: "demoCollapse",
- *     content: "This is the content to be collapsed."
+ *     id: "demoCollapse",
+ *     content: "This is the content to be collapsed.",
+ *     options: { toggle: true }
+ * });
+ * 
+ * // Create the button to toggle the collapse
+ * let btn = Components.Button({
+ *     el: document.querySelector("#btnCollapse"),
+ *     toggleObj: collapse,
+ *     text: "Collapse Demo"
  * });
  * ```
  */
