@@ -59,15 +59,16 @@ declare module 'gd-bs/components/accordion/types' {
         *     id: "demoAccordion",
         *     items: [
         *         {
-        *             btnProps: { text: "Item 1" },
-        *             content: "This is the content for item 1."
+        *             header: "Item 1",
+        *             content: "This is the content for item 1.",
+        *             showFl: true
         *         },
         *         {
-        *             btnProps: { text: "Item 2" },
+        *             header: "Item 2",
         *             content: "This is the content for item 2."
         *         },
         *         {
-        *             btnProps: { text: "Item 3" },
+        *             header: "Item 3",
         *             content: "This is the content for item 3."
         *         }
         *     ]
@@ -77,7 +78,6 @@ declare module 'gd-bs/components/accordion/types' {
     export const Accordion: (props: IAccordionProps, template?: string, itemTemplate?: string) => IAccordion;
     
     import { IBase, IBaseProps } from "gd-bs/components/types";
-    import { ICollapseOptions } from "gd-bs/components/collapse/types";
     
     /**
         * Accordion
@@ -98,18 +98,12 @@ declare module 'gd-bs/components/accordion/types' {
     }
     
     /**
-        * Accordion Options
-        */
-    export interface IAccordionOptions extends ICollapseOptions { }
-    
-    /**
         * Accordion Properties
         */
     export interface IAccordionProps<T = Element> extends IBaseProps<IAccordion> {
             autoCollapse?: boolean;
             id?: string;
             items?: Array<IAccordionItem<T>>;
-            options?: IAccordionOptions;
     }
 }
 
