@@ -81,6 +81,22 @@ class _ListBox extends Base<IListBoxProps> implements IListBox {
 
     // Configures the events
     private configureEvents() {
+        // Execute the load event
+        let returnVal: any = this.props.onLoadData ? this.props.onLoadData() : null;
+        if (returnVal) {
+            // See if a promise was returned
+            if (typeof (returnVal.then) === "function") {
+                // Wait for the promise to complete
+                returnVal.then(items => {
+                    // Set the options
+                    this.setOptions(items);
+                });
+            } else {
+                // Set the options
+                this.setOptions(returnVal);
+            }
+        }
+
         // Set the change event on the search box
         this._elSearchBox.addEventListener("input", ev => {
             let value = this._elSearchBox.value;

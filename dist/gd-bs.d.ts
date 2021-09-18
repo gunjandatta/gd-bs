@@ -1597,6 +1597,7 @@ declare module 'gd-bs/components/listBox/types' {
             items: Array<IDropdownItem>;
             multi?: boolean;
             placeholder?: string;
+            onLoadData?: () => Array<IDropdownItem> | PromiseLike<Array<IDropdownItem>>;
             onChange?: (items: IDropdownItem | Array<IDropdownItem>, ev?: Event) => void;
             value?: string | Array<string>;
     }

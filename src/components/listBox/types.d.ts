@@ -30,6 +30,7 @@ export interface IListBoxProps {
     items: Array<IDropdownItem>;
     multi?: boolean;
     placeholder?: string;
+    onLoadData?: () => Array<IDropdownItem> | PromiseLike<Array<IDropdownItem>>;
     onChange?: (items: IDropdownItem | Array<IDropdownItem>, ev?: Event) => void;
     value?: string | Array<string>;
 }
