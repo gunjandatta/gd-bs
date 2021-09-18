@@ -11,6 +11,8 @@
  *             $REST.Components.Badge({
  *                 el: badge,
  *                 content: "Badge"
+ *                 isPill: true,
+ *                 type: $REST.Components.BadgeTypes.Success
  *             });
  *         }
  *     });
@@ -27,7 +29,9 @@
  * let el = document.querySelector("#badge");
  * let badge = Components.Badge({
  *     el: el,
- *     content: "Badge"
+ *     content: "Badge",
+ *     isPill: true,
+ *     type: Components.BadgeTypes.Success
  * });
  * ```
  */
@@ -54,7 +58,6 @@ export interface IBadge extends IBase<IBadgeProps> {
 export interface IBadgeProps<T=Element> extends IBaseProps<IBadge> {
     content?: string | T;
     data?: any;
-    header?: string;
     href?: string;
     isPill?: boolean;
     onClick?: (badge?: IBadgeProps, ev?: Event) => void;
