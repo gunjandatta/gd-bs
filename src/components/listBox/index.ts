@@ -90,10 +90,16 @@ class _ListBox extends Base<IListBoxProps> implements IListBox {
                 returnVal.then(items => {
                     // Set the options
                     this.setOptions(items);
+
+                    // Set the value if it's been defined
+                    if (this.props.value != undefined) { this.setValue(this.props.value); }
                 });
             } else {
                 // Set the options
                 this.setOptions(returnVal);
+
+                // Set the value if it's been defined
+                if (this.props.value != undefined) { this.setValue(this.props.value); }
             }
         }
 
@@ -188,8 +194,10 @@ class _ListBox extends Base<IListBoxProps> implements IListBox {
      * Public Interface
      */
 
+    // Gets the selected items
     getValue() { return this._selectedItems; }
 
+    // Sets the options
     setOptions(items: Array<IDropdownItem> = []) {
         let elDatalist = this.el.querySelector("datalist") as HTMLDataListElement;
         if (elDatalist) {

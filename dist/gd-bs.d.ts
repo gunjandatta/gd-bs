@@ -1583,6 +1583,9 @@ declare module 'gd-bs/components/listBox/types' {
             /** The selected listbox items. */
             getValue: () => Array<IDropdownItem>;
     
+            /** Sets the options */
+            setOptions: (items: Array<IDropdownItem>) => void;
+    
             /** Sets the listbox value. */
             setValue: (value?: string | Array<string> | Array<IDropdownItem>) => void;
     }
