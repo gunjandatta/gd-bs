@@ -36,7 +36,7 @@ export class CardAction {
         this._el.innerHTML = this._props.text == null ? "" : this._props.text;
 
         // Set the default type
-        let defaultType = ButtonClassNames[this._props.buttonType - 1] || "card-link";
+        let defaultType = ButtonClassNames.getByType(this._props.buttonType) || "card-link";
         this._el.classList.add(defaultType);
     }
 

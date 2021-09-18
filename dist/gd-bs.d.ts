@@ -119,7 +119,10 @@ declare module 'gd-bs/components/alert/types' {
         * let el = document.querySelector("#alert");
         * let alert = Components.Alert({
         *     el: el,
-        *     content: "This is an alert."
+        *     header: "Demo",
+        *     content: "This is an alert.",
+        *     isDismissible: true,
+        *     type: Components.AlertTypes.Success
         * });
         * ```
         */
@@ -185,7 +188,9 @@ declare module 'gd-bs/components/badge/types' {
         * let el = document.querySelector("#badge");
         * let badge = Components.Badge({
         *     el: el,
-        *     content: "Badge"
+        *     content: "Badge",
+        *     isPill: true,
+        *     type: Components.BadgeTypes.Success
         * });
         * ```
         */
@@ -212,7 +217,6 @@ declare module 'gd-bs/components/badge/types' {
     export interface IBadgeProps<T=Element> extends IBaseProps<IBadge> {
             content?: string | T;
             data?: any;
-            header?: string;
             href?: string;
             isPill?: boolean;
             onClick?: (badge?: IBadgeProps, ev?: Event) => void;
@@ -249,7 +253,7 @@ declare module 'gd-bs/components/breadcrumb/types' {
         *     items: [
         *         { text: "Root", href: "/" },
         *         { text: "Web 1", href: "/web" },
-        *         { text: "Web 1-1", href: "/web/1" }
+        *         { text: "Web 1-1", href: "/web/1", isActive: true }
         *     ]
         * });
         * ```
@@ -313,9 +317,10 @@ declare module 'gd-bs/components/button/types' {
         * let el = document.querySelector("#btn");
         * let btn = Components.Button({
         *     el: el,
-        *     text: "Button",
-        *     onClick: (ev) => {
-        *         alert("The button was clicked.");
+        *     type: Components.ButtonTypes.OutlineSuccess,
+        *     isLarge: true,
+        *     onClick: function(ev) {
+        *          alert("The button was clicked.");
         *     }
         * });
         * ```
@@ -429,9 +434,9 @@ declare module 'gd-bs/components/buttonGroup/types' {
         *     el: el,
         *     buttonType: $REST.Components.ButtonTypes.Primary,
         *     buttons: [
-        *         { text: "Left" },
-        *         { text: "Middle" },
-        *         { text: "Right" }
+        *          { text: "Left", onClick: function() { alert("Left button was clicked."); } },
+        *          { text: "Middle", onClick: function() { alert("Middle button was clicked."); } },
+        *          { text: "Right", onClick: function() { alert("Right button was clicked."); } }
         *     ]
         * });
         * ```
@@ -491,7 +496,8 @@ declare module 'gd-bs/components/card/types' {
         *             actions: [
         *                 {
         *                     text: "Card Action",
-        *                     buttonType: $REST.Components.ButtonTypes.Primary
+        *                     buttonType: $REST.Components.ButtonTypes.Primary,
+        *                     onClick: function(action, card) { alert(card.title + " was clicked."); }
         *                 }
         *             ]
         *         }

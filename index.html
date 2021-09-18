@@ -23,6 +23,7 @@
         <div id="myForm"></div>
         <div id="panel"></div>
         <div id="badge"></div>
+        <div id="card"></div>
         <div id="tooltip"></div>
         <div id="toolbar"></div>
         <div id="ddl"></div>
@@ -116,6 +117,19 @@
                 options: {
                     content: "<h5>Test HTML</h5><p>This was done via JS</p>"
                 }
+            });
+
+            window["card"] = GD.Components.Card({
+                el: document.getElementById("card"),
+                body: [{
+                    title: "Card Title",
+                    text: "This is the card contents.",
+                    actions: [{
+                        text: "Card Action",
+                        buttonType: GD.Components.ButtonTypes.OutlinePrimary,
+                        onClick: function(action, card) { alert(card.title + " was clicked."); }
+                    }]
+                }]
             });
 
             window["cbg"] = GD.Components.CheckboxGroup({
