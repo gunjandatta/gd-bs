@@ -148,7 +148,7 @@ class _Pagination extends Base<IPaginationProps> implements IPagination {
                 this.configureNextPrevButtons(pageNumber);
 
                 // Class the click event
-                this.props.onClick ? this.props.onClick(parseInt(item.innerHTML), ev) : null;
+                this.props.onClick ? this.props.onClick(pageNumber, ev) : null;
             });
         }
     }

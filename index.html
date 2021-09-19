@@ -1170,7 +1170,8 @@
             });
             GD.Components.Pagination({
                 el: document.querySelector("#paging"),
-                numberOfPages: 5
+                numberOfPages: 5,
+                onClick: function(pageNumber) { alert(pageNumber + " was clicked."); }
             });
             GD.Components.Progress({
                 el: document.querySelector("#progress"),
