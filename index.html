@@ -110,13 +110,12 @@
 
             window["tooltip"] = GD.Components.Tooltip({
                 el: document.getElementById("tooltip"),
+                content: "This is a tooltip.",
                 btnProps: {
                     text: "Test Tooltip",
-                    type: 7
+                    type: GD.Components.ButtonTypes.OutlineDanger
                 },
-                options: {
-                    content: "<h5>Test HTML</h5><p>This was done via JS</p>"
-                }
+                options: { trigger: "click" }
             });
 
             window["card"] = GD.Components.Card({

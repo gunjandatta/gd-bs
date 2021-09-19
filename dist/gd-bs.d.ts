@@ -1737,21 +1737,29 @@ declare module 'gd-bs/components/modal/types' {
         * ```ts
         * import { Components } from "gd-sprest-bs";
         * 
+        * // Modal elements should be added to the body
+        * var elModal = document.querySelector("#modal-demo");
+        * if(elModal === null) {
+        *      elModal = document.createElement("div");
+        *      elModal.id = "modal-demo";
+        *      document.body.appendChild(elModal);
+        * }
+        * 
+        * // Create the modal
+        * let modal = Components.Modal({
+        *     el: el,
+        *     id: "modalDemo",
+        *     title: "Modal Demo",
+        *     type: Components.ModalTypes.Small,
+        *     body: "This is the body of the modal."
+        * });
+        * 
         * // Create the button
         * Components.Button({
         *     el: document.querySelector("#modalDemo"),
-        *     target: "#bsModalDemo",
         *     text: "Show Modal",
-        *     toggle: "modal"
-        * });
-        * 
-        * // Create the modal
-        * let el = document.querySelector("#modalDemo");
-        * let modal = Components.Modal({
-        *     el: el,
-        *     id: "bsModalDemo",
-        *     title: "Modal Demo",
-        *     body: "This is the body of the modal."
+        *     toggleObj: modal,
+        *     type: Components.ButtonTypes.OutlinePrimary
         * });
         * ```
         */
@@ -2089,8 +2097,38 @@ declare module 'gd-bs/components/navbar/types' {
 }
 
 declare module 'gd-bs/components/offcanvas/types' {
+    
     /**
         * Offcanvas
+        * 
+        * ```ts
+        * import { Components } from "gd-sprest-bs";
+        * 
+        * // Offcanvas elements should be added to the body
+        * var elOffcanvas = document.querySelector("#offcanvas-demo");
+        * if(elOffcanvas === null) {
+        *      elOffcanvas = document.createElement("div");
+        *      elOffcanvas.id = "offcanvas-demo";
+        *      document.body.appendChild(elOffcanvas);
+        * }
+        * 
+        * // Create the offcanvas
+        * let el = document.querySelector("#offcanvasDemo");
+        * let offcanvas = Components.Offcanvas({
+        *     el: el,
+        *     id: "offcanvasDemo",
+        *     title: "Offcanvas Demo",
+        *     body: "This is the body of the offcanvas.",
+        *     type: Components.OffcanvasTypes.End
+        * });
+        * 
+        * // Create the button
+        * Components.Button({
+        *     el: document.querySelector("#offcanvasDemo"),
+        *     text: "Show Offcanvas",
+        *     toggleObj: offcanvas
+        * });
+        * ```
         */
     export const Offcanvas: (props: IOffcanvasProps, template?: string) => IOffcanvas;
     
@@ -2251,15 +2289,15 @@ declare module 'gd-bs/components/popover/types' {
         * let el = document.querySelector("#popover");
         * let popover = Components.Popover({
         *     el: el,
-        *     isDismissible: true,
+        *     className: "m-2",
+        *     text: "My Popover",
         *     btnProps: {
-        *         text: "Popover Demo"
+        *         text: "Popover Demo",
+        *         type: Components.ButtonTypes.OutlineDark
         *     },
         *     options: {
-        *         container: "body",
-        *         content: "This is the popover content.",
-        *         title: "My Popover",
-        *         trigger: "hover"
+        *         content: elContent,
+        *         trigger: "focus"
         *     }
         * });
         * ```
@@ -2742,10 +2780,12 @@ declare module 'gd-bs/components/tooltip/types' {
     let el = document.querySelector("#tooltip");
     let tooltip = Components.Tooltip({
             el: el,
-            text: "Tooltip Demo"
-            options: {
-                    html: true,
-                    title: "My Tooltip",
+            content: "This is the tooltip content.",
+            placement: Components.TooltipPlacements.Top,
+            theme: Components.TooltipTypes.LightBorder,
+            btnProps: {
+                    text: "Tooltip",
+                    type: Components.ButtonTypes.OutlineDark
             }
     });
     ```

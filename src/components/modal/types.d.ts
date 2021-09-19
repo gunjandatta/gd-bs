@@ -4,19 +4,29 @@
  * <script type="text/javascript">
  *     // Wait for the window to be loaded
  *     window.addEventListener("load", function() {
+ *         // Modal elements should be added to the body
+ *         var elModal = document.querySelector("#modal-demo");
+ *         if(elModal === null) {
+ *              elModal = document.createElement("div");
+ *              elModal.id = "modal-demo";
+ *              document.body.appendChild(elModal);
+ *         }
+ * 
+ *         // Create the modal
+ *         var modal = $REST.Components.Modal({
+ *             el: elModal,
+ *             id: "modalDemo",
+ *             title: "Modal Demo",
+ *             type: $REST.Components.ModalTypes.Small,
+ *             body: "This is the body of the modal."
+ *         });
+ * 
  *         // Create the button
  *         $REST.Components.Button({
  *             el: document.querySelector("#demo"),
- *             target: "#bsModalDemo",
  *             text: "Show Modal",
- *             toggle: "modal"
- *         });
- *         // Create the modal
- *         var modal = $REST.Components.Modal({
- *             el: document.querySelector("#demo"),
- *             id: "bsModalDemo",
- *             title: "Modal Demo",
- *             body: "This is the body of the modal."
+ *             toggleObj: modal,
+ *             type: $REST.Components.ButtonTypes.OutlinePrimary
  *         });
  *     });
  * </script>
@@ -28,21 +38,29 @@
  * ```ts
  * import { Components } from "gd-sprest-bs";
  * 
+ * // Modal elements should be added to the body
+ * var elModal = document.querySelector("#modal-demo");
+ * if(elModal === null) {
+ *      elModal = document.createElement("div");
+ *      elModal.id = "modal-demo";
+ *      document.body.appendChild(elModal);
+ * }
+ * 
+ * // Create the modal
+ * let modal = Components.Modal({
+ *     el: el,
+ *     id: "modalDemo",
+ *     title: "Modal Demo",
+ *     type: Components.ModalTypes.Small,
+ *     body: "This is the body of the modal."
+ * });
+ * 
  * // Create the button
  * Components.Button({
  *     el: document.querySelector("#modalDemo"),
- *     target: "#bsModalDemo",
  *     text: "Show Modal",
- *     toggle: "modal"
- * });
- * 
- * // Create the modal
- * let el = document.querySelector("#modalDemo");
- * let modal = Components.Modal({
- *     el: el,
- *     id: "bsModalDemo",
- *     title: "Modal Demo",
- *     body: "This is the body of the modal."
+ *     toggleObj: modal,
+ *     type: Components.ButtonTypes.OutlinePrimary
  * });
  * ```
  */

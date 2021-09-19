@@ -65,7 +65,6 @@ class _Tooltip extends Base<ITooltipProps> {
         if (this.props.target == null) {
             // Default the toggle property for the button
             let btnProps = this.props.btnProps || {};
-            btnProps.toggle = "tooltip";
             btnProps.type = btnProps.type || ButtonTypes.OutlineSecondary
 
             // Create the button

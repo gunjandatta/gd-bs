@@ -7,10 +7,12 @@
  *         // Render the tooltip
  *         $REST.Components.Tooltip({
  *             el: document.querySelector("#demo"),
- *             text: "Tooltip",
- *             options: {
- *                 html: true,
- *                 title: "My Tooltip",
+ *             content: "This is the tooltip content.",
+ *             placement: $REST.Components.TooltipPlacements.Top,
+ *             theme: $REST.Components.TooltipTypes.LightBorder,
+ *             btnProps: {
+ *                  text: "Tooltip",
+ *                  type: $REST.Components.ButtonTypes.OutlineDark
  *             }
  *         });
  *     });
@@ -27,10 +29,12 @@ import { Components } from "gd-sprest-bs";
 let el = document.querySelector("#tooltip");
 let tooltip = Components.Tooltip({
     el: el,
-    text: "Tooltip Demo"
-    options: {
-        html: true,
-        title: "My Tooltip",
+    content: "This is the tooltip content.",
+    placement: Components.TooltipPlacements.Top,
+    theme: Components.TooltipTypes.LightBorder,
+    btnProps: {
+        text: "Tooltip",
+        type: Components.ButtonTypes.OutlineDark
     }
 });
 ```

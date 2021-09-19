@@ -190,15 +190,13 @@ class _Pagination extends Base<IPaginationProps> implements IPagination {
         for (let i = 1; i <= pages; i++) {
             // Create a link
             item = this.createItem(i.toString(), itemTemplate);
+            i == 1 ? item.classList.add("active") : null;
             list.appendChild(item);
         }
 
         // Create the next link
         item = this.createItem("Next", itemTemplate);
         list.appendChild(item);
-
-        // Set the first page number as active
-        this._items[1].click();
     }
 }
 export const Pagination = (props: IPaginationProps, template?: string, itemTemplate?: string): IPagination => { return new _Pagination(props, template, itemTemplate); }

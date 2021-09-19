@@ -4,18 +4,23 @@
  * <script type="text/javascript">
  *     // Wait for the window to be loaded
  *     window.addEventListener("load", function() {
+ *         // Create the popover element
+ *         var elContent = document.createElement("div");
+ *         elContent.classList.add("m-2");
+ *         elContent.innerHTML = "This is the popover content.";
+ * 
  *         // Render the popover
  *         $REST.Components.Popover({
  *             el: document.querySelector("#demo"),
- *             isDismissible: true,
+ *             className: "m-2",
+ *             title: "My Popover",
  *             btnProps: {
- *                 text: "Popover Demo"
+ *                 text: "Popover Demo",
+ *                 type: $REST.Components.ButtonTypes.OutlineDark
  *             },
  *             options: {
- *                 container: "body",
- *                 content: "This is the popover content.",
- *                 title: "My Popover",
- *                 trigger: "hover"
+ *                 content: elContent,
+ *                 trigger: "focus"
  *             }
  *         });
  *     });
@@ -32,15 +37,15 @@
  * let el = document.querySelector("#popover");
  * let popover = Components.Popover({
  *     el: el,
- *     isDismissible: true,
+ *     className: "m-2",
+ *     text: "My Popover",
  *     btnProps: {
- *         text: "Popover Demo"
+ *         text: "Popover Demo",
+ *         type: Components.ButtonTypes.OutlineDark
  *     },
  *     options: {
- *         container: "body",
- *         content: "This is the popover content.",
- *         title: "My Popover",
- *         trigger: "hover"
+ *         content: elContent,
+ *         trigger: "focus"
  *     }
  * });
  * ```

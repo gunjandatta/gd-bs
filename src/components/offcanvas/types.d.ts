@@ -1,5 +1,67 @@
 /**
+ * <div id="demo"></div>
+ * <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gd-sprest-bs/5.0.3/gd-sprest-bs.min.js"></script>
+ * <script type="text/javascript">
+ *     // Wait for the window to be loaded
+ *     window.addEventListener("load", function() {
+ *         // Offcanvas elements should be added to the body
+ *         var elOffcanvas = document.querySelector("#offcanvas-demo");
+ *         if(elOffcanvas === null) {
+ *              elOffcanvas = document.createElement("div");
+ *              elOffcanvas.id = "offcanvas-demo";
+ *              document.body.appendChild(elOffcanvas);
+ *         }
+ * 
+ *         // Create the offcanvas
+ *         var offcanvas = $REST.Components.Offcanvas({
+ *             el: elOffcanvas,
+ *             id: "offcanvasDemo",
+ *             title: "Offcanvas Demo",
+ *             body: "This is the body of the offcanvas.",
+ *             type: $REST.Components.OffcanvasTypes.End
+ *         });
+ * 
+ *         // Create the button
+ *         $REST.Components.Button({
+ *             el: document.querySelector("#demo"),
+ *             text: "Show Offcanvas",
+ *             toggleObj: offcanvas
+ *         });
+ *     });
+ * </script>
+ */
+
+/**
  * Offcanvas
+ * 
+ * ```ts
+ * import { Components } from "gd-sprest-bs";
+ * 
+ * // Offcanvas elements should be added to the body
+ * var elOffcanvas = document.querySelector("#offcanvas-demo");
+ * if(elOffcanvas === null) {
+ *      elOffcanvas = document.createElement("div");
+ *      elOffcanvas.id = "offcanvas-demo";
+ *      document.body.appendChild(elOffcanvas);
+ * }
+ * 
+ * // Create the offcanvas
+ * let el = document.querySelector("#offcanvasDemo");
+ * let offcanvas = Components.Offcanvas({
+ *     el: el,
+ *     id: "offcanvasDemo",
+ *     title: "Offcanvas Demo",
+ *     body: "This is the body of the offcanvas.",
+ *     type: Components.OffcanvasTypes.End
+ * });
+ * 
+ * // Create the button
+ * Components.Button({
+ *     el: document.querySelector("#offcanvasDemo"),
+ *     text: "Show Offcanvas",
+ *     toggleObj: offcanvas
+ * });
+ * ```
  */
 export const Offcanvas: (props: IOffcanvasProps, template?: string) => IOffcanvas;
 
