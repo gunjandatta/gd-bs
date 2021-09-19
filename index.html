@@ -1090,7 +1090,7 @@
                     tabContent: "This is the content for tab 4."
                 }, {
                     title: "NavTab 5",
-                    tabContent: "This is the content for tab 5."
+                    onRenderTab: function(el) { el.innerHTML = "This is the content for tab 5." }
                 }]
             });
             window["carousel"] = GD.Components.Carousel({

@@ -1570,8 +1570,30 @@ declare module 'gd-bs/components/jumbotron/types' {
 }
 
 declare module 'gd-bs/components/listBox/types' {
+    
     /**
         * List Box
+        * 
+        * ```ts
+        * import { Components } from "gd-sprest-bs";
+        * 
+        * // Create the list box
+        * let el = document.querySelector("#list-box");
+        * Components.Collapse({
+        *     el: el,
+        *     label: "Colors",
+        *     placeholder: "Search Colors",
+        *     items: [
+        *          { text: "Red", value: "red" },
+        *          { text: "Blue", value: "blue" },
+        *          { text: "Green", value: "green" },
+        *          { text: "Purple", value: "purple" },
+        *          { text: "Brown", value: "brown" },
+        *          { text: "Yellow", value: "yellow" },
+        *          { text: "Orange", value: "orange" }
+        *     ]
+        * });
+        * ```
         */
     export const ListBox: (props: IListBoxProps, template?: string) => IListBox;
     
@@ -1838,13 +1860,15 @@ declare module 'gd-bs/components/nav/types' {
         * let el = document.querySelector("#navigation");
         * let nav = Components.Nav({
         *     el: el,
+        *     isJustified: true,
         *     isPills: true,
+        *     isTabs: true,
         *     items: [
-        *         { title: "Nav 1", isActive: true },
-        *         { title: "Nav 2" },
-        *         { title: "Nav 3" },
-        *         { title: "Nav 4" },
-        *         { title: "Nav 5" }
+        *         { title: "Nav 1", tabContent: "This is the content for tab 1.", isActive: true },
+        *         { title: "Nav 2", tabContent: "This is the content for tab 2." },
+        *         { title: "Nav 3", tabContent: "This is the content for tab 3." },
+        *         { title: "Nav 4", tabContent: "This is the content for tab 4." },
+        *         { title: "Nav 5", onTabRendered: function(el) { el.innerHTML = "This is the content for tab 5."; } }
         *     ]
         * });
         * ```
@@ -1918,7 +1942,7 @@ declare module 'gd-bs/components/nav/types' {
             href?: string;
             onClick?: (item?: INavLinkProps, ev?: Event) => void;
             onRender?: (el?: HTMLElement, item?: INavLinkProps) => void;
-            onRenderTab?: (item?: INavLinkProps, el?: HTMLDivElement) => void;
+            onRenderTab?: (el?: HTMLDivElement, item?: INavLinkProps) => void;
             tabContent?: string | T;
             title?: string;
     }

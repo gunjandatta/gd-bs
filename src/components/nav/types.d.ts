@@ -10,13 +10,15 @@
  *             // Render the navigation
  *             $REST.Components.Nav({
  *                 el: navigation,
+ *                 isJustified: true,
  *                 isPills: true,
+ *                 isTabs: true,
  *                 items: [
- *                     { title: "Nav 1", isActive: true },
- *                     { title: "Nav 2" },
- *                     { title: "Nav 3" },
- *                     { title: "Nav 4" },
- *                     { title: "Nav 5" }
+ *                     { title: "Nav 1", tabContent: "This is the content for tab 1.", isActive: true },
+ *                     { title: "Nav 2", tabContent: "This is the content for tab 2." },
+ *                     { title: "Nav 3", tabContent: "This is the content for tab 3." },
+ *                     { title: "Nav 4", tabContent: "This is the content for tab 4." },
+ *                     { title: "Nav 5", onTabRendered: function(el) { el.innerHTML = "This is the content for tab 5."; } }
  *                 ]
  *             });
  *         }
@@ -34,13 +36,15 @@
  * let el = document.querySelector("#navigation");
  * let nav = Components.Nav({
  *     el: el,
+ *     isJustified: true,
  *     isPills: true,
+ *     isTabs: true,
  *     items: [
- *         { title: "Nav 1", isActive: true },
- *         { title: "Nav 2" },
- *         { title: "Nav 3" },
- *         { title: "Nav 4" },
- *         { title: "Nav 5" }
+ *         { title: "Nav 1", tabContent: "This is the content for tab 1.", isActive: true },
+ *         { title: "Nav 2", tabContent: "This is the content for tab 2." },
+ *         { title: "Nav 3", tabContent: "This is the content for tab 3." },
+ *         { title: "Nav 4", tabContent: "This is the content for tab 4." },
+ *         { title: "Nav 5", onTabRendered: function(el) { el.innerHTML = "This is the content for tab 5."; } }
  *     ]
  * });
  * ```
@@ -114,7 +118,7 @@ export interface INavLinkProps<T = Element> extends IBaseProps<INavLink> {
     href?: string;
     onClick?: (item?: INavLinkProps, ev?: Event) => void;
     onRender?: (el?: HTMLElement, item?: INavLinkProps) => void;
-    onRenderTab?: (item?: INavLinkProps, el?: HTMLDivElement) => void;
+    onRenderTab?: (el?: HTMLDivElement, item?: INavLinkProps) => void;
     tabContent?: string | T;
     title?: string;
 }

@@ -86,7 +86,7 @@ export class NavLink extends Base<INavLinkProps> implements INavLink {
 
         // Execute the render events
         this.props.onRender ? this.props.onRender(this._elLink, this.props) : null;
-        this._elTab && this.props.onRenderTab ? this.props.onRenderTab(this.props, this._elTab) : null;
+        this._elTab && this.props.onRenderTab ? this.props.onRenderTab(this._elTab, this.props) : null;
     }
 
     /**
