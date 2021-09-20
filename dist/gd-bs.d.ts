@@ -1876,7 +1876,7 @@ declare module 'gd-bs/components/nav/types' {
         *         { title: "Nav 2", tabContent: "This is the content for tab 2." },
         *         { title: "Nav 3", tabContent: "This is the content for tab 3." },
         *         { title: "Nav 4", tabContent: "This is the content for tab 4." },
-        *         { title: "Nav 5", onTabRendered: function(el) { el.innerHTML = "This is the content for tab 5."; } }
+        *         { title: "Nav 5", onRenderTab: function(el) { el.innerHTML = "This is the content for tab 5."; } }
         *     ]
         * });
         * ```
