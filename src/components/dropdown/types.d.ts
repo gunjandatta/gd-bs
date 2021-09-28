@@ -124,6 +124,7 @@ export interface IDropdownItem {
  * Dropdown Properties
  */
 export interface IDropdownProps extends IBaseProps<IDropdown> {
+    autoSelect?: boolean;
     btnClassName?: string;
     dropLeft?: boolean;
     dropRight?: boolean;

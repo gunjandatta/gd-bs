@@ -32,6 +32,7 @@ const GetHTML = (props: IDropdownProps) => {
  * @property props - The dropdown properties.
  */
 class _Dropdown extends Base<IDropdownProps> implements IDropdown {
+    private _autoSelect: boolean = null;
     private _elMenu: HTMLElement;
     private _initFl: boolean = false;
     private _items: Array<DropdownFormItem | DropdownItem> = null;
@@ -153,6 +154,9 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
 
     // Configure the events
     private configureEvents() {
+        // Set the auto select property
+        this._autoSelect = typeof (this.props.autoSelect) === "boolean" ? this.props.autoSelect : true;
+
         // See if this is a select element and a change event exists
         let menu = this.el.querySelector("select");
         if (menu) {
@@ -160,12 +164,15 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
             menu.addEventListener("change", ev => {
                 // See if multiple options are allowed
                 if (this.props.multi == true) {
-                    // Parse the items
-                    for (let i = 0; i < this._items.length; i++) {
-                        let item = this._items[i] as DropdownFormItem;
+                    // See if we are selecting the values
+                    if (this._autoSelect) {
+                        // Parse the items
+                        for (let i = 0; i < this._items.length; i++) {
+                            let item = this._items[i] as DropdownFormItem;
 
-                        // Update the flag
-                        item.isSelected = (item.el as HTMLOptionElement).selected;
+                            // Update the flag
+                            item.isSelected = (item.el as HTMLOptionElement).selected;
+                        }
                     }
 
                     // Call the change event
@@ -184,13 +191,13 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
                         // See if this item was selected
                         if (selectedValue == value) {
                             // Ensure this item is selected
-                            if (!item.isSelected) { item.toggle(); }
+                            if (this._autoSelect && !item.isSelected) { item.toggle(); }
 
                             // Call the change event
                             this.props.onChange ? this.props.onChange(item.props, ev) : null;
                         } else {
                             // Unselect the other values
-                            if (item.isSelected) { item.toggle(); }
+                            if (this._autoSelect && item.isSelected) { item.toggle(); }
                         }
                     }
                 }

@@ -1046,6 +1046,7 @@ declare module 'gd-bs/components/dropdown/types' {
         * Dropdown Properties
         */
     export interface IDropdownProps extends IBaseProps<IDropdown> {
+            autoSelect?: boolean;
             btnClassName?: string;
             dropLeft?: boolean;
             dropRight?: boolean;

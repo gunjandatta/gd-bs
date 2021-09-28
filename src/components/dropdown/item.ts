@@ -125,8 +125,11 @@ export class DropdownItem {
             // Prevent the page from moving to the top
             ev.preventDefault();
 
-            // Toggle the item
-            this.toggle();
+            // See if we are selecting items
+            if (this._parent.autoSelect) {
+                // Toggle the item
+                this.toggle();
+            }
 
             // See if there is a click event defined
             if (this._props.onClick) {
