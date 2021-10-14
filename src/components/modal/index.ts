@@ -67,8 +67,6 @@ class _Modal extends Base<IModalProps> implements IModal {
         // Update the dialog
         let dialog = this.el.querySelector(".modal-dialog") as HTMLElement;
         if (dialog) {
-            this.props.isCentered ? dialog.classList.add("modal-dialog-centered") : null;
-
             // Add the class name, based on the type
             let className = ModalClassNames.getByType(this.props.type);
             className ? dialog.classList.add(className) : null;
@@ -98,14 +96,24 @@ class _Modal extends Base<IModalProps> implements IModal {
                 this.el.setAttribute("data-bs-backdrop", this._options.backdrop ? "true" : "false");
             }
 
+            // Set the center option
+            if (dialog && typeof (this._options.centered) === "boolean") {
+                dialog.classList.add("modal-dialog-centered");
+            }
+
             // Set the focus
             if (typeof (this._options.focus) === "boolean") {
-                this.el.setAttribute("data-bs-focus", this._options.backdrop ? "true" : "false");
+                this.el.setAttribute("data-bs-focus", this._options.focus ? "true" : "false");
             }
 
             // Set the keyboard
             if (typeof (this._options.keyboard) === "boolean") {
-                this.el.setAttribute("data-bs-keyboard", this._options.backdrop ? "true" : "false");
+                this.el.setAttribute("data-bs-keyboard", this._options.keyboard ? "true" : "false");
+            }
+
+            // Set the scrollable option
+            if (dialog && typeof (this._options.scrollable) === "boolean") {
+                dialog.classList.add("modal-dialog-scrollable");
             }
 
             // See if we are showing the modal
@@ -218,6 +226,48 @@ class _Modal extends Base<IModalProps> implements IModal {
 
         // Configure the event if we are setting the value
         this._autoClose ? this.configureAutoCloseEvent() : null;
+    }
+
+    // Updates the backdrop flag
+    setBackdrop(value: boolean) {
+        // Set the backdrop
+        this.el.setAttribute("data-bs-backdrop", value ? "true" : "false");
+    }
+
+    // Updates the focus flag
+    setFocus(value: boolean) {
+        // Set the focus
+        if (typeof (this._options.focus) === "boolean") {
+            this.el.setAttribute("data-bs-focus", value ? "true" : "false");
+        }
+    }
+
+    // Updates the center option
+    setIsCentered(value: boolean) {
+        // Get the dialog
+        let dialog = this.el.querySelector(".modal-dialog") as HTMLElement;
+        if (dialog) {
+            // Add/Remove the class name
+            dialog.classList[value ? "add" : "remove"]("modal-dialog-centered");
+        }
+    }
+
+    // Updates the keyboard flag
+    setKeyboard(value: boolean) {
+        // Set the keyboard
+        if (typeof (this._options.keyboard) === "boolean") {
+            this.el.setAttribute("data-bs-keyboard", value ? "true" : "false");
+        }
+    }
+
+    // Updates the scrollable option
+    setScrollable(value: boolean) {
+        // Get the dialog
+        let dialog = this.el.querySelector(".modal-dialog") as HTMLElement;
+        if (dialog) {
+            // Add/Remove the class name
+            dialog.classList[value ? "add" : "remove"]("modal-dialog-scrollable");
+        }
     }
 
     // Updates the title

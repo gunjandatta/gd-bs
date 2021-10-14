@@ -89,6 +89,21 @@ export interface IModal {
     /** Updates the auto close flag. */
     setAutoClose: (value: boolean) => void;
 
+    /** Updates the backdrop flag. */
+    setBackdrop: (value: boolean) => void;
+
+    /** Updates the focus flag. */
+    setFocus: (value: boolean) => void;
+
+    /** Updates the center option. */
+    setIsCentered: (value: boolean) => void;
+
+    /** Updates the keyboard flag. */
+    setKeyboard: (value: boolean) => void;
+
+    /** Updates the scrollable option. */
+    setScrollable: (value: boolean) => void;
+
     /** Updates the title. */
     setTitle: (title: string) => void;
 
@@ -112,11 +127,17 @@ export interface IModalOptions {
     /** True to enable the backdrop when the modal is visible. */
     backdrop?: boolean;
 
+    /** Sets the centered option */
+    centered?: boolean;
+
     /** Puts the focus on the modal when initialized. */
     focus?: boolean;
 
     /** Closes the modal when escape key is pressed. */
     keyboard?: boolean;
+
+    /** Makes the body scrollable */
+    scrollable?: boolean;
 
     /** True to toggle the modal on creation. */
     visible?: boolean;
@@ -131,7 +152,6 @@ export interface IModalProps<T = Element> extends IBaseProps<IModal> {
     footer?: string | T;
     hideCloseButton?: boolean;
     id?: string;
-    isCentered?: boolean;
     onClose?: (el: HTMLDivElement) => void;
     onRenderBody?: (el: HTMLDivElement) => void;
     onRenderHeader?: (el: HTMLDivElement) => void;
