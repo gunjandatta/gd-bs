@@ -2940,7 +2940,7 @@ declare module 'gd-bs/types' {
         allowHTML?: boolean;
         animateFill?: boolean;
         animation?: string | boolean;
-        appendTo?: string;
+        appendTo?: Element;
         aria?: object;
         arrow?: boolean | string | SVGElement | DocumentFragment;
         content?: string | Element;
