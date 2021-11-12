@@ -5,7 +5,7 @@ const fs = require("fs");
 const dirIcons = path.join(__dirname, "node_modules/bootstrap-icons/icons");
 
 // Get the icon files
-fs.readdir(dirIcons, function(err, files) {
+fs.readdir(dirIcons, function (err, files) {
     var icons = [];
     var iconDefs = [];
     var switches = [];
@@ -20,7 +20,7 @@ fs.readdir(dirIcons, function(err, files) {
     }
 
     // Parse the files
-    files.forEach(function(file) {
+    files.forEach(function (file) {
         // Ensure it's an svg
         if (!file.endsWith(".svg")) { return; }
 
@@ -35,6 +35,7 @@ fs.readdir(dirIcons, function(err, files) {
         // Determine the variable and function names
         varName = varName.replace(/\.svg$/, '');
         varName = varName == "window" ? "appWindow" : varName;
+        varName = parseInt(varName) >= 0 ? "_" + varName : varName;
         var funcName = varName[0].toUpperCase() + varName.substr(1);
 
         // Add the type
@@ -74,10 +75,10 @@ fs.readdir(dirIcons, function(err, files) {
     });
 
     // Delete the files
-    try { fs.unlinkSync("./src/icons/svgs/index.d.ts"); } catch {}
-    try { fs.unlinkSync("./src/icons/index.ts"); } catch {}
-    try { fs.unlinkSync("./src/icons/index.d.ts"); } catch {}
-    try { fs.unlinkSync("./src/icons/iconTypes.ts"); } catch {}
+    try { fs.unlinkSync("./src/icons/svgs/index.d.ts"); } catch { }
+    try { fs.unlinkSync("./src/icons/index.ts"); } catch { }
+    try { fs.unlinkSync("./src/icons/index.d.ts"); } catch { }
+    try { fs.unlinkSync("./src/icons/iconTypes.ts"); } catch { }
 
     // Generate the file
     var stream = fs.createWriteStream("./src/icons/index.d.ts");

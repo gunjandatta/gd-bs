@@ -182,7 +182,25 @@ class _Tooltip extends Base<ITooltipProps> {
                 inertia: true,
                 interactive: false,
                 placement,
-                theme
+                theme,
+                popperOptions: {
+                    strategy: "fixed",
+                    modifiers: [
+                        {
+                            name: "flip",
+                            options: {
+                                fallbackPlacements: ["bottom", "right"]
+                            }
+                        },
+                        {
+                            name: "preventOverflow",
+                            options: {
+                                mainAxis: false,
+                                altAxis: false
+                            }
+                        }
+                    ]
+                }
             },
             ...this.props.options
         };

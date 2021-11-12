@@ -160,7 +160,25 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
                 inertia: true,
                 interactive: true,
                 placement,
-                theme
+                theme,
+                popperOptions: {
+                    strategy: "fixed",
+                    modifiers: [
+                        {
+                            name: "flip",
+                            options: {
+                                fallbackPlacements: ["bottom", "right"]
+                            }
+                        },
+                        {
+                            name: "preventOverflow",
+                            options: {
+                                mainAxis: false,
+                                altAxis: false
+                            }
+                        }
+                    ]
+                }
             },
             ...this.props.options
         };
