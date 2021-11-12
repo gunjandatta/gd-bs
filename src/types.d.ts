@@ -32,7 +32,7 @@ export interface ITippyProps {
     onTrigger?: (tippyObj?, ev?) => void;
     onUntrigger?: (tippyObj?, ev?) => void;
     placement?: string;
-    plugins?: [any];
+    plugins?: any[];
     popperOptions?: object;
     role?: string;
     showOnCreate?: boolean;

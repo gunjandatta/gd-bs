@@ -1,4 +1,4 @@
-import { Instance } from "tippy.js";
+import { Instance, animateFill, followCursor, inlinePositioning, sticky } from "tippy.js";
 import { tippy } from "../../libs";
 import { ITippyProps } from "../../types";
 import { IPopover, IPopoverProps } from "./types";
@@ -160,6 +160,7 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
                 inertia: true,
                 interactive: true,
                 placement,
+                plugins: [animateFill, followCursor, inlinePositioning, sticky],
                 theme,
                 popperOptions: {
                     strategy: "fixed",

@@ -1,4 +1,4 @@
-import { Instance } from "tippy.js";
+import { Instance, animateFill, followCursor, inlinePositioning, sticky } from "tippy.js";
 import { tippy } from "../../libs";
 import { ITippyProps } from "../../types";
 import { ITooltip, ITooltipProps } from "./types";
@@ -182,6 +182,7 @@ class _Tooltip extends Base<ITooltipProps> {
                 inertia: true,
                 interactive: false,
                 placement,
+                plugins: [animateFill, followCursor, inlinePositioning, sticky],
                 theme,
                 popperOptions: {
                     strategy: "fixed",
