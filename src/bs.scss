@@ -112,9 +112,17 @@
         margin: 0rem 0rem 0rem auto;
         padding: 1rem;
     }
+    /* Fix for TippyJS Placement */
+    .popover-body>* {
+        position: relative !important;
+    }
     /* Auto size the toast width */
     .toast {
         width: auto;
+    }
+    /* Fix for TippyJS Placement */
+    .tooltip-body>* {
+        position: relative !important;
     }
     /* Center the dataTables_info element properly */
     div.dataTables_wrapper div.dataTables_info {

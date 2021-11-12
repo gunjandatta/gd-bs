@@ -81,7 +81,6 @@ class _Tooltip extends Base<ITooltipProps> {
     // Configure the options
     private configureOptions() {
         // Set the placements
-        let fallbackPlacements = null;
         let placement = null;
         switch (this.props.placement) {
             // Auto
@@ -96,59 +95,46 @@ class _Tooltip extends Base<ITooltipProps> {
                 break;
             // Bottom
             case TooltipPlacements.Bottom:
-                fallbackPlacements = ["top"];
                 placement = "bottom";
                 break;
             case TooltipPlacements.BottomEnd:
-                fallbackPlacements = ["top", "right"];
                 placement = "bottom-end";
                 break;
             case TooltipPlacements.BottomStart:
-                fallbackPlacements = ["top", "left"];
                 placement = "bottom-start";
                 break;
             // Left
             case TooltipPlacements.Left:
-                fallbackPlacements = ["right"];
                 placement = "left";
                 break;
             case TooltipPlacements.LeftEnd:
-                fallbackPlacements = ["right"];
                 placement = "left-end";
                 break;
             case TooltipPlacements.LeftStart:
-                fallbackPlacements = ["right"];
                 placement = "left-start";
                 break;
             // Right
             case TooltipPlacements.Right:
-                fallbackPlacements = ["left"];
                 placement = "right";
                 break;
             case TooltipPlacements.RightEnd:
-                fallbackPlacements = ["left"];
                 placement = "right-end";
                 break;
             case TooltipPlacements.RightStart:
-                fallbackPlacements = ["left"];
                 placement = "right-start";
                 break;
             // Top
             case TooltipPlacements.Top:
-                fallbackPlacements = ["bottom"];
                 placement = "top";
                 break;
             case TooltipPlacements.TopEnd:
-                fallbackPlacements = ["bottom", "right"];
                 placement = "top-end";
                 break;
             case TooltipPlacements.TopStart:
-                fallbackPlacements = ["bottom", "left"];
                 placement = "top-start";
                 break;
             // Default - Auto
             default:
-                fallbackPlacements = ["bottom"];
                 placement = "top";
                 break;
         }
@@ -197,22 +183,12 @@ class _Tooltip extends Base<ITooltipProps> {
                 interactive: false,
                 placement,
                 plugins: [animateFill, followCursor, inlinePositioning, sticky],
-                theme,
-                popperOptions: fallbackPlacements ? {
-                    modifiers: [
-                        {
-                            name: "flip",
-                            options: {
-                                fallbackPlacements
-                            }
-                        }
-                    ]
-                } : null
+                theme
             },
             ...this.props.options
         };
 
-        // Create the popover content element
+        // Create the tooltip content element
         this._elContent = document.createElement("div") as HTMLElement;
         this._elContent.classList.add("tooltip-content");
         appendContent(this._elContent, options.content as any);
@@ -263,19 +239,19 @@ class _Tooltip extends Base<ITooltipProps> {
         this._btn ? this._btn.enable() : null;
     }
 
-    // Hides the popover
+    // Hides the tooltip
     hide() {
         // See if it's visible
         if (this.isVisible) { this._tippy.hide(); }
     }
 
-    // Determines if the popover is visible
+    // Determines if the tooltip is visible
     get isVisible(): boolean { return this._tippy.state.isVisible; }
 
     // The tippy instance
     get tippy() { return this._tippy; }
 
-    // Shows the popover
+    // Shows the tooltip
     show() {
         // See if it's hidden
         if (!this.isVisible) { this._tippy.show(); }
