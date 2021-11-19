@@ -12,7 +12,7 @@ export const HTML = `
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0"></ul>
         </div>
         <form class="d-flex mb-2 mb-lg-0">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+            <input class="form-control lh-1 me-1" type="search" placeholder="Search" aria-label="Search" />
             <button class="btn" type="submit">Search</button>
         </form>
     </div>
