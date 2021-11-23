@@ -41,6 +41,7 @@ declare module 'gd-bs/components/components' {
     export * from "gd-bs/components/toast/types";
     export * from "gd-bs/components/toolbar/types";
     export * from "gd-bs/components/tooltip/types";
+    export * from "gd-bs/components/tooltipGroup/types";
 }
 
 declare module 'gd-bs/components/accordion/types' {
@@ -2896,6 +2897,64 @@ declare module 'gd-bs/components/tooltip/types' {
             Top: number;
             TopStart: number;
             TopEnd: number;
+    }
+}
+
+declare module 'gd-bs/components/tooltipGroup/types' {
+    
+    /**
+        * ### Tooltip Group
+        * 
+        * ```ts
+        * import { Components } from "gd-sprest-bs";
+        * 
+        * // Create the group
+        * let el = document.querySelector("#buttonGroup");
+        * let tooltipGroup = Components.TooltipGroup({
+        *     el: el,
+        *     buttonType: $REST.Components.ButtonTypes.Primary,
+        *     buttons: [
+        *          { text: "Left", onClick: function() { alert("Left button was clicked."); } },
+        *          { text: "Middle", onClick: function() { alert("Middle button was clicked."); } },
+        *          { text: "Right", onClick: function() { alert("Right button was clicked."); } }
+        *     ]
+        * });
+        * ```
+        */
+    export const TooltipGroup: (props: ITooltipGroupProps, template?: string, btnTemplate?: string) => ITooltipGroup;
+    
+    import { IBaseProps } from "gd-bs/components/types";
+    import { ITooltip, ITooltipProps } from "gd-bs/components/tooltip/types";
+    
+    /**
+        * Tooltip Group
+        */
+    export interface ITooltipGroup {
+            /** The element. */
+            el: Element;
+    
+            /** The tooltips. */
+            tooltips: Array<ITooltip>;
+    
+            /** Hides the button group. */
+            hide: () => void;
+    
+            /** Shows the button group. */
+            show: () => void;
+    }
+    
+    /**
+        * Tooltip Group Properties
+        */
+    export interface ITooltipGroupProps extends IBaseProps<ITooltipGroup> {
+            tooltips?: Array<ITooltipProps>;
+            buttonType?: number;
+            id?: string;
+            isLarge?: boolean;
+            isSmall?: boolean;
+            isVertical?: boolean;
+            label?: string;
+            tooltipType?: number;
     }
 }
 

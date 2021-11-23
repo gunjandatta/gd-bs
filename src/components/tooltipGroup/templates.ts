@@ -1,0 +1,1 @@
+export const HTML = `<div class="btn-group" role="group"></div>`;

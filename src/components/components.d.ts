@@ -29,3 +29,4 @@ export * from "./table/types";
 export * from "./toast/types";
 export * from "./toolbar/types";
 export * from "./tooltip/types";
+export * from "./tooltipGroup/types";
