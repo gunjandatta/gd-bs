@@ -11,12 +11,17 @@ import { appendContent } from "../common";
  * Tooltip Types
  */
 export enum TooltipTypes {
-    Light = 1,
-    LightBorder = 2,
-    Material = 3,
-    Primary = 4,
-    Secondary = 5,
-    Translucent = 6
+    Danger = 1,
+    Dark = 2,
+    Info = 3,
+    Light = 4,
+    LightBorder = 5,
+    Material = 6,
+    Primary = 7,
+    Secondary = 8,
+    Success = 9,
+    Translucent = 10,
+    Warning = 11
 }
 
 /**
@@ -142,6 +147,18 @@ class _Tooltip extends Base<ITooltipProps> {
         // Set the theme
         let theme = null;
         switch (this.props.type) {
+            // Dark
+            case TooltipTypes.Dark:
+                theme = "dark";
+                break;
+            // Danger
+            case TooltipTypes.Danger:
+                theme = "danger";
+                break;
+            // Info
+            case TooltipTypes.Info:
+                theme = "info";
+                break;
             // Light
             case TooltipTypes.Light:
                 theme = "light";
@@ -161,9 +178,17 @@ class _Tooltip extends Base<ITooltipProps> {
             case TooltipTypes.Secondary:
                 theme = "secondary";
                 break;
+            // Success
+            case TooltipTypes.Success:
+                theme = "success";
+                break;
             // Translucent
             case TooltipTypes.Translucent:
                 theme = "translucent";
+                break;
+            // Warning
+            case TooltipTypes.Warning:
+                theme = "warning";
                 break;
             // Default - Secondary
             default:

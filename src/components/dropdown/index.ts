@@ -207,11 +207,50 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
         // Get the toggle
         let toggle = this.el.querySelector(".dropdown-toggle") as HTMLElement;
         if (toggle && this._elMenu) {
+            // Set the type, based on the current dropdown type
+            let popoverType = PopoverTypes.Light;
+            switch (this.props.type) {
+                case DropdownTypes.Danger:
+                case DropdownTypes.OutlineDanger:
+                    popoverType = PopoverTypes.Danger;
+                    break;
+                case DropdownTypes.Dark:
+                case DropdownTypes.OutlineDark:
+                    popoverType = PopoverTypes.Dark;
+                    break;
+                case DropdownTypes.Info:
+                case DropdownTypes.OutlineInfo:
+                    popoverType = PopoverTypes.Info;
+                    break;
+                case DropdownTypes.Light:
+                case DropdownTypes.OutlineLight:
+                case DropdownTypes.Link:
+                case DropdownTypes.OutlineLink:
+                    popoverType = PopoverTypes.Light;
+                    break;
+                case DropdownTypes.Primary:
+                case DropdownTypes.OutlinePrimary:
+                    popoverType = PopoverTypes.Primary;
+                    break;
+                case DropdownTypes.Secondary:
+                case DropdownTypes.OutlineSecondary:
+                    popoverType = PopoverTypes.Secondary;
+                    break;
+                case DropdownTypes.Success:
+                case DropdownTypes.OutlineSuccess:
+                    popoverType = PopoverTypes.Success;
+                    break;
+                case DropdownTypes.Warning:
+                case DropdownTypes.OutlineWarning:
+                    popoverType = PopoverTypes.Warning;
+                    break;
+            }
+
             // Create the props
             let props: IPopoverProps = {
                 target: toggle,
                 placement: PopoverPlacements.LeftEnd,
-                type: PopoverTypes.Light,
+                type: popoverType,
                 options: {
                     arrow: false,
                     trigger: "click",

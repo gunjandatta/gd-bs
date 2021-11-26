@@ -10,12 +10,17 @@ import { appendContent } from "../common";
  * Popover Types
  */
 export enum PopoverTypes {
-    Light = 1,
-    LightBorder = 2,
-    Material = 3,
-    Primary = 4,
-    Secondary = 5,
-    Translucent = 6
+    Danger = 1,
+    Dark = 2,
+    Info = 3,
+    Light = 4,
+    LightBorder = 5,
+    Material = 6,
+    Primary = 7,
+    Secondary = 8,
+    Success = 9,
+    Translucent = 10,
+    Warning = 11
 }
 
 /**
@@ -121,6 +126,18 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
         // Set the theme
         let theme = null;
         switch (this.props.type) {
+            // Dark
+            case PopoverTypes.Dark:
+                theme = "dark";
+                break;
+            // Danger
+            case PopoverTypes.Danger:
+                theme = "danger";
+                break;
+            // Info
+            case PopoverTypes.Info:
+                theme = "info";
+                break;
             // Light
             case PopoverTypes.Light:
                 theme = "light";
@@ -140,9 +157,17 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
             case PopoverTypes.Secondary:
                 theme = "secondary";
                 break;
+            // Success
+            case PopoverTypes.Success:
+                theme = "success";
+                break;
             // Translucent
             case PopoverTypes.Translucent:
                 theme = "translucent";
+                break;
+            // Warning
+            case PopoverTypes.Warning:
+                theme = "warning";
                 break;
             // Default - Light Border
             default:

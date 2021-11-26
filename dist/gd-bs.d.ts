@@ -2380,12 +2380,17 @@ declare module 'gd-bs/components/popover/types' {
         * Popover Types
         */
      export type IPopoverTypes = {
+            Danger: number;
+            Dark: number;
+            Info: number;
             Light: number;
             LightBorder: number;
             Material: number;
             Primary: number;
             Secondary: number;
+            Success: number;
             Translucent: number;
+            Warning: number;
     }
     
     /**
@@ -2870,12 +2875,17 @@ declare module 'gd-bs/components/tooltip/types' {
         * Tooltip Types
         */
     export type ITooltipTypes = {
+            Danger: number;
+            Dark: number;
+            Info: number;
             Light: number;
             LightBorder: number;
             Material: number;
             Primary: number;
             Secondary: number;
+            Success: number;
             Translucent: number;
+            Warning: number;
     }
     
     /**

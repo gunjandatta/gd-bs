@@ -229,147 +229,187 @@ table.dataTable thead .sorting_desc {
 
 
 /* Tippy Tooltip primary theme color */
+
 .tippy-box[data-theme~='primary'] {
     background-color: #0078d4;
 }
+
 .tippy-box[data-theme~='primary'][data-placement^='top']>.tippy-arrow::before {
     border-top-color: #0078d4;
 }
+
 .tippy-box[data-theme~='primary'][data-placement^='bottom']>.tippy-arrow::before {
     border-bottom-color: #0078d4;
 }
+
 .tippy-box[data-theme~='primary'][data-placement^='left']>.tippy-arrow::before {
     border-left-color: #0078d4;
 }
+
 .tippy-box[data-theme~='primary'][data-placement^='right']>.tippy-arrow::before {
     border-right-color: #0078d4;
 }
 
 
 /* Tippy Tooltip secondary theme color */
+
 .tippy-box[data-theme~='secondary'] {
     background-color: #6c757d;
 }
+
 .tippy-box[data-theme~='secondary'][data-placement^='top']>.tippy-arrow::before {
     border-top-color: #6c757d;
 }
+
 .tippy-box[data-theme~='secondary'][data-placement^='bottom']>.tippy-arrow::before {
     border-bottom-color: #6c757d;
 }
+
 .tippy-box[data-theme~='secondary'][data-placement^='left']>.tippy-arrow::before {
     border-left-color: #6c757d;
 }
+
 .tippy-box[data-theme~='secondary'][data-placement^='right']>.tippy-arrow::before {
     border-right-color: #6c757d;
 }
 
 
 /* Tippy Tooltip success theme color */
+
 .tippy-box[data-theme~='success'] {
     background-color: #198754;
 }
+
 .tippy-box[data-theme~='success'][data-placement^='top']>.tippy-arrow::before {
     border-top-color: #198754;
 }
+
 .tippy-box[data-theme~='success'][data-placement^='bottom']>.tippy-arrow::before {
     border-bottom-color: #198754;
 }
+
 .tippy-box[data-theme~='success'][data-placement^='left']>.tippy-arrow::before {
     border-left-color: #198754;
 }
+
 .tippy-box[data-theme~='success'][data-placement^='right']>.tippy-arrow::before {
     border-right-color: #198754;
 }
 
 
 /* Tippy Tooltip info theme color */
+
 .tippy-box[data-theme~='info'] {
     background-color: #0dcaf0;
     color: #000;
 }
+
 .tippy-box[data-theme~='info'][data-placement^='top']>.tippy-arrow::before {
     border-top-color: #0dcaf0;
 }
+
 .tippy-box[data-theme~='info'][data-placement^='bottom']>.tippy-arrow::before {
     border-bottom-color: #0dcaf0;
 }
+
 .tippy-box[data-theme~='info'][data-placement^='left']>.tippy-arrow::before {
     border-left-color: #0dcaf0;
 }
+
 .tippy-box[data-theme~='info'][data-placement^='right']>.tippy-arrow::before {
     border-right-color: #0dcaf0;
 }
 
 
 /* Tippy Tooltip warning theme color */
+
 .tippy-box[data-theme~='warning'] {
     background-color: #ffc107;
     color: #000;
 }
+
 .tippy-box[data-theme~='warning'][data-placement^='top']>.tippy-arrow::before {
     border-top-color: #ffc107;
 }
+
 .tippy-box[data-theme~='warning'][data-placement^='bottom']>.tippy-arrow::before {
     border-bottom-color: #ffc107;
 }
+
 .tippy-box[data-theme~='warning'][data-placement^='left']>.tippy-arrow::before {
     border-left-color: #ffc107;
 }
+
 .tippy-box[data-theme~='warning'][data-placement^='right']>.tippy-arrow::before {
     border-right-color: #ffc107;
 }
 
 
 /* Tippy Tooltip danger theme color */
+
 .tippy-box[data-theme~='danger'] {
     background-color: #dc3545;
 }
+
 .tippy-box[data-theme~='danger'][data-placement^='top']>.tippy-arrow::before {
     border-top-color: #dc3545;
 }
+
 .tippy-box[data-theme~='danger'][data-placement^='bottom']>.tippy-arrow::before {
     border-bottom-color: #dc3545;
 }
+
 .tippy-box[data-theme~='danger'][data-placement^='left']>.tippy-arrow::before {
     border-left-color: #dc3545;
 }
+
 .tippy-box[data-theme~='danger'][data-placement^='right']>.tippy-arrow::before {
     border-right-color: #dc3545;
 }
 
 
 /* Tippy Tooltip light theme color - override Tippy default to match Bootstrap */
+
 .tippy-box[data-theme~='light'] {
     background-color: #f8f9fa !important;
     color: #000 !important;
 }
+
 .tippy-box[data-theme~='light'][data-placement^='top']>.tippy-arrow::before {
     border-top-color: #f8f9fa !important;
 }
+
 .tippy-box[data-theme~='light'][data-placement^='bottom']>.tippy-arrow::before {
     border-bottom-color: #f8f9fa !important;
 }
+
 .tippy-box[data-theme~='light'][data-placement^='left']>.tippy-arrow::before {
     border-left-color: #f8f9fa !important;
 }
+
 .tippy-box[data-theme~='light'][data-placement^='right']>.tippy-arrow::before {
     border-right-color: #f8f9fa !important;
 }
 
 
 /* Tippy Tooltip dark theme color */
+
 .tippy-box[data-theme~='dark'] {
     background-color: #212529;
 }
+
 .tippy-box[data-theme~='dark'][data-placement^='top']>.tippy-arrow::before {
     border-top-color: #212529;
 }
+
 .tippy-box[data-theme~='dark'][data-placement^='bottom']>.tippy-arrow::before {
     border-bottom-color: #212529;
 }
+
 .tippy-box[data-theme~='dark'][data-placement^='left']>.tippy-arrow::before {
     border-left-color: #212529;
 }
+
 .tippy-box[data-theme~='dark'][data-placement^='right']>.tippy-arrow::before {
     border-right-color: #212529;
 }

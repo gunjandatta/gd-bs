@@ -97,12 +97,17 @@ export interface ITooltipProps extends IBaseProps<ITooltip> {
  * Tooltip Types
  */
 export type ITooltipTypes = {
+    Danger: number;
+    Dark: number;
+    Info: number;
     Light: number;
     LightBorder: number;
     Material: number;
     Primary: number;
     Secondary: number;
+    Success: number;
     Translucent: number;
+    Warning: number;
 }
 
 /**
