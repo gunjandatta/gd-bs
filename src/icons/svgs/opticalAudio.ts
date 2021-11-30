@@ -1,5 +1,5 @@
 import { generateIcon } from "../generate";
-export function opticalAudio(height, width, className) {
+export function opticalAudio(height, width, className?) {
 	return generateIcon(`<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-optical-audio" viewBox="0 0 16 16">
   <path d="M8 10a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"/>
   <path d="M4.5 9a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0ZM8 6.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5Z"/>

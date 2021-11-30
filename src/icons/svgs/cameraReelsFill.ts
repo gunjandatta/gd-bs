@@ -1,5 +1,5 @@
 import { generateIcon } from "../generate";
-export function cameraReelsFill(height, width, className) {
+export function cameraReelsFill(height, width, className?) {
 	return generateIcon(`<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-camera-reels-fill" viewBox="0 0 16 16">
   <path d="M6 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
   <path d="M9 6a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>

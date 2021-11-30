@@ -62,7 +62,7 @@ fs.readdir(dirIcons, function (err, files) {
         var stream = fs.createWriteStream("./src/icons/svgs/" + varName + ".ts");
         stream.write([
             'import { generateIcon } from "../generate";',
-            'export function ' + varName + '(height, width, className) {',
+            'export function ' + varName + '(height, width, className?) {',
             '\treturn generateIcon(`' + fs.readFileSync(dirIcons + "/" + file) + '`, height, width, className);',
             '}'
         ].join('\n'));
