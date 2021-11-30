@@ -91,7 +91,7 @@ export class NavbarItem {
                 // See if it's a function
                 if (typeof (this._props.iconType) === "function") {
                     // Append the icon
-                    link.prepend(this._props.iconType(iconSize, iconSize));
+                    link.prepend(this._props.iconType(iconSize, iconSize, this._props.iconClassName));
                 }
                 // Else, it's an element
                 else if (typeof (this._props.iconType === "object")) {

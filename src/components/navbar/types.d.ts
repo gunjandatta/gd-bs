@@ -119,6 +119,7 @@ export interface INavbarItem {
     classNameItem?: string;
     data?: any;
     href?: string;
+    iconClassName?: string;
     iconSize?: number;
     iconType?: Function;
     isActive?: boolean;
