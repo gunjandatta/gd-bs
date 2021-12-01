@@ -198,7 +198,7 @@ class _Tooltip extends Base<ITooltipProps> {
                 // See if a button exists
                 if (this.props.btnProps && this.props.btnProps.type > 0) {
                     // Match the theme to the button type
-                    switch (this.props.type) {
+                    switch (this.props.btnProps.type) {
                         // Danger
                         case ButtonTypes.Danger:
                         case ButtonTypes.OutlineDanger:
