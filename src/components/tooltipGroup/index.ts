@@ -47,7 +47,8 @@ class _TooltipGroup extends Base<ITooltipGroupProps> implements ITooltipGroup {
         for (let i = 0; i < tooltips.length; i++) {
             let tooltipProps = tooltips[i];
 
-            // Set the property
+            // Set the properties
+            tooltipProps.placement = tooltipProps.placement || this.props.tooltipPlacement;
             tooltipProps.type = tooltipProps.type || this.props.tooltipType;
 
             // See if the button props exists

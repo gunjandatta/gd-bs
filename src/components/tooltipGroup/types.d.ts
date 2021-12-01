@@ -71,5 +71,6 @@ export interface ITooltipGroupProps extends IBaseProps<ITooltipGroup> {
     isSmall?: boolean;
     isVertical?: boolean;
     label?: string;
+    tooltipPlacement?: number;
     tooltipType?: number;
 }

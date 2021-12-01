@@ -2967,6 +2967,7 @@ declare module 'gd-bs/components/tooltipGroup/types' {
             isSmall?: boolean;
             isVertical?: boolean;
             label?: string;
+            tooltipPlacement?: number;
             tooltipType?: number;
     }
 }
