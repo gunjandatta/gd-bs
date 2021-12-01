@@ -48,6 +48,7 @@ class _TooltipGroup extends Base<ITooltipGroupProps> implements ITooltipGroup {
             let tooltipProps = tooltips[i];
 
             // Set the properties
+            tooltipProps.options = tooltipProps.options || this.props.tooltipOptions;
             tooltipProps.placement = tooltipProps.placement || this.props.tooltipPlacement;
             tooltipProps.type = tooltipProps.type || this.props.tooltipType;
 

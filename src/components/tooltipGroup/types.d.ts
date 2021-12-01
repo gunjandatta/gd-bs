@@ -40,6 +40,7 @@
  */
 export const TooltipGroup: (props: ITooltipGroupProps, template?: string, btnTemplate?: string) => ITooltipGroup;
 
+import { ITippyProps } from "../../types";
 import { IBaseProps } from "../types";
 import { ITooltip, ITooltipProps } from "../tooltip/types";
 
@@ -71,6 +72,7 @@ export interface ITooltipGroupProps extends IBaseProps<ITooltipGroup> {
     isSmall?: boolean;
     isVertical?: boolean;
     label?: string;
+    tooltipOptions?: ITippyProps;
     tooltipPlacement?: number;
     tooltipType?: number;
 }

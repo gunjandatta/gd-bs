@@ -147,13 +147,13 @@ class _Tooltip extends Base<ITooltipProps> {
         // Set the theme
         let theme = null;
         switch (this.props.type) {
-            // Dark
-            case TooltipTypes.Dark:
-                theme = "dark";
-                break;
             // Danger
             case TooltipTypes.Danger:
                 theme = "danger";
+                break;
+            // Dark
+            case TooltipTypes.Dark:
+                theme = "dark";
                 break;
             // Info
             case TooltipTypes.Info:
@@ -192,7 +192,60 @@ class _Tooltip extends Base<ITooltipProps> {
                 break;
             // Default - Secondary
             default:
+                // Set the default theme
                 theme = "secondary";
+
+                // See if a button exists
+                if (this.props.btnProps && this.props.btnProps.type > 0) {
+                    // Match the theme to the button type
+                    switch (this.props.type) {
+                        // Danger
+                        case ButtonTypes.Danger:
+                        case ButtonTypes.OutlineDanger:
+                            theme = "danger";
+                            break;
+                        // Dark
+                        case ButtonTypes.Dark:
+                        case ButtonTypes.OutlineDark:
+                            theme = "dark";
+                            break;
+                        // Info
+                        case ButtonTypes.Info:
+                        case ButtonTypes.OutlineInfo:
+                            theme = "info";
+                            break;
+                        // Light
+                        case ButtonTypes.Light:
+                        case ButtonTypes.OutlineLight:
+                            theme = "light";
+                            break;
+                        // Link
+                        case ButtonTypes.Link:
+                        case ButtonTypes.OutlineLink:
+                            theme = "light-border";
+                            break;
+                        // Primary
+                        case ButtonTypes.Primary:
+                        case ButtonTypes.OutlinePrimary:
+                            theme = "primary";
+                            break;
+                        // Secondary
+                        case ButtonTypes.Secondary:
+                        case ButtonTypes.OutlineSecondary:
+                            theme = "secondary";
+                            break;
+                        // Success
+                        case ButtonTypes.Success:
+                        case ButtonTypes.OutlineSuccess:
+                            theme = "success";
+                            break;
+                        // Warning
+                        case ButtonTypes.Warning:
+                        case ButtonTypes.OutlineWarning:
+                            theme = "warning";
+                            break;
+                    }
+                }
                 break;
         }
 

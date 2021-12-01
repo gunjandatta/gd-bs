@@ -2936,6 +2936,7 @@ declare module 'gd-bs/components/tooltipGroup/types' {
         */
     export const TooltipGroup: (props: ITooltipGroupProps, template?: string, btnTemplate?: string) => ITooltipGroup;
     
+    import { ITippyProps } from "gd-bs/types";
     import { IBaseProps } from "gd-bs/components/types";
     import { ITooltip, ITooltipProps } from "gd-bs/components/tooltip/types";
     
@@ -2967,6 +2968,7 @@ declare module 'gd-bs/components/tooltipGroup/types' {
             isSmall?: boolean;
             isVertical?: boolean;
             label?: string;
+            tooltipOptions?: ITippyProps;
             tooltipPlacement?: number;
             tooltipType?: number;
     }
