@@ -63,7 +63,7 @@ fs.readdir(dirIcons, function (err, files) {
         stream.write([
             'import { generateIcon } from "../generate";',
             'export function ' + varName + '(height, width, className?) {',
-            '\treturn generateIcon(`' + fs.readFileSync(dirIcons + "/" + file) + '`, height, width, className);',
+            ('  return generateIcon(`' + fs.readFileSync(dirIcons + "/" + file) + '`, height, width, className);').replace(/\"/g, "'").replace(/\n/g, ' '),
             '}'
         ].join('\n'));
         stream.end();
