@@ -57,6 +57,9 @@ export interface IBreadcrumb {
  * Breadcrumb Item
  */
 export interface IBreadcrumbItem {
+    /** Custom class names. */
+    className?: string;
+
     /** The breadcrumb link */
     href?: string;
 

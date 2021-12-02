@@ -1,3 +1,4 @@
+import { setClassNames } from "../common";
 import { IBreadcrumbItem } from "./types";
 import { HTMLItem, HTMLLink } from "./templates";
 
@@ -28,6 +29,9 @@ export class BreadcrumbItem {
 
     // Configure the item
     private configure() {
+        // Set the class names
+        setClassNames(this._el, this._props.className);
+
         // See if this item is active
         if (this._props.isActive) {
             // Add the class name
