@@ -41,6 +41,12 @@ export class BreadcrumbItem {
             this._el.setAttribute("aria-current", "page")
         }
 
+        // See if a name exists
+        if (this._props.name) {
+            // Set the name
+            this._el.setAttribute("data-name", this._props.name);
+        }
+
         // See if this is a link
         this._elLink = this.el.querySelector("a");
         if (this._elLink) {

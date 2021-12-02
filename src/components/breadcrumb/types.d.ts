@@ -43,11 +43,23 @@ import { IBaseProps } from "../types";
  * Breadcrumb
  */
 export interface IBreadcrumb {
+    /** Adds a breadcrumb item. */
+    add: (item: IBreadcrumbItem) => void;
+
     /** The element. */
     el: Element;
 
     /** Hides the breadcrumb. */
     hide: () => void;
+
+    /** Removes the last breadcrumb item. */
+    remove: () => void;
+
+    /** Removes a breadcrumb item by it's name property. */
+    removeByName: (name: string) => void;
+
+    /** Sets the breadcrumb items. */
+    setItems: (items: IBreadcrumbItem[]) => void;
 
     /** Shows the breadcrumb. */
     show: () => void;
@@ -65,6 +77,9 @@ export interface IBreadcrumbItem {
 
     /** Internal flag set by the component */
     isActive?: boolean;
+
+    /** A unique name of the  */
+    name?: string;
 
     /** Click event for the link */
     onClick?: (item?: IBreadcrumbItem, ev?: Event) => void;

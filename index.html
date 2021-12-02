@@ -1058,15 +1058,18 @@
                     content: "<a href='#'>This is a Link</a>"
                 }]
             });
-            GD.Components.Breadcrumb({
+            window["breadcrumb"] = GD.Components.Breadcrumb({
                 el: document.querySelector("#breadcrumb"),
                 items: [{
+                    "name": "root",
                     "text": "Root",
                     "href": "/"
                 }, {
+                    "name": "web1",
                     "text": "Web 1",
                     "href": "/web"
                 }, {
+                    "name": "web1-1",
                     "text": "Web 1-1",
                     "href": "/web/1"
                 }]
