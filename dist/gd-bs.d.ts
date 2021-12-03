@@ -1813,6 +1813,9 @@ declare module 'gd-bs/components/modal/types' {
             /** Updates the backdrop flag. */
             setBackdrop: (value: boolean) => void;
     
+            /** Updates the visibility of the close button. */
+            setCloseButtonVisibility: (showFl: boolean) => void;
+    
             /** Updates the focus flag. */
             setFocus: (value: boolean) => void;
     

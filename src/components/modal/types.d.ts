@@ -92,6 +92,9 @@ export interface IModal {
     /** Updates the backdrop flag. */
     setBackdrop: (value: boolean) => void;
 
+    /** Updates the visibility of the close button. */
+    setCloseButtonVisibility: (showFl: boolean) => void;
+
     /** Updates the focus flag. */
     setFocus: (value: boolean) => void;
 

@@ -78,7 +78,7 @@ class _Modal extends Base<IModalProps> implements IModal {
             if (this.props.hideCloseButton) {
                 // Remove the close button
                 let closeButton = dialog.querySelector(".btn-close") as HTMLElement;
-                closeButton ? closeButton.parentNode.removeChild(closeButton) : null;
+                closeButton ? closeButton.classList.add("d-none") : null;
             }
         }
 
@@ -232,6 +232,22 @@ class _Modal extends Base<IModalProps> implements IModal {
     setBackdrop(value: boolean) {
         // Set the backdrop
         this.el.setAttribute("data-bs-backdrop", value ? "true" : "false");
+    }
+
+    // Updates the visibility of the close button
+    setCloseButtonVisibility(showFl: boolean) {
+        // Get the close button
+        let closeButton = this.el.querySelector(".btn-close") as HTMLElement;
+        if (closeButton) {
+            // See if we are showing the button
+            if (showFl) {
+                // Show the button
+                closeButton.classList.remove("d-none");
+            } else {
+                // Hide the button
+                closeButton.classList.add("d-none");
+            }
+        }
     }
 
     // Updates the focus flag
