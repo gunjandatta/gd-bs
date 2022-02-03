@@ -463,7 +463,7 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
     get isMulti(): boolean { return this.props.multi; }
 
     // Returns true if the dropdown menu is visible
-    get isVisible(): boolean { return this._popover.tippy.state.isVisible; }
+    get isVisible(): boolean { return this._popover ? this._popover.tippy.state.isVisible : false; }
 
     // The popover menu
     get popover(): IPopover { return this._popover; }
