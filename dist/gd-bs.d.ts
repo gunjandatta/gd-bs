@@ -473,6 +473,9 @@ declare module 'gd-bs/components/buttonGroup/types' {
             /** The element. */
             el: Element;
     
+            /** Adds a button to the group. */
+            add: (props: IButtonProps, btnTemplate?: string) => void;
+    
             /** The buttons. */
             buttons: Array<IButton>;
     

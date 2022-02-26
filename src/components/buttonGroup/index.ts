@@ -3,6 +3,7 @@ import { IButtonGroup, IButtonGroupProps } from "./types";
 import { Base } from "../base";
 import { Button } from "../button";
 import { HTML } from "./templates";
+import { IButtonProps } from "../components";
 
 /**
  * Button Group
@@ -45,18 +46,22 @@ class _ButtonGroup extends Base<IButtonGroupProps> implements IButtonGroup {
         // Parse the buttons
         let buttons = this.props.buttons || [];
         for (let i = 0; i < buttons.length; i++) {
-            let buttonProps = buttons[i];
-
-            // Set the property
-            buttonProps.type = buttonProps.type || this.props.buttonType;
-
-            // Create the button
-            let button = Button(buttonProps, btnTemplate);
-            this._buttons.push(button);
-
-            // Append the button to the group
-            this.el.appendChild(button.el);
+            // Render the button
+            this.renderButton(buttons[i], btnTemplate);
         }
+    }
+
+    // Renders a button
+    private renderButton(props: IButtonProps, template) {
+        // Set the property
+        props.type = props.type || this.props.buttonType;
+
+        // Create the button
+        let button = Button(props, template);
+        this._buttons.push(button);
+
+        // Append the button to the group
+        this.el.appendChild(button.el);
     }
 
     /**
@@ -65,5 +70,11 @@ class _ButtonGroup extends Base<IButtonGroupProps> implements IButtonGroup {
 
     // Reference to the buttons
     get buttons(): Array<IButton> { return this._buttons; }
+
+    // Adds a button to the group
+    add(props: IButtonProps, btnTemplate?: string) {
+        // Render the button
+        this.renderButton(props, btnTemplate);
+    }
 }
 export const ButtonGroup = (props: IButtonGroupProps, template?: string, btnTemplate?: string): IButtonGroup => { return new _ButtonGroup(props, template, btnTemplate); }
