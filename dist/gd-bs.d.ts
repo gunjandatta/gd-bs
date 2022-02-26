@@ -2968,6 +2968,9 @@ declare module 'gd-bs/components/tooltipGroup/types' {
         * Tooltip Group
         */
     export interface ITooltipGroup {
+            /** Adds a button to the group. */
+            add: (props: ITooltipProps, btnTemplate?: string) => void;
+    
             /** The element. */
             el: Element;
     

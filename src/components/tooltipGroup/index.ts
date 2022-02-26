@@ -1,7 +1,7 @@
-import { ITooltip } from "../tooltip/types";
+import { ITooltip, ITooltipProps } from "../tooltip/types";
 import { ITooltipGroup, ITooltipGroupProps } from "./types";
 import { Base } from "../base";
-import { Tooltip } from "../tooltip";
+import { Tooltip, } from "../tooltip";
 import { HTML } from "./templates";
 
 /**
@@ -38,38 +38,48 @@ class _TooltipGroup extends Base<ITooltipGroupProps> implements ITooltipGroup {
     }
 
     // Render the tooltips
-    private renderTooltips(tooltipTemplate: string) {
+    private renderTooltips(btnTemplate: string) {
         // Clear the tooltips
         this._tooltips = [];
 
         // Parse the tooltips
         let tooltips = this.props.tooltips || [];
         for (let i = 0; i < tooltips.length; i++) {
-            let tooltipProps = tooltips[i];
-
-            // Set the properties
-            tooltipProps.options = tooltipProps.options || this.props.tooltipOptions;
-            tooltipProps.placement = tooltipProps.placement || this.props.tooltipPlacement;
-            tooltipProps.type = tooltipProps.type || this.props.tooltipType;
-
-            // See if the button props exists
-            if (tooltipProps.btnProps) {
-                // Set the button type
-                tooltipProps.btnProps.type = tooltipProps.btnProps.type || this.props.buttonType;
-            }
-
-            // Create the tooltip
-            let tooltip = Tooltip(tooltipProps, tooltipTemplate);
-            this._tooltips.push(tooltip);
-
-            // Append the tooltip to the group
-            this.el.appendChild(tooltip.el);
+            // Render the tooltip
+            this.renderTooltip(tooltips[i], btnTemplate);
         }
+    }
+
+    // Renders a tooltip
+    private renderTooltip(props: ITooltipProps, btnTemplate?: string) {
+        // Set the properties
+        props.options = props.options || this.props.tooltipOptions;
+        props.placement = props.placement || this.props.tooltipPlacement;
+        props.type = props.type || this.props.tooltipType;
+
+        // See if the button props exists
+        if (props.btnProps) {
+            // Set the button type
+            props.btnProps.type = props.btnProps.type || this.props.buttonType;
+        }
+
+        // Create the tooltip
+        let tooltip = Tooltip(props, btnTemplate);
+        this._tooltips.push(tooltip);
+
+        // Append the tooltip to the group
+        this.el.appendChild(tooltip.el);
     }
 
     /**
      * Public Interface
      */
+
+    // Adds a button to the group
+    add(props: ITooltipProps, tooltipTemplate?: string) {
+        // Render the tooltip
+        this.renderTooltip(props);
+    }
 
     // Reference to the tooltips
     get tooltips(): Array<ITooltip> { return this._tooltips; }
