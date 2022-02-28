@@ -632,6 +632,15 @@ export class FormControl implements IFormControl {
 
                 // Update the display
                 elMessage.style.display = validation.isValid ? "" : "block";
+            } else {
+                // See if there is valid feedback
+                let validClassName = useTooltip ? "valid-tooltip" : "valid-feedback";
+                let elMessage = elFormControl.parentNode.querySelector("." + validClassName) as HTMLElement;
+                if (elMessage) {
+                    // Clear the message
+                    elMessage.innerHTML = "";
+                    elMessage.style.display = "";
+                }
             }
 
             // See if there is valid feedback
@@ -651,6 +660,15 @@ export class FormControl implements IFormControl {
 
                 // Update the display
                 elMessage.style.display = validation.isValid ? "block" : "";
+            } else {
+                // See if there is invalid feedback
+                let invalidClassName = useTooltip ? "invalid-tooltip" : "invalid-feedback";
+                let elMessage = elFormControl.parentNode.querySelector("." + invalidClassName) as HTMLElement;
+                if (elMessage) {
+                    // Clear the message
+                    elMessage.innerHTML = "";
+                    elMessage.style.display = "";
+                }
             }
         }
     }
