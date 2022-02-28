@@ -615,11 +615,29 @@ export class FormControl implements IFormControl {
         if (elFormControl) {
             let useTooltip = this._formProps.validationType == FormValidationTypes.Tooltip;
 
+            // Clear the old valid message if it exists
+            let validClassName = useTooltip ? "valid-tooltip" : "valid-feedback";
+            let elMessage = elFormControl.parentNode.querySelector("." + validClassName) as HTMLElement;
+            if (elMessage) {
+                // Clear the message
+                elMessage.innerHTML = "";
+                elMessage.style.display = "";
+            }
+
+            // Clear the old valid message if it exists
+            let invalidClassName = useTooltip ? "invalid-tooltip" : "invalid-feedback";
+            elMessage = elFormControl.parentNode.querySelector("." + invalidClassName) as HTMLElement;
+            if (elMessage) {
+                // Clear the message
+                elMessage.innerHTML = "";
+                elMessage.style.display = "";
+            }
+
             // See if there is invalid feedback
             if (validation.invalidMessage || this._props.errorMessage) {
                 // Get the element
                 let invalidClassName = useTooltip ? "invalid-tooltip" : "invalid-feedback";
-                let elMessage = elFormControl.parentNode.querySelector("." + invalidClassName) as HTMLElement;
+                elMessage = elFormControl.parentNode.querySelector("." + invalidClassName) as HTMLElement;
                 if (elMessage == null) {
                     // Create the element
                     elMessage = document.createElement("div");
@@ -632,22 +650,13 @@ export class FormControl implements IFormControl {
 
                 // Update the display
                 elMessage.style.display = validation.isValid ? "" : "block";
-            } else {
-                // See if there is valid feedback
-                let validClassName = useTooltip ? "valid-tooltip" : "valid-feedback";
-                let elMessage = elFormControl.parentNode.querySelector("." + validClassName) as HTMLElement;
-                if (elMessage) {
-                    // Clear the message
-                    elMessage.innerHTML = "";
-                    elMessage.style.display = "";
-                }
             }
 
             // See if there is valid feedback
             if (validation.validMessage) {
                 // Get the element
                 let validClassName = useTooltip ? "valid-tooltip" : "valid-feedback";
-                let elMessage = elFormControl.parentNode.querySelector("." + validClassName) as HTMLElement;
+                elMessage = elFormControl.parentNode.querySelector("." + validClassName) as HTMLElement;
                 if (elMessage == null) {
                     // Create the element
                     elMessage = document.createElement("div");
@@ -660,15 +669,6 @@ export class FormControl implements IFormControl {
 
                 // Update the display
                 elMessage.style.display = validation.isValid ? "block" : "";
-            } else {
-                // See if there is invalid feedback
-                let invalidClassName = useTooltip ? "invalid-tooltip" : "invalid-feedback";
-                let elMessage = elFormControl.parentNode.querySelector("." + invalidClassName) as HTMLElement;
-                if (elMessage) {
-                    // Clear the message
-                    elMessage.innerHTML = "";
-                    elMessage.style.display = "";
-                }
             }
         }
     }
