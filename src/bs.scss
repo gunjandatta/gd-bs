@@ -83,6 +83,30 @@
     .bg-sharepoint {
         background-color: #0078d4 !important;
     }
+    /* Fix breadcrumb alignment */
+    .breadcrumb {
+        margin-bottom: 0;
+    }
+    /* Color match breadcrumb links */
+    .breadcrumb-item.active, .breadcrumb-item > a {
+        color: #fff;
+        text-decoration: none;
+    }
+    /* Color match breadcrumb hover links */
+    .breadcrumb-item > a:hover, .breadcrumb-item > a:focus {
+        color: #dee2e6;
+        text-decoration: underline;
+    }
+    /* Color match breadcrumb active links */
+    .breadcrumb-item > a:active {
+        color: #333333;
+        font-weight: 500;
+        text-decoration: underline;
+    }
+    /* Fix breadcrumb alignment */
+    .breadcrumb-item+.breadcrumb-item::before {
+        padding-top: 0.15rem;
+    }
     /* Close button alignment */
     .btn-close {
         min-width: auto;
