@@ -218,6 +218,10 @@
         background-color: #0078d4;
         border-color: #0078d4;
     }
+    /* Color match form elements */
+    .form-control {
+        border-color: #6c757d;
+    }
     /* Color match disabled form elements */
     .form-control:disabled, .form-control[readonly] {
         color: #a6a6a6;
