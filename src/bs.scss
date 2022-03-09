@@ -41,7 +41,6 @@
     @import "~bootstrap/scss/placeholders";
 }
 
-
 /** Helpers */
 
 @import "~bootstrap/scss/helpers";
@@ -53,6 +52,41 @@
 /** Customizations */
 
 .bs {
+    /* Color match links to 'SharePoint Blue' */
+    a,
+    .link-primary {
+        color: #0078d4;
+    }
+    /* Color match hover links */
+    a:hover,
+    a:focus,
+    .link-primary:hover,
+    .link-primary:focus {
+        color: #004c86;
+    }
+    /* Color match active links */
+    a:active,
+    .link-primary:active {
+        color: #c4e4ff;
+    }
+    /* Color match accordion on focus */
+    .accordion-button:focus {
+        border-color: #2d8ad6;
+        box-shadow: 0 0 0 0.25rem rgba(45, 138, 214, 0.25);
+    }
+    /* Color match accordion while expanded */
+    .accordion-button:not(.collapsed) {
+        background-color: #c4e4ff;
+        color: #0078d4;
+    }
+    /* Create a reusable 'SharePoint Blue' background color */
+    .bg-sharepoint {
+        background-color: #0078d4 !important;
+    }
+    /* Close button alignment */
+    .btn-close {
+        min-width: auto;
+    }
     /** Button Icon - Custom class */
     .btn-icon {
         font-size: inherit;
@@ -60,9 +94,91 @@
         min-width: 0px;
         padding: 2px;
     }
-    /* Close button alignment */
-    .btn-close {
-        min-width: auto;
+    /* Align icon properly when using btn-sm */
+    .btn-icon-sm {
+        margin: 0 0.25rem 0.14rem -0.25rem;
+    }
+    /* Color match the primary button to 'SharePoint Blue' */
+    /* Don't reorder the btn-primary classes. It breaks active colors. */
+    .btn-primary,
+    .btn-primary:disabled,
+    .btn-primary.disabled {
+        background-color: #0078d4;
+        border-color: #0078d4;
+    }
+    /* Color match the primary button hover */
+    .btn-primary:hover {
+        background-color: #004c86;
+        border-color: #004c86;
+    }
+    /* Color match primary outline button */
+    .btn-outline-primary,
+    .btn-outline-primary:disabled,
+    .btn-outline-primary.disabled {
+        border-color: #0078d4;
+        color: #0078d4;
+    }
+    /* Color match primary outline button hover */
+    .btn-outline-primary:hover {
+        background-color: #0078d4;
+        border-color: #0078d4;
+    }
+    /* Fix color for outline light focus */
+    .btn-outline-light:focus {
+        color: #f8f9fa;
+    }
+    /* Fix color for outline light active */
+    .btn-outline-light:active,
+    .btn-outline-light:hover {
+        color: #000;
+    }
+    /* Color match primary outline button focus */
+    .btn-check:focus+.bs .btn-outline-primary,
+    .btn-outline-primary:focus {
+        box-shadow: 0 0 0 0.25rem rgba(45, 138, 214, 0.5);
+    }
+    /* Color match primary outline button active */
+    .btn-check:checked+.bs .btn-outline-primary,
+    .btn-check:active+.bs .btn-outline-primary,
+    .btn-outline-primary:active,
+    .btn-outline-primary.active,
+    .btn-outline-primary.dropdown-toggle.show {
+        background-color: #004c86;
+        border-color: #004c86;
+    }
+    /* Color match the primary button focus */
+    .btn-check:focus+.btn-primary,
+    .btn-primary:focus {
+        background-color: #004c86;
+        border-color: #004c86;
+        box-shadow: 0 0 0 0.25rem rgba(45, 138, 214, 0.5);
+    }
+    /* Color match the primary button active */
+    .bs .btn-check:checked+.btn-primary,
+    .btn-check:active+.btn-primary,
+    .btn-primary:active,
+    .btn-primary.active,
+    .show>.btn-primary.dropdown-toggle {
+        background-color: #c4e4ff;
+        border-color: #c4e4ff;
+    }
+    /* Color match the shadow on active */
+    .btn-check:checked+.btn-primary:focus,
+    .btn-check:active+.btn-primary:focus,
+    .btn-primary:active:focus,
+    .btn-primary.active:focus,
+    .show>.btn-primary.dropdown-toggle:focus {
+        box-shadow: 0 0 0 0.25rem rgba(45, 138, 214, 0.5);
+    }
+    /* Color match dropdown hover */
+    .dropdown-item:hover,
+    .dropdown-item:focus {
+        background-color: #dee2e6;
+    }
+    /* Color match dropdown active */
+    .dropdown-item.active,
+    .dropdown-item:active {
+        background-color: #0078d4;
     }
     /* Dropdown Menu - Using the popover component for the menu, so we don't need to hide it by default */
     .dropdown-menu {
@@ -73,6 +189,15 @@
         cursor: pointer;
         height: 1.25em;
     }
+    /** Color match the toggle background color to 'SharePoint Blue' */
+    .form-check-input:checked {
+        background-color: #0078d4;
+        border-color: #0078d4;
+    }
+    /* Color match disabled form elements */
+    .form-control:disabled, .form-control[readonly] {
+        color: #a6a6a6;
+    }
     /* Bootstrap Icon: Custom - caret-up-fill + caret-down-fill */
     .form-select {
         background: #fff url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 16 25.333' fill='%236c757d' width='1em' height='1em'><path d='M0.34 8.03C-0.44 8.92 0.2 10.32 1.38 10.32C2.71 10.32 13.3 10.32 14.62 10.32C15.38 10.32 16 9.7 16 8.94C16 8.61 15.88 8.28 15.66 8.03C15 7.28 9.7 1.23 9.04 0.47C8.54 -0.1 7.67 -0.16 7.09 0.34C7.05 0.38 7 0.43 6.96 0.47C6.96 0.47 1.01 7.28 0.34 8.03Z'/><path d='M0.34 17.3C-0.44 16.41 0.2 15.01 1.38 15.01C2.71 15.01 13.3 15.01 14.62 15.01C15.38 15.01 16 15.63 16 16.39C16 16.73 15.88 17.05 15.66 17.3C15 18.06 9.7 24.11 9.04 24.86C8.54 25.43 7.67 25.49 7.09 24.99C7.05 24.95 7 24.91 6.96 24.86C6.96 24.86 1.01 18.06 0.34 17.3Z'/></svg>") no-repeat right 0.75rem center/8px 10px !important;
@@ -82,9 +207,23 @@
     .form-select:hover {
         cursor: pointer;
     }
+    /* Color match form-select active */
+    .form-select:active,
+    .form-select:focus {
+        border-color: #2d8ad6;
+        box-shadow: 0 0 0 0.25rem rgba(45, 138, 214, 0.25);
+    }
     /* Fix text width on dataTables_length */
     .form-select-sm {
         padding-right: 1.65rem;
+    }
+    /* Color match the toggle on focus */
+    .form-switch .form-check-input:focus {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%232d8ad6'/%3e%3c/svg%3e");
+    }
+    /* Update toggle to white after checked */
+    .form-switch .form-check-input:checked {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
     }
     /* Increase modal border size */
     .modal-footer {
@@ -102,6 +241,52 @@
         line-height: 1.2;
         margin: 0;
     }
+    /* Define a custom margin-end value */
+    .me-75 {
+        margin-right: 0.75rem !important;
+    }
+    /* Define a custom margin-start value */
+    .ms-75 {
+        margin-left: 0.75rem !important;
+    }
+    /* Define a custom margin-x value */
+    .mx-75 {
+        margin-left: 0.75rem !important;
+        margin-right: 0.75rem !important;
+    }
+    /* Set max-width to fit content */
+    .mw-fit {
+        max-width: fit-content !important;
+    }
+    /* Fix padding on the nav links */
+    .nav-link {
+        color: #0078d4;
+        padding: 0 !important;
+    }
+    /* Set background color and border for nav-tabs */
+    .nav-tabs .nav-link {
+        background-color: rgba(0, 0, 0, 0.05);
+        border-radius: 0.25rem 0.25rem 0 0;
+        border: 2px solid #dee2e6;
+    }
+    /* Color match nav-tabs hover to secondary color */
+    .nav-tabs .nav-link:hover {
+        background-color: #6c757d;
+        border-color: #6c757d;
+        color: #fff;
+    }
+    /* Color match nav-tabs active to SharePoint */
+    .nav-tabs .nav-link.active,
+    .nav-tabs .show>.nav-link,
+    .nav-tabs .nav-link:focus {
+        background-color: #0078d4;
+        border-color: #0078d4;
+        color: #fff;
+    }
+    /* Properly align the navbar brand text */
+    .navbar-brand {
+        align-items: baseline;
+    }
     /* Match off-canvas border color to modal */
     .offcanvas-header {
         border-bottom: 2px solid #dee2e6;
@@ -112,9 +297,79 @@
         margin: 0rem 0rem 0rem auto;
         padding: 1rem;
     }
+    /* Color match the pagination link color to 'SharePoint Blue' */
+    .page-link {
+        border-color: #6c757d;
+        color: #0078d4;
+    }
+    /* Color match the pagination active link colors */
+    .page-item.active .page-link {
+        background-color: #6c757d;
+        border-color: #6c757d;
+        z-index: inherit;
+    }
+    /* Color match the pagination disabled border colors */
+    .page-item.disabled .page-link {
+        border-color: #6c757d;
+    }
+    /* Color match for SharePoint */
+    .page-link:focus {
+        background-color: #dee2e6;
+    }
+    /* Color match for SharePoint */
+    .page-link:hover {
+        color: #333333;
+        background-color: #dee2e6;
+        border-color: #6c757d;
+    }
+    /* Color match for SharePoint */
+    .page-link:focus,
+    .form-control:focus,
+    .form-check-input:focus {
+        border-color: #2d8ad6;
+        box-shadow: 0 0 0 0.25rem rgba(45, 138, 214, 0.25);
+        color: #333333;
+    }
+    /* Define a custom padding-end value */
+    .pe-06 {
+        padding-right: 0.6rem !important;
+    }
+    /* Define a custom padding-end value */
+    .pe-75 {
+        padding-right: 0.75rem !important;
+    }
+    /* Define a custom padding-start value */
+    .ps-75 {
+        padding-left: 0.75rem !important;
+    }
+    /* Define a custom padding-top value */
+    .pt-03 {
+        padding-top: 0.3rem !important;
+    }
+    /* Define a custom padding-x value */
+    .px-75 {
+        padding-left: 0.75rem !important;
+        padding-right: 0.75rem !important;
+    }
     /* Fix for TippyJS Placement */
     .popover-body>* {
         position: relative !important;
+    }
+    /* Fix extra top margin in Firefox */
+    table.dataTable {
+        margin-top: 0rem !important;
+    }
+    /* Match the table header to the table footer; size & color */
+    .table>:not(:last-child)>:last-child>* {
+        border-bottom: 3px solid #dee2e6;
+    }
+    /* Match the table footer to the table header; size & color */
+    .tbl-footer {
+        border-bottom: 2px solid #dee2e6;
+    }
+    /* Add the default text color */
+    .text-default {
+        color: #333333;
     }
     /* Auto size the toast width */
     .toast {
@@ -124,23 +379,13 @@
     .tooltip-body>* {
         position: relative !important;
     }
-    /* Center the dataTables_info element properly */
-    div.dataTables_wrapper div.dataTables_info {
-        padding-top: 0.9rem;
-    }
-    /* Add proper width for dataTables_length select */
-    div.dataTables_wrapper div.dataTables_length select {
-        width: 3.75rem;
-    }
-    /* Fix extra top margin in Firefox */
-    table.dataTable {
-        margin-top: 0rem !important;
+    /* Define a custom width value */
+    .w-5 {
+        width: 5% !important;
     }
 }
 
-
 /** Modal background - Shouldn't be under the .bs class */
-
 .modal-backdrop {
     position: fixed;
     top: 0;
@@ -158,9 +403,7 @@
     }
 }
 
-
 /** Offcanvas background - Shouldn't be under the .bs class */
-
 .offcanvas-backdrop {
     position: fixed;
     top: 0;
@@ -178,12 +421,23 @@
     }
 }
 
+/* Center the dataTables_info element properly */
+div.dataTables_wrapper div.dataTables_info {
+    padding-top: 0.9rem;
+}
 
-/* DataTables sorting with Bootstrap Icons */
+/* Add proper width for dataTables_length select */
+div.dataTables_wrapper div.dataTables_length select {
+    width: 3.75rem;
+}
 
+/* Color match colReorder line */
+div.DTCR_pointer {
+    background-color: #0078d4;
+}
 
 /* Be sure to escape any characters, such as # to %23 when specifying hex color values in background-image */
-
+/* DataTables sorting with Bootstrap Icons */
 table.dataTable thead .sorting,
 table.dataTable thead .sorting_asc,
 table.dataTable thead .sorting_desc,
@@ -206,27 +460,20 @@ table.dataTable thead .sorting_desc_disabled:after {
     content: "" !important;
 }
 
-
 /* Bootstrap Icon: caret-up */
-
 table.dataTable thead .sorting {
     background-image: url("data:image/svg+xml,<svg viewBox='0 0 16 16' fill='%236c757d' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' d='M3.204 11L8 5.519 12.796 11H3.204zm-.753-.659l4.796-5.48a1 1 0 0 1 1.506 0l4.796 5.48c.566.647.106 1.659-.753 1.659H3.204a1 1 0 0 1-.753-1.659z'/></svg>");
 }
 
-
 /* Bootstrap Icon: caret-up-fill */
-
 table.dataTable thead .sorting_asc {
     background-image: url("data:image/svg+xml,<svg viewBox='0 0 16 16' fill='%236c757d' xmlns='http://www.w3.org/2000/svg'><path d='M7.247 4.86l-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z'/></svg>");
 }
 
-
 /* Bootstrap Icon: caret-down-fill */
-
 table.dataTable thead .sorting_desc {
     background-image: url("data:image/svg+xml,<svg viewBox='0 0 16 16' fill='%236c757d' xmlns='http://www.w3.org/2000/svg'><path d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/></svg>");
 }
-
 
 /* Tippy Tooltip primary theme color */
 
@@ -250,7 +497,6 @@ table.dataTable thead .sorting_desc {
     border-right-color: #0078d4;
 }
 
-
 /* Tippy Tooltip secondary theme color */
 
 .tippy-box[data-theme~='secondary'] {
@@ -273,7 +519,6 @@ table.dataTable thead .sorting_desc {
     border-right-color: #6c757d;
 }
 
-
 /* Tippy Tooltip success theme color */
 
 .tippy-box[data-theme~='success'] {
@@ -295,7 +540,6 @@ table.dataTable thead .sorting_desc {
 .tippy-box[data-theme~='success'][data-placement^='right']>.tippy-arrow::before {
     border-right-color: #198754;
 }
-
 
 /* Tippy Tooltip info theme color */
 
@@ -320,7 +564,6 @@ table.dataTable thead .sorting_desc {
     border-right-color: #0dcaf0;
 }
 
-
 /* Tippy Tooltip warning theme color */
 
 .tippy-box[data-theme~='warning'] {
@@ -344,7 +587,6 @@ table.dataTable thead .sorting_desc {
     border-right-color: #ffc107;
 }
 
-
 /* Tippy Tooltip danger theme color */
 
 .tippy-box[data-theme~='danger'] {
@@ -366,7 +608,6 @@ table.dataTable thead .sorting_desc {
 .tippy-box[data-theme~='danger'][data-placement^='right']>.tippy-arrow::before {
     border-right-color: #dc3545;
 }
-
 
 /* Tippy Tooltip light theme color - override Tippy default to match Bootstrap */
 
@@ -390,7 +631,6 @@ table.dataTable thead .sorting_desc {
 .tippy-box[data-theme~='light'][data-placement^='right']>.tippy-arrow::before {
     border-right-color: #f8f9fa !important;
 }
-
 
 /* Tippy Tooltip dark theme color */
 
