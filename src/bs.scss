@@ -224,6 +224,7 @@
     }
     /* Color match disabled form elements */
     .form-control:disabled, .form-control[readonly] {
+        border-color: #eaeaea;
         color: #a6a6a6;
     }
     /* Bootstrap Icon: Custom - caret-up-fill + caret-down-fill */
