@@ -773,6 +773,7 @@ declare module 'gd-bs/components/carousel/types' {
             imageAlt?: string;
             imageUrl?: string;
             isActive?: boolean;
+            onRendered?: (el?: HTMLElement, props?: ICarouselItem) => void;
     }
     
     /**
@@ -796,6 +797,8 @@ declare module 'gd-bs/components/carousel/types' {
             id?: string;
             isDark?: boolean;
             items?: Array<ICarouselItem<T>>;
+            onRendered?: (el?: HTMLElement, props?: ICarouselProps) => void;
+            onSlideRendered?: (el?: HTMLElement, props?: ICarouselItem) => void;
             options?: ICarouselOptions;
     }
 }

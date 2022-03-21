@@ -59,6 +59,9 @@ class _Carousel extends Base<ICarouselProps> implements ICarousel {
                 this.nextWhenVisible(options.slide);
             }
         }
+
+        // Call the event if it exists
+        this.props.onRendered ? this.props.onRendered(this.el, this.props) : null;
     }
 
     // Configures the events
@@ -73,12 +76,12 @@ class _Carousel extends Base<ICarouselProps> implements ICarousel {
                 // Add a keydown event
                 el.addEventListener("keydown", (ev) => {
                     // See if the left arrow was pressed
-                    if (ev.keyCode == 37) {
+                    if (ev.code == "37") {
                         // Move to the previous slide
                         this.previous();
                     }
                     // Else, see if the right arrow was pressed
-                    else if (ev.keyCode == 39) {
+                    else if (ev.code == "39") {
                         // Move tot he next slide
                         this.next();
                     }
@@ -220,6 +223,9 @@ class _Carousel extends Base<ICarouselProps> implements ICarousel {
 
                 // Create the item element
                 slides.appendChild(slide.el);
+
+                // Call the event
+                this.props.onSlideRendered ? this.props.onSlideRendered(slide.el, items[i]) : null;
             }
         }
     }

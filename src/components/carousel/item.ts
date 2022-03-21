@@ -48,6 +48,9 @@ export class CarouselItem {
             // Append the content
             appendContent(this._el, this._props.content);
         }
+
+        // Call the event if it exists
+        this._props.onRendered ? this._props.onRendered(this._el, this._props) : null;
     }
 
     /**

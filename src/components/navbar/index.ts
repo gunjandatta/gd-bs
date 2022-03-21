@@ -95,7 +95,7 @@ class _Navbar extends Base<INavbarProps> implements INavbar {
             // Set a keydown event to catch the "Enter" key being pressed
             searchbox.addEventListener("keydown", ev => {
                 // See if the "Enter" key was pressed
-                if (ev.keyCode == 13) {
+                if (ev.code == "13") {
                     // Disable the postback
                     ev.preventDefault();
 

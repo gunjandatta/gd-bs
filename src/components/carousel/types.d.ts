@@ -124,6 +124,7 @@ export interface ICarouselItem<T = Element> {
     imageAlt?: string;
     imageUrl?: string;
     isActive?: boolean;
+    onRendered?: (el?: HTMLElement, props?: ICarouselItem) => void;
 }
 
 /**
@@ -147,5 +148,7 @@ export interface ICarouselProps<T = Element> extends IBaseProps<ICarousel> {
     id?: string;
     isDark?: boolean;
     items?: Array<ICarouselItem<T>>;
+    onRendered?: (el?: HTMLElement, props?: ICarouselProps) => void;
+    onSlideRendered?: (el?: HTMLElement, props?: ICarouselItem) => void;
     options?: ICarouselOptions;
 }
