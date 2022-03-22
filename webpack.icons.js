@@ -31,7 +31,12 @@ module.exports = (env, argv) => {
                         // Loader for webpack to process CSS with PostCSS
                         { loader: 'postcss-loader' },
                         // Compile SASS to CSS
-                        { loader: "sass-loader" }
+                        {
+                            loader: "sass-loader",
+                            options: {
+                                implementation: require("sass")
+                            }
+                        }
                     ]
                 },
                 // Handle TypeScript Files

@@ -59,7 +59,12 @@ module.exports = (env, argv) => {
                         }
                     },
                     // Compile SASS to CSS
-                    { loader: "sass-loader" }
+                    {
+                        loader: "sass-loader",
+                        options: {
+                            implementation: require("sass")
+                        }
+                    }
                 ]
             }]
         }
