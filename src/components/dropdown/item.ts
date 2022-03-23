@@ -125,8 +125,9 @@ export class DropdownItem {
             // Prevent the page from moving to the top
             ev.preventDefault();
 
-            // See if we are selecting items
-            if (this._parent.autoSelect) {
+            // See if we are automatically selecting items
+            let autoSelect = typeof (this._parent.autoSelect) === "boolean" ? this._parent.autoSelect : true;
+            if (autoSelect) {
                 // Toggle the item
                 this.toggle();
             }
