@@ -41,6 +41,7 @@
     @import "~bootstrap/scss/placeholders";
 }
 
+
 /** Helpers */
 
 @import "~bootstrap/scss/helpers";
@@ -88,17 +89,19 @@
         margin-bottom: 0;
     }
     /* Color match breadcrumb links */
-    .breadcrumb-item.active, .breadcrumb-item > a {
+    .breadcrumb-item.active,
+    .breadcrumb-item>a {
         color: #fff;
         text-decoration: none;
     }
     /* Color match breadcrumb hover links */
-    .breadcrumb-item > a:hover, .breadcrumb-item > a:focus {
+    .breadcrumb-item>a:hover,
+    .breadcrumb-item>a:focus {
         color: #dee2e6;
         text-decoration: underline;
     }
     /* Color match breadcrumb active links */
-    .breadcrumb-item > a:active {
+    .breadcrumb-item>a:active {
         color: #333333;
         font-weight: 500;
         text-decoration: underline;
@@ -223,7 +226,8 @@
         border-color: #6c757d;
     }
     /* Color match disabled form elements */
-    .form-control:disabled, .form-control[readonly] {
+    .form-control:disabled,
+    .form-control[readonly] {
         border-color: #eaeaea;
         color: #a6a6a6;
     }
@@ -290,7 +294,7 @@
     /* Fix padding on the nav links */
     .nav-link {
         color: #0078d4;
-        padding: 0 !important;
+        /* padding: 0 !important; Removing this by default. */
     }
     /* Set background color and border for nav-tabs */
     .nav-tabs .nav-link {
@@ -414,7 +418,9 @@
     }
 }
 
+
 /** Modal background - Shouldn't be under the .bs class */
+
 .modal-backdrop {
     position: fixed;
     top: 0;
@@ -432,7 +438,9 @@
     }
 }
 
+
 /** Offcanvas background - Shouldn't be under the .bs class */
+
 .offcanvas-backdrop {
     position: fixed;
     top: 0;
@@ -450,23 +458,33 @@
     }
 }
 
+
 /* Center the dataTables_info element properly */
+
 div.dataTables_wrapper div.dataTables_info {
     padding-top: 0.9rem;
 }
 
+
 /* Add proper width for dataTables_length select */
+
 div.dataTables_wrapper div.dataTables_length select {
     width: 3.75rem;
 }
 
+
 /* Color match colReorder line */
+
 div.DTCR_pointer {
     background-color: #0078d4;
 }
 
+
 /* Be sure to escape any characters, such as # to %23 when specifying hex color values in background-image */
+
+
 /* DataTables sorting with Bootstrap Icons */
+
 table.dataTable thead .sorting,
 table.dataTable thead .sorting_asc,
 table.dataTable thead .sorting_desc,
@@ -489,20 +507,27 @@ table.dataTable thead .sorting_desc_disabled:after {
     content: "" !important;
 }
 
+
 /* Bootstrap Icon: caret-up */
+
 table.dataTable thead .sorting {
     background-image: url("data:image/svg+xml,<svg viewBox='0 0 16 16' fill='%236c757d' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' d='M3.204 11L8 5.519 12.796 11H3.204zm-.753-.659l4.796-5.48a1 1 0 0 1 1.506 0l4.796 5.48c.566.647.106 1.659-.753 1.659H3.204a1 1 0 0 1-.753-1.659z'/></svg>");
 }
 
+
 /* Bootstrap Icon: caret-up-fill */
+
 table.dataTable thead .sorting_asc {
     background-image: url("data:image/svg+xml,<svg viewBox='0 0 16 16' fill='%236c757d' xmlns='http://www.w3.org/2000/svg'><path d='M7.247 4.86l-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z'/></svg>");
 }
 
+
 /* Bootstrap Icon: caret-down-fill */
+
 table.dataTable thead .sorting_desc {
     background-image: url("data:image/svg+xml,<svg viewBox='0 0 16 16' fill='%236c757d' xmlns='http://www.w3.org/2000/svg'><path d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/></svg>");
 }
+
 
 /* Tippy Tooltip primary theme color */
 
@@ -526,6 +551,7 @@ table.dataTable thead .sorting_desc {
     border-right-color: #0078d4;
 }
 
+
 /* Tippy Tooltip secondary theme color */
 
 .tippy-box[data-theme~='secondary'] {
@@ -548,6 +574,7 @@ table.dataTable thead .sorting_desc {
     border-right-color: #6c757d;
 }
 
+
 /* Tippy Tooltip success theme color */
 
 .tippy-box[data-theme~='success'] {
@@ -569,6 +596,7 @@ table.dataTable thead .sorting_desc {
 .tippy-box[data-theme~='success'][data-placement^='right']>.tippy-arrow::before {
     border-right-color: #198754;
 }
+
 
 /* Tippy Tooltip info theme color */
 
@@ -593,6 +621,7 @@ table.dataTable thead .sorting_desc {
     border-right-color: #0dcaf0;
 }
 
+
 /* Tippy Tooltip warning theme color */
 
 .tippy-box[data-theme~='warning'] {
@@ -616,6 +645,7 @@ table.dataTable thead .sorting_desc {
     border-right-color: #ffc107;
 }
 
+
 /* Tippy Tooltip danger theme color */
 
 .tippy-box[data-theme~='danger'] {
@@ -637,6 +667,7 @@ table.dataTable thead .sorting_desc {
 .tippy-box[data-theme~='danger'][data-placement^='right']>.tippy-arrow::before {
     border-right-color: #dc3545;
 }
+
 
 /* Tippy Tooltip light theme color - override Tippy default to match Bootstrap */
 
@@ -660,6 +691,7 @@ table.dataTable thead .sorting_desc {
 .tippy-box[data-theme~='light'][data-placement^='right']>.tippy-arrow::before {
     border-right-color: #f8f9fa !important;
 }
+
 
 /* Tippy Tooltip dark theme color */
 
