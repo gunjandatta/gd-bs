@@ -1,6 +1,6 @@
 {
     "name": "gd-bs",
-    "version": "5.4.4",
+    "version": "5.4.5",
     "description": "Bootstrap JavaScript, TypeScript and Web Components library.",
     "main": "build/index.js",
     "typings": "src/index.d.ts",
@@ -43,7 +43,7 @@
         "@babel/preset-env": "^7.16.11",
         "@types/node": "^16.11.26",
         "autoprefixer": "^10.4.4",
-        "babel-loader": "^8.2.3",
+        "babel-loader": "^8.2.4",
         "css-loader": "^6.7.1",
         "dts-bundle": "^0.7.3",
         "html-loader": "^2.1.2",
