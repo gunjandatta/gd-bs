@@ -44,7 +44,7 @@ export class FormGroup {
 
                 // Update the property
                 this._props.onControlRendering = onControlRendering;
-            })
+            });
         });
     }
 
