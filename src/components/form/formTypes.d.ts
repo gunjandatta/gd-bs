@@ -114,10 +114,10 @@ export const FormValidationTypes: IFormValidationTypes;
  */
 export interface IForm {
     /** Appends controls to the form */
-    appendControls: (controls: Array<IFormControlProps>) => void;
+    appendControls: (controls: Array<IFormControlProps>) => Array<IFormControl>;
 
     /** Appends rows to the form */
-    appendRows: (rows: Array<IFormRow>) => void;
+    appendRows: (rows: Array<IFormRow>) => Array<IFormControl>;
 
     /** The form controls */
     controls: Array<IFormControl>;
