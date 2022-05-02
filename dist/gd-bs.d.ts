@@ -1390,10 +1390,10 @@ declare module 'gd-bs/components/form/formTypes' {
         */
     export interface IForm {
             /** Appends controls to the form */
-            appendControls: (controls: Array<IFormControlProps>) => Array<IFormControl>;
+            appendControls: (controls: Array<IFormControlProps>) => void;
     
             /** Appends rows to the form */
-            appendRows: (rows: Array<IFormRow>) => Array<IFormControl>;
+            appendRows: (rows: Array<IFormRow>) => void;
     
             /** The form controls */
             controls: Array<IFormControl>;
