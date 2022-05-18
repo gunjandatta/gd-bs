@@ -434,6 +434,9 @@ export class FormControl implements IFormControl {
     // The textbox control
     get control() { return this._cb || this._ddl || this._lb || this._tb || this._custom }
 
+    // The control label
+    get label() { return this._elLabel; }
+
     // The listbox control
     get listbox() { return this._lb; }
 
