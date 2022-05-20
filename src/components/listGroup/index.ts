@@ -40,7 +40,7 @@ class _ListGroup extends Base<IListGroupProps> implements IListGroup {
     private _items: Array<ListGroupItem> = null;
 
     // Constructor
-    constructor(props: IListGroupProps, template: string = props.isTabs && props.colWidth > 0 && props.colWidth < 12 ? HTMLTabs : HTML, itemTemplate?: string) {
+    constructor(props: IListGroupProps, template: string = props.isTabs && props.colWidth > 0 && props.colWidth <= 12 ? HTMLTabs : HTML, itemTemplate?: string) {
         super(template, props);
 
         // Configure the collapse
