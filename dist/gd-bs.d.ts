@@ -2390,6 +2390,9 @@ declare module 'gd-bs/components/popover/types' {
             /** Toggles an element's popover. */
             toggle: () => void;
     
+            /** Sets the tippy content. */
+            setContent: (content: string | Element) => void;
+    
             /** Reveals an element’s popover. */
             show: () => void;
     }
@@ -2853,7 +2856,7 @@ declare module 'gd-bs/components/tooltip/types' {
     /**
         * Tooltip Placements
         */
-     export const TooltipPlacements: ITooltipPlacements;
+    export const TooltipPlacements: ITooltipPlacements;
     
     /**
         * Tooltip Types
@@ -2885,6 +2888,9 @@ declare module 'gd-bs/components/tooltip/types' {
     
             /** Toggles an element's tooltip. */
             toggle: () => void;
+    
+            /** Sets the tippy content. */
+            setContent: (content: string | Element) => void;
     
             /** Reveals an element’s tooltip. */
             show: () => void;
@@ -2922,7 +2928,7 @@ declare module 'gd-bs/components/tooltip/types' {
     /**
         * Tooltip Placements
         */
-     export type ITooltipPlacements = {
+    export type ITooltipPlacements = {
             Auto: number;
             AutoStart: number;
             AutoEnd: number;

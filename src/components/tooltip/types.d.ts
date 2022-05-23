@@ -44,7 +44,7 @@ export const Tooltip: (props: ITooltipProps, template?: string) => ITooltip;
 /**
  * Tooltip Placements
  */
- export const TooltipPlacements: ITooltipPlacements;
+export const TooltipPlacements: ITooltipPlacements;
 
 /**
  * Tooltip Types
@@ -76,6 +76,9 @@ export interface ITooltip {
 
     /** Toggles an element's tooltip. */
     toggle: () => void;
+
+    /** Sets the tippy content. */
+    setContent: (content: string | Element) => void;
 
     /** Reveals an element’s tooltip. */
     show: () => void;
@@ -113,7 +116,7 @@ export type ITooltipTypes = {
 /**
  * Tooltip Placements
  */
- export type ITooltipPlacements = {
+export type ITooltipPlacements = {
     Auto: number;
     AutoStart: number;
     AutoEnd: number;

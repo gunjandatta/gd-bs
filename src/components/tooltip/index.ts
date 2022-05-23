@@ -329,6 +329,12 @@ class _Tooltip extends Base<ITooltipProps> {
     // The tippy instance
     get tippy() { return this._tippy; }
 
+    // Sets the tippy content
+    setContent(content: string | Element) {
+        // Set the tippy content
+        this.tippy.setContent(content);
+    }
+
     // Shows the tooltip
     show() {
         // See if it's hidden

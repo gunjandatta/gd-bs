@@ -85,6 +85,9 @@ export interface IPopover {
     /** Toggles an element's popover. */
     toggle: () => void;
 
+    /** Sets the tippy content. */
+    setContent: (content: string | Element) => void;
+
     /** Reveals an element’s popover. */
     show: () => void;
 }
