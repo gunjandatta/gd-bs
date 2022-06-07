@@ -1,19 +1,21 @@
 {
     "name": "gd-bs",
-    "version": "5.5.1",
+    "version": "5.5.2",
     "description": "Bootstrap JavaScript, TypeScript and Web Components library.",
     "main": "build/index.js",
     "typings": "src/index.d.ts",
     "scripts": {
-        "all": "npm run clean && npm run generate-icons && npm run build && npm run build-icons && npm run prod && npm run prod-icons && npm run typings && npm run docs",
+        "all": "npm run clean && npm run generate-icons && npm run build && npm run build-icons && npm run build-core && npm run prod && npm run prod-icons && npm run prod-core && npm run typings && npm run docs",
         "build": "tsc && npm run build-bs && webpack --mode=development && npm run post-build",
         "build-bs": "webpack --mode=production --config webpack.sass.js",
+        "build-core": "webpack --mode=development --config webpack.core.js",
         "build-icons": "webpack --mode=development --config webpack.icons.js",
         "post-build": "node ./post-build",
         "clean": "node ./clean.js",
         "docs": "typedoc",
         "generate-icons": "node ./generateIcons",
         "prod": "webpack --mode=production",
+        "prod-core": "webpack --mode=production --config webpack.core.js",
         "prod-icons": "webpack --mode=production --config webpack.icons.js",
         "typings": "dts-bundle --configJson dts-bundle.json"
     },
