@@ -17,6 +17,9 @@ class _Nav extends Base<INavProps> implements INav {
         // Configure the collapse
         this.configure(itemTemplate);
 
+        // Configure the events
+        this.configureEvents();
+
         // Configure the parent
         this.configureParent();
     }
@@ -38,8 +41,14 @@ class _Nav extends Base<INavProps> implements INav {
         this.renderItems(itemTemplate);
     }
 
-    // Configures the link event
-    private configureEvents(tab: NavLink) {
+    // Configure the events
+    private configureEvents() {
+        // Execute the event(s)
+        this.props.onRendered ? this.props.onRendered(this.el) : null;
+    }
+
+    // Configures the tab link event
+    private configureTabEvents(tab: NavLink) {
         // Add a click event
         tab.el.addEventListener("click", () => {
             let prevTab: INavLink = null;
@@ -88,7 +97,7 @@ class _Nav extends Base<INavProps> implements INav {
                 // See if we are rendering tabs
                 if (tabs) {
                     // Configure the events
-                    this.configureEvents(link);
+                    this.configureTabEvents(link);
 
                     // Add the tab content
                     tabs.appendChild(link.elTabContent);

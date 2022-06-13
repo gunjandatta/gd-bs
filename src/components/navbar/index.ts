@@ -195,6 +195,9 @@ class _Navbar extends Base<INavbarProps> implements INavbar {
                 }
             });
         }
+
+        // Execute the event(s)
+        this.props.onRendered ? this.props.onRendered(this.el) : null;
     }
 
     // Configures search

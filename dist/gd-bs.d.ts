@@ -1977,6 +1977,7 @@ declare module 'gd-bs/components/nav/types' {
             isVertical?: boolean;
             onClick?: (newTab?: INavLink, prevTab?: INavLink) => void;
             onLinkRendered?: (el?: HTMLElement, item?: INavLinkProps) => void;
+            onRendered?: (el?: HTMLElement) => void;
             onTabRendered?: (el?: HTMLElement, item?: INavLinkProps) => void;
     }
     
@@ -2122,6 +2123,7 @@ declare module 'gd-bs/components/navbar/types' {
             itemsEnd?: Array<INavbarItem>;
             onClick?: (item?: INavbarItem, ev?: Event) => void;
             onItemRendered?: (el?: HTMLElement, item?: INavbarItem) => void;
+            onRendered?: (el?: HTMLElement) => void;
             searchBox?: INavbarSearchBox;
             type?: number;
     }

@@ -148,6 +148,7 @@ export interface INavbarProps<T = Element> extends IBaseProps<INavbar> {
     itemsEnd?: Array<INavbarItem>;
     onClick?: (item?: INavbarItem, ev?: Event) => void;
     onItemRendered?: (el?: HTMLElement, item?: INavbarItem) => void;
+    onRendered?: (el?: HTMLElement) => void;
     searchBox?: INavbarSearchBox;
     type?: number;
 }

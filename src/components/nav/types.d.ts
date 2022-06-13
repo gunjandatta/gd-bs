@@ -93,6 +93,7 @@ export interface INavProps<T = Element> extends IBaseProps<INav> {
     isVertical?: boolean;
     onClick?: (newTab?: INavLink, prevTab?: INavLink) => void;
     onLinkRendered?: (el?: HTMLElement, item?: INavLinkProps) => void;
+    onRendered?: (el?: HTMLElement) => void;
     onTabRendered?: (el?: HTMLElement, item?: INavLinkProps) => void;
 }
 
