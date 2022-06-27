@@ -93,6 +93,7 @@ export interface IFormControlProps extends IBaseProps<IFormControl> {
  * Form Control Properties - Checkbox
  */
 export interface IFormControlPropsCheckbox extends IFormControlProps {
+    colSize?: number;
     el?: HTMLInputElement;
     hideLabel?: boolean;
     isInline?: boolean;
@@ -131,6 +132,7 @@ export interface IFormControlPropsListBox extends IFormControlProps {
  * Form Control Properties - Multiple Checkbox
  */
 export interface IFormControlPropsMultiCheckbox extends IFormControlProps {
+    colSize?: number;
     el?: HTMLInputElement;
     hideLabel?: boolean;
     isInline?: boolean;

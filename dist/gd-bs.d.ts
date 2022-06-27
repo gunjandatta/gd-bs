@@ -1178,6 +1178,7 @@ declare module 'gd-bs/components/form/controlTypes' {
         * Form Control Properties - Checkbox
         */
     export interface IFormControlPropsCheckbox extends IFormControlProps {
+            colSize?: number;
             el?: HTMLInputElement;
             hideLabel?: boolean;
             isInline?: boolean;
@@ -1216,6 +1217,7 @@ declare module 'gd-bs/components/form/controlTypes' {
         * Form Control Properties - Multiple Checkbox
         */
     export interface IFormControlPropsMultiCheckbox extends IFormControlProps {
+            colSize?: number;
             el?: HTMLInputElement;
             hideLabel?: boolean;
             isInline?: boolean;

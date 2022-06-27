@@ -110,6 +110,7 @@ export class FormControl implements IFormControl {
                 // Add the checkbox group
                 this._cb = CheckboxGroup({
                     className,
+                    colSize: cbProps.colSize,
                     hideLabel: true,
                     isInline: cbProps.isInline,
                     isReadonly: this._props.isReadonly,
@@ -211,6 +212,7 @@ export class FormControl implements IFormControl {
                 // Add the checkbox group
                 this._cb = CheckboxGroup({
                     className,
+                    colSize: cbProps.colSize,
                     hideLabel: true,
                     isInline: cbMultiProps.isInline,
                     isReadonly: this._props.isReadonly,
@@ -256,6 +258,7 @@ export class FormControl implements IFormControl {
                 // Add the checkbox group
                 this._cb = CheckboxGroup({
                     className,
+                    colSize: cbProps.colSize,
                     hideLabel: true,
                     isReadonly: this._props.isReadonly,
                     items: (this._props as IFormControlPropsMultiCheckbox).items,
@@ -271,6 +274,7 @@ export class FormControl implements IFormControl {
                 // Add the checkbox group
                 this._cb = CheckboxGroup({
                     className,
+                    colSize: cbProps.colSize,
                     hideLabel: true,
                     isReadonly: this._props.isReadonly,
                     items: (this._props as IFormControlPropsMultiCheckbox).items,
@@ -300,6 +304,7 @@ export class FormControl implements IFormControl {
                 // Add the checkbox group
                 this._cb = CheckboxGroup({
                     className,
+                    colSize: cbProps.colSize,
                     hideLabel: true,
                     isReadonly: this._props.isReadonly,
                     items: (this._props as IFormControlPropsCheckbox).items,
@@ -345,6 +350,7 @@ export class FormControl implements IFormControl {
                 // Add the checkbox group
                 this._cb = CheckboxGroup({
                     className,
+                    colSize: cbProps.colSize,
                     hideLabel: true,
                     isReadonly: this._props.isReadonly,
                     items: (this._props as IFormControlPropsCheckbox).items,
