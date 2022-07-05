@@ -134,6 +134,9 @@ export interface IForm {
     /** Hides the form. */
     hide: () => void;
 
+    /** Inserts a control into the form */
+    insertControl: (idx: number, control: IFormControlProps) => void;
+
     /** Validates the form */
     isValid: () => boolean;
 

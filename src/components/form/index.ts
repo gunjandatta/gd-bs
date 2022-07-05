@@ -166,6 +166,22 @@ class _Form extends Base<IFormProps> implements IForm {
         return values;
     }
 
+    // Inserts a control into the form
+    insertControl(idx: number, control: IFormControlProps) {
+        // Create the group
+        let group = new FormGroup(control, this.props);
+        this._groups.push(group);
+
+        // Validate the index
+        if (idx < this.el.childElementCount) {
+            // Insert the control
+            this.el.insertBefore(group.el, this.el.childNodes[idx]);
+        } else {
+            // Append the control
+            this.el.appendChild(group.el);
+        }
+    }
+
     // Validates the form
     isValid() {
         let isValid = true;
