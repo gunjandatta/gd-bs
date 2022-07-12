@@ -426,6 +426,12 @@
     }
 }
 
+/* Color match the selected flatpickr calendar control */
+.flatpickr-day.selected {
+    background-color: #0078d4;
+    border-color: #0078d4;
+}
+
 /* Fix styling for the flatpickr calendar control */
 .flatpickr-input[readonly] {
     color: #212529 !important;
