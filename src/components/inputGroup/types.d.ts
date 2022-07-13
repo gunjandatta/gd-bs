@@ -67,6 +67,7 @@ export interface IInputGroupProps extends IBaseProps<IInputGroup> {
     appendedLabel?: string;
     formFl?: boolean;
     id?: string;
+    isDisabled?: boolean;
     isLarge?: boolean;
     isReadonly?: boolean;
     isSmall?: boolean;

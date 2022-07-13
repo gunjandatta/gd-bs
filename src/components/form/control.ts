@@ -113,6 +113,7 @@ export class FormControl implements IFormControl {
                     colSize: cbProps.colSize,
                     hideLabel: true,
                     isInline: cbProps.isInline,
+                    isDisabled: this._props.isDisabled,
                     isReadonly: this._props.isReadonly,
                     items: cbProps.items,
                     onChange: cbProps.onChange,
@@ -127,6 +128,7 @@ export class FormControl implements IFormControl {
                 this._tb = InputGroup({
                     className,
                     id: this._props.id,
+                    isDisabled: this._props.isDisabled,
                     isReadonly: this._props.isReadonly,
                     onChange: (this._props as IFormControlPropsTextField).onChange,
                     placeholder: (this._props as IFormControlPropsTextField).placeholder,
@@ -171,6 +173,7 @@ export class FormControl implements IFormControl {
                 this._tb = InputGroup({
                     className,
                     id: this._props.id,
+                    isDisabled: this._props.isDisabled,
                     isReadonly: this._props.isReadonly,
                     onChange: (this._props as IFormControlPropsTextField).onChange,
                     placeholder: (this._props as IFormControlPropsTextField).placeholder,
@@ -185,6 +188,7 @@ export class FormControl implements IFormControl {
                 this._tb = InputGroup({
                     className,
                     id: this._props.id,
+                    isDisabled: this._props.isDisabled,
                     isReadonly: this._props.isReadonly,
                     onChange: (this._props as IFormControlPropsTextField).onChange,
                     placeholder: (this._props as IFormControlPropsTextField).placeholder,
@@ -214,6 +218,7 @@ export class FormControl implements IFormControl {
                     className,
                     colSize: cbMultiProps.colSize,
                     hideLabel: true,
+                    isDisabled: this._props.isDisabled,
                     isInline: cbMultiProps.isInline,
                     isReadonly: this._props.isReadonly,
                     items: cbMultiProps.items,
@@ -260,6 +265,7 @@ export class FormControl implements IFormControl {
                     className,
                     colSize: (this._props as IFormControlPropsMultiCheckbox).colSize,
                     hideLabel: true,
+                    isDisabled: this._props.isDisabled,
                     isReadonly: this._props.isReadonly,
                     items: (this._props as IFormControlPropsMultiCheckbox).items,
                     multi: true,
@@ -276,6 +282,7 @@ export class FormControl implements IFormControl {
                     className,
                     colSize: (this._props as IFormControlPropsMultiCheckbox).colSize,
                     hideLabel: true,
+                    isDisabled: this._props.isDisabled,
                     isReadonly: this._props.isReadonly,
                     items: (this._props as IFormControlPropsMultiCheckbox).items,
                     multi: true,
@@ -291,6 +298,7 @@ export class FormControl implements IFormControl {
                 this._tb = InputGroup({
                     className,
                     id: this._props.id,
+                    isDisabled: this._props.isDisabled,
                     isReadonly: this._props.isReadonly,
                     onChange: (this._props as IFormControlPropsTextField).onChange,
                     placeholder: (this._props as IFormControlPropsTextField).placeholder,
@@ -306,6 +314,7 @@ export class FormControl implements IFormControl {
                     className,
                     colSize: (this._props as IFormControlPropsCheckbox).colSize,
                     hideLabel: true,
+                    isDisabled: this._props.isDisabled,
                     isReadonly: this._props.isReadonly,
                     items: (this._props as IFormControlPropsCheckbox).items,
                     onChange: (this._props as IFormControlPropsCheckbox).onChange,
@@ -320,6 +329,7 @@ export class FormControl implements IFormControl {
                 this._tb = InputGroup({
                     className,
                     id: this._props.id,
+                    isDisabled: this._props.isDisabled,
                     isReadonly: this._props.isReadonly,
                     min: (this._props as IFormControlPropsRange).min || 0,
                     max: (this._props as IFormControlPropsRange).max || 100,
@@ -352,6 +362,7 @@ export class FormControl implements IFormControl {
                     className,
                     colSize: (this._props as IFormControlPropsCheckbox).colSize,
                     hideLabel: true,
+                    isDisabled: this._props.isDisabled,
                     isReadonly: this._props.isReadonly,
                     items: (this._props as IFormControlPropsCheckbox).items,
                     onChange: (this._props as IFormControlPropsCheckbox).onChange,
@@ -366,6 +377,7 @@ export class FormControl implements IFormControl {
                 this._tb = InputGroup({
                     className,
                     id: this._props.id,
+                    isDisabled: this._props.isDisabled,
                     isReadonly: this._props.isReadonly,
                     onChange: (this._props as IFormControlPropsTextField).onChange,
                     placeholder: (this._props as IFormControlPropsTextField).placeholder,
@@ -381,6 +393,7 @@ export class FormControl implements IFormControl {
                 this._tb = InputGroup({
                     className,
                     id: this._props.id,
+                    isDisabled: this._props.isDisabled,
                     isReadonly: this._props.isReadonly,
                     onChange: (this._props as IFormControlPropsTextField).onChange,
                     placeholder: (this._props as IFormControlPropsTextField).placeholder,

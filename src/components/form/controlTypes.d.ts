@@ -73,6 +73,7 @@ export interface IFormControlProps extends IBaseProps<IFormControl> {
     description?: string;
     errorMessage?: string;
     id?: string;
+    isDisabled?: boolean;
     isReadonly?: boolean;
     isPlainText?: boolean;
     label?: string;

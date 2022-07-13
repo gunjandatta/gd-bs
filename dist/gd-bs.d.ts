@@ -873,6 +873,7 @@ declare module 'gd-bs/components/checkboxGroup/types' {
     export interface ICheckboxGroupProps extends IBaseProps<ICheckboxGroup> {
             colSize?: number;
             hideLabel?: boolean;
+            isDisabled?: boolean;
             isInline?: boolean;
             isReadonly?: boolean;
             label?: string;
@@ -1158,6 +1159,7 @@ declare module 'gd-bs/components/form/controlTypes' {
             description?: string;
             errorMessage?: string;
             id?: string;
+            isDisabled?: boolean;
             isReadonly?: boolean;
             isPlainText?: boolean;
             label?: string;
@@ -1523,6 +1525,7 @@ declare module 'gd-bs/components/inputGroup/types' {
             appendedLabel?: string;
             formFl?: boolean;
             id?: string;
+            isDisabled?: boolean;
             isLarge?: boolean;
             isReadonly?: boolean;
             isSmall?: boolean;

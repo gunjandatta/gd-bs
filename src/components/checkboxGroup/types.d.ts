@@ -87,6 +87,7 @@ export interface ICheckboxGroupItem {
 export interface ICheckboxGroupProps extends IBaseProps<ICheckboxGroup> {
     colSize?: number;
     hideLabel?: boolean;
+    isDisabled?: boolean;
     isInline?: boolean;
     isReadonly?: boolean;
     label?: string;
