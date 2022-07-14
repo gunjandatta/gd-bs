@@ -43,7 +43,7 @@ import { IButtonProps } from "../button/types";
  * Button Group
  */
 export interface IInputGroup {
-    /** The element. */
+    /** The input group element. */
     el: HTMLElement;
 
     /** Method to get the value. */
@@ -51,12 +51,15 @@ export interface IInputGroup {
 
     /** Hides the input group. */
     hide: () => void;
-    
+
     /** Method to set the value. */
     setValue: (value: string) => void;
 
     /** Shows the input group. */
     show: () => void;
+
+    /** Reference to the textbox input/textarea element. */
+    textbox: HTMLInputElement | HTMLTextAreaElement;
 }
 
 /**

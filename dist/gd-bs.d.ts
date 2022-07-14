@@ -1501,7 +1501,7 @@ declare module 'gd-bs/components/inputGroup/types' {
         * Button Group
         */
     export interface IInputGroup {
-            /** The element. */
+            /** The input group element. */
             el: HTMLElement;
     
             /** Method to get the value. */
@@ -1515,6 +1515,9 @@ declare module 'gd-bs/components/inputGroup/types' {
     
             /** Shows the input group. */
             show: () => void;
+    
+            /** Reference to the textbox input/textarea element. */
+            textbox: HTMLInputElement | HTMLTextAreaElement;
     }
     
     /**
