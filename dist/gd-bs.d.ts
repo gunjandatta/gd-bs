@@ -1504,6 +1504,9 @@ declare module 'gd-bs/components/inputGroup/types' {
             /** The input group element. */
             el: HTMLElement;
     
+            /** Reference to the textbox input/textarea element. */
+            elTextbox: HTMLInputElement | HTMLTextAreaElement;
+    
             /** Method to get the value. */
             getValue: () => string;
     
@@ -1515,9 +1518,6 @@ declare module 'gd-bs/components/inputGroup/types' {
     
             /** Shows the input group. */
             show: () => void;
-    
-            /** Reference to the textbox input/textarea element. */
-            textbox: HTMLInputElement | HTMLTextAreaElement;
     }
     
     /**

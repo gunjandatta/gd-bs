@@ -46,6 +46,9 @@ export interface IInputGroup {
     /** The input group element. */
     el: HTMLElement;
 
+    /** Reference to the textbox input/textarea element. */
+    elTextbox: HTMLInputElement | HTMLTextAreaElement;
+
     /** Method to get the value. */
     getValue: () => string;
 
@@ -57,9 +60,6 @@ export interface IInputGroup {
 
     /** Shows the input group. */
     show: () => void;
-
-    /** Reference to the textbox input/textarea element. */
-    textbox: HTMLInputElement | HTMLTextAreaElement;
 }
 
 /**

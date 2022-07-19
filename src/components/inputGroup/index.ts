@@ -278,12 +278,12 @@ class _InputGroup extends Base<IInputGroupProps> implements IInputGroup {
      * Public Interface
      */
 
-    getValue() { return this.textbox.value; }
+    getValue() { return this.elTextbox.value; }
 
     // Sets the textbox value
     setValue(value: string = "") {
         // Set the textbox value
-        this.textbox.value = value;
+        this.elTextbox.value = value;
 
         // See if a change event exists
         if (this._initFl && this.props.onChange) {
@@ -293,6 +293,6 @@ class _InputGroup extends Base<IInputGroupProps> implements IInputGroup {
     }
 
     // Returns the textbox
-    get textbox(): HTMLInputElement | HTMLTextAreaElement { return this.el.querySelector("input") || this.el.querySelector("textarea"); }
+    get elTextbox(): HTMLInputElement | HTMLTextAreaElement { return this.el.querySelector("input") || this.el.querySelector("textarea"); }
 }
 export const InputGroup = (props: IInputGroupProps, template?: string): IInputGroup => { return new _InputGroup(props, template); }
