@@ -19,8 +19,8 @@ module.exports = (env, argv) => {
         resolve: {
             extensions: [".js", ".ts"],
             alias: {
-                "@popperjs/core": "@popperjs/core/dist/umd/popper.min.js",
-                "tippy.js": "tippy.js/dist/tippy.umd.min.js"
+                "@popperjs/core": "tippy.js/dist/tippy-bundle.umd.min.js",
+                "tippy.js": "tippy.js/dist/tippy-bundle.umd.min.js"
             }
         },
         module: {
