@@ -2373,15 +2373,14 @@ declare module 'gd-bs/components/popover/types' {
     /**
         * Popover Placements
         */
-     export const PopoverPlacements: IPopoverPlacements;
+    export const PopoverPlacements: IPopoverPlacements;
     
     /**
         * Popover Types
         */
     export const PopoverTypes: IPopoverTypes;
     
-    import { IBaseProps } from "gd-bs/components/types";
-    import { ITippyProps } from "gd-bs/types";
+    import { IBaseProps, ITippyProps } from "gd-bs/components/types";
     import { IButtonProps } from "gd-bs/components/button/types";
     
     /**
@@ -2426,7 +2425,7 @@ declare module 'gd-bs/components/popover/types' {
     /**
         * Popover Types
         */
-     export type IPopoverTypes = {
+    export type IPopoverTypes = {
             Danger: number;
             Dark: number;
             Info: number;
@@ -2443,7 +2442,7 @@ declare module 'gd-bs/components/popover/types' {
     /**
         * Popover Placements
         */
-     export type IPopoverPlacements = {
+    export type IPopoverPlacements = {
             Auto: number;
             AutoStart: number;
             AutoEnd: number;
@@ -2876,8 +2875,7 @@ declare module 'gd-bs/components/tooltip/types' {
         */
     export const TooltipTypes: ITooltipTypes;
     
-    import { IBaseProps } from "gd-bs/components/types";
-    import { ITippyProps } from "gd-bs/types";
+    import { IBaseProps, ITippyProps } from "gd-bs/components/types";
     import { IButtonProps, IButton } from "gd-bs/components/button/types";
     
     /**
@@ -2983,8 +2981,7 @@ declare module 'gd-bs/components/tooltipGroup/types' {
         */
     export const TooltipGroup: (props: ITooltipGroupProps, template?: string, btnTemplate?: string) => ITooltipGroup;
     
-    import { ITippyProps } from "gd-bs/types";
-    import { IBaseProps } from "gd-bs/components/types";
+    import { IBaseProps, ITippyProps } from "gd-bs/components/types";
     import { ITooltip, ITooltipProps } from "gd-bs/components/tooltip/types";
     
     /**
@@ -3058,53 +3055,52 @@ declare module 'gd-bs/components/types' {
             /** The element to render the component to. */
             el?: Element | HTMLElement;
     }
-}
-
-declare module 'gd-bs/types' {
+    
+    /** Tippy Options */
     export interface ITippyProps {
-        allowHTML?: boolean;
-        animateFill?: boolean;
-        animation?: string | boolean;
-        appendTo?: Element;
-        aria?: object;
-        arrow?: boolean | string | SVGElement | DocumentFragment;
-        content?: string | Element;
-        delay?: number | [number | null, number | null];
-        duration?: number | [number | null, number | null];
-        followCursor?: boolean | 'horizontal' | 'vertical' | 'initial';
-        hideOnClick?: boolean | 'toggle';
-        ignoreAttributes?: boolean;
-        inertia?: boolean;
-        inlinePositioning?: boolean;
-        interactive?: boolean;
-        interactiveBorder?: number;
-        interactiveDebounce?: number;
-        maxWidth?: number | string;
-        moveTransition?: string;
-        offset?: number[];
-        onAfterUpdate?: (tippyObj?, props?) => void;
-        onBeforeUpdate?: (tippyObj?, props?) => void;
-        onClickOutside?: (tippyObj?, ev?) => void;
-        onCreate?: (tippyObj?) => void;
-        onDestroy?: (tippyObj?) => void;
-        onHidden?: (tippyObj?) => void;
-        onHide?: (tippyObj?) => void;
-        onMount?: (tippyObj?) => void;
-        onShow?: (tippyObj?) => void;
-        onShown?: (tippyObj?) => void;
-        onTrigger?: (tippyObj?, ev?) => void;
-        onUntrigger?: (tippyObj?, ev?) => void;
-        placement?: string;
-        plugins?: any[];
-        popperOptions?: object;
-        role?: string;
-        showOnCreate?: boolean;
-        sticky?: boolean | 'reference' | 'popper';
-        theme?: string;
-        touch?: boolean | 'hold' | ['hold', number];
-        trigger?: string;
-        triggerTarget?: Element | Element[] | null;
-        zIndex?: number;
+            allowHTML?: boolean;
+            animateFill?: boolean;
+            animation?: string | boolean;
+            appendTo?: Element;
+            aria?: object;
+            arrow?: boolean | string | SVGElement | DocumentFragment;
+            content?: string | Element;
+            delay?: number | [number | null, number | null];
+            duration?: number | [number | null, number | null];
+            followCursor?: boolean | 'horizontal' | 'vertical' | 'initial';
+            hideOnClick?: boolean | 'toggle';
+            ignoreAttributes?: boolean;
+            inertia?: boolean;
+            inlinePositioning?: boolean;
+            interactive?: boolean;
+            interactiveBorder?: number;
+            interactiveDebounce?: number;
+            maxWidth?: number | string;
+            moveTransition?: string;
+            offset?: number[];
+            onAfterUpdate?: (tippyObj?, props?) => void;
+            onBeforeUpdate?: (tippyObj?, props?) => void;
+            onClickOutside?: (tippyObj?, ev?) => void;
+            onCreate?: (tippyObj?) => void;
+            onDestroy?: (tippyObj?) => void;
+            onHidden?: (tippyObj?) => void;
+            onHide?: (tippyObj?) => void;
+            onMount?: (tippyObj?) => void;
+            onShow?: (tippyObj?) => void;
+            onShown?: (tippyObj?) => void;
+            onTrigger?: (tippyObj?, ev?) => void;
+            onUntrigger?: (tippyObj?, ev?) => void;
+            placement?: string;
+            plugins?: any[];
+            popperOptions?: object;
+            role?: string;
+            showOnCreate?: boolean;
+            sticky?: boolean | 'reference' | 'popper';
+            theme?: string;
+            touch?: boolean | 'hold' | ['hold', number];
+            trigger?: string;
+            triggerTarget?: Element | Element[] | null;
+            zIndex?: number;
     }
 }
 

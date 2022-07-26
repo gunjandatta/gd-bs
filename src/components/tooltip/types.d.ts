@@ -51,8 +51,7 @@ export const TooltipPlacements: ITooltipPlacements;
  */
 export const TooltipTypes: ITooltipTypes;
 
-import { IBaseProps } from "../types";
-import { ITippyProps } from "../../types";
+import { IBaseProps, ITippyProps } from "../types";
 import { IButtonProps, IButton } from "../button/types";
 
 /**

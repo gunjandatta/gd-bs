@@ -1,5 +1,5 @@
-import tippy, { Instance, animateFill, followCursor, inlinePositioning, sticky } from "tippy.js";
-import { ITippyProps } from "../../types";
+import tippy, { Instance, animateFill, followCursor, inlinePositioning, sticky } from "../tippy";
+import { ITippyProps } from "../types";
 import { IPopover, IPopoverProps } from "./types";
 import { Button } from "../button";
 import { Base } from "../base";
@@ -243,7 +243,7 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
         }
 
         // Create the tippy
-        this._tippy = tippy(this.el, options as any) as any;
+        this._tippy = tippy(this.el, options);
     }
 
     /**

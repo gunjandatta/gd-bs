@@ -9,7 +9,7 @@ import * as Components from "./components";
 export { Components }
 
 // TippyJS library
-import * as tippy from "tippy.js";
+import tippy from "./components/tippy";
 export { tippy }
 
 // Bootstrap Global library

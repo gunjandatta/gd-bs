@@ -40,8 +40,7 @@
  */
 export const TooltipGroup: (props: ITooltipGroupProps, template?: string, btnTemplate?: string) => ITooltipGroup;
 
-import { ITippyProps } from "../../types";
-import { IBaseProps } from "../types";
+import { IBaseProps, ITippyProps } from "../types";
 import { ITooltip, ITooltipProps } from "../tooltip/types";
 
 /**

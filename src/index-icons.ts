@@ -9,7 +9,7 @@ import * as Components from "./components";
 export { Components }
 
 // TippyJS library
-import tippy from "tippy.js";
+import tippy from "./components/tippy";
 export { tippy }
 
 // Icons
