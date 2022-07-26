@@ -1,5 +1,4 @@
-import { Instance, animateFill, followCursor, inlinePositioning, sticky } from "tippy.js";
-import { tippy } from "../../libs";
+import tippy, { Instance, animateFill, followCursor, inlinePositioning, sticky } from "tippy.js";
 import { ITippyProps } from "../../types";
 import { IPopover, IPopoverProps } from "./types";
 import { Button } from "../button";
