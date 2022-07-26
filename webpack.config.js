@@ -17,7 +17,11 @@ module.exports = (env, argv) => {
         },
         target: ["web", "es5"],
         resolve: {
-            extensions: [".js", ".ts"]
+            extensions: [".js", ".ts"],
+            alias: {
+                "@popperjs/core": "tippy.js/dist/tippy-bundle.umd.min.js",
+                "tippy.js": "tippy.js/dist/tippy-bundle.umd.min.js"
+            }
         },
         module: {
             rules: [
