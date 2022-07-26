@@ -36,14 +36,5 @@ deleteDirectory("./src/icons");
 fs.mkdirSync("./src/icons");
 fs.mkdirSync("./src/icons/svgs");
 
-// Copy the popper library
-var popperConfig = require("./node_modules/@popperjs/core/package.json");
-fs.copyFileSync("./node_modules/@popperjs/core/" + popperConfig.main, "./src/tippy.js/popper.js");
-
-// Copy the tippy.js library
-var tippyConfig = require("./node_modules/tippy.js/package.json");
-var tippyJS = fs.readFileSync("./node_modules/tippy.js/" + tippyConfig.main).toString();
-fs.writeFileSync("./src/tippy.js/tippy.js", tippyJS.replace("var core = require('@popperjs/core');", "var core = require('./popper');"));
-
 // Log
 console.log("Successfully cleaned the library");

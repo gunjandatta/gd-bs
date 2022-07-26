@@ -1,4 +1,4 @@
-import tippy, { animateFill, followCursor, inlinePositioning, sticky } from "../../tippy.js";
+import tippy, { animateFill, followCursor, inlinePositioning, sticky } from "tippy.js";
 import { ITippyProps } from "../types";
 import { IPopover, IPopoverProps } from "./types";
 import { Button } from "../button";
@@ -243,7 +243,7 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
         }
 
         // Create the tippy
-        this._tippy = tippy(this.el, options);
+        this._tippy = tippy(this.el, options as any);
     }
 
     /**

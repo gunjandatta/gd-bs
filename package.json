@@ -1,19 +1,19 @@
 {
     "name": "gd-bs",
-    "version": "5.7.5",
+    "version": "5.7.6",
     "description": "Bootstrap JavaScript, TypeScript and Web Components library.",
     "main": "build/index.js",
     "typings": "src/index.d.ts",
     "scripts": {
-        "all": "npm run clean && npm run generate-icons && npm run build && npm run build-icons && npm run prod && npm run prod-icons && npm run typings && npm run docs",
-        "build": "tsc && npm run build-tippy && npm run build-bs && webpack --mode=development && npm run post-build",
+        "all": "npm run clean && npm run generate-icons && npm run build && npm run build-icons && npm run prod && npm run prod-icons && npm run typings",
+        "build": "tsc && npm run build-bs && webpack --mode=development && npm run post-build",
         "build-bs": "webpack --mode=production --config webpack.sass.js",
         "build-icons": "webpack --mode=development --config webpack.icons.js",
-        "build-tippy": "node ./pre-build.js && webpack --mode=production --config webpack.tippy.js",
         "post-build": "node ./post-build",
         "clean": "node ./clean.js",
         "docs": "typedoc",
         "generate-icons": "node ./generateIcons",
+        "package": "npm run all && npm run docs",
         "prod": "webpack --mode=production",
         "prod-icons": "webpack --mode=production --config webpack.icons.js",
         "typings": "dts-bundle --configJson dts-bundle.json"
