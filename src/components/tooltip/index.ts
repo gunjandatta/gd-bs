@@ -1,4 +1,4 @@
-import tippy, { Instance, animateFill, followCursor, inlinePositioning, sticky } from "../tippy";
+import tippy, { Instance, animateFill, followCursor, inlinePositioning, sticky } from "tippy.js";
 import { ITippyProps } from "../types";
 import { ITooltip, ITooltipProps } from "./types";
 import { IButton } from "../button/types";
@@ -294,7 +294,7 @@ class _Tooltip extends Base<ITooltipProps> {
         }
 
         // Create the tippy
-        this._tippy = tippy(this.props.target || this.el, options);
+        this._tippy = (tippy as any)(this.props.target || this.el, options);
     }
 
     /**
