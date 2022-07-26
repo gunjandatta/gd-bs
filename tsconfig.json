@@ -8,7 +8,9 @@
         "target": "es5"
     },
     "include": [
-        "libs/**/*",
         "src/**/*.ts"
+    ],
+    "exclude": [
+        "src/tippy.js"
     ]
 }

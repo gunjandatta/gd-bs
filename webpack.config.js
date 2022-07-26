@@ -3,8 +3,8 @@ const path = require("path");
 module.exports = (env, argv) => {
     var isDev = argv.mode === "development";
 
-    // Define the configuration
-    var config = {
+    // Return the configuration
+    return {
         entry: [
             "./node_modules/core-js/es/promise/index.js",
             "./node_modules/core-js/es/object/assign.js",
@@ -37,16 +37,4 @@ module.exports = (env, argv) => {
             ]
         }
     };
-
-    // See if this is a dev build
-    if (isDev) {
-        // Set the alias to point to the minified files
-        config.resolve.alias = {
-            "@popperjs/core": "@popperjs/core/dist/umd/popper.min.js",
-            "tippy.js": "tippy.js/dist/tippy.umd.min.js"
-        };
-    }
-
-    // Return the configuration
-    return config;
 }

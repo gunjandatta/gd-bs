@@ -1,4 +1,4 @@
-import tippy, { Instance, animateFill, followCursor, inlinePositioning, sticky } from "tippy.js";
+import tippy, { animateFill, followCursor, inlinePositioning, sticky } from "../../tippy.js";
 import { ITippyProps } from "../types";
 import { IPopover, IPopoverProps } from "./types";
 import { Button } from "../button";
@@ -48,7 +48,7 @@ export enum PopoverPlacements {
  */
 class _Popover extends Base<IPopoverProps> implements IPopover {
     private _elContent: HTMLDivElement = null;
-    private _tippy: Instance = null;
+    private _tippy = null;
 
     // Constructor
     constructor(props: IPopoverProps, template: string = "") {
@@ -243,7 +243,7 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
         }
 
         // Create the tippy
-        this._tippy = (tippy as any)(this.el, options);
+        this._tippy = tippy(this.el, options);
     }
 
     /**
