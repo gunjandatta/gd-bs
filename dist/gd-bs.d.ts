@@ -1189,6 +1189,7 @@ declare module 'gd-bs/components/form/controlTypes' {
             onControlRendering?: (control: IFormControlPropsCheckbox) => void | PromiseLike<IFormControlPropsCheckbox>;
             onGetValue?: (control: IFormControlPropsCheckbox) => any;
             onValidate?: (control: IFormControlPropsCheckbox, value: IFormControlValidationResult) => boolean | IFormControlValidationResult;
+            renderRow?: boolean;
     }
     
     /**
@@ -1228,6 +1229,7 @@ declare module 'gd-bs/components/form/controlTypes' {
             onControlRendering?: (control: IFormControlPropsCheckbox) => void | PromiseLike<IFormControlPropsCheckbox>;
             onGetValue?: (control: IFormControlPropsCheckbox) => any;
             onValidate?: (control: IFormControlPropsCheckbox, value: IFormControlValidationResult) => boolean | IFormControlValidationResult;
+            renderRow?: boolean;
     }
     
     /**

@@ -1,8 +1,8 @@
 // Checkbox
 export const HTML = `
-<div class="row">
+<div>
     <legend class="col-form-label"></legend>
-    <div></div>
+    <div class="row"></div>
 </div>`.trim();
 
 // Checkbox
