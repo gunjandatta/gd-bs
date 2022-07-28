@@ -9,31 +9,41 @@ import { HTML } from "./templates";
  * Offcanvas Size
  */
 export enum OffcanvasSize {
-    Small1 = 1,
-    Small2 = 2,
-    Small3 = 3,
-    Medium1 = 4,
-    Medium2 = 5,
-    Medium3 = 6,
-    Large1 = 7,
-    Large2 = 8,
-    Large3 = 9,
-    Full = 10
+    Small = 1,
+    Small1 = 2,
+    Small2 = 3,
+    Small3 = 4,
+    Medium = 5,
+    Medium1 = 6,
+    Medium2 = 7,
+    Medium3 = 8,
+    Large = 9,
+    Large1 = 10,
+    Large2 = 11,
+    Large3 = 12,
+    XLarge = 13,
+    XXLarge = 14,
+    Full = 15
 }
 
 /**
  * Offcanvas Size Classes
  */
 export const OffcanvasSizeClassNames = new ClassNames([
+    "offcanvas-sm",
     "offcanvas-size-sm1",
     "offcanvas-size-sm2",
     "offcanvas-size-sm3",
+    "offcanvas-md",
     "offcanvas-size-md1",
     "offcanvas-size-md2",
     "offcanvas-size-md3",
+    "offcanvas-lg",
     "offcanvas-size-lg1",
     "offcanvas-size-lg2",
     "offcanvas-size-lg3",
+    "offcanvas-xl",
+    "offcanvas-xxl",
     "offcanvas-size-full"
 ]);
 

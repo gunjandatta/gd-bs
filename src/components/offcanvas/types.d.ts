@@ -143,15 +143,20 @@ export interface IOffcanvasOptions {
  * Offcanvas Size
  */
 export type IOffcanvasSize = {
+    Small: number;
     Small1: number;
     Small2: number;
     Small3: number;
+    Medium: number;
     Medium1: number;
     Medium2: number;
     Medium3: number;
+    Large: number;
     Large1: number;
     Large2: number;
     Large3: number;
+    XLarge: number;
+    XXLarge: number;
     Full: number;
 }
 
