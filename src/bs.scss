@@ -341,34 +341,34 @@
     }
     /* Off-canvas sizes (Small 1) */
     .offcanvas-start.offcanvas-size-sm1, .offcanvas-end.offcanvas-size-sm1 { width: 20vw; }
-    .offcanvas-top.offcanvas-size-sm1, .offcanvas-bottom.offcanvas-size-sm1 { width: 20vh; }
+    .offcanvas-top.offcanvas-size-sm1, .offcanvas-bottom.offcanvas-size-sm1 { height: 20vh; }
     /* Off-canvas sizes (Small 2) */
-    .offcanvas-start.offcanvas-size-sm2, .offcanvas-end.offcanvas-size-sm1 { width: 25vw; }
-    .offcanvas-top.offcanvas-size-sm2, .offcanvas-bottom.offcanvas-size-sm1 { width: 25vh; }
+    .offcanvas-start.offcanvas-size-sm2, .offcanvas-end.offcanvas-size-sm2 { width: 25vw; }
+    .offcanvas-top.offcanvas-size-sm2, .offcanvas-bottom.offcanvas-size-sm2 { height: 25vh; }
     /* Off-canvas sizes (Small 3) */
-    .offcanvas-start.offcanvas-size-sm3, .offcanvas-end.offcanvas-size-sm1 { width: 30vw; }
-    .offcanvas-top.offcanvas-size-sm3, .offcanvas-bottom.offcanvas-size-sm1 { width: 30vh; }
+    .offcanvas-start.offcanvas-size-sm3, .offcanvas-end.offcanvas-size-sm3 { width: 30vw; }
+    .offcanvas-top.offcanvas-size-sm3, .offcanvas-bottom.offcanvas-size-sm3 { height: 30vh; }
     /* Off-canvas sizes (Medium 1) */
     .offcanvas-start.offcanvas-size-md1, .offcanvas-end.offcanvas-size-md1 { width: 40vw; }
-    .offcanvas-top.offcanvas-size-md1, .offcanvas-bottom.offcanvas-size-md1 { width: 40vh; }
+    .offcanvas-top.offcanvas-size-md1, .offcanvas-bottom.offcanvas-size-md1 { height: 40vh; }
     /* Off-canvas sizes (Medium 2) */
     .offcanvas-start.offcanvas-size-md2, .offcanvas-end.offcanvas-size-md2 { width: 50vw; }
-    .offcanvas-top.offcanvas-size-md2, .offcanvas-bottom.offcanvas-size-md2 { width: 50vh; }
+    .offcanvas-top.offcanvas-size-md2, .offcanvas-bottom.offcanvas-size-md2 { height: 50vh; }
     /* Off-canvas sizes (Medium 3) */
     .offcanvas-start.offcanvas-size-md3, .offcanvas-end.offcanvas-size-md3 { width: 60vw; }
-    .offcanvas-top.offcanvas-size-md3, .offcanvas-bottom.offcanvas-size-md3 { width: 60vh; }
+    .offcanvas-top.offcanvas-size-md3, .offcanvas-bottom.offcanvas-size-md3 { height: 60vh; }
     /* Off-canvas sizes (Large 1) */
     .offcanvas-start.offcanvas-size-lg1, .offcanvas-end.offcanvas-size-lg1 { width: 75vw; }
-    .offcanvas-top.offcanvas-size-lg1, .offcanvas-bottom.offcanvas-size-lg1 { width: 75vh; }
+    .offcanvas-top.offcanvas-size-lg1, .offcanvas-bottom.offcanvas-size-lg1 { height: 75vh; }
     /* Off-canvas sizes (Large 2) */
     .offcanvas-start.offcanvas-size-lg2, .offcanvas-end.offcanvas-size-lg2 { width: 80vw; }
-    .offcanvas-top.offcanvas-size-lg2, .offcanvas-bottom.offcanvas-size-lg2 { width: 80vh; }
+    .offcanvas-top.offcanvas-size-lg2, .offcanvas-bottom.offcanvas-size-lg2 { height: 80vh; }
     /* Off-canvas sizes (Large 3) */
     .offcanvas-start.offcanvas-size-lg3, .offcanvas-end.offcanvas-size-lg3 { width: 90vw; }
-    .offcanvas-top.offcanvas-size-lg3, .offcanvas-bottom.offcanvas-size-lg3 { width: 90vh; }
+    .offcanvas-top.offcanvas-size-lg3, .offcanvas-bottom.offcanvas-size-lg3 { height: 90vh; }
     /* Off-canvas sizes (Full) */
     .offcanvas-start.offcanvas-size-full, .offcanvas-end.offcanvas-size-full { width: 100vw; }
-    .offcanvas-top.offcanvas-size-full, .offcanvas-bottom.offcanvas-size-full { width: 100vh; }
+    .offcanvas-top.offcanvas-size-full, .offcanvas-bottom.offcanvas-size-full { height: 100vh; }
     /* Color match the pagination link color to 'SharePoint Blue' */
     .page-link {
         border-color: #6c757d;

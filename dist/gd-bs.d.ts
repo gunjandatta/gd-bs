@@ -2243,6 +2243,7 @@ declare module 'gd-bs/components/offcanvas/types' {
             onRenderBody?: (el?: HTMLDivElement, props?: IOffcanvasProps) => void;
             onRenderHeader?: (el?: HTMLDivElement, props?: IOffcanvasProps) => void;
             options?: IOffcanvasOptions;
+            size?: number;
             title?: string | T;
             type?: number;
     }
@@ -2271,12 +2272,29 @@ declare module 'gd-bs/components/offcanvas/types' {
     }
     
     /**
+        * Offcanvas Size
+        */
+    export type IOffcanvasSize = {
+            Small1: number;
+            Small2: number;
+            Small3: number;
+            Medium1: number;
+            Medium2: number;
+            Medium3: number;
+            Large1: number;
+            Large2: number;
+            Large3: number;
+            Full: number;
+    }
+    
+    /**
         * Offcanvas Types
         */
     export type IOffcanvasTypes = {
             Bottom: number;
             End: number;
             Start: number;
+            Top: number;
     }
 }
 
