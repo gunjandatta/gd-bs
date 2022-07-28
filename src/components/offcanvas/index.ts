@@ -4,22 +4,57 @@ import { Base } from "../base";
 import { appendContent } from "../common";
 import { HTML } from "./templates";
 
+
+/**
+ * Offcanvas Size
+ */
+export enum OffcanvasSize {
+    Small1 = 1,
+    Small2 = 2,
+    Small3 = 3,
+    Medium1 = 4,
+    Medium2 = 5,
+    Medium3 = 6,
+    Large1 = 7,
+    Large2 = 8,
+    Large3 = 9,
+    Full = 10
+}
+
+/**
+ * Offcanvas Size Classes
+ */
+export const OffcanvasSizeClassNames = new ClassNames([
+    "offcanvas-size-sm1",
+    "offcanvas-size-sm2",
+    "offcanvas-size-sm3",
+    "offcanvas-size-md1",
+    "offcanvas-size-md2",
+    "offcanvas-size-md3",
+    "offcanvas-size-lg1",
+    "offcanvas-size-lg2",
+    "offcanvas-size-lg3",
+    "offcanvas-size-full"
+]);
+
 /**
  * Offcanvas Types
  */
 export enum OffcanvasTypes {
     Bottom = 1,
     End = 2,
-    Start = 3
+    Start = 3,
+    Top = 4
 }
 
 /**
- * Offcanvas Classes
+ * Offcanvas Types Classes
  */
-export const OffcanvasClassNames = new ClassNames([
+export const OffcanvasTypesClassNames = new ClassNames([
     "offcanvas-bottom",
     "offcanvas-end",
-    "offcanvas-start"
+    "offcanvas-start",
+    "offcanvas-top"
 ]);
 
 /**
@@ -49,7 +84,8 @@ class _Offcanvas extends Base<IOffcanvasProps> implements IOffcanvas {
         // Set the attributes
         this.props.id ? this.el.id = this.props.id : null;
 
-        // Set the type
+        // Set the size & type
+        this.setSize(this.props.size);
         this.setType(this.props.type);
 
         // Get the options
@@ -174,16 +210,29 @@ class _Offcanvas extends Base<IOffcanvasProps> implements IOffcanvas {
         this._autoClose ? this.configureAutoCloseEvent() : null;
     }
 
-    // Sets the offcanvas type
-    setType(offcanvasType: number) {
+    // Sets the offcanvas size
+    setSize(offcanvasSize: number) {
         // Parse the class names
-        OffcanvasClassNames.parse(className => {
+        OffcanvasSizeClassNames.parse(className => {
             // Remove the class names
             this.el.classList.remove(className);
         });
 
         // Set the class name
-        let className = OffcanvasClassNames.getByType(offcanvasType) || OffcanvasClassNames.getByType(OffcanvasTypes.End);
+        let className = OffcanvasSizeClassNames.getByType(offcanvasSize);
+        if (className) { this.el.classList.add(className); }
+    }
+
+    // Sets the offcanvas type
+    setType(offcanvasType: number) {
+        // Parse the class names
+        OffcanvasTypesClassNames.parse(className => {
+            // Remove the class names
+            this.el.classList.remove(className);
+        });
+
+        // Set the class name
+        let className = OffcanvasTypesClassNames.getByType(offcanvasType) || OffcanvasTypesClassNames.getByType(OffcanvasTypes.End);
         this.el.classList.add(className);
     }
 

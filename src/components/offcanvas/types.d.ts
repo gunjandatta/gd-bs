@@ -108,6 +108,7 @@ export interface IOffcanvasProps<T = Element> extends IBaseProps<IOffcanvas> {
     onRenderBody?: (el?: HTMLDivElement, props?: IOffcanvasProps) => void;
     onRenderHeader?: (el?: HTMLDivElement, props?: IOffcanvasProps) => void;
     options?: IOffcanvasOptions;
+    size?: number;
     title?: string | T;
     type?: number;
 }
@@ -133,6 +134,22 @@ export interface IOffcanvasOptions {
 
     /** True to toggle the offcanvas on creation. */
     visible?: boolean;
+}
+
+/**
+ * Offcanvas Size
+ */
+export type IOffcanvasSize = {
+    Small1: number;
+    Small2: number;
+    Small3: number;
+    Medium1: number;
+    Medium2: number;
+    Medium3: number;
+    Large1: number;
+    Large2: number;
+    Large3: number;
+    Full: number;
 }
 
 /**
