@@ -2223,6 +2223,9 @@ declare module 'gd-bs/components/offcanvas/types' {
             /** Updates the auto close flag. */
             setAutoClose: (value: boolean) => void;
     
+            /** Updates the size. */
+            setSize: (canvasSize: number) => void;
+    
             /** Updates the type. */
             setType: (canvasType: number) => void;
     
