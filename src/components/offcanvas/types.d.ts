@@ -159,4 +159,5 @@ export type IOffcanvasTypes = {
     Bottom: number;
     End: number;
     Start: number;
+    Top: number;
 }
