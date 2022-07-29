@@ -1536,6 +1536,17 @@ eval("// Fix to ensure the library loads in IE\n(function () {\n  if (typeof win
 
 /***/ }),
 
+/***/ "./build/index-core.js":
+/*!*****************************!*\
+  !*** ./build/index-core.js ***!
+  \*****************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", ({\n  value: true\n}));\nexports.tippy = exports.Components = void 0; // Import the IE fix\n\n__webpack_require__(/*! ./ie */ \"./build/ie.js\"); // Bootstrap Components\n\n\nvar Components = __webpack_require__(/*! ./components */ \"./build/components/index.js\");\n\nexports.Components = Components; // TippyJS library\n\nvar tippy_js_1 = __webpack_require__(/*! tippy.js */ \"./node_modules/.pnpm/tippy.js@6.3.7/node_modules/tippy.js/dist/tippy.esm.js\");\n\nexports.tippy = tippy_js_1[\"default\"]; // Bootstrap Global library\n\nvar BS = {\n  Components: Components,\n  tippy: tippy_js_1[\"default\"]\n};\nwindow[\"GD\"] = window[\"GD\"] || BS;\n\n//# sourceURL=webpack://gd-bs/./build/index-core.js?");
+
+/***/ }),
+
 /***/ "./build/index.js":
 /*!************************!*\
   !*** ./build/index.js ***!
@@ -1543,7 +1554,7 @@ eval("// Fix to ensure the library loads in IE\n(function () {\n  if (typeof win
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", ({\n  value: true\n}));\nexports.tippy = exports.Components = void 0; // Bootstrap styles\n\n__webpack_require__(/*! ./bs */ \"./build/bs.js\"); // Import the IE fix\n\n\n__webpack_require__(/*! ./ie */ \"./build/ie.js\"); // Bootstrap Components\n\n\nvar Components = __webpack_require__(/*! ./components */ \"./build/components/index.js\");\n\nexports.Components = Components; // TippyJS library\n\nvar tippy_js_1 = __webpack_require__(/*! tippy.js */ \"./node_modules/.pnpm/tippy.js@6.3.7/node_modules/tippy.js/dist/tippy.esm.js\");\n\nexports.tippy = tippy_js_1[\"default\"]; // Bootstrap Global library\n\nvar BS = {\n  Components: Components,\n  tippy: tippy_js_1[\"default\"]\n};\nwindow[\"GD\"] = window[\"GD\"] || BS;\n\n//# sourceURL=webpack://gd-bs/./build/index.js?");
+eval("\n\nvar __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {\n  if (k2 === undefined) k2 = k;\n  var desc = Object.getOwnPropertyDescriptor(m, k);\n\n  if (!desc || (\"get\" in desc ? !m.__esModule : desc.writable || desc.configurable)) {\n    desc = {\n      enumerable: true,\n      get: function get() {\n        return m[k];\n      }\n    };\n  }\n\n  Object.defineProperty(o, k2, desc);\n} : function (o, m, k, k2) {\n  if (k2 === undefined) k2 = k;\n  o[k2] = m[k];\n});\n\nvar __exportStar = this && this.__exportStar || function (m, exports) {\n  for (var p in m) {\n    if (p !== \"default\" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);\n  }\n};\n\nObject.defineProperty(exports, \"__esModule\", ({\n  value: true\n})); // Bootstrap styles\n\n__webpack_require__(/*! ./bs */ \"./build/bs.js\"); // Export the core\n\n\n__exportStar(__webpack_require__(/*! ./index-core */ \"./build/index-core.js\"), exports);\n\n//# sourceURL=webpack://gd-bs/./build/index.js?");
 
 /***/ }),
 
