@@ -1,4 +1,5 @@
 const path = require("path");
+const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = (env, argv) => {
     var isDev = argv.mode === "development";
@@ -18,6 +19,10 @@ module.exports = (env, argv) => {
         target: ["web", "es5"],
         resolve: {
             extensions: [".js", ".ts"]
+        },
+        optimization: {
+            minimize: true,
+            minimizer: [new TerserPlugin()]
         },
         module: {
             rules: [
