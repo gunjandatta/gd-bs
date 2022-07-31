@@ -212,8 +212,23 @@ class _Modal extends Base<IModalProps> implements IModal {
 
     // Hides the modal
     hide() {
-        // Toggle the modal
-        this.isVisible ? this.toggle() : null;
+        // See if a transition is currently happening
+        if (this._tranisitioningFl) {
+            // Wait for the transition to complete
+            let id = setInterval(() => {
+                // See if the transition is complete
+                if (!this._tranisitioningFl) {
+                    // Stop the loop
+                    clearInterval(id);
+
+                    // Toggle the modal
+                    this.isVisible ? this.toggle() : null;
+                }
+            }, 250);
+        } else {
+            // Toggle the modal
+            this.isVisible ? this.toggle() : null;
+        }
     }
 
     // Returns true if the modal is visible
@@ -313,8 +328,23 @@ class _Modal extends Base<IModalProps> implements IModal {
 
     // Shows the modal
     show() {
-        // Toggle the modal
-        this.isVisible ? null : this.toggle();
+        // See if a transition is currently happening
+        if (this._tranisitioningFl) {
+            // Wait for the transition to complete
+            let id = setInterval(() => {
+                // See if the transition is complete
+                if (!this._tranisitioningFl) {
+                    // Stop the loop
+                    clearInterval(id);
+
+                    // Toggle the modal
+                    this.isVisible ? null : this.toggle();
+                }
+            }, 250);
+        } else {
+            // Toggle the modal
+            this.isVisible ? null : this.toggle();
+        }
     }
 
     // Toggles the modal
