@@ -2201,6 +2201,11 @@ declare module 'gd-bs/components/offcanvas/types' {
     export const Offcanvas: (props: IOffcanvasProps, template?: string) => IOffcanvas;
     
     /**
+        * Offcanvas Sizes
+        */
+    export const OffcanvasSize: IOffcanvasSize;
+    
+    /**
         * Offcanvas Types
         */
     export const OffcanvasTypes: IOffcanvasTypes;
