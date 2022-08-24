@@ -242,9 +242,6 @@ class _InputGroup extends Base<IInputGroupProps> implements IInputGroup {
 
                     // File
                     case InputGroupTypes.File:
-                        this.el.classList.add("form-file");
-                        input.classList.remove("form-control");
-                        input.classList.add("form-file-input");
                         input.type = "file";
                         break;
 
