@@ -1501,7 +1501,8 @@ declare module 'gd-bs/components/inputGroup/types' {
     
     /** Input Group File Value */
     export interface IInputGroupFileValue {
-    
+            data: ArrayBuffer;
+            name: string;
     }
     
     /**

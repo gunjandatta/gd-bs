@@ -173,16 +173,16 @@ class _InputGroup extends Base<IInputGroupProps> implements IInputGroup {
             // See if this is a file
             if (this.props.type == InputGroupTypes.File) {
                 // Set the change event
-                (elInput as HTMLInputElement).addEventListener("onchange", (ev) => {
+                (elInput as HTMLInputElement).addEventListener("change", (ev) => {
                     // Get the source file
                     let srcFile = ev.target["files"][0];
                     if (srcFile) {
                         let reader = new FileReader();
 
                         // Set the file loaded event
-                        reader.onloadend = (ev: any) => {
+                        reader.onloadend = (ev) => {
                             this._fileValue = {
-                                data: ev.target.result,
+                                data: ev.target.result as any,
                                 name: srcFile.name
                             };
                         }

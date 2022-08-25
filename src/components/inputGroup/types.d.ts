@@ -41,7 +41,8 @@ import { IButtonProps } from "../button/types";
 
 /** Input Group File Value */
 export interface IInputGroupFileValue {
-
+    data: ArrayBuffer;
+    name: string;
 }
 
 /**
