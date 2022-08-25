@@ -1,4 +1,4 @@
-import { IInputGroup, IInputGroupProps } from "./types";
+import { IInputGroup, IInputGroupFileValue, IInputGroupProps } from "./types";
 import { Base } from "../base";
 import { Button } from "../button";
 import { HTML } from "./templates";
@@ -22,6 +22,7 @@ export enum InputGroupTypes {
  * @param props The input group properties.
  */
 class _InputGroup extends Base<IInputGroupProps> implements IInputGroup {
+    private _fileValue: IInputGroupFileValue = null;
     private _initFl: boolean = false;
 
     // Constructor
@@ -57,28 +58,10 @@ class _InputGroup extends Base<IInputGroupProps> implements IInputGroup {
             if (label) {
                 this.props.id ? label.setAttribute("for", this.props.id) : null;
 
-                // See if this is a file
-                if (this.props.type == InputGroupTypes.File) {
-                    // Set the class
-                    label.classList.add("form-file-label");
-
-                    // Set the text
-                    let spanText = document.createElement("span");
-                    spanText.classList.add("form-file-text");
-                    spanText.innerHTML = this.props.label || "Choose a file...";
-                    label.appendChild(spanText);
-
-                    // Set the button
-                    let spanButton = document.createElement("span");
-                    spanButton.classList.add("form-file-button");
-                    spanButton.innerHTML = "Browse";
-                    label.appendChild(spanButton);
-                } else {
-                    // Set the label if it exists
-                    if (this.props.label) { label.innerHTML = this.props.label; }
-                    // Else, remove it
-                    else { this.el.removeChild(label); }
-                }
+                // Set the label if it exists
+                if (this.props.label) { label.innerHTML = this.props.label; }
+                // Else, remove it
+                else { this.el.removeChild(label); }
             }
 
             // See if the label exists
@@ -186,6 +169,35 @@ class _InputGroup extends Base<IInputGroupProps> implements IInputGroup {
                     }, 1);
                 });
             }
+
+            // See if this is a file
+            if (this.props.type == InputGroupTypes.File) {
+                // Set the change event
+                (elInput as HTMLInputElement).addEventListener("onchange", (ev) => {
+                    // Get the source file
+                    let srcFile = ev.target["files"][0];
+                    if (srcFile) {
+                        let reader = new FileReader();
+
+                        // Set the file loaded event
+                        reader.onloadend = (ev: any) => {
+                            this._fileValue = {
+                                data: ev.target.result,
+                                name: srcFile.name
+                            };
+                        }
+
+                        // Set the error
+                        reader.onerror = (ev: any) => {
+                            // Log
+                            console.log("Error reading the file", srcFile, ev.target.error);
+                        }
+
+                        // Read the file
+                        reader.readAsArrayBuffer(srcFile);
+                    }
+                });
+            }
         }
     }
 
@@ -274,6 +286,8 @@ class _InputGroup extends Base<IInputGroupProps> implements IInputGroup {
     /**
      * Public Interface
      */
+
+    getFileInfo() { return this._fileValue; }
 
     getValue() { return this.elTextbox.value; }
 

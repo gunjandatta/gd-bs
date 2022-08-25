@@ -1499,8 +1499,13 @@ declare module 'gd-bs/components/inputGroup/types' {
     import { IBaseProps } from "gd-bs/components/types";
     import { IButtonProps } from "gd-bs/components/button/types";
     
+    /** Input Group File Value */
+    export interface IInputGroupFileValue {
+    
+    }
+    
     /**
-        * Button Group
+        * Input Group
         */
     export interface IInputGroup {
             /** The input group element. */
@@ -1508,6 +1513,9 @@ declare module 'gd-bs/components/inputGroup/types' {
     
             /** Reference to the textbox input/textarea element. */
             elTextbox: HTMLInputElement | HTMLTextAreaElement;
+    
+            /** Method to get the file information. */
+            getFileInfo: () => IInputGroupFileValue;
     
             /** Method to get the value. */
             getValue: () => string;

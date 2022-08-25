@@ -39,8 +39,13 @@ export const InputGroupTypes: IInputGroupTypes;
 import { IBaseProps } from "../types";
 import { IButtonProps } from "../button/types";
 
+/** Input Group File Value */
+export interface IInputGroupFileValue {
+
+}
+
 /**
- * Button Group
+ * Input Group
  */
 export interface IInputGroup {
     /** The input group element. */
@@ -48,6 +53,9 @@ export interface IInputGroup {
 
     /** Reference to the textbox input/textarea element. */
     elTextbox: HTMLInputElement | HTMLTextAreaElement;
+
+    /** Method to get the file information. */
+    getFileInfo: () => IInputGroupFileValue;
 
     /** Method to get the value. */
     getValue: () => string;
