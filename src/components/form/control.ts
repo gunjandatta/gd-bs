@@ -501,6 +501,12 @@ export class FormControl implements IFormControl {
 
         // See if this is a textbox
         if (this._tb) {
+            // See if this is a file
+            if (this._props.type == FormControlTypes.File) {
+                // Return the file information
+                return this._tb.getFileInfo();
+            }
+
             // Return the value
             return this._tb.getValue();
         }
