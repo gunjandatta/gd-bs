@@ -320,16 +320,21 @@
     .page-link {
         border-color: #6c757d;
         color: #0078d4;
+        font-size: 13px;
     }
     /* Color match the pagination active link colors */
     .page-item.active .page-link {
         background-color: #6c757d;
         border-color: #6c757d;
+        color: #fff;
         z-index: inherit;
     }
     /* Color match the pagination disabled border colors */
     .page-item.disabled .page-link {
+        background-color: #fff;
         border-color: #6c757d;
+        color: #6c757d;
+        pointer-events: none;
     }
     /* Color match for SharePoint */
     .page-link:focus {
