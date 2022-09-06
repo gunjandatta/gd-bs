@@ -70,7 +70,7 @@
  */
 export const ListBox: (props: IListBoxProps, template?: string) => IListBox;
 
-import { IBase } from "../types";
+import { IBase, IBaseProps } from "../types";
 import { IDropdownItem } from "../dropdown/types";
 
 /**
@@ -93,7 +93,7 @@ export interface IListBox extends IBase<IListBoxProps> {
 /**
  * List Box Properties
  */
-export interface IListBoxProps {
+export interface IListBoxProps extends IBaseProps<IListBox> {
     label?: string;
     id?: string;
     isReadonly?: boolean;

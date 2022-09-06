@@ -1648,7 +1648,7 @@ declare module 'gd-bs/components/listBox/types' {
         */
     export const ListBox: (props: IListBoxProps, template?: string) => IListBox;
     
-    import { IBase } from "gd-bs/components/types";
+    import { IBase, IBaseProps } from "gd-bs/components/types";
     import { IDropdownItem } from "gd-bs/components/dropdown/types";
     
     /**
@@ -1671,7 +1671,7 @@ declare module 'gd-bs/components/listBox/types' {
     /**
         * List Box Properties
         */
-    export interface IListBoxProps {
+    export interface IListBoxProps extends IBaseProps<IListBox> {
             label?: string;
             id?: string;
             isReadonly?: boolean;
