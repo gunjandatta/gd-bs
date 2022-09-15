@@ -31,7 +31,7 @@ export class NavbarItem {
 
     // Configures the item
     private configure() {
-        let link: HTMLAnchorElement = null;
+        let link: HTMLAnchorElement = this._el.querySelector("a");
 
         // See if this is a dropdown
         if (this._props.items) {
@@ -60,7 +60,6 @@ export class NavbarItem {
         // Else, ensure there is text
         else if (this._props.text) {
             // Update the link
-            link = this._el.querySelector("a");
             if (link) {
                 this._props.isActive ? link.classList.add("active") : link.removeChild(link.querySelector('span'));
                 link.innerHTML = this._props.text == null ? "" : this._props.text;
