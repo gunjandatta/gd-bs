@@ -178,6 +178,7 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
         let options: ITippyProps = {
             ...{
                 allowHTML: true,
+                appendTo: document.body,
                 animation: "scale",
                 arrow: true,
                 delay: 100,
