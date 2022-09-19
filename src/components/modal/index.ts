@@ -184,9 +184,6 @@ class _Modal extends Base<IModalProps> implements IModal {
             elClose.addEventListener("click", () => {
                 // Hide the modal
                 this.hide();
-
-                // Call the event
-                this.props.onClose ? this.props.onClose(this.el) : null;
             });
         }
 
@@ -370,6 +367,9 @@ class _Modal extends Base<IModalProps> implements IModal {
 
                 // Set the flag
                 this._tranisitioningFl = false;
+
+                // Call the event
+                this.props.onClose ? this.props.onClose(this.el) : null;
             }, 250);
         } else {
             // Start the animation
