@@ -26,17 +26,17 @@ fs.readdir(dirIcons, function (err, files) {
 
         // Create the variable name
         var idx = 0;
-        var varName = file[0].toLowerCase() + file.substr(1);
+        var varName = file[0].toLowerCase() + file.substring(1);
         while ((idx = varName.indexOf('-')) > 0) {
             // Find the instance
-            varName = varName.substr(0, idx) + varName.charAt(idx + 1).toUpperCase() + varName.substr(idx + 2);
+            varName = varName.substring(0, idx) + varName.charAt(idx + 1).toUpperCase() + varName.substring(idx + 2);
         }
 
         // Determine the variable and function names
         varName = varName.replace(/\.svg$/, '');
-        varName = varName == "window" ? "appWindow" : varName;
+        varName = varName == "window" ? "window_" : varName;
         varName = parseInt(varName) >= 0 ? "_" + varName : varName;
-        var funcName = varName[0].toUpperCase() + varName.substr(1);
+        var funcName = varName[0].toUpperCase() + varName.substring(1);
 
         // Add the type
         let iconType = types.length + 1;
