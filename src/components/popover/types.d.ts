@@ -96,6 +96,8 @@ export interface IPopover {
  */
 export interface IPopoverProps extends IBaseProps<IPopover> {
     btnProps?: IButtonProps;
+    classNameBody?: string;
+    classNameHeader?: string;
     isDismissible?: boolean;
     options?: ITippyProps;
     placement?: number;

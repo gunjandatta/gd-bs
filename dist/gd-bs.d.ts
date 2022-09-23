@@ -2456,6 +2456,8 @@ declare module 'gd-bs/components/popover/types' {
         */
     export interface IPopoverProps extends IBaseProps<IPopover> {
             btnProps?: IButtonProps;
+            classNameBody?: string;
+            classNameHeader?: string;
             isDismissible?: boolean;
             options?: ITippyProps;
             placement?: number;

@@ -3,7 +3,7 @@ import { ITippyProps } from "../types";
 import { IPopover, IPopoverProps } from "./types";
 import { Button } from "../button";
 import { Base } from "../base";
-import { appendContent } from "../common";
+import { appendContent, setClassNames } from "../common";
 
 /**
  * Popover Types
@@ -213,9 +213,11 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
         // Create the popover content element
         this._elContent = document.createElement("div") as HTMLDivElement;
         this._elContent.classList.add("popover-content");
-        this._elContent.innerHTML = '<h5 class="popover-header m-0"></h5><div class="popover-body"></div>';
+        this._elContent.innerHTML = '<div class="popover-header"></div><div class="popover-body"></div>';
         appendContent(this._elContent.querySelector(".popover-header"), this.props.title);
+        setClassNames(this._elContent.querySelector(".popover-header"), this.props.classNameHeader);
         appendContent(this._elContent.querySelector(".popover-body"), options.content as any);
+        setClassNames(this._elContent.querySelector(".popover-body"), this.props.classNameBody);
         options.content = this._elContent;
 
         // Set the on create event
