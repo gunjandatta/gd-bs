@@ -512,6 +512,23 @@ export class FormControl implements IFormControl {
         }
     }
 
+    // Hides the control
+    hide() {
+        // Ensure an element exists
+        if (this._el) {
+            // See if this is a row
+            if (this._el.parentElement && this._el.parentElement.parentElement && this._el.parentElement.parentElement.classList.contains("row")) {
+                // Hide the row element
+                this._el.parentElement.parentElement.classList.add("d-none");
+            }
+            // Else, ensure the parent element exists
+            else if (this._el.parentElement) {
+                // Hide the group element
+                this._el.parentElement.classList.add("d-none");
+            }
+        }
+    }
+
     // Is loaded
     isLoaded(): PromiseLike<void> {
         // Return a promise
@@ -596,6 +613,23 @@ export class FormControl implements IFormControl {
     setValue(value) {
         // Set the value
         this.control ? this.control.setValue(value) : null;
+    }
+
+    // Shows the control
+    show() {
+        // Ensure an element exists
+        if (this._el) {
+            // See if this is a row
+            if (this._el.parentElement && this._el.parentElement.parentElement && this._el.parentElement.parentElement.classList.contains("row")) {
+                // Show the row element
+                this._el.parentElement.parentElement.classList.remove("d-none");
+            }
+            // Else, ensure the parent element exists
+            else if (this._el.parentElement) {
+                // Show the group element
+                this._el.parentElement.classList.remove("d-none");
+            }
+        }
     }
 
     // Updates the control validation

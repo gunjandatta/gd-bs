@@ -1138,6 +1138,7 @@ declare module 'gd-bs/components/form/controlTypes' {
             dropdown: IDropdown;
             el: HTMLElement;
             getValue: () => any;
+            hide: () => void;
             isLoaded: () => PromiseLike<void>;
             isRendered: boolean;
             isValid: boolean;
@@ -1147,6 +1148,7 @@ declare module 'gd-bs/components/form/controlTypes' {
             setLabel: (value: string) => void;
             setControl: (control: any) => void;
             setValue: (value: any) => void;
+            show: () => void;
             updateValidation: (elControl: Element, validation: IFormControlValidationResult) => void;
     }
     

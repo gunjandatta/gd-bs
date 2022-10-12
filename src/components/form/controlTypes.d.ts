@@ -52,6 +52,7 @@ export interface IFormControl {
     dropdown: IDropdown;
     el: HTMLElement;
     getValue: () => any;
+    hide: () => void;
     isLoaded: () => PromiseLike<void>;
     isRendered: boolean;
     isValid: boolean;
@@ -61,6 +62,7 @@ export interface IFormControl {
     setLabel: (value: string) => void;
     setControl: (control: any) => void;
     setValue: (value: any) => void;
+    show: () => void;
     updateValidation: (elControl: Element, validation: IFormControlValidationResult) => void;
 }
 
