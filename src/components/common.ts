@@ -8,7 +8,7 @@ export const appendContent = (elParent: Element, content: string | Element | Fun
         elParent.innerHTML = content;
     } else {
         // Append the content
-        elParent.appendChild(typeof (content) === "function" ? content() : content);
+        elParent.appendChild(typeof (content) === "function" ? (content as any)() : content);
     }
 }
 

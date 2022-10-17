@@ -186,7 +186,16 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
                 interactive: true,
                 placement,
                 plugins: [animateFill, followCursor, inlinePositioning, sticky],
-                theme
+                theme,
+                popperOptions: {
+                    modifiers: [{
+                        name: "preventOverflow",
+                        options: {
+                            altAxis: true,
+                            tether: false
+                        }
+                    }]
+                }
             },
             ...this.props.options
         };
