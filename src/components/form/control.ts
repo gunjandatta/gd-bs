@@ -101,6 +101,10 @@ export class FormControl implements IFormControl {
         // Parse the custom classes to add
         let className = [(this._props.className || ""), (this._props.controlClassName || "")].join(" ").trim();
 
+        // Set the value
+        let formValue = this._formProps.value ? this._formProps.value[this._props.name] : null;
+        let value = typeof (this._props.value) === "undefined" ? formValue : this._props.value;
+
         // Render the control based on the type
         switch (this._props.type) {
             // Checkbox
@@ -120,7 +124,7 @@ export class FormControl implements IFormControl {
                     renderRow: cbProps.renderRow,
                     title: this._props.title,
                     type: CheckboxGroupTypes.Checkbox,
-                    value: this._props.value
+                    value
                 });
                 break;
             // Color Picker
@@ -135,7 +139,7 @@ export class FormControl implements IFormControl {
                     placeholder: (this._props as IFormControlPropsTextField).placeholder,
                     title: this._props.title,
                     type: InputGroupTypes.ColorPicker,
-                    value: this._props.value
+                    value
                 });
                 break;
             // Datalist
@@ -150,7 +154,7 @@ export class FormControl implements IFormControl {
                     items: (this._props as IFormControlPropsDropdown).items,
                     onChange: (this._props as IFormControlPropsDropdown).onChange,
                     title: this._props.title,
-                    value: this._props.value
+                    value
                 });
                 break;
             // Dropdown
@@ -165,7 +169,7 @@ export class FormControl implements IFormControl {
                     onChange: (this._props as IFormControlPropsDropdown).onChange,
                     onMenuRendering: (this._props as IFormControlPropsDropdown).onMenuRendering,
                     title: this._props.title,
-                    value: this._props.value
+                    value
                 });
                 break;
             // Email
@@ -180,7 +184,7 @@ export class FormControl implements IFormControl {
                     placeholder: (this._props as IFormControlPropsTextField).placeholder,
                     title: this._props.title,
                     type: InputGroupTypes.Email,
-                    value: this._props.value
+                    value
                 });
                 break;
             // File
@@ -195,7 +199,7 @@ export class FormControl implements IFormControl {
                     placeholder: (this._props as IFormControlPropsTextField).placeholder,
                     title: this._props.title,
                     type: InputGroupTypes.File,
-                    value: this._props.value
+                    value
                 });
                 break;
             // List Box
@@ -207,7 +211,7 @@ export class FormControl implements IFormControl {
                     items: (this._props as IFormControlPropsListBox).items,
                     onChange: (this._props as IFormControlPropsListBox).onChange,
                     placeholder: (this._props as IFormControlPropsListBox).placeholder,
-                    value: this._props.value
+                    value
                 });
                 break;
             // Multi-Checkbox
@@ -228,7 +232,7 @@ export class FormControl implements IFormControl {
                     renderRow: cbMultiProps.renderRow,
                     title: this._props.title,
                     type: CheckboxGroupTypes.Checkbox,
-                    value: this._props.value
+                    value
                 });
                 break;
             // Multi-Dropdown
@@ -244,7 +248,7 @@ export class FormControl implements IFormControl {
                     onChange: (this._props as IFormControlPropsDropdown).onChange,
                     onMenuRendering: (this._props as IFormControlPropsDropdown).onMenuRendering,
                     title: this._props.title,
-                    value: this._props.value
+                    value
                 });
                 break;
             // Multi-List Box
@@ -257,7 +261,7 @@ export class FormControl implements IFormControl {
                     multi: true,
                     onChange: (this._props as IFormControlPropsMultiListBox).onChange,
                     placeholder: (this._props as IFormControlPropsMultiListBox).placeholder,
-                    value: this._props.value
+                    value
                 });
                 break;
             // Multi-Radio
@@ -275,7 +279,7 @@ export class FormControl implements IFormControl {
                     renderRow: (this._props as IFormControlPropsMultiCheckbox).renderRow,
                     title: this._props.title,
                     type: CheckboxGroupTypes.Radio,
-                    value: this._props.value
+                    value
                 });
                 break;
             // Multi-Switch
@@ -293,7 +297,7 @@ export class FormControl implements IFormControl {
                     renderRow: (this._props as IFormControlPropsMultiCheckbox).renderRow,
                     title: this._props.title,
                     type: CheckboxGroupTypes.Switch,
-                    value: this._props.value
+                    value
                 });
                 break;
             // Password
@@ -308,7 +312,7 @@ export class FormControl implements IFormControl {
                     placeholder: (this._props as IFormControlPropsTextField).placeholder,
                     title: this._props.title,
                     type: InputGroupTypes.Password,
-                    value: this._props.value
+                    value
                 });
                 break;
             // Radio
@@ -325,7 +329,7 @@ export class FormControl implements IFormControl {
                     renderRow: (this._props as IFormControlPropsCheckbox).renderRow,
                     title: this._props.title,
                     type: CheckboxGroupTypes.Radio,
-                    value: this._props.value
+                    value
                 });
                 break;
             // Range
@@ -343,7 +347,7 @@ export class FormControl implements IFormControl {
                     step: (this._props as IFormControlPropsRange).step,
                     title: this._props.title,
                     type: InputGroupTypes.Range,
-                    value: this._props.value
+                    value
                 });
                 break;
             // Read Only
@@ -357,7 +361,7 @@ export class FormControl implements IFormControl {
                     placeholder: (this._props as IFormControlPropsTextField).placeholder,
                     title: this._props.title,
                     type: InputGroupTypes.TextField,
-                    value: this._props.value
+                    value
                 });
                 break;
             // Switch
@@ -374,7 +378,7 @@ export class FormControl implements IFormControl {
                     renderRow: (this._props as IFormControlPropsCheckbox).renderRow,
                     title: this._props.title,
                     type: CheckboxGroupTypes.Switch,
-                    value: this._props.value
+                    value
                 });
                 break;
             // Text Area
@@ -390,7 +394,7 @@ export class FormControl implements IFormControl {
                     rows: (this._props as IFormControlPropsTextField).rows,
                     title: this._props.title,
                     type: InputGroupTypes.TextArea,
-                    value: this._props.value
+                    value
                 });
                 break;
             // Text Field
@@ -405,7 +409,7 @@ export class FormControl implements IFormControl {
                     placeholder: (this._props as IFormControlPropsTextField).placeholder,
                     title: this._props.title,
                     type: InputGroupTypes.TextField,
-                    value: this._props.value
+                    value
                 });
                 break;
 
@@ -419,7 +423,7 @@ export class FormControl implements IFormControl {
                 let custom = CustomControls.getByType(this._props.type);
                 if (custom && typeof (custom) === "function") {
                     // Execute the event
-                    this._custom = custom(this._props);
+                    this._custom = custom(this._props, this._formProps);
                 }
                 break;
         }
