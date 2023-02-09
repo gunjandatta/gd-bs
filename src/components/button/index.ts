@@ -203,17 +203,27 @@ class _Button extends Base<IButtonProps> implements IButton {
     // Sets the button text
     setText(btnText?: string) {
         let elButton = this.el as HTMLButtonElement;
+        let existsFl = false;
 
         // Parse the child nodes
         for (var i = 0; i < elButton.childNodes.length; i++) {
             // See if this is the text element
             if (elButton.childNodes[i].nodeName == "#text") {
+                // Set the flag
+                existsFl = true;
+
                 // Set the value
-                elButton.childNodes[i].nodeValue = btnText;
+                elButton.childNodes[i].nodeValue = btnText || "";
 
                 // Break from the loop
                 break;
             }
+        }
+
+        // See if it doesn't exist
+        if (!existsFl) {
+            // Add the text node
+            elButton.appendChild(document.createTextNode(btnText == null ? "" : btnText))
         }
     }
 
