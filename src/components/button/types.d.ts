@@ -63,6 +63,9 @@ export interface IButton {
     /** Hides the button. */
     hide: () => void;
 
+    /** Updates the icon. */
+    setIcon: (iconType: Function, iconSize: number, iconClassName?: string) => void;
+
     /** Updates the button text. */
     setText: (btnText?: string) => void;
 

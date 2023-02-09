@@ -177,16 +177,44 @@ class _Button extends Base<IButtonProps> implements IButton {
     // Enables the button
     enable() { (this.el as HTMLButtonElement).disabled = false; }
 
+    // Sets the icon
+    setIcon(iconType: Function, iconSize: number = 16, iconClassName?: string) {
+        let elButton = this.el as HTMLButtonElement;
+
+        // Parse the child nodes
+        for (var i = 0; i < elButton.childNodes.length; i++) {
+            // See if this is the icon
+            if (elButton.childNodes[i].nodeName == "svg") {
+                // Insert the icon
+                elButton.insertBefore(iconType(iconSize, iconSize, iconClassName), elButton.childNodes[i]);
+
+                // Remove the existing icon
+                elButton.removeChild((this.el as HTMLButtonElement).childNodes[i]);
+
+                // Update the styling of the button
+                elButton.classList.add("btn-icon");
+
+                // Break from the loop
+                break;
+            }
+        }
+    }
+
     // Sets the button text
     setText(btnText?: string) {
-        // Clear the element
-        while (this.el.firstChild) { this.el.removeChild(this.el.firstChild); }
+        let elButton = this.el as HTMLButtonElement;
 
-        // Set the text
-        let elText = document.createTextNode(btnText == null ? "" : btnText);
+        // Parse the child nodes
+        for (var i = 0; i < elButton.childNodes.length; i++) {
+            // See if this is the text element
+            if (elButton.childNodes[i].nodeName == "#text") {
+                // Set the value
+                elButton.childNodes[i].nodeValue = btnText;
 
-        // Append the text
-        this.el.appendChild(elText);
+                // Break from the loop
+                break;
+            }
+        }
     }
 
     // Sets the button type
