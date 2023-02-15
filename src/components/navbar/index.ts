@@ -276,6 +276,19 @@ class _Navbar extends Base<INavbarProps> implements INavbar {
      * Public Methods
      */
 
+    // Returns the current search value
+    getSearchValue() {
+        // Get the searchbox element
+        let searchbox = this.el.querySelector("form input") as HTMLInputElement;
+        if (searchbox) {
+            // Return the value
+            return searchbox.value;
+        }
+
+        // Return nothing by default
+        return "";
+    }
+
     // Updates the navbar template type
     setType(navbarType: number) {
         // Remove the classes
