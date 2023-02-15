@@ -101,6 +101,9 @@ export interface INavbar {
     /** The element. */
     el: HTMLBaseElement;
 
+    /** Method to get the search box value. */
+    getSearchValue?: () => string;
+
     /** Hides the nav bar. */
     hide: () => void;
 
@@ -168,7 +171,6 @@ export type INavbarTypes = {
 export interface INavbarSearchBox {
     btnType?: number;
     btnText?: string;
-    getSearchValue?: () => string;
     hideButton?: boolean;
     onChange?: (value?: string, ev?: Event) => void;
     onSearch?: (value?: string, ev?: Event) => void;
