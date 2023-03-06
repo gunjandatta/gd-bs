@@ -35,7 +35,7 @@ class _CheckboxGroup extends Base<ICheckboxGroupProps> implements ICheckboxGroup
 
     // Configure the card group
     private configure(cbTemplate: string) {
-        let renderRow = typeof (this.props.renderRow) === "boolean" ? this.props.renderRow : true;
+        let renderRow = typeof (this.props.colSize) === "number" ? this.props.colSize > 0 : false;
 
         // See if a label is defined
         let label = this.el.querySelector("legend");

@@ -42,9 +42,14 @@ export class CheckboxItem {
             this._elCheckbox.title = this.props.label || this._parent.title || "";
         }
 
-        // Set the column size
-        let colSize = this._parent.colSize > 0 && this._parent.colSize < 13 ? this._parent.colSize : 12;
-        this._el.classList.add("col-" + colSize);
+        // See if we are rendering a row
+        let renderRow = typeof (this._parent.colSize) === "number" ? this._parent.colSize > 0 : false;
+        if (renderRow) {
+            // Set the column size
+            let colSize = this._parent.colSize > 0 && this._parent.colSize < 13 ? this._parent.colSize : 12;
+            this._el.classList.add("col-" + colSize);
+
+        }
 
         // See if the title property is defined
         if (this._parent.title) {

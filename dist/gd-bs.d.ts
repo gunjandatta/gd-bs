@@ -884,7 +884,6 @@ declare module 'gd-bs/components/checkboxGroup/types' {
             multi?: boolean;
             onRender?: (el?: HTMLElement, item?: ICheckboxGroupItem) => void;
             onChange?: (items: ICheckboxGroupItem | Array<ICheckboxGroupItem>, ev?: Event) => void;
-            renderRow?: boolean;
             title?: string;
             type?: number;
             value?: any;
@@ -1194,7 +1193,6 @@ declare module 'gd-bs/components/form/controlTypes' {
             onControlRendering?: (control: IFormControlPropsCheckbox) => void | PromiseLike<IFormControlPropsCheckbox>;
             onGetValue?: (control: IFormControlPropsCheckbox) => any;
             onValidate?: (control: IFormControlPropsCheckbox, value: IFormControlValidationResult) => boolean | IFormControlValidationResult;
-            renderRow?: boolean;
     }
     
     /**

@@ -55,8 +55,12 @@
         window.addEventListener("load", function() {
             // Dev
             let items = [];
-            for(var i=0; i<10; i++) {
-                items.push({ label: "Item " + i, data: i, isSelected: true });
+            for (var i = 0; i < 10; i++) {
+                items.push({
+                    label: "Item " + i,
+                    data: i,
+                    isSelected: true
+                });
             }
             window["form"] = GD.Components.Form({
                 el: document.getElementById("dev"),
@@ -64,9 +68,20 @@
                     name: "cb",
                     label: "My CB",
                     items,
-                    //renderRow: false,
-                    //colSize: 3,
+                    renderRow: true,
+                    colSize: 3,
                     type: 8
+                }, {
+                    name: "switch",
+                    label: "Select an Option",
+                    type: GD.Components.FormControlTypes.Switch,
+                    items: [{
+                        label: "Switch 1"
+                    }, {
+                        label: "Switch 2"
+                    }, {
+                        label: "Switch 3"
+                    }]
                 }]
             });
 
@@ -123,7 +138,9 @@
                     text: "Test Tooltip",
                     type: GD.Components.ButtonTypes.OutlineDanger
                 },
-                options: { trigger: "click" }
+                options: {
+                    trigger: "click"
+                }
             });
 
             window["card"] = GD.Components.Card({
@@ -134,7 +151,9 @@
                     actions: [{
                         text: "Card Action",
                         buttonType: GD.Components.ButtonTypes.OutlinePrimary,
-                        onClick: function(action, card) { alert(card.title + " was clicked."); }
+                        onClick: function(action, card) {
+                            alert(card.title + " was clicked.");
+                        }
                     }]
                 }]
             });
@@ -865,6 +884,21 @@
                         }, {
                             columns: [{
                                 control: {
+                                    label: "Select an Option",
+                                    name: "option",
+                                    type: GD.Components.FormControlTypes.Switch,
+                                    items: [{
+                                        label: "Switch 1"
+                                    }, {
+                                        label: "Switch 2"
+                                    }, {
+                                        label: "Switch 3"
+                                    }]
+                                }
+                            }]
+                        }, {
+                            columns: [{
+                                control: {
                                     errorMessage: "This is a required field.",
                                     required: true,
                                     label: "Range",
@@ -1103,7 +1137,9 @@
                     tabContent: "This is the content for tab 4."
                 }, {
                     title: "NavTab 5",
-                    onRenderTab: function(el) { el.innerHTML = "This is the content for tab 5." }
+                    onRenderTab: function(el) {
+                        el.innerHTML = "This is the content for tab 5."
+                    }
                 }]
             });
             window["carousel"] = GD.Components.Carousel({
@@ -1183,7 +1219,9 @@
             GD.Components.Pagination({
                 el: document.querySelector("#paging"),
                 numberOfPages: 5,
-                onClick: function(pageNumber) { alert(pageNumber + " was clicked."); }
+                onClick: function(pageNumber) {
+                    alert(pageNumber + " was clicked.");
+                }
             });
             GD.Components.Progress({
                 el: document.querySelector("#progress"),

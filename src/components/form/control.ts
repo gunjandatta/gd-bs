@@ -121,7 +121,6 @@ export class FormControl implements IFormControl {
                     isReadonly: this._props.isReadonly,
                     items: cbProps.items,
                     onChange: cbProps.onChange,
-                    renderRow: cbProps.renderRow,
                     title: this._props.title,
                     type: CheckboxGroupTypes.Checkbox,
                     value
@@ -229,7 +228,6 @@ export class FormControl implements IFormControl {
                     items: cbMultiProps.items,
                     multi: true,
                     onChange: cbMultiProps.onChange,
-                    renderRow: cbMultiProps.renderRow,
                     title: this._props.title,
                     type: CheckboxGroupTypes.Checkbox,
                     value
@@ -276,7 +274,6 @@ export class FormControl implements IFormControl {
                     items: (this._props as IFormControlPropsMultiCheckbox).items,
                     multi: true,
                     onChange: (this._props as IFormControlPropsMultiCheckbox).onChange,
-                    renderRow: (this._props as IFormControlPropsMultiCheckbox).renderRow,
                     title: this._props.title,
                     type: CheckboxGroupTypes.Radio,
                     value
@@ -294,7 +291,6 @@ export class FormControl implements IFormControl {
                     items: (this._props as IFormControlPropsMultiCheckbox).items,
                     multi: true,
                     onChange: (this._props as IFormControlPropsMultiCheckbox).onChange,
-                    renderRow: (this._props as IFormControlPropsMultiCheckbox).renderRow,
                     title: this._props.title,
                     type: CheckboxGroupTypes.Switch,
                     value
@@ -326,7 +322,6 @@ export class FormControl implements IFormControl {
                     isReadonly: this._props.isReadonly,
                     items: (this._props as IFormControlPropsCheckbox).items,
                     onChange: (this._props as IFormControlPropsCheckbox).onChange,
-                    renderRow: (this._props as IFormControlPropsCheckbox).renderRow,
                     title: this._props.title,
                     type: CheckboxGroupTypes.Radio,
                     value
@@ -375,7 +370,6 @@ export class FormControl implements IFormControl {
                     isReadonly: this._props.isReadonly,
                     items: (this._props as IFormControlPropsCheckbox).items,
                     onChange: (this._props as IFormControlPropsCheckbox).onChange,
-                    renderRow: (this._props as IFormControlPropsCheckbox).renderRow,
                     title: this._props.title,
                     type: CheckboxGroupTypes.Switch,
                     value
