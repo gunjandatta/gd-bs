@@ -449,6 +449,9 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
         for (let i = 0; i < this._items.length; i++) {
             let item = this._items[i];
 
+            // Skip disabled items
+            if ((item.el as HTMLOptionElement).disabled) { continue; }
+
             // See if this item is selected
             if (item.isSelected) {
                 // Add the value
