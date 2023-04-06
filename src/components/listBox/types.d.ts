@@ -99,8 +99,9 @@ export interface IListBoxProps extends IBaseProps<IListBox> {
     isReadonly?: boolean;
     items: Array<IDropdownItem>;
     multi?: boolean;
-    placeholder?: string;
     onLoadData?: () => Array<IDropdownItem> | PromiseLike<Array<IDropdownItem>>;
     onChange?: (items: IDropdownItem | Array<IDropdownItem>, ev?: Event) => void;
+    placeholder?: string;
+    required?: boolean;
     value?: string | Array<string>;
 }

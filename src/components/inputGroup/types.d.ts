@@ -91,6 +91,7 @@ export interface IInputGroupProps extends IBaseProps<IInputGroup> {
     placeholder?: string;
     prependedButtons?: Array<IButtonProps>;
     prependedLabel?: string;
+    required?: boolean;
     rows?: number;
     step?: number;
     title?: string;

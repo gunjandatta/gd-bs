@@ -72,6 +72,9 @@ class _ListBox extends Base<IListBoxProps> implements IListBox {
             this._elSearchBox ? this._elSearchBox.disabled = true : null;
         }
 
+        // Set the required property
+        this._elSearchBox.required = this.props.required ? true : false;
+
         // Set the options
         this.setOptions(this.props.items);
 

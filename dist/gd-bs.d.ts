@@ -884,6 +884,7 @@ declare module 'gd-bs/components/checkboxGroup/types' {
             multi?: boolean;
             onRender?: (el?: HTMLElement, item?: ICheckboxGroupItem) => void;
             onChange?: (items: ICheckboxGroupItem | Array<ICheckboxGroupItem>, ev?: Event) => void;
+            required?: boolean;
             title?: string;
             type?: number;
             value?: any;
@@ -1094,6 +1095,7 @@ declare module 'gd-bs/components/dropdown/types' {
             navFl?: boolean;
             onChange?: (item?: IDropdownItem | Array<IDropdownItem>, ev?: Event) => void;
             onMenuRendering?: (props: IPopoverProps) => IPopoverProps;
+            required?: boolean;
             setLabelToValue?: boolean;
             title?: string;
             type?: number;
@@ -1554,6 +1556,7 @@ declare module 'gd-bs/components/inputGroup/types' {
             placeholder?: string;
             prependedButtons?: Array<IButtonProps>;
             prependedLabel?: string;
+            required?: boolean;
             rows?: number;
             step?: number;
             title?: string;
@@ -1680,9 +1683,10 @@ declare module 'gd-bs/components/listBox/types' {
             isReadonly?: boolean;
             items: Array<IDropdownItem>;
             multi?: boolean;
-            placeholder?: string;
             onLoadData?: () => Array<IDropdownItem> | PromiseLike<Array<IDropdownItem>>;
             onChange?: (items: IDropdownItem | Array<IDropdownItem>, ev?: Event) => void;
+            placeholder?: string;
+            required?: boolean;
             value?: string | Array<string>;
     }
 }

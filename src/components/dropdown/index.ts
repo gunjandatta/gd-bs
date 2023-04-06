@@ -289,6 +289,7 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
             dropdown.classList.add("form-select");
             dropdown.disabled = this.props.isReadonly ? true : false;
             dropdown.multiple = this.props.multi ? true : false;
+            dropdown.required = this.props.required ? true : false;
             this.props.title ? dropdown.title = this.props.title : null;
         }
     }

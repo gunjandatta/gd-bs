@@ -143,6 +143,7 @@ export interface IDropdownProps extends IBaseProps<IDropdown> {
     navFl?: boolean;
     onChange?: (item?: IDropdownItem | Array<IDropdownItem>, ev?: Event) => void;
     onMenuRendering?: (props: IPopoverProps) => IPopoverProps;
+    required?: boolean;
     setLabelToValue?: boolean;
     title?: string;
     type?: number;

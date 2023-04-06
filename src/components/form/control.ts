@@ -121,6 +121,7 @@ export class FormControl implements IFormControl {
                     isReadonly: this._props.isReadonly,
                     items: cbProps.items,
                     onChange: cbProps.onChange,
+                    required: this._props.required,
                     title: this._props.title,
                     type: CheckboxGroupTypes.Checkbox,
                     value
@@ -136,6 +137,7 @@ export class FormControl implements IFormControl {
                     isReadonly: this._props.isReadonly,
                     onChange: (this._props as IFormControlPropsTextField).onChange,
                     placeholder: (this._props as IFormControlPropsTextField).placeholder,
+                    required: this._props.required,
                     title: this._props.title,
                     type: InputGroupTypes.ColorPicker,
                     value
@@ -152,6 +154,7 @@ export class FormControl implements IFormControl {
                     isReadonly: this._props.isReadonly,
                     items: (this._props as IFormControlPropsDropdown).items,
                     onChange: (this._props as IFormControlPropsDropdown).onChange,
+                    required: this._props.required,
                     title: this._props.title,
                     value
                 });
@@ -167,6 +170,7 @@ export class FormControl implements IFormControl {
                     items: (this._props as IFormControlPropsDropdown).items,
                     onChange: (this._props as IFormControlPropsDropdown).onChange,
                     onMenuRendering: (this._props as IFormControlPropsDropdown).onMenuRendering,
+                    required: this._props.required,
                     title: this._props.title,
                     value
                 });
@@ -181,6 +185,7 @@ export class FormControl implements IFormControl {
                     isReadonly: this._props.isReadonly,
                     onChange: (this._props as IFormControlPropsTextField).onChange,
                     placeholder: (this._props as IFormControlPropsTextField).placeholder,
+                    required: this._props.required,
                     title: this._props.title,
                     type: InputGroupTypes.Email,
                     value
@@ -196,6 +201,7 @@ export class FormControl implements IFormControl {
                     isReadonly: this._props.isReadonly,
                     onChange: (this._props as IFormControlPropsTextField).onChange,
                     placeholder: (this._props as IFormControlPropsTextField).placeholder,
+                    required: this._props.required,
                     title: this._props.title,
                     type: InputGroupTypes.File,
                     value
@@ -210,6 +216,7 @@ export class FormControl implements IFormControl {
                     items: (this._props as IFormControlPropsListBox).items,
                     onChange: (this._props as IFormControlPropsListBox).onChange,
                     placeholder: (this._props as IFormControlPropsListBox).placeholder,
+                    required: this._props.required,
                     value
                 });
                 break;
@@ -228,6 +235,7 @@ export class FormControl implements IFormControl {
                     items: cbMultiProps.items,
                     multi: true,
                     onChange: cbMultiProps.onChange,
+                    required: this._props.required,
                     title: this._props.title,
                     type: CheckboxGroupTypes.Checkbox,
                     value
@@ -245,6 +253,7 @@ export class FormControl implements IFormControl {
                     multi: true,
                     onChange: (this._props as IFormControlPropsDropdown).onChange,
                     onMenuRendering: (this._props as IFormControlPropsDropdown).onMenuRendering,
+                    required: this._props.required,
                     title: this._props.title,
                     value
                 });
@@ -259,6 +268,7 @@ export class FormControl implements IFormControl {
                     multi: true,
                     onChange: (this._props as IFormControlPropsMultiListBox).onChange,
                     placeholder: (this._props as IFormControlPropsMultiListBox).placeholder,
+                    required: this._props.required,
                     value
                 });
                 break;
@@ -274,6 +284,7 @@ export class FormControl implements IFormControl {
                     items: (this._props as IFormControlPropsMultiCheckbox).items,
                     multi: true,
                     onChange: (this._props as IFormControlPropsMultiCheckbox).onChange,
+                    required: this._props.required,
                     title: this._props.title,
                     type: CheckboxGroupTypes.Radio,
                     value
@@ -291,6 +302,7 @@ export class FormControl implements IFormControl {
                     items: (this._props as IFormControlPropsMultiCheckbox).items,
                     multi: true,
                     onChange: (this._props as IFormControlPropsMultiCheckbox).onChange,
+                    required: this._props.required,
                     title: this._props.title,
                     type: CheckboxGroupTypes.Switch,
                     value
@@ -306,6 +318,7 @@ export class FormControl implements IFormControl {
                     isReadonly: this._props.isReadonly,
                     onChange: (this._props as IFormControlPropsTextField).onChange,
                     placeholder: (this._props as IFormControlPropsTextField).placeholder,
+                    required: this._props.required,
                     title: this._props.title,
                     type: InputGroupTypes.Password,
                     value
@@ -322,6 +335,7 @@ export class FormControl implements IFormControl {
                     isReadonly: this._props.isReadonly,
                     items: (this._props as IFormControlPropsCheckbox).items,
                     onChange: (this._props as IFormControlPropsCheckbox).onChange,
+                    required: this._props.required,
                     title: this._props.title,
                     type: CheckboxGroupTypes.Radio,
                     value
@@ -339,6 +353,7 @@ export class FormControl implements IFormControl {
                     max: (this._props as IFormControlPropsRange).max || 100,
                     onChange: (this._props as IFormControlPropsRange).onChange,
                     placeholder: (this._props as IFormControlPropsRange).placeholder,
+                    required: this._props.required,
                     step: (this._props as IFormControlPropsRange).step,
                     title: this._props.title,
                     type: InputGroupTypes.Range,
@@ -354,6 +369,7 @@ export class FormControl implements IFormControl {
                     isReadonly: true,
                     onChange: (this._props as IFormControlPropsTextField).onChange,
                     placeholder: (this._props as IFormControlPropsTextField).placeholder,
+                    required: this._props.required,
                     title: this._props.title,
                     type: InputGroupTypes.TextField,
                     value
@@ -370,6 +386,7 @@ export class FormControl implements IFormControl {
                     isReadonly: this._props.isReadonly,
                     items: (this._props as IFormControlPropsCheckbox).items,
                     onChange: (this._props as IFormControlPropsCheckbox).onChange,
+                    required: this._props.required,
                     title: this._props.title,
                     type: CheckboxGroupTypes.Switch,
                     value
@@ -385,6 +402,7 @@ export class FormControl implements IFormControl {
                     isReadonly: this._props.isReadonly,
                     onChange: (this._props as IFormControlPropsTextField).onChange,
                     placeholder: (this._props as IFormControlPropsTextField).placeholder,
+                    required: this._props.required,
                     rows: (this._props as IFormControlPropsTextField).rows,
                     title: this._props.title,
                     type: InputGroupTypes.TextArea,
@@ -401,6 +419,7 @@ export class FormControl implements IFormControl {
                     isReadonly: this._props.isReadonly,
                     onChange: (this._props as IFormControlPropsTextField).onChange,
                     placeholder: (this._props as IFormControlPropsTextField).placeholder,
+                    required: this._props.required,
                     title: this._props.title,
                     type: InputGroupTypes.TextField,
                     value
