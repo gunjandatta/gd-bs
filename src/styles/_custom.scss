@@ -397,7 +397,7 @@
     /* Fix Rich Textbox rounded corners */
     .rich-textbox {
         .editor-container {
-            border-radius: 0 0 var(--bs-border-radius) var(--bs-border-radius) !important
+            border-radius: 0 0 var(--bs-border-radius) var(--bs-border-radius) !important;
         }
         .toolbar-container {
             border-radius: var(--bs-border-radius) var(--bs-border-radius) 0 0 !important;
