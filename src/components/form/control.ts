@@ -651,109 +651,113 @@ export class FormControl implements IFormControl {
 
     // Updates the control validation
     updateValidation(elControl: Element, validation: IFormControlValidationResult) {
-        // Get the form control
-        let elFormControl: HTMLElement = elControl.querySelector(".form-control") || elControl.querySelector(".form-select");
-        if (elFormControl) {
-            // Clear the invalid/valid classes
-            elFormControl.classList.remove("is-invalid");
-            elFormControl.classList.remove("is-valid");
+        // Get the form controls
+        let elFormControls = elControl.querySelectorAll(".form-control") || elControl.querySelectorAll(".form-select");
+        for (let i = 0; i < elFormControls.length; i++) {
+            // Ensure the control exists
+            let elFormControl = elFormControls[i] as HTMLElement;
+            if (elFormControl) {
+                // Clear the invalid/valid classes
+                elFormControl.classList.remove("is-invalid");
+                elFormControl.classList.remove("is-valid");
 
-            // Set the class
-            elFormControl.classList.add(validation.isValid ? "is-valid" : "is-invalid");
-        } else {
-            let validateControls = (controls: Array<HTMLElement>) => {
-                // Parse the controls
-                for (let i = 0; i < controls.length; i++) {
-                    let control = controls[i];
+                // Set the class
+                elFormControl.classList.add(validation.isValid ? "is-valid" : "is-invalid");
+            } else {
+                let validateControls = (controls: Array<HTMLElement>) => {
+                    // Parse the controls
+                    for (let i = 0; i < controls.length; i++) {
+                        let control = controls[i];
 
-                    // Clear the invalid/valid classes
-                    control.classList.remove("is-invalid");
-                    control.classList.remove("is-valid");
+                        // Clear the invalid/valid classes
+                        control.classList.remove("is-invalid");
+                        control.classList.remove("is-valid");
 
-                    // Set the class
-                    control.classList.add(validation.isValid ? "is-valid" : "is-invalid");
+                        // Set the class
+                        control.classList.add(validation.isValid ? "is-valid" : "is-invalid");
+                    }
+                }
+
+                // Get the checkboxes
+                let elCheckboxes = elControl.querySelectorAll(".form-check-input");
+                if (elCheckboxes.length > 0) {
+                    // Validate the controls
+                    validateControls(elCheckboxes as any);
+
+                    // Set the form control
+                    elFormControl = elCheckboxes.length > 0 ? elCheckboxes[elCheckboxes.length - 1] as any : elFormControl;
+                }
+
+                // Get the custom controls
+                let elCustomControls = elControl.querySelectorAll(".custom-control-input");
+                if (elCustomControls.length > 0) {
+                    // Validate the controls
+                    validateControls(elCustomControls as any);
+
+                    // Set the form control
+                    elFormControl = elCustomControls.length > 0 ? elCustomControls[elCustomControls.length - 1] as any : elFormControl;
                 }
             }
 
-            // Get the checkboxes
-            let elCheckboxes = elControl.querySelectorAll(".form-check-input");
-            if (elCheckboxes.length > 0) {
-                // Validate the controls
-                validateControls(elCheckboxes as any);
+            // Ensure the form control exists
+            if (elFormControl) {
+                let useTooltip = this._formProps.validationType == FormValidationTypes.Tooltip;
 
-                // Set the form control
-                elFormControl = elCheckboxes.length > 0 ? elCheckboxes[elCheckboxes.length - 1] as any : elFormControl;
-            }
+                // Clear the old valid message if it exists
+                let validClassName = useTooltip ? "valid-tooltip" : "valid-feedback";
+                let elMessage = elFormControl.parentNode.querySelector("." + validClassName) as HTMLElement;
+                if (elMessage) {
+                    // Clear the message
+                    elMessage.innerHTML = "";
+                    elMessage.style.display = "";
+                }
 
-            // Get the custom controls
-            let elCustomControls = elControl.querySelectorAll(".custom-control-input");
-            if (elCustomControls.length > 0) {
-                // Validate the controls
-                validateControls(elCustomControls as any);
-
-                // Set the form control
-                elFormControl = elCustomControls.length > 0 ? elCustomControls[elCustomControls.length - 1] as any : elFormControl;
-            }
-        }
-
-        // Ensure the form control exists
-        if (elFormControl) {
-            let useTooltip = this._formProps.validationType == FormValidationTypes.Tooltip;
-
-            // Clear the old valid message if it exists
-            let validClassName = useTooltip ? "valid-tooltip" : "valid-feedback";
-            let elMessage = elFormControl.parentNode.querySelector("." + validClassName) as HTMLElement;
-            if (elMessage) {
-                // Clear the message
-                elMessage.innerHTML = "";
-                elMessage.style.display = "";
-            }
-
-            // Clear the old valid message if it exists
-            let invalidClassName = useTooltip ? "invalid-tooltip" : "invalid-feedback";
-            elMessage = elFormControl.parentNode.querySelector("." + invalidClassName) as HTMLElement;
-            if (elMessage) {
-                // Clear the message
-                elMessage.innerHTML = "";
-                elMessage.style.display = "";
-            }
-
-            // See if there is invalid feedback
-            if (validation.invalidMessage || this._props.errorMessage) {
-                // Get the element
+                // Clear the old valid message if it exists
                 let invalidClassName = useTooltip ? "invalid-tooltip" : "invalid-feedback";
                 elMessage = elFormControl.parentNode.querySelector("." + invalidClassName) as HTMLElement;
-                if (elMessage == null) {
-                    // Create the element
-                    elMessage = document.createElement("div");
-                    elMessage.className = invalidClassName;
-                    elFormControl.parentNode.appendChild(elMessage);
+                if (elMessage) {
+                    // Clear the message
+                    elMessage.innerHTML = "";
+                    elMessage.style.display = "";
                 }
 
-                // Set the message
-                elMessage.innerHTML = validation.invalidMessage || this._props.errorMessage;
+                // See if there is invalid feedback
+                if (validation.invalidMessage || this._props.errorMessage) {
+                    // Get the element
+                    let invalidClassName = useTooltip ? "invalid-tooltip" : "invalid-feedback";
+                    elMessage = elFormControl.parentNode.querySelector("." + invalidClassName) as HTMLElement;
+                    if (elMessage == null) {
+                        // Create the element
+                        elMessage = document.createElement("div");
+                        elMessage.className = invalidClassName;
+                        elFormControl.parentNode.appendChild(elMessage);
+                    }
 
-                // Update the display
-                elMessage.style.display = validation.isValid ? "" : "block";
-            }
+                    // Set the message
+                    elMessage.innerHTML = validation.invalidMessage || this._props.errorMessage;
 
-            // See if there is valid feedback
-            if (validation.validMessage) {
-                // Get the element
-                let validClassName = useTooltip ? "valid-tooltip" : "valid-feedback";
-                elMessage = elFormControl.parentNode.querySelector("." + validClassName) as HTMLElement;
-                if (elMessage == null) {
-                    // Create the element
-                    elMessage = document.createElement("div");
-                    elMessage.className = validClassName;
-                    elFormControl.parentNode.appendChild(elMessage);
+                    // Update the display
+                    elMessage.style.display = validation.isValid ? "" : "block";
                 }
 
-                // Set the message
-                elMessage.innerHTML = validation.validMessage;
+                // See if there is valid feedback
+                if (validation.validMessage) {
+                    // Get the element
+                    let validClassName = useTooltip ? "valid-tooltip" : "valid-feedback";
+                    elMessage = elFormControl.parentNode.querySelector("." + validClassName) as HTMLElement;
+                    if (elMessage == null) {
+                        // Create the element
+                        elMessage = document.createElement("div");
+                        elMessage.className = validClassName;
+                        elFormControl.parentNode.appendChild(elMessage);
+                    }
 
-                // Update the display
-                elMessage.style.display = validation.isValid ? "block" : "";
+                    // Set the message
+                    elMessage.innerHTML = validation.validMessage;
+
+                    // Update the display
+                    elMessage.style.display = validation.isValid ? "block" : "";
+                }
             }
         }
     }
