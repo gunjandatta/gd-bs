@@ -27,13 +27,14 @@ class _Nav extends Base<INavProps> implements INav {
     // Configure the card group
     private configure(itemTemplate: string) {
         // Update the navigation
-        let nav = this.el.querySelector(".nav");
+        let nav = this.el.classList.contains("nav") ? this.el : this.el.querySelector(".nav");
         if (nav) {
             this.props.id ? nav.id = this.props.id : null;
             this.props.enableFill ? this.el.classList.add("nav-fill") : null;
             this.props.isJustified ? this.el.classList.add("nav-justified") : null;
             this.props.isPills ? this.el.classList.add("nav-pills") : null;
             this.props.isTabs ? this.el.classList.add("nav-tabs") : null;
+            this.props.isUnderline ? this.el.classList.add("nav-underline") : null;
             this.props.isVertical ? this.el.classList.add("flex-column") : null;
         }
 
@@ -48,11 +49,11 @@ class _Nav extends Base<INavProps> implements INav {
     }
 
     // Configures the tab link event
-    private configureTabEvents(tab: NavLink) {
+    private configureLinkEvents(link: NavLink) {
         // Add a click event
-        tab.el.addEventListener("click", () => {
+        link.el.addEventListener("click", () => {
             let prevTab: INavLink = null;
-            let newTab: INavLink = tab;
+            let newTab: INavLink = link;
 
             // Parse the links
             for (let i = 0; i < this._links.length; i++) {
@@ -69,7 +70,7 @@ class _Nav extends Base<INavProps> implements INav {
             }
 
             // Toggle the link
-            tab.toggle(this.props.fadeTabs);
+            link.toggle(this.props.fadeTabs);
 
             // Call the click event
             this.props.onClick ? this.props.onClick(newTab, prevTab) : null;
@@ -82,7 +83,7 @@ class _Nav extends Base<INavProps> implements INav {
         this._links = [];
 
         // Get the nav and tab elements
-        let nav = this.el.querySelector(".nav") || this.el;
+        let nav = this.el.classList.contains("nav") ? this.el : this.el.querySelector(".nav");
         if (nav) {
             let tabs = this.el.querySelector(".tab-content");
 
@@ -94,11 +95,11 @@ class _Nav extends Base<INavProps> implements INav {
                 nav.appendChild(link.el);
                 this._links.push(link);
 
+                // Configure the link event
+                this.configureLinkEvents(link);
+
                 // See if we are rendering tabs
                 if (tabs) {
-                    // Configure the events
-                    this.configureTabEvents(link);
-
                     // Add the tab content
                     tabs.appendChild(link.elTabContent);
 

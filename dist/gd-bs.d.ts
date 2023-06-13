@@ -2003,6 +2003,7 @@ declare module 'gd-bs/components/nav/types' {
             isJustified?: boolean;
             isPills?: boolean;
             isTabs?: boolean;
+            isUnderline?: boolean;
             isVertical?: boolean;
             onClick?: (newTab?: INavLink, prevTab?: INavLink) => void;
             onLinkRendered?: (el?: HTMLElement, item?: INavLinkProps) => void;

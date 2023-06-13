@@ -90,6 +90,7 @@ export interface INavProps<T = Element> extends IBaseProps<INav> {
     isJustified?: boolean;
     isPills?: boolean;
     isTabs?: boolean;
+    isUnderline?: boolean;
     isVertical?: boolean;
     onClick?: (newTab?: INavLink, prevTab?: INavLink) => void;
     onLinkRendered?: (el?: HTMLElement, item?: INavLinkProps) => void;

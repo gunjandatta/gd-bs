@@ -112,13 +112,13 @@ export class NavLink extends Base<INavLinkProps> implements INavLink {
         if (this.isActive) {
             // Hide this link and tab
             this._elLink.classList.remove("active");
-            this._elTab.classList.remove("active");
-            this._elTab.classList.remove("show");
+            this._elTab ? this._elTab.classList.remove("active") : null;
+            this._elTab ? this._elTab.classList.remove("show") : null;
         } else {
             // Show this link and tab
             this._elLink.classList.add("active");
-            this._elTab.classList.add("active");
-            fadeTabs ? this._elTab.classList.add("show") : null;
+            this._elTab ? this._elTab.classList.add("active") : null;
+            this._elTab && fadeTabs ? this._elTab.classList.add("show") : null;
         }
     }
 }
