@@ -4,7 +4,7 @@ export const HTML = `
         <div class="modal-content">
             <div class="modal-header">
                 <div class="modal-title fs-5"></div>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" area-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body"></div>
             <div class="modal-footer"></div>
