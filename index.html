@@ -15,6 +15,7 @@
     <h1>Library</h1>
     <form>
         <div id="dev"></div>
+        <div id="icon-link"></div>
         <div id="alert"></div>
         <div id="btn-loading"></div>
         <div id="spinner"></div>
@@ -86,6 +87,12 @@
             });
 
             // Components
+            GD.Components.IconLink({
+                el: document.getElementById("icon-link"),
+                content: "Icon Link",
+                iconType: GD.Icons(GD.IconTypes.Badge3d),
+                type: GD.Components.IconLinkTypes.AfterText
+            })
             GD.Components.ListBox({
                 el: document.getElementById("listbox"),
                 label: "List Box Example:",
