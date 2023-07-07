@@ -1,5 +1,5 @@
 import { ICarouselItem } from "./types";
-import { appendContent } from "../common";
+import { appendContent, setClassNames } from "../common";
 import { HTMLItem } from "./templates";
 
 /**
@@ -25,6 +25,9 @@ export class CarouselItem {
 
     // Configure the item
     private configure() {
+        // Set the class names
+        setClassNames(this._el, this._props.className);
+
         // Set the attributes
         this._props.isActive ? this._el.classList.add("active") : null;
 
