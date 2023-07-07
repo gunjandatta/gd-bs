@@ -153,8 +153,8 @@ class _Carousel extends Base<ICarouselProps> implements ICarousel {
         // See if we are rendering controls
         if (this.props.enableControls) {
             // Configure the controls
-            nextControl ? nextControl.href = "#" + this.el.id : null;
-            prevControl ? prevControl.href = "#" + this.el.id : null;
+            nextControl ? nextControl.setAttribute("data-bs-target", "#" + this.el.id) : null;
+            prevControl ? prevControl.setAttribute("data-bs-target", "#" + this.el.id) : null;
 
             // Set the click event
             nextControl.addEventListener("click", ev => { ev.preventDefault(); this.next(); })
