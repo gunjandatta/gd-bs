@@ -5,7 +5,7 @@ export const HTML = `<form class="needs-validation"></form>`;
 export const HTMLGroup = `
 <div>
     <label class="form-label" tabindex="-1"></label>
-    <small class="form-text text-muted" tabindex="-1"></small>
+    <small class="form-text" tabindex="-1"></small>
 </div>`.trim();
 
 // Row
