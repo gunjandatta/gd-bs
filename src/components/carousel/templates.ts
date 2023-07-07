@@ -1,7 +1,7 @@
 // Carousel
 export const HTML = `
 <div class="carousel slide" data-bs-ride="carousel">
-    <ol class="carousel-indicators"></ol>
+    <div class="carousel-indicators"></div>
     <div class="carousel-inner"></div>
     <a class="carousel-control-prev" href="#" role="button" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>

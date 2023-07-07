@@ -182,8 +182,9 @@ class _Carousel extends Base<ICarouselProps> implements ICarousel {
                     let item = items[i];
 
                     // Create the item
-                    let elItem = document.createElement("li");
+                    let elItem = document.createElement("button");
                     elItem.setAttribute("data-bs-target", "#" + this.el.id);
+                    elItem.setAttribute("aria-label", "Slide " + (i + 1));
                     elItem.setAttribute("data-bs-slide-to", i.toString());
                     item.isActive ? elItem.classList.add("active") : null;
                     elItem.addEventListener("click", ev => {
@@ -194,7 +195,7 @@ class _Carousel extends Base<ICarouselProps> implements ICarousel {
 
                         // Go to the slide
                         this.nextWhenVisible(elSlide.getAttribute("data-bs-slide-to"));
-                    })
+                    });
 
                     // Add the item
                     indicators.appendChild(elItem);
@@ -215,17 +216,29 @@ class _Carousel extends Base<ICarouselProps> implements ICarousel {
         // Get the indicators
         let slides = this.el.querySelector(".carousel-inner");
         if (slides) {
+            let hasActiveItem = false;
+
             // Parse the items
             let items = this.props.items || [];
             for (let i = 0; i < items.length; i++) {
                 let slide = new CarouselItem(items[i], slideTemplate);
                 this._slides.push(slide);
 
+                // See if this is active
+                slide.isActive ? hasActiveItem = true : null;
+
                 // Create the item element
                 slides.appendChild(slide.el);
 
                 // Call the event
                 this.props.onSlideRendered ? this.props.onSlideRendered(slide.el, items[i]) : null;
+            }
+
+            // See if it doesn't have an active item
+            if (!hasActiveItem) {
+                // Set the first as active
+                let firstSlide = this._slides[0];
+                firstSlide ? firstSlide.el.classList.add("active") : null;
             }
         }
     }
@@ -265,6 +278,9 @@ class _Carousel extends Base<ICarouselProps> implements ICarousel {
         let nextSlide: CarouselItem = null;
         let options = this.props.options || {};
 
+        // Ensure there are multiple slides
+        if (this._slides.length < 2) { return; }
+
         // Parse the slides
         for (let i = 0; i < this._slides.length; i++) {
             let slide = this._slides[i];
@@ -281,8 +297,10 @@ class _Carousel extends Base<ICarouselProps> implements ICarousel {
                 nextSlide = this._slides[i + 1] || this._slides[0];
 
                 // Update the indicators
-                this._indicators[i].classList.remove("active");
-                (this._indicators[i + 1] || this._indicators[0]).classList.add("active");
+                let indicator = this._indicators[i];
+                indicator ? indicator.classList.remove("active") : null;
+                let nextIndicator = this._indicators[i + 1] || this._indicators[0];
+                nextIndicator ? nextIndicator.classList.add("active") : null;
                 break;
             }
         }
@@ -296,6 +314,9 @@ class _Carousel extends Base<ICarouselProps> implements ICarousel {
         let currentSlide: CarouselItem = null;
         let nextSlide: CarouselItem = this._slides[idx];
         let slideRight = true;
+
+        // Ensure there are multiple slides
+        if (this._slides.length < 2) { return; }
 
         // Parse the slides
         for (let i = 0; i < this._slides.length; i++) {
@@ -313,8 +334,10 @@ class _Carousel extends Base<ICarouselProps> implements ICarousel {
                 currentSlide = slide;
 
                 // Update the indicators
-                this._indicators[i].classList.remove("active");
-                this._indicators[idx].classList.add("active");
+                let indicator = this._indicators[i];
+                indicator ? indicator.classList.remove("active") : null;
+                let nextIndicator = this._indicators[idx];
+                nextIndicator ? nextIndicator.classList.add("active") : null;
                 break;
             }
         }
@@ -334,6 +357,9 @@ class _Carousel extends Base<ICarouselProps> implements ICarousel {
         let currentSlide: CarouselItem = null;
         let options = this.props.options || {};
         let prevSlide: CarouselItem = null;
+
+        // Ensure there are multiple slides
+        if (this._slides.length < 2) { return; }
 
         // Parse the slides
         for (let i = 0; i < this._slides.length; i++) {
