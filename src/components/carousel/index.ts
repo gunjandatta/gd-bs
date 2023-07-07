@@ -31,7 +31,7 @@ class _Carousel extends Base<ICarouselProps> implements ICarousel {
     // Configure the card group
     private configure(slideTemplate: string) {
         // Set the attributes
-        this.el.id = "carousel" + (this.props.id == null ? "" : this.props.id);
+        this.el.id = this.props.id == null ? "carousel" : this.props.id;
         this.props.enableCrossfade ? this.el.classList.add("carousel-fade") : null;
 
         // Render the indicators
