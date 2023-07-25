@@ -652,7 +652,8 @@ export class FormControl implements IFormControl {
     // Updates the control validation
     updateValidation(elControl: Element, validation: IFormControlValidationResult) {
         // Get the form controls
-        let elFormControls = elControl.querySelectorAll(".form-control") || elControl.querySelectorAll(".form-select");
+        let elFormControls = elControl.querySelectorAll(".form-control");
+        elFormControls = elFormControls.length == 0 ? elControl.querySelectorAll(".form-select") : elFormControls;
         for (let i = 0; i < elFormControls.length; i++) {
             // Ensure the control exists
             let elFormControl = elFormControls[i] as HTMLElement;
