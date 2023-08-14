@@ -90,7 +90,7 @@ export interface IButtonProps extends IBaseProps<IButton> {
     href?: string;
     iconClassName?: string;
     iconSize?: number;
-    iconType?: HTMLElement | Function;
+    iconType?: SVGImageElement | Function;
     id?: string;
     isBlock?: boolean;
     isDisabled?: boolean;

@@ -108,7 +108,7 @@ export interface IDropdownItem {
     href?: string;
     iconClassName?: string;
     iconSize?: number;
-    iconType?: HTMLElement | Function;
+    iconType?: SVGImageElement | Function;
     isDisabled?: boolean;
     isDivider?: boolean;
     isHeader?: boolean;
