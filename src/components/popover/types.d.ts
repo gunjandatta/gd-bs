@@ -70,7 +70,7 @@ import { IButtonProps } from "../button/types";
  */
 export interface IPopover {
     /** The element. */
-    el: Element;
+    el: HTMLElement;
 
     /** The tippy instance. */
     tippy: any;
@@ -101,7 +101,7 @@ export interface IPopoverProps extends IBaseProps<IPopover> {
     isDismissible?: boolean;
     options?: ITippyProps;
     placement?: number;
-    target?: Element,
+    target?: HTMLElement,
     title?: string;
     type?: number;
 }

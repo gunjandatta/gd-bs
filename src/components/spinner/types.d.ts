@@ -43,7 +43,7 @@ import { IBaseProps } from "../types";
  */
 export interface ISpinner {
     /** The element. */
-    el: Element;
+    el: HTMLElement;
 
     /** Hides the spinner. */
     hide: () => void;

@@ -91,7 +91,7 @@ export interface ITooltipProps extends IBaseProps<ITooltip> {
     content?: string | Element;
     options?: ITippyProps;
     placement?: number;
-    target?: Element,
+    target?: HTMLElement;
     type?: number;
 }
 

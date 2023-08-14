@@ -81,7 +81,7 @@ export interface INav {
 /**
  * Navigation Properties
  */
-export interface INavProps<T = Element> extends IBaseProps<INav> {
+export interface INavProps<T = HTMLElement> extends IBaseProps<INav> {
     data?: any;
     enableFill?: boolean;
     fadeTabs?: boolean;
@@ -112,7 +112,7 @@ export interface INavLink {
 /**
  * Navigation Link Properties
  */
-export interface INavLinkProps<T = Element> extends IBaseProps<INavLink> {
+export interface INavLinkProps<T = HTMLElement> extends IBaseProps<INavLink> {
     isActive?: boolean;
     isDisabled?: boolean;
     className?: string;

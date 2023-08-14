@@ -78,7 +78,7 @@ import { IDropdownItem } from "../dropdown/types";
  */
 export interface IListBox extends IBase<IListBoxProps> {
     /** The element. */
-    el: Element;
+    el: HTMLElement;
 
     /** The selected listbox items. */
     getValue: () => Array<IDropdownItem>;

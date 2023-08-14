@@ -47,7 +47,7 @@ export interface IBreadcrumb {
     add: (item: IBreadcrumbItem) => void;
 
     /** The element. */
-    el: Element;
+    el: HTMLElement;
 
     /** Hides the breadcrumb. */
     hide: () => void;

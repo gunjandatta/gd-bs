@@ -51,7 +51,7 @@ export interface ITooltipGroup {
     add: (props: ITooltipProps, btnTemplate?: string) => void;
 
     /** The element. */
-    el: Element;
+    el: HTMLElement;
 
     /** The tooltips. */
     tooltips: Array<ITooltip>;

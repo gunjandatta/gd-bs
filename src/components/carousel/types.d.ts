@@ -84,7 +84,7 @@ export interface ICarousel {
     cycle: () => void;
 
     /** The element. */
-    el: Element;
+    el: HTMLElement;
 
     /** Hides the carousel. */
     hide: () => void;
@@ -117,7 +117,7 @@ export interface ICarousel {
 /**
  * Carousel Item
  */
-export interface ICarouselItem<T = Element> {
+export interface ICarouselItem<T = HTMLElement> {
     captions?: string;
     className?: string;
     content?: string | T;
@@ -141,7 +141,7 @@ export interface ICarouselOptions {
 /**
  * Carousel Properties
  */
-export interface ICarouselProps<T = Element> extends IBaseProps<ICarousel> {
+export interface ICarouselProps<T = HTMLElement> extends IBaseProps<ICarousel> {
     enableControls?: boolean;
     enableCrossfade?: boolean;
     enableIndicators?: boolean;

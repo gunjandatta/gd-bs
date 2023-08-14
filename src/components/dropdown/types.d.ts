@@ -66,7 +66,7 @@ export interface IDropdown {
     enable: () => void;
 
     /** The element. */
-    el: Element;
+    el: HTMLElement;
 
     /** Gets the selected dropdown item(s). */
     getValue: () => IDropdownItem | Array<IDropdownItem>;

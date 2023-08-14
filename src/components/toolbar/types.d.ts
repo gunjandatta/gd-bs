@@ -48,7 +48,7 @@ export const Toolbar: (props: IToolbarProps, template?: string) => IToolbar;
  */
 export interface IToolbar {
     /** The element. */
-    el: Element;
+    el: HTMLElement;
 
     /** Hides the toolbar. */
     hide: () => void;

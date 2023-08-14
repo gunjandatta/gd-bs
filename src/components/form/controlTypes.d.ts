@@ -63,7 +63,7 @@ export interface IFormControl {
     setControl: (control: any) => void;
     setValue: (value: any) => void;
     show: () => void;
-    updateValidation: (elControl: Element, validation: IFormControlValidationResult) => void;
+    updateValidation: (elControl: HTMLElement, validation: IFormControlValidationResult) => void;
 }
 
 /**

@@ -68,7 +68,7 @@ export interface IAccordion extends IBase<IAccordionProps> { }
 /**
  * Accordion Item
  */
-export interface IAccordionItem<T = Element> {
+export interface IAccordionItem<T = HTMLElement> {
     data?: any;
     className?: string;
     content?: string | T;
@@ -81,7 +81,7 @@ export interface IAccordionItem<T = Element> {
 /**
  * Accordion Properties
  */
-export interface IAccordionProps<T = Element> extends IBaseProps<IAccordion> {
+export interface IAccordionProps<T = HTMLElement> extends IBaseProps<IAccordion> {
     autoCollapse?: boolean;
     id?: string;
     items?: Array<IAccordionItem<T>>;

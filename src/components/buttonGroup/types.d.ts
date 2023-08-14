@@ -47,7 +47,7 @@ import { IButton, IButtonProps } from "../button/types";
  */
 export interface IButtonGroup {
     /** The element. */
-    el: Element;
+    el: HTMLElement;
 
     /** Adds a button to the group. */
     add: (props: IButtonProps, btnTemplate?: string) => void;

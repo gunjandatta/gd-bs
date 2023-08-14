@@ -3,10 +3,10 @@
  */
 export interface IBase<IProps = IBaseProps> {
     /** Internal method to configure the parent element. */
-    configureParent(): Element;
+    configureParent(): HTMLElement;
 
     /** The component HTML element */
-    el: Element | HTMLElement;
+    el: HTMLElement;
 
     /** Hides the component. */
     hide(): void;
@@ -29,7 +29,7 @@ export interface IBaseProps<IBaseObj = any> {
     className?: string;
 
     /** The element to render the component to. */
-    el?: Element | HTMLElement;
+    el?: HTMLElement;
 }
 
 /** Tippy Options */
@@ -37,7 +37,7 @@ export interface ITippyProps {
     allowHTML?: boolean;
     animateFill?: boolean;
     animation?: string | boolean;
-    appendTo?: Element;
+    appendTo?: HTMLElement;
     aria?: object;
     arrow?: boolean | string | SVGElement | DocumentFragment;
     content?: string | Element;
@@ -75,6 +75,6 @@ export interface ITippyProps {
     theme?: string;
     touch?: boolean | 'hold' | ['hold', number];
     trigger?: string;
-    triggerTarget?: Element | Element[] | null;
+    triggerTarget?: HTMLElement | HTMLElement[] | null;
     zIndex?: number;
 }

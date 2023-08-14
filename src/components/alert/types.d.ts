@@ -63,7 +63,7 @@ export interface IAlert extends IBase<IAlertProps> {
 /**
  * Alert Properties
  */
-export interface IAlertProps<T = Element> extends IBaseProps<IAlert> {
+export interface IAlertProps<T = HTMLElement> extends IBaseProps<IAlert> {
     content?: string | T;
     data?: any;
     header?: string;

@@ -54,7 +54,7 @@ export interface IToast {
 /**
  * Toast Properties
  */
-export interface IToastProps<T = Element> extends IBaseProps<IToast> {
+export interface IToastProps<T = HTMLElement> extends IBaseProps<IToast> {
     body?: string | T;
     data?: any;
     headerImgClass?: string;

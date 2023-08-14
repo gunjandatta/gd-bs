@@ -49,7 +49,7 @@ export interface IIconLink extends IBase<IIconLinkProps> { }
 /**
  * Icon Link Properties
  */
-export interface IIconLinkProps<T = Element> extends IBaseProps<IIconLink> {
+export interface IIconLinkProps<T = HTMLElement> extends IBaseProps<IIconLink> {
     content?: string | T;
     data?: any;
     href?: string;

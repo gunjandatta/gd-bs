@@ -82,7 +82,7 @@ import { IBaseProps } from "../types";
  */
 export interface IOffcanvas {
     /** The element. */
-    el: Element;
+    el: HTMLElement;
 
     /** Hides a collapsible element. */
     hide: () => void;
@@ -109,7 +109,7 @@ export interface IOffcanvas {
 /**
  * Offcanvas Properties
  */
-export interface IOffcanvasProps<T = Element> extends IBaseProps<IOffcanvas> {
+export interface IOffcanvasProps<T = HTMLElement> extends IBaseProps<IOffcanvas> {
     body?: string | T;
     data?: any;
     id?: string;

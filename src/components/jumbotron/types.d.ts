@@ -38,7 +38,7 @@ import { IBaseProps } from "../types";
  */
 export interface IJumbotron {
     /** The element. */
-    el: Element;
+    el: HTMLElement;
 
     /** Hides the jumbotron. */
     hide: () => void;

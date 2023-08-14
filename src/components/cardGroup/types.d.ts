@@ -93,7 +93,7 @@ import { ICardProps } from "../card/types";
  */
 export interface ICardGroup {
     /** The element. */
-    el: Element;
+    el: HTMLElement;
 
     /** Hides the card group. */
     hide: () => void;

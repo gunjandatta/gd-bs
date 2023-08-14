@@ -88,7 +88,7 @@ declare module 'gd-bs/components/accordion/types' {
     /**
         * Accordion Item
         */
-    export interface IAccordionItem<T = Element> {
+    export interface IAccordionItem<T = HTMLElement> {
             data?: any;
             className?: string;
             content?: string | T;
@@ -101,7 +101,7 @@ declare module 'gd-bs/components/accordion/types' {
     /**
         * Accordion Properties
         */
-    export interface IAccordionProps<T = Element> extends IBaseProps<IAccordion> {
+    export interface IAccordionProps<T = HTMLElement> extends IBaseProps<IAccordion> {
             autoCollapse?: boolean;
             id?: string;
             items?: Array<IAccordionItem<T>>;
@@ -153,7 +153,7 @@ declare module 'gd-bs/components/alert/types' {
     /**
         * Alert Properties
         */
-    export interface IAlertProps<T = Element> extends IBaseProps<IAlert> {
+    export interface IAlertProps<T = HTMLElement> extends IBaseProps<IAlert> {
             content?: string | T;
             data?: any;
             header?: string;
@@ -271,7 +271,7 @@ declare module 'gd-bs/components/breadcrumb/types' {
             add: (item: IBreadcrumbItem) => void;
     
             /** The element. */
-            el: Element;
+            el: HTMLElement;
     
             /** Hides the breadcrumb. */
             hide: () => void;
@@ -474,7 +474,7 @@ declare module 'gd-bs/components/buttonGroup/types' {
         */
     export interface IButtonGroup {
             /** The element. */
-            el: Element;
+            el: HTMLElement;
     
             /** Adds a button to the group. */
             add: (props: IButtonProps, btnTemplate?: string) => void;
@@ -541,7 +541,7 @@ declare module 'gd-bs/components/card/types' {
         */
     export interface ICard {
             /** The element. */
-            el: Element;
+            el: HTMLElement;
     
             /** Hides the card. */
             hide: () => void;
@@ -669,7 +669,7 @@ declare module 'gd-bs/components/cardGroup/types' {
         */
     export interface ICardGroup {
             /** The element. */
-            el: Element;
+            el: HTMLElement;
     
             /** Hides the card group. */
             hide: () => void;
@@ -736,7 +736,7 @@ declare module 'gd-bs/components/carousel/types' {
             cycle: () => void;
     
             /** The element. */
-            el: Element;
+            el: HTMLElement;
     
             /** Hides the carousel. */
             hide: () => void;
@@ -769,7 +769,7 @@ declare module 'gd-bs/components/carousel/types' {
     /**
         * Carousel Item
         */
-    export interface ICarouselItem<T = Element> {
+    export interface ICarouselItem<T = HTMLElement> {
             captions?: string;
             className?: string;
             content?: string | T;
@@ -793,7 +793,7 @@ declare module 'gd-bs/components/carousel/types' {
     /**
         * Carousel Properties
         */
-    export interface ICarouselProps<T = Element> extends IBaseProps<ICarousel> {
+    export interface ICarouselProps<T = HTMLElement> extends IBaseProps<ICarousel> {
             enableControls?: boolean;
             enableCrossfade?: boolean;
             enableIndicators?: boolean;
@@ -934,7 +934,7 @@ declare module 'gd-bs/components/collapse/types' {
         */
     export interface ICollapse {
             /** The element. */
-            el: Element;
+            el: HTMLElement;
     
             /** Hides a collapsible element. */
             hide: () => void;
@@ -959,7 +959,7 @@ declare module 'gd-bs/components/collapse/types' {
     /**
         * Collapse Properties
         */
-    export interface ICollapseProps<T = Element> extends IBaseProps<ICollapse> {
+    export interface ICollapseProps<T = HTMLElement> extends IBaseProps<ICollapse> {
             content?: string | T;
             data?: any;
             id?: string;
@@ -1018,7 +1018,7 @@ declare module 'gd-bs/components/dropdown/types' {
             enable: () => void;
     
             /** The element. */
-            el: Element;
+            el: HTMLElement;
     
             /** Gets the selected dropdown item(s). */
             getValue: () => IDropdownItem | Array<IDropdownItem>;
@@ -1153,7 +1153,7 @@ declare module 'gd-bs/components/form/controlTypes' {
             setControl: (control: any) => void;
             setValue: (value: any) => void;
             show: () => void;
-            updateValidation: (elControl: Element, validation: IFormControlValidationResult) => void;
+            updateValidation: (elControl: HTMLElement, validation: IFormControlValidationResult) => void;
     }
     
     /**
@@ -1605,7 +1605,7 @@ declare module 'gd-bs/components/jumbotron/types' {
         */
     export interface IJumbotron {
             /** The element. */
-            el: Element;
+            el: HTMLElement;
     
             /** Hides the jumbotron. */
             hide: () => void;
@@ -1662,7 +1662,7 @@ declare module 'gd-bs/components/listBox/types' {
         */
     export interface IListBox extends IBase<IListBoxProps> {
             /** The element. */
-            el: Element;
+            el: HTMLElement;
     
             /** The selected listbox items. */
             getValue: () => Array<IDropdownItem>;
@@ -1730,7 +1730,7 @@ declare module 'gd-bs/components/listGroup/types' {
         */
     export interface IListGroup {
             /** The element. */
-            el: Element;
+            el: HTMLElement;
     
             /** Hides the list group. */
             hide: () => void;
@@ -1835,7 +1835,7 @@ declare module 'gd-bs/components/modal/types' {
         */
     export interface IModal {
             /** The element. */
-            el: Element,
+            el: HTMLElement;
     
             /** Manually hides a modal. */
             hide: () => void;
@@ -1906,7 +1906,7 @@ declare module 'gd-bs/components/modal/types' {
     /**
         * Modal Properties
         */
-    export interface IModalProps<T = Element> extends IBaseProps<IModal> {
+    export interface IModalProps<T = HTMLElement> extends IBaseProps<IModal> {
             body?: string | T;
             disableFade?: boolean;
             footer?: string | T;
@@ -1994,7 +1994,7 @@ declare module 'gd-bs/components/nav/types' {
     /**
         * Navigation Properties
         */
-    export interface INavProps<T = Element> extends IBaseProps<INav> {
+    export interface INavProps<T = HTMLElement> extends IBaseProps<INav> {
             data?: any;
             enableFill?: boolean;
             fadeTabs?: boolean;
@@ -2025,7 +2025,7 @@ declare module 'gd-bs/components/nav/types' {
     /**
         * Navigation Link Properties
         */
-    export interface INavLinkProps<T = Element> extends IBaseProps<INavLink> {
+    export interface INavLinkProps<T = HTMLElement> extends IBaseProps<INavLink> {
             isActive?: boolean;
             isDisabled?: boolean;
             className?: string;
@@ -2146,7 +2146,7 @@ declare module 'gd-bs/components/navbar/types' {
     /**
         * Navbar Properties
         */
-    export interface INavbarProps<T = Element> extends IBaseProps<INavbar> {
+    export interface INavbarProps<T = HTMLElement> extends IBaseProps<INavbar> {
             brand?: string | T;
             brandUrl?: string;
             enableScrolling?: boolean;
@@ -2237,7 +2237,7 @@ declare module 'gd-bs/components/offcanvas/types' {
         */
     export interface IOffcanvas {
             /** The element. */
-            el: Element;
+            el: HTMLElement;
     
             /** Hides a collapsible element. */
             hide: () => void;
@@ -2264,7 +2264,7 @@ declare module 'gd-bs/components/offcanvas/types' {
     /**
         * Offcanvas Properties
         */
-    export interface IOffcanvasProps<T = Element> extends IBaseProps<IOffcanvas> {
+    export interface IOffcanvasProps<T = HTMLElement> extends IBaseProps<IOffcanvas> {
             body?: string | T;
             data?: any;
             id?: string;
@@ -2441,7 +2441,7 @@ declare module 'gd-bs/components/popover/types' {
         */
     export interface IPopover {
             /** The element. */
-            el: Element;
+            el: HTMLElement;
     
             /** The tippy instance. */
             tippy: any;
@@ -2472,7 +2472,7 @@ declare module 'gd-bs/components/popover/types' {
             isDismissible?: boolean;
             options?: ITippyProps;
             placement?: number;
-            target?: Element,
+            target?: HTMLElement,
             title?: string;
             type?: number;
     }
@@ -2542,7 +2542,7 @@ declare module 'gd-bs/components/progress/types' {
         */
     export interface IProgress {
             /** The element. */
-            el: Element;
+            el: HTMLElement;
     
             /** Hides the progress. */
             hide: () => void;
@@ -2606,7 +2606,7 @@ declare module 'gd-bs/components/progressGroup/types' {
         */
     export interface IProgressGroup {
             /** The element. */
-            el: Element;
+            el: HTMLElement;
     
             /** Hides the progress group. */
             hide: () => void;
@@ -2655,7 +2655,7 @@ declare module 'gd-bs/components/spinner/types' {
         */
     export interface ISpinner {
             /** The element. */
-            el: Element;
+            el: HTMLElement;
     
             /** Hides the spinner. */
             hide: () => void;
@@ -2812,7 +2812,7 @@ declare module 'gd-bs/components/toast/types' {
     /**
         * Toast Properties
         */
-    export interface IToastProps<T = Element> extends IBaseProps<IToast> {
+    export interface IToastProps<T = HTMLElement> extends IBaseProps<IToast> {
             body?: string | T;
             data?: any;
             headerImgClass?: string;
@@ -2865,7 +2865,7 @@ declare module 'gd-bs/components/toolbar/types' {
         */
     export interface IToolbar {
             /** The element. */
-            el: Element;
+            el: HTMLElement;
     
             /** Hides the toolbar. */
             hide: () => void;
@@ -2970,7 +2970,7 @@ declare module 'gd-bs/components/tooltip/types' {
             content?: string | Element;
             options?: ITippyProps;
             placement?: number;
-            target?: Element,
+            target?: HTMLElement;
             type?: number;
     }
     
@@ -3047,7 +3047,7 @@ declare module 'gd-bs/components/tooltipGroup/types' {
             add: (props: ITooltipProps, btnTemplate?: string) => void;
     
             /** The element. */
-            el: Element;
+            el: HTMLElement;
     
             /** The tooltips. */
             tooltips: Array<ITooltip>;
@@ -3082,10 +3082,10 @@ declare module 'gd-bs/components/types' {
         */
     export interface IBase<IProps = IBaseProps> {
             /** Internal method to configure the parent element. */
-            configureParent(): Element;
+            configureParent(): HTMLElement;
     
             /** The component HTML element */
-            el: Element | HTMLElement;
+            el: HTMLElement;
     
             /** Hides the component. */
             hide(): void;
@@ -3108,7 +3108,7 @@ declare module 'gd-bs/components/types' {
             className?: string;
     
             /** The element to render the component to. */
-            el?: Element | HTMLElement;
+            el?: HTMLElement;
     }
     
     /** Tippy Options */
@@ -3116,7 +3116,7 @@ declare module 'gd-bs/components/types' {
             allowHTML?: boolean;
             animateFill?: boolean;
             animation?: string | boolean;
-            appendTo?: Element;
+            appendTo?: HTMLElement;
             aria?: object;
             arrow?: boolean | string | SVGElement | DocumentFragment;
             content?: string | Element;
@@ -3154,7 +3154,7 @@ declare module 'gd-bs/components/types' {
             theme?: string;
             touch?: boolean | 'hold' | ['hold', number];
             trigger?: string;
-            triggerTarget?: Element | Element[] | null;
+            triggerTarget?: HTMLElement | HTMLElement[] | null;
             zIndex?: number;
     }
 }

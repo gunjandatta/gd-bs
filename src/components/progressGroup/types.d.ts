@@ -61,7 +61,7 @@ import { IProgressProps } from "../progress/types";
  */
 export interface IProgressGroup {
     /** The element. */
-    el: Element;
+    el: HTMLElement;
 
     /** Hides the progress group. */
     hide: () => void;

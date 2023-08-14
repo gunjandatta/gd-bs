@@ -78,7 +78,7 @@ import { IBaseProps } from "../types";
  */
 export interface IModal {
     /** The element. */
-    el: Element,
+    el: HTMLElement;
 
     /** Manually hides a modal. */
     hide: () => void;
@@ -149,7 +149,7 @@ export interface IModalOptions {
 /**
  * Modal Properties
  */
-export interface IModalProps<T = Element> extends IBaseProps<IModal> {
+export interface IModalProps<T = HTMLElement> extends IBaseProps<IModal> {
     body?: string | T;
     disableFade?: boolean;
     footer?: string | T;

@@ -61,7 +61,7 @@ import { INavProps } from "../nav/types";
  */
 export interface ICard {
     /** The element. */
-    el: Element;
+    el: HTMLElement;
 
     /** Hides the card. */
     hide: () => void;

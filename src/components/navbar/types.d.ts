@@ -141,7 +141,7 @@ export interface INavbarItem {
 /**
  * Navbar Properties
  */
-export interface INavbarProps<T = Element> extends IBaseProps<INavbar> {
+export interface INavbarProps<T = HTMLElement> extends IBaseProps<INavbar> {
     brand?: string | T;
     brandUrl?: string;
     enableScrolling?: boolean;

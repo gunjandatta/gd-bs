@@ -59,7 +59,7 @@ import { IBadgeProps } from "../badge/types";
  */
 export interface IListGroup {
     /** The element. */
-    el: Element;
+    el: HTMLElement;
 
     /** Hides the list group. */
     hide: () => void;

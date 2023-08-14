@@ -38,7 +38,7 @@ import { IBaseProps } from "../types";
  */
 export interface IProgress {
     /** The element. */
-    el: Element;
+    el: HTMLElement;
 
     /** Hides the progress. */
     hide: () => void;
