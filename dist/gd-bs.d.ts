@@ -398,7 +398,7 @@ declare module 'gd-bs/components/button/types' {
             href?: string;
             iconClassName?: string;
             iconSize?: number;
-            iconType?: Function;
+            iconType?: HTMLElement | Function;
             id?: string;
             isBlock?: boolean;
             isDisabled?: boolean;
@@ -1060,7 +1060,7 @@ declare module 'gd-bs/components/dropdown/types' {
             href?: string;
             iconClassName?: string;
             iconSize?: number;
-            iconType?: Function;
+            iconType?: HTMLElement | Function;
             isDisabled?: boolean;
             isDivider?: boolean;
             isHeader?: boolean;
@@ -2129,7 +2129,7 @@ declare module 'gd-bs/components/navbar/types' {
             href?: string;
             iconClassName?: string;
             iconSize?: number;
-            iconType?: Function;
+            iconType?: HTMLElement | Function;
             isActive?: boolean;
             isButton?: boolean;
             isDisabled?: boolean;

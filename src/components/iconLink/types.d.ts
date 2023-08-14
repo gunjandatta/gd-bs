@@ -55,7 +55,7 @@ export interface IIconLinkProps<T = Element> extends IBaseProps<IIconLink> {
     href?: string;
     iconClassName?: string;
     iconSize?: number;
-    iconType?: Function;
+    iconType?: HTMLElement | Function;
     type?: number;
 }
 
