@@ -113,12 +113,12 @@ class _Button extends Base<IButtonProps> implements IButton {
 
         // Set the icon if it exists
         if (this.props.iconType) {
+            // Update the styling of the button
+            this.el.classList.add("btn-icon");
+
             if (typeof (this.props.iconType) === "function") {
                 // Append the icon
                 this.el.prepend((this.props.iconType as Function)(this.props.iconSize, this.props.iconSize, this.props.iconClassName));
-
-                // Update the styling of the button
-                this.el.classList.add("btn-icon");
             }
             // Else, it's an element
             else if (typeof (this.props.iconType === "object")) {
