@@ -502,6 +502,16 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
         }
     }
 
+    // Sets the label of the dropdown
+    setLabel(value: string) {
+        // Get the dropdown
+        let ddl = this.el.querySelector(".dropdown-toggle");
+        if (ddl) {
+            // Set the inner html
+            ddl.innerHTML = value;
+        }
+    }
+
     // Enables/Disables the dark theme
     setTheme(isDark: boolean) {
         // Get the menu

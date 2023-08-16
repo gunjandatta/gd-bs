@@ -83,6 +83,9 @@ export interface IDropdown {
     /** Updates the dropdown items. */
     setItems: (items: Array<IDropdownItem>) => void;
 
+    /** Updates the label of the dropdown. */
+    setLabel: (value: string) => void;
+
     /** Enables/Disables the dark theme. */
     setTheme: (isDark: boolean) => void;
 
@@ -144,7 +147,6 @@ export interface IDropdownProps extends IBaseProps<IDropdown> {
     onChange?: (item?: IDropdownItem | Array<IDropdownItem>, ev?: Event) => void;
     onMenuRendering?: (props: IPopoverProps) => IPopoverProps;
     required?: boolean;
-    setLabelToValue?: boolean;
     title?: string;
     type?: number;
     value?: any;

@@ -96,6 +96,15 @@ export class FormGroup {
             elDescription = null;
         }
 
+        // Set the class name
+        if (this._props.className) {
+            // Set the class
+            this._el.className = [
+                this._el.className || "",
+                this._props.className
+            ].join(' ').trim();
+        }
+
         // Create the control
         this._control = new FormControl(this._props, this._formProps, elLabel);
 

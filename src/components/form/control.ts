@@ -99,7 +99,7 @@ export class FormControl implements IFormControl {
     // Creates the control
     private create() {
         // Parse the custom classes to add
-        let className = [(this._props.className || ""), (this._props.controlClassName || "")].join(" ").trim();
+        let className = this._props.controlClassName || "";
 
         // Set the value
         let formValue = this._formProps.value ? this._formProps.value[this._props.name] : null;
