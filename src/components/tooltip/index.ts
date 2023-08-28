@@ -338,6 +338,12 @@ class _Tooltip extends Base<ITooltipProps> {
     setContent(content: string | Element) {
         // Set the tippy content
         this.tippy.setContent(content);
+
+        // See if the button exists
+        if (this._btn && typeof (content) === "string") {
+            // Update the content
+            this._btn.el.setAttribute("aria-description", content);
+        }
     }
 
     // Shows the tooltip

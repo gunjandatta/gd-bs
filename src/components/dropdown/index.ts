@@ -510,6 +510,7 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
         if (ddl) {
             // Set the inner html
             ddl.innerHTML = value;
+            ddl.setAttribute("aria-label", value);
         }
     }
 
