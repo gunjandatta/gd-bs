@@ -1,6 +1,6 @@
 {
     "name": "gd-bs",
-    "version": "6.2.5",
+    "version": "6.2.6",
     "description": "Bootstrap JavaScript, TypeScript and Web Components library.",
     "main": "build/index.js",
     "typings": "src/index.d.ts",
@@ -36,7 +36,7 @@
         "@popperjs/core": "^2.11.8",
         "bootstrap": "^5.3.1",
         "bootstrap-icons": "^1.10.5",
-        "core-js": "^3.32.0",
+        "core-js": "^3.32.1",
         "tippy.js": "^6.3.7"
     },
     "devDependencies": {

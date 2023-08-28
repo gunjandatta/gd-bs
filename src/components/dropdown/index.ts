@@ -124,6 +124,7 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
         if (toggle) {
             toggle.classList.add(btnType);
             toggle.disabled = this.props.isReadonly ? true : false;
+            toggle.setAttribute("aria-label", this.props.label || "");
         }
 
         // See if we are rendering the menu only

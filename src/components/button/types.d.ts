@@ -86,6 +86,7 @@ export interface IButtonProps extends IBaseProps<IButton> {
     badge?: IBadgeProps;
     controls?: string | Array<string>;
     data?: any;
+    description?: string;
     dismiss?: string;
     href?: string;
     iconClassName?: string;
@@ -98,6 +99,7 @@ export interface IButtonProps extends IBaseProps<IButton> {
     isLarge?: boolean;
     isLink?: boolean;
     isSmall?: boolean;
+    label?: string;
     onClick?: (button?: IButtonProps, ev?: Event) => void;
     spinnerProps?: ISpinnerProps;
     tabIndex?: number;

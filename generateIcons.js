@@ -150,6 +150,8 @@ fs.readdir(dirIcons, function (err, files) {
         '\t        icon.classList.add(classNames[i]);',
         '\t      }',
         '\t    }\n',
+        '\t    // Make this icon invisible to the screen reader',
+		'\t    icon.setAttribute("aria-hidden", "true");\n',
         '\t    // Set the height/width',
         '\t    icon.setAttribute("height", (height ? height : 32).toString());',
         '\t    icon.setAttribute("width", (width ? width : 32).toString());\n',

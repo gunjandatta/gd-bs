@@ -84,6 +84,10 @@ class _Button extends Base<IButtonProps> implements IButton {
         // Set the default type
         this.setType(this.props.type || ButtonTypes.Primary)
 
+        // Set the aria label/description
+        this.props.description ? this.el.setAttribute("aria-description", this.props.description) : null;
+        this.el.setAttribute("aria-label", this.props.label || this.props.text);
+
         // Set the attributes
         this.props.dismiss ? this.el.setAttribute("data-bs-dismiss", this.props.dismiss) : null;
         this.props.href ? this.el.href = this.props.href : null;

@@ -394,6 +394,7 @@ declare module 'gd-bs/components/button/types' {
             badge?: IBadgeProps;
             controls?: string | Array<string>;
             data?: any;
+            description?: string;
             dismiss?: string;
             href?: string;
             iconClassName?: string;
@@ -406,6 +407,7 @@ declare module 'gd-bs/components/button/types' {
             isLarge?: boolean;
             isLink?: boolean;
             isSmall?: boolean;
+            label?: string;
             onClick?: (button?: IButtonProps, ev?: Event) => void;
             spinnerProps?: ISpinnerProps;
             tabIndex?: number;

@@ -5,28 +5,28 @@ export const generateIcon = (svg: string, height: number = 32, width: number = 3
 	elDiv.innerHTML = svg;
 	let icon = elDiv.firstChild as HTMLElement;
 	if (icon) {
-		// See if a class name exists
-		if (className) {
-			// Parse the class names
-			let classNames = className.split(' ');
-			for (let i = 0; i < classNames.length; i++) {
-				// Add the class name
-				icon.classList.add(classNames[i]);
-			}
-		}
+	    // See if a class name exists
+	    if (className) {
+	      // Parse the class names
+	      let classNames = className.split(' ');
+	      for (let i = 0; i < classNames.length; i++) {
+	        // Add the class name
+	        icon.classList.add(classNames[i]);
+	      }
+	    }
 
-		// Make this icon invisible to the screen reader
-		icon.setAttribute("aria-hidden", "true");
+	    // Make this icon invisible to the screen reader
+	    icon.setAttribute("aria-hidden", "true");
 
-		// Set the height/width
-		icon.setAttribute("height", (height ? height : 32).toString());
-		icon.setAttribute("width", (width ? width : 32).toString());
+	    // Set the height/width
+	    icon.setAttribute("height", (height ? height : 32).toString());
+	    icon.setAttribute("width", (width ? width : 32).toString());
 
-		// Update the styling
-		icon.style.pointerEvents = "none";
+	    // Update the styling
+	    icon.style.pointerEvents = "none";
 
-		// Support for IE
-		icon.setAttribute("focusable", "false");
+	    // Support for IE
+	    icon.setAttribute("focusable", "false");
 	}
 
 	// Return the icon

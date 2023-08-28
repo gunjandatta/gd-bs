@@ -71,6 +71,12 @@ class _Tooltip extends Base<ITooltipProps> {
             let btnProps = this.props.btnProps || {};
             btnProps.type = btnProps.type || ButtonTypes.OutlineSecondary
 
+            // See if the content is text
+            if (typeof (this.props.content) === "string") {
+                // Set the label
+                btnProps.description = this.props.content;
+            }
+
             // Create the button
             this._btn = Button(btnProps);
 
