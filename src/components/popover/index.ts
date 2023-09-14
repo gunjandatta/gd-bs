@@ -221,6 +221,7 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
 
         // Create the popover content element
         this._elContent = document.createElement("div") as HTMLDivElement;
+        this._elContent.classList.add("popover");
         this._elContent.classList.add("popover-content");
         this._elContent.innerHTML = '<div class="popover-header"></div><div class="popover-body"></div>';
         appendContent(this._elContent.querySelector(".popover-header"), this.props.title);
