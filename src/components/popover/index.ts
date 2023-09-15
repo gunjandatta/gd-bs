@@ -287,10 +287,34 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
     // The tippy instance
     get tippy() { return this._tippy; }
 
+    // Sets the popover body element
+    setBody(content: string | Element) {
+        let elBody: HTMLElement = this.tippy.popper.querySelector(".popover-body");
+        if (elBody) {
+            // Clear the content
+            while (elBody.firstChild) { elBody.removeChild(elBody.firstChild); }
+
+            // Update the content
+            appendContent(elBody, content);
+        }
+    }
+
     // Sets the tippy content
     setContent(content: string | Element) {
         // Set the tippy content
         this.tippy.setContent(content);
+    }
+
+    // Sets the popover header element
+    setHeader(content: string | Element) {
+        let elHeader: HTMLElement = this.tippy.popper.querySelector(".popover-header");
+        if (elHeader) {
+            // Clear the content
+            while (elHeader.firstChild) { elHeader.removeChild(elHeader.firstChild); }
+
+            // Update the content
+            appendContent(elHeader, content);
+        }
     }
 
     // Shows the popover

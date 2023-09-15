@@ -206,7 +206,7 @@
                 text: "Popover Demo",
                 id: "popover-demo"
             });
-            GD.Components.Popover({
+            window["popover1"] = GD.Components.Popover({
                 target: btnPopover.el,
                 title: "My Popover",
                 placement: 10,
@@ -215,7 +215,7 @@
                     trigger: "click"
                 }
             });
-            GD.Components.Popover({
+            window["popover2"] = GD.Components.Popover({
                 el: document.querySelector("#popover1"),
                 btnProps: {
                     id: "popover-demo2",
