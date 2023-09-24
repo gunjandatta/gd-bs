@@ -255,7 +255,6 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
                 options: {
                     arrow: false,
                     trigger: "click",
-                    content: this._elMenu,
                     offset: [0, 4]
                 }
             };
@@ -265,6 +264,9 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
 
             // Create a popover to display the menu
             this._popover = Popover(props);
+
+            // Set the popover content
+            this._popover.setContent(this._elMenu);
         }
     }
 

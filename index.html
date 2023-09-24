@@ -706,9 +706,9 @@
                 }]
             });
             window["ddl"] = GD.Components.Dropdown({
-                autoSelect: false,
+                autoSelect: true,
                 el: document.querySelector("#ddl"),
-                isSplit: true,
+                isSplit: false,
                 label: "My Dropdown",
                 onChange: function(item, ev) {
                     alert("Selected Item: " + (item ? item.text : "None"));
