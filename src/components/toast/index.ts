@@ -8,7 +8,6 @@ import { HTML } from "./templates";
  * @param props - The toast properties.
  */
 class _Toast extends Base<IToastProps> implements IToast {
-
     // Constructor
     constructor(props: IToastProps, template: string = HTML) {
         super(template, props);
@@ -102,6 +101,12 @@ class _Toast extends Base<IToastProps> implements IToast {
                 // Execute the click event
                 this.props.onClick(this.el, this.props.data);
             });
+        }
+
+        // See if we are auto-hiding this toast
+        if (this.props.options && this.props.options.autohide) {
+            // Wait for the delay
+            setTimeout(this.hide.bind(this), this.props.options.delay || 5000);
         }
     }
 
