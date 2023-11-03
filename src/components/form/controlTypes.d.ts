@@ -202,12 +202,14 @@ export interface IFormControlPropsSwitch extends IFormControlPropsCheckbox { }
  * Form Control Properties - TextField
  */
 export interface IFormControlPropsTextField extends IFormControlProps {
+    appendedLabel?: string;
     el?: HTMLInputElement;
     onChange?: (value: string, ev?: Event) => void;
     onControlRendering?: (control: IFormControlPropsTextField) => void | PromiseLike<IFormControlPropsTextField>;
     onGetValue?: (control: IFormControlPropsTextField) => any;
     onValidate?: (control: IFormControlPropsTextField, value: IFormControlValidationResult) => boolean | IFormControlValidationResult;
     placeholder?: string;
+    prependedLabel?: string;
     rows?: number;
 }
 

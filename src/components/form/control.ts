@@ -131,12 +131,14 @@ export class FormControl implements IFormControl {
             case FormControlTypes.ColorPicker:
                 // Add the input
                 this._tb = InputGroup({
+                    appendedLabel: (this.props as IFormControlPropsTextField).appendedLabel,
                     className,
                     id: this._props.id,
                     isDisabled: this._props.isDisabled,
                     isReadonly: this._props.isReadonly,
                     onChange: (this._props as IFormControlPropsTextField).onChange,
                     placeholder: (this._props as IFormControlPropsTextField).placeholder,
+                    prependedLabel: (this.props as IFormControlPropsTextField).prependedLabel,
                     required: this._props.required,
                     title: this._props.title,
                     type: InputGroupTypes.ColorPicker,
@@ -179,12 +181,14 @@ export class FormControl implements IFormControl {
             case FormControlTypes.Email:
                 // Add the input
                 this._tb = InputGroup({
+                    appendedLabel: (this.props as IFormControlPropsTextField).appendedLabel,
                     className,
                     id: this._props.id,
                     isDisabled: this._props.isDisabled,
                     isReadonly: this._props.isReadonly,
                     onChange: (this._props as IFormControlPropsTextField).onChange,
                     placeholder: (this._props as IFormControlPropsTextField).placeholder,
+                    prependedLabel: (this.props as IFormControlPropsTextField).prependedLabel,
                     required: this._props.required,
                     title: this._props.title,
                     type: InputGroupTypes.Email,
@@ -195,12 +199,14 @@ export class FormControl implements IFormControl {
             case FormControlTypes.File:
                 // Add the input
                 this._tb = InputGroup({
+                    appendedLabel: (this.props as IFormControlPropsTextField).appendedLabel,
                     className,
                     id: this._props.id,
                     isDisabled: this._props.isDisabled,
                     isReadonly: this._props.isReadonly,
                     onChange: (this._props as IFormControlPropsTextField).onChange,
                     placeholder: (this._props as IFormControlPropsTextField).placeholder,
+                    prependedLabel: (this.props as IFormControlPropsTextField).prependedLabel,
                     required: this._props.required,
                     title: this._props.title,
                     type: InputGroupTypes.File,
@@ -312,12 +318,14 @@ export class FormControl implements IFormControl {
             case FormControlTypes.Password:
                 // Add the input
                 this._tb = InputGroup({
+                    appendedLabel: (this.props as IFormControlPropsTextField).appendedLabel,
                     className,
                     id: this._props.id,
                     isDisabled: this._props.isDisabled,
                     isReadonly: this._props.isReadonly,
                     onChange: (this._props as IFormControlPropsTextField).onChange,
                     placeholder: (this._props as IFormControlPropsTextField).placeholder,
+                    prependedLabel: (this.props as IFormControlPropsTextField).prependedLabel,
                     required: this._props.required,
                     title: this._props.title,
                     type: InputGroupTypes.Password,
@@ -364,11 +372,13 @@ export class FormControl implements IFormControl {
             case FormControlTypes.Readonly:
                 // Add the input
                 this._tb = InputGroup({
+                    appendedLabel: (this.props as IFormControlPropsTextField).appendedLabel,
                     className,
                     id: this._props.id,
                     isReadonly: true,
                     onChange: (this._props as IFormControlPropsTextField).onChange,
                     placeholder: (this._props as IFormControlPropsTextField).placeholder,
+                    prependedLabel: (this.props as IFormControlPropsTextField).prependedLabel,
                     required: this._props.required,
                     title: this._props.title,
                     type: InputGroupTypes.TextField,
@@ -396,12 +406,14 @@ export class FormControl implements IFormControl {
             case FormControlTypes.TextArea:
                 // Add the input
                 this._tb = InputGroup({
+                    appendedLabel: (this.props as IFormControlPropsTextField).appendedLabel,
                     className,
                     id: this._props.id,
                     isDisabled: this._props.isDisabled,
                     isReadonly: this._props.isReadonly,
                     onChange: (this._props as IFormControlPropsTextField).onChange,
                     placeholder: (this._props as IFormControlPropsTextField).placeholder,
+                    prependedLabel: (this.props as IFormControlPropsTextField).prependedLabel,
                     required: this._props.required,
                     rows: (this._props as IFormControlPropsTextField).rows,
                     title: this._props.title,
@@ -413,12 +425,14 @@ export class FormControl implements IFormControl {
             case FormControlTypes.TextField:
                 // Add the input
                 this._tb = InputGroup({
+                    appendedLabel: (this.props as IFormControlPropsTextField).appendedLabel,
                     className,
                     id: this._props.id,
                     isDisabled: this._props.isDisabled,
                     isReadonly: this._props.isReadonly,
                     onChange: (this._props as IFormControlPropsTextField).onChange,
                     placeholder: (this._props as IFormControlPropsTextField).placeholder,
+                    prependedLabel: (this.props as IFormControlPropsTextField).prependedLabel,
                     required: this._props.required,
                     title: this._props.title,
                     type: InputGroupTypes.TextField,
