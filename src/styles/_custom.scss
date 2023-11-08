@@ -312,7 +312,7 @@
     }
     /* Color match the pagination disabled border colors */
     .page-item.disabled .page-link {
-        background-color: var(--sp-primary-button-text, #ffffff);
+        background-color: var(--sp-white, #ffffff);
         border-color: var(--sp-neutral-secondary, #605e5c);
         color: var(--sp-neutral-secondary, #605e5c);
         pointer-events: none;
