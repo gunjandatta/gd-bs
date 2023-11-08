@@ -60,5 +60,5 @@ table.dataTable thead .sorting_desc {
 /* Color match colReorder line */
 
 div.DTCR_pointer {
-    background-color: #0078d4;
+    background-color: var(--sp-theme-accent, #0078d4);
 }
