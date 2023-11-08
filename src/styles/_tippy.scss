@@ -20,7 +20,6 @@
     border-right-color: #0078d4;
 }
 
-
 /* Tippy Tooltip secondary theme color */
 
 .tippy-box[data-theme~='secondary'] {
@@ -43,7 +42,6 @@
     border-right-color: #6c757d;
 }
 
-
 /* Tippy Tooltip success theme color */
 
 .tippy-box[data-theme~='success'] {
@@ -65,7 +63,6 @@
 .tippy-box[data-theme~='success'][data-placement^='right']>.tippy-arrow::before {
     border-right-color: #198754;
 }
-
 
 /* Tippy Tooltip info theme color */
 
@@ -90,7 +87,6 @@
     border-right-color: #0dcaf0;
 }
 
-
 /* Tippy Tooltip warning theme color */
 
 .tippy-box[data-theme~='warning'] {
@@ -114,7 +110,6 @@
     border-right-color: #ffc107;
 }
 
-
 /* Tippy Tooltip danger theme color */
 
 .tippy-box[data-theme~='danger'] {
@@ -136,7 +131,6 @@
 .tippy-box[data-theme~='danger'][data-placement^='right']>.tippy-arrow::before {
     border-right-color: #dc3545;
 }
-
 
 /* Tippy Tooltip light theme color - override Tippy default to match Bootstrap */
 
@@ -161,7 +155,6 @@
     border-right-color: #f8f9fa !important;
 }
 
-
 /* Tippy Tooltip dark theme color */
 
 .tippy-box[data-theme~='dark'] {
@@ -182,4 +175,26 @@
 
 .tippy-box[data-theme~='dark'][data-placement^='right']>.tippy-arrow::before {
     border-right-color: #212529;
+}
+
+/* Tippy Tooltip SharePoint theme color */
+
+.tippy-box[data-theme~='sharepoint'] {
+    background-color: var(--sp-theme-dark, #005a9e);
+}
+
+.tippy-box[data-theme~='sharepoint'][data-placement^='top']>.tippy-arrow::before {
+    border-top-color: var(--sp-theme-dark, #005a9e);
+}
+
+.tippy-box[data-theme~='sharepoint'][data-placement^='bottom']>.tippy-arrow::before {
+    border-bottom-color: var(--sp-theme-dark, #005a9e);
+}
+
+.tippy-box[data-theme~='sharepoint'][data-placement^='left']>.tippy-arrow::before {
+    border-left-color: var(--sp-theme-dark, #005a9e);
+}
+
+.tippy-box[data-theme~='sharepoint'][data-placement^='right']>.tippy-arrow::before {
+    border-right-color: var(--sp-theme-dark, #005a9e);
 }
