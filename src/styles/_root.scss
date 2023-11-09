@@ -1,0 +1,47 @@
+/** Root Styles */
+:root {
+    --sp-accent: #8764b8;
+    --sp-black: #000000;
+    --sp-error-icon: #a80000;
+    --sp-neutral-dark: #201f1e;
+    --sp-neutral-light: #edebe9;
+    --sp-neutral-lighter: #f3f2f1;
+    --sp-neutral-lighter-alt: #faf9f8;
+    --sp-neutral-primary: #323130;
+    --sp-neutral-primary-alt: #3b3a39;
+    --sp-neutral-secondary: #605e5c;
+    --sp-neutral-secondary-alt: #8a8886;
+    --sp-neutral-tertiary: #a19f9d;
+    --sp-neutral-tertiary-alt: #c8c6c4;
+    --sp-neutral-quaternary: #d2d0ce;
+    --sp-neutral-quaternary-alt: #e1dfdd;
+    --sp-primary-text: #ffffff;
+    --sp-severe-warning-icon: #d83b01;
+    --sp-success-icon: #107c10;
+    --sp-theme-accent: #0078d4;
+    --sp-theme-dark: #005a9e;
+    --sp-theme-darker: #004578;
+    --sp-theme-dark-alt: #106ebe;
+    --sp-theme-light: #c7e0f4;
+    --sp-theme-lighter: #deecf9;
+    --sp-theme-lighter-alt: #eff6fc;
+    --sp-theme-primary: #0078d4;
+    --sp-theme-secondary: #2b88d8;
+    --sp-theme-tertiary: #71afe5;
+    --sp-warning-highlight: #ffb900;
+    --sp-white: #ffffff;
+
+    --bs-primary: var(--sp-theme-primary);
+    --bs-secondary: var(--sp-neutral-secondary);
+    --bs-success: var(--sp-success-icon);
+    --bs-info: var(--sp-accent);
+    --bs-warning: var(--sp-severe-warning-icon);
+    --bs-danger: var(--sp-error-icon);
+    --bs-light: var(--sp-neutral-lighter-alt);
+    --bs-dark: var(--sp-neutral-dark);
+    --bs-body-bg: var(--sp-primary-text);
+    --bs-body-color: var(--sp-neutral-dark);
+    --bs-border-color: var(--sp-neutral-quaternary);
+    --bs-link-color: var(--sp-theme-primary);
+    --bs-modal-color: var(--sp-primary-text);
+}
