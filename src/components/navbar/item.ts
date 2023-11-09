@@ -93,7 +93,7 @@ export class NavbarItem {
                     link.prepend((this._props.iconType as Function)(iconSize, iconSize, this._props.iconClassName));
                 }
                 // Else, it's an element
-                else if (typeof (this._props.iconType === "object")) {
+                else if (typeof (this._props.iconType) === "object") {
                     // Append the icon
                     link.prepend(this._props.iconType);
                 }

@@ -43,7 +43,7 @@ class _IconLink extends Base<IIconLinkProps> implements IIconLink {
                 this._elIcon = (this.props.iconType as Function)(this.props.iconSize, this.props.iconSize, this.props.iconClassName);
             }
             // Else, it's an element
-            else if (typeof (this.props.iconType === "object")) {
+            else if (typeof (this.props.iconType) === "object") {
                 // Set the icon
                 this._elIcon = this.props.iconType;
             } else { return; }
