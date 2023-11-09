@@ -1,32 +1,26 @@
 /** Customizations */
-
 .bs {
     /* Color match links to 'SharePoint Blue' */
-    a,
-    .link-primary {
-        color: #0078d4;
+    a, .link-primary {
+        color: var(--sp-theme-primary, #0078d4);
     }
     /* Color match hover links */
-    a:hover,
-    a:focus,
-    .link-primary:hover,
-    .link-primary:focus {
-        color: #004c86;
+    a:hover, a:focus, .link-primary:hover, .link-primary:focus {
+        color: var(--sp-theme-darker, #004578);
     }
     /* Color match active links */
-    a:active,
-    .link-primary:active {
-        color: #c4e4ff;
+    a:active, .link-primary:active {
+        color: var(--sp-theme-light, #c7e0f4);
     }
     /* Color match accordion on focus */
     .accordion-button:focus {
-        border-color: #2d8ad6;
-        box-shadow: 0 0 0 0.25rem rgba(45, 138, 214, 0.25);
+        border-color: var(--sp-theme-secondary, #2b88d8);
+        box-shadow: 0 0 0 0.25rem color-mix(in srgb, var(--sp-theme-tertiary, #71afe5), transparent 65%);
     }
     /* Color match accordion while expanded */
     .accordion-button:not(.collapsed) {
-        background-color: #c4e4ff;
-        color: #0078d4;
+        background-color: var(--sp-theme-light, #c7e0f4);
+        color: var(--sp-theme-primary, #0078d4);
     }
     /* Color match accordion while expanded */
     .accordion-button:not(.collapsed)::after {
@@ -34,27 +28,31 @@
     }
     /* Create a reusable 'SharePoint Blue' background color */
     .bg-sharepoint {
-        background-color: #0078d4 !important;
+        background-color: var(--sp-theme-primary, #0078d4) !important;
+    }
+    .bg-primary {
+        background-color: rgba(var(--sp-theme-primary, #0078d4), var(--bs-bg-opacity)) !important;
+    }
+    .bg-white {
+        background-color: var(--sp-white, #ffffff) !important;
     }
     /* Fix breadcrumb alignment */
     .breadcrumb {
         margin-bottom: 0;
     }
     /* Color match breadcrumb links */
-    .breadcrumb-item.active,
-    .breadcrumb-item>a {
-        color: #fff;
+    .breadcrumb-item.active, .breadcrumb-item>a {
+        color: var(--sp-primary-button-text, #ffffff);
         text-decoration: none;
     }
     /* Color match breadcrumb hover links */
-    .breadcrumb-item>a:hover,
-    .breadcrumb-item>a:focus {
-        color: #dee2e6;
+    .breadcrumb-item>a:hover, .breadcrumb-item>a:focus {
+        color: var(--sp-neutral-quaternary, #d2d0ce);
         text-decoration: underline;
     }
     /* Color match breadcrumb active links */
     .breadcrumb-item>a:active {
-        color: #333333;
+        color: var(--sp-primary-text, #333333);
         font-weight: 500;
         text-decoration: underline;
     }
@@ -66,10 +64,14 @@
     .btn-close {
         min-width: auto;
     }
+    .btn:focus-visible {
+        background-color: var(--sp-neutral-dark, #201f1e);
+        border-color: var(--sp-neutral-dark, #201f1e);
+        color: var(--sp-neutral-lighter-alt, #faf9f8);
+    }
     /** Button Icon - Custom class */
     .btn-icon {
-        font-size: inherit;
-        line-height: inherit;
+        font-size: 0.875rem;
         min-width: 0px;
         padding: 2px;
     }
@@ -79,85 +81,106 @@
     }
     /* Color match the primary button to 'SharePoint Blue' */
     /* Don't reorder the btn-primary classes. It breaks active colors. */
-    .btn-primary,
-    .btn-primary:disabled,
-    .btn-primary.disabled {
-        background-color: #0078d4;
-        border-color: #0078d4;
+    .btn-primary, .btn-primary:disabled, .btn-primary.disabled {
+        background-color: var(--sp-theme-primary, #0078d4);
+        border-color: var(--sp-theme-primary, #0078d4);
     }
     /* Color match the primary button hover */
     .btn-primary:hover {
-        background-color: #004c86;
-        border-color: #004c86;
+        background-color: var(--sp-theme-darker, #004578);
+        border-color: var(--sp-theme-darker, #004578);
     }
     /* Color match primary outline button */
-    .btn-outline-primary,
-    .btn-outline-primary:disabled,
-    .btn-outline-primary.disabled {
-        border-color: #0078d4;
-        color: #0078d4;
+    .btn-outline-primary, .btn-outline-primary:disabled, .btn-outline-primary.disabled {
+        border-color: var(--sp-theme-primary, #0078d4);
+        color: var(--sp-theme-primary, #0078d4);
     }
     /* Color match primary outline button hover */
     .btn-outline-primary:hover {
-        background-color: #0078d4;
-        border-color: #0078d4;
+        background-color: var(--sp-theme-primary, #0078d4);
+        border-color: var(--sp-theme-primary, #0078d4);
+    }
+    .btn-outline-light {
+        --bs-btn-color: var(--sp-neutral-lighter-alt, #faf9f8);
+        --bs-btn-border-color: var(--sp-neutral-lighter-alt, #faf9f8);
+        --bs-btn-hover-color: var(--sp-black, #000000);
+        --bs-btn-hover-bg: var(--sp-neutral-lighter-alt, #faf9f8);
+        --bs-btn-hover-border-color: var(--sp-neutral-lighter-alt, #faf9f8);
+        --bs-btn-active-color: var(--sp-black, #000000);
+        --bs-btn-active-bg: var(--sp-neutral-lighter-alt, #faf9f8);
     }
     /* Fix color for outline light focus */
     .btn-outline-light:focus {
-        color: #f8f9fa;
+        color: var(--sp-neutral-lighter-alt, #faf9f8);
+    }
+    .btn-outline-light:hover {
+        background-color: var(--sp-neutral-lighter-alt, #faf9f8);
+        border-color: var(--sp-neutral-lighter-alt, #faf9f8);
     }
     /* Fix color for outline light active */
-    .btn-outline-light:active,
-    .btn-outline-light:hover {
-        color: #000;
+    .btn-outline-light:active, .btn-outline-light:hover {
+        color: var(--sp-black, #000000);
+        svg.brand path {
+            fill: var(--sp-black, #000000);
+        }
+    }
+    .btn-outline-secondary {
+        --bs-btn-color: var(--sp-neutral-secondary, #605e5c);
+        --bs-btn-border-color: var(--sp-neutral-secondary, #605e5c);
+        --bs-btn-hover-color: var(--sp-white, #ffffff);
+        --bs-btn-hover-bg: var(--sp-neutral-secondary, #605e5c);
+        --bs-btn-hover-border-color: var(--sp-neutral-secondary, #605e5c);
+        --bs-btn-active-color: var(--sp-white, #ffffff);
+        --bs-btn-active-bg: var(--sp-neutral-secondary, #605e5c);
+        --bs-btn-active-border-color: var(--sp-neutral-secondary, #605e5c);
+        --bs-btn-disabled-color: var(--sp-neutral-secondary, #605e5c);
+        --bs-btn-disabled-border-color: var(--sp-neutral-secondary, #605e5c);
+    }
+    .btn-check:checked+.btn, :not(.btn-check)+.btn:active, .btn:first-child:active, .btn.active, .btn.show {
+        background-color: var(--sp-theme-dark, #005a9e);
+        border-color: var(--sp-theme-dark, #005a9e);
+        color: var(--sp-primary-button-text, #ffffff);
     }
     /* Color match primary outline button focus */
-    .btn-check:focus+.bs .btn-outline-primary,
-    .btn-outline-primary:focus {
-        box-shadow: 0 0 0 0.25rem rgba(45, 138, 214, 0.5);
+    .btn-check:focus+.bs .btn-outline-primary, .btn-outline-primary:focus {
+        box-shadow: 0 0 0 0.25rem color-mix(in srgb, var(--sp-theme-tertiary, #71afe5), transparent 25%);
     }
     /* Color match primary outline button active */
-    .btn-check:checked+.bs .btn-outline-primary,
-    .btn-check:active+.bs .btn-outline-primary,
-    .btn-outline-primary:active,
-    .btn-outline-primary.active,
-    .btn-outline-primary.dropdown-toggle.show {
-        background-color: #004c86;
-        border-color: #004c86;
+    .btn-check:checked+.bs .btn-outline-primary, .btn-check:active+.bs .btn-outline-primary, .btn-outline-primary:active, .btn-outline-primary.active, .btn-outline-primary.dropdown-toggle.show {
+        background-color: var(--sp-theme-darker, #004578);
+        border-color: var(--sp-theme-darker, #004578);
     }
     /* Color match the primary button focus */
-    .btn-check:focus+.btn-primary,
-    .btn-primary:focus {
-        background-color: #004c86;
-        border-color: #004c86;
-        box-shadow: 0 0 0 0.25rem rgba(45, 138, 214, 0.5);
+    .btn-check:focus+.btn-primary, .btn-primary:focus {
+        background-color: var(--sp-theme-darker, #004578);
+        border-color: var(--sp-theme-darker, #004578);
+        box-shadow: 0 0 0 0.25rem color-mix(in srgb, var(--sp-theme-tertiary, #71afe5), transparent 25%);
     }
     /* Color match the primary button active */
-    .bs .btn-check:checked+.btn-primary,
-    .btn-check:active+.btn-primary,
-    .btn-primary:active,
-    .btn-primary.active,
-    .show>.btn-primary.dropdown-toggle {
-        background-color: #c4e4ff;
-        border-color: #c4e4ff;
+    .btn-check:checked+.btn-primary, .btn-check:active+.btn-primary, .btn-primary:active, .btn-primary.active, .show>.btn-primary.dropdown-toggle {
+        background-color: var(--sp-theme-light, #c7e0f4);
+        border-color: var(--sp-theme-light, #c7e0f4);
     }
     /* Color match the shadow on active */
-    .btn-check:checked+.btn-primary:focus,
-    .btn-check:active+.btn-primary:focus,
-    .btn-primary:active:focus,
-    .btn-primary.active:focus,
-    .show>.btn-primary.dropdown-toggle:focus {
-        box-shadow: 0 0 0 0.25rem rgba(45, 138, 214, 0.5);
+    .btn-check:checked+.btn-primary:focus, .btn-check:active+.btn-primary:focus, .btn-primary:active:focus, .btn-primary.active:focus, .show>.btn-primary.dropdown-toggle:focus {
+        box-shadow: 0 0 0 0.25rem color-mix(in srgb, var(--sp-theme-tertiary, #71afe5), transparent 25%);
+    }
+    .carousel-caption {
+        color: var(--sp-neutral-dark, #201f1e) !important;
+    }
+    .carousel-control-prev-icon, .carousel-control-next-icon {
+        filter: invert(1);
+    }
+    .carousel-indicators [data-bs-target] {
+        background-color: var(--sp-neutral-dark, #201f1e) !important;
     }
     /* Color match dropdown hover */
-    .dropdown-item:hover,
-    .dropdown-item:focus {
-        background-color: #dee2e6;
+    .dropdown-item:hover, .dropdown-item:focus {
+        background-color: var(--sp-neutral-quaternary, #d2d0ce);
     }
     /* Color match dropdown active */
-    .dropdown-item.active,
-    .dropdown-item:active {
-        background-color: #0078d4;
+    .dropdown-item.active, .dropdown-item:active {
+        background-color: var(--sp-theme-primary, #0078d4);
     }
     /* Dropdown Menu - Using the popover component for the menu, so we don't need to hide it by default */
     .dropdown-menu {
@@ -179,35 +202,39 @@
     }
     /** Color match the toggle background color to 'SharePoint Blue' */
     .form-check-input:checked {
-        background-color: #0078d4;
-        border-color: #0078d4;
+        background-color: var(--sp-theme-primary, #0078d4);
+        border-color: var(--sp-theme-primary, #0078d4);
     }
     /* Color match form elements */
     .form-control {
-        border-color: #6c757d;
-        border-radius: var(--bs-border-radius);
+        border-color: var(--sp-neutral-secondary, #605e5c);
+        border-radius: var(--bs-border-radius, 0.375rem);
     }
     /* Color match disabled form elements */
-    .form-control:disabled,
-    .form-control[readonly] {
-        border-color: #eaeaea;
-        color: #a6a6a6;
+    .form-control:disabled, .form-control[readonly] {
+        border-color: var(--sp-neutral-light, #edebe9);
+        color: var(--sp-neutral-tertiary, #a19f9d);
+    }
+    .form-control::placeholder {
+        color: var(--sp-neutral-secondary, #605e5c);
+    }
+    .form-range::-webkit-slider-thumb {
+        background-color: var(--sp-theme-primary, #0078d4);
     }
     /* Bootstrap Icon: Custom - caret-up-fill + caret-down-fill */
     .form-select {
-        background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 16 25.333' fill='%236c757d' width='1em' height='1em'><path d='M0.34 8.03C-0.44 8.92 0.2 10.32 1.38 10.32C2.71 10.32 13.3 10.32 14.62 10.32C15.38 10.32 16 9.7 16 8.94C16 8.61 15.88 8.28 15.66 8.03C15 7.28 9.7 1.23 9.04 0.47C8.54 -0.1 7.67 -0.16 7.09 0.34C7.05 0.38 7 0.43 6.96 0.47C6.96 0.47 1.01 7.28 0.34 8.03Z'/><path d='M0.34 17.3C-0.44 16.41 0.2 15.01 1.38 15.01C2.71 15.01 13.3 15.01 14.62 15.01C15.38 15.01 16 15.63 16 16.39C16 16.73 15.88 17.05 15.66 17.3C15 18.06 9.7 24.11 9.04 24.86C8.54 25.43 7.67 25.49 7.09 24.99C7.05 24.95 7 24.91 6.96 24.86C6.96 24.86 1.01 18.06 0.34 17.3Z'/></svg>");
-        border: 1px solid #6c757d;
+        background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 16 25.333' fill='%23605e5c' width='1em' height='1em'><path d='M0.34 8.03C-0.44 8.92 0.2 10.32 1.38 10.32C2.71 10.32 13.3 10.32 14.62 10.32C15.38 10.32 16 9.7 16 8.94C16 8.61 15.88 8.28 15.66 8.03C15 7.28 9.7 1.23 9.04 0.47C8.54 -0.1 7.67 -0.16 7.09 0.34C7.05 0.38 7 0.43 6.96 0.47C6.96 0.47 1.01 7.28 0.34 8.03Z'/><path d='M0.34 17.3C-0.44 16.41 0.2 15.01 1.38 15.01C2.71 15.01 13.3 15.01 14.62 15.01C15.38 15.01 16 15.63 16 16.39C16 16.73 15.88 17.05 15.66 17.3C15 18.06 9.7 24.11 9.04 24.86C8.54 25.43 7.67 25.49 7.09 24.99C7.05 24.95 7 24.91 6.96 24.86C6.96 24.86 1.01 18.06 0.34 17.3Z'/></svg>");
+        border: 1px solid var(--sp-neutral-secondary, #605e5c);
     }
     /* Set cursor on hover */
     .form-select:hover {
-        border-color: #c7e0f4;
+        border-color: var(--sp-theme-light, #c7e0f4);
         cursor: pointer;
     }
     /* Color match form-select active */
-    .form-select:active,
-    .form-select:focus {
-        border-color: #2d8ad6;
-        box-shadow: 0 0 0 0.25rem rgba(45, 138, 214, 0.25);
+    .form-select:active, .form-select:focus {
+        border-color: var(--sp-theme-secondary, #2b88d8);
+        box-shadow: 0 0 0 0.25rem color-mix(in srgb, var(--sp-theme-tertiary, #71afe5), transparent 65%);
     }
     /* Fix text width on dataTables_length */
     .form-select-sm {
@@ -219,24 +246,36 @@
     }
     /* Color match the toggle on focus */
     .form-switch .form-check-input:focus {
-        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%232d8ad6'/%3e%3c/svg%3e");
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%232b88d8'/%3e%3c/svg%3e");
     }
     /* Update toggle to white after checked */
     .form-switch .form-check-input:checked {
         background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
     }
+    button.btn-close.invert, :not(.btn-group).invert, .btn-group.invert::after, img.invert {
+        filter: invert(1);
+    }
+    .line-limit-1 {
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+    }
     /* Color match the active list group item */
     .list-group-item.active {
-        background-color: #0078d4;
-        border-color: #0078d4;
+        background-color: var(--sp-theme-primary, #0078d4);
+        border-color: var(--sp-theme-primary, #0078d4);
+    }
+    .modal-content {
+        color: var(--sp-neutral-dark, #201f1e);
     }
     /* Increase modal border size */
     .modal-footer {
-        border-top: 2px solid #dee2e6;
+        border-top: 2px solid var(--sp-neutral-quaternary, #d2d0ce);
     }
     /* Increase modal border size */
     .modal-header {
-        border-bottom: 2px solid #dee2e6;
+        border-bottom: 2px solid var(--sp-neutral-quaternary, #d2d0ce);
         .btn-close {
             padding: 1rem;
         }
@@ -265,27 +304,32 @@
     }
     /* Set color for nav links */
     .nav-link {
-        color: #0078d4;
+        color: var(--sp-theme-primary, #0078d4);
+    }
+    .nav-tabs {
+        border-bottom: 0;
     }
     /* Set background color and border for nav-tabs */
     .nav-tabs .nav-link {
-        background-color: rgba(0, 0, 0, 0.05);
+        background-color: var(--sp-neutral-lighter, #f3f2f1);
         border-radius: 0.25rem 0.25rem 0 0;
-        border: 2px solid #dee2e6;
+        border: 2px solid var(--sp-neutral-quaternary, #d2d0ce);
     }
     /* Color match nav-tabs hover to secondary color */
     .nav-tabs .nav-link:hover {
-        background-color: #6c757d;
-        border-color: #6c757d;
-        color: #fff;
+        background-color: var(--sp-neutral-secondary, #605e5c);
+        border-color: var(--sp-neutral-secondary, #605e5c);
+        color: var(--sp-primary-button-text, #ffffff);
     }
     /* Color match nav-tabs active to SharePoint */
-    .nav-tabs .nav-link.active,
-    .nav-tabs .show>.nav-link,
-    .nav-tabs .nav-link:focus {
-        background-color: #0078d4;
-        border-color: #0078d4;
-        color: #fff;
+    .nav-tabs .nav-link.active, .nav-tabs .show>.nav-link, .nav-tabs .nav-link:focus {
+        background-color: var(--sp-theme-primary, #0078d4);
+        border-color: var(--sp-theme-primary, #0078d4);
+        color: var(--sp-primary-button-text, #ffffff);
+    }
+    .navbar {
+        --bs-navbar-brand-color: var(--sp-primary-button-text, #ffffff);
+        --bs-navbar-color: var(--sp-primary-button-text, #ffffff);
     }
     /* Properly align the navbar brand text */
     .navbar-brand {
@@ -293,7 +337,7 @@
     }
     /* Match off-canvas border color to modal */
     .offcanvas-header {
-        border-bottom: 2px solid #dee2e6;
+        border-bottom: 2px solid var(--sp-neutral-quaternary, #d2d0ce);
         padding: 0.5rem 0.5rem 0.5rem 1rem;
     }
     /* Off-canvas close button alignment */
@@ -333,41 +377,39 @@
     .offcanvas-top.offcanvas-size-full, .offcanvas-bottom.offcanvas-size-full { height: 100vh; }
     /* Color match the pagination link color to 'SharePoint Blue' */
     .page-link {
-        border-color: #6c757d;
-        color: #0078d4;
+        border-color: var(--sp-neutral-secondary, #605e5c);
+        color: var(--sp-theme-primary, #0078d4);
         font-size: 13px;
-    }
-    /* Color match the pagination active link colors */
-    .page-item.active .page-link {
-        background-color: #6c757d;
-        border-color: #6c757d;
-        color: #fff;
-        z-index: inherit;
     }
     /* Color match the pagination disabled border colors */
     .page-item.disabled .page-link {
-        background-color: #fff;
-        border-color: #6c757d;
-        color: #6c757d;
+        background-color: var(--sp-white, #ffffff);
+        border-color: var(--sp-neutral-secondary, #605e5c);
+        color: var(--sp-neutral-secondary, #605e5c);
         pointer-events: none;
+    }
+    /* Color match the pagination active link colors */
+    .page-item.active .page-link {
+        background-color: var(--sp-neutral-secondary, #605e5c);
+        border-color: var(--sp-neutral-secondary, #605e5c);
+        color: var(--sp-primary-button-text, #ffffff);
+        z-index: inherit;
     }
     /* Color match for SharePoint */
     .page-link:focus {
-        background-color: #dee2e6;
+        background-color: var(--sp-neutral-quaternary, #d2d0ce);
     }
     /* Color match for SharePoint */
     .page-link:hover {
-        color: #333333;
-        background-color: #dee2e6;
-        border-color: #6c757d;
+        color: var(--sp-primary-text, #333333);
+        background-color: var(--sp-neutral-quaternary, #d2d0ce);
+        border-color: var(--sp-neutral-secondary, #605e5c);
     }
     /* Color match for SharePoint */
-    .page-link:focus,
-    .form-control:focus,
-    .form-check-input:focus {
-        border-color: #2d8ad6;
-        box-shadow: 0 0 0 0.25rem rgba(45, 138, 214, 0.25);
-        color: #333333;
+    .page-link:focus, .form-control:focus, .form-check-input:focus {
+        border-color: var(--sp-theme-secondary, #2b88d8);
+        box-shadow: 0 0 0 0.25rem color-mix(in srgb, var(--sp-theme-tertiary, #71afe5), transparent 65%);
+        color: var(--sp-primary-text, #333333);
     }
     /* Define a custom padding-end value */
     .pe-06 {
@@ -397,27 +439,36 @@
     /* Fix Rich Textbox rounded corners */
     .rich-textbox {
         .editor-container {
-            border-radius: 0 0 var(--bs-border-radius) var(--bs-border-radius) !important;
+            border-radius: 0 0 var(--bs-border-radius, 0.375rem) var(--bs-border-radius, 0.375rem) !important;
         }
         .toolbar-container {
-            border-radius: var(--bs-border-radius) var(--bs-border-radius) 0 0 !important;
+            border-radius: var(--bs-border-radius, 0.375rem) var(--bs-border-radius, 0.375rem) 0 0 !important;
         }
+    }
+    svg.brand path {
+        fill: var(--sp-white, #ffffff);
+    }
+    svg.icon-svg path {
+        fill: currentColor;
     }
     /* Fix extra top margin in Firefox */
     table.dataTable {
         margin-top: 0rem !important;
     }
+    .table>:not(caption)>*>* {
+        color: var(--sp-neutral-dark, #201f1e);
+    }
     /* Match the table header to the table footer; size & color */
     .table>:not(:last-child)>:last-child>* {
-        border-bottom: 3px solid #dee2e6;
+        border-bottom: 3px solid var(--sp-neutral-quaternary, #d2d0ce);
     }
     /* Match the table footer to the table header; size & color */
     .tbl-footer {
-        border-bottom: 2px solid #dee2e6;
+        border-bottom: 2px solid var(--sp-neutral-quaternary, #d2d0ce);
     }
     /* Add the default text color */
     .text-default {
-        color: #333333;
+        color: var(--sp-primary-text, #333333);
     }
     /* Auto size the toast width */
     .toast {
@@ -433,18 +484,18 @@
     }
     /* Fix validation styling */
     .form-control.is-invalid {
-        border-color: #dc3545 !important;
-        background-image: url("data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 12 12%27 width=%2712%27 height=%2712%27 fill=%27none%27 stroke=%27%23dc3545%27%3e%3ccircle cx=%276%27 cy=%276%27 r=%274.5%27/%3e%3cpath stroke-linejoin=%27round%27 d=%27M5.8 3.6h.4L6 6.5z%27/%3e%3ccircle cx=%276%27 cy=%278.2%27 r=%27.6%27 fill=%27%23dc3545%27 stroke=%27none%27/></svg>");
+        border-color: var(--sp-error-icon, #a80000) !important;
+        background-image: url("data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 12 12%27 width=%2712%27 height=%2712%27 fill=%27none%27 stroke=%27%23a80000%27%3e%3ccircle cx=%276%27 cy=%276%27 r=%274.5%27/%3e%3cpath stroke-linejoin=%27round%27 d=%27M5.8 3.6h.4L6 6.5z%27/%3e%3ccircle cx=%276%27 cy=%278.2%27 r=%27.6%27 fill=%27%23a80000%27 stroke=%27none%27/></svg>");
     }
     .form-control.is-valid {
-        border-color: #198754 !important;
-        background-image: url("data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 8 8%27%3e%3cpath fill=%27%23198754%27 d=%27M2.3 6.73.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z%27/></svg>");
+        border-color: var(--sp-success-icon, #107c10) !important;
+        background-image: url("data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 8 8%27%3e%3cpath fill=%27%23107c10%27 d=%27M2.3 6.73.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z%27/></svg>");
     }
     .form-select.is-invalid:not([multiple]):not([size]), .form-select.is-invalid:not([multiple])[size="1"] {
-        background-image: url("data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 xmlns:xlink=%27http://www.w3.org/1999/xlink%27 viewBox=%270 0 16 25.333%27 fill=%27%236c757d%27 width=%271em%27 height=%271em%27><path d=%27M0.34 8.03C-0.44 8.92 0.2 10.32 1.38 10.32C2.71 10.32 13.3 10.32 14.62 10.32C15.38 10.32 16 9.7 16 8.94C16 8.61 15.88 8.28 15.66 8.03C15 7.28 9.7 1.23 9.04 0.47C8.54 -0.1 7.67 -0.16 7.09 0.34C7.05 0.38 7 0.43 6.96 0.47C6.96 0.47 1.01 7.28 0.34 8.03Z%27/><path d=%27M0.34 17.3C-0.44 16.41 0.2 15.01 1.38 15.01C2.71 15.01 13.3 15.01 14.62 15.01C15.38 15.01 16 15.63 16 16.39C16 16.73 15.88 17.05 15.66 17.3C15 18.06 9.7 24.11 9.04 24.86C8.54 25.43 7.67 25.49 7.09 24.99C7.05 24.95 7 24.91 6.96 24.86C6.96 24.86 1.01 18.06 0.34 17.3Z%27/></svg>"),url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 12 12%27 width=%2712%27 height=%2712%27 fill=%27none%27 stroke=%27%23dc3545%27%3e%3ccircle cx=%276%27 cy=%276%27 r=%274.5%27/%3e%3cpath stroke-linejoin=%27round%27 d=%27M5.8 3.6h.4L6 6.5z%27/%3e%3ccircle cx=%276%27 cy=%278.2%27 r=%27.6%27 fill=%27%23dc3545%27 stroke=%27none%27/%3e%3c/svg%3e");
+        background-image: url("data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 xmlns:xlink=%27http://www.w3.org/1999/xlink%27 viewBox=%270 0 16 25.333%27 fill=%27%23605e5c%27 width=%271em%27 height=%271em%27><path d=%27M0.34 8.03C-0.44 8.92 0.2 10.32 1.38 10.32C2.71 10.32 13.3 10.32 14.62 10.32C15.38 10.32 16 9.7 16 8.94C16 8.61 15.88 8.28 15.66 8.03C15 7.28 9.7 1.23 9.04 0.47C8.54 -0.1 7.67 -0.16 7.09 0.34C7.05 0.38 7 0.43 6.96 0.47C6.96 0.47 1.01 7.28 0.34 8.03Z%27/><path d=%27M0.34 17.3C-0.44 16.41 0.2 15.01 1.38 15.01C2.71 15.01 13.3 15.01 14.62 15.01C15.38 15.01 16 15.63 16 16.39C16 16.73 15.88 17.05 15.66 17.3C15 18.06 9.7 24.11 9.04 24.86C8.54 25.43 7.67 25.49 7.09 24.99C7.05 24.95 7 24.91 6.96 24.86C6.96 24.86 1.01 18.06 0.34 17.3Z%27/></svg>"),url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 12 12%27 width=%2712%27 height=%2712%27 fill=%27none%27 stroke=%27%23a80000%27%3e%3ccircle cx=%276%27 cy=%276%27 r=%274.5%27/%3e%3cpath stroke-linejoin=%27round%27 d=%27M5.8 3.6h.4L6 6.5z%27/%3e%3ccircle cx=%276%27 cy=%278.2%27 r=%27.6%27 fill=%27%23a80000%27 stroke=%27none%27/%3e%3c/svg%3e");
     }
     .form-select.is-valid:not([multiple]):not([size]), .form-select.is-valid:not([multiple])[size="1"] {
-        background-image: url("data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 xmlns:xlink=%27http://www.w3.org/1999/xlink%27 viewBox=%270 0 16 25.333%27 fill=%27%236c757d%27 width=%271em%27 height=%271em%27><path d=%27M0.34 8.03C-0.44 8.92 0.2 10.32 1.38 10.32C2.71 10.32 13.3 10.32 14.62 10.32C15.38 10.32 16 9.7 16 8.94C16 8.61 15.88 8.28 15.66 8.03C15 7.28 9.7 1.23 9.04 0.47C8.54 -0.1 7.67 -0.16 7.09 0.34C7.05 0.38 7 0.43 6.96 0.47C6.96 0.47 1.01 7.28 0.34 8.03Z%27/><path d=%27M0.34 17.3C-0.44 16.41 0.2 15.01 1.38 15.01C2.71 15.01 13.3 15.01 14.62 15.01C15.38 15.01 16 15.63 16 16.39C16 16.73 15.88 17.05 15.66 17.3C15 18.06 9.7 24.11 9.04 24.86C8.54 25.43 7.67 25.49 7.09 24.99C7.05 24.95 7 24.91 6.96 24.86C6.96 24.86 1.01 18.06 0.34 17.3Z%27/></svg>"),url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 8 8%27%3e%3cpath fill=%27%23198754%27 d=%27M2.3 6.73.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z%27/%3e%3c/svg%3e");
+        background-image: url("data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 xmlns:xlink=%27http://www.w3.org/1999/xlink%27 viewBox=%270 0 16 25.333%27 fill=%27%23605e5c%27 width=%271em%27 height=%271em%27><path d=%27M0.34 8.03C-0.44 8.92 0.2 10.32 1.38 10.32C2.71 10.32 13.3 10.32 14.62 10.32C15.38 10.32 16 9.7 16 8.94C16 8.61 15.88 8.28 15.66 8.03C15 7.28 9.7 1.23 9.04 0.47C8.54 -0.1 7.67 -0.16 7.09 0.34C7.05 0.38 7 0.43 6.96 0.47C6.96 0.47 1.01 7.28 0.34 8.03Z%27/><path d=%27M0.34 17.3C-0.44 16.41 0.2 15.01 1.38 15.01C2.71 15.01 13.3 15.01 14.62 15.01C15.38 15.01 16 15.63 16 16.39C16 16.73 15.88 17.05 15.66 17.3C15 18.06 9.7 24.11 9.04 24.86C8.54 25.43 7.67 25.49 7.09 24.99C7.05 24.95 7 24.91 6.96 24.86C6.96 24.86 1.01 18.06 0.34 17.3Z%27/></svg>"),url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 8 8%27%3e%3cpath fill=%27%23107c10%27 d=%27M2.3 6.73.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z%27/%3e%3c/svg%3e");
     }
 }
 
@@ -457,7 +508,6 @@
 
     @include overlay-backdrop(var(--bs-backdrop-zindex), var(--bs-backdrop-bg), var(--bs-backdrop-opacity));
 }
-
 
 /** Offcanvas background - Shouldn't be under the .bs class */
 

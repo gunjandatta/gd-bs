@@ -2,18 +2,22 @@
 
 @import "./styles/core.scss";
 
-/** TippyJS */
+/** Root Theme */
 
-@import "./styles/tippy.scss";
-
-/** DataTables.net */
-
-@import "./styles/dataTables.scss";
+@import "./styles/root.scss";
 
 /** Customizations */
 
 @import "./styles/custom.scss";
 
+/** DataTables.net */
+
+@import "./styles/dataTables.scss";
+
 /** Icons */
 
 @import "./styles/icons.scss";
+
+/** TippyJS */
+
+@import "./styles/tippy.scss";
