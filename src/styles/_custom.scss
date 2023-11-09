@@ -30,6 +30,12 @@
     .bg-sharepoint {
         background-color: var(--sp-theme-primary, #0078d4) !important;
     }
+    .bg-primary {
+        background-color: rgba(var(--sp-theme-primary, #0078d4), var(--bs-bg-opacity)) !important;
+    }
+    .bg-white {
+        background-color: var(--sp-white, #ffffff) !important;
+    }
     /* Fix breadcrumb alignment */
     .breadcrumb {
         margin-bottom: 0;
@@ -57,6 +63,11 @@
     /* Close button alignment */
     .btn-close {
         min-width: auto;
+    }
+    .btn:focus-visible {
+        background-color: var(--sp-neutral-dark, #201f1e);
+        border-color: var(--sp-neutral-dark, #201f1e);
+        color: var(--sp-neutral-lighter-alt, #faf9f8);
     }
     /** Button Icon - Custom class */
     .btn-icon {
@@ -89,13 +100,46 @@
         background-color: var(--sp-theme-primary, #0078d4);
         border-color: var(--sp-theme-primary, #0078d4);
     }
+    .btn-outline-light {
+        --bs-btn-color: var(--sp-neutral-lighter-alt, #faf9f8);
+        --bs-btn-border-color: var(--sp-neutral-lighter-alt, #faf9f8);
+        --bs-btn-hover-color: var(--sp-black, #000000);
+        --bs-btn-hover-bg: var(--sp-neutral-lighter-alt, #faf9f8);
+        --bs-btn-hover-border-color: var(--sp-neutral-lighter-alt, #faf9f8);
+        --bs-btn-active-color: var(--sp-black, #000000);
+        --bs-btn-active-bg: var(--sp-neutral-lighter-alt, #faf9f8);
+    }
     /* Fix color for outline light focus */
     .btn-outline-light:focus {
         color: var(--sp-neutral-lighter-alt, #faf9f8);
     }
+    .btn-outline-light:hover {
+        background-color: var(--sp-neutral-lighter-alt, #faf9f8);
+        border-color: var(--sp-neutral-lighter-alt, #faf9f8);
+    }
     /* Fix color for outline light active */
     .btn-outline-light:active, .btn-outline-light:hover {
         color: var(--sp-black, #000000);
+        svg.brand path {
+            fill: var(--sp-black, #000000);
+        }
+    }
+    .btn-outline-secondary {
+        --bs-btn-color: var(--sp-neutral-secondary, #605e5c);
+        --bs-btn-border-color: var(--sp-neutral-secondary, #605e5c);
+        --bs-btn-hover-color: var(--sp-white, #ffffff);
+        --bs-btn-hover-bg: var(--sp-neutral-secondary, #605e5c);
+        --bs-btn-hover-border-color: var(--sp-neutral-secondary, #605e5c);
+        --bs-btn-active-color: var(--sp-white, #ffffff);
+        --bs-btn-active-bg: var(--sp-neutral-secondary, #605e5c);
+        --bs-btn-active-border-color: var(--sp-neutral-secondary, #605e5c);
+        --bs-btn-disabled-color: var(--sp-neutral-secondary, #605e5c);
+        --bs-btn-disabled-border-color: var(--sp-neutral-secondary, #605e5c);
+    }
+    .btn-check:checked+.btn, :not(.btn-check)+.btn:active, .btn:first-child:active, .btn.active, .btn.show {
+        background-color: var(--sp-theme-dark, #005a9e);
+        border-color: var(--sp-theme-dark, #005a9e);
+        color: var(--sp-primary-button-text, #ffffff);
     }
     /* Color match primary outline button focus */
     .btn-check:focus+.bs .btn-outline-primary, .btn-outline-primary:focus {
@@ -113,13 +157,22 @@
         box-shadow: 0 0 0 0.25rem color-mix(in srgb, var(--sp-theme-tertiary, #71afe5), transparent 25%);
     }
     /* Color match the primary button active */
-    .bs .btn-check:checked+.btn-primary, .btn-check:active+.btn-primary, .btn-primary:active, .btn-primary.active, .show>.btn-primary.dropdown-toggle {
+    .btn-check:checked+.btn-primary, .btn-check:active+.btn-primary, .btn-primary:active, .btn-primary.active, .show>.btn-primary.dropdown-toggle {
         background-color: var(--sp-theme-light, #c7e0f4);
         border-color: var(--sp-theme-light, #c7e0f4);
     }
     /* Color match the shadow on active */
     .btn-check:checked+.btn-primary:focus, .btn-check:active+.btn-primary:focus, .btn-primary:active:focus, .btn-primary.active:focus, .show>.btn-primary.dropdown-toggle:focus {
         box-shadow: 0 0 0 0.25rem color-mix(in srgb, var(--sp-theme-tertiary, #71afe5), transparent 25%);
+    }
+    .carousel-caption {
+        color: var(--sp-neutral-dark, #201f1e) !important;
+    }
+    .carousel-control-prev-icon, .carousel-control-next-icon {
+        filter: invert(1);
+    }
+    .carousel-indicators [data-bs-target] {
+        background-color: var(--sp-neutral-dark, #201f1e) !important;
     }
     /* Color match dropdown hover */
     .dropdown-item:hover, .dropdown-item:focus {
@@ -155,12 +208,18 @@
     /* Color match form elements */
     .form-control {
         border-color: var(--sp-neutral-secondary, #605e5c);
-        border-radius: var(--bs-border-radius);
+        border-radius: var(--bs-border-radius, 0.375rem);
     }
     /* Color match disabled form elements */
     .form-control:disabled, .form-control[readonly] {
         border-color: var(--sp-neutral-light, #edebe9);
         color: var(--sp-neutral-tertiary, #a19f9d);
+    }
+    .form-control::placeholder {
+        color: var(--sp-neutral-secondary, #605e5c);
+    }
+    .form-range::-webkit-slider-thumb {
+        background-color: var(--sp-theme-primary, #0078d4);
     }
     /* Bootstrap Icon: Custom - caret-up-fill + caret-down-fill */
     .form-select {
@@ -193,10 +252,22 @@
     .form-switch .form-check-input:checked {
         background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
     }
+    button.btn-close.invert, :not(.btn-group).invert, .btn-group.invert::after, img.invert {
+        filter: invert(1);
+    }
+    .line-limit-1 {
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+    }
     /* Color match the active list group item */
     .list-group-item.active {
         background-color: var(--sp-theme-primary, #0078d4);
         border-color: var(--sp-theme-primary, #0078d4);
+    }
+    .modal-content {
+        color: var(--sp-neutral-dark, #201f1e);
     }
     /* Increase modal border size */
     .modal-footer {
@@ -235,6 +306,9 @@
     .nav-link {
         color: var(--sp-theme-primary, #0078d4);
     }
+    .nav-tabs {
+        border-bottom: 0;
+    }
     /* Set background color and border for nav-tabs */
     .nav-tabs .nav-link {
         background-color: var(--sp-neutral-lighter, #f3f2f1);
@@ -252,6 +326,10 @@
         background-color: var(--sp-theme-primary, #0078d4);
         border-color: var(--sp-theme-primary, #0078d4);
         color: var(--sp-primary-button-text, #ffffff);
+    }
+    .navbar {
+        --bs-navbar-brand-color: var(--sp-primary-button-text, #ffffff);
+        --bs-navbar-color: var(--sp-primary-button-text, #ffffff);
     }
     /* Properly align the navbar brand text */
     .navbar-brand {
@@ -303,19 +381,19 @@
         color: var(--sp-theme-primary, #0078d4);
         font-size: 13px;
     }
-    /* Color match the pagination active link colors */
-    .page-item.active .page-link {
-        background-color: var(--sp-neutral-secondary, #605e5c);
-        border-color: var(--sp-neutral-secondary, #605e5c);
-        color: var(--sp-primary-button-text, #ffffff);
-        z-index: inherit;
-    }
     /* Color match the pagination disabled border colors */
     .page-item.disabled .page-link {
         background-color: var(--sp-white, #ffffff);
         border-color: var(--sp-neutral-secondary, #605e5c);
         color: var(--sp-neutral-secondary, #605e5c);
         pointer-events: none;
+    }
+    /* Color match the pagination active link colors */
+    .page-item.active .page-link {
+        background-color: var(--sp-neutral-secondary, #605e5c);
+        border-color: var(--sp-neutral-secondary, #605e5c);
+        color: var(--sp-primary-button-text, #ffffff);
+        z-index: inherit;
     }
     /* Color match for SharePoint */
     .page-link:focus {
@@ -361,15 +439,24 @@
     /* Fix Rich Textbox rounded corners */
     .rich-textbox {
         .editor-container {
-            border-radius: 0 0 var(--bs-border-radius) var(--bs-border-radius) !important;
+            border-radius: 0 0 var(--bs-border-radius, 0.375rem) var(--bs-border-radius, 0.375rem) !important;
         }
         .toolbar-container {
-            border-radius: var(--bs-border-radius) var(--bs-border-radius) 0 0 !important;
+            border-radius: var(--bs-border-radius, 0.375rem) var(--bs-border-radius, 0.375rem) 0 0 !important;
         }
+    }
+    svg.brand path {
+        fill: var(--sp-white, #ffffff);
+    }
+    svg.icon-svg path {
+        fill: currentColor;
     }
     /* Fix extra top margin in Firefox */
     table.dataTable {
         margin-top: 0rem !important;
+    }
+    .table>:not(caption)>*>* {
+        color: var(--sp-neutral-dark, #201f1e);
     }
     /* Match the table header to the table footer; size & color */
     .table>:not(:last-child)>:last-child>* {
