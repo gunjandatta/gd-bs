@@ -2,6 +2,7 @@
 
 .tippy-box[data-theme~='primary'] {
     background-color: var(--sp-theme-primary, #0078d4);
+    color: var(--sp-white, #ffffff);
 }
 
 .tippy-box[data-theme~='primary'][data-placement^='top']>.tippy-arrow::before {
@@ -24,6 +25,7 @@
 
 .tippy-box[data-theme~='secondary'] {
     background-color: var(--sp-neutral-secondary, #605e5c);
+    color: var(--sp-white, #ffffff);
 }
 
 .tippy-box[data-theme~='secondary'][data-placement^='top']>.tippy-arrow::before {
@@ -46,6 +48,7 @@
 
 .tippy-box[data-theme~='success'] {
     background-color: var(--sp-success-icon, #107c10);
+    color: var(--sp-white, #ffffff);
 }
 
 .tippy-box[data-theme~='success'][data-placement^='top']>.tippy-arrow::before {
@@ -114,6 +117,7 @@
 
 .tippy-box[data-theme~='danger'] {
     background-color: var(--sp-error-icon, #a80000);
+    color: var(--sp-white, #ffffff);
 }
 
 .tippy-box[data-theme~='danger'][data-placement^='top']>.tippy-arrow::before {
@@ -159,6 +163,7 @@
 
 .tippy-box[data-theme~='dark'] {
     background-color: var(--sp-neutral-dark, #201f1e);
+    color: var(--sp-white, #ffffff);
 }
 
 .tippy-box[data-theme~='dark'][data-placement^='top']>.tippy-arrow::before {
@@ -181,6 +186,7 @@
 
 .tippy-box[data-theme~='sharepoint'] {
     background-color: var(--sp-theme-dark, #005a9e);
+    color: var(--sp-white, #ffffff);
 }
 
 .tippy-box[data-theme~='sharepoint'][data-placement^='top']>.tippy-arrow::before {
