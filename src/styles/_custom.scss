@@ -281,6 +281,7 @@
     }
     /* Color match the active list group item */
     .list-group-item.active {
+        --bs-list-group-active-color: var(--sp-white, #ffffff);
         background-color: var(--sp-theme-primary, #0078d4);
         border-color: var(--sp-theme-primary, #0078d4);
     }
