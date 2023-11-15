@@ -32,6 +32,10 @@
     --sp-warning-highlight: #ffb900;
     --sp-white: #ffffff;
 
+    --bs-black: var(--sp-black);
+    --bs-white: var(--sp-white);
+    --bs-gray: var(--sp-neutral-secondary);
+    --bs-gray-dark: var(--sp-neutral-primary);
     --bs-primary: var(--sp-theme-primary);
     --bs-secondary: var(--sp-neutral-secondary);
     --bs-success: var(--sp-success-icon);
@@ -40,9 +44,22 @@
     --bs-danger: var(--sp-error-icon);
     --bs-light: var(--sp-neutral-lighter-alt);
     --bs-dark: var(--sp-neutral-dark);
-    --bs-body-bg: var(--sp-white);
     --bs-body-color: var(--sp-neutral-dark);
-    --bs-border-color: var(--sp-neutral-quaternary);
+    --bs-body-bg: var(--sp-white);
+    --bs-emphasis-color: var(--sp-black);
+    --bs-secondary-color: color-mix(in srgb, var(--sp-neutral-dark), transparent 25%);
+    --bs-secondary-bg: var(--sp-neutral-light);
+    --bs-tertiary-color: color-mix(in srgb, var(--sp-neutral-dark), transparent 50%);
+    --bs-tertiary-bg: var(--sp-neutral-lighter-alt);
     --bs-link-color: var(--sp-theme-primary);
+    --bs-link-hover-color: var(--sp-theme-dark);
+    --bs-highlight-color: var(--sp-neutral-dark);
+    --bs-highlight-bg: var(--sp-neutral-quaternary-alt);
+    --bs-border-color: var(--sp-neutral-quaternary);
+    --bs-form-valid-color: var(--sp-success-icon);
+    --bs-form-valid-border-color: var(--sp-success-icon);
+    --bs-form-invalid-color: var(--sp-error-icon);
+    --bs-form-invalid-border-color: var(--sp-error-icon);
     --bs-modal-color: var(--sp-white);
+    --dt-html-background: var(--sp-white);
 }
