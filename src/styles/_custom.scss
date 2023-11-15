@@ -89,11 +89,99 @@
     .btn-icon-sm {
         margin: 0 0.25rem 0.14rem -0.25rem;
     }
-    /* Color match the primary button to 'SharePoint Blue' */
-    /* Don't reorder the btn-primary classes. It breaks active colors. */
+    /* Don't reorder the btn- classes. It breaks active colors. */
+    .btn-outline-danger {
+        --bs-btn-color: var(--sp-error-icon, #a80000);
+        --bs-btn-border-color: var(--sp-error-icon, #a80000);
+        --bs-btn-hover-color: var(--sp-white, #ffffff);
+        --bs-btn-hover-bg: var(--sp-error-icon, #a80000);
+        --bs-btn-hover-border-color: var(--sp-error-icon, #a80000);
+        --bs-btn-active-color: var(--sp-white, #ffffff);
+        --bs-btn-active-bg: var(--sp-error-icon, #a80000);
+        --bs-btn-active-border-color: var(--sp-error-icon, #a80000);
+        --bs-btn-disabled-color: var(--sp-error-icon, #a80000);
+        --bs-btn-disabled-border-color: var(--sp-error-icon, #a80000);
+    }
+    .btn-outline-light {
+        --bs-btn-color: var(--sp-neutral-lighter-alt, #faf9f8);
+        --bs-btn-border-color: var(--sp-neutral-lighter-alt, #faf9f8);
+        --bs-btn-hover-color: var(--sp-black, #000000);
+        --bs-btn-hover-bg: var(--sp-neutral-lighter-alt, #faf9f8);
+        --bs-btn-hover-border-color: var(--sp-neutral-lighter-alt, #faf9f8);
+        --bs-btn-active-color: var(--sp-black, #000000);
+        --bs-btn-active-bg: var(--sp-neutral-lighter-alt, #faf9f8);
+        --bs-btn-active-border-color: var(--sp-neutral-lighter-alt, #faf9f8);
+        --bs-btn-disabled-color: var(--sp-neutral-lighter-alt, #faf9f8);
+        --bs-btn-disabled-border-color: var(--sp-neutral-lighter-alt, #faf9f8);
+    }
+    .btn-outline-primary {
+        --bs-btn-color: var(--sp-theme-primary, #0078d4);
+        --bs-btn-border-color: var(--sp-theme-primary, #0078d4);
+        --bs-btn-hover-color: var(--sp-white, #ffffff);
+        --bs-btn-hover-bg: var(--sp-theme-primary, #0078d4);
+        --bs-btn-hover-border-color: var(--sp-theme-primary, #0078d4);
+        --bs-btn-active-color: var(--sp-white, #ffffff);
+        --bs-btn-active-bg: var(--sp-theme-primary, #0078d4);
+        --bs-btn-active-border-color: var(--sp-theme-primary, #0078d4);
+        --bs-btn-disabled-color: var(--sp-theme-primary, #0078d4);
+        --bs-btn-disabled-border-color: var(--sp-theme-primary, #0078d4);
+    }
+    .btn-outline-secondary {
+        --bs-btn-color: var(--sp-neutral-secondary, #605e5c);
+        --bs-btn-border-color: var(--sp-neutral-secondary, #605e5c);
+        --bs-btn-hover-color: var(--sp-white, #ffffff);
+        --bs-btn-hover-bg: var(--sp-neutral-secondary, #605e5c);
+        --bs-btn-hover-border-color: var(--sp-neutral-secondary, #605e5c);
+        --bs-btn-active-color: var(--sp-white, #ffffff);
+        --bs-btn-active-bg: var(--sp-neutral-secondary, #605e5c);
+        --bs-btn-active-border-color: var(--sp-neutral-secondary, #605e5c);
+        --bs-btn-disabled-color: var(--sp-neutral-secondary, #605e5c);
+        --bs-btn-disabled-border-color: var(--sp-neutral-secondary, #605e5c);
+    }
+    .btn-outline-success {
+        --bs-btn-color: var(--sp-success-icon, #107c10);
+        --bs-btn-border-color: var(--sp-success-icon, #107c10);
+        --bs-btn-hover-color: var(--sp-white, #ffffff);
+        --bs-btn-hover-bg: var(--sp-success-icon, #107c10);
+        --bs-btn-hover-border-color: var(--sp-success-icon, #107c10);
+        --bs-btn-active-color: var(--sp-white, #ffffff);
+        --bs-btn-active-bg: var(--sp-success-icon, #107c10);
+        --bs-btn-active-border-color: var(--sp-success-icon, #107c10);
+        --bs-btn-disabled-color: var(--sp-success-icon, #107c10);
+        --bs-btn-disabled-border-color: var(--sp-success-icon, #107c10);
+    }
+    .btn-primary {
+        --bs-btn-color: var(--sp-white, #ffffff);
+        --bs-btn-bg: var(--sp-theme-primary, #0078d4);
+        --bs-btn-border-color: var(--sp-theme-primary, #0078d4);
+        --bs-btn-hover-color: var(--sp-white, #ffffff);
+        --bs-btn-hover-bg: var(--sp-theme-dark, #005a9e);
+        --bs-btn-hover-border-color: var(--sp-theme-secondary, #2b88d8);
+        --bs-btn-active-color: var(--sp-white, #ffffff);
+        --bs-btn-active-bg: var(--sp-theme-secondary, #2b88d8);
+        --bs-btn-active-border-color: var(--sp-theme-dark-alt, #106ebe);
+        --bs-btn-disabled-color: var(--sp-white, #ffffff);
+        --bs-btn-disabled-bg: var(--sp-theme-primary, #0078d4);
+        --bs-btn-disabled-border-color: var(--sp-theme-primary, #0078d4);
+    }
+    .btn-secondary {
+        --bs-btn-color: var(--sp-white, #ffffff);
+        --bs-btn-bg: var(--sp-neutral-secondary, #605e5c);
+        --bs-btn-border-color: var(--sp-neutral-secondary, #605e5c);
+        --bs-btn-hover-color: var(--sp-white, #ffffff);
+        --bs-btn-hover-bg: var(--sp-neutral-primary, #323130);
+        --bs-btn-hover-border-color: var(--sp-neutral-primary-alt, #3b3a39);
+        --bs-btn-active-color: var(--sp-white, #ffffff);
+        --bs-btn-active-bg: var(--sp-neutral-primary-alt, #3b3a39);
+        --bs-btn-active-border-color: var(--sp-neutral-secondary-alt, #8a8886);
+        --bs-btn-disabled-color: var(--sp-white, #ffffff);
+        --bs-btn-disabled-bg: var(--sp-neutral-secondary, #605e5c);
+        --bs-btn-disabled-border-color: var(--sp-neutral-secondary, #605e5c);
+    }
     .btn-primary, .btn-primary:disabled, .btn-primary.disabled {
         background-color: var(--sp-theme-primary, #0078d4);
         border-color: var(--sp-theme-primary, #0078d4);
+        color: var(--sp-white, #ffffff);
     }
     /* Color match the primary button hover */
     .btn-primary:hover {
@@ -109,6 +197,7 @@
     .btn-outline-primary:hover {
         background-color: var(--sp-theme-primary, #0078d4);
         border-color: var(--sp-theme-primary, #0078d4);
+        color: var(--sp-white, #ffffff);
     }
     .btn-outline-light {
         --bs-btn-color: var(--sp-neutral-lighter-alt, #faf9f8);
