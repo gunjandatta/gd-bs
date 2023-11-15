@@ -303,14 +303,11 @@
         background-color: var(--sp-theme-primary, #0078d4);
         transition: background-color 0.2s;
         -webkit-mask: var(--bs-form-check-bg-image);
-        -webkit-mask-origin: border-box;
-        -webkit-mask-position: center;
-        -webkit-mask-repeat: no-repeat;
-        -webkit-mask-size: contain;
     }
     /* Fix checkbox label alignment */
     .form-check:not(.form-switch) .form-check-label {
-        margin-left: 0.5rem;
+        margin-left: .5rem;
+        margin-top: .25rem;
     }
     /** Color match the toggle background color to 'SharePoint Blue' */
     .form-check-input:checked {
