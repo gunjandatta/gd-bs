@@ -487,8 +487,41 @@
         border-bottom: 2px solid var(--sp-neutral-quaternary, #d2d0ce);
     }
     /* Add the default text color */
+    .text-body {
+        color: var(--sp-primary-text, #333333) !important;
+    }
+    .text-danger {
+        color: var(--sp-error-icon, #a80000) !important;
+    }
+    .text-dark {
+        color: var(--sp-neutral-dark, #201f1e) !important;
+    }
     .text-default {
-        color: var(--sp-primary-text, #333333);
+        color: var(--sp-primary-text, #333333) !important;
+    }
+    .text-info {
+        color: var(--sp-accent, #8764b8) !important;
+    }
+    .text-light {
+        color: var(--sp-neutral-lighter-alt, #faf9f8) !important;
+    }
+    .text-muted {
+        color: var(--sp-neutral-secondary-alt, #8a8886) !important;
+    }
+    .text-primary {
+        color: var(--sp-theme-primary, #0078d4) !important;
+    }
+    .text-secondary {
+        color: var(--sp-neutral-secondary, #605e5c) !important;
+    }
+    .text-success {
+        color: var(--sp-success-icon, #107c10) !important;
+    }
+    .text-warning {
+        color: var(--sp-severe-warning-icon, #d83b01) !important;
+    }
+    .text-white {
+        color: var(--sp-white, #ffffff) !important;
     }
     /* Auto size the toast width */
     .toast {
