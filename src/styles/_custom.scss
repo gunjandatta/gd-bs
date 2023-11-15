@@ -60,9 +60,19 @@
     .breadcrumb-item+.breadcrumb-item::before {
         padding-top: 0.15rem;
     }
-    /* Close button alignment */
+    /* Close button adjustments */
     .btn-close {
+        --bs-btn-close-color: var(--sp-black, #000000);
+        --bs-btn-close-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 16 16'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e");
+        background: transparent;
+        background-color: var(--bs-btn-close-color);
         min-width: auto;
+        transition: background-color 0.2s;
+        -webkit-mask: var(--bs-btn-close-bg);
+        -webkit-mask-origin: content-box;
+        -webkit-mask-position: center;
+        -webkit-mask-repeat: no-repeat;
+        -webkit-mask-size: auto;
     }
     .btn:focus-visible {
         background-color: var(--sp-neutral-dark, #201f1e);
@@ -79,11 +89,99 @@
     .btn-icon-sm {
         margin: 0 0.25rem 0.14rem -0.25rem;
     }
-    /* Color match the primary button to 'SharePoint Blue' */
-    /* Don't reorder the btn-primary classes. It breaks active colors. */
+    /* Don't reorder the btn- classes. It breaks active colors. */
+    .btn-outline-danger {
+        --bs-btn-color: var(--sp-error-icon, #a80000);
+        --bs-btn-border-color: var(--sp-error-icon, #a80000);
+        --bs-btn-hover-color: var(--sp-white, #ffffff);
+        --bs-btn-hover-bg: var(--sp-error-icon, #a80000);
+        --bs-btn-hover-border-color: var(--sp-error-icon, #a80000);
+        --bs-btn-active-color: var(--sp-white, #ffffff);
+        --bs-btn-active-bg: var(--sp-error-icon, #a80000);
+        --bs-btn-active-border-color: var(--sp-error-icon, #a80000);
+        --bs-btn-disabled-color: var(--sp-error-icon, #a80000);
+        --bs-btn-disabled-border-color: var(--sp-error-icon, #a80000);
+    }
+    .btn-outline-light {
+        --bs-btn-color: var(--sp-neutral-lighter-alt, #faf9f8);
+        --bs-btn-border-color: var(--sp-neutral-lighter-alt, #faf9f8);
+        --bs-btn-hover-color: var(--sp-black, #000000);
+        --bs-btn-hover-bg: var(--sp-neutral-lighter-alt, #faf9f8);
+        --bs-btn-hover-border-color: var(--sp-neutral-lighter-alt, #faf9f8);
+        --bs-btn-active-color: var(--sp-black, #000000);
+        --bs-btn-active-bg: var(--sp-neutral-lighter-alt, #faf9f8);
+        --bs-btn-active-border-color: var(--sp-neutral-lighter-alt, #faf9f8);
+        --bs-btn-disabled-color: var(--sp-neutral-lighter-alt, #faf9f8);
+        --bs-btn-disabled-border-color: var(--sp-neutral-lighter-alt, #faf9f8);
+    }
+    .btn-outline-primary {
+        --bs-btn-color: var(--sp-theme-primary, #0078d4);
+        --bs-btn-border-color: var(--sp-theme-primary, #0078d4);
+        --bs-btn-hover-color: var(--sp-white, #ffffff);
+        --bs-btn-hover-bg: var(--sp-theme-primary, #0078d4);
+        --bs-btn-hover-border-color: var(--sp-theme-primary, #0078d4);
+        --bs-btn-active-color: var(--sp-white, #ffffff);
+        --bs-btn-active-bg: var(--sp-theme-primary, #0078d4);
+        --bs-btn-active-border-color: var(--sp-theme-primary, #0078d4);
+        --bs-btn-disabled-color: var(--sp-theme-primary, #0078d4);
+        --bs-btn-disabled-border-color: var(--sp-theme-primary, #0078d4);
+    }
+    .btn-outline-secondary {
+        --bs-btn-color: var(--sp-neutral-secondary, #605e5c);
+        --bs-btn-border-color: var(--sp-neutral-secondary, #605e5c);
+        --bs-btn-hover-color: var(--sp-white, #ffffff);
+        --bs-btn-hover-bg: var(--sp-neutral-secondary, #605e5c);
+        --bs-btn-hover-border-color: var(--sp-neutral-secondary, #605e5c);
+        --bs-btn-active-color: var(--sp-white, #ffffff);
+        --bs-btn-active-bg: var(--sp-neutral-secondary, #605e5c);
+        --bs-btn-active-border-color: var(--sp-neutral-secondary, #605e5c);
+        --bs-btn-disabled-color: var(--sp-neutral-secondary, #605e5c);
+        --bs-btn-disabled-border-color: var(--sp-neutral-secondary, #605e5c);
+    }
+    .btn-outline-success {
+        --bs-btn-color: var(--sp-success-icon, #107c10);
+        --bs-btn-border-color: var(--sp-success-icon, #107c10);
+        --bs-btn-hover-color: var(--sp-white, #ffffff);
+        --bs-btn-hover-bg: var(--sp-success-icon, #107c10);
+        --bs-btn-hover-border-color: var(--sp-success-icon, #107c10);
+        --bs-btn-active-color: var(--sp-white, #ffffff);
+        --bs-btn-active-bg: var(--sp-success-icon, #107c10);
+        --bs-btn-active-border-color: var(--sp-success-icon, #107c10);
+        --bs-btn-disabled-color: var(--sp-success-icon, #107c10);
+        --bs-btn-disabled-border-color: var(--sp-success-icon, #107c10);
+    }
+    .btn-primary {
+        --bs-btn-color: var(--sp-white, #ffffff);
+        --bs-btn-bg: var(--sp-theme-primary, #0078d4);
+        --bs-btn-border-color: var(--sp-theme-primary, #0078d4);
+        --bs-btn-hover-color: var(--sp-white, #ffffff);
+        --bs-btn-hover-bg: var(--sp-theme-dark, #005a9e);
+        --bs-btn-hover-border-color: var(--sp-theme-secondary, #2b88d8);
+        --bs-btn-active-color: var(--sp-white, #ffffff);
+        --bs-btn-active-bg: var(--sp-theme-secondary, #2b88d8);
+        --bs-btn-active-border-color: var(--sp-theme-dark-alt, #106ebe);
+        --bs-btn-disabled-color: var(--sp-white, #ffffff);
+        --bs-btn-disabled-bg: var(--sp-theme-primary, #0078d4);
+        --bs-btn-disabled-border-color: var(--sp-theme-primary, #0078d4);
+    }
+    .btn-secondary {
+        --bs-btn-color: var(--sp-white, #ffffff);
+        --bs-btn-bg: var(--sp-neutral-secondary, #605e5c);
+        --bs-btn-border-color: var(--sp-neutral-secondary, #605e5c);
+        --bs-btn-hover-color: var(--sp-white, #ffffff);
+        --bs-btn-hover-bg: var(--sp-neutral-primary, #323130);
+        --bs-btn-hover-border-color: var(--sp-neutral-primary-alt, #3b3a39);
+        --bs-btn-active-color: var(--sp-white, #ffffff);
+        --bs-btn-active-bg: var(--sp-neutral-primary-alt, #3b3a39);
+        --bs-btn-active-border-color: var(--sp-neutral-secondary-alt, #8a8886);
+        --bs-btn-disabled-color: var(--sp-white, #ffffff);
+        --bs-btn-disabled-bg: var(--sp-neutral-secondary, #605e5c);
+        --bs-btn-disabled-border-color: var(--sp-neutral-secondary, #605e5c);
+    }
     .btn-primary, .btn-primary:disabled, .btn-primary.disabled {
         background-color: var(--sp-theme-primary, #0078d4);
         border-color: var(--sp-theme-primary, #0078d4);
+        color: var(--sp-white, #ffffff);
     }
     /* Color match the primary button hover */
     .btn-primary:hover {
@@ -99,6 +197,7 @@
     .btn-outline-primary:hover {
         background-color: var(--sp-theme-primary, #0078d4);
         border-color: var(--sp-theme-primary, #0078d4);
+        color: var(--sp-white, #ffffff);
     }
     .btn-outline-light {
         --bs-btn-color: var(--sp-neutral-lighter-alt, #faf9f8);
@@ -194,7 +293,16 @@
     .form-check:not(.form-switch) .form-check-input[type=checkbox] {
         height: 1.25rem;
         width: 1.25rem;
-        margin-left: -0.5rem;
+    }
+    .form-check:not(.form-switch) .form-check-input:checked[type=checkbox] {
+        --bs-form-check-bg-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 16 16'%3e%3cpath d='M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z'/%3e%3cpath d='M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.235.235 0 0 1 .02-.022z'/%3e%3c/svg%3e");
+        background: transparent;
+        transition: background-color 0.2s;
+        -webkit-mask: var(--bs-form-check-bg-image);
+        -webkit-mask-origin: border-box;
+        -webkit-mask-position: center;
+        -webkit-mask-repeat: no-repeat;
+        -webkit-mask-size: contain;
     }
     /* Fix checkbox label alignment */
     .form-check:not(.form-switch) .form-check-label {
@@ -212,6 +320,7 @@
     }
     /* Color match disabled form elements */
     .form-control:disabled, .form-control[readonly] {
+        background-color: var(--sp-neutral-quaternary, #d2d0ce);
         border-color: var(--sp-neutral-light, #edebe9);
         color: var(--sp-neutral-tertiary, #a19f9d);
     }
@@ -263,6 +372,7 @@
     }
     /* Color match the active list group item */
     .list-group-item.active {
+        --bs-list-group-active-color: var(--sp-white, #ffffff);
         background-color: var(--sp-theme-primary, #0078d4);
         border-color: var(--sp-theme-primary, #0078d4);
     }
@@ -467,8 +577,41 @@
         border-bottom: 2px solid var(--sp-neutral-quaternary, #d2d0ce);
     }
     /* Add the default text color */
+    .text-body {
+        color: var(--sp-primary-text, #333333) !important;
+    }
+    .text-danger {
+        color: var(--sp-error-icon, #a80000) !important;
+    }
+    .text-dark {
+        color: var(--sp-neutral-dark, #201f1e) !important;
+    }
     .text-default {
-        color: var(--sp-primary-text, #333333);
+        color: var(--sp-primary-text, #333333) !important;
+    }
+    .text-info {
+        color: var(--sp-accent, #8764b8) !important;
+    }
+    .text-light {
+        color: var(--sp-neutral-lighter-alt, #faf9f8) !important;
+    }
+    .text-muted {
+        color: var(--sp-neutral-secondary-alt, #8a8886) !important;
+    }
+    .text-primary {
+        color: var(--sp-theme-primary, #0078d4) !important;
+    }
+    .text-secondary {
+        color: var(--sp-neutral-secondary, #605e5c) !important;
+    }
+    .text-success {
+        color: var(--sp-success-icon, #107c10) !important;
+    }
+    .text-warning {
+        color: var(--sp-severe-warning-icon, #d83b01) !important;
+    }
+    .text-white {
+        color: var(--sp-white, #ffffff) !important;
     }
     /* Auto size the toast width */
     .toast {
