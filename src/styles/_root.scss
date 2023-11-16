@@ -82,5 +82,5 @@
     --bs-form-invalid-color: var(--sp-error-icon);
     --bs-form-invalid-border-color: var(--sp-error-icon);
     --bs-modal-color: var(--sp-white);
-    --dt-html-background: var(--sp-white);
+    --dt-html-background: var(--sp-white) !important;
 }

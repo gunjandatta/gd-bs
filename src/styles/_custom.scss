@@ -12,19 +12,24 @@
     a:active, .link-primary:active {
         color: var(--sp-theme-light, #c7e0f4);
     }
-    /* Color match accordion on focus */
-    .accordion-button:focus {
-        border-color: var(--sp-theme-secondary, #2b88d8);
-        box-shadow: 0 0 0 0.25rem color-mix(in srgb, var(--sp-theme-tertiary, #71afe5), transparent 65%);
+    /* Color match accordion */
+    .accordion {
+        --bs-accordion-btn-focus-border-color: var(--sp-theme-secondary, #2b88d8);
+        --bs-accordion-btn-focus-box-shadow: 0 0 0 .25rem color-mix(in srgb, var(--sp-theme-tertiary, #71afe5), transparent 65%);
+        --bs-accordion-active-bg: var(--sp-theme-light, #c7e0f4);
+        --bs-accordion-active-color: var(--sp-theme-primary, #0078d4);
     }
-    /* Color match accordion while expanded */
-    .accordion-button:not(.collapsed) {
-        background-color: var(--sp-theme-light, #c7e0f4);
-        color: var(--sp-theme-primary, #0078d4);
+    .accordion-button::after {
+        background: transparent;
+        background-color: var(--sp-neutral-dark, #201f1e);
+        -webkit-mask: var(--bs-accordion-btn-icon);
+        -webkit-mask-repeat: no-repeat;
     }
-    /* Color match accordion while expanded */
     .accordion-button:not(.collapsed)::after {
-        background-image: url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27 fill=%27%230078d4%27%3e%3cpath fill-rule=%27evenodd%27 d=%27M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z%27/%3e%3c/svg%3e");
+        background: transparent;
+        background-color: var(--sp-theme-darker, #004578);
+        -webkit-mask: var(--bs-accordion-btn-active-icon);
+        -webkit-mask-repeat: no-repeat;
     }
     .bg-primary {
         background-color: var(--sp-theme-primary, #0078d4) !important;
@@ -63,7 +68,6 @@
     /* Close button adjustments */
     .btn-close {
         --bs-btn-close-color: var(--sp-black, #000000);
-        --bs-btn-close-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 16 16'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e");
         background: transparent;
         background-color: var(--bs-btn-close-color);
         min-width: auto;
@@ -72,7 +76,6 @@
         -webkit-mask-origin: content-box;
         -webkit-mask-position: center;
         -webkit-mask-repeat: no-repeat;
-        -webkit-mask-size: auto;
     }
     .btn:focus-visible {
         background-color: var(--sp-neutral-dark, #201f1e);
@@ -300,14 +303,11 @@
         background-color: var(--sp-theme-primary, #0078d4);
         transition: background-color 0.2s;
         -webkit-mask: var(--bs-form-check-bg-image);
-        -webkit-mask-origin: border-box;
-        -webkit-mask-position: center;
-        -webkit-mask-repeat: no-repeat;
-        -webkit-mask-size: contain;
     }
     /* Fix checkbox label alignment */
     .form-check:not(.form-switch) .form-check-label {
-        margin-left: 0.5rem;
+        margin-left: .5rem;
+        margin-top: .25rem;
     }
     /** Color match the toggle background color to 'SharePoint Blue' */
     .form-check-input:checked {
