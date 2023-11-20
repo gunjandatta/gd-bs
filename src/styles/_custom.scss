@@ -372,10 +372,10 @@
         -webkit-line-clamp: 1;
     }
     /* Color match the active list group item */
-    .list-group-item.active {
+    .list-group {
         --bs-list-group-active-color: var(--sp-white, #ffffff);
-        background-color: var(--sp-theme-primary, #0078d4);
-        border-color: var(--sp-theme-primary, #0078d4);
+        --bs-list-group-active-bg: var(--sp-theme-primary, #0078d4);
+        --bs-list-group-active-border-color: var(--sp-theme-primary, #0078d4);
     }
     .modal-content {
         color: var(--sp-neutral-dark, #201f1e);
