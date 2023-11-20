@@ -76,7 +76,8 @@
     --bs-code-color: var(--sp-magenta-light);
     --bs-highlight-color: var(--sp-neutral-dark);
     --bs-highlight-bg: var(--sp-neutral-quaternary-alt);
-    --bs-border-color: var(--sp-neutral-quaternary);
+    --bs-border-color: var(--sp-neutral-secondary);
+    --bs-focus-ring-color: color-mix(in srgb, var(--sp-theme-primary), transparent 75%);
     --bs-form-valid-color: var(--sp-success-icon);
     --bs-form-valid-border-color: var(--sp-success-icon);
     --bs-form-invalid-color: var(--sp-error-icon);
