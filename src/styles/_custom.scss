@@ -106,16 +106,16 @@
         --bs-btn-disabled-border-color: var(--sp-error-icon, #a80000);
     }
     .btn-outline-light {
-        --bs-btn-color: var(--sp-neutral-lighter-alt, #faf9f8);
-        --bs-btn-border-color: var(--sp-neutral-lighter-alt, #faf9f8);
+        --bs-btn-color: var(--sp-neutral-lighter, #f3f2f1);
+        --bs-btn-border-color: var(--sp-neutral-lighter, #f3f2f1);
         --bs-btn-hover-color: var(--sp-black, #000000);
-        --bs-btn-hover-bg: var(--sp-neutral-lighter-alt, #faf9f8);
-        --bs-btn-hover-border-color: var(--sp-neutral-lighter-alt, #faf9f8);
+        --bs-btn-hover-bg: var(--sp-neutral-lighter, #f3f2f1);
+        --bs-btn-hover-border-color: var(--sp-neutral-lighter, #f3f2f1);
         --bs-btn-active-color: var(--sp-black, #000000);
-        --bs-btn-active-bg: var(--sp-neutral-lighter-alt, #faf9f8);
-        --bs-btn-active-border-color: var(--sp-neutral-lighter-alt, #faf9f8);
-        --bs-btn-disabled-color: var(--sp-neutral-lighter-alt, #faf9f8);
-        --bs-btn-disabled-border-color: var(--sp-neutral-lighter-alt, #faf9f8);
+        --bs-btn-active-bg: var(--sp-neutral-lighter, #f3f2f1);
+        --bs-btn-active-border-color: var(--sp-neutral-lighter, #f3f2f1);
+        --bs-btn-disabled-color: var(--sp-neutral-lighter, #f3f2f1);
+        --bs-btn-disabled-border-color: var(--sp-neutral-lighter, #f3f2f1);
     }
     .btn-outline-primary {
         --bs-btn-color: var(--sp-theme-primary, #0078d4);
@@ -130,16 +130,16 @@
         --bs-btn-disabled-border-color: var(--sp-theme-primary, #0078d4);
     }
     .btn-outline-secondary {
-        --bs-btn-color: var(--sp-neutral-secondary, #605e5c);
-        --bs-btn-border-color: var(--sp-neutral-secondary, #605e5c);
+        --bs-btn-color: var(--sp-info-icon, #605e5c);
+        --bs-btn-border-color: var(--sp-info-icon, #605e5c);
         --bs-btn-hover-color: var(--sp-white, #ffffff);
-        --bs-btn-hover-bg: var(--sp-neutral-secondary, #605e5c);
-        --bs-btn-hover-border-color: var(--sp-neutral-secondary, #605e5c);
+        --bs-btn-hover-bg: var(--sp-info-icon, #605e5c);
+        --bs-btn-hover-border-color: var(--sp-info-icon, #605e5c);
         --bs-btn-active-color: var(--sp-white, #ffffff);
-        --bs-btn-active-bg: var(--sp-neutral-secondary, #605e5c);
-        --bs-btn-active-border-color: var(--sp-neutral-secondary, #605e5c);
-        --bs-btn-disabled-color: var(--sp-neutral-secondary, #605e5c);
-        --bs-btn-disabled-border-color: var(--sp-neutral-secondary, #605e5c);
+        --bs-btn-active-bg: var(--sp-info-icon, #605e5c);
+        --bs-btn-active-border-color: var(--sp-info-icon, #605e5c);
+        --bs-btn-disabled-color: var(--sp-info-icon, #605e5c);
+        --bs-btn-disabled-border-color: var(--sp-info-icon, #605e5c);
     }
     .btn-outline-success {
         --bs-btn-color: var(--sp-success-icon, #107c10);
@@ -169,8 +169,8 @@
     }
     .btn-secondary {
         --bs-btn-color: var(--sp-white, #ffffff);
-        --bs-btn-bg: var(--sp-neutral-secondary, #605e5c);
-        --bs-btn-border-color: var(--sp-neutral-secondary, #605e5c);
+        --bs-btn-bg: var(--sp-info-icon, #605e5c);
+        --bs-btn-border-color: var(--sp-info-icon, #605e5c);
         --bs-btn-hover-color: var(--sp-white, #ffffff);
         --bs-btn-hover-bg: var(--sp-neutral-primary, #323130);
         --bs-btn-hover-border-color: var(--sp-neutral-primary-alt, #3b3a39);
@@ -178,8 +178,8 @@
         --bs-btn-active-bg: var(--sp-neutral-primary-alt, #3b3a39);
         --bs-btn-active-border-color: var(--sp-neutral-secondary-alt, #8a8886);
         --bs-btn-disabled-color: var(--sp-white, #ffffff);
-        --bs-btn-disabled-bg: var(--sp-neutral-secondary, #605e5c);
-        --bs-btn-disabled-border-color: var(--sp-neutral-secondary, #605e5c);
+        --bs-btn-disabled-bg: var(--sp-info-icon, #605e5c);
+        --bs-btn-disabled-border-color: var(--sp-info-icon, #605e5c);
     }
     .btn-primary, .btn-primary:disabled, .btn-primary.disabled {
         background-color: var(--sp-theme-primary, #0078d4);
@@ -202,22 +202,13 @@
         border-color: var(--sp-theme-primary, #0078d4);
         color: var(--sp-white, #ffffff);
     }
-    .btn-outline-light {
-        --bs-btn-color: var(--sp-neutral-lighter-alt, #faf9f8);
-        --bs-btn-border-color: var(--sp-neutral-lighter-alt, #faf9f8);
-        --bs-btn-hover-color: var(--sp-black, #000000);
-        --bs-btn-hover-bg: var(--sp-neutral-lighter-alt, #faf9f8);
-        --bs-btn-hover-border-color: var(--sp-neutral-lighter-alt, #faf9f8);
-        --bs-btn-active-color: var(--sp-black, #000000);
-        --bs-btn-active-bg: var(--sp-neutral-lighter-alt, #faf9f8);
-    }
     /* Fix color for outline light focus */
     .btn-outline-light:focus {
-        color: var(--sp-neutral-lighter-alt, #faf9f8);
+        color: var(--sp-neutral-lighter, #f3f2f1);
     }
     .btn-outline-light:hover {
-        background-color: var(--sp-neutral-lighter-alt, #faf9f8);
-        border-color: var(--sp-neutral-lighter-alt, #faf9f8);
+        background-color: var(--sp-neutral-lighter, #f3f2f1);
+        border-color: var(--sp-neutral-lighter, #f3f2f1);
     }
     /* Fix color for outline light active */
     .btn-outline-light:active, .btn-outline-light:hover {
@@ -225,18 +216,6 @@
         svg.brand path {
             fill: var(--sp-black, #000000);
         }
-    }
-    .btn-outline-secondary {
-        --bs-btn-color: var(--sp-neutral-secondary, #605e5c);
-        --bs-btn-border-color: var(--sp-neutral-secondary, #605e5c);
-        --bs-btn-hover-color: var(--sp-white, #ffffff);
-        --bs-btn-hover-bg: var(--sp-neutral-secondary, #605e5c);
-        --bs-btn-hover-border-color: var(--sp-neutral-secondary, #605e5c);
-        --bs-btn-active-color: var(--sp-white, #ffffff);
-        --bs-btn-active-bg: var(--sp-neutral-secondary, #605e5c);
-        --bs-btn-active-border-color: var(--sp-neutral-secondary, #605e5c);
-        --bs-btn-disabled-color: var(--sp-neutral-secondary, #605e5c);
-        --bs-btn-disabled-border-color: var(--sp-neutral-secondary, #605e5c);
     }
     .btn-check:checked+.btn, :not(.btn-check)+.btn:active, .btn:first-child:active, .btn.active, .btn.show {
         background-color: var(--sp-theme-dark, #005a9e);
@@ -324,7 +303,7 @@
         color: var(--sp-neutral-tertiary, #a19f9d);
     }
     .form-control::placeholder {
-        color: var(--sp-neutral-secondary, #605e5c);
+        color: var(--sp-info-icon, #605e5c);
     }
     .form-range::-webkit-slider-thumb {
         background-color: var(--sp-theme-primary, #0078d4);
@@ -420,8 +399,8 @@
     }
     /* Color match nav-tabs hover to secondary color */
     .nav-tabs .nav-link:hover {
-        background-color: var(--sp-neutral-secondary, #605e5c);
-        border-color: var(--sp-neutral-secondary, #605e5c);
+        background-color: var(--sp-info-icon, #605e5c);
+        border-color: var(--sp-info-icon, #605e5c);
         color: var(--sp-primary-button-text, #ffffff);
     }
     /* Color match nav-tabs active to SharePoint */
@@ -480,21 +459,21 @@
     .offcanvas-top.offcanvas-size-full, .offcanvas-bottom.offcanvas-size-full { height: 100vh; }
     /* Color match the pagination link color to 'SharePoint Blue' */
     .page-link {
-        border-color: var(--sp-neutral-secondary, #605e5c);
+        border-color: var(--sp-info-icon, #605e5c);
         color: var(--sp-theme-primary, #0078d4);
         font-size: 13px;
     }
     /* Color match the pagination disabled border colors */
     .page-item.disabled .page-link {
         background-color: var(--sp-white, #ffffff);
-        border-color: var(--sp-neutral-secondary, #605e5c);
-        color: var(--sp-neutral-secondary, #605e5c);
+        border-color: var(--sp-info-icon, #605e5c);
+        color: var(--sp-info-icon, #605e5c);
         pointer-events: none;
     }
     /* Color match the pagination active link colors */
     .page-item.active .page-link {
-        background-color: var(--sp-neutral-secondary, #605e5c);
-        border-color: var(--sp-neutral-secondary, #605e5c);
+        background-color: var(--sp-info-icon, #605e5c);
+        border-color: var(--sp-info-icon, #605e5c);
         color: var(--sp-primary-button-text, #ffffff);
         z-index: inherit;
     }
@@ -506,7 +485,7 @@
     .page-link:hover {
         color: var(--sp-primary-text, #333333);
         background-color: var(--sp-neutral-quaternary, #d2d0ce);
-        border-color: var(--sp-neutral-secondary, #605e5c);
+        border-color: var(--sp-info-icon, #605e5c);
     }
     /* Color match for SharePoint */
     .page-link:focus, .form-control:focus, .form-check-input:focus {
@@ -586,7 +565,7 @@
         color: var(--sp-accent, #8764b8) !important;
     }
     .text-light {
-        color: var(--sp-neutral-lighter-alt, #faf9f8) !important;
+        color: var(--sp-neutral-lighter, #f3f2f1) !important;
     }
     .text-muted {
         color: var(--sp-neutral-secondary-alt, #8a8886) !important;
@@ -595,7 +574,7 @@
         color: var(--sp-theme-primary, #0078d4) !important;
     }
     .text-secondary {
-        color: var(--sp-neutral-secondary, #605e5c) !important;
+        color: var(--sp-info-icon, #605e5c) !important;
     }
     .text-success {
         color: var(--sp-success-icon, #107c10) !important;
