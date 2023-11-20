@@ -314,11 +314,6 @@
         background-color: var(--sp-theme-primary, #0078d4);
         border-color: var(--sp-theme-primary, #0078d4);
     }
-    /* Color match form elements */
-    .form-control {
-        border-color: var(--sp-neutral-secondary, #605e5c);
-        border-radius: var(--bs-border-radius, 0.375rem);
-    }
     /* Color match disabled form elements */
     .form-control:disabled, .form-control[readonly] {
         background-color: var(--sp-neutral-quaternary, #d2d0ce);
