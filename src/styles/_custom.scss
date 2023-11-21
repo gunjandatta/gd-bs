@@ -205,6 +205,9 @@
     .btn-check:checked+.btn-primary:focus, .btn-check:active+.btn-primary:focus, .btn-primary:active:focus, .btn-primary.active:focus, .show>.btn-primary.dropdown-toggle:focus {
         box-shadow: 0 0 0 0.25rem color-mix(in srgb, var(--sp-theme-tertiary, #71afe5), transparent 25%);
     }
+    .card {
+        --bs-card-border-color: var(--bs-border-color);
+    }
     .carousel-caption {
         color: var(--sp-neutral-dark, #201f1e) !important;
     }
