@@ -181,66 +181,25 @@
         --bs-btn-disabled-bg: var(--sp-info-icon, #605e5c);
         --bs-btn-disabled-border-color: var(--sp-info-icon, #605e5c);
     }
-    .btn-primary, .btn-primary:disabled, .btn-primary.disabled {
-        background-color: var(--sp-theme-primary, #0078d4);
-        border-color: var(--sp-theme-primary, #0078d4);
-        color: var(--sp-white, #ffffff);
-    }
-    /* Color match the primary button hover */
-    .btn-primary:hover {
-        background-color: var(--sp-theme-darker, #004578);
-        border-color: var(--sp-theme-darker, #004578);
-    }
-    /* Color match primary outline button */
-    .btn-outline-primary, .btn-outline-primary:disabled, .btn-outline-primary.disabled {
-        border-color: var(--sp-theme-primary, #0078d4);
-        color: var(--sp-theme-primary, #0078d4);
-    }
-    /* Color match primary outline button hover */
-    .btn-outline-primary:hover {
-        background-color: var(--sp-theme-primary, #0078d4);
-        border-color: var(--sp-theme-primary, #0078d4);
-        color: var(--sp-white, #ffffff);
-    }
     /* Fix color for outline light focus */
     .btn-outline-light:focus {
         color: var(--sp-neutral-lighter, #f3f2f1);
     }
-    .btn-outline-light:hover {
-        background-color: var(--sp-neutral-lighter, #f3f2f1);
-        border-color: var(--sp-neutral-lighter, #f3f2f1);
-    }
     /* Fix color for outline light active */
     .btn-outline-light:active, .btn-outline-light:hover {
-        color: var(--sp-black, #000000);
         svg.brand path {
             fill: var(--sp-black, #000000);
         }
     }
-    .btn-check:checked+.btn, :not(.btn-check)+.btn:active, .btn:first-child:active, .btn.active, .btn.show {
-        background-color: var(--sp-theme-dark, #005a9e);
-        border-color: var(--sp-theme-dark, #005a9e);
-        color: var(--sp-primary-button-text, #ffffff);
-    }
     /* Color match primary outline button focus */
     .btn-check:focus+.bs .btn-outline-primary, .btn-outline-primary:focus {
         box-shadow: 0 0 0 0.25rem color-mix(in srgb, var(--sp-theme-tertiary, #71afe5), transparent 25%);
-    }
-    /* Color match primary outline button active */
-    .btn-check:checked+.bs .btn-outline-primary, .btn-check:active+.bs .btn-outline-primary, .btn-outline-primary:active, .btn-outline-primary.active, .btn-outline-primary.dropdown-toggle.show {
-        background-color: var(--sp-theme-darker, #004578);
-        border-color: var(--sp-theme-darker, #004578);
     }
     /* Color match the primary button focus */
     .btn-check:focus+.btn-primary, .btn-primary:focus {
         background-color: var(--sp-theme-darker, #004578);
         border-color: var(--sp-theme-darker, #004578);
         box-shadow: 0 0 0 0.25rem color-mix(in srgb, var(--sp-theme-tertiary, #71afe5), transparent 25%);
-    }
-    /* Color match the primary button active */
-    .btn-check:checked+.btn-primary, .btn-check:active+.btn-primary, .btn-primary:active, .btn-primary.active, .show>.btn-primary.dropdown-toggle {
-        background-color: var(--sp-theme-light, #c7e0f4);
-        border-color: var(--sp-theme-light, #c7e0f4);
     }
     /* Color match the shadow on active */
     .btn-check:checked+.btn-primary:focus, .btn-check:active+.btn-primary:focus, .btn-primary:active:focus, .btn-primary.active:focus, .show>.btn-primary.dropdown-toggle:focus {
