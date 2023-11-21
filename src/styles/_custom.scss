@@ -58,7 +58,6 @@
     /* Color match breadcrumb active links */
     .breadcrumb-item>a:active {
         color: var(--sp-primary-text, #333333);
-        font-weight: 500;
         text-decoration: underline;
     }
     /* Fix breadcrumb alignment */
