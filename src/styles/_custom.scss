@@ -311,8 +311,8 @@
         .form-check-input {
             height: 1.25em;
         }
-        .form-check-input:focus {
-            --bs-form-switch-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%232b88d8'/%3e%3c/svg%3e");
+        .form-check-input:focus:not(:checked):not(.dark) {
+            --bs-form-switch-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%238a8886'/%3e%3c/svg%3e");
         }
         .form-check-input.dark, .form-check-input.dark:focus, .form-check-input.dark:checked {
             --bs-form-switch-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23faf9f8'/%3e%3c/svg%3e");
