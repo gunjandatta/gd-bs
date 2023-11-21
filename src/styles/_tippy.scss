@@ -24,24 +24,24 @@
 /* Tippy Tooltip secondary theme color */
 
 .tippy-box[data-theme~='secondary'] {
-    background-color: var(--sp-neutral-secondary, #605e5c);
+    background-color: var(--sp-info-icon, #605e5c);
     color: var(--sp-white, #ffffff);
 }
 
 .tippy-box[data-theme~='secondary'][data-placement^='top']>.tippy-arrow::before {
-    border-top-color: var(--sp-neutral-secondary, #605e5c);
+    border-top-color: var(--sp-info-icon, #605e5c);
 }
 
 .tippy-box[data-theme~='secondary'][data-placement^='bottom']>.tippy-arrow::before {
-    border-bottom-color: var(--sp-neutral-secondary, #605e5c);
+    border-bottom-color: var(--sp-info-icon, #605e5c);
 }
 
 .tippy-box[data-theme~='secondary'][data-placement^='left']>.tippy-arrow::before {
-    border-left-color: var(--sp-neutral-secondary, #605e5c);
+    border-left-color: var(--sp-info-icon, #605e5c);
 }
 
 .tippy-box[data-theme~='secondary'][data-placement^='right']>.tippy-arrow::before {
-    border-right-color: var(--sp-neutral-secondary, #605e5c);
+    border-right-color: var(--sp-info-icon, #605e5c);
 }
 
 /* Tippy Tooltip success theme color */
@@ -139,24 +139,24 @@
 /* Tippy Tooltip light theme color - override Tippy default to match Bootstrap */
 
 .tippy-box[data-theme~='light'] {
-    background-color: var(--sp-neutral-lighter-alt, #faf9f8) !important;
+    background-color: var(--sp-neutral-lighter, #f3f2f1) !important;
     color: var(--sp-black, #000000) !important;
 }
 
 .tippy-box[data-theme~='light'][data-placement^='top']>.tippy-arrow::before {
-    border-top-color: var(--sp-neutral-lighter-alt, #faf9f8) !important;
+    border-top-color: var(--sp-neutral-lighter, #f3f2f1) !important;
 }
 
 .tippy-box[data-theme~='light'][data-placement^='bottom']>.tippy-arrow::before {
-    border-bottom-color: var(--sp-neutral-lighter-alt, #faf9f8) !important;
+    border-bottom-color: var(--sp-neutral-lighter, #f3f2f1) !important;
 }
 
 .tippy-box[data-theme~='light'][data-placement^='left']>.tippy-arrow::before {
-    border-left-color: var(--sp-neutral-lighter-alt, #faf9f8) !important;
+    border-left-color: var(--sp-neutral-lighter, #f3f2f1) !important;
 }
 
 .tippy-box[data-theme~='light'][data-placement^='right']>.tippy-arrow::before {
-    border-right-color: var(--sp-neutral-lighter-alt, #faf9f8) !important;
+    border-right-color: var(--sp-neutral-lighter, #f3f2f1) !important;
 }
 
 /* Tippy Tooltip dark theme color */

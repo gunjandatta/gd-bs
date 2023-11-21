@@ -80,7 +80,7 @@
     .btn:focus-visible {
         background-color: var(--sp-neutral-dark, #201f1e);
         border-color: var(--sp-neutral-dark, #201f1e);
-        color: var(--sp-neutral-lighter-alt, #faf9f8);
+        color: var(--sp-neutral-lighter, #f3f2f1);
     }
     /** Button Icon - Custom class */
     .btn-icon {
@@ -106,16 +106,16 @@
         --bs-btn-disabled-border-color: var(--sp-error-icon, #a80000);
     }
     .btn-outline-light {
-        --bs-btn-color: var(--sp-neutral-lighter-alt, #faf9f8);
-        --bs-btn-border-color: var(--sp-neutral-lighter-alt, #faf9f8);
+        --bs-btn-color: var(--sp-neutral-lighter, #f3f2f1);
+        --bs-btn-border-color: var(--sp-neutral-lighter, #f3f2f1);
         --bs-btn-hover-color: var(--sp-black, #000000);
-        --bs-btn-hover-bg: var(--sp-neutral-lighter-alt, #faf9f8);
-        --bs-btn-hover-border-color: var(--sp-neutral-lighter-alt, #faf9f8);
+        --bs-btn-hover-bg: var(--sp-neutral-lighter, #f3f2f1);
+        --bs-btn-hover-border-color: var(--sp-neutral-lighter, #f3f2f1);
         --bs-btn-active-color: var(--sp-black, #000000);
-        --bs-btn-active-bg: var(--sp-neutral-lighter-alt, #faf9f8);
-        --bs-btn-active-border-color: var(--sp-neutral-lighter-alt, #faf9f8);
-        --bs-btn-disabled-color: var(--sp-neutral-lighter-alt, #faf9f8);
-        --bs-btn-disabled-border-color: var(--sp-neutral-lighter-alt, #faf9f8);
+        --bs-btn-active-bg: var(--sp-neutral-lighter, #f3f2f1);
+        --bs-btn-active-border-color: var(--sp-neutral-lighter, #f3f2f1);
+        --bs-btn-disabled-color: var(--sp-neutral-lighter, #f3f2f1);
+        --bs-btn-disabled-border-color: var(--sp-neutral-lighter, #f3f2f1);
     }
     .btn-outline-primary {
         --bs-btn-color: var(--sp-theme-primary, #0078d4);
@@ -130,16 +130,16 @@
         --bs-btn-disabled-border-color: var(--sp-theme-primary, #0078d4);
     }
     .btn-outline-secondary {
-        --bs-btn-color: var(--sp-neutral-secondary, #605e5c);
-        --bs-btn-border-color: var(--sp-neutral-secondary, #605e5c);
+        --bs-btn-color: var(--sp-info-icon, #605e5c);
+        --bs-btn-border-color: var(--sp-info-icon, #605e5c);
         --bs-btn-hover-color: var(--sp-white, #ffffff);
-        --bs-btn-hover-bg: var(--sp-neutral-secondary, #605e5c);
-        --bs-btn-hover-border-color: var(--sp-neutral-secondary, #605e5c);
+        --bs-btn-hover-bg: var(--sp-info-icon, #605e5c);
+        --bs-btn-hover-border-color: var(--sp-info-icon, #605e5c);
         --bs-btn-active-color: var(--sp-white, #ffffff);
-        --bs-btn-active-bg: var(--sp-neutral-secondary, #605e5c);
-        --bs-btn-active-border-color: var(--sp-neutral-secondary, #605e5c);
-        --bs-btn-disabled-color: var(--sp-neutral-secondary, #605e5c);
-        --bs-btn-disabled-border-color: var(--sp-neutral-secondary, #605e5c);
+        --bs-btn-active-bg: var(--sp-info-icon, #605e5c);
+        --bs-btn-active-border-color: var(--sp-info-icon, #605e5c);
+        --bs-btn-disabled-color: var(--sp-info-icon, #605e5c);
+        --bs-btn-disabled-border-color: var(--sp-info-icon, #605e5c);
     }
     .btn-outline-success {
         --bs-btn-color: var(--sp-success-icon, #107c10);
@@ -169,8 +169,8 @@
     }
     .btn-secondary {
         --bs-btn-color: var(--sp-white, #ffffff);
-        --bs-btn-bg: var(--sp-neutral-secondary, #605e5c);
-        --bs-btn-border-color: var(--sp-neutral-secondary, #605e5c);
+        --bs-btn-bg: var(--sp-info-icon, #605e5c);
+        --bs-btn-border-color: var(--sp-info-icon, #605e5c);
         --bs-btn-hover-color: var(--sp-white, #ffffff);
         --bs-btn-hover-bg: var(--sp-neutral-primary, #323130);
         --bs-btn-hover-border-color: var(--sp-neutral-primary-alt, #3b3a39);
@@ -178,90 +178,28 @@
         --bs-btn-active-bg: var(--sp-neutral-primary-alt, #3b3a39);
         --bs-btn-active-border-color: var(--sp-neutral-secondary-alt, #8a8886);
         --bs-btn-disabled-color: var(--sp-white, #ffffff);
-        --bs-btn-disabled-bg: var(--sp-neutral-secondary, #605e5c);
-        --bs-btn-disabled-border-color: var(--sp-neutral-secondary, #605e5c);
-    }
-    .btn-primary, .btn-primary:disabled, .btn-primary.disabled {
-        background-color: var(--sp-theme-primary, #0078d4);
-        border-color: var(--sp-theme-primary, #0078d4);
-        color: var(--sp-white, #ffffff);
-    }
-    /* Color match the primary button hover */
-    .btn-primary:hover {
-        background-color: var(--sp-theme-darker, #004578);
-        border-color: var(--sp-theme-darker, #004578);
-    }
-    /* Color match primary outline button */
-    .btn-outline-primary, .btn-outline-primary:disabled, .btn-outline-primary.disabled {
-        border-color: var(--sp-theme-primary, #0078d4);
-        color: var(--sp-theme-primary, #0078d4);
-    }
-    /* Color match primary outline button hover */
-    .btn-outline-primary:hover {
-        background-color: var(--sp-theme-primary, #0078d4);
-        border-color: var(--sp-theme-primary, #0078d4);
-        color: var(--sp-white, #ffffff);
-    }
-    .btn-outline-light {
-        --bs-btn-color: var(--sp-neutral-lighter-alt, #faf9f8);
-        --bs-btn-border-color: var(--sp-neutral-lighter-alt, #faf9f8);
-        --bs-btn-hover-color: var(--sp-black, #000000);
-        --bs-btn-hover-bg: var(--sp-neutral-lighter-alt, #faf9f8);
-        --bs-btn-hover-border-color: var(--sp-neutral-lighter-alt, #faf9f8);
-        --bs-btn-active-color: var(--sp-black, #000000);
-        --bs-btn-active-bg: var(--sp-neutral-lighter-alt, #faf9f8);
+        --bs-btn-disabled-bg: var(--sp-info-icon, #605e5c);
+        --bs-btn-disabled-border-color: var(--sp-info-icon, #605e5c);
     }
     /* Fix color for outline light focus */
     .btn-outline-light:focus {
-        color: var(--sp-neutral-lighter-alt, #faf9f8);
-    }
-    .btn-outline-light:hover {
-        background-color: var(--sp-neutral-lighter-alt, #faf9f8);
-        border-color: var(--sp-neutral-lighter-alt, #faf9f8);
+        color: var(--sp-neutral-lighter, #f3f2f1);
     }
     /* Fix color for outline light active */
     .btn-outline-light:active, .btn-outline-light:hover {
-        color: var(--sp-black, #000000);
         svg.brand path {
             fill: var(--sp-black, #000000);
         }
     }
-    .btn-outline-secondary {
-        --bs-btn-color: var(--sp-neutral-secondary, #605e5c);
-        --bs-btn-border-color: var(--sp-neutral-secondary, #605e5c);
-        --bs-btn-hover-color: var(--sp-white, #ffffff);
-        --bs-btn-hover-bg: var(--sp-neutral-secondary, #605e5c);
-        --bs-btn-hover-border-color: var(--sp-neutral-secondary, #605e5c);
-        --bs-btn-active-color: var(--sp-white, #ffffff);
-        --bs-btn-active-bg: var(--sp-neutral-secondary, #605e5c);
-        --bs-btn-active-border-color: var(--sp-neutral-secondary, #605e5c);
-        --bs-btn-disabled-color: var(--sp-neutral-secondary, #605e5c);
-        --bs-btn-disabled-border-color: var(--sp-neutral-secondary, #605e5c);
-    }
-    .btn-check:checked+.btn, :not(.btn-check)+.btn:active, .btn:first-child:active, .btn.active, .btn.show {
-        background-color: var(--sp-theme-dark, #005a9e);
-        border-color: var(--sp-theme-dark, #005a9e);
-        color: var(--sp-primary-button-text, #ffffff);
-    }
     /* Color match primary outline button focus */
     .btn-check:focus+.bs .btn-outline-primary, .btn-outline-primary:focus {
         box-shadow: 0 0 0 0.25rem color-mix(in srgb, var(--sp-theme-tertiary, #71afe5), transparent 25%);
-    }
-    /* Color match primary outline button active */
-    .btn-check:checked+.bs .btn-outline-primary, .btn-check:active+.bs .btn-outline-primary, .btn-outline-primary:active, .btn-outline-primary.active, .btn-outline-primary.dropdown-toggle.show {
-        background-color: var(--sp-theme-darker, #004578);
-        border-color: var(--sp-theme-darker, #004578);
     }
     /* Color match the primary button focus */
     .btn-check:focus+.btn-primary, .btn-primary:focus {
         background-color: var(--sp-theme-darker, #004578);
         border-color: var(--sp-theme-darker, #004578);
         box-shadow: 0 0 0 0.25rem color-mix(in srgb, var(--sp-theme-tertiary, #71afe5), transparent 25%);
-    }
-    /* Color match the primary button active */
-    .btn-check:checked+.btn-primary, .btn-check:active+.btn-primary, .btn-primary:active, .btn-primary.active, .show>.btn-primary.dropdown-toggle {
-        background-color: var(--sp-theme-light, #c7e0f4);
-        border-color: var(--sp-theme-light, #c7e0f4);
     }
     /* Color match the shadow on active */
     .btn-check:checked+.btn-primary:focus, .btn-check:active+.btn-primary:focus, .btn-primary:active:focus, .btn-primary.active:focus, .show>.btn-primary.dropdown-toggle:focus {
@@ -289,7 +227,7 @@
         display: inherit;
     }
     /* Show checkboxes & toggles as buttons */
-    .form-check .form-check-input {
+    .form-check .form-check-input, .form-select:hover {
         cursor: pointer;
     }
     /* Adjust checkbox size */
@@ -314,10 +252,8 @@
         background-color: var(--sp-theme-primary, #0078d4);
         border-color: var(--sp-theme-primary, #0078d4);
     }
-    /* Color match form elements */
-    .form-control {
-        border-color: var(--sp-neutral-secondary, #605e5c);
-        border-radius: var(--bs-border-radius, 0.375rem);
+    .form-control:hover, .form-select:hover {
+        border-color: var(--sp-theme-tertiary, #71afe5);
     }
     /* Color match disabled form elements */
     .form-control:disabled, .form-control[readonly] {
@@ -326,7 +262,7 @@
         color: var(--sp-neutral-tertiary, #a19f9d);
     }
     .form-control::placeholder {
-        color: var(--sp-neutral-secondary, #605e5c);
+        color: var(--sp-info-icon, #605e5c);
     }
     .form-range::-webkit-slider-thumb {
         background-color: var(--sp-theme-primary, #0078d4);
@@ -334,12 +270,6 @@
     /* Bootstrap Icon: Custom - caret-up-fill + caret-down-fill */
     .form-select {
         background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 16 25.333' fill='%23605e5c' width='1em' height='1em'><path d='M0.34 8.03C-0.44 8.92 0.2 10.32 1.38 10.32C2.71 10.32 13.3 10.32 14.62 10.32C15.38 10.32 16 9.7 16 8.94C16 8.61 15.88 8.28 15.66 8.03C15 7.28 9.7 1.23 9.04 0.47C8.54 -0.1 7.67 -0.16 7.09 0.34C7.05 0.38 7 0.43 6.96 0.47C6.96 0.47 1.01 7.28 0.34 8.03Z'/><path d='M0.34 17.3C-0.44 16.41 0.2 15.01 1.38 15.01C2.71 15.01 13.3 15.01 14.62 15.01C15.38 15.01 16 15.63 16 16.39C16 16.73 15.88 17.05 15.66 17.3C15 18.06 9.7 24.11 9.04 24.86C8.54 25.43 7.67 25.49 7.09 24.99C7.05 24.95 7 24.91 6.96 24.86C6.96 24.86 1.01 18.06 0.34 17.3Z'/></svg>");
-        border: 1px solid var(--sp-neutral-secondary, #605e5c);
-    }
-    /* Set cursor on hover */
-    .form-select:hover {
-        border-color: var(--sp-theme-light, #c7e0f4);
-        cursor: pointer;
     }
     /* Color match form-select active */
     .form-select:active, .form-select:focus {
@@ -351,16 +281,17 @@
         background-size: 8px 10px;
         padding-right: 1.65rem;
     }
-    .form-switch .form-check-input {
-        height: 1.25em;
-    }
-    /* Color match the toggle on focus */
-    .form-switch .form-check-input:focus {
-        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%232b88d8'/%3e%3c/svg%3e");
-    }
-    /* Update toggle to white after checked */
-    .form-switch .form-check-input:checked {
-        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+    /* Color match the toggle */
+    .form-switch {
+        .form-check-input {
+            height: 1.25em;
+        }
+        .form-check-input:focus {
+            --bs-form-switch-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%232b88d8'/%3e%3c/svg%3e");
+        }
+        .form-check-input.dark, .form-check-input.dark:focus, .form-check-input.dark:checked {
+            --bs-form-switch-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23faf9f8'/%3e%3c/svg%3e");
+        }
     }
     button.btn-close.invert, :not(.btn-group).invert, .btn-group.invert::after, img.invert {
         filter: invert(1);
@@ -372,10 +303,10 @@
         -webkit-line-clamp: 1;
     }
     /* Color match the active list group item */
-    .list-group-item.active {
+    .list-group {
         --bs-list-group-active-color: var(--sp-white, #ffffff);
-        background-color: var(--sp-theme-primary, #0078d4);
-        border-color: var(--sp-theme-primary, #0078d4);
+        --bs-list-group-active-bg: var(--sp-theme-primary, #0078d4);
+        --bs-list-group-active-border-color: var(--sp-theme-primary, #0078d4);
     }
     .modal-content {
         color: var(--sp-neutral-dark, #201f1e);
@@ -428,8 +359,8 @@
     }
     /* Color match nav-tabs hover to secondary color */
     .nav-tabs .nav-link:hover {
-        background-color: var(--sp-neutral-secondary, #605e5c);
-        border-color: var(--sp-neutral-secondary, #605e5c);
+        background-color: var(--sp-info-icon, #605e5c);
+        border-color: var(--sp-info-icon, #605e5c);
         color: var(--sp-primary-button-text, #ffffff);
     }
     /* Color match nav-tabs active to SharePoint */
@@ -488,21 +419,21 @@
     .offcanvas-top.offcanvas-size-full, .offcanvas-bottom.offcanvas-size-full { height: 100vh; }
     /* Color match the pagination link color to 'SharePoint Blue' */
     .page-link {
-        border-color: var(--sp-neutral-secondary, #605e5c);
+        border-color: var(--sp-info-icon, #605e5c);
         color: var(--sp-theme-primary, #0078d4);
         font-size: 13px;
     }
     /* Color match the pagination disabled border colors */
     .page-item.disabled .page-link {
         background-color: var(--sp-white, #ffffff);
-        border-color: var(--sp-neutral-secondary, #605e5c);
-        color: var(--sp-neutral-secondary, #605e5c);
+        border-color: var(--sp-info-icon, #605e5c);
+        color: var(--sp-info-icon, #605e5c);
         pointer-events: none;
     }
     /* Color match the pagination active link colors */
     .page-item.active .page-link {
-        background-color: var(--sp-neutral-secondary, #605e5c);
-        border-color: var(--sp-neutral-secondary, #605e5c);
+        background-color: var(--sp-info-icon, #605e5c);
+        border-color: var(--sp-info-icon, #605e5c);
         color: var(--sp-primary-button-text, #ffffff);
         z-index: inherit;
     }
@@ -514,7 +445,7 @@
     .page-link:hover {
         color: var(--sp-primary-text, #333333);
         background-color: var(--sp-neutral-quaternary, #d2d0ce);
-        border-color: var(--sp-neutral-secondary, #605e5c);
+        border-color: var(--sp-info-icon, #605e5c);
     }
     /* Color match for SharePoint */
     .page-link:focus, .form-control:focus, .form-check-input:focus {
@@ -594,7 +525,7 @@
         color: var(--sp-accent, #8764b8) !important;
     }
     .text-light {
-        color: var(--sp-neutral-lighter-alt, #faf9f8) !important;
+        color: var(--sp-neutral-lighter, #f3f2f1) !important;
     }
     .text-muted {
         color: var(--sp-neutral-secondary-alt, #8a8886) !important;
@@ -603,7 +534,7 @@
         color: var(--sp-theme-primary, #0078d4) !important;
     }
     .text-secondary {
-        color: var(--sp-neutral-secondary, #605e5c) !important;
+        color: var(--sp-info-icon, #605e5c) !important;
     }
     .text-success {
         color: var(--sp-success-icon, #107c10) !important;
