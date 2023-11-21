@@ -1,4 +1,4 @@
-/** Root Styles */
+/** Define default root styles */
 :root {
     --sp-accent: #8764b8;
     --sp-black: #000000;
@@ -38,7 +38,6 @@
     --sp-success-background: #dff6dd;
     --sp-success-icon: #107c10;
     --sp-teal: #008272;
-    --sp-theme-accent: #0078d4;
     --sp-theme-dark: #005a9e;
     --sp-theme-darker: #004578;
     --sp-theme-dark-alt: #106ebe;
@@ -54,6 +53,7 @@
     --sp-yellow: #ffb900;
     --sp-yellow-dark: #d29200;
 
+    /* Map the Bootstrap root variables to SharePoint */
     --bs-blue: var(--sp-blue);
     --bs-indigo: var(--sp-purple-dark);
     --bs-purple: var(--sp-purple);
