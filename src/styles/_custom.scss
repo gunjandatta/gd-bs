@@ -31,14 +31,35 @@
         -webkit-mask: var(--bs-accordion-btn-active-icon);
         -webkit-mask-repeat: no-repeat;
     }
+    .bg-danger {
+        background-color: var(--sp-error-icon, #a80000) !important;
+    }
+    .bg-dark {
+        background-color: var(--sp-neutral-dark, #201f1e) !important;
+    }
+    .bg-info {
+        background-color: var(--sp-accent, #8764b8) !important;
+    }
+    .bg-light {
+        background-color: var(--sp-neutral-lighter, #f3f2f1) !important;
+    }
     .bg-primary {
         background-color: var(--sp-theme-primary, #0078d4) !important;
     }
-    /* Create a reusable 'SharePoint Blue' background color */
-    .bg-sharepoint {
-        background-color: var(--sp-theme-primary, #0078d4) !important;
+    .bg-secondary {
+        background-color: var(--sp-info-icon, #605e5c) !important;
     }
-    .bg-white {
+    /* Create a reusable 'SharePoint' background color */
+    .bg-sharepoint {
+        background-color: var(--sp-theme-dark, #005a9e) !important;
+    }
+    .bg-success {
+        background-color: var(--sp-success-icon, #107c10) !important;
+    }
+    .bg-warning {
+        background-color: var(--sp-severe-warning-icon, #d83b01) !important;
+    }
+    .bg-white, .bg-body {
         background-color: var(--sp-white, #ffffff) !important;
     }
     /* Fix breadcrumb alignment */
