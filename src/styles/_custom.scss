@@ -395,8 +395,12 @@
         color: var(--sp-primary-button-text, #ffffff);
     }
     .navbar {
-        --bs-navbar-brand-color: var(--sp-primary-button-text, #ffffff);
         --bs-navbar-color: var(--sp-primary-button-text, #ffffff);
+        --bs-navbar-hover-color: var(--sp-theme-darker, #004578);
+        --bs-navbar-disabled-color: var(--sp-neutral-tertiary, #a19f9d);
+        --bs-navbar-active-color: var(--sp-theme-light, #c7e0f4);
+        --bs-navbar-brand-color: var(--sp-primary-button-text, #ffffff);
+        --bs-navbar-brand-hover-color: var(--sp-theme-darker, #004578);
     }
     /* Properly align the navbar brand text */
     .navbar-brand {
