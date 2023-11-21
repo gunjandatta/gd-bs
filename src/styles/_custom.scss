@@ -186,6 +186,7 @@
     }
     /* Fix color for outline light active */
     .btn-outline-light:active, .btn-outline-light:hover {
+        color: var(--sp-black, #000000);
         svg.brand path {
             fill: var(--sp-black, #000000);
         }
