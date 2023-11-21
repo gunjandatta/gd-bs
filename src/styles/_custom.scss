@@ -322,16 +322,17 @@
         background-size: 8px 10px;
         padding-right: 1.65rem;
     }
-    .form-switch .form-check-input {
-        height: 1.25em;
-    }
-    /* Color match the toggle on focus */
-    .form-switch .form-check-input:focus {
-        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%232b88d8'/%3e%3c/svg%3e");
-    }
-    /* Update toggle to white after checked */
-    .form-switch .form-check-input:checked {
-        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+    /* Color match the toggle */
+    .form-switch {
+        .form-check-input {
+            height: 1.25em;
+        }
+        .form-check-input:focus {
+            --bs-form-switch-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%232b88d8'/%3e%3c/svg%3e");
+        }
+        .form-check-input.dark, .form-check-input.dark:focus, .form-check-input.dark:checked {
+            --bs-form-switch-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23faf9f8'/%3e%3c/svg%3e");
+        }
     }
     button.btn-close.invert, :not(.btn-group).invert, .btn-group.invert::after, img.invert {
         filter: invert(1);
