@@ -525,6 +525,11 @@
     table.dataTable {
         margin-top: 0rem !important;
     }
+    .table {
+        --bs-table-striped-bg: color-mix(in srgb, var(--sp-black, #000000), transparent 95%);
+        --bs-table-active-bg: color-mix(in srgb, var(--sp-black, #000000), transparent 90%);
+        --bs-table-hover-bg: color-mix(in srgb, var(--sp-black, #000000), transparent 92%);
+    }
     .table>:not(caption)>*>* {
         color: var(--sp-neutral-dark, #201f1e);
     }
