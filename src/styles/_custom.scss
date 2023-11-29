@@ -338,7 +338,7 @@
             --bs-form-switch-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23faf9f8'/%3e%3c/svg%3e");
         }
     }
-    button.btn-close.invert, :not(.btn-group).invert, .btn-group.invert::after, img.invert {
+    :not(.btn-group).invert, .btn-group.invert::after, img.invert {
         filter: invert(1);
     }
     .line-limit-1 {
@@ -542,25 +542,10 @@
     svg.icon-svg path {
         fill: currentColor;
     }
-    /* Fix extra top margin in Firefox */
-    table.dataTable {
-        margin-top: 0rem !important;
-    }
     .table {
         --bs-table-striped-bg: color-mix(in srgb, var(--sp-black, #000000), transparent 95%);
         --bs-table-active-bg: color-mix(in srgb, var(--sp-black, #000000), transparent 90%);
         --bs-table-hover-bg: color-mix(in srgb, var(--sp-black, #000000), transparent 92%);
-    }
-    .table>:not(caption)>*>* {
-        color: var(--sp-neutral-dark, #201f1e);
-    }
-    /* Match the table header to the table footer; size & color */
-    .table>:not(:last-child)>:last-child>* {
-        border-bottom: 3px solid var(--sp-neutral-quaternary, #d2d0ce);
-    }
-    /* Match the table footer to the table header; size & color */
-    .tbl-footer {
-        border-bottom: 2px solid var(--sp-neutral-quaternary, #d2d0ce);
     }
     /* Add the default text color */
     .text-body {
