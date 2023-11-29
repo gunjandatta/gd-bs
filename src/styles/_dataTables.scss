@@ -8,9 +8,29 @@ div.dataTables_wrapper div.dataTables_length select {
     width: 3.75rem;
 }
 
+/* Fix extra top margin in Firefox */
+table.dataTable {
+    margin-top: 0rem !important;
+}
+
 /* Match table striping to the theme */
 table.dataTable.table-striped>tbody>tr:nth-of-type(2n+1)>* {
     box-shadow: inset 0 0 0 9999px color-mix(in srgb, var(--sp-black, #000000), transparent 95%);
+}
+
+/* Table text color */
+.table>:not(caption)>*>* {
+    color: var(--sp-neutral-dark, #201f1e);
+}
+
+/* Match the table header to the table footer; size & color */
+.table>:not(:last-child)>:last-child>* {
+    border-bottom: 3px solid var(--sp-neutral-quaternary, #d2d0ce);
+}
+
+/* Match the table footer to the table header; size & color */
+.tbl-footer {
+    border-bottom: 2px solid var(--sp-neutral-quaternary, #d2d0ce);
 }
 
 /* Be sure to escape any characters, such as # to %23 when specifying hex color values in background-image */
