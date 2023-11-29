@@ -398,7 +398,7 @@
     }
     /* Set background color and border for nav-tabs */
     .nav-tabs .nav-link {
-        background-color: var(--sp-neutral-lighter, #f3f2f1);
+        background-color: color-mix(in srgb, var(--sp-black, #000000), transparent 95%);
         border-radius: 0.25rem 0.25rem 0 0;
         border: 2px solid var(--sp-neutral-quaternary, #d2d0ce);
     }
