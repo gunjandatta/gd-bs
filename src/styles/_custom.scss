@@ -542,25 +542,10 @@
     svg.icon-svg path {
         fill: currentColor;
     }
-    /* Fix extra top margin in Firefox */
-    table.dataTable {
-        margin-top: 0rem !important;
-    }
     .table {
         --bs-table-striped-bg: color-mix(in srgb, var(--sp-black, #000000), transparent 95%);
         --bs-table-active-bg: color-mix(in srgb, var(--sp-black, #000000), transparent 90%);
         --bs-table-hover-bg: color-mix(in srgb, var(--sp-black, #000000), transparent 92%);
-    }
-    .table>:not(caption)>*>* {
-        color: var(--sp-neutral-dark, #201f1e);
-    }
-    /* Match the table header to the table footer; size & color */
-    .table>:not(:last-child)>:last-child>* {
-        border-bottom: 3px solid var(--sp-neutral-quaternary, #d2d0ce);
-    }
-    /* Match the table footer to the table header; size & color */
-    .tbl-footer {
-        border-bottom: 2px solid var(--sp-neutral-quaternary, #d2d0ce);
     }
     /* Add the default text color */
     .text-body {
