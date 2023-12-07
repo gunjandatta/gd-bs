@@ -147,6 +147,9 @@
 .tippy-box[data-theme~='light-border'][data-placement^='right']>.tippy-arrow::before {
     border-right-color: var(--sp-white, #ffffff) !important;
 }
+.tippy-box[data-theme~='light-border'][data-placement^='bottom']>.tippy-arrow::after {
+    border-bottom-color: var(--sp-neutral-quaternary, #d2d0ce) !important;
+}
 .tippy-box[data-theme~='light-border'][data-placement^='top']>.tippy-arrow::after {
     border-top-color: var(--sp-neutral-quaternary, #d2d0ce) !important;
 }
