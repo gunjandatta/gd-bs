@@ -238,6 +238,9 @@
     .carousel-indicators [data-bs-target] {
         background-color: var(--sp-neutral-dark, #201f1e) !important;
     }
+    .dropdown-divider {
+        border-color: var(--sp-neutral-quaternary, #d2d0ce);
+    }
     /* Color match dropdown hover */
     .dropdown-item:hover, .dropdown-item:focus {
         background-color: var(--sp-neutral-quaternary, #d2d0ce);
@@ -248,7 +251,10 @@
     }
     /* Dropdown Menu - Using the popover component for the menu, so we don't need to hide it by default */
     .dropdown-menu {
-        display: inherit;
+        --bs-dropdown-header-color: var(--sp-info-icon, #605e5c);
+        --bs-dropdown-link-active-color: var(--sp-white, #ffffff);
+        --bs-dropdown-link-active-bg: var(--sp-theme-primary, #0078d4);
+        display: contents;
     }
     /* Show checkboxes & toggles as buttons */
     .form-check .form-check-input, .form-select:hover {
