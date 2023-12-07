@@ -189,3 +189,9 @@
 .tippy-box[data-theme~='sharepoint'][data-placement^='right']>.tippy-arrow::before {
     border-right-color: var(--sp-theme-dark, #005a9e);
 }
+
+/* Add some padding if the Tippy content is a dropdown */
+.tippy-content:has(>.dropdown-menu) {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+}
