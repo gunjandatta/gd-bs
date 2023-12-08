@@ -665,13 +665,18 @@ export class FormControl implements IFormControl {
 
     // Updates the control validation
     updateValidation(elControl: Element, validation: IFormControlValidationResult) {
+        // See if this is a checkbox/switch
+        let isCheckbox = elControl.querySelectorAll(".form-check").length > 0;
+
         // Get the form controls
-        let elFormControls = elControl.querySelectorAll(".form-control");
+        let elFormControls = isCheckbox ? [elControl] : elControl.querySelectorAll(".form-control");
         elFormControls = elFormControls.length == 0 ? elControl.querySelectorAll(".form-select") : elFormControls;
+
+        // Parse the form controls
         for (let i = 0; i < elFormControls.length; i++) {
             // Ensure the control exists
             let elFormControl = elFormControls[i] as HTMLElement;
-            if (elFormControl) {
+            if (!isCheckbox) {
                 // Clear the invalid/valid classes
                 elFormControl.classList.remove("is-invalid");
                 elFormControl.classList.remove("is-valid");
