@@ -122,6 +122,7 @@
     --bs-highlight-color: var(--sp-neutral-dark);
     --bs-highlight-bg: var(--sp-neutral-quaternary-alt);
     --bs-border-color: var(--sp-neutral-quaternary);
+    --bs-border-color-translucent: color-mix(in srgb, var(--sp-black, #000000), transparent 82%);
     --bs-focus-ring-color: color-mix(in srgb, var(--sp-theme-primary), transparent 75%);
     --bs-form-valid-color: var(--sp-success-icon);
     --bs-form-valid-border-color: var(--sp-success-icon);
