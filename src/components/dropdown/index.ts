@@ -209,7 +209,7 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
         let toggle = this.el.querySelector(".dropdown-toggle") as HTMLElement;
         if (toggle && this._elMenu) {
             // Set the type, based on the current dropdown type
-            let popoverType = PopoverTypes.Light;
+            let popoverType = PopoverTypes.LightBorder;
             switch (this.props.type) {
                 case DropdownTypes.Danger:
                 case DropdownTypes.OutlineDanger:
