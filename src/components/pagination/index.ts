@@ -182,6 +182,8 @@ class _Pagination extends Base<IPaginationProps> implements IPagination {
 
         // Create the previous link
         let item = this.createItem("Previous", itemTemplate);
+        item.classList.add("disabled");
+        item.classList.add("previous");
         list.appendChild(item);
 
         // Loop for the number of pages to create
@@ -196,6 +198,8 @@ class _Pagination extends Base<IPaginationProps> implements IPagination {
 
         // Create the next link
         item = this.createItem("Next", itemTemplate);
+        pages > 1 ? null : item.classList.add("disabled");
+        item.classList.add("next");
         list.appendChild(item);
     }
 }
