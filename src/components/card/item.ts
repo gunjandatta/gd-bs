@@ -37,7 +37,7 @@ export class CardBody {
         // Update the title
         let elTitle = this._el.querySelector(".card-title") as HTMLElement;
         if (this._props.title || this._props.onRenderTitle) {
-            // Append the content
+            // Append the title
             appendContent(elTitle, this._props.title);
 
             // Call the render event
@@ -50,25 +50,34 @@ export class CardBody {
         // Update the sub-title
         let subTitle = this._el.querySelector(".card-subtitle");
         if (this._props.subTitle) {
-            // Set the title
+            // Set the sub-title
             subTitle.innerHTML = this._props.subTitle;
         } else {
-            // Remove the title
+            // Remove the sub-title
             this._el.removeChild(subTitle);
         }
 
         // Update the text
         let text = this._el.querySelector(".card-text");
         if (this._props.text) {
-            // Set the title
+            // Set the text
             text.innerHTML = this._props.text;
-        } else {
-            // Remove the title
+        }
+        // Else, see if there is content
+        else if (this._props.content && typeof (this._props.content) === "string") {
+            // Set the text
+            text.innerHTML = this._props.content;
+        }
+        else {
+            // Remove the text
             this._el.removeChild(text);
         }
 
-        // Append the content
-        appendContent(this._el, this._props.content);
+        // See if the content is an element
+        if (this._props.content && typeof (this._props.content) !== "string") {
+            // Append the content
+            appendContent(this._el, this._props.content);
+        }
 
         // Render the actions
         this.renderActions();
