@@ -685,6 +685,7 @@ declare module 'gd-bs/components/cardGroup/types' {
         */
     export interface ICardGroupProps extends IBaseProps<ICardGroup> {
             cards?: Array<ICardProps>;
+            colSize?: number;
     }
 }
 

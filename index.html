@@ -23,6 +23,7 @@
         <div id="panel"></div>
         <div id="badge"></div>
         <div id="card"></div>
+        <div id="card-group"></div>
         <div id="tooltip"></div>
         <div id="toolbar"></div>
         <div id="ddl"></div>
@@ -163,6 +164,92 @@
                         }
                     }]
                 }]
+            });
+
+            window["cardGroup"] = GD.Components.CardGroup({
+                el: document.getElementById("card-group"),
+                className: "g-4",
+                col: 4,
+                cards: [
+                {
+                        body: [{
+                            title: "Card Title 1",
+                            text: "This is the card contents.",
+                            actions: [{
+                                text: "Card Action",
+                                buttonType: GD.Components.ButtonTypes.OutlinePrimary,
+                                onClick: function(action, card) {
+                                    alert(card.title + " was clicked.");
+                                }
+                            }]
+                        }]
+                    },
+                    {
+                        body: [{
+                            title: "Card Title 2",
+                            text: "This is the card contents.",
+                            actions: [{
+                                text: "Card Action",
+                                buttonType: GD.Components.ButtonTypes.OutlinePrimary,
+                                onClick: function(action, card) {
+                                    alert(card.title + " was clicked.");
+                                }
+                            }]
+                        }]
+                    },
+                    {
+                        body: [{
+                            title: "Card Title 3",
+                            text: "This is the card contents.",
+                            actions: [{
+                                text: "Card Action",
+                                buttonType: GD.Components.ButtonTypes.OutlinePrimary,
+                                onClick: function(action, card) {
+                                    alert(card.title + " was clicked.");
+                                }
+                            }]
+                        }]
+                    },
+                    {
+                        body: [{
+                            title: "Card Title 4",
+                            text: "This is the card contents.",
+                            actions: [{
+                                text: "Card Action",
+                                buttonType: GD.Components.ButtonTypes.OutlinePrimary,
+                                onClick: function(action, card) {
+                                    alert(card.title + " was clicked.");
+                                }
+                            }]
+                        }]
+                    },
+                    {
+                        body: [{
+                            title: "Card Title 5",
+                            text: "This is the card contents.",
+                            actions: [{
+                                text: "Card Action",
+                                buttonType: GD.Components.ButtonTypes.OutlinePrimary,
+                                onClick: function(action, card) {
+                                    alert(card.title + " was clicked.");
+                                }
+                            }]
+                        }]
+                    },
+                    {
+                        body: [{
+                            title: "Card Title 6",
+                            text: "This is the card contents.",
+                            actions: [{
+                                text: "Card Action",
+                                buttonType: GD.Components.ButtonTypes.OutlinePrimary,
+                                onClick: function(action, card) {
+                                    alert(card.title + " was clicked.");
+                                }
+                            }]
+                        }]
+                    }
+                ]
             });
 
             window["cbg"] = GD.Components.CheckboxGroup({

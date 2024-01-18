@@ -5,8 +5,6 @@ import { ClassNames } from "../classNames";
 import { Spinner } from "../spinner";
 import { HTML, HTMLBlock, HTMLLink } from "./templates";
 
-declare var GD;
-
 /**
  * Button Types
  */
