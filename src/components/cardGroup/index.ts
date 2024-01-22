@@ -52,11 +52,20 @@ class _CardGroup extends Base<ICardGroupProps> implements ICardGroup {
 
                 // Add the card
                 this.el.appendChild(elCol);
+
+                // Call the event
+                this.props.onColRender ? this.props.onColRender(elCol, cards[i]) : null;
             } else {
                 // Add the card
                 this.el.appendChild(card.el);
+
+                // Call the event
+                this.props.onCardRender ? this.props.onCardRender(card.el, cards[i]) : null;
             }
         }
+
+        // Call the event
+        this.props.onRender ? this.props.onRender(this.el, this.props) : null;
     }
 }
 export const CardGroup = (props: ICardGroupProps, template?: string, cardTemplate?: string): ICardGroup => { return new _CardGroup(props, template, cardTemplate); }

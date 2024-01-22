@@ -108,4 +108,7 @@ export interface ICardGroup {
 export interface ICardGroupProps extends IBaseProps<ICardGroup> {
     cards?: Array<ICardProps>;
     colSize?: number;
+    onCardRender?: (el?: HTMLElement, props?: ICardProps) => void;
+    onColRender?: (el?: HTMLElement, props?: ICardProps) => void;
+    onRender?: (el?: HTMLElement, props?: ICardGroupProps) => void;
 }

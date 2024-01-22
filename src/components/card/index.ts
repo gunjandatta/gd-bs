@@ -62,6 +62,12 @@ class _Card extends Base<ICardProps> implements ICard {
                 this.props.onClick(body.props);
             });
         }
+
+        // See if there is a render event
+        if (this.props.onRender) {
+            // Call the event
+            this.props.onRender(this.el, body.props);
+        }
     }
 
     // Configure the header

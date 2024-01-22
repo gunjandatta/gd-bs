@@ -153,9 +153,11 @@
 
             window["card"] = GD.Components.Card({
                 el: document.getElementById("card"),
+                onRender: (el) => { console.log("Card Render: ", el); },
                 body: [{
                     title: "Card Title",
                     text: "This is the card contents.",
+                    onRender: (el) => { console.log("Card Body Render: ", el); },
                     actions: [{
                         text: "Card Action",
                         buttonType: GD.Components.ButtonTypes.OutlinePrimary,
@@ -170,11 +172,13 @@
                 el: document.getElementById("card-group"),
                 className: "g-4",
                 col: 4,
+                onRender: (el) => { console.log("Card Group Render: ", el); },
                 cards: [
                 {
                         body: [{
                             title: "Card Title 1",
                             text: "This is the card contents.",
+                            onRender: (el) => { console.log("Card Group Body Render: ", el); },
                             actions: [{
                                 text: "Card Action",
                                 buttonType: GD.Components.ButtonTypes.OutlinePrimary,

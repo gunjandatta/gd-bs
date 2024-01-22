@@ -566,7 +566,7 @@ declare module 'gd-bs/components/card/types' {
     /**
         * Card Body
         */
-    export interface ICardBody<T=Element> {
+    export interface ICardBody<T = Element> {
             actions?: Array<ICardAction>;
             className?: string;
             content?: string | T;
@@ -582,7 +582,7 @@ declare module 'gd-bs/components/card/types' {
     /**
         * Card Footer
         */
-    export interface ICardFooter<T=Element> {
+    export interface ICardFooter<T = Element> {
             className?: string;
             content?: string | T;
             onRender?: (el?: HTMLElement, card?: ICardFooter) => void;
@@ -591,7 +591,7 @@ declare module 'gd-bs/components/card/types' {
     /**
         * Card Header
         */
-    export interface ICardHeader<T=Element> {
+    export interface ICardHeader<T = Element> {
             className?: string;
             content?: string | T;
             onRender?: (el?: HTMLElement, card?: ICardHeader) => void;
@@ -601,7 +601,7 @@ declare module 'gd-bs/components/card/types' {
     /**
         * Card Properties
         */
-    export interface ICardProps<T=Element> extends IBaseProps<ICard> {
+    export interface ICardProps<T = Element> extends IBaseProps<ICard> {
             body?: Array<ICardBody<T>>;
             footer?: ICardFooter<T>;
             header?: ICardHeader<T>;
@@ -614,6 +614,7 @@ declare module 'gd-bs/components/card/types' {
                     src?: string;
             };
             onClick?: (card?: ICardBody, ev?: Event) => void;
+            onRender?: (el?: HTMLElement, card?: ICardProps) => void;
     }
 }
 
@@ -686,6 +687,9 @@ declare module 'gd-bs/components/cardGroup/types' {
     export interface ICardGroupProps extends IBaseProps<ICardGroup> {
             cards?: Array<ICardProps>;
             colSize?: number;
+            onCardRender?: (el?: HTMLElement, props?: ICardProps) => void;
+            onColRender?: (el?: HTMLElement, props?: ICardProps) => void;
+            onRender?: (el?: HTMLElement, props?: ICardGroupProps) => void;
     }
 }
 
