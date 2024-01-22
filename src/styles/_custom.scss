@@ -173,6 +173,18 @@
         --bs-btn-disabled-color: var(--sp-success-icon, #107c10);
         --bs-btn-disabled-border-color: var(--sp-success-icon, #107c10);
     }
+    .btn-outline-warning {
+        --bs-btn-color: var(--sp-severe-warning-icon, #d83b01);
+        --bs-btn-border-color: var(--sp-severe-warning-icon, #d83b01);
+        --bs-btn-hover-color: var(--sp-white, #ffffff);
+        --bs-btn-hover-bg: var(--sp-severe-warning-icon, #d83b01);
+        --bs-btn-hover-border-color: var(--sp-severe-warning-icon, #d83b01);
+        --bs-btn-active-color: var(--sp-white, #ffffff);
+        --bs-btn-active-bg: var(--sp-severe-warning-icon, #d83b01);
+        --bs-btn-active-border-color: var(--sp-severe-warning-icon, #d83b01);
+        --bs-btn-disabled-color: var(--sp-severe-warning-icon, #d83b01);
+        --bs-btn-disabled-border-color: var(--sp-severe-warning-icon, #d83b01);
+    }
     .btn-primary {
         --bs-btn-color: var(--sp-white, #ffffff);
         --bs-btn-bg: var(--sp-theme-primary, #0078d4);
@@ -228,6 +240,9 @@
     }
     .card {
         --bs-card-border-color: var(--bs-border-color);
+        --bs-card-cap-bg: color-mix(in srgb, var(--sp-black, #000000), transparent 95%);
+        --bs-card-cap-color: var(--bs-body-color);
+        --bs-card-color: var(--bs-body-color);
     }
     .carousel-caption {
         color: var(--sp-neutral-dark, #201f1e) !important;
@@ -363,8 +378,8 @@
         --bs-list-group-active-bg: var(--sp-theme-primary, #0078d4);
         --bs-list-group-active-border-color: var(--sp-theme-primary, #0078d4);
     }
-    .modal-content {
-        color: var(--sp-neutral-dark, #201f1e);
+    .modal {
+        --bs-modal-color: var(--bs-body-color);
     }
     /* Increase modal border size */
     .modal-footer {
