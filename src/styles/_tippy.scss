@@ -78,7 +78,7 @@
 /* Tippy Tooltip warning theme color */
 .tippy-box[data-theme~='warning'] {
     background-color: var(--sp-severe-warning-icon, #d83b01);
-    color: var(--sp-black, #000000);
+    color: var(--sp-white, #ffffff);
 }
 .tippy-box[data-theme~='warning'][data-placement^='top']>.tippy-arrow::before {
     border-top-color: var(--sp-severe-warning-icon, #d83b01);
