@@ -585,6 +585,7 @@ declare module 'gd-bs/components/card/types' {
     export interface ICardFooter<T = Element> {
             className?: string;
             content?: string | T;
+            data?: any;
             onRender?: (el?: HTMLElement, card?: ICardFooter) => void;
     }
     
@@ -594,6 +595,7 @@ declare module 'gd-bs/components/card/types' {
     export interface ICardHeader<T = Element> {
             className?: string;
             content?: string | T;
+            data?: any;
             onRender?: (el?: HTMLElement, card?: ICardHeader) => void;
             nav?: INavProps;
     }

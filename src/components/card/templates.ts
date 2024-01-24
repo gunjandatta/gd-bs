@@ -9,5 +9,5 @@ export const HTMLItem = `
 <div class="card-body">
     <div class="card-title h5"></div>
     <div class="card-subtitle h6"></div>
-    <div class="card-text p"></div>
+    <div class="card-text"></div>
 </div>`.trim();
