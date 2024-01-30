@@ -311,20 +311,20 @@ class _Navbar extends Base<INavbarProps> implements INavbar {
                 this._btnSearch.classList.add("btn-outline-info")
                 break;
 
-            // Primary
-            case NavbarTypes.Primary:
-                // Add the class
-                this.el.classList.add("navbar-dark");
-                this.el.classList.add("bg-primary");
-                this._btnSearch.classList.add("btn-outline-light")
-                break;
-
             // Default - Light
-            default:
+            case NavbarTypes.Light:
                 // Add the class
                 this.el.classList.add("navbar-light");
                 this.el.classList.add("bg-light");
                 this._btnSearch.classList.add("btn-outline-primary")
+                break;
+
+            // Default - Primary
+            default:
+                // Add the class
+                this.el.classList.add("navbar-dark");
+                this.el.classList.add("bg-primary");
+                this._btnSearch.classList.add("btn-outline-light")
                 break;
         }
     }
