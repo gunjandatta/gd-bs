@@ -76,7 +76,9 @@ export class AccordionItem {
         });
 
         // Execute the render event
-        this._props.onRender ? this._props.onRender(this._el.querySelector(".accordion-body"), this._props) : null;
+        this._props.onRender ? this._props.onRender(this._el, this._props) : null;
+        this._props.onRenderBody ? this._props.onRenderBody(this._el.querySelector(".accordion-body"), this._props) : null;
+        this._props.onRenderHeader ? this._props.onRenderHeader(this._el.querySelector(".accordion-header"), this._props) : null;
     }
 
     // Renders the header

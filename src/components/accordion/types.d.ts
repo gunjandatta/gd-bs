@@ -75,6 +75,8 @@ export interface IAccordionItem<T = HTMLElement> {
     header?: string;
     onClick?: (el?: HTMLElement, item?: IAccordionItem<T>) => void;
     onRender?: (el?: HTMLElement, item?: IAccordionItem<T>) => void;
+    onRenderBody?: (el?: HTMLElement, item?: IAccordionItem<T>) => void;
+    onRenderHeader?: (el?: HTMLElement, item?: IAccordionItem<T>) => void;
     showFl?: boolean;
 }
 
