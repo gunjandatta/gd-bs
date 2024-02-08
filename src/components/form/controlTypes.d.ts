@@ -222,10 +222,14 @@ export type IFormControlTypes = {
     Email: number;
     Datalist: number;
     Dropdown: number;
+    DropdownButton: number;
+    DropdownCheckbox: number;
     File: number;
     ListBox: number;
     MultiCheckbox: number;
     MultiDropdown: number;
+    MultiDropdownButton: number;
+    MultiDropdownCheckbox: number;
     MultiListBox: number;
     MultiRadio: number;
     MultiSwitch: number;

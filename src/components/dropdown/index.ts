@@ -1,7 +1,9 @@
 import { IDropdown, IDropdownItem, IDropdownProps } from "./types";
+import { ICheckboxGroup, ICheckboxGroupItem } from "../checkboxGroup/types";
 import { IPopover, IPopoverProps } from "../popover/types";
 import { Base } from "../base";
 import { ButtonClassNames, ButtonTypes } from "../button";
+import { CheckboxGroup, CheckboxGroupTypes } from "../checkboxGroup"
 import { Popover, PopoverPlacements, PopoverTypes } from "../popover";
 import { DropdownFormItem } from "./formItem";
 import { DropdownItem } from "./item";
@@ -33,6 +35,7 @@ const GetHTML = (props: IDropdownProps) => {
  */
 class _Dropdown extends Base<IDropdownProps> implements IDropdown {
     private _autoSelect: boolean = null;
+    private _cb: ICheckboxGroup = null;
     private _elMenu: HTMLElement;
     private _initFl: boolean = false;
     private _items: Array<DropdownFormItem | DropdownItem> = null;
@@ -389,32 +392,61 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
         // Get the menu
         let menu = this.el.querySelector(".dropdown-menu") || this.el.querySelector("select");
         if (menu) {
-            let isForm = menu.nodeName == "SELECT";
+            // See if we are creating checkboxes
+            if (this.props.isCheckbox) {
+                let cbItems: ICheckboxGroupItem[] = [];
 
-            // Parse the items
-            let items = this.props.items || [];
-            for (let i = 0; i < items.length; i++) {
-                // Create the item
-                let item = isForm ? new DropdownFormItem(items[i], this.props) : new DropdownItem(items[i], this.props);
-                this._items.push(item);
+                // Parse the items
+                let items = this.props.items || [];
+                for (let i = 0; i < items.length; i++) {
+                    let item = items[i];
 
-                // See if this isn't for a form
-                if (!isForm) {
-                    // Configure the item events
-                    this.configureItemEvents(item);
+                    // Create the checkbox item
+                    cbItems.push({
+                        data: item,
+                        isDisabled: item.isDisabled,
+                        isSelected: item.isSelected,
+                        label: item.text,
+                        onChange: item.onClick,
+                        type: CheckboxGroupTypes.Checkbox
+                    });
                 }
 
-                // Add the item to the menu
-                menu.appendChild(item.el);
-            }
+                // Render the checkbox
+                this._cb = CheckboxGroup({
+                    className: "m-2",
+                    el: menu,
+                    items: cbItems,
+                    multi: this.props.multi
+                });
+            } else {
+                let isForm = menu.nodeName == "SELECT";
 
-            // See if this is a form
-            if (isForm) {
-                // Ensure the selected values match the index
-                let idx = (menu as HTMLSelectElement).selectedIndex;
-                if (this._items[idx] && this._items[idx].isSelected == false) {
-                    // Select the item
-                    this._items[idx].toggle();
+                // Parse the items
+                let items = this.props.items || [];
+                for (let i = 0; i < items.length; i++) {
+                    // Create the item
+                    let item = isForm ? new DropdownFormItem(items[i], this.props) : new DropdownItem(items[i], this.props);
+                    this._items.push(item);
+
+                    // See if this isn't for a form
+                    if (!isForm) {
+                        // Configure the item events
+                        this.configureItemEvents(item);
+                    }
+
+                    // Add the item to the menu
+                    menu.appendChild(item.el);
+                }
+
+                // See if this is a form
+                if (isForm) {
+                    // Ensure the selected values match the index
+                    let idx = (menu as HTMLSelectElement).selectedIndex;
+                    if (this._items[idx] && this._items[idx].isSelected == false) {
+                        // Select the item
+                        this._items[idx].toggle();
+                    }
                 }
             }
         }
@@ -448,17 +480,32 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
     getValue() {
         let values = [];
 
-        // Parse the items
-        for (let i = 0; i < this._items.length; i++) {
-            let item = this._items[i];
+        // See if the checkboxes exist
+        if (this._cb) {
+            // Get the values
+            let items = this._cb.getValue() as ICheckboxGroupItem[];
+            items = typeof (items["length"]) === "number" ? items : [items] as any;
 
-            // Skip disabled items
-            if ((item.el as HTMLOptionElement).disabled) { continue; }
-
-            // See if this item is selected
-            if (item.isSelected) {
+            // Parse the items
+            for (let i = 0; i < items.length; i++) {
                 // Add the value
-                values.push(item.props);
+                values.push(items[i].data);
+            }
+
+            // Return the value
+        } else {
+            // Parse the items
+            for (let i = 0; i < this._items.length; i++) {
+                let item = this._items[i];
+
+                // Skip disabled items
+                if ((item.el as HTMLOptionElement).disabled) { continue; }
+
+                // See if this item is selected
+                if (item.isSelected) {
+                    // Add the value
+                    values.push(item.props);
+                }
             }
         }
 

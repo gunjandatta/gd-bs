@@ -177,6 +177,39 @@ export class FormControl implements IFormControl {
                     value
                 });
                 break;
+            // Dropdown
+            case FormControlTypes.DropdownButton:
+                // Add the dropdown
+                this._ddl = Dropdown({
+                    className,
+                    formFl: false,
+                    id: this._props.id,
+                    isReadonly: this._props.isReadonly,
+                    items: (this._props as IFormControlPropsDropdown).items,
+                    onChange: (this._props as IFormControlPropsDropdown).onChange,
+                    onMenuRendering: (this._props as IFormControlPropsDropdown).onMenuRendering,
+                    required: this._props.required,
+                    title: this._props.title,
+                    value
+                });
+                break;
+            // Dropdown
+            case FormControlTypes.DropdownCheckbox:
+                // Add the dropdown
+                this._ddl = Dropdown({
+                    className,
+                    formFl: false,
+                    id: this._props.id,
+                    isCheckbox: true,
+                    isReadonly: this._props.isReadonly,
+                    items: (this._props as IFormControlPropsDropdown).items,
+                    onChange: (this._props as IFormControlPropsDropdown).onChange,
+                    onMenuRendering: (this._props as IFormControlPropsDropdown).onMenuRendering,
+                    required: this._props.required,
+                    title: this._props.title,
+                    value
+                });
+                break;
             // Email
             case FormControlTypes.Email:
                 // Add the input
@@ -254,6 +287,41 @@ export class FormControl implements IFormControl {
                     className,
                     formFl: true,
                     id: this._props.id,
+                    isReadonly: this._props.isReadonly,
+                    items: (this._props as IFormControlPropsDropdown).items,
+                    multi: true,
+                    onChange: (this._props as IFormControlPropsDropdown).onChange,
+                    onMenuRendering: (this._props as IFormControlPropsDropdown).onMenuRendering,
+                    required: this._props.required,
+                    title: this._props.title,
+                    value
+                });
+                break;
+            // Multi-Dropdown Button
+            case FormControlTypes.MultiDropdownButton:
+                // Add the dropdown
+                this._ddl = Dropdown({
+                    className,
+                    formFl: false,
+                    id: this._props.id,
+                    isReadonly: this._props.isReadonly,
+                    items: (this._props as IFormControlPropsDropdown).items,
+                    multi: true,
+                    onChange: (this._props as IFormControlPropsDropdown).onChange,
+                    onMenuRendering: (this._props as IFormControlPropsDropdown).onMenuRendering,
+                    required: this._props.required,
+                    title: this._props.title,
+                    value
+                });
+                break;
+            // Multi-Dropdown Checkbox
+            case FormControlTypes.MultiDropdownCheckbox:
+                // Add the dropdown
+                this._ddl = Dropdown({
+                    className,
+                    formFl: false,
+                    id: this._props.id,
+                    isCheckbox: true,
                     isReadonly: this._props.isReadonly,
                     items: (this._props as IFormControlPropsDropdown).items,
                     multi: true,

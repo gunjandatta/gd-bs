@@ -1098,6 +1098,7 @@ declare module 'gd-bs/components/dropdown/types' {
             dropUp?: boolean;
             formFl?: boolean;
             id?: string;
+            isCheckbox?: boolean;
             isDark?: boolean;
             isDatalist?: boolean;
             isReadonly?: boolean;
@@ -1325,10 +1326,14 @@ declare module 'gd-bs/components/form/controlTypes' {
             Email: number;
             Datalist: number;
             Dropdown: number;
+            DropdownButton: number;
+            DropdownCheckbox: number;
             File: number;
             ListBox: number;
             MultiCheckbox: number;
             MultiDropdown: number;
+            MultiDropdownButton: number;
+            MultiDropdownCheckbox: number;
             MultiListBox: number;
             MultiRadio: number;
             MultiSwitch: number;

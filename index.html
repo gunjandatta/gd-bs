@@ -59,32 +59,17 @@
             let items = [];
             for (var i = 0; i < 10; i++) {
                 items.push({
-                    label: "Item " + i,
                     data: i,
-                    isSelected: true
+                    text: "Item " + i,
+                    value: i
                 });
             }
-            window["form"] = GD.Components.Form({
+            window["cb_ddl"] = GD.Components.Dropdown({
                 el: document.getElementById("dev"),
-                controls: [{
-                    name: "cb",
-                    label: "My CB",
-                    items,
-                    renderRow: true,
-                    colSize: 3,
-                    type: 8
-                }, {
-                    name: "switch",
-                    label: "Select an Option",
-                    type: GD.Components.FormControlTypes.Switch,
-                    items: [{
-                        label: "Switch 1"
-                    }, {
-                        label: "Switch 2"
-                    }, {
-                        label: "Switch 3"
-                    }]
-                }]
+                items: items,
+                isCheckbox: true,
+                multi: true,
+                label: "CB Dropdown"
             });
 
             // Components
