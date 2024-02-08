@@ -1224,6 +1224,18 @@ declare module 'gd-bs/components/form/controlTypes' {
     }
     
     /**
+        * Form Control Properties - Dropdown Button
+        */
+    export interface IFormControlPropsDropdownButton extends IFormControlPropsDropdown {
+            placeholder?: string;
+    }
+    
+    /**
+        * Form Control Properties - Dropdown Checkbox
+        */
+    export interface IFormControlPropsDropdownCheckbox extends IFormControlPropsDropdownButton { }
+    
+    /**
         * Form Control Properties - List Box
         */
     export interface IFormControlPropsListBox extends IFormControlProps {
@@ -1262,6 +1274,18 @@ declare module 'gd-bs/components/form/controlTypes' {
             onMenuRendering?: (props: IPopoverProps) => IPopoverProps;
             onValidate?: (control: IFormControlPropsDropdown, value: IFormControlValidationResult) => boolean | IFormControlValidationResult;
     }
+    
+    /**
+        * Form Control Properties - Multiple Dropdown Button
+        */
+    export interface IFormControlPropsMultiDropdownButton extends IFormControlPropsMultiDropdown {
+            placeholder?: string;
+    }
+    
+    /**
+        * Form Control Properties - Multiple Dropdown Checkbox
+        */
+    export interface IFormControlPropsMultiDropdownCheckbox extends IFormControlPropsMultiDropdownButton { }
     
     /**
         * Form Control Properties - Multiple List Box
