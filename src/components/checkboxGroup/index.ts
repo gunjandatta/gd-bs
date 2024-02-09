@@ -71,6 +71,9 @@ class _CheckboxGroup extends Base<ICheckboxGroupProps> implements ICheckboxGroup
 
         // Render the checkboxes
         this.renderItems();
+
+        // Set the value
+        this.setValue(this.props.value);
     }
 
     // Configure the events
@@ -120,15 +123,6 @@ class _CheckboxGroup extends Base<ICheckboxGroupProps> implements ICheckboxGroup
             items.push({
                 label: this.props.label || ""
             });
-        }
-
-        // See if this is a single checkbox
-        if (this.props.multi != true && items.length > 0) {
-            // See if this checkbox should be checked
-            if (typeof (this.props.value) === "boolean" && this.props.value) {
-                // Select the item
-                items[0].isSelected = true;
-            }
         }
 
         // Parse the items
@@ -189,6 +183,16 @@ class _CheckboxGroup extends Base<ICheckboxGroupProps> implements ICheckboxGroup
     // Method to set the value
     // Sets the dropdown value
     setValue(value) {
+        // See if this is a single checkbox
+        if (this.props.multi != true && this._checkboxes.length == 1) {
+            // See if this checkbox should be checked
+            if (typeof (value) === "boolean" && value) {
+                // Select the item
+                this._checkboxes[0].isChecked ? null : this._checkboxes[0].toggle();
+            }
+            return;
+        }
+
         // Ensure it's an array
         let values = value ? (typeof (value.length) === "number" && typeof (value) !== "string" ? value : [value]) : [];
 
