@@ -419,6 +419,7 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
                     el: menu,
                     items: cbItems,
                     multi: this.props.multi,
+                    value: this.props.value,
                     onChange: this.props.onChange ? (values, ev) => {
                         // Pass the current values
                         this.props.onChange(this.getValue(), ev);
