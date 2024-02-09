@@ -192,6 +192,7 @@ export class FormControl implements IFormControl {
                     label: (this.props as IFormControlPropsDropdownButton).placeholder,
                     onChange: (this._props as IFormControlPropsDropdownButton).onChange,
                     onMenuRendering: (this._props as IFormControlPropsDropdownButton).onMenuRendering,
+                    placement: (this._props as IFormControlPropsDropdownButton).placement,
                     required: this._props.required,
                     title: this._props.title,
                     value
@@ -210,6 +211,7 @@ export class FormControl implements IFormControl {
                     label: (this.props as IFormControlPropsDropdownCheckbox).placeholder,
                     onChange: (this._props as IFormControlPropsDropdownCheckbox).onChange,
                     onMenuRendering: (this._props as IFormControlPropsDropdownCheckbox).onMenuRendering,
+                    placement: (this._props as IFormControlPropsDropdownCheckbox).placement,
                     required: this._props.required,
                     title: this._props.title,
                     value
@@ -315,6 +317,7 @@ export class FormControl implements IFormControl {
                     multi: true,
                     onChange: (this._props as IFormControlPropsMultiDropdownButton).onChange,
                     onMenuRendering: (this._props as IFormControlPropsMultiDropdownButton).onMenuRendering,
+                    placement: (this._props as IFormControlPropsMultiDropdownButton).placement,
                     required: this._props.required,
                     title: this._props.title,
                     value
@@ -334,6 +337,7 @@ export class FormControl implements IFormControl {
                     multi: true,
                     onChange: (this._props as IFormControlPropsMultiDropdownCheckbox).onChange,
                     onMenuRendering: (this._props as IFormControlPropsMultiDropdownCheckbox).onMenuRendering,
+                    placement: (this._props as IFormControlPropsMultiDropdownCheckbox).placement,
                     required: this._props.required,
                     title: this._props.title,
                     value

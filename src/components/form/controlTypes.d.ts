@@ -124,6 +124,7 @@ export interface IFormControlPropsDropdown extends IFormControlProps {
  */
 export interface IFormControlPropsDropdownButton extends IFormControlPropsDropdown {
     placeholder?: string;
+    placement?: number;
 }
 
 /**
@@ -176,6 +177,7 @@ export interface IFormControlPropsMultiDropdown extends IFormControlProps {
  */
 export interface IFormControlPropsMultiDropdownButton extends IFormControlPropsMultiDropdown {
     placeholder?: string;
+    placement?: number;
 }
 
 /**

@@ -1011,7 +1011,12 @@ declare module 'gd-bs/components/dropdown/types' {
     
     import { IBaseProps } from "gd-bs/components/types";
     import { IButtonTypes } from "gd-bs/components/button/types";
-    import { IPopover, IPopoverProps } from "gd-bs/components/popover/types";
+    import { IPopover, IPopoverProps, IPopoverPlacements } from "gd-bs/components/popover/types";
+    
+    /**
+        * Dropdown Placements
+        */
+    export const DropdownPlacements: IPopoverPlacements;
     
     /**
         * Dropdown Types
@@ -1110,6 +1115,7 @@ declare module 'gd-bs/components/dropdown/types' {
             navFl?: boolean;
             onChange?: (item?: IDropdownItem | Array<IDropdownItem>, ev?: Event) => void;
             onMenuRendering?: (props: IPopoverProps) => IPopoverProps;
+            placement?: number;
             required?: boolean;
             title?: string;
             type?: number;
@@ -1228,6 +1234,7 @@ declare module 'gd-bs/components/form/controlTypes' {
         */
     export interface IFormControlPropsDropdownButton extends IFormControlPropsDropdown {
             placeholder?: string;
+            placement?: number;
     }
     
     /**
@@ -1280,6 +1287,7 @@ declare module 'gd-bs/components/form/controlTypes' {
         */
     export interface IFormControlPropsMultiDropdownButton extends IFormControlPropsMultiDropdown {
             placeholder?: string;
+            placement?: number;
     }
     
     /**

@@ -12,6 +12,7 @@ import { HTML, HTMLForm, HTMLNavItem, HTMLSplit } from "./templates";
 /**
  * Dropdown Types
  */
+export const DropdownPlacements = PopoverPlacements;
 export const DropdownTypes = ButtonTypes;
 
 // Gets the template
@@ -253,7 +254,7 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
             // Create the props
             let props: IPopoverProps = {
                 target: toggle,
-                placement: PopoverPlacements.BottomStart,
+                placement: typeof (this.props.placement) === "number" ? this.props.placement : PopoverPlacements.BottomStart,
                 type: popoverType,
                 options: {
                     arrow: false,
@@ -417,7 +418,11 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
                     className: "m-2",
                     el: menu,
                     items: cbItems,
-                    multi: this.props.multi
+                    multi: this.props.multi,
+                    onChange: this.props.onChange ? (values, ev) => {
+                        // Pass the current values
+                        this.props.onChange(this.getValue(), ev);
+                    } : null
                 });
             } else {
                 let isForm = menu.nodeName == "SELECT";

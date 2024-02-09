@@ -48,7 +48,12 @@ export const Dropdown: (props: IDropdownProps, template?: string) => IDropdown;
 
 import { IBaseProps } from "../types";
 import { IButtonTypes } from "../button/types";
-import { IPopover, IPopoverProps } from "../popover/types";
+import { IPopover, IPopoverProps, IPopoverPlacements } from "../popover/types";
+
+/**
+ * Dropdown Placements
+ */
+export const DropdownPlacements: IPopoverPlacements;
 
 /**
  * Dropdown Types
@@ -147,6 +152,7 @@ export interface IDropdownProps extends IBaseProps<IDropdown> {
     navFl?: boolean;
     onChange?: (item?: IDropdownItem | Array<IDropdownItem>, ev?: Event) => void;
     onMenuRendering?: (props: IPopoverProps) => IPopoverProps;
+    placement?: number;
     required?: boolean;
     title?: string;
     type?: number;
