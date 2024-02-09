@@ -532,6 +532,13 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
         // Update the properties
         this.props.items = newItems;
 
+        // See if we are rendering checkboxes
+        if (this._cb) {
+            // Set the items
+            this._cb.setItems(newItems);
+            return;
+        }
+
         // Get the menu
         let menu: HTMLSelectElement = this.el.querySelector(".dropdown-menu") || this.el.querySelector("select");
         if (menu) {

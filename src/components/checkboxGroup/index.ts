@@ -16,15 +16,20 @@ export enum CheckboxGroupTypes {
  * Checkbox Group
  */
 class _CheckboxGroup extends Base<ICheckboxGroupProps> implements ICheckboxGroup {
+    private _cbTemplate: string = null;
     private _checkboxes: Array<CheckboxItem> = null;
+    private _elCheckboxes: HTMLElement = null;
     private _initFl: boolean = false;
 
     // Constructor
     constructor(props: ICheckboxGroupProps, template: string = HTML, cbTemplate?: string) {
         super(template, props);
 
+        // Set the template
+        this._cbTemplate = cbTemplate;
+
         // Configure the checkbox group
-        this.configure(cbTemplate);
+        this.configure();
 
         // Configure the parent
         this.configureParent();
@@ -34,7 +39,7 @@ class _CheckboxGroup extends Base<ICheckboxGroupProps> implements ICheckboxGroup
     }
 
     // Configure the card group
-    private configure(cbTemplate: string) {
+    private configure() {
         let renderRow = typeof (this.props.colSize) === "number" ? this.props.colSize > 0 : false;
 
         // See if a label is defined
@@ -55,11 +60,17 @@ class _CheckboxGroup extends Base<ICheckboxGroupProps> implements ICheckboxGroup
             if (!renderRow) {
                 // Remove the group element
                 this.el.removeChild(group);
+
+                // Set the checkboxes element
+                this._elCheckboxes = this.el;
+            } else {
+                // Set the checkboxes element
+                this._elCheckboxes = group;
             }
         }
 
         // Render the checkboxes
-        this.renderItems(renderRow ? group : this.el, cbTemplate);
+        this.renderItems();
     }
 
     // Configure the events
@@ -95,7 +106,7 @@ class _CheckboxGroup extends Base<ICheckboxGroupProps> implements ICheckboxGroup
     }
 
     // Render the checkboxes
-    private renderItems(group: HTMLDivElement, cbTemplate: string) {
+    private renderItems() {
         // Clear the checkboxes
         this._checkboxes = [];
 
@@ -125,9 +136,9 @@ class _CheckboxGroup extends Base<ICheckboxGroupProps> implements ICheckboxGroup
             let item = items[i];
 
             // Create the checkbox
-            let checkbox = new CheckboxItem(item, this.props, cbTemplate);
+            let checkbox = new CheckboxItem(item, this.props, this._cbTemplate);
             this._checkboxes.push(checkbox);
-            group.appendChild(checkbox.el);
+            this._elCheckboxes.appendChild(checkbox.el);
 
             // Configure the events
             this.configureEvents(checkbox);
@@ -158,6 +169,21 @@ class _CheckboxGroup extends Base<ICheckboxGroupProps> implements ICheckboxGroup
 
         // Return the values
         return this.props.multi ? values : values[0];
+    }
+
+    // Sets the checkbox items
+    setItems(newItems: Array<ICheckboxGroupItem> = []) {
+        let renderRow = typeof (this.props.colSize) === "number" ? this.props.colSize > 0 : false;
+
+        // Update the properties
+        this.props.items = newItems;
+
+        // Get the element containing the checkboxes and clear them
+        let elParent = renderRow ? this.el.querySelector("div") : this.el;
+        while (elParent.firstChild) { elParent.removeChild(elParent.firstChild); }
+
+        // Render the checkboxes
+        this.renderItems();
     }
 
     // Method to set the value
