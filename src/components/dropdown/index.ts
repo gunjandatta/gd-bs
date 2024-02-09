@@ -371,6 +371,67 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
         }
     }
 
+    // Generates the checkbox items
+    private generateCheckboxItems(): ICheckboxGroupItem[] {
+        let cbItems: ICheckboxGroupItem[] = [];
+
+        // Parse the items
+        let items = this.props.items || [];
+        for (let i = 0; i < items.length; i++) {
+            let item = items[i];
+
+            // Create the checkbox item
+            cbItems.push({
+                data: item,
+                isDisabled: item.isDisabled,
+                isSelected: item.isSelected,
+                label: item.text,
+                onChange: item.onClick,
+                type: CheckboxGroupTypes.Checkbox
+            });
+        }
+
+        // Return the items
+        return cbItems;
+    }
+
+    // Generates the checkbox value
+    private generateCheckboxValue(currentValues: string | string[]): string[] {
+        let values: string[] = [];
+
+        // Ensure a value exists
+        if (currentValues == null) { return values; }
+
+        // Ensure it's an array
+        if (typeof (currentValues) === "string") {
+            // Make it an array
+            currentValues = [currentValues];
+        }
+
+        // Parse the current values
+        for (let i = 0; i < currentValues.length; i++) {
+            let value = currentValues[i];
+
+            // Find the item
+            let item = this.props.items?.find((item) => {
+                // Match by the text property if the value doesn't exist
+                if (typeof (item.value) === undefined) { return item.text == value; }
+
+                // See if the value property matches
+                return item.value == value;
+            });
+
+            // See if an item was found
+            if (item) {
+                // Add the text property
+                values.push(item.text);
+            }
+        }
+
+        // Return the values
+        return values;
+    }
+
     // Handles the click event outside of the menu to close it
     private handleClick = (ev: Event) => {
         // See if we clicked within the menu
@@ -395,31 +456,13 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
         if (menu) {
             // See if we are creating checkboxes
             if (this.props.isCheckbox) {
-                let cbItems: ICheckboxGroupItem[] = [];
-
-                // Parse the items
-                let items = this.props.items || [];
-                for (let i = 0; i < items.length; i++) {
-                    let item = items[i];
-
-                    // Create the checkbox item
-                    cbItems.push({
-                        data: item,
-                        isDisabled: item.isDisabled,
-                        isSelected: item.isSelected,
-                        label: item.text,
-                        onChange: item.onClick,
-                        type: CheckboxGroupTypes.Checkbox
-                    });
-                }
-
                 // Render the checkbox
                 this._cb = CheckboxGroup({
                     className: "m-2",
                     el: menu,
-                    items: cbItems,
+                    items: this.generateCheckboxItems(),
                     multi: this.props.multi,
-                    value: this.props.value,
+                    value: this.generateCheckboxValue(this.props.value),
                     onChange: this.props.onChange ? (values, ev) => {
                         // Pass the current values
                         this.props.onChange(this.getValue(), ev);
@@ -497,8 +540,6 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
                 // Add the value
                 values.push(items[i].data);
             }
-
-            // Return the value
         } else {
             // Parse the items
             for (let i = 0; i < this._items.length; i++) {
@@ -536,7 +577,7 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
         // See if we are rendering checkboxes
         if (this._cb) {
             // Set the items
-            this._cb.setItems(newItems);
+            this._cb.setItems(this.generateCheckboxItems());
             return;
         }
 
@@ -613,6 +654,13 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
     setValue(value) {
         // Ensure it's an array
         let values = value == null ? [] : (typeof (value.length) === "number" && typeof (value) !== "string" ? value : [value]);
+
+        // See if this is a checkbox
+        if (this._cb) {
+            // Set the value
+            this._cb.setValue(this.generateCheckboxValue(value));
+            return;
+        }
 
         // Parse the items
         for (let i = 0; i < this._items.length; i++) {
