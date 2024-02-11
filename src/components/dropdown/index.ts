@@ -411,12 +411,13 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
         // Parse the current values
         for (let i = 0; i < currentValues.length; i++) {
             let currentValue = currentValues[i];
-            let currentItem:IDropdownItem = { };
+            let currentItem: IDropdownItem = {};
 
             // See if this is a string
             if (typeof (currentValue) == "string") {
-                // Set the text property
+                // Set the text and value properties
                 currentItem.text = currentValue;
+                currentItem.value = currentValue;
             } else {
                 // Set the item
                 currentItem = currentValue;
