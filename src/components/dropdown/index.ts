@@ -396,7 +396,7 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
     }
 
     // Generates the checkbox value
-    private generateCheckboxValue(currentValues: string | string[]): string[] {
+    private generateCheckboxValue(currentValues: string | string[] | IDropdownItem[]): string[] {
         let values: string[] = [];
 
         // Ensure a value exists
@@ -410,15 +410,25 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
 
         // Parse the current values
         for (let i = 0; i < currentValues.length; i++) {
-            let value = currentValues[i];
+            let currentValue = currentValues[i];
+            let currentItem:IDropdownItem = { };
+
+            // See if this is a string
+            if (typeof (currentValue) == "string") {
+                // Set the text property
+                currentItem.text = currentValue;
+            } else {
+                // Set the item
+                currentItem = currentValue;
+            }
 
             // Find the item
             let item = this.props.items?.find((item) => {
                 // Match by the text property if the value doesn't exist
-                if (typeof (item.value) === undefined) { return item.text == value; }
+                if (typeof (item.value) === undefined) { return item.text == currentItem.text; }
 
                 // See if the value property matches
-                return item.value == value;
+                return item.value == currentItem.value;
             });
 
             // See if an item was found
