@@ -337,8 +337,11 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
             // Prevent other events to occur
             ev.stopPropagation();
 
-            // Toggle the menu if it's visible
-            this.isVisible ? this.toggle() : null;
+            // Ensure this isn't a multi-select
+            if (this.isMulti != true) {
+                // Toggle the menu if it's visible
+                this.isVisible ? this.toggle() : null;
+            }
 
             // Execute the event
             this.props.onChange ? this.props.onChange(this.getValue(), ev) : null;
