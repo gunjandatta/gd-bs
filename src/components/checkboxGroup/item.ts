@@ -40,7 +40,7 @@ export class CheckboxItem {
             this._elCheckbox.required = this._parent.required ? true : false;
 
             // Default the title property for the checkbox
-            this._elCheckbox.title = this.props.label || this._parent.title || "";
+            this._elCheckbox.title = this.props.title || this.props.label || this._parent.title || "";
         }
 
         // See if we are rendering a row

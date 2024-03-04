@@ -125,6 +125,7 @@ export interface IDropdownItem {
     onRender?: (el: HTMLElement, item?: IDropdownItem) => void;
     target?: string;
     text?: string;
+    title?: string;
     toggle?: string;
     value?: string;
 }

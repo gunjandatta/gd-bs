@@ -81,6 +81,7 @@ export interface ICheckboxGroupItem {
     label?: string;
     name?: string;
     onChange?: (item: ICheckboxGroupItem, ev?: Event) => void;
+    title?: string;
     type?: number;
 }
 

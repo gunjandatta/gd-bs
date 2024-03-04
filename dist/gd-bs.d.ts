@@ -881,6 +881,7 @@ declare module 'gd-bs/components/checkboxGroup/types' {
             label?: string;
             name?: string;
             onChange?: (item: ICheckboxGroupItem, ev?: Event) => void;
+            title?: string;
             type?: number;
     }
     
@@ -1091,6 +1092,7 @@ declare module 'gd-bs/components/dropdown/types' {
             onRender?: (el: HTMLElement, item?: IDropdownItem) => void;
             target?: string;
             text?: string;
+            title?: string;
             toggle?: string;
             value?: string;
     }

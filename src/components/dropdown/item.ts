@@ -41,6 +41,7 @@ export class DropdownItem {
             this._el.classList.add("dropdown-header");
             this._props.isDisabled ? this._el.classList.add("disabled") : null;
             this._el.innerText = this._props.text == null ? "" : this._props.text;
+            this._props.title ? this._el.title = this._props.title : null;
         } else {
             // See if we are rendering this in a nav bar
             if (this._parent.navFl) {
@@ -50,6 +51,7 @@ export class DropdownItem {
                 this._elLink.classList.add("dropdown-item");
                 this._props.isDisabled ? this._elLink.classList.add("disabled") : null;
                 this._props.target ? this._elLink.setAttribute("data-bs-target", this._props.target) : null;
+                this._props.title ? this._elLink.title = this._props.title : null;
                 this._props.toggle ? this._elLink.setAttribute("data-bs-toggle", this._props.toggle) : null;
                 this._elLink.href = this._props.href || "#";
                 this._elLink.innerText = this._props.text == null ? "" : this._props.text;
@@ -64,6 +66,7 @@ export class DropdownItem {
                 this._elLink.classList.add("dropdown-item");
                 this._props.isDisabled ? this._elLink.classList.add("disabled") : null;
                 this._props.target ? this._elLink.setAttribute("data-bs-target", this._props.target) : null;
+                this._props.title ? this._elLink.title = this._props.title : null;
                 this._props.toggle ? this._elLink.setAttribute("data-bs-toggle", this._props.toggle) : null;
                 this._elLink.href = this._props.href || "#";
                 this._elLink.innerText = this._props.text == null ? "" : this._props.text;
