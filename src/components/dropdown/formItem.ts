@@ -41,6 +41,7 @@ export class DropdownFormItem {
             this._el.className = this._props.className || "";
             this._el.disabled = this._props.isDisabled ? true : false;
             this._el.innerText = this._props.text == null ? "" : this._props.text;
+            this._props.title ? this._el.title = this._props.title : null;
 
             // See if the item is selected
             if (this._props.isSelected) {

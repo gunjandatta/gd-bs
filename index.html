@@ -61,13 +61,14 @@
                 items.push({
                     data: i,
                     text: "Item " + i,
+                    title: "This is " + i + " for the item.",
                     value: i
                 });
             }
             window["cb_ddl"] = GD.Components.Dropdown({
                 el: document.getElementById("dev"),
                 items: items,
-                isCheckbox: true,
+                isCheckbox: false,
                 multi: true,
                 label: "CB Dropdown"
             });
@@ -360,18 +361,23 @@
                             description: "This is a single dropdown option.",
                             items: [{
                                 text: "Test 1",
+                                title: "This is the first item.",
                                 value: 1
                             }, {
                                 text: "Test 2",
+                                title: "This is the second item.",
                                 value: 2
                             }, {
                                 text: "Test 3",
+                                title: "This is the third item.",
                                 value: 3
                             }, {
                                 text: "Test 4",
+                                title: "This is the fourth item.",
                                 value: 4
                             }, {
                                 text: "Test 5",
+                                title: "This is the fifth item.",
                                 value: 5,
                                 isDisabled: true
                             }],
