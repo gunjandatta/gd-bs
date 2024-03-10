@@ -53,13 +53,14 @@ export const TooltipTypes: ITooltipTypes;
 
 import { IBaseProps, ITippyProps } from "../types";
 import { IButtonProps, IButton } from "../button/types";
+import { IDropdownProps, IDropdown } from "../dropdown/types";
 
 /**
  * Tooltip
  */
 export interface ITooltip {
     /** Reference to the button. */
-    button: IButton;
+    button?: IButton;
 
     /** The element. */
     el: HTMLButtonElement;
@@ -69,6 +70,9 @@ export interface ITooltip {
 
     /** Hides an element’s tooltip. */
     hide: () => void;
+
+    /** Reference to the dropdown. */
+    ddl?: IDropdown;
 
     /** The tippy instance. */
     tippy: any;
@@ -88,6 +92,7 @@ export interface ITooltip {
  */
 export interface ITooltipProps extends IBaseProps<ITooltip> {
     btnProps?: IButtonProps;
+    ddlProps?: IDropdownProps;
     content?: string | Element;
     options?: ITippyProps;
     placement?: number;

@@ -1,9 +1,11 @@
 import tippy, { animateFill, followCursor, inlinePositioning, sticky } from "tippy.js";
 import { ITippyProps } from "../types";
 import { ITooltip, ITooltipProps } from "./types";
-import { IButton } from "../button/types";
 import { Base } from "../base";
+import { IButton } from "../button/types";
 import { Button, ButtonTypes } from "../button";
+import { IDropdown } from "../dropdown/types";
+import { Dropdown, DropdownTypes } from "../dropdown";
 import { appendContent } from "../common";
 
 /**
@@ -49,6 +51,7 @@ export enum TooltipPlacements {
  */
 class _Tooltip extends Base<ITooltipProps> {
     private _btn: IButton = null;
+    private _ddl: IDropdown = null;
     private _elContent: HTMLElement = null;
     private _tippy = null;
 
@@ -67,21 +70,34 @@ class _Tooltip extends Base<ITooltipProps> {
     private configure() {
         // See if the target element was not defined
         if (this.props.target == null) {
-            // Default the toggle property for the button
-            let btnProps = this.props.btnProps || {};
-            btnProps.type = btnProps.type || ButtonTypes.OutlineSecondary
+            // See if the dropdown property exists
+            if (this.props.ddlProps) {
+                // Set the default properties
+                let ddlProps = this.props.ddlProps;
+                ddlProps.type = ddlProps.type || DropdownTypes.OutlinePrimary;
 
-            // See if the content is text
-            if (typeof (this.props.content) === "string") {
-                // Set the label
-                btnProps.description = this.props.content;
+                // Create the dropdown
+                this._ddl = Dropdown(ddlProps);
+
+                // Update the element
+                this.el = this._ddl.el;
+            } else {
+                // Default the toggle property for the button
+                let btnProps = this.props.btnProps || {};
+                btnProps.type = btnProps.type || ButtonTypes.OutlineSecondary
+
+                // See if the content is text
+                if (typeof (this.props.content) === "string") {
+                    // Set the label
+                    btnProps.description = this.props.content;
+                }
+
+                // Create the button
+                this._btn = Button(btnProps);
+
+                // Update the element
+                this.el = this._btn.el;
             }
-
-            // Create the button
-            this._btn = Button(btnProps);
-
-            // Update the element
-            this.el = this._btn.el;
         }
 
         // Configure the options
@@ -310,16 +326,21 @@ class _Tooltip extends Base<ITooltipProps> {
     // Reference to the button
     get button(): IButton { return this._btn; }
 
+    // Reference to the dropdown
+    get ddl(): IDropdown { return this._ddl; }
+
     // Disbles the tooltip
     disable() {
-        // Disable the button
+        // Disable the button or dropdown
         this._btn ? this._btn.disable() : null;
+        this._ddl ? this._ddl.disable() : null;
     }
 
     // Enables the tooltip
     enable() {
-        // Enable the button
+        // Enable the button or dropdown
         this._btn ? this._btn.enable() : null;
+        this._ddl ? this._ddl.enable() : null;
     }
 
     // Hides the tooltip
@@ -339,10 +360,11 @@ class _Tooltip extends Base<ITooltipProps> {
         // Set the tippy content
         this.tippy.setContent(content);
 
-        // See if the button exists
-        if (this._btn && typeof (content) === "string") {
+        // See if the content is a string
+        if (typeof (content) === "string") {
             // Update the content
-            this._btn.el.setAttribute("aria-description", content);
+            this._btn ? this._btn.el.setAttribute("aria-description", content) : null;
+            this._ddl ? this._ddl.el.setAttribute("aria-description", content) : null;
         }
     }
 

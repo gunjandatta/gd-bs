@@ -2995,13 +2995,14 @@ declare module 'gd-bs/components/tooltip/types' {
     
     import { IBaseProps, ITippyProps } from "gd-bs/components/types";
     import { IButtonProps, IButton } from "gd-bs/components/button/types";
+    import { IDropdownProps, IDropdown } from "gd-bs/components/dropdown/types";
     
     /**
         * Tooltip
         */
     export interface ITooltip {
             /** Reference to the button. */
-            button: IButton;
+            button?: IButton;
     
             /** The element. */
             el: HTMLButtonElement;
@@ -3011,6 +3012,9 @@ declare module 'gd-bs/components/tooltip/types' {
     
             /** Hides an element’s tooltip. */
             hide: () => void;
+    
+            /** Reference to the dropdown. */
+            ddl?: IDropdown;
     
             /** The tippy instance. */
             tippy: any;
@@ -3030,6 +3034,7 @@ declare module 'gd-bs/components/tooltip/types' {
         */
     export interface ITooltipProps extends IBaseProps<ITooltip> {
             btnProps?: IButtonProps;
+            ddlProps?: IDropdownProps;
             content?: string | Element;
             options?: ITippyProps;
             placement?: number;
