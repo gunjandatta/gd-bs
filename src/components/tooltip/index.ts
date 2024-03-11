@@ -80,7 +80,7 @@ class _Tooltip extends Base<ITooltipProps> {
                 this._ddl = Dropdown(ddlProps);
 
                 // Update the element
-                this.el = this._ddl.el;
+                this.el = this._ddl.el.querySelector("button");
             } else {
                 // Default the toggle property for the button
                 let btnProps = this.props.btnProps || {};
