@@ -84,7 +84,7 @@ class _Tooltip extends Base<ITooltipProps> {
             } else {
                 // Default the toggle property for the button
                 let btnProps = this.props.btnProps || {};
-                btnProps.type = btnProps.type || ButtonTypes.OutlineSecondary
+                btnProps.type = btnProps.type || ButtonTypes.OutlinePrimary
 
                 // See if the content is text
                 if (typeof (this.props.content) === "string") {
@@ -216,10 +216,12 @@ class _Tooltip extends Base<ITooltipProps> {
                 // Set the default theme
                 theme = "secondary";
 
-                // See if a button exists
-                if (this.props.btnProps && this.props.btnProps.type > 0) {
-                    // Match the theme to the button type
-                    switch (this.props.btnProps.type) {
+                // See if a button/dropdown exists
+                let objType = this.props.btnProps && this.props.btnProps.type > 0 ? this.props.btnProps.type : null;
+                objType = this.props.ddlProps && this.props.ddlProps.type > 0 ? this.props.ddlProps.type : objType;
+                if (objType > 0) {
+                    // Match the theme to the button/dropdown type
+                    switch (objType) {
                         // Danger
                         case ButtonTypes.Danger:
                         case ButtonTypes.OutlineDanger:

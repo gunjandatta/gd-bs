@@ -141,6 +141,9 @@ export class DropdownItem {
                 this._props.onClick(this._props, ev);
             }
         });
+
+        // Call the render event
+        this._props.onRender ? this._props.onRender(this._el, this._props) : null;
     }
 
     /**

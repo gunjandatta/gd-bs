@@ -17,6 +17,9 @@ export class DropdownFormItem {
 
         // Configure the item
         this.configure();
+
+        // Configure the events
+        this.configureEvents();
     }
 
     // Configures the item
@@ -69,6 +72,12 @@ export class DropdownFormItem {
             // Set the flag
             this._isSelected = (this._el as HTMLOptionElement).selected;
         }
+    }
+
+    // Configures the events
+    private configureEvents() {
+        // Call the render event
+        this._props.onRender ? this._props.onRender(this._el, this._props) : null;
     }
 
     /**
