@@ -414,9 +414,9 @@
     .mw-fit {
         max-width: fit-content !important;
     }
-    /* Set color for nav links */
-    .nav-link {
-        color: var(--sp-theme-primary, #0078d4);
+    /* Set color for active nav links */
+    .nav-link:active, .navbar-brand:active {
+        color: var(--bs-navbar-active-color);
     }
     .nav-tabs {
         border-bottom: 0;
