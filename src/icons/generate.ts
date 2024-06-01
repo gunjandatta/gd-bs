@@ -4,8 +4,10 @@ export const generateIcon = (svg: string, height: number = 32, width: number = 3
 	if (placeholders > 0) {
 		// Parse the number of placeholders
 		for (let i = 0; i < placeholders; i++) {
-		// Replace the placeholder
-		svg = svg.replace("{" + i + "}", Date.now().toString());
+			let regex = new RegExp("/\{" + i + "\}/g");
+
+			// Replace the placeholder
+			svg = svg.replace(regex, Date.now().toString());
 		}
 	}
 
