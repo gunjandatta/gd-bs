@@ -1,5 +1,14 @@
 // Generates the html for an icon
-export const generateIcon = (svg: string, height: number = 32, width: number = 32, className?: string) => {
+export const generateIcon = (svg: string, height: number = 32, width: number = 32, className?: string, placeholders?: number) => {
+	// See if placeholders exist
+	if (placeholders > 0) {
+		// Parse the number of placeholders
+		for (let i = 0; i < placeholders; i++) {
+		// Replace the placeholder
+		svg = svg.replace("{" + i + "}", Date.now().toString());
+		}
+	}
+
 	// Get the icon element
 	let elDiv = document.createElement("div");
 	elDiv.innerHTML = svg;
