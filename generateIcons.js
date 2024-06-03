@@ -140,7 +140,7 @@ fs.readdir(dirIcons, function (err, files) {
         '\tif (placeholders > 0) {',
         '\t\t// Parse the number of placeholders',
         '\t\tfor (let i = 0; i < placeholders; i++) {',
-        '\t\t\tlet regex = new RegExp("/\\{" + i + "\\}/g");\n',
+        '\t\t\tlet regex = new RegExp("\\{" + i + "\\}", "g");\n',
         '\t\t\t// Replace the placeholder',
         '\t\t\tsvg = svg.replace(regex, Date.now().toString());',
         '\t\t}',
