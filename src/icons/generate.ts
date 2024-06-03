@@ -4,7 +4,7 @@ export const generateIcon = (svg: string, height: number = 32, width: number = 3
 	if (placeholders > 0) {
 		// Parse the number of placeholders
 		for (let i = 0; i < placeholders; i++) {
-			let regex = new RegExp("\{" + i + "\}", "g");
+			let regex = new RegExp("\\{" + i + "\\}", "g");
 
 			// Replace the placeholder
 			svg = svg.replace(regex, Date.now().toString());
