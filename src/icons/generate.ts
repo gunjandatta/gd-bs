@@ -7,7 +7,7 @@ export const generateIcon = (svg: string, height: number = 32, width: number = 3
 			let regex = new RegExp("\\{" + i + "\\}", "g");
 
 			// Replace the placeholder
-			svg = svg.replace(regex, Date.now().toString());
+			svg = svg.replace(regex, Math.floor(Date.now() * Math.random()).toString());
 		}
 	}
 
