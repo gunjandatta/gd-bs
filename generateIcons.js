@@ -137,7 +137,7 @@ fs.readdir(dirIcons, function (err, files) {
         '// Generates the html for an icon',
         'export const generateIcon = (svg: string, height: number = 32, width: number = 32, className?: string, placeholders?: number) => {',
         '\t// See if placeholders exist',
-        '\tif (placeholders > 0) {',
+        '\tif (typeof(placeholders) === "number" && placeholders > 0) {',
         '\t\t// Parse the number of placeholders',
         '\t\tfor (let i = 0; i < placeholders; i++) {',
         '\t\t\tlet regex = new RegExp("\\\\{" + i + "\\\\}", "g");\n',
