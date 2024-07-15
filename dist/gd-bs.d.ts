@@ -2325,6 +2325,7 @@ declare module 'gd-bs/components/offcanvas/types' {
             body?: string | T;
             data?: any;
             id?: string;
+            onClose?: (el: HTMLDivElement) => void;
             onRenderBody?: (el?: HTMLDivElement, props?: IOffcanvasProps) => void;
             onRenderHeader?: (el?: HTMLDivElement, props?: IOffcanvasProps) => void;
             options?: IOffcanvasOptions;

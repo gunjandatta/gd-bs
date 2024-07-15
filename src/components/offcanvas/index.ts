@@ -306,6 +306,9 @@ class _Offcanvas extends Base<IOffcanvasProps> implements IOffcanvas {
 
                 // Set the flag
                 this._tranisitioningFl = false;
+
+                // Call the event
+                this.props.onClose ? this.props.onClose(this.el) : null;
             }, 250);
         } else {
             // Create the backdrop if we are showing it
