@@ -1,10 +1,10 @@
-/* Center the dataTables_info element properly */
-div.dataTables_wrapper div.dataTables_info {
+/* Center the dt-info element properly */
+div.dataTables_wrapper div.dt-info {
     padding-top: 0.9rem;
 }
 
-/* Add proper width for dataTables_length select */
-div.dataTables_wrapper div.dataTables_length select {
+/* Add proper width for dt-length select */
+div.dataTables_wrapper div.dt-length select {
     width: 3.75rem;
 }
 
@@ -35,21 +35,15 @@ table.dataTable.table-striped>tbody>tr:nth-of-type(2n+1)>* {
 
 /* Be sure to escape any characters, such as # to %23 when specifying hex color values in background-image */
 /* DataTables sorting with Bootstrap Icons */
-table.dataTable thead .sorting,
-table.dataTable thead .sorting_asc,
-table.dataTable thead .sorting_desc,
-table.dataTable thead .sorting_asc_disabled,
-table.dataTable thead .sorting_desc_disabled,
-table.dataTable thead .sorting:before,
-table.dataTable thead .sorting_asc:before,
-table.dataTable thead .sorting_desc:before,
-table.dataTable thead .sorting_asc_disabled:before,
-table.dataTable thead .sorting_desc_disabled:before,
-table.dataTable thead .sorting:after,
-table.dataTable thead .sorting_asc:after,
-table.dataTable thead .sorting_desc:after,
-table.dataTable thead .sorting_asc_disabled:after,
-table.dataTable thead .sorting_desc_disabled:after {
+table.dataTable thead .dt-orderable-asc,
+table.dataTable thead .dt-orderable-desc,
+table.dataTable thead .dt-orderable-none,
+table.dataTable thead .dt-orderable-asc:before,
+table.dataTable thead .dt-orderable-desc:before,
+table.dataTable thead .dt-orderable-none:before,
+table.dataTable thead .dt-orderable-asc:after,
+table.dataTable thead .dt-orderable-desc:after,
+table.dataTable thead .dt-orderable-none:after {
     background-image: none;
     background-position: right;
     background-repeat: no-repeat;
@@ -58,19 +52,19 @@ table.dataTable thead .sorting_desc_disabled:after {
 }
 
 /* Bootstrap Icon: caret-up */
-table.dataTable thead .sorting {
+table.dataTable thead .dt-orderable-asc {
     --dt-sorting-image: url("data:image/svg+xml,<svg viewBox='0 0 16 16' fill='%23605e5c' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' d='M3.204 11L8 5.519 12.796 11H3.204zm-.753-.659l4.796-5.48a1 1 0 0 1 1.506 0l4.796 5.48c.566.647.106 1.659-.753 1.659H3.204a1 1 0 0 1-.753-1.659z'/></svg>");
     background-image: var(--dt-sorting-image);
 }
 
 /* Bootstrap Icon: caret-up-fill */
-table.dataTable thead .sorting_asc {
+table.dataTable thead .dt-ordering-asc {
     --dt-sorting-asc-image: url("data:image/svg+xml,<svg viewBox='0 0 16 16' fill='%23605e5c' xmlns='http://www.w3.org/2000/svg'><path d='M7.247 4.86l-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z'/></svg>");
     background-image: var(--dt-sorting-asc-image);
 }
 
 /* Bootstrap Icon: caret-down-fill */
-table.dataTable thead .sorting_desc {
+table.dataTable thead .dt-ordering-desc {
     --dt-sorting-desc-image: url("data:image/svg+xml,<svg viewBox='0 0 16 16' fill='%23605e5c' xmlns='http://www.w3.org/2000/svg'><path d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/></svg>");
     background-image: var(--dt-sorting-desc-image);
 }
