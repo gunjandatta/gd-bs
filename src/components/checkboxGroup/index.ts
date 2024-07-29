@@ -72,8 +72,20 @@ class _CheckboxGroup extends Base<ICheckboxGroupProps> implements ICheckboxGroup
         // Render the checkboxes
         this.renderItems();
 
-        // Set the value
-        this.setValue(this.props.value);
+        // Parse the items
+        let valueSet: boolean = false;
+        let items = this.props.items || [];
+        for (let i = 0; i < items.length; i++) {
+            // See if the item is using the isSelected property
+            if (typeof (items[i].isSelected) === "boolean") {
+                // Set the flag
+                valueSet = true;
+                break;
+            }
+        }
+
+        // Set the value if we need to
+        valueSet ? null : this.setValue(this.props.value);
     }
 
     // Configure the events
