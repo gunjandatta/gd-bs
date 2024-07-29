@@ -37,7 +37,16 @@ table.dataTable.table-striped>tbody>tr:nth-of-type(2n+1)>* {
 /* DataTables sorting with Bootstrap Icons */
 table.dataTable thead .dt-column-order,
 table.dataTable thead .dt-column-order:before,
-table.dataTable thead .dt-column-order:after {
+table.dataTable thead .dt-column-order:after,
+table.dataTable thead .dt-orderable-asc,
+table.dataTable thead .dt-orderable-desc,
+table.dataTable thead .dt-orderable-none,
+table.dataTable thead .dt-orderable-asc:before,
+table.dataTable thead .dt-orderable-desc:before,
+table.dataTable thead .dt-orderable-none:before,
+table.dataTable thead .dt-orderable-asc:after,
+table.dataTable thead .dt-orderable-desc:after,
+table.dataTable thead .dt-orderable-none:after {
     background-image: none;
     background-position: right;
     background-repeat: no-repeat;
