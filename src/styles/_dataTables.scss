@@ -73,3 +73,8 @@ table.dataTable thead .dt-ordering-desc {
 div.DTCR_pointer {
     background-color: var(--sp-theme-primary, #0078d4);
 }
+
+/* Remove margin for pagination */
+div.dt-container .dt-paging .pagination {
+    margin-bottom: 0;
+}
