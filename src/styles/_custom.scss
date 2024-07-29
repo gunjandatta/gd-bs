@@ -297,6 +297,10 @@
         background-color: var(--sp-theme-primary, #0078d4);
         border-color: var(--sp-theme-primary, #0078d4);
     }
+    /* Fix for readonly */
+    .form-check > .form-check-input[readonly] {
+        pointer-events: none;
+    }
     .form-control:hover, .form-select:hover {
         border-color: var(--sp-theme-tertiary, #71afe5);
     }
