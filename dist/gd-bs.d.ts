@@ -2212,6 +2212,7 @@ declare module 'gd-bs/components/navbar/types' {
             items?: Array<INavbarItem>;
             itemsEnd?: Array<INavbarItem>;
             onClick?: (item?: INavbarItem, ev?: Event) => void;
+            onClickBrand?: (el?: HTMLElement, ev?: Event) => void;
             onItemRendered?: (el?: HTMLElement, item?: INavbarItem) => void;
             onRendered?: (el?: HTMLElement) => void;
             searchBox?: INavbarSearchBox;

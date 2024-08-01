@@ -60,17 +60,19 @@
             for (var i = 0; i < 10; i++) {
                 items.push({
                     data: i,
-                    text: "Item " + i,
-                    title: "This is " + i + " for the item.",
-                    value: i
+                    content: "Item " + i,
+                    badge: {
+                        data: i,
+                        content: i,
+                        onClick: (el, item) => {
+                            alert("Item " + item.data + " clicked...");
+                        }
+                    }
                 });
             }
-            window["cb_ddl"] = GD.Components.Dropdown({
+            window["dev"] = GD.Components.ListGroup({
                 el: document.getElementById("dev"),
-                items: items,
-                isCheckbox: false,
-                multi: true,
-                label: "CB Dropdown"
+                items: items
             });
 
             // Components

@@ -89,6 +89,16 @@ class _Navbar extends Base<INavbarProps> implements INavbar {
     private configureEvents() {
         let props = this.props.searchBox || {};
 
+        // See if the brand element and click event exist
+        let brand = this.el.querySelector(".navbar-brand") as HTMLAnchorElement;
+        if (brand && this.props.onClickBrand) {
+            // Set the click event
+            brand.addEventListener("click", ev => {
+                // Call the event
+                this.props.onClickBrand(brand, ev);
+            });
+        }
+
         // See if search events exist
         let searchbox = this.el.querySelector("form input") as HTMLInputElement;
         if (searchbox) {
