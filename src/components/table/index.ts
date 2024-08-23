@@ -78,7 +78,7 @@ class _Table extends Base<ITableProps> implements ITable {
     }
 
     // Renders a cell
-    private renderCell(row: HTMLTableRowElement, props: ITableColumn, data) {
+    private renderCell(row: HTMLTableRowElement, props: ITableColumn, data, rowIdx: number) {
         // Create the cell
         let cell = document.createElement("td");
         cell.className = props.className || "";
@@ -94,13 +94,13 @@ class _Table extends Base<ITableProps> implements ITable {
         // See if there is an event for this column
         if (props.onRenderCell) {
             // Call the event
-            props.onRenderCell(cell, props, data);
+            props.onRenderCell(cell, props, data, rowIdx);
         }
 
         // See if there is an event for this component
         if (this.props.onRenderCell) {
             // Call the event
-            this.props.onRenderCell(cell, props, data);
+            this.props.onRenderCell(cell, props, data, rowIdx);
         }
 
         // See if there is a click event
@@ -108,8 +108,8 @@ class _Table extends Base<ITableProps> implements ITable {
             // Add the click event
             cell.addEventListener("click", ev => {
                 // Call the event
-                props.onClickCell ? props.onClickCell(cell, props, data) : null;
-                this.props.onClickCell ? this.props.onClickCell(cell, props, data) : null;
+                props.onClickCell ? props.onClickCell(cell, props, data, rowIdx) : null;
+                this.props.onClickCell ? this.props.onClickCell(cell, props, data, rowIdx) : null;
             });
         }
     }
@@ -119,7 +119,7 @@ class _Table extends Base<ITableProps> implements ITable {
         // See if columns
         for (let i = 0; i < this.props.columns.length; i++) {
             // Create the cell
-            this.renderCell(row, this.props.columns[i], data);
+            this.renderCell(row, this.props.columns[i], data, rowIdx);
         }
 
         // See if there is an event

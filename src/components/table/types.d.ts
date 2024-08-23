@@ -85,9 +85,9 @@ export interface ITable {
  */
 export interface ITableProps extends IBaseProps<ITable> {
     columns?: Array<ITableColumn>;
-    onClickCell?: (el: HTMLTableDataCellElement, column?: ITableColumn, data?: any) => void;
+    onClickCell?: (el: HTMLTableDataCellElement, column?: ITableColumn, data?: any, rowIdx?: number) => void;
     onClickHeader?: (el: HTMLTableHeaderCellElement, column?: ITableColumn) => void;
-    onRenderCell?: (el?: HTMLTableDataCellElement, column?: ITableColumn, data?: any) => void;
+    onRenderCell?: (el?: HTMLTableDataCellElement, column?: ITableColumn, data?: any, rowIdx?: number) => void;
     onRenderHeaderCell?: (el?: HTMLTableDataCellElement, column?: ITableColumn) => void;
     onRenderHeaderRow?: (el?: HTMLTableRowElement) => void;
     onRenderRow?: (el?: HTMLTableRowElement, data?: any, rowIdx?: number) => void;
@@ -102,9 +102,9 @@ export interface ITableColumn {
     data?: any;
     isHidden?: boolean;
     name: string;
-    onClickCell?: (el: HTMLTableDataCellElement, column?: ITableColumn, data?: any) => void;
+    onClickCell?: (el: HTMLTableDataCellElement, column?: ITableColumn, data?: any, rowIdx?: number) => void;
     onClickHeader?: (el: HTMLTableHeaderCellElement, column?: ITableColumn) => void;
-    onRenderCell?: (el: HTMLTableDataCellElement, column?: ITableColumn, data?: any) => void;
+    onRenderCell?: (el: HTMLTableDataCellElement, column?: ITableColumn, data?: any, rowIdx?: number) => void;
     onRenderHeader?: (el?: HTMLTableDataCellElement, column?: ITableColumn) => void;
     scope?: string;
     title?: string;
