@@ -90,7 +90,7 @@ export interface ITableProps extends IBaseProps<ITable> {
     onRenderCell?: (el?: HTMLTableDataCellElement, column?: ITableColumn, data?: any) => void;
     onRenderHeaderCell?: (el?: HTMLTableDataCellElement, column?: ITableColumn) => void;
     onRenderHeaderRow?: (el?: HTMLTableRowElement) => void;
-    onRenderRow?: (el?: HTMLTableRowElement, data?: any) => void;
+    onRenderRow?: (el?: HTMLTableRowElement, data?: any, rowIdx?: number) => void;
     rows?: Array<any>;
 }
 
