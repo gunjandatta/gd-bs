@@ -529,7 +529,7 @@ export class FormControl implements IFormControl {
                 let custom = CustomControls.getByType(this._props.type);
                 if (custom && typeof (custom) === "function") {
                     // Execute the event
-                    this._custom = custom(this._props, this._formProps);
+                    this._custom = custom({ ...this._props, ...{ value } }, this._formProps);
                 }
                 break;
         }
