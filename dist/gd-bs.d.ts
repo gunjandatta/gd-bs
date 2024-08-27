@@ -1124,6 +1124,7 @@ declare module 'gd-bs/components/dropdown/types' {
             required?: boolean;
             title?: string;
             type?: number;
+            updateLabel?: boolean;
             value?: any;
     }
 }

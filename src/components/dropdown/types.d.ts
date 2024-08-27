@@ -157,5 +157,6 @@ export interface IDropdownProps extends IBaseProps<IDropdown> {
     required?: boolean;
     title?: string;
     type?: number;
+    updateLabel?: boolean;
     value?: any;
 }
