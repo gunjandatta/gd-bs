@@ -167,8 +167,6 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
         if (menu) {
             // Add a change event
             menu.addEventListener("change", ev => {
-                let values = "";
-
                 // See if multiple options are allowed
                 if (this.props.multi == true) {
                     // See if we are selecting the values
@@ -179,9 +177,6 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
 
                             // Update the flag
                             item.isSelected = (item.el as HTMLOptionElement).selected;
-
-                            // Append the value
-                            values = (values ? ", " : "") + (item.props.text || item.props.value);
                         }
                     }
 
@@ -190,9 +185,6 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
                 } else {
                     // Get the selected value
                     let selectedValue = ((ev.target as HTMLSelectElement).value || "").trim();
-
-                    // Set the selected value
-                    values = selectedValue;
 
                     // Parse the items
                     for (let i = 0; i < this._items.length; i++) {
@@ -212,15 +204,6 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
                             // Unselect the other values
                             if (this._autoSelect && item.isSelected) { item.toggle(); }
                         }
-                    }
-                }
-
-                // See if we are updating the label
-                if (this.props.updateLabel) {
-                    // Set the label
-                    let toggle = this.el.querySelector(".dropdown-toggle");
-                    if (toggle) {
-                        toggle.innerHTML = values || this.props.label;
                     }
                 }
             });
@@ -346,6 +329,22 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
                         selectedItem.toggle();
                     }
                 }
+
+                // See if we are updating the label
+                if (this.props.updateLabel) {
+                    let selectedItems = this.getValue() as IDropdownItem[];
+                    let selectedValues = [];
+                    for (let i = 0; i < selectedItems.length; i++) {
+                        // Append the value
+                        selectedValues.push(selectedItems[i].text);
+                    }
+
+                    // Set the label
+                    let toggle = this.el.querySelector(".dropdown-toggle");
+                    if (toggle) {
+                        toggle.innerHTML = selectedValues.length > 0 ? selectedValues.join(', ') : this.props.label;
+                    }
+                }
             });
         }
 
@@ -362,6 +361,17 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
 
             // Execute the event
             this.props.onChange ? this.props.onChange(this.getValue(), ev) : null;
+
+            // See if we are updating the label
+            if (this.props.updateLabel) {
+                let selectedItem = this.getValue() as IDropdownItem;
+
+                // Set the label
+                let toggle = this.el.querySelector(".dropdown-toggle");
+                if (toggle) {
+                    toggle.innerHTML = selectedItem ? selectedItem.text : this.props.label;
+                }
+            }
         });
     }
 
