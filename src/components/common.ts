@@ -49,9 +49,9 @@ export const configureParent = (component: Element, parent: Element): Element =>
     return el;
 }
 
-export const setClassNames = (el: HTMLElement, className = "") => {
-    // Ensure the element exists
-    if (el) {
+export const setClassNames = (el: HTMLElement, className) => {
+    // Ensure the element and class name exists exists
+    if (el && className) {
         // Set the class names
         let classNames = className.split(' ');
         for (let i = 0; i < classNames.length; i++) {
