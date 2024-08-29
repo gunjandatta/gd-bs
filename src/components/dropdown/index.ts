@@ -332,17 +332,12 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
 
                 // See if we are updating the label
                 if (this.props.updateLabel) {
-                    let selectedItems = this.getValue() as IDropdownItem[];
-                    let selectedValues = [];
-                    for (let i = 0; i < selectedItems.length; i++) {
-                        // Append the value
-                        selectedValues.push(selectedItems[i].text);
-                    }
+                    let selectedItem = this.getValue() as IDropdownItem;
 
                     // Set the label
                     let toggle = this.el.querySelector(".dropdown-toggle");
                     if (toggle) {
-                        toggle.innerHTML = selectedValues.length > 0 ? selectedValues.join(', ') : this.props.label;
+                        toggle.innerHTML = selectedItem ? selectedItem.text : this.props.label;
                     }
                 }
             });
@@ -358,20 +353,26 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
                 // Toggle the menu if it's visible
                 this.isVisible ? this.toggle() : null;
             }
-
-            // Execute the event
-            this.props.onChange ? this.props.onChange(this.getValue(), ev) : null;
-
-            // See if we are updating the label
-            if (this.props.updateLabel) {
-                let selectedItem = this.getValue() as IDropdownItem;
+            // Else, see if we are updating the label for a multi-dropdown
+            else if (this.props.updateLabel) {
+                // Set the selected values
+                let selectedItems: IDropdownItem[] = this.getValue();
+                let selectedValues = [];
+                for (let i = 0; i < selectedItems.length; i++) {
+                    // Append the value
+                    selectedValues.push(selectedItems[i].text);
+                }
 
                 // Set the label
                 let toggle = this.el.querySelector(".dropdown-toggle");
                 if (toggle) {
-                    toggle.innerHTML = selectedItem ? selectedItem.text : this.props.label;
+                    // Set the label
+                    toggle.innerHTML = selectedValues.length == 0 ? this.props.label : selectedValues.join(', ');
                 }
             }
+
+            // Execute the event
+            this.props.onChange ? this.props.onChange(this.getValue(), ev) : null;
         });
     }
 
