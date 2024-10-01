@@ -631,8 +631,14 @@ export class FormControl implements IFormControl {
         if (this._el) {
             // See if this is a row
             if (this._el.parentElement && this._el.parentElement.parentElement && this._el.parentElement.parentElement.classList.contains("row")) {
-                // Hide the row element
-                this._el.parentElement.parentElement.classList.add("d-none");
+                // See if there are other controls in this row
+                if (this._el.parentElement.parentElement.querySelectorAll(".col").length > 1) {
+                    // Hide the column element
+                    this._el.parentElement.classList.add("d-none");
+                } else {
+                    // Hide the row element
+                    this._el.parentElement.parentElement.classList.add("d-none");
+                }
             }
             // Else, ensure the parent element exists
             else if (this._el.parentElement) {
@@ -734,8 +740,14 @@ export class FormControl implements IFormControl {
         if (this._el) {
             // See if this is a row
             if (this._el.parentElement && this._el.parentElement.parentElement && this._el.parentElement.parentElement.classList.contains("row")) {
-                // Show the row element
-                this._el.parentElement.parentElement.classList.remove("d-none");
+                // See if there are other controls in this row
+                if (this._el.parentElement.parentElement.querySelectorAll(".col").length > 1) {
+                    // Show the column element
+                    this._el.parentElement.classList.remove("d-none");
+                } else {
+                    // Show the row element
+                    this._el.parentElement.parentElement.classList.remove("d-none");
+                }
             }
             // Else, ensure the parent element exists
             else if (this._el.parentElement) {
