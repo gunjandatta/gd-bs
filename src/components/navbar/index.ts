@@ -40,19 +40,36 @@ class _Navbar extends Base<INavbarProps> implements INavbar {
 
     // Configure the card group
     private configure(itemTemplate: string) {
-        // See if there is a brand
-        let brand = this.el.querySelector(".navbar-brand") as HTMLAnchorElement;
-        if (brand) {
-            if (this.props.brand) {
+        // See if we are applying a brand
+        if (this.props.brand) {
+            let elBrand = this.el.querySelector("span.navbar-brand") as HTMLSpanElement;
+            let elBrandLink = this.el.querySelector("a.navbar-brand") as HTMLAnchorElement;
+
+            // See if we are using a link
+            if (this.props.brandUrl || this.props.onClickBrand) {
+                // Remove the element
+                elBrand ? elBrand.parentElement.removeChild(elBrand) : null;
+
                 // Update the brand
-                this.props.brandUrl ? brand.href = this.props.brandUrl : null;
+                elBrandLink ? elBrandLink.href = this.props.brandUrl : null;
 
                 // Append the content
-                appendContent(brand, this.props.brand);
+                appendContent(elBrandLink, this.props.brand);
             } else {
-                // Remove the brand
-                brand.parentNode.removeChild(brand);
+                // Remove the link element
+                elBrandLink ? elBrandLink.parentElement.removeChild(elBrandLink) : null;
+
+                // Append the content
+                appendContent(elBrand, this.props.brand);
             }
+        } else {
+            // Remove the brand link
+            let elBrandLink = this.el.querySelector("a.navbar-brand");
+            if (elBrandLink) { elBrandLink.parentNode.removeChild(elBrandLink); }
+
+            // Remove the brand element
+            let elBrand = this.el.querySelector("span.navbar-brand");
+            if (elBrand) { elBrand.parentNode.removeChild(elBrand); }
         }
 
         // Update the nav bar
