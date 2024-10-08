@@ -277,7 +277,6 @@
     }
     /* Adjust checkbox size */
     .form-check:not(.form-switch) .form-check-input[type=checkbox] {
-        display: inline;
         height: 1.25rem;
         width: 1.25rem;
     }
@@ -290,6 +289,7 @@
     }
     /* Fix checkbox label alignment */
     .form-check:not(.form-switch) .form-check-label {
+        display: inline;
         margin-left: .5rem;
         margin-top: .25rem;
     }
