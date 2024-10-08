@@ -277,6 +277,7 @@
     }
     /* Adjust checkbox size */
     .form-check:not(.form-switch) .form-check-input[type=checkbox] {
+        display: inline;
         height: 1.25rem;
         width: 1.25rem;
     }
