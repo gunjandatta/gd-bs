@@ -452,10 +452,6 @@
         --bs-navbar-brand-color: var(--sp-primary-button-text, #ffffff);
         --bs-navbar-brand-hover-color: var(--sp-theme-darker, #004578);
     }
-    a.navbar {
-        --bs-navbar-hover-color: var(--sp-theme-darker, #004578);
-        --bs-navbar-brand-hover-color: var(--sp-theme-darker, #004578);
-    }
     span.navbar-brand:hover, span.navbar-brand:focus {
         color: var(--bs-navbar-brand-color);
     }
