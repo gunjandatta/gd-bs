@@ -452,6 +452,10 @@
         --bs-navbar-brand-color: var(--sp-primary-button-text, #ffffff);
         --bs-navbar-brand-hover-color: var(--sp-theme-darker, #004578);
     }
+    a.navbar {
+        --bs-navbar-hover-color: var(--sp-theme-darker, #004578);
+        --bs-navbar-brand-hover-color: var(--sp-theme-darker, #004578);
+    }
     /* Properly align the navbar brand text */
     .navbar-brand {
         align-items: baseline;
