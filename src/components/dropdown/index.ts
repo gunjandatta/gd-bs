@@ -743,6 +743,12 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
             }
         }
 
+        // See if no value is selected and the label exists
+        if (value == null && this.props.label) {
+            // Set the label
+            this.setLabel(this.props.label);
+        }
+
         // See if a change event exists
         if (this._initFl && this.props.onChange) {
             // Execute the change event
