@@ -25,7 +25,7 @@ class _CardGroup extends Base<ICardGroupProps> implements ICardGroup {
         let isGrid = false;
 
         // See if we are rendering columns
-        if (typeof (this.props.colSize) === "number") {
+        if (typeof (this.props.colSize) === "number" || this.props.colSize == "auto") {
             // Update the flag
             isGrid = true;
 
@@ -33,9 +33,15 @@ class _CardGroup extends Base<ICardGroupProps> implements ICardGroup {
             (this.el as HTMLElement).classList.remove("card-group");
             (this.el as HTMLElement).classList.add("row");
 
-            // Determine the column class to use
-            let colSize = this.props.colSize > 0 && this.props.colSize <= 12 ? this.props.colSize : 4;
-            (this.el as HTMLElement).classList.add("row-cols-" + colSize);
+            // See if the column size is a number
+            if (this.props.colSize == "auto") {
+                // Set the column to auto size
+                (this.el as HTMLElement).classList.add("row-cols-auto");
+            } else {
+                // Determine the column class to use
+                let colSize = this.props.colSize > 0 && this.props.colSize <= 12 ? this.props.colSize : 4;
+                (this.el as HTMLElement).classList.add("row-cols-" + colSize);
+            }
         }
 
         // Parse the cards
