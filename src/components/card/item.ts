@@ -1,5 +1,5 @@
 import { ICardAction, ICardBody } from "./types";
-import { appendContent } from "../common";
+import { appendContent, setClassNames } from "../common";
 import { CardAction } from "./action";
 import { HTMLItem } from "./templates";
 
@@ -31,7 +31,8 @@ export class CardBody {
     private configure() {
         // Set the class names
         if (this._props.className) {
-            this._el.classList.add(this._props.className);
+            // Set the class names
+            setClassNames(this._el, this._props.className);
         }
 
         // Update the title
