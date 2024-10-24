@@ -59,7 +59,7 @@ class _Card extends Base<ICardProps> implements ICard {
             // Set the click event
             body.el.addEventListener("click", ev => {
                 // Execute the event
-                this.props.onClick(body.props);
+                this.props.onClick(body.props, ev);
             });
         }
 
