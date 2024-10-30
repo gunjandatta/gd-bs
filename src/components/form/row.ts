@@ -51,6 +51,11 @@ export class FormRow {
         for (let i = 0; i < columns.length; i++) {
             let columnProps = columns[i];
 
+            // See if the is read only property is set
+            if (typeof (this.props.isReadOnly) === "boolean") {
+                columnProps.control.isReadonly = this.props.isReadOnly;
+            }
+
             // Set the value
             let value = columnProps.control.value;
             if (value == undefined && this._parent.value) {
