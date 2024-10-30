@@ -177,6 +177,7 @@ export interface IFormRow {
     className?: string;
     isAutoSized?: boolean;
     isCentered?: boolean;
+    isDisabled?: boolean;
     isReadOnly?: boolean;
     columns?: Array<IFormColumn>;
 }
