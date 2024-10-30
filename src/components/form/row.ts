@@ -51,13 +51,13 @@ export class FormRow {
         for (let i = 0; i < columns.length; i++) {
             let columnProps = columns[i];
 
-            // See if the is disabled property is set
-            if (typeof (this.props.isDisabled) === "boolean") {
+            // See if the is disabled property is set, if the control doesn't have this property set
+            if (typeof (this.props.isDisabled) === "boolean" && typeof (columnProps.control.isDisabled) !== "boolean") {
                 columnProps.control.isDisabled = this.props.isDisabled;
             }
 
-            // See if the is read only property is set
-            if (typeof (this.props.isReadOnly) === "boolean") {
+            // See if the is read only property is set, if the control doesn't have this property set
+            if (typeof (this.props.isReadOnly) === "boolean" && typeof (columnProps.control.isReadonly) !== "boolean") {
                 columnProps.control.isReadonly = this.props.isReadOnly;
             }
 
