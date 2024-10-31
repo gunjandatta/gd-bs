@@ -1815,6 +1815,7 @@ declare module 'gd-bs/components/listGroup/types' {
             isDisabled?: boolean;
             onClick?: (el?: HTMLElement, item?: IListGroupItem) => void;
             onRender?: (el?: HTMLElement, item?: IListGroupItem) => void;
+            onRenderTab?: (el?: HTMLElement, item?: IListGroupItem) => void;
             tabName?: string;
             type?: number;
     }

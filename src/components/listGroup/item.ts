@@ -67,6 +67,7 @@ export class ListGroupItem extends Base<IListGroupItem> {
             this.el.id = tabId + "-tab";
             this.el.setAttribute("href", "#" + tabId);
             this.el.setAttribute("data-bs-toggle", "list");
+            this.el.setAttribute("data-tab-title", this.props.tabName);
             this.el.setAttribute("aria-controls", tabId);
             this.el.innerHTML = this.props.tabName;
 
@@ -96,6 +97,12 @@ export class ListGroupItem extends Base<IListGroupItem> {
             // Execute the event
             this.props.onClick ? this.props.onClick(this.el, this.props) : null;
         });
+
+        // See if there is a render tab event
+        if (this.props.onRenderTab) {
+            // Execute the render event
+            this.props.onRenderTab(this.el, this.props);
+        }
 
         // See if there is a render event
         if (this.props.onRender) {
