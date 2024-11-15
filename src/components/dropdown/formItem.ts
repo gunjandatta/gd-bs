@@ -54,7 +54,7 @@ export class DropdownFormItem {
             // Else, see if a value exists
             else if (this._parent.value != undefined) {
                 // Ensure it's an array
-                let values = this._parent.value && typeof (this._parent.value) === "object" ? this._parent.value : [this._parent.value];
+                let values = this._parent.value && this._parent.value.length && typeof (this._parent.value) !== "string" ? this._parent.value : [this._parent.value];
 
                 // Parse the values
                 for (let i = 0; i < values.length; i++) {

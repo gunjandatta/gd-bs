@@ -127,7 +127,7 @@ export interface IDropdownItem {
     text?: string;
     title?: string;
     toggle?: string;
-    value?: string | number | boolean;
+    value?: string;
 }
 
 /**

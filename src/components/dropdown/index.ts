@@ -434,7 +434,7 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
         if (currentValues == null) { return values; }
 
         // Ensure it's an array
-        if (typeof (currentValues) !== "object") {
+        if (typeof (currentValues) === "string") {
             // Make it an array
             currentValues = [currentValues];
         }
@@ -445,7 +445,7 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
             let currentItem: IDropdownItem = {};
 
             // See if this is a string
-            if (typeof (currentValue) !== "object") {
+            if (typeof (currentValue) == "string") {
                 // Set the text and value properties
                 currentItem.text = currentValue;
                 currentItem.value = currentValue;
@@ -575,7 +575,7 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
         if (this._cb) {
             // Get the values
             let items = this._cb.getValue() as ICheckboxGroupItem[];
-            items = typeof (items) === "object" ? items : [items];
+            items = typeof (items["length"]) === "number" ? items : [items] as any;
 
             // Parse the items
             for (let i = 0; i < items.length; i++) {
@@ -695,7 +695,7 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
     // Sets the dropdown value
     setValue(value) {
         // Ensure it's an array
-        let values = value == null ? [] : (typeof (value) === "object" ? value : [value]);
+        let values = value == null ? [] : (typeof (value.length) === "number" && typeof (value) !== "string" ? value : [value]);
 
         // See if this is a checkbox
         if (this._cb) {
