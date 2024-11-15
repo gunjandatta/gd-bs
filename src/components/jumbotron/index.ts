@@ -48,7 +48,6 @@ export const JumbotronTypeClassNames = new ClassNames([
     "jumbotron-dark",
     "jumbotron-info",
     "jumbotron-light",
-    "jumbotron-link",
     "jumbotron-primary",
     "jumbotron-secondary",
     "jumbotron-success",
