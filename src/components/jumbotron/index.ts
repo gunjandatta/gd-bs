@@ -1,7 +1,59 @@
 import { IJumbotron, IJumbotronProps } from "./types";
 import { Base } from "../base";
+import { ClassNames } from "../classNames";
 import { appendContent } from "../common";
 import { HTML } from "./templates";
+
+/**
+ * Jumbotron Size
+ */
+export enum JumbotronSize {
+    XSmall = 1,
+    Small = 2,
+    Medium = 3,
+    Large = 4,
+    XLarge = 5
+}
+
+/**
+ * Jumbotron Types
+ */
+export enum JumbotronTypes {
+    Danger = 1,
+    Dark = 2,
+    Info = 3,
+    Light = 4,
+    Primary = 5,
+    Secondary = 6,
+    Success = 7,
+    Warning = 8,
+}
+
+/**
+ * Jumbotron Classes
+ */
+export const JumbotronSizeClassNames = new ClassNames([
+    "py-1",
+    "py-2",
+    "py-3",
+    "py-4",
+    "py-5"
+]);
+
+/**
+ * Jumbotron Classes
+ */
+export const JumbotronTypeClassNames = new ClassNames([
+    "jumbotron-danger",
+    "jumbotron-dark",
+    "jumbotron-info",
+    "jumbotron-light",
+    "jumbotron-link",
+    "jumbotron-primary",
+    "jumbotron-secondary",
+    "jumbotron-success",
+    "jumbotron-warning"
+]);
 
 /**
  * Jumbotron
@@ -49,6 +101,14 @@ class _Jumbotron extends Base<IJumbotronProps> implements IJumbotron {
                 this.el.removeChild(lead);
             }
         }
+
+        // Set the size
+        let className = JumbotronSizeClassNames.getByType(this.props.size) || JumbotronSizeClassNames.getByType(JumbotronSize.XLarge);
+        this.el.classList.add(className);
+
+        // Set the type
+        className = JumbotronTypeClassNames.getByType(this.props.type);
+        if (className) { this.el.classList.add(className); }
 
         // Append the content
         appendContent(this.el, this.props.content);

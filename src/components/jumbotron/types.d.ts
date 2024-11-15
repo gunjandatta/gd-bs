@@ -30,6 +30,8 @@
  * ```
  */
 export const Jumbotron: (props: IJumbotronProps, template?: string) => IJumbotron;
+export const JumbotronSize: IJumbotronSize;
+export const JumbotronType: IJumbotronTypes;
 
 import { IBaseProps } from "../types";
 
@@ -50,10 +52,36 @@ export interface IJumbotron {
 /**
  * Jumbotron Properties
  */
-export interface IJumbotronProps<T=Element> extends IBaseProps<IJumbotron> {
+export interface IJumbotronProps<T = Element> extends IBaseProps<IJumbotron> {
     content?: string | T;
     isFluid?: boolean;
     lead?: string;
     onRenderContent?: (el?: HTMLElement) => void;
+    size?: number;
     title?: string;
+    type?: number;
+}
+
+/**
+ * Jumbotron Size
+ */
+export type IJumbotronSize = {
+    XSmall: number;
+    Small: number;
+    Medium: number;
+    Large: number;
+    XLarge: number;
+}
+/**
+ * Jumbotron Types
+ */
+export type IJumbotronTypes = {
+    Danger: number;
+    Dark: number;
+    Info: number;
+    Light: number;
+    Primary: number;
+    Secondary: number;
+    Success: number;
+    Warning: number;
 }
