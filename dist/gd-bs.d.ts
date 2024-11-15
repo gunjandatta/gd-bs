@@ -1658,7 +1658,7 @@ declare module 'gd-bs/components/jumbotron/types' {
         */
     export const Jumbotron: (props: IJumbotronProps, template?: string) => IJumbotron;
     export const JumbotronSize: IJumbotronSize;
-    export const JumbotronType: IJumbotronTypes;
+    export const JumbotronTypes: IJumbotronTypes;
     
     import { IBaseProps } from "gd-bs/components/types";
     
