@@ -1094,7 +1094,7 @@ declare module 'gd-bs/components/dropdown/types' {
             text?: string;
             title?: string;
             toggle?: string;
-            value?: string;
+            value?: string | number | boolean;
     }
     
     /**
