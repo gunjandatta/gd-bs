@@ -102,6 +102,9 @@ export class NavLink extends Base<INavLinkProps> implements INavLink {
     // Returns true if the link is active
     get isActive(): boolean { return this._elLink.classList.contains("active"); }
 
+    // Returns true if the link is disabled
+    get isDisabled(): boolean { return this._elLink.classList.contains("disabled"); }
+
     // Gets the tab name
     get tabName(): string { return this._elLink.innerHTML.trim(); }
     set tabName(value: string) { this._elLink.innerHTML = (value || "").trim(); }

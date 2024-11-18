@@ -55,6 +55,12 @@ class _Nav extends Base<INavProps> implements INav {
             let prevTab: INavLink = null;
             let newTab: INavLink = link;
 
+            // See if this link is disabled
+            if (link.isDisabled) {
+                // Do nothing
+                return;
+            }
+
             // Parse the links
             for (let i = 0; i < this._links.length; i++) {
                 let link = this._links[i];
