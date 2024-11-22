@@ -505,9 +505,9 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
                     items: this.generateCheckboxItems(),
                     multi: this.props.multi,
                     value: this.generateCheckboxValue(this.props.value),
-                    onChange: this.props.onChange ? (values, ev) => {
+                    onChange: this.props.onChange ? (selectedItems, allItems, ev) => {
                         // Pass the current values
-                        this.props.onChange(this.getValue(), ev);
+                        this.props.onChange(selectedItems, ev);
                     } : null
                 });
             } else {
@@ -574,7 +574,7 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
         // See if the checkboxes exist
         if (this._cb) {
             // Get the values
-            let items = this._cb.getValue() as ICheckboxGroupItem[];
+            let items = (this._cb.getValue().selectedItems) as ICheckboxGroupItem[];
             items = typeof (items["length"]) === "number" ? items : [items] as any;
 
             // Parse the items
