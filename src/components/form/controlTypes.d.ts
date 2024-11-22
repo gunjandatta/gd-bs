@@ -101,7 +101,7 @@ export interface IFormControlPropsCheckbox extends IFormControlProps {
     hideLabel?: boolean;
     isInline?: boolean;
     items?: Array<ICheckboxGroupItem>;
-    onChange?: (item: ICheckboxGroupItem, ev?: Event) => void;
+    onChange?: (selectedItem: ICheckboxGroupItem, allItems?: Array<ICheckboxGroupItem>, ev?: Event) => void;
     onControlRendering?: (control: IFormControlPropsCheckbox) => void | PromiseLike<IFormControlPropsCheckbox>;
     onGetValue?: (control: IFormControlPropsCheckbox) => any;
     onValidate?: (control: IFormControlPropsCheckbox, value: IFormControlValidationResult) => boolean | IFormControlValidationResult;
@@ -153,7 +153,7 @@ export interface IFormControlPropsMultiCheckbox extends IFormControlProps {
     hideLabel?: boolean;
     isInline?: boolean;
     items?: Array<ICheckboxGroupItem>;
-    onChange?: (item: Array<ICheckboxGroupItem>, ev?: Event) => void;
+    onChange?: (selectedItems: Array<ICheckboxGroupItem>, allItems?: Array<ICheckboxGroupItem>, ev?: Event) => void;
     onControlRendering?: (control: IFormControlPropsCheckbox) => void | PromiseLike<IFormControlPropsCheckbox>;
     onGetValue?: (control: IFormControlPropsCheckbox) => any;
     onValidate?: (control: IFormControlPropsCheckbox, value: IFormControlValidationResult) => boolean | IFormControlValidationResult;
