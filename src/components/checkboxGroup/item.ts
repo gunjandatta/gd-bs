@@ -105,6 +105,7 @@ export class CheckboxItem {
         this._elCheckbox.addEventListener("click", ev => {
             // Update the value
             this._isSelected = !this._isSelected;
+            this._props.isSelected = this._isSelected
             this._elCheckbox.checked = this._isSelected;
 
             // See if an event is defined
@@ -157,6 +158,7 @@ export class CheckboxItem {
     toggle() {
         // Update the value
         this._isSelected = !this._isSelected;
+        this._props.isSelected = this._isSelected;
 
         // Set the checkbox value
         this._el.querySelector("input").checked = this._isSelected;

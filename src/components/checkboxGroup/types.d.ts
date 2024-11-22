@@ -56,7 +56,7 @@ export interface ICheckboxGroup {
     el: HTMLElement;
 
     /** Gets the values. */
-    getValue: () => ICheckboxGroupItem | Array<ICheckboxGroupItem>;
+    getValue: () => { selectedItems: ICheckboxGroupItem | Array<ICheckboxGroupItem>, allItems: Array<ICheckboxGroupItem> };
 
     /** Hides the checkbox group. */
     hide: () => void;
@@ -80,7 +80,7 @@ export interface ICheckboxGroupItem {
     isSelected?: boolean;
     label?: string;
     name?: string;
-    onChange?: (item: ICheckboxGroupItem, ev?: Event) => void;
+    onChange?: (selectedItem: ICheckboxGroupItem, ev?: Event) => void;
     title?: string;
     type?: number;
 }
@@ -98,7 +98,7 @@ export interface ICheckboxGroupProps extends IBaseProps<ICheckboxGroup> {
     items?: Array<ICheckboxGroupItem>;
     multi?: boolean;
     onRender?: (el?: HTMLElement, item?: ICheckboxGroupItem) => void;
-    onChange?: (items: ICheckboxGroupItem | Array<ICheckboxGroupItem>, ev?: Event) => void;
+    onChange?: (selectedItems: ICheckboxGroupItem | Array<ICheckboxGroupItem>, allItems?: Array<ICheckboxGroupItem>, ev?: Event) => void;
     required?: boolean;
     title?: string;
     type?: number;

@@ -114,8 +114,10 @@ class _CheckboxGroup extends Base<ICheckboxGroupProps> implements ICheckboxGroup
         if (this.props.onChange) {
             // Add a click event
             item.checkbox.addEventListener("click", ev => {
+                let value = this.getValue();
+
                 // Call the event
-                this.props.onChange(this.getValue(), ev);
+                this.props.onChange(value.selectedItems, value.allItems, ev);
             });
         }
     }
@@ -159,22 +161,26 @@ class _CheckboxGroup extends Base<ICheckboxGroupProps> implements ICheckboxGroup
      */
 
     // Method to get the value
-    getValue(): ICheckboxGroupItem | Array<ICheckboxGroupItem> {
-        let values: Array<ICheckboxGroupItem> = [];
+    getValue(): { selectedItems: ICheckboxGroupItem | Array<ICheckboxGroupItem>, allItems: Array<ICheckboxGroupItem> } {
+        let allItems: Array<ICheckboxGroupItem> = [];
+        let selectedItems: Array<ICheckboxGroupItem> = [];
 
         // Parse the checkboxes
         for (let i = 0; i < this._checkboxes.length; i++) {
             let cb = this._checkboxes[i];
 
+            // Add the item
+            allItems.push(cb.props);
+
             // See if it's checked
             if (cb.isChecked) {
                 // Add the value
-                values.push(cb.props);
+                selectedItems.push(cb.props);
             }
         }
 
         // Return the values
-        return this.props.multi ? values : values[0];
+        return { selectedItems: this.props.multi ? selectedItems : selectedItems[0], allItems };
     }
 
     // Sets the checkbox items
@@ -231,8 +237,10 @@ class _CheckboxGroup extends Base<ICheckboxGroupProps> implements ICheckboxGroup
 
         // See if a change event exists
         if (this._initFl && this.props.onChange) {
+            let value = this.getValue();
+
             // Execute the change event
-            this.props.onChange(this.getValue());
+            this.props.onChange(value.selectedItems, value.allItems);
         }
     }
 }
