@@ -681,6 +681,12 @@ export class FormControl implements IFormControl {
         let elControl = (this._cb || this._ddl || this._lb || this._tb) ? (this._cb || this._ddl || this._lb || this._tb).el : this._el;
         let value = this.getValue();
 
+        // See if this is a checkbox
+        if(this._cb) {
+            // Update the value to the selected items
+            value = (value as ICheckboxGroupValue).selectedItems;
+        }
+
         // See if this control is required
         if (this._props.required) {
             // See if a value doesn't exists
@@ -692,11 +698,6 @@ export class FormControl implements IFormControl {
             else if (typeof (value.length) === "number") {
                 // Set the flag
                 validation.isValid = value.length > 0;
-            }
-            // Else, see if this is a checkbox
-            else if (this._cb) {
-                // Set the flag
-                validation.isValid = (value as ICheckboxGroupValue).selectedItems ? true : false;
             }
         }
 

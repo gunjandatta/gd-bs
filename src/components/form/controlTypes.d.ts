@@ -84,7 +84,7 @@ export interface IFormControlProps extends IBaseProps<IFormControl> {
     onControlRendering?: (control: IFormControlProps) => void | PromiseLike<IFormControlProps>;
     onControlRendered?: (control: IFormControl) => void | PromiseLike<IFormControl>;
     onGetValue?: (control: IFormControlProps) => any;
-    onValidate?: (control: IFormControlProps, value: IFormControlValidationResult) => boolean | IFormControlValidationResult;
+    onValidate?: (control: IFormControlProps, results: IFormControlValidationResult) => boolean | IFormControlValidationResult;
     required?: boolean;
     title?: string;
     type?: number;
@@ -104,7 +104,7 @@ export interface IFormControlPropsCheckbox extends IFormControlProps {
     onChange?: (selectedItem: ICheckboxGroupItem, allItems?: Array<ICheckboxGroupItem>, ev?: Event) => void;
     onControlRendering?: (control: IFormControlPropsCheckbox) => void | PromiseLike<IFormControlPropsCheckbox>;
     onGetValue?: (control: IFormControlPropsCheckbox) => any;
-    onValidate?: (control: IFormControlPropsCheckbox, value: IFormControlValidationResult) => boolean | IFormControlValidationResult;
+    onValidate?: (control: IFormControlPropsCheckbox, results: IFormControlValidationResult<ICheckboxGroupItem>, allItems?: Array<ICheckboxGroupItem>) => boolean | IFormControlValidationResult<ICheckboxGroupItem>;
 }
 
 /**
@@ -116,7 +116,7 @@ export interface IFormControlPropsDropdown extends IFormControlProps {
     onControlRendering?: (control: IFormControlPropsDropdown) => void | PromiseLike<IFormControlPropsDropdown>;
     onGetValue?: (control: IFormControlPropsDropdown) => any;
     onMenuRendering?: (props: IPopoverProps) => IPopoverProps;
-    onValidate?: (control: IFormControlPropsDropdown, value: IFormControlValidationResult) => boolean | IFormControlValidationResult;
+    onValidate?: (control: IFormControlPropsDropdown, results: IFormControlValidationResult<IDropdownItem>) => boolean | IFormControlValidationResult<IDropdownItem>;
 }
 
 /**
@@ -140,7 +140,7 @@ export interface IFormControlPropsListBox extends IFormControlProps {
     onChange?: (items: IDropdownItem, ev?: Event) => void;
     onControlRendering?: (control: IFormControlPropsListBox) => void | PromiseLike<IFormControlPropsListBox>;
     onGetValue?: (control: IFormControlPropsListBox) => any;
-    onValidate?: (control: IFormControlPropsListBox, value: IFormControlValidationResult) => boolean | IFormControlValidationResult;
+    onValidate?: (control: IFormControlPropsListBox, results: IFormControlValidationResult<IDropdownItem>) => boolean | IFormControlValidationResult<IDropdownItem>;
     placeholder?: string;
 }
 
@@ -156,7 +156,7 @@ export interface IFormControlPropsMultiCheckbox extends IFormControlProps {
     onChange?: (selectedItems: Array<ICheckboxGroupItem>, allItems?: Array<ICheckboxGroupItem>, ev?: Event) => void;
     onControlRendering?: (control: IFormControlPropsCheckbox) => void | PromiseLike<IFormControlPropsCheckbox>;
     onGetValue?: (control: IFormControlPropsCheckbox) => any;
-    onValidate?: (control: IFormControlPropsCheckbox, value: IFormControlValidationResult) => boolean | IFormControlValidationResult;
+    onValidate?: (control: IFormControlPropsCheckbox, results: IFormControlValidationResult<Array<ICheckboxGroupItem>>, allItems?: Array<ICheckboxGroupItem>) => boolean | IFormControlValidationResult<Array<ICheckboxGroupItem>>;
     renderRow?: boolean;
 }
 
@@ -169,7 +169,7 @@ export interface IFormControlPropsMultiDropdown extends IFormControlProps {
     onControlRendering?: (control: IFormControlPropsDropdown) => void | PromiseLike<IFormControlPropsDropdown>;
     onGetValue?: (control: IFormControlPropsDropdown) => any;
     onMenuRendering?: (props: IPopoverProps) => IPopoverProps;
-    onValidate?: (control: IFormControlPropsDropdown, value: IFormControlValidationResult) => boolean | IFormControlValidationResult;
+    onValidate?: (control: IFormControlPropsDropdown, results: IFormControlValidationResult<Array<IDropdownItem>>) => boolean | IFormControlValidationResult<Array<IDropdownItem>>;
 }
 
 /**
@@ -193,7 +193,7 @@ export interface IFormControlPropsMultiListBox extends IFormControlProps {
     onChange?: (items: Array<IDropdownItem>, ev?: Event) => void;
     onControlRendering?: (control: IFormControlPropsListBox) => void | PromiseLike<IFormControlPropsListBox>;
     onGetValue?: (control: IFormControlPropsListBox) => any;
-    onValidate?: (control: IFormControlPropsListBox, value: IFormControlValidationResult) => boolean | IFormControlValidationResult;
+    onValidate?: (control: IFormControlPropsListBox, results: IFormControlValidationResult<Array<IDropdownItem>>) => boolean | IFormControlValidationResult<Array<IDropdownItem>>;
     placeholder?: string;
 }
 
@@ -210,7 +210,7 @@ export interface IFormControlPropsNumberField extends IFormControlPropsTextField
     min?: number;
     onControlRendering?: (control: IFormControlPropsNumberField) => void | PromiseLike<IFormControlPropsNumberField>;
     onGetValue?: (control: IFormControlPropsNumberField) => any;
-    onValidate?: (control: IFormControlPropsNumberField, value: IFormControlValidationResult) => boolean | IFormControlValidationResult;
+    onValidate?: (control: IFormControlPropsNumberField, results: IFormControlValidationResult<string>) => boolean | IFormControlValidationResult<string>;
     step?: number;
 }
 
@@ -233,7 +233,7 @@ export interface IFormControlPropsTextField extends IFormControlProps {
     onChange?: (value: string, ev?: Event) => void;
     onControlRendering?: (control: IFormControlPropsTextField) => void | PromiseLike<IFormControlPropsTextField>;
     onGetValue?: (control: IFormControlPropsTextField) => any;
-    onValidate?: (control: IFormControlPropsTextField, value: IFormControlValidationResult) => boolean | IFormControlValidationResult;
+    onValidate?: (control: IFormControlPropsTextField, results: IFormControlValidationResult<string>) => boolean | IFormControlValidationResult<string>;
     placeholder?: string;
     prependedLabel?: string;
     rows?: number;
@@ -271,9 +271,9 @@ export type IFormControlTypes = {
 /**
  * Form Control Validation Result
  */
-export interface IFormControlValidationResult {
+export interface IFormControlValidationResult<T = any> {
     invalidMessage?: string;
     isValid?: boolean;
     validMessage?: string;
-    value?: any;
+    value?: T;
 }
