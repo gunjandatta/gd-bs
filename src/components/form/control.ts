@@ -3,10 +3,10 @@ import {
     IFormControlPropsDropdown, IFormControlPropsDropdownButton, IFormControlPropsDropdownCheckbox,
     IFormControlPropsListBox, IFormControlPropsMultiCheckbox,
     IFormControlPropsMultiDropdown, IFormControlPropsMultiDropdownButton, IFormControlPropsMultiDropdownCheckbox,
-    IFormControlPropsMultiListBox, IFormControlPropsMultiSwitch,
+    IFormControlPropsMultiListBox,
     IFormControlPropsRange, IFormControlPropsTextField, IFormControlValidationResult
 } from "./controlTypes";
-import { ICheckboxGroup } from "../checkboxGroup/types";
+import { ICheckboxGroup, ICheckboxGroupValue } from "../checkboxGroup/types";
 import { IDropdown } from "../dropdown/types";
 import { IInputGroup } from "../inputGroup/types";
 import { IListBox } from "../listBox/types";
@@ -692,6 +692,11 @@ export class FormControl implements IFormControl {
             else if (typeof (value.length) === "number") {
                 // Set the flag
                 validation.isValid = value.length > 0;
+            }
+            // Else, see if this is a checkbox
+            else if (this._cb) {
+                // Set the flag
+                validation.isValid = (value as ICheckboxGroupValue).selectedItems ? true : false;
             }
         }
 
