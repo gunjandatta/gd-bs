@@ -385,7 +385,7 @@
     .form-control[readonly] {
         background-color: var(--sp-neutral-quaternary, #d2d0ce);
         border-color: var(--sp-neutral-light, #edebe9);
-        color: var(--sp-neutral-tertiary, #a19f9d);
+        color: var(--sp-primary-text, #333333);
     }
 
     /* Fix validation styling */
