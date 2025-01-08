@@ -597,11 +597,11 @@ export class FormControl implements IFormControl {
             // See if the items were defined
             if ((this._props as IFormControlPropsCheckbox).items) {
                 // Return the value(s)
-                return this._cb.getValue();
+                return this._cb.getValue().selectedItems;
             }
 
             // Return the value
-            return this._cb.getValue() ? true : false;
+            return this._cb.getValue().selectedItems ? true : false;
         }
 
         // See if this is a dropdown
