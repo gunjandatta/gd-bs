@@ -526,6 +526,11 @@
         --bs-list-group-active-border-color: var(--sp-theme-primary, #0078d4);
     }
 
+    /* Use a pointer for tabs */
+    .list-group[role="tablist"]>.list-group-item {
+        cursor: pointer;
+    }
+
     .modal {
         --bs-modal-color: var(--bs-body-color);
     }
