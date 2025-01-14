@@ -681,12 +681,6 @@ export class FormControl implements IFormControl {
         let elControl = (this._cb || this._ddl || this._lb || this._tb) ? (this._cb || this._ddl || this._lb || this._tb).el : this._el;
         let value = this.getValue();
 
-        // See if this is a checkbox
-        if(this._cb) {
-            // Update the value to the selected items
-            value = (value as ICheckboxGroupValue).selectedItems;
-        }
-
         // See if this control is required
         if (this._props.required) {
             // See if a value doesn't exists
