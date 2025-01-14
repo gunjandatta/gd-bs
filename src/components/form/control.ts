@@ -594,13 +594,13 @@ export class FormControl implements IFormControl {
 
         // See if this is a checkbox
         if (this._cb) {
-            // See if the items were defined
-            if ((this._props as IFormControlPropsCheckbox).items) {
-                // Return the value(s)
+            // See if this is a multi-checkbox
+            if (this._props.type == FormControlTypes.MultiCheckbox || this._props.type == FormControlTypes.MultiRadio || this._props.type == FormControlTypes.MultiSwitch) {
+                // Return the selected items
                 return this._cb.getValue().selectedItems;
             }
 
-            // Return the value
+            // Return a boolean
             return this._cb.getValue().selectedItems ? true : false;
         }
 
