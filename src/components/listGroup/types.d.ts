@@ -100,6 +100,7 @@ export interface IListGroupProps<T=Element> extends IBaseProps<IListGroup> {
     isNumbered?: boolean;
     isTabs?: boolean;
     items?: Array<IListGroupItem<T>>;
+    tabClassName?: string;
 }
 
 /**

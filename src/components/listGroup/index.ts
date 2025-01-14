@@ -1,6 +1,7 @@
 import { IListGroup, IListGroupProps } from "./types";
 import { Base } from "../base";
 import { ClassNames } from "../classNames";
+import { setClassNames } from "../common";
 import { ListGroupItem } from "./item";
 import { HTML, HTMLTabs } from "./templates";
 
@@ -112,6 +113,9 @@ class _ListGroup extends Base<IListGroupProps> implements IListGroup {
             if (tabs) {
                 // Configure the events
                 this.configureEvents(item);
+
+                // Set the class names
+                setClassNames(item.elTab, this.props.tabClassName);
 
                 // Add the tab content
                 tabs.appendChild(item.elTab);
