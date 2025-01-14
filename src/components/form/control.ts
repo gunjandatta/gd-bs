@@ -693,6 +693,11 @@ export class FormControl implements IFormControl {
                 // Set the flag
                 validation.isValid = value.length > 0;
             }
+            // Else, see if this is a single checkbox
+            else if (this._cb && typeof (value) === "boolean") {
+                // Set the flag
+                validation.isValid = value;
+            }
         }
 
         // See if an event exists

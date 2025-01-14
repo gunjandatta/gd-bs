@@ -1864,6 +1864,7 @@ declare module 'gd-bs/components/listGroup/types' {
             isNumbered?: boolean;
             isTabs?: boolean;
             items?: Array<IListGroupItem<T>>;
+            tabClassName?: string;
     }
     
     /**
