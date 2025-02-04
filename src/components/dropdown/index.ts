@@ -534,13 +534,13 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
                 if (isForm) {
                     // Ensure the selected values match the index
                     let idx = (menu as HTMLSelectElement).selectedIndex;
-                    if (this._items[idx] && this._items[idx].isSelected == false) {
-                        // Parse the items and ensure none are toggled
+                    if (idx >= 0 && idx < this._items.length) {
+                        // Parse the items and ensure none are toggled except for the selected index
                         for (let i = 0; i < this._items.length; i++) {
                             // Ensure it's not selected
                             if (this._items[i].isSelected) { this._items[i].toggle(); }
                             // Else, toggle it if it's the selected item
-                            else if (idx == i) { this._items[i].toggle(); }
+                            else if (idx == i && this._items[i].isSelected == false) { this._items[i].toggle(); }
                         }
                     }
                 }
