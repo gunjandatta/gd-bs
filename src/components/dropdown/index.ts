@@ -538,7 +538,7 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
                         // Parse the items and ensure none are toggled except for the selected index
                         for (let i = 0; i < this._items.length; i++) {
                             // Ensure it's not selected
-                            if (this._items[i].isSelected) { this._items[i].toggle(); }
+                            if (i != idx && this._items[i].isSelected) { this._items[i].toggle(); }
                             // Else, toggle it if it's the selected item
                             else if (idx == i && this._items[i].isSelected == false) { this._items[i].toggle(); }
                         }
