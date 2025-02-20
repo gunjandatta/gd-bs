@@ -31,18 +31,20 @@ class _Table extends Base<ITableProps> implements ITable {
 
                 // Parse the columns
                 for (let i = 0; i < this.props.columns.length; i++) {
+                    let colProp = this.props.columns[i];
+
                     // Append the column
                     let column = document.createElement("th");
                     row.appendChild(column);
 
                     // See if the footer exists
-                    if (this.props.columns[i].footer) {
+                    if (colProp.footer || colProp.onRenderFooter) {
                         // Set the flag
                         hasFooter = true;
                     }
 
                     // Render the column
-                    this.renderColumn(column, this.props.columns[i]);
+                    this.renderColumn(column, colProp);
                 }
 
                 // See if there is an event
@@ -71,12 +73,6 @@ class _Table extends Base<ITableProps> implements ITable {
                 // Append the column
                 let column = document.createElement("td");
                 row.appendChild(column);
-
-                // See if the footer exists
-                if (this.props.columns[i].footer) {
-                    // Set the flag
-                    hasFooter = true;
-                }
 
                 // Render the column
                 this.renderColumnFooter(column, this.props.columns[i]);
@@ -151,6 +147,8 @@ class _Table extends Base<ITableProps> implements ITable {
 
     // Renders a column footer
     private renderColumnFooter(column: HTMLTableCellElement, props: ITableColumn) {
+        column.innerHTML = props.footer || "";
+
         // See if there is an event for this column
         if (props.onRenderFooter) {
             // Call the event
