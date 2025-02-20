@@ -19,6 +19,8 @@ class _Table extends Base<ITableProps> implements ITable {
 
     // Configure the card group
     private configure() {
+        let hasFooter = false;
+
         // See if columns are defined
         let head = this.el.querySelector("thead");
         if (head) {
@@ -33,8 +35,14 @@ class _Table extends Base<ITableProps> implements ITable {
                     let column = document.createElement("th");
                     row.appendChild(column);
 
+                    // See if the footer exists
+                    if (this.props.columns[i].footer) {
+                        // Set the flag
+                        hasFooter = true;
+                    }
+
                     // Render the column
-                    this.renderColumn(i, column, this.props.columns[i]);
+                    this.renderColumn(column, this.props.columns[i]);
                 }
 
                 // See if there is an event
@@ -47,33 +55,32 @@ class _Table extends Base<ITableProps> implements ITable {
 
         // Add the rows
         this.addRows(this.props.rows);
-    }
 
-    // Renders a column
-    private renderColumn(colIdx: number, column: HTMLTableCellElement, props: ITableColumn) {
-        column.innerHTML = props.isHidden ? "" : props.title || props.name;
-        column.setAttribute("scope", "col");
+        // See if the footer exists
+        if (hasFooter) {
+            // Append the footer
+            let footer = document.createElement("tfoot");
+            this.el.appendChild(footer);
 
-        // See if there is an event for this column
-        if (props.onRenderHeader) {
-            // Call the event
-            props.onRenderHeader(column, props);
-        }
+            // Append the row
+            let row = document.createElement("tr");
+            footer.appendChild(row);
 
-        // See if there is an event for this component
-        if (this.props.onRenderHeaderCell) {
-            // Call the event
-            this.props.onRenderHeaderCell(column, props);
-        }
+            // Parse the columns
+            for (let i = 0; i < this.props.columns.length; i++) {
+                // Append the column
+                let column = document.createElement("td");
+                row.appendChild(column);
 
-        // See if there is a click event
-        if (props.onClickHeader || this.props.onClickHeader) {
-            // Add the click event
-            column.addEventListener("click", ev => {
-                // Call the event
-                props.onClickHeader ? props.onClickHeader(column, props) : null;
-                this.props.onClickHeader ? this.props.onClickHeader(column, props) : null;
-            });
+                // See if the footer exists
+                if (this.props.columns[i].footer) {
+                    // Set the flag
+                    hasFooter = true;
+                }
+
+                // Render the column
+                this.renderColumnFooter(column, this.props.columns[i]);
+            }
         }
     }
 
@@ -110,6 +117,59 @@ class _Table extends Base<ITableProps> implements ITable {
                 // Call the event
                 props.onClickCell ? props.onClickCell(cell, props, data, rowIdx) : null;
                 this.props.onClickCell ? this.props.onClickCell(cell, props, data, rowIdx) : null;
+            });
+        }
+    }
+
+    // Renders a column
+    private renderColumn(column: HTMLTableCellElement, props: ITableColumn) {
+        column.innerHTML = props.isHidden ? "" : props.title || props.name;
+        column.setAttribute("scope", "col");
+
+        // See if there is an event for this column
+        if (props.onRenderHeader) {
+            // Call the event
+            props.onRenderHeader(column, props);
+        }
+
+        // See if there is an event for this component
+        if (this.props.onRenderHeaderCell) {
+            // Call the event
+            this.props.onRenderHeaderCell(column, props);
+        }
+
+        // See if there is a click event
+        if (props.onClickHeader || this.props.onClickHeader) {
+            // Add the click event
+            column.addEventListener("click", ev => {
+                // Call the event
+                props.onClickHeader ? props.onClickHeader(column, props) : null;
+                this.props.onClickHeader ? this.props.onClickHeader(column, props) : null;
+            });
+        }
+    }
+
+    // Renders a column footer
+    private renderColumnFooter(column: HTMLTableCellElement, props: ITableColumn) {
+        // See if there is an event for this column
+        if (props.onRenderFooter) {
+            // Call the event
+            props.onRenderFooter(column, props);
+        }
+
+        // See if there is an event for this component
+        if (this.props.onRenderFooterCell) {
+            // Call the event
+            this.props.onRenderFooterCell(column, props);
+        }
+
+        // See if there is a click event
+        if (props.onClickFooter || this.props.onClickFooter) {
+            // Add the click event
+            column.addEventListener("click", ev => {
+                // Call the event
+                props.onClickFooter ? props.onClickFooter(column, props) : null;
+                this.props.onClickFooter ? this.props.onClickFooter(column, props) : null;
             });
         }
     }

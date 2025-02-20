@@ -85,10 +85,13 @@ export interface ITable {
  */
 export interface ITableProps extends IBaseProps<ITable> {
     columns?: Array<ITableColumn>;
-    onClickCell?: (el: HTMLTableDataCellElement, column?: ITableColumn, data?: any, rowIdx?: number) => void;
-    onClickHeader?: (el: HTMLTableHeaderCellElement, column?: ITableColumn) => void;
-    onRenderCell?: (el?: HTMLTableDataCellElement, column?: ITableColumn, data?: any, rowIdx?: number) => void;
-    onRenderHeaderCell?: (el?: HTMLTableDataCellElement, column?: ITableColumn) => void;
+    onClickCell?: (el: HTMLTableCellElement, column?: ITableColumn, data?: any, rowIdx?: number) => void;
+    onClickFooter?: (el: HTMLTableCellElement, column?: ITableColumn) => void;
+    onClickHeader?: (el: HTMLTableCellElement, column?: ITableColumn) => void;
+    onRenderCell?: (el?: HTMLTableCellElement, column?: ITableColumn, data?: any, rowIdx?: number) => void;
+    onRenderFooterCell?: (el?: HTMLTableCellElement, column?: ITableColumn) => void;
+    onRenderFooterRow?: (el?: HTMLTableRowElement) => void;
+    onRenderHeaderCell?: (el?: HTMLTableCellElement, column?: ITableColumn) => void;
     onRenderHeaderRow?: (el?: HTMLTableRowElement) => void;
     onRenderRow?: (el?: HTMLTableRowElement, data?: any, rowIdx?: number) => void;
     rows?: Array<any>;
@@ -100,12 +103,15 @@ export interface ITableProps extends IBaseProps<ITable> {
 export interface ITableColumn {
     className?: string;
     data?: any;
+    footer?: string;
     isHidden?: boolean;
     name: string;
-    onClickCell?: (el: HTMLTableDataCellElement, column?: ITableColumn, data?: any, rowIdx?: number) => void;
-    onClickHeader?: (el: HTMLTableHeaderCellElement, column?: ITableColumn) => void;
-    onRenderCell?: (el: HTMLTableDataCellElement, column?: ITableColumn, data?: any, rowIdx?: number) => void;
-    onRenderHeader?: (el?: HTMLTableDataCellElement, column?: ITableColumn) => void;
+    onClickCell?: (el: HTMLTableCellElement, column?: ITableColumn, data?: any, rowIdx?: number) => void;
+    onClickFooter?: (el: HTMLTableCellElement, column?: ITableColumn) => void;
+    onClickHeader?: (el: HTMLTableCellElement, column?: ITableColumn) => void;
+    onRenderCell?: (el: HTMLTableCellElement, column?: ITableColumn, data?: any, rowIdx?: number) => void;
+    onRenderFooter?: (el?: HTMLTableCellElement, column?: ITableColumn) => void;
+    onRenderHeader?: (el?: HTMLTableCellElement, column?: ITableColumn) => void;
     scope?: string;
     title?: string;
 }
