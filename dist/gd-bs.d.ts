@@ -1758,7 +1758,7 @@ declare module 'gd-bs/components/listBox/types' {
             el: HTMLElement;
     
             /** The selected listbox items. */
-            getValue: () => Array<IDropdownItem>;
+            getValue: () => IDropdownItem | Array<IDropdownItem>;
     
             /** Sets the options */
             setOptions: (items: Array<IDropdownItem>) => void;

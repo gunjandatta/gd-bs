@@ -198,7 +198,10 @@ class _ListBox extends Base<IListBoxProps> implements IListBox {
      */
 
     // Gets the selected items
-    getValue() { return this._selectedItems; }
+    getValue() {
+        // Return the value
+        return this.props.multi ? this._selectedItems : this._selectedItems[0];
+    }
 
     // Sets the options
     setOptions(items: Array<IDropdownItem> = []) {

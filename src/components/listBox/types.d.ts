@@ -81,7 +81,7 @@ export interface IListBox extends IBase<IListBoxProps> {
     el: HTMLElement;
 
     /** The selected listbox items. */
-    getValue: () => Array<IDropdownItem>;
+    getValue: () => IDropdownItem | Array<IDropdownItem>;
 
     /** Sets the options */
     setOptions: (items: Array<IDropdownItem>) => void;
