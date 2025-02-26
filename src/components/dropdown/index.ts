@@ -455,15 +455,7 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
             }
 
             // Find the item
-            let item = this.props.items?.find((item) => {
-                // Match by the text property if the value doesn't exist
-                if (typeof (item.value) === undefined) { return item.text == currentItem.text; }
-
-                // See if the value property matches
-                return item.value == currentItem.value;
-            });
-
-            // See if an item was found
+            let item = this.props.items?.find((item) => { return item.value == currentValue || item.text == currentValue; });
             if (item) {
                 // Add the text property
                 values.push(item.text);
