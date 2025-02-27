@@ -1,6 +1,8 @@
 import { IInputGroup, IInputGroupFileValue, IInputGroupProps } from "./types";
 import { Base } from "../base";
 import { Button } from "../button";
+import { Dropdown } from "../dropdown";
+import { IDropdown, IDropdownItem } from "../dropdown/types";
 import { HTML } from "./templates";
 
 /**
@@ -22,6 +24,8 @@ export enum InputGroupTypes {
  * @param props The input group properties.
  */
 class _InputGroup extends Base<IInputGroupProps> implements IInputGroup {
+    private _ddlAppended: IDropdown = null;
+    private _ddlPrepended: IDropdown = null;
     private _fileValue: IInputGroupFileValue = null;
     private _initFl: boolean = false;
 
@@ -80,6 +84,13 @@ class _InputGroup extends Base<IInputGroupProps> implements IInputGroup {
                 this.el.insertBefore(Button(buttons[i]).el, elInput);
             }
 
+            // See if there is a dropdown
+            if (this.props.prependedDropdown) {
+                // Add the dropdown
+                this._ddlPrepended = Dropdown(this.props.prependedDropdown);
+                this.el.appendChild(this._ddlPrepended.el);
+            }
+
             // Default the appended buttons
             let appendedButtons = this.props.appendedButtons || [];
             if (this.props.type == InputGroupTypes.Range) {
@@ -103,6 +114,13 @@ class _InputGroup extends Base<IInputGroupProps> implements IInputGroup {
             for (let i = 0; i < appendedButtons.length; i++) {
                 // Add the button
                 this.el.appendChild(Button(appendedButtons[i]).el);
+            }
+
+            // See if there is a dropdown
+            if (this.props.appendedDropdown) {
+                // Add the dropdown
+                this._ddlAppended = Dropdown(this.props.appendedDropdown);
+                this.el.appendChild(this._ddlAppended.el);
             }
         }
     }
@@ -289,9 +307,53 @@ class _InputGroup extends Base<IInputGroupProps> implements IInputGroup {
      * Public Interface
      */
 
+    get appendedDropdown() { return this._ddlAppended; }
+
     getFileInfo() { return this._fileValue; }
 
-    getValue() { return this.elTextbox.value; }
+    getValue() {
+        let value = "";
+
+        // See if a prepended dropdown exist
+        if (this._ddlPrepended) {
+            // See if this is a multi item
+            if (this.props.prependedDropdown.multi) {
+                // Set the value
+                let items = this._ddlPrepended.getValue() as IDropdownItem[];
+                for (let i = 0; i < items.length; i++) {
+                    // Add the value
+                    value += items[i].value;
+                }
+            } else {
+                // Set the value
+                value += (this._ddlPrepended.getValue() as IDropdownItem)?.value;
+            }
+        }
+
+        // Append the input value
+        value += this.elTextbox.value;
+
+        // See if a appended dropdown exist
+        if (this._ddlAppended) {
+            // See if this is a multi item
+            if (this.props.appendedDropdown.multi) {
+                // Set the value
+                let items = this._ddlAppended.getValue() as IDropdownItem[];
+                for (let i = 0; i < items.length; i++) {
+                    // Add the value
+                    value += items[i].value;
+                }
+            } else {
+                // Set the value
+                value += (this._ddlAppended.getValue() as IDropdownItem)?.value;
+            }
+        }
+
+        // Return the value
+        return value;
+    }
+
+    get prependedDropdown() { return this._ddlPrepended; }
 
     // Sets the textbox value
     setValue(value: string = "") {

@@ -134,6 +134,7 @@ export class FormControl implements IFormControl {
             case FormControlTypes.ColorPicker:
                 // Add the input
                 this._tb = InputGroup({
+                    appendedDropdown: (this.props as IFormControlPropsTextField).appendedDropdown,
                     appendedLabel: (this.props as IFormControlPropsTextField).appendedLabel,
                     className,
                     id: this._props.id,
@@ -141,6 +142,7 @@ export class FormControl implements IFormControl {
                     isReadonly: this._props.isReadonly,
                     onChange: (this._props as IFormControlPropsTextField).onChange,
                     placeholder: (this._props as IFormControlPropsTextField).placeholder,
+                    prependedDropdown: (this.props as IFormControlPropsTextField).prependedDropdown,
                     prependedLabel: (this.props as IFormControlPropsTextField).prependedLabel,
                     required: this._props.required,
                     title: this._props.title,
@@ -221,6 +223,7 @@ export class FormControl implements IFormControl {
             case FormControlTypes.Email:
                 // Add the input
                 this._tb = InputGroup({
+                    appendedDropdown: (this.props as IFormControlPropsTextField).appendedDropdown,
                     appendedLabel: (this.props as IFormControlPropsTextField).appendedLabel,
                     className,
                     id: this._props.id,
@@ -228,6 +231,7 @@ export class FormControl implements IFormControl {
                     isReadonly: this._props.isReadonly,
                     onChange: (this._props as IFormControlPropsTextField).onChange,
                     placeholder: (this._props as IFormControlPropsTextField).placeholder,
+                    prependedDropdown: (this.props as IFormControlPropsTextField).prependedDropdown,
                     prependedLabel: (this.props as IFormControlPropsTextField).prependedLabel,
                     required: this._props.required,
                     title: this._props.title,
@@ -239,6 +243,7 @@ export class FormControl implements IFormControl {
             case FormControlTypes.File:
                 // Add the input
                 this._tb = InputGroup({
+                    appendedDropdown: (this.props as IFormControlPropsTextField).appendedDropdown,
                     appendedLabel: (this.props as IFormControlPropsTextField).appendedLabel,
                     className,
                     id: this._props.id,
@@ -246,6 +251,7 @@ export class FormControl implements IFormControl {
                     isReadonly: this._props.isReadonly,
                     onChange: (this._props as IFormControlPropsTextField).onChange,
                     placeholder: (this._props as IFormControlPropsTextField).placeholder,
+                    prependedDropdown: (this.props as IFormControlPropsTextField).prependedDropdown,
                     prependedLabel: (this.props as IFormControlPropsTextField).prependedLabel,
                     required: this._props.required,
                     title: this._props.title,
@@ -398,6 +404,7 @@ export class FormControl implements IFormControl {
             case FormControlTypes.Password:
                 // Add the input
                 this._tb = InputGroup({
+                    appendedDropdown: (this.props as IFormControlPropsTextField).appendedDropdown,
                     appendedLabel: (this.props as IFormControlPropsTextField).appendedLabel,
                     className,
                     id: this._props.id,
@@ -405,6 +412,7 @@ export class FormControl implements IFormControl {
                     isReadonly: this._props.isReadonly,
                     onChange: (this._props as IFormControlPropsTextField).onChange,
                     placeholder: (this._props as IFormControlPropsTextField).placeholder,
+                    prependedDropdown: (this.props as IFormControlPropsTextField).prependedDropdown,
                     prependedLabel: (this.props as IFormControlPropsTextField).prependedLabel,
                     required: this._props.required,
                     title: this._props.title,
@@ -453,6 +461,7 @@ export class FormControl implements IFormControl {
             case FormControlTypes.Readonly:
                 // Add the input
                 this._tb = InputGroup({
+                    appendedDropdown: (this.props as IFormControlPropsTextField).appendedDropdown,
                     appendedLabel: (this.props as IFormControlPropsTextField).appendedLabel,
                     className,
                     id: this._props.id,
@@ -460,6 +469,7 @@ export class FormControl implements IFormControl {
                     isReadonly: true,
                     onChange: (this._props as IFormControlPropsTextField).onChange,
                     placeholder: (this._props as IFormControlPropsTextField).placeholder,
+                    prependedDropdown: (this.props as IFormControlPropsTextField).prependedDropdown,
                     prependedLabel: (this.props as IFormControlPropsTextField).prependedLabel,
                     required: this._props.required,
                     title: this._props.title,
@@ -489,6 +499,7 @@ export class FormControl implements IFormControl {
             case FormControlTypes.TextArea:
                 // Add the input
                 this._tb = InputGroup({
+                    appendedDropdown: (this.props as IFormControlPropsTextField).appendedDropdown,
                     appendedLabel: (this.props as IFormControlPropsTextField).appendedLabel,
                     className,
                     id: this._props.id,
@@ -496,6 +507,7 @@ export class FormControl implements IFormControl {
                     isReadonly: this._props.isReadonly,
                     onChange: (this._props as IFormControlPropsTextField).onChange,
                     placeholder: (this._props as IFormControlPropsTextField).placeholder,
+                    prependedDropdown: (this.props as IFormControlPropsTextField).prependedDropdown,
                     prependedLabel: (this.props as IFormControlPropsTextField).prependedLabel,
                     required: this._props.required,
                     rows: (this._props as IFormControlPropsTextField).rows,
@@ -508,6 +520,7 @@ export class FormControl implements IFormControl {
             case FormControlTypes.TextField:
                 // Add the input
                 this._tb = InputGroup({
+                    appendedDropdown: (this.props as IFormControlPropsTextField).appendedDropdown,
                     appendedLabel: (this.props as IFormControlPropsTextField).appendedLabel,
                     className,
                     id: this._props.id,
@@ -515,6 +528,7 @@ export class FormControl implements IFormControl {
                     isReadonly: this._props.isReadonly,
                     onChange: (this._props as IFormControlPropsTextField).onChange,
                     placeholder: (this._props as IFormControlPropsTextField).placeholder,
+                    prependedDropdown: (this.props as IFormControlPropsTextField).prependedDropdown,
                     prependedLabel: (this.props as IFormControlPropsTextField).prependedLabel,
                     required: this._props.required,
                     title: this._props.title,

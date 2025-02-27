@@ -1143,7 +1143,7 @@ declare module 'gd-bs/components/form/controlTypes' {
     
     import { IBaseProps } from "gd-bs/components/types";
     import { ICheckboxGroup, ICheckboxGroupItem } from "gd-bs/components/checkboxGroup/types";
-    import { IDropdown, IDropdownItem } from "gd-bs/components/dropdown/types";
+    import { IDropdown, IDropdownItem, IDropdownProps } from "gd-bs/components/dropdown/types";
     import { IInputGroup } from "gd-bs/components/inputGroup/types";
     import { IListBox } from "gd-bs/components/listBox/types";
     import { IPopoverProps } from "gd-bs/components/popover/types";
@@ -1349,6 +1349,7 @@ declare module 'gd-bs/components/form/controlTypes' {
         * Form Control Properties - TextField
         */
     export interface IFormControlPropsTextField extends IFormControlProps {
+            appendedDropdown?: IDropdownProps;
             appendedLabel?: string;
             el?: HTMLInputElement;
             onChange?: (value: string, ev?: Event) => void;
@@ -1356,6 +1357,7 @@ declare module 'gd-bs/components/form/controlTypes' {
             onGetValue?: (control: IFormControlPropsTextField) => any;
             onValidate?: (control: IFormControlPropsTextField, results: IFormControlValidationResult<string>) => boolean | IFormControlValidationResult<string>;
             placeholder?: string;
+            prependedDropdown?: IDropdownProps;
             prependedLabel?: string;
             rows?: number;
     }
@@ -1568,6 +1570,7 @@ declare module 'gd-bs/components/inputGroup/types' {
     
     import { IBaseProps } from "gd-bs/components/types";
     import { IButtonProps } from "gd-bs/components/button/types";
+    import { IDropdown, IDropdownProps } from "gd-bs/components/dropdown/types";
     
     /** Input Group File Value */
     export interface IInputGroupFileValue {
@@ -1579,6 +1582,9 @@ declare module 'gd-bs/components/inputGroup/types' {
         * Input Group
         */
     export interface IInputGroup {
+            /** Reference to the appended dropdown. */
+            appendedDropdown: IDropdown;
+    
             /** The input group element. */
             el: HTMLElement;
     
@@ -1594,6 +1600,9 @@ declare module 'gd-bs/components/inputGroup/types' {
             /** Hides the input group. */
             hide: () => void;
     
+            /** Reference to the prepended dropdown. */
+            prependedDropdown: IDropdown;
+    
             /** Method to set the value. */
             setValue: (value: string) => void;
     
@@ -1606,6 +1615,7 @@ declare module 'gd-bs/components/inputGroup/types' {
         */
     export interface IInputGroupProps extends IBaseProps<IInputGroup> {
             appendedButtons?: Array<IButtonProps>;
+            appendedDropdown?: IDropdownProps;
             appendedLabel?: string;
             formFl?: boolean;
             id?: string;
@@ -1620,6 +1630,7 @@ declare module 'gd-bs/components/inputGroup/types' {
             onChange?: (value?: string, ev?: Event) => void;
             placeholder?: string;
             prependedButtons?: Array<IButtonProps>;
+            prependedDropdown?: IDropdownProps;
             prependedLabel?: string;
             required?: boolean;
             rows?: number;

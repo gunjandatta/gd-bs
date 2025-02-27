@@ -22,7 +22,7 @@ export const FormControl: (props: IFormControlProps) => IFormControl;
 
 import { IBaseProps } from "../types";
 import { ICheckboxGroup, ICheckboxGroupItem } from "../checkboxGroup/types";
-import { IDropdown, IDropdownItem } from "../dropdown/types";
+import { IDropdown, IDropdownItem, IDropdownProps } from "../dropdown/types";
 import { IInputGroup } from "../inputGroup/types";
 import { IListBox } from "../listBox/types";
 import { IPopoverProps } from "../popover/types";
@@ -228,6 +228,7 @@ export interface IFormControlPropsSwitch extends IFormControlPropsCheckbox { }
  * Form Control Properties - TextField
  */
 export interface IFormControlPropsTextField extends IFormControlProps {
+    appendedDropdown?: IDropdownProps;
     appendedLabel?: string;
     el?: HTMLInputElement;
     onChange?: (value: string, ev?: Event) => void;
@@ -235,6 +236,7 @@ export interface IFormControlPropsTextField extends IFormControlProps {
     onGetValue?: (control: IFormControlPropsTextField) => any;
     onValidate?: (control: IFormControlPropsTextField, results: IFormControlValidationResult<string>) => boolean | IFormControlValidationResult<string>;
     placeholder?: string;
+    prependedDropdown?: IDropdownProps;
     prependedLabel?: string;
     rows?: number;
 }

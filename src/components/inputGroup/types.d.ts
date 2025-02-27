@@ -38,6 +38,7 @@ export const InputGroupTypes: IInputGroupTypes;
 
 import { IBaseProps } from "../types";
 import { IButtonProps } from "../button/types";
+import { IDropdown, IDropdownProps } from "../dropdown/types";
 
 /** Input Group File Value */
 export interface IInputGroupFileValue {
@@ -49,6 +50,9 @@ export interface IInputGroupFileValue {
  * Input Group
  */
 export interface IInputGroup {
+    /** Reference to the appended dropdown. */
+    appendedDropdown: IDropdown;
+
     /** The input group element. */
     el: HTMLElement;
 
@@ -64,6 +68,9 @@ export interface IInputGroup {
     /** Hides the input group. */
     hide: () => void;
 
+    /** Reference to the prepended dropdown. */
+    prependedDropdown: IDropdown;
+
     /** Method to set the value. */
     setValue: (value: string) => void;
 
@@ -76,6 +83,7 @@ export interface IInputGroup {
  */
 export interface IInputGroupProps extends IBaseProps<IInputGroup> {
     appendedButtons?: Array<IButtonProps>;
+    appendedDropdown?: IDropdownProps;
     appendedLabel?: string;
     formFl?: boolean;
     id?: string;
@@ -90,6 +98,7 @@ export interface IInputGroupProps extends IBaseProps<IInputGroup> {
     onChange?: (value?: string, ev?: Event) => void;
     placeholder?: string;
     prependedButtons?: Array<IButtonProps>;
+    prependedDropdown?: IDropdownProps;
     prependedLabel?: string;
     required?: boolean;
     rows?: number;
