@@ -88,7 +88,7 @@ class _InputGroup extends Base<IInputGroupProps> implements IInputGroup {
             if (this.props.prependedDropdown) {
                 // Add the dropdown
                 this._ddlPrepended = Dropdown(this.props.prependedDropdown);
-                this.el.appendChild(this._ddlPrepended.el);
+                this.el.insertBefore(this._ddlPrepended.el, elInput);
             }
 
             // Default the appended buttons
