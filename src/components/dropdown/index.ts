@@ -504,6 +504,7 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
                 });
             } else {
                 let isForm = menu.nodeName == "SELECT";
+                let value: string[] = [];
 
                 // Parse the items
                 let items = this.props.items || [];
@@ -511,6 +512,9 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
                     // Create the item
                     let item = isForm ? new DropdownFormItem(items[i], this.props) : new DropdownItem(items[i], this.props);
                     this._items.push(item);
+
+                    // See if this item is selected
+                    if (item.isSelected) { value.push(item.props.value || item.props.text); }
 
                     // See if this isn't for a form
                     if (!isForm) {
@@ -521,6 +525,9 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
                     // Add the item to the menu
                     menu.appendChild(item.el);
                 }
+
+                // Set the value
+                this.setValue(value);
 
                 // See if this is a form
                 if (isForm) {
