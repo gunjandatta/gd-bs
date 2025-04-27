@@ -5,6 +5,7 @@ import * as Components from "./components";
  * Looks through the html code to find components and render them.
  */
 class RenderComponents {
+    private _component = null;
     private _el: HTMLElement = null;
 
     // The properties for the component
@@ -12,16 +13,18 @@ class RenderComponents {
     get Props(): any[] { return this._props; }
 
     // Constructor
-    constructor(el: HTMLElement, propsOnly: boolean = false) {
+    constructor(el: HTMLElement, propsOnly: boolean = false, targetSelf: boolean = false) {
         this._el = el;
 
         // Render the components
-        this.render(propsOnly);
+        this.render(propsOnly, targetSelf);
     }
 
     // Gets the custom elements
-    private getElements(): HTMLElement[] {
+    private getElements(targetSelf: boolean): HTMLElement[] {
         let bsElements = [];
+
+        if (targetSelf) { return [this._el]; }
 
         // Get all the elements and find the custom components
         this._el.childNodes.forEach(el => {
@@ -36,60 +39,52 @@ class RenderComponents {
 
     // Converts the custom childelements
     private getChildItems(el: HTMLElement, propName: string, componentName: string, removeFl: boolean = false) {
+        let items = [];
+
         // Get the item elements
-        let elItems = el.querySelectorAll(propName);
-        if (elItems.length > 0) {
-            let items = [];
+        el.querySelectorAll(propName).forEach((elItem: HTMLElement) => {
+            // Ensure this is an item
+            if (elItem.nodeName == propName.toUpperCase()) {
+                let item = this.getProps(elItem, componentName);
 
-            // Parse the elements
-            for (let i = 0; i < elItems.length; i++) {
-                let elItem = elItems[i] as HTMLElement;
-
-                // Ensure this is an item
-                if (elItem.nodeName == propName.toUpperCase()) {
-                    let item = this.getProps(elItem, componentName);
-
-                    // See if there is content
-                    if (elItem.innerHTML) {
-                        // Set custom child elements
-                        switch (elItem.nodeName) {
-                            case "CARD-BODY":
-                                item.actions = this.getChildItems(elItem, "card-action", elItem.nodeName, true);
-                                break;
-                        }
-
-                        // Set the custom property
-                        switch (componentName) {
-                            case "ACCORDION":
-                            case "CARD":
-                            case "CAROUSEL":
-                                item.content = item.content || elItem.innerHTML;
-                                break;
-                            case "CHECKBOX-GROUP":
-                                item.label = item.label || elItem.innerHTML;
-                                break;
-                            case "BREADCRUMB":
-                            case "CARD-BODY":
-                            case "DROPDOWN":
-                                item.text = item.text || elItem.innerHTML;
-                                break;
-                        }
+                // See if there is content
+                if (elItem.innerHTML) {
+                    // Set custom child elements
+                    switch (elItem.nodeName) {
+                        case "CARD-BODY":
+                            item.actions = this.getChildItems(elItem, "card-action", elItem.nodeName, true);
+                            break;
                     }
 
-                    // Add the item
-                    items.push(item);
-
-                    // See if we are removing the property
-                    if (removeFl) { el.removeChild(elItem); }
+                    // Set the custom property
+                    switch (componentName) {
+                        case "ACCORDION":
+                        case "CARD":
+                        case "CAROUSEL":
+                            item.content = item.content || elItem.innerHTML;
+                            break;
+                        case "CHECKBOX-GROUP":
+                            item.label = item.label || elItem.innerHTML;
+                            break;
+                        case "BREADCRUMB":
+                        case "CARD-BODY":
+                        case "DROPDOWN":
+                        case "FORM-CONTROL":
+                            item.text = item.text || elItem.innerHTML;
+                            break;
+                    }
                 }
-            }
 
-            // Return the items
-            return items;
-        }
+                // Add the item
+                items.push(item);
+
+                // Remove the item
+                elItem.remove();
+            }
+        });
 
         // Return nothing
-        return null;
+        return items.length > 0 ? items : undefined;
     }
 
     // Gets the properties of an element and returns an object
@@ -181,63 +176,120 @@ class RenderComponents {
     }
 
     // Renders the custom components
-    private render(propsOnly: boolean) {
+    private render(propsOnly: boolean, targetSelf: boolean) {
         // Parse the elements
-        this.getElements().forEach((el: HTMLElement) => {
+        this.getElements(targetSelf).forEach((el: HTMLElement) => {
             let componentName = el.nodeName.substring(3);
 
             // Get the component props
             let props = { ...this.getProps(el, componentName), el };
 
             // Generate the component
-            let elComponent: HTMLElement = null;
             switch (componentName) {
                 case "ACCORDION":
                     props.items = this.getChildItems(el, "item", componentName);
-                    propsOnly ? null : elComponent = Components.Accordion(props).el;
+                    propsOnly ? null : this._component = Components.Accordion(props);
                     break;
                 case "ALERT":
-                    propsOnly ? null : elComponent = Components.Alert(props).el;
+                    propsOnly ? null : this._component = Components.Alert(props);
                     break;
                 case "BADGE":
-                    propsOnly ? null : elComponent = Components.Badge(props).el;
+                    propsOnly ? null : this._component = Components.Badge(props);
                     break;
                 case "BREADCRUMB":
-                    propsOnly ? null : elComponent = Components.Breadcrumb(props).el;
+                    propsOnly ? null : this._component = Components.Breadcrumb(props);
                     break;
                 case "BUTTON":
-                    propsOnly ? null : elComponent = Components.Button(props).el;
+                    propsOnly ? null : this._component = Components.Button(props);
                     break;
                 case "CARD":
                     props.body = this.getChildItems(el, "card-body", componentName);
                     props.header = this.getChildItems(el, "card-footer", componentName);
                     props.footer = this.getChildItems(el, "card-header", componentName);
-                    propsOnly ? null : elComponent = Components.Card(props).el;
+                    propsOnly ? null : this._component = Components.Card(props);
                     break;
                 case "CARD-GROUP":
                     props.cards = (new RenderComponents(el, true)).Props;
-                    propsOnly ? null : elComponent = Components.CardGroup(props).el;
+                    propsOnly ? null : this._component = Components.CardGroup(props);
                     break;
                 case "CAROUSEL":
                     props.items = this.getChildItems(el, "item", componentName);
-                    propsOnly ? null : elComponent = Components.Carousel(props).el;
+                    propsOnly ? null : this._component = Components.Carousel(props);
                     break;
                 case "CHECKBOX-GROUP":
                     props.items = this.getChildItems(el, "item", componentName);
-                    propsOnly ? null : elComponent = Components.CheckboxGroup(props).el;
+                    propsOnly ? null : this._component = Components.CheckboxGroup(props);
                     break;
                 case "COLLAPSE":
-                    propsOnly ? null : elComponent = Components.Collapse(props).el;
+                    propsOnly ? null : this._component = Components.Collapse(props);
                     break;
                 case "DROPDOWN":
                     props.items = this.getChildItems(el, "item", componentName);
-                    propsOnly ? null : elComponent = Components.Dropdown(props).el;
+                    propsOnly ? null : this._component = Components.Dropdown(props);
                     break;
                 case "FORM":
-                    propsOnly ? null : elComponent = Components.Form(props).el;
+                    let controls = [];
+                    let rows = [];
+
+                    // Parse the child elements
+                    for (let i = 0; i < el.children.length; i++) {
+                        let elChild = el.children[i] as HTMLElement;
+
+                        switch (elChild.nodeName) {
+                            // Append the control
+                            case "BS-FORM-CONTROL":
+                                controls.push((new RenderComponents(elChild, true, true)).Props[0]);
+                                break;
+
+                            // Append the row
+                            case "ROW":
+                                let columns = [];
+                                let rowControls = (new RenderComponents(elChild, true)).Props;
+                                if (rowControls?.length > 0) {
+                                    // Append the control
+                                    for (let i = 0; i < rowControls.length; i++) {
+                                        columns.push({ control: rowControls[i] });
+                                    }
+                                }
+
+                                // Append the row
+                                rows.push({ columns });
+                                break;
+
+                            // Default
+                            default:
+                                // Add it to the appropriate property
+                                // Move the custom html
+                                if (rows.length > 0) {
+                                    rows.push({
+                                        columns: [{
+                                            control: {
+                                                onControlRendered: (ctrl) => { ctrl.el.appendChild(elChild); }
+                                            }
+                                        }]
+                                    });
+                                } else {
+                                    controls.push({
+                                        onControlRendered: (ctrl) => { ctrl.el.appendChild(elChild); }
+                                    });
+                                }
+                                break;
+                        }
+                    }
+
+                    // Set the rows
+                    props.rows = rows.length > 0 ? rows : undefined;
+
+                    // Set the controls
+                    //props.controls = this.getChildItems(el, "bs-form-control", componentName);
+                    props.controls = controls.length > 0 ? controls : undefined;
+
+                    // Render the form
+                    propsOnly ? null : this._component = Components.Form(props);
                     break;
-                case "FORMCONTROL":
-                    propsOnly ? null : elComponent = Components.FormControl(props).el;
+                case "FORM-CONTROL":
+                    props.items = this.getChildItems(el, "item", componentName);
+                    propsOnly ? null : this._component = Components.FormControl(props);
                     break;
                 // Do nothing
                 default:
@@ -258,7 +310,7 @@ class RenderComponents {
             if (el.hasAttribute("id")) { el.removeAttribute("id"); }
 
             // Append the component
-            el.appendChild(elComponent);
+            el.appendChild(this._component.el);
         });
     }
 }

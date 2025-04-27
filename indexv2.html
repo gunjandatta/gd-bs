@@ -162,9 +162,56 @@
             <item value="10">Item 10</item>
         </bs-dropdown>
 
-        <!--
-        <bs-form></bs-form>
-        -->
+        <bs-form row-class-name="class1 class2">
+            <row>
+                <bs-form-control class-name="col-header d-none" id="ddl-ro" label="Shouldn't See Me"
+                    title="This is a hidden dropdown" type="GD.Components.FormControlTypes.Dropdown"
+                    description="This is a test for rendering a hidden dropdown."></bs-form-control>
+            </row>
+            <row>
+                <bs-form-control class-name="custom-control" id="custom-control"
+                    on-control-rendered="MyLib.formCustomControl"></bs-form-control>
+            </row>
+            <row>
+                <bs-form-control label="First Name:" type="GD.Components.FormControlTypes.TextField"></bs-form-control>
+                <bs-form-control label="Middle Name:" type="GD.Components.FormControlTypes.TextField"></bs-form-control>
+                <bs-form-control label="Last Name:" type="GD.Components.FormControlTypes.TextField"></bs-form-control>
+            </row>
+            <row>
+                <bs-form-control label="Items:" type="GD.Components.FormControlTypes.Dropdown">
+                    <item value="1">Item 1</item>
+                    <item value="2">Item 2</item>
+                    <item value="3">Item 3</item>
+                    <item value="4">Item 4</item>
+                    <item value="5">Item 5</item>
+                </bs-form-control>
+            </row>
+            <div>
+                <h3>Custom Header</h3>
+                <h6>You can add your own html</h6>
+            </div>
+            <row>
+                <bs-form-control label="First Response:"
+                    type="GD.Components.FormControlTypes.TextField"></bs-form-control>
+            </row>
+            <row>
+                <bs-form-control label="Second Response:"
+                    type="GD.Components.FormControlTypes.TextField"></bs-form-control>
+            </row>
+            <row>
+                <bs-form-control label="Third Response:"
+                    type="GD.Components.FormControlTypes.TextField"></bs-form-control>
+            </row>
+        </bs-form>
+
+        <bs-form>
+            <bs-form-control label="First Response:"
+                type="GD.Components.FormControlTypes.TextField"></bs-form-control>
+            <bs-form-control label="Second Response:"
+                type="GD.Components.FormControlTypes.TextField"></bs-form-control>
+            <bs-form-control label="Third Response:"
+                type="GD.Components.FormControlTypes.TextField"></bs-form-control>
+        </bs-form>
 
         <div id="icon-link"></div>
         <div id="btn-loading"></div>
@@ -205,6 +252,7 @@
             cardBodyRender: (el) => { console.log("Card Body Render: ", el); },
             collapseInit: obj => { window["collapseDemo"] = obj; },
             ddlChange: (item) => { alert("Selected Item: " + (item ? item.text : "No Selection")); },
+            formCustomControl: (ctrl) => { ctrl.el.innerHTML = "<h3>Custom Control</h3>"; },
             renderItem: (el, item) => {
                 // Render content for the accordion
                 el.innerHTML = `<b>${item.header}</b><p>was used to create this content.</p>`;
