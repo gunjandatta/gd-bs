@@ -8,10 +8,14 @@ import "./ie";
 import * as Components from "./components";
 export { Components }
 
+// Render method
+import { render } from "./render";
+export { render };
+
 // TippyJS library
 import tippy from "tippy.js";
 export { tippy }
 
 // Bootstrap Global library
-const BS = { Components, tippy }
+const BS = { Components, render, tippy }
 window["GD"] = window["GD"] || BS;

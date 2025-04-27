@@ -96,10 +96,10 @@ class _Alert extends Base<IAlertProps> implements IAlert {
                 // Add the fade class
                 this.el.classList.add("fade");
                 setTimeout(() => { this.hide(); }, 250);
-            });
 
-            // Execute the event
-            this.props.onClose ? this.props.onClose(this.props) : null;
+                // Execute the event
+                this.props.onClose ? this.props.onClose(this.props) : null;
+            });
         }
     }
 

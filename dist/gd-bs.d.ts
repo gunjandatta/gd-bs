@@ -2,10 +2,11 @@
 
 declare module 'gd-bs' {
     import * as Components from "gd-bs/components/components";
+    var render: (el: HTMLElement) => void;
     var tippy: Function;
     
     export {
-        Components, tippy
+        Components, render, tippy
     }
 }
 

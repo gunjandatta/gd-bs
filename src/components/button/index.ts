@@ -160,11 +160,20 @@ class _Button extends Base<IButtonProps> implements IButton {
         }
 
         // See if we are toggling anything
-        if (this.props.toggleObj && typeof (this.props.toggleObj.toggle) === "function") {
+        if (this.props.toggleObj) {
             // Add a click event
             this.el.addEventListener("click", ev => {
-                // Toggle the object
-                this.props.toggleObj.toggle();
+                // See if it's a function
+                if (typeof (this.props.toggleObj.toggle) === "function") {
+                    // Toggle the object
+                    this.props.toggleObj.toggle();
+                } else {
+                    let objToggle: any = window[this.props.toggleObj];
+                    if (typeof (objToggle?.toggle) === "function") {
+                        // Toggle the object
+                        objToggle.toggle();
+                    }
+                }
             });
         }
     }

@@ -52,9 +52,39 @@
         <div id="navbar-collapse"></div>
         <div id="table"></div>
         <div id="toast"></div>
+        <div id="v2">
+            <bs-accordion
+                auto-collapse="true"
+                id="my-accordion">
+                <item header="My Header" show-fl="true">
+                    <b>Pure HTML</b>
+                    <br/>
+                    <p>
+                        This was created using pure html. This is kinda cool.
+                    </p>
+                </item>
+                <item header="My Opinion">
+                    <b>Really Cool</b>
+                    <br/>
+                    <p>
+                        This is a really cool idea. I hope this is easy to develop.
+                    </p>
+                </item>
+                <item header="JavaScript" on-render-body="Test.renderItem"></item>
+            </bs-accordion>
+        </div>
     </form>
-    <script type="text/javascript">
+    <script type="text/javascript" showFl="false">
+        window["Test"] = {
+            renderItem: (el, item) => {
+                // Render content for the accordion
+                el.innerHTML = `<b>${item.header}</b><p>was used to create this content.</p>`;
+            }
+        }
         window.addEventListener("load", function() {
+            // Render the components
+            GD.render(document.querySelector("#v2"));
+
             // Dev
             let items = [];
             for (var i = 0; i < 10; i++) {
@@ -65,7 +95,7 @@
                         data: i,
                         content: i,
                         onClick: (el, item) => {
-                            alert("Item " + item.data + " clicked...");
+                            console.log("Item " + item.data + " clicked...");
                         }
                     }
                 });
