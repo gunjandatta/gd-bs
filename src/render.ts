@@ -151,9 +151,11 @@ class RenderComponents {
             case "ALERT":
             case "BADGE":
             case "COLLAPSE":
+            case "ICON-LINK":
                 props.content = el.innerHTML;
                 break;
             case "BUTTON":
+            case "BUTTON-GROUP":
                 props.text = props.text || el.innerHTML;
                 break;
         }
@@ -201,6 +203,10 @@ class RenderComponents {
                     break;
                 case "BUTTON":
                     propsOnly ? null : this._component = Components.Button(props);
+                    break;
+                case "BUTTON-GROUP":
+                    props.buttons = this.getChildItems(el, "bs-button", componentName);
+                    propsOnly ? null : this._component = Components.ButtonGroup(props);
                     break;
                 case "CARD":
                     props.body = this.getChildItems(el, "card-body", componentName);
@@ -290,6 +296,12 @@ class RenderComponents {
                 case "FORM-CONTROL":
                     props.items = this.getChildItems(el, "item", componentName);
                     propsOnly ? null : this._component = Components.FormControl(props);
+                    break;
+                case "ICON-LINK":
+                    propsOnly ? null : this._component = Components.IconLink(props);
+                    break;
+                case "SPINNER":
+                    propsOnly ? null : this._component = Components.Spinner(props);
                     break;
                 // Do nothing
                 default:
