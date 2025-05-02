@@ -82,6 +82,9 @@ class _Modal extends Base<IModalProps> implements IModal {
             }
         }
 
+        // Set the header
+        appendContent(this.el.querySelector(".modal-header"), this.props.header);
+
         // Set the body
         appendContent(this.el.querySelector(".modal-body"), this.props.body);
 
@@ -299,12 +302,15 @@ class _Modal extends Base<IModalProps> implements IModal {
     }
 
     // Updates the title
-    setTitle(title: string) {
+    setTitle(title: string | Element) {
         // Get the title
-        let elTitle = this.el.querySelector(".modal-title");
+        let elTitle = this.el.querySelector(".modal-title") as HTMLElement;
         if (elTitle) {
-            // Set the text
-            elTitle.innerHTML = title == null ? "" : title;
+            // Clear the element
+            while (elTitle.firstChild) { elTitle.removeChild(elTitle.firstChild); }
+
+            // Append the content
+            appendContent(elTitle, title);
         }
     }
 

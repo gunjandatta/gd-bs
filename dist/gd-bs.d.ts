@@ -1940,7 +1940,7 @@ declare module 'gd-bs/components/modal/types' {
     /**
         * Modal
         */
-    export interface IModal {
+    export interface IModal<T = HTMLElement> {
             /** The element. */
             el: HTMLElement;
     
@@ -1972,7 +1972,7 @@ declare module 'gd-bs/components/modal/types' {
             setScrollable: (value: boolean) => void;
     
             /** Updates the title. */
-            setTitle: (title: string) => void;
+            setTitle: (title: string | T) => void;
     
             /** Updates the type. */
             setType: (modalType: number) => void;
@@ -2017,6 +2017,7 @@ declare module 'gd-bs/components/modal/types' {
             body?: string | T;
             disableFade?: boolean;
             footer?: string | T;
+            header?: string | T;
             hideCloseButton?: boolean;
             id?: string;
             onClose?: (el: HTMLDivElement) => void;

@@ -76,7 +76,7 @@ import { IBaseProps } from "../types";
 /**
  * Modal
  */
-export interface IModal {
+export interface IModal<T = HTMLElement> {
     /** The element. */
     el: HTMLElement;
 
@@ -108,7 +108,7 @@ export interface IModal {
     setScrollable: (value: boolean) => void;
 
     /** Updates the title. */
-    setTitle: (title: string) => void;
+    setTitle: (title: string | T) => void;
 
     /** Updates the type. */
     setType: (modalType: number) => void;
@@ -153,6 +153,7 @@ export interface IModalProps<T = HTMLElement> extends IBaseProps<IModal> {
     body?: string | T;
     disableFade?: boolean;
     footer?: string | T;
+    header?: string | T;
     hideCloseButton?: boolean;
     id?: string;
     onClose?: (el: HTMLDivElement) => void;

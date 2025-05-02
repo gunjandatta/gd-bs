@@ -56,11 +56,21 @@ class RenderComponents {
                             break;
                     }
 
+                    // See if there is a sub-component
+                    switch (componentName) {
+                        case "LIST-GROUP":
+                            // Set the badge
+                            let badge = this.getChildItems(elItem, "bs-badge", componentName, true);
+                            if (badge?.length > 0) { item.badge = badge[0]; }
+                            break;
+                    }
+
                     // Set the custom property
                     switch (componentName) {
                         case "ACCORDION":
                         case "CARD":
                         case "CAROUSEL":
+                        case "LIST-GROUP":
                             item.content = item.content || elItem.innerHTML;
                             break;
                         case "CHECKBOX-GROUP":
@@ -70,6 +80,7 @@ class RenderComponents {
                         case "CARD-BODY":
                         case "DROPDOWN":
                         case "FORM-CONTROL":
+                        case "LIST-BOX":
                             item.text = item.text || elItem.innerHTML;
                             break;
                     }
@@ -85,6 +96,31 @@ class RenderComponents {
 
         // Return nothing
         return items.length > 0 ? items : undefined;
+    }
+
+    // Converts the target component name to an element
+    getElement(elSource: HTMLElement, componentName: string): HTMLElement {
+        let elTarget: HTMLElement = null;
+
+        // See if the target exists
+        elSource.childNodes.forEach(el => {
+            if (el.nodeName == componentName.toUpperCase()) {
+                // Create the element
+                elTarget = document.createElement("div");
+
+                // Set the element
+                while (el.firstChild) { elTarget.appendChild(el.firstChild); }
+
+                // Render any custom elements
+                new RenderComponents(elTarget);
+
+                // Remove the element
+                el.remove();
+            }
+        });
+
+        // Return the target element
+        return elTarget;
     }
 
     // Gets the properties of an element and returns an object
@@ -144,6 +180,15 @@ class RenderComponents {
 
             // Add the property
             props[this.getPropName(attribute.name)] = value;
+        }
+
+        // See if there is a sub-component
+        switch (componentName) {
+            case "BUTTON":
+                // Set the spinner
+                let spinner = this.getChildItems(el, "bs-spinner", componentName, true);
+                if (spinner?.length > 0) { props.spinner = spinner[0]; }
+                break;
         }
 
         // Set common properties
@@ -300,6 +345,24 @@ class RenderComponents {
                 case "ICON-LINK":
                     propsOnly ? null : this._component = Components.IconLink(props);
                     break;
+                case "LIST-BOX":
+                    props.items = this.getChildItems(el, "item", componentName);
+                    propsOnly ? null : this._component = Components.ListBox(props);
+                    break;
+                case "LIST-GROUP":
+                    props.items = this.getChildItems(el, "item", componentName);
+                    propsOnly ? null : this._component = Components.ListGroup(props);
+                    break;
+                case "MODAL":
+                    // Set the custom elements
+                    props.body = this.getElement(el, "bs-modal-body");
+                    props.footer = this.getElement(el, "bs-modal-footer");
+                    props.header = this.getElement(el, "bs-modal-header");
+                    props.title = this.getElement(el, "bs-modal-title");
+
+                    // Render the modal
+                    propsOnly ? null : this._component = Components.Modal(props);
+                    break;
                 case "SPINNER":
                     propsOnly ? null : this._component = Components.Spinner(props);
                     break;
@@ -319,7 +382,7 @@ class RenderComponents {
             el.classList.add("bs");
 
             // Remove the id attribute
-            if (el.hasAttribute("id")) { el.removeAttribute("id"); }
+            if (el.hasAttribute("id") && componentName != "MODAL") { el.removeAttribute("id"); }
 
             // Append the component
             el.appendChild(this._component.el);
