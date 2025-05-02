@@ -38,7 +38,7 @@ class RenderComponents {
     }
 
     // Converts the custom childelements
-    private getChildItems(el: HTMLElement, propName: string, componentName: string, removeFl: boolean = false) {
+    private getChildItems(el: HTMLElement, propName: string, componentName: string) {
         let items = [];
 
         // Get the item elements
@@ -52,7 +52,13 @@ class RenderComponents {
                     // Set custom child elements
                     switch (elItem.nodeName) {
                         case "CARD-BODY":
-                            item.actions = this.getChildItems(elItem, "card-action", elItem.nodeName, true);
+                            item.actions = this.getChildItems(elItem, "card-action", elItem.nodeName);
+                            break;
+                        case "NAVBAR-ITEM":
+                            item.items = this.getChildItems(elItem, "navbar-item", componentName);
+                            break;
+                        case "NAVBAR-ITEM-END":
+                            item.items = this.getChildItems(elItem, "navbar-item-end", componentName);
                             break;
                     }
 
@@ -60,7 +66,7 @@ class RenderComponents {
                     switch (componentName) {
                         case "LIST-GROUP":
                             // Set the badge
-                            let badge = this.getChildItems(elItem, "bs-badge", componentName, true);
+                            let badge = this.getChildItems(elItem, "bs-badge", componentName);
                             if (badge?.length > 0) { item.badge = badge[0]; }
                             break;
                     }
@@ -186,7 +192,7 @@ class RenderComponents {
         switch (componentName) {
             case "BUTTON":
                 // Set the spinner
-                let spinner = this.getChildItems(el, "bs-spinner", componentName, true);
+                let spinner = this.getChildItems(el, "bs-spinner", componentName);
                 if (spinner?.length > 0) { props.spinner = spinner[0]; }
                 break;
         }
@@ -197,11 +203,17 @@ class RenderComponents {
             case "BADGE":
             case "COLLAPSE":
             case "ICON-LINK":
-                props.content = el.innerHTML;
+                props.content = (el.innerHTML)?.trim();
                 break;
             case "BUTTON":
             case "BUTTON-GROUP":
-                props.text = props.text || el.innerHTML;
+            case "NAVBAR":
+                props.text = (props.text || el.innerHTML)?.trim();
+                break;
+
+            case "INPUT-GROUP":
+            case "NAVBAR-SEARCH-BOX":
+                props.value = (props.value || el.innerHTML)?.trim();
                 break;
         }
 
@@ -345,6 +357,9 @@ class RenderComponents {
                 case "ICON-LINK":
                     propsOnly ? null : this._component = Components.IconLink(props);
                     break;
+                case "INPUT-GROUP":
+                    propsOnly ? null : this._component = Components.InputGroup(props);
+                    break;
                 case "LIST-BOX":
                     props.items = this.getChildItems(el, "item", componentName);
                     propsOnly ? null : this._component = Components.ListBox(props);
@@ -362,6 +377,38 @@ class RenderComponents {
 
                     // Render the modal
                     propsOnly ? null : this._component = Components.Modal(props);
+                    break;
+                case "NAVBAR":
+                    // Parse the child elements
+                    for (let i = 0; i < el.children.length; i++) {
+                        let elChild = el.children[i] as HTMLElement;
+
+                        switch (elChild.nodeName) {
+                            // Append the item
+                            case "NAVBAR-ITEM":
+                                let item = this.getProps(elChild, componentName);
+                                item.items = this.getChildItems(elChild, "navbar-item", componentName);
+                                props.items = props.items || [];
+                                props.items.push(item);
+                                break;
+
+                            // Append the item
+                            case "NAVBAR-ITEM-END":
+                                let itemEnd = this.getProps(elChild, componentName);
+                                itemEnd.itemsEnd = this.getChildItems(elChild, "navbar-item-end", componentName);
+                                props.itemsEnd = props.itemsEnd || [];
+                                props.itemsEnd.push(itemEnd);
+                                break;
+
+                            // Set the searchbox
+                            case "NAVBAR-SEARCH-BOX":
+                                props.searchBox = this.getProps(elChild, elChild.nodeName);
+                                break;
+                        }
+                    }
+
+                    // Render the navbar
+                    propsOnly ? null : this._component = Components.Navbar(props);
                     break;
                 case "SPINNER":
                     propsOnly ? null : this._component = Components.Spinner(props);

@@ -297,11 +297,31 @@
 
         <h6>Multi-Textbox</h6>
 
-        <div id="multi-textbox"></div>
+        <bs-input-group id="multi-textbox" appended-label="Optional" label="Address:" rows="6"
+            type="GD.Components.InputGroupTypes.TextArea">
+            This is a long value. It's supposed to go in a text area.
+
+            Hopefully this will be on a new line...
+        </bs-input-group>
 
         <h6>Navbar</h6>
 
-        <div id="navbar"></div>
+        <bs-navbar brand="Test">
+            <navbar-search-box on-change="MyLib.navbarSearchChange" on-search="MyLib.navbarSearch">
+                Default Value
+            </navbar-search-box>
+            <navbar-item text="Home" is-active="true" icon-type="" on-click="MyLib.navbarClick"></navbar-item>
+            <navbar-item text="Link" is-disabled="true" on-click="MyLib.navbarClick"></navbar-item>
+            <navbar-item text="Dropdown Link" is-button="true" class-name="btn-outline-dark">
+                <navbar-item href="#" on-click="MyLib.navbarClick">Link 1</navbar-item>
+                <navbar-item href="#" on-click="MyLib.navbarClick">Link 2</navbar-item>
+                <navbar-item href="#" on-click="MyLib.navbarClick">Link 3</navbar-item>
+                <navbar-item href="#" on-click="MyLib.navbarClick">Link 4</navbar-item>
+                <navbar-item href="#" on-click="MyLib.navbarClick">Link 5</navbar-item>
+            </navbar-item>
+            <navbar-item-end is-active="true">Support</navbar-item-end>
+            <navbar-item-end is-button="true" class-name="btn-outline-dark me-2">Help</navbar-item-end>
+        </bs-navbar>
 
         <h6>Navbar (Collapse)</h6>
 
@@ -361,6 +381,10 @@
             modalShow: () => { MyRefs.modal.show(); },
             modalSubmit: () => { alert("Form Submitted"); MyRefs.modal.hide(); },
             modalRef: (obj) => { MyRefs.modal = obj; },
+            navbarClick: (item) => { alert("Nav Item Clicked: " + item.text); },
+            navbarOnChange: (item) => { alert("Nav DDL Item Clicked: " + item.text); },
+            navbarSearchChange: (val) => { console.log("Searching value: " + val); },
+            navbarSearch: (val) => { alert("Searching for: " + val); },
             renderItem: (el, item) => {
                 // Render content for the accordion
                 el.innerHTML = `<b>${item.header}</b><p>was used to create this content.</p>`;
