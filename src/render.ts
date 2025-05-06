@@ -20,6 +20,25 @@ class RenderComponents {
         this.render(propsOnly, targetSelf);
     }
 
+    // Creates an element and appends the children to it
+    createElement(elSource: HTMLElement, removeFl: boolean = true): HTMLElement {
+        let elTarget = document.createElement("div");
+
+        // See if the target exists
+        while (elSource.firstChild) {
+            elTarget.appendChild(elSource.firstChild);
+        }
+
+        // Render any custom elements
+        new RenderComponents(elTarget);
+
+        // Remove the element
+        removeFl ? elSource.remove() : null;
+
+        // Return the target element
+        return elTarget.childNodes.length > 0 ? elTarget : null;
+    }
+
     // Gets the custom elements
     private getElements(targetSelf: boolean): HTMLElement[] {
         let bsElements = [];
@@ -73,17 +92,22 @@ class RenderComponents {
 
                     // Set the custom property
                     switch (componentName) {
+                        // content
                         case "ACCORDION":
                         case "CARD":
                         case "CAROUSEL":
                         case "LIST-GROUP":
-                            item.content = item.content || elItem.innerHTML;
+                            item.content = item.content || this.createElement(elItem);
                             break;
+                        // label
                         case "CHECKBOX-GROUP":
                             item.label = item.label || elItem.innerHTML;
                             break;
-                        case "BREADCRUMB":
+                        // text
                         case "CARD-BODY":
+                            item.text = item.text || this.createElement(elItem);
+                            break;
+                        case "BREADCRUMB":
                         case "DROPDOWN":
                         case "FORM-CONTROL":
                         case "LIST-BOX":
@@ -199,18 +223,28 @@ class RenderComponents {
 
         // Set common properties
         switch (componentName) {
+            // content
             case "ALERT":
             case "BADGE":
             case "COLLAPSE":
             case "ICON-LINK":
-                props.content = (el.innerHTML)?.trim();
+                props.content = this.createElement(el);
                 break;
+            // data
+            case "DATA":
+                // Try to parse the value
+                try {
+                    let data = JSON.parse(el.innerHTML.trim());
+                    props.data = data;
+                } catch { }
+                break;
+            // text
             case "BUTTON":
             case "BUTTON-GROUP":
             case "NAVBAR":
                 props.text = (props.text || el.innerHTML)?.trim();
                 break;
-
+            // value
             case "INPUT-GROUP":
             case "NAVBAR-SEARCH-BOX":
                 props.value = (props.value || el.innerHTML)?.trim();
@@ -378,6 +412,10 @@ class RenderComponents {
                     // Render the modal
                     propsOnly ? null : this._component = Components.Modal(props);
                     break;
+                case "NAV":
+                    props.items = this.getChildItems(el, "nav-item", componentName);
+                    propsOnly ? null : this._component = Components.Nav(props);
+                    break;
                 case "NAVBAR":
                     // Parse the child elements
                     for (let i = 0; i < el.children.length; i++) {
@@ -410,6 +448,10 @@ class RenderComponents {
                     // Render the navbar
                     propsOnly ? null : this._component = Components.Navbar(props);
                     break;
+                case "OFFCANVAS":
+                    props.body = this.createElement(el, false);
+                    propsOnly ? null : this._component = Components.Offcanvas(props);
+                    break;
                 case "SPINNER":
                     propsOnly ? null : this._component = Components.Spinner(props);
                     break;
@@ -429,10 +471,18 @@ class RenderComponents {
             el.classList.add("bs");
 
             // Remove the id attribute
-            if (el.hasAttribute("id") && componentName != "MODAL") { el.removeAttribute("id"); }
+            if (el.hasAttribute("id") && (componentName != "MODAL" && componentName != "OFFCANVAS")) { el.removeAttribute("id"); }
 
-            // Append the component
-            el.appendChild(this._component.el);
+            // See if the parent exists
+            if (el.parentElement) {
+                // Replace the element
+                el.parentElement.insertBefore(this._component.el, el);
+                el.parentElement.classList.add("bs");
+                el.remove();
+            } else {
+                // Append the component
+                el.appendChild(this._component.el);
+            }
         });
     }
 }

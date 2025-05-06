@@ -283,7 +283,8 @@
 
         <h6>Modal</h6>
 
-        <bs-button toggle-obj="modalDemo" on-click="MyLib.modalShow">Modal Demo</bs-button>
+        <!-- TODO: toggle-obj="modalDemo" needs to work. -->
+        <bs-button on-click="MyLib.modalShow">Modal Demo</bs-button>
         <bs-modal id="modalDemo" type="GD.Components.ModalTypes.Large" assign-to="MyLib.modalRef">
             <bs-modal-title><b>Demo: </b>Modal Header</bs-modal-title>
             <bs-modal-body>This is the modal body</bs-modal-body>
@@ -304,6 +305,16 @@
             Hopefully this will be on a new line...
         </bs-input-group>
 
+        <h6>Nav (Tabs)</h6>
+
+        <bs-nav is-underline="true">
+            <nav-item tab-content="This is the content for tab 1" is-active="true">NavTab 1</nav-item>
+            <nav-item tab-content="This is the content for tab 2">NavTab 2</nav-item>
+            <nav-item tab-content="This is the content for tab 3">NavTab 3</nav-item>
+            <nav-item tab-content="This is the content for tab 4">NavTab 4</nav-item>
+            <nav-item on-render-tab="MyLib.tabRender">NavTab 5</nav-item>
+        </bs-nav>
+
         <h6>Navbar</h6>
 
         <bs-navbar brand="Test">
@@ -323,17 +334,15 @@
             <navbar-item-end is-button="true" class-name="btn-outline-dark me-2">Help</navbar-item-end>
         </bs-navbar>
 
-        <h6>Navbar (Collapse)</h6>
-
-        <div id="navbar-collapse"></div>
-
-        <h6>Nav Tabs</h6>
-
-        <div id="navTabs"></div>
-
         <h6>Offcanvas</h6>
 
-        <div id="offcanvas"></div>
+        <bs-button on-click="MyLib.offcanvasShow">Offcanvas Demo</bs-button>
+        <bs-offcanvas id="offcanvas-demo" title="Offcanvas Demo" options='{ "autoClose": false, "backdrop": true }' size="GD.Components.OffcanvasTypes.End" type="GD.OffcanvasSize.Medium" assign-to="MyLib.offcanvasRef">
+            <h5>Demo Offcanvas</h5>
+            <p>
+                This was done w/ pure html, so it's easy to customize this.
+            </p>
+        </bs-offcanvas>
 
         <h6>Panel</h6>
 
@@ -381,6 +390,8 @@
             modalShow: () => { MyRefs.modal.show(); },
             modalSubmit: () => { alert("Form Submitted"); MyRefs.modal.hide(); },
             modalRef: (obj) => { MyRefs.modal = obj; },
+            offcanvasRef: (obj) => { MyRefs.offcanvas = obj; },
+            offcanvasShow: () => { MyRefs.offcanvas.show(); },
             navbarClick: (item) => { alert("Nav Item Clicked: " + item.text); },
             navbarOnChange: (item) => { alert("Nav DDL Item Clicked: " + item.text); },
             navbarSearchChange: (val) => { console.log("Searching value: " + val); },
@@ -388,7 +399,8 @@
             renderItem: (el, item) => {
                 // Render content for the accordion
                 el.innerHTML = `<b>${item.header}</b><p>was used to create this content.</p>`;
-            }
+            },
+            tabRender: (el) => { el.innerHTML = "This content was rendered from JavaScript."; }
         }
         window.addEventListener("load", function () {
             // Render the components
