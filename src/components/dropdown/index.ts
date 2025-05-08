@@ -750,7 +750,7 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
         // See if we are updating the label
         if (this.props.updateLabel) {
             // See if a value exists
-            if (value) {
+            if (value && typeof(value) === "string") {
                 // Set the label
                 this.setLabel(value);
             }
