@@ -283,8 +283,7 @@
 
         <h6>Modal</h6>
 
-        <!-- TODO: toggle-obj="modalDemo" needs to work. -->
-        <bs-button on-click="MyLib.modalShow">Modal Demo</bs-button>
+        <bs-button toggle-obj="#modalDemo" on-click="MyLib.modalShow">Modal Demo</bs-button>
         <bs-modal id="modalDemo" type="GD.Components.ModalTypes.Large" assign-to="MyLib.modalRef">
             <bs-modal-title><b>Demo: </b>Modal Header</bs-modal-title>
             <bs-modal-body>This is the modal body</bs-modal-body>
@@ -337,31 +336,67 @@
         <h6>Offcanvas</h6>
 
         <bs-button on-click="MyLib.offcanvasShow">Offcanvas Demo</bs-button>
-        <bs-offcanvas id="offcanvas-demo" title="Offcanvas Demo" options='{ "autoClose": false, "backdrop": true }' size="GD.Components.OffcanvasTypes.End" type="GD.OffcanvasSize.Medium" assign-to="MyLib.offcanvasRef">
+        <bs-offcanvas id="offcanvas-demo" title="Offcanvas Demo" options='{ "autoClose": false, "backdrop": true }'
+            size="GD.Components.OffcanvasTypes.End" type="GD.OffcanvasSize.Medium" assign-to="MyLib.offcanvasRef">
             <h5>Demo Offcanvas</h5>
             <p>
                 This was done w/ pure html, so it's easy to customize this.
             </p>
         </bs-offcanvas>
 
-        <h6>Panel</h6>
-
-        <div id="panel"></div>
-
-        <h6>Spinner</h6>
-        <bs-spinner type="GD.Components.SpinnerTypes.Danger">Loading...</bs-spinner>
-
         <h6>Popover</h6>
 
-        <div id="popover"></div>
+        <bs-button id="popover-demo">Popover Demo</bs-button>
+        <bs-popover title="My Popover" target="#popover-demo" options='{ "trigger": "click"}'>
+            This is the content for the popover.
+        </bs-popover>
 
         <h6>Paging</h6>
 
-        <div id="paging"></div>
+        <bs-paging></bs-paging>
+
+        <h6>Progress</h6>
 
         <div id="progress"></div>
+
+        <h6>Progress Group</h6>
+
         <div id="progressGroup"></div>
-        <div id="table"></div>
+
+        <h6>Spinner</h6>
+
+        <bs-spinner type="GD.Components.SpinnerTypes.Danger">Loading...</bs-spinner>
+
+        <h6>Table</h6>
+
+        <bs-table class-name="is-striped">
+            <bs-col name="title" enable-sort="true">Title</bs-col>
+            <bs-col name="name" enable-sort="true">Country</bs-col>
+            <bs-row>
+                { "name": "Berglunds snabbkop", "title": "Sweden" }
+            </bs-row>
+            <bs-row>
+                { "name": "North/South", "title": "UK" }
+            </bs-row>
+            <bs-row>
+                { "name": "Alfreds Futterkiste", "title": "Germany" }
+            </bs-row>
+            <bs-row>
+                { "name": "Koniglich Essen", "title": "Germany" }
+            </bs-row>
+            <bs-row>
+                { "name": "Magazzini Alimentari Riuniti", "title": "Italy" }
+            </bs-row>
+            <bs-row>
+                { "name": "Paris specialites", "title": "France" }
+            </bs-row>
+            <bs-row>
+                { "name": "Island Trading", "title": "UK" }
+            </bs-row>
+            <bs-row>
+                { "name": "Laughing Bacchus Winecellars", "title": "Canada" }
+            </bs-row>
+        </bs-table>
         <div id="tabs"></div>
         <div id="textbox"></div>
         <div id="toast"></div>

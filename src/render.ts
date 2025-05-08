@@ -70,6 +70,13 @@ class RenderComponents {
                 if (elItem.innerHTML) {
                     // Set custom child elements
                     switch (elItem.nodeName) {
+                        // title
+                        case "BS-COL":
+                            item.title = (item.title || elItem.innerHTML)?.trim();
+                            break;
+                        case "CARD-BODY":
+                            item.actions = this.getChildItems(elItem, "card-action", elItem.nodeName);
+                            break;
                         case "CARD-BODY":
                             item.actions = this.getChildItems(elItem, "card-action", elItem.nodeName);
                             break;
@@ -195,16 +202,18 @@ class RenderComponents {
                     }
                 } else {
                     try {
-                        // See if it's a reference
-                        let elTarget = document.querySelector(value);
-                        if (elTarget) {
-                            value = elTarget;
-                        } else {
-                            // See if it's JSON
-                            let jsonObj = JSON.parse(value);
-                            value = jsonObj;
-                        }
-                    } catch { }
+                        // See if it's JSON
+                        let jsonObj = JSON.parse(value);
+                        value = jsonObj;
+                    } catch {
+                        try {
+                            // See if it's a reference
+                            let elTarget = document.querySelector(value);
+                            if (elTarget) {
+                                value = elTarget;
+                            }
+                        } catch { }
+                    }
                 }
             }
 
@@ -452,8 +461,30 @@ class RenderComponents {
                     props.body = this.createElement(el, false);
                     propsOnly ? null : this._component = Components.Offcanvas(props);
                     break;
+                case "POPOVER":
+                    props.options = props.options || {};
+                    props.options["content"] = this.createElement(el, false);
+                    propsOnly ? null : this._component = Components.Popover(props);
+                    break;
                 case "SPINNER":
                     propsOnly ? null : this._component = Components.Spinner(props);
+                    break;
+                case "TABLE":
+                    // Parse the child elements
+                    props.rows = [];
+                    for (let i = 0; i < el.children.length; i++) {
+                        let elChild = el.children[i] as HTMLElement;
+                        if (elChild.nodeName == "BS-ROW") {
+                            try {
+                                let row = JSON.parse(elChild.innerHTML);
+                                props.rows.push(row);
+                            } catch { }
+                        }
+                    }
+
+                    // Set the properties
+                    props.columns = this.getChildItems(el, "bs-col", componentName);
+                    propsOnly ? null : this._component = Components.Table(props);
                     break;
                 // Do nothing
                 default:
