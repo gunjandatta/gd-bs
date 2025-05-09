@@ -70,7 +70,11 @@ class RenderComponents {
                 if (elItem.innerHTML) {
                     // Set custom child elements
                     switch (elItem.nodeName) {
-                        // title
+                        case "APPENDED-BUTTON":
+                        case "BTN-PROPS":
+                        case "PREPENDED-BUTTON":
+                            item.text = (item.text || elItem.innerHTML)?.trim();
+                            break;
                         case "BS-COL":
                             item.title = (item.title || elItem.innerHTML)?.trim();
                             break;
@@ -85,6 +89,9 @@ class RenderComponents {
                             break;
                         case "NAVBAR-ITEM-END":
                             item.items = this.getChildItems(elItem, "navbar-item-end", componentName);
+                            break;
+                        case "TOOLBAR-ITEM":
+                            item.buttons = this.getChildItems(elItem, "bs-button", "BUTTON");
                             break;
                     }
 
@@ -131,8 +138,18 @@ class RenderComponents {
             }
         });
 
+        // See if items exist
+        if (items.length > 0) {
+            switch (propName) {
+                case "btn-props":
+                    return items[0];
+                default:
+                    return items;
+            }
+        }
+
         // Return nothing
-        return items.length > 0 ? items : undefined;
+        return undefined;
     }
 
     // Converts the target component name to an element
@@ -247,6 +264,11 @@ class RenderComponents {
                     props.data = data;
                 } catch { }
                 break;
+            // label
+            case "PROGRESS":
+            case "PROGRESS-GROUP":
+                props.label = (props.label || el.innerHTML)?.trim();
+                break;
             // text
             case "BUTTON":
             case "BUTTON-GROUP":
@@ -256,7 +278,7 @@ class RenderComponents {
             // value
             case "INPUT-GROUP":
             case "NAVBAR-SEARCH-BOX":
-                props.value = (props.value || el.innerHTML)?.trim();
+                props.value = ((props.value + "") || el.innerHTML)?.trim();
                 break;
         }
 
@@ -401,6 +423,16 @@ class RenderComponents {
                     propsOnly ? null : this._component = Components.IconLink(props);
                     break;
                 case "INPUT-GROUP":
+                    // Get the prepended label
+                    let prependedLabel = el.querySelector("prepended-label");
+                    if (prependedLabel) {
+                        // Set the property
+                        props.prependedLabel = prependedLabel.innerHTML.trim();
+                    }
+
+                    // Set the properties
+                    props.appendedButtons = this.getChildItems(el, "appended-button", componentName);
+                    props.prependedButtons = this.getChildItems(el, "prepended-button", componentName);
                     propsOnly ? null : this._component = Components.InputGroup(props);
                     break;
                 case "LIST-BOX":
@@ -466,6 +498,13 @@ class RenderComponents {
                     props.options["content"] = this.createElement(el, false);
                     propsOnly ? null : this._component = Components.Popover(props);
                     break;
+                case "PROGRESS":
+                    propsOnly ? null : this._component = Components.Progress(props);
+                    break;
+                case "PROGRESS-GROUP":
+                    props.progressbars = this.getChildItems(el, "bs-progress", componentName);
+                    propsOnly ? null : this._component = Components.ProgressGroup(props);
+                    break;
                 case "SPINNER":
                     propsOnly ? null : this._component = Components.Spinner(props);
                     break;
@@ -485,6 +524,19 @@ class RenderComponents {
                     // Set the properties
                     props.columns = this.getChildItems(el, "bs-col", componentName);
                     propsOnly ? null : this._component = Components.Table(props);
+                    break;
+                case "TOAST":
+                    props.body = this.createElement(el, false);
+                    propsOnly ? null : this._component = Components.Toast(props);
+                    break;
+                case "TOOLBAR":
+                    props.items = this.getChildItems(el, "toolbar-item", componentName);
+                    propsOnly ? null : this._component = Components.Toolbar(props);
+                    break;
+                case "TOOLTIP":
+                    props.btnProps = this.getChildItems(el, "btn-props", componentName);
+                    props.content = props.content || this.createElement(el, false);
+                    propsOnly ? null : this._component = Components.Tooltip(props);
                     break;
                 // Do nothing
                 default:

@@ -344,6 +344,10 @@
             </p>
         </bs-offcanvas>
 
+        <h6>Paging</h6>
+
+        <bs-paging number-of-pages="5" on-click="MyLib.pagingOnClick"></bs-paging>
+
         <h6>Popover</h6>
 
         <bs-button id="popover-demo">Popover Demo</bs-button>
@@ -351,17 +355,17 @@
             This is the content for the popover.
         </bs-popover>
 
-        <h6>Paging</h6>
-
-        <bs-paging></bs-paging>
-
         <h6>Progress</h6>
 
-        <div id="progress"></div>
+        <bs-progress size="25" type="GD.Components.ProgressBarTypes.Primary">25%</bs-progress>
 
         <h6>Progress Group</h6>
 
-        <div id="progressGroup"></div>
+        <bs-progress-group>
+            <bs-progress size="25" is-striped="true" type="GD.Components.ProgressBarTypes.Danger">25%</bs-progress>
+            <bs-progress size="25" is-animated="true" is-striped="true"
+                type="GD.Components.ProgressBarTypes.Dark">50%</bs-progress>
+        </bs-progress-group>
 
         <h6>Spinner</h6>
 
@@ -397,11 +401,97 @@
                 { "name": "Laughing Bacchus Winecellars", "title": "Canada" }
             </bs-row>
         </bs-table>
-        <div id="tabs"></div>
-        <div id="textbox"></div>
-        <div id="toast"></div>
-        <div id="tooltip"></div>
-        <div id="toolbar"></div>
+
+        <h6>Tabs</h6>
+
+        <bs-list-group col-width="4" fade-tabs="true" is-tabs="true">
+            <item tab-name="Tab 1" is-active="true">
+                This is the content for tab 1.
+            </item>
+            <item tab-name="Tab 2" badge='{ "content": "10", "type": 2 }'>
+                This is the content for tab 2.
+            </item>
+            <item tab-name="Tab 3">
+                This is the content for tab 3.
+            </item>
+            <item tab-name="Tab 4">
+                This is the content for tab 4.
+            </item>
+            <item tab-name="Tab 5">
+                This is the content for tab 5.
+            </item>
+            <item tab-name="Tab 6">
+                <a href="#">This is a link.</a>
+            </item>
+        </bs-list-group>
+
+        <h6>Textbox</h6>
+
+        <bs-input-group value="0" on-change="MyLib.inputGrouponChange">
+            <prepended-button>Run</prepended-button>
+            <prepended-label>First Name</prepended-label>
+            <appended-button>Run</appended-button>
+        </bs-input-group>
+
+        <h6>Toast</h6>
+
+        <bs-toast id="toast" header-text="Header Text" muted-text="2 seconds ago" options='{ "autohide": false }'>
+            This is the body of the toast.
+        </bs-toast>
+
+        <h6>Toolbar</h6>
+
+        <bs-toolbar spacing="3">
+            <toolbar-item>
+                <bs-button>Button 1</bs-button>
+            </toolbar-item>
+            <toolbar-item>
+                <bs-button>Button 2</bs-button>
+            </toolbar-item>
+            <toolbar-item>
+                <bs-button>Button 3</bs-button>
+            </toolbar-item>
+            <toolbar-item>
+                <bs-button>Button 4</bs-button>
+            </toolbar-item>
+            <toolbar-item>
+                <bs-button>Button 5</bs-button>
+            </toolbar-item>
+            <toolbar-item>
+                <bs-button>Button 6</bs-button>
+            </toolbar-item>
+            <toolbar-item>
+                <bs-button>Button 7</bs-button>
+            </toolbar-item>
+            <toolbar-item>
+                <bs-button>Button 8</bs-button>
+            </toolbar-item>
+            <toolbar-item>
+                <bs-button>Button 9</bs-button>
+            </toolbar-item>
+            <toolbar-item>
+                <bs-button>Button 10</bs-button>
+            </toolbar-item>
+            <toolbar-item>
+                <bs-button>Button 1</bs-button>
+                <bs-button>Button 2</bs-button>
+                <bs-button>Button 3</bs-button>
+                <bs-button>Button 4</bs-button>
+                <bs-button>Button 5</bs-button>
+                <bs-button>Button 6</bs-button>
+                <bs-button>Button 7</bs-button>
+                <bs-button>Button 8</bs-button>
+                <bs-button>Button 9</bs-button>
+                <bs-button>Button 10</bs-button>
+            </toolbar-item>
+        </bs-toolbar>
+
+        <h6>Tooltip</h6>
+
+        <bs-tooltip placement="GD.Components.TooltipPlacements.AutoEnd" options='{ "trigger": "click" }'>
+            <btn-props type="GD.Components.ButtonTypes.OutlineDanger">Test Tooltip</btn-props>
+            This is a tooltip.
+        </bs-tooltip>
     </form>
     <script type="text/javascript" showFl="false">
         window["MyRefs"] = {};
@@ -421,12 +511,14 @@
             ddlChange: (item) => { alert("Selected Item: " + (item ? item.text : "No Selection")); },
             fileClicked: (btn) => { alert(btn.text + " clicked."); },
             formCustomControl: (ctrl) => { ctrl.el.innerHTML = "<h3>Custom Control</h3>"; },
+            inputGrouponChange: (val) => { console.log("Value changed to: " + val); },
             modalClose: () => { MyRefs.modal.hide(); },
             modalShow: () => { MyRefs.modal.show(); },
             modalSubmit: () => { alert("Form Submitted"); MyRefs.modal.hide(); },
             modalRef: (obj) => { MyRefs.modal = obj; },
             offcanvasRef: (obj) => { MyRefs.offcanvas = obj; },
             offcanvasShow: () => { MyRefs.offcanvas.show(); },
+            pagingOnClick: (pageNumber) => { alert(pageNumber + " was clicked."); },
             navbarClick: (item) => { alert("Nav Item Clicked: " + item.text); },
             navbarOnChange: (item) => { alert("Nav DDL Item Clicked: " + item.text); },
             navbarSearchChange: (val) => { console.log("Searching value: " + val); },
