@@ -254,7 +254,7 @@ class RenderComponents {
             case "BADGE":
             case "COLLAPSE":
             case "ICON-LINK":
-                props.content = this.createElement(el);
+                props.content = this.createElement(el, false);
                 break;
             // data
             case "DATA":
@@ -278,7 +278,12 @@ class RenderComponents {
             // value
             case "INPUT-GROUP":
             case "NAVBAR-SEARCH-BOX":
-                props.value = ((props.value + "") || el.innerHTML)?.trim();
+                // Ensure the value exists
+                if (typeof (props.value) != "undefined") {
+                    props.value = typeof (props.value) === "string" ? props.value : props.value;
+                } else {
+                    props.value = el.innerHTML.trim();
+                }
                 break;
         }
 
