@@ -653,7 +653,7 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
     }
 
     // Sets the label of the dropdown
-    setLabel(value: string) {
+    setLabel(value: string = "") {
         // Get the dropdown
         let ddl = this.el.querySelector(".dropdown-toggle");
         if (ddl) {
