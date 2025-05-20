@@ -11,7 +11,7 @@ class _Nav extends Base<INavProps> implements INav {
     private _links: Array<NavLink> = null;
 
     // Constructor
-    constructor(props: INavProps, template: string = props.isTabs ? (props.isVertical ? HTMLVerticalTabs : HTMLTabs) : HTML, itemTemplate?: string) {
+    constructor(props: INavProps, template: string = props.menuOnly ? HTML : (props.isVertical ? HTMLVerticalTabs : HTMLTabs), itemTemplate?: string) {
         super(template, props);
 
         // Configure the collapse
@@ -30,12 +30,12 @@ class _Nav extends Base<INavProps> implements INav {
         let nav = this.el.classList.contains("nav") ? this.el : this.el.querySelector(".nav");
         if (nav) {
             this.props.id ? nav.id = this.props.id : null;
-            this.props.enableFill ? this.el.classList.add("nav-fill") : null;
-            this.props.isJustified ? this.el.classList.add("nav-justified") : null;
-            this.props.isPills ? this.el.classList.add("nav-pills") : null;
-            this.props.isTabs ? this.el.classList.add("nav-tabs") : null;
-            this.props.isUnderline ? this.el.classList.add("nav-underline") : null;
-            this.props.isVertical ? this.el.classList.add("flex-column") : null;
+            this.props.enableFill ? nav.classList.add("nav-fill") : null;
+            this.props.isJustified ? nav.classList.add("nav-justified") : null;
+            this.props.isPills ? nav.classList.add("nav-pills") : null;
+            this.props.isTabs ? nav.classList.add("nav-tabs") : null;
+            this.props.isUnderline ? nav.classList.add("nav-underline") : null;
+            this.props.isVertical ? nav.classList.add("flex-column") : null;
         }
 
         // Render the nav links

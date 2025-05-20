@@ -6,9 +6,10 @@
     "typings": "src/index.d.ts",
     "scripts": {
         "all": "npm run clean && npm run generate-icons && npm run build && npm run build-icons && npm run prod && npm run prod-icons && npm run typings",
-        "build": "tsc && npm run build-bs && webpack --mode=development && npm run post-build",
+        "build": "tsc && npm run pre-build && npm run build-bs && webpack --mode=development && npm run post-build",
         "build-bs": "webpack --mode=production --config webpack.sass.js",
         "build-icons": "webpack --mode=development --config webpack.icons.js",
+        "pre-build": "node ./pre-build",
         "post-build": "node ./post-build",
         "clean": "node ./clean.js",
         "docs": "typedoc",

@@ -1,4 +1,5 @@
 import * as Components from "./components";
+import "./custom-elements";
 
 /**
  * Render
@@ -309,6 +310,11 @@ class RenderComponents {
         // Parse the elements
         this.getElements(targetSelf).forEach((el: HTMLElement) => {
             let componentName = el.nodeName.substring(3);
+
+            switch (componentName) {
+                case "ACCORDION":
+                    return;
+            }
 
             // Get the component props
             let props = { ...this.getProps(el, componentName), el };

@@ -1,3 +1,4 @@
+// Components
 export * from "./accordion";
 export * from "./alert";
 export * from "./badge";
@@ -30,3 +31,6 @@ export * from "./toast";
 export * from "./toolbar";
 export * from "./tooltip";
 export * from "./tooltipGroup";
+
+// Custom Elements
+export * from "./custom-element";

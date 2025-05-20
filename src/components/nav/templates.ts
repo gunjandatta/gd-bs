@@ -14,7 +14,7 @@ export const HTMLTab = `<div class="tab-pane" role="tabpanel"></div>`;
 export const HTMLTabs = `
 <div class="row">
     <div class="col">
-        <ul class="nav nav-tabs" role="tablist"></ul>
+        <ul class="nav" role="tablist"></ul>
         <div class="tab-content"></div>
     </div>
 </div>`.trim();

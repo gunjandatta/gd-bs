@@ -19,6 +19,43 @@
             margin-bottom: 10px;
         }
     </style>
+    <script type="text/javascript" showFl="false">
+        window["MyRefs"] = {};
+        window["MyLib"] = {
+            alertClick: (props) => {
+                alert("The alert was closed.", props.header);
+            },
+            badgeClick: (badge) => {
+                alert("Badge clicked: " + badge.data.title);
+            },
+            btnLoadingClick: (props) => { alert("The loading button was clicked..."); },
+            cardGroupClick: (action, card) => { alert(card.title + " was clicked."); },
+            cardGroupRender: (el) => { console.log("Card Group Render: ", el); },
+            cardRender: (el) => { console.log("Card Render: ", el); },
+            cardBodyRender: (el) => { console.log("Card Body Render: ", el); },
+            collapseInit: obj => { window["collapseDemo"] = obj; },
+            ddlChange: (item) => { alert("Selected Item: " + (item ? item.text : "No Selection")); },
+            fileClicked: (btn) => { alert(btn.text + " clicked."); },
+            formCustomControl: (ctrl) => { ctrl.el.innerHTML = "<h3>Custom Control</h3>"; },
+            inputGrouponChange: (val) => { console.log("Value changed to: " + val); },
+            modalClose: () => { MyRefs.modal.hide(); },
+            modalShow: () => { MyRefs.modal.show(); },
+            modalSubmit: () => { alert("Form Submitted"); MyRefs.modal.hide(); },
+            modalRef: (obj) => { MyRefs.modal = obj; },
+            offcanvasRef: (obj) => { MyRefs.offcanvas = obj; },
+            offcanvasShow: () => { MyRefs.offcanvas.show(); },
+            pagingOnClick: (pageNumber) => { alert(pageNumber + " was clicked."); },
+            navbarClick: (item) => { alert("Nav Item Clicked: " + item.text); },
+            navbarOnChange: (item) => { alert("Nav DDL Item Clicked: " + item.text); },
+            navbarSearchChange: (val) => { console.log("Searching value: " + val); },
+            navbarSearch: (val) => { alert("Searching for: " + val); },
+            renderItem: (el, item) => {
+                // Render content for the accordion
+                el.innerHTML = `<b>${item.header}</b><p>was used to create this content.</p>`;
+            },
+            tabRender: (el) => { el.innerHTML = "This content was rendered from JavaScript."; }
+        }
+    </script>
 </head>
 
 <body>
@@ -50,6 +87,8 @@
             alert.</bs-alert>
         <bs-alert is-dismissible="true" header="Alert Header" type="GD.Components.AlertTypes.Danger"
             on-close="MyLib.alertClick">This is a dissmissable alert.</bs-alert>
+
+        <h6>Badge</h6>
 
         <bs-badge is-pill="true" data='{ "title": "My Custom Data" }' on-click="MyLib.badgeClick">My Badge</bs-badge>
 
@@ -307,11 +346,19 @@
         <h6>Nav (Tabs)</h6>
 
         <bs-nav is-underline="true">
-            <nav-item tab-content="This is the content for tab 1" is-active="true">NavTab 1</nav-item>
-            <nav-item tab-content="This is the content for tab 2">NavTab 2</nav-item>
-            <nav-item tab-content="This is the content for tab 3">NavTab 3</nav-item>
-            <nav-item tab-content="This is the content for tab 4">NavTab 4</nav-item>
-            <nav-item on-render-tab="MyLib.tabRender">NavTab 5</nav-item>
+            <nav-item title="NavTab 1" is-active="true">
+                This is the content for tab 1
+            </nav-item>
+            <nav-item title="NavTab 2">
+                This is the content for tab 2
+            </nav-item>
+            <nav-item title="NavTab 3">
+                This is the content for tab 3
+            </nav-item>
+            <nav-item title="NavTab 4">
+                This is the content for tab 4
+            </nav-item>
+            <nav-item title="NavTab 5" on-render-tab="MyLib.tabRender"></nav-item>
         </bs-nav>
 
         <h6>Navbar</h6>
@@ -493,47 +540,6 @@
             This is a tooltip.
         </bs-tooltip>
     </form>
-    <script type="text/javascript" showFl="false">
-        window["MyRefs"] = {};
-        window["MyLib"] = {
-            alertClick: (props) => {
-                alert("The alert was closed.", props.header);
-            },
-            badgeClick: (badge) => {
-                alert("Badge clicked: " + badge.data.title);
-            },
-            btnLoadingClick: (props) => { alert("The loading button was clicked..."); },
-            cardGroupClick: (action, card) => { alert(card.title + " was clicked."); },
-            cardGroupRender: (el) => { console.log("Card Group Render: ", el); },
-            cardRender: (el) => { console.log("Card Render: ", el); },
-            cardBodyRender: (el) => { console.log("Card Body Render: ", el); },
-            collapseInit: obj => { window["collapseDemo"] = obj; },
-            ddlChange: (item) => { alert("Selected Item: " + (item ? item.text : "No Selection")); },
-            fileClicked: (btn) => { alert(btn.text + " clicked."); },
-            formCustomControl: (ctrl) => { ctrl.el.innerHTML = "<h3>Custom Control</h3>"; },
-            inputGrouponChange: (val) => { console.log("Value changed to: " + val); },
-            modalClose: () => { MyRefs.modal.hide(); },
-            modalShow: () => { MyRefs.modal.show(); },
-            modalSubmit: () => { alert("Form Submitted"); MyRefs.modal.hide(); },
-            modalRef: (obj) => { MyRefs.modal = obj; },
-            offcanvasRef: (obj) => { MyRefs.offcanvas = obj; },
-            offcanvasShow: () => { MyRefs.offcanvas.show(); },
-            pagingOnClick: (pageNumber) => { alert(pageNumber + " was clicked."); },
-            navbarClick: (item) => { alert("Nav Item Clicked: " + item.text); },
-            navbarOnChange: (item) => { alert("Nav DDL Item Clicked: " + item.text); },
-            navbarSearchChange: (val) => { console.log("Searching value: " + val); },
-            navbarSearch: (val) => { alert("Searching for: " + val); },
-            renderItem: (el, item) => {
-                // Render content for the accordion
-                el.innerHTML = `<b>${item.header}</b><p>was used to create this content.</p>`;
-            },
-            tabRender: (el) => { el.innerHTML = "This content was rendered from JavaScript."; }
-        }
-        window.addEventListener("load", function () {
-            // Render the components
-            GD.render(document.querySelector("form"));
-        });
-    </script>
 </body>
 
 </html>
