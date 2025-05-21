@@ -132,8 +132,8 @@ export class CustomElement {
                 }
 
                 // Set the properties
-                props.appendedButtons = this.getChildItems(el, "appended-button", componentName);
-                props.prependedButtons = this.getChildItems(el, "prepended-button", componentName);
+                props.appendedButtons = this.getChildItems(el, "appended-button", "APPENDED-BUTTON");
+                props.prependedButtons = this.getChildItems(el, "prepended-button", "PREPENDED-BUTTON");
                 GD.Components.InputGroup(props);
                 break;
             case "LIST-BOX":
@@ -195,9 +195,10 @@ export class CustomElement {
                 GD.Components.Offcanvas(props);
                 break;
             case "PAGING":
-                GD.Components.Paging(props);
+                GD.Components.Pagination(props);
                 break;
             case "POPOVER":
+                props.btnProps = this.getChildItems(el, "btn-props", componentName);
                 props.options = props.options || {};
                 props.options["content"] = this.createElement(el, false);
                 GD.Components.Popover(props);
@@ -213,17 +214,17 @@ export class CustomElement {
                 GD.Components.Spinner(props);
                 break;
             case "TABLE":
-                // Parse the child elements
-                props.rows = [];
-                for (let i = 0; i < el.children.length; i++) {
-                    let elChild = el.children[i] as HTMLElement;
-                    if (elChild.nodeName == "BS-ROW") {
-                        try {
-                            let row = JSON.parse(elChild.innerHTML);
-                            props.rows.push(row);
-                        } catch { }
+                // Set the rows
+                try {
+                    if (props.rows == null) {
+                        let elRows = el.querySelector("bs-rows");
+                        if (elRows) {
+                            // Set the rows
+                            props.rows = JSON.parse(elRows.innerHTML);
+                            el.removeChild(elRows);
+                        }
                     }
-                }
+                } catch { }
 
                 // Set the properties
                 props.columns = this.getChildItems(el, "bs-col", componentName);
@@ -283,6 +284,7 @@ export class CustomElement {
                     switch (elItem.nodeName) {
                         case "APPENDED-BUTTON":
                         case "BTN-PROPS":
+                        case "CARD-ACTION":
                         case "PREPENDED-BUTTON":
                             item.text = (item.text || elItem.innerHTML)?.trim();
                             break;
@@ -293,9 +295,6 @@ export class CustomElement {
                             break;
                         case "BS-COL":
                             item.title = (item.title || elItem.innerHTML)?.trim();
-                            break;
-                        case "CARD-BODY":
-                            item.actions = this.getChildItems(elItem, "card-action", elItem.nodeName);
                             break;
                         case "CARD-BODY":
                             item.actions = this.getChildItems(elItem, "card-action", elItem.nodeName);

@@ -1,12 +1,16 @@
 class BSElement extends HTMLElement {
     constructor() { super(); }
     connectedCallback() {
-        // Wait for the children elements to render
-        const observer = new MutationObserver(() => {
+        if (this.nodeName == "BS-PAGING") {
             setTimeout(() => { new GD.Components.CustomElement(this); });
-            observer.disconnect();
-        });
-        observer.observe(this, { childList: true, subtree: true });
+        } else {
+            // Wait for the children elements to render
+            const observer = new MutationObserver(() => {
+                setTimeout(() => { new GD.Components.CustomElement(this); });
+                observer.disconnect();
+            });
+            observer.observe(this, { childList: true, subtree: true });
+        }
     }
 }
 customElements.define("bs-accordion", class Accordion extends BSElement { });
@@ -31,7 +35,7 @@ customElements.define("bs-modal", class Modal extends BSElement { });
 customElements.define("bs-nav", class Nav extends BSElement { });
 customElements.define("bs-navbar", class Navbar extends BSElement { });
 customElements.define("bs-offcanvas", class Offcanvas extends BSElement { });
-customElements.define("bs-paging", class Paging extends BSElement { constructor() { super(); debugger; } });
+customElements.define("bs-paging", class Paging extends BSElement { });
 customElements.define("bs-popover", class Popover extends BSElement { });
 customElements.define("bs-progress", class Progress extends BSElement { });
 customElements.define("bs-progress-group", class ProgressGroup extends BSElement { });
