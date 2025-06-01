@@ -171,12 +171,12 @@ class _FloatingUI {
 
         // See if we are adding the offset option
         if (this._props.options?.offset) {
-            middleware.push(offset(this._props.options.offset));
+            middleware.push(typeof (this._props.options.offset) === "boolean" ? offset() : offset(this._props.options.offset));
         }
 
         // See if we are adding the auto placement option
         if (this._props.options?.autoPlacement || placement.autoPlacement) {
-            middleware.push(autoPlacement(this._props.options.autoPlacement));
+            middleware.push(typeof (this._props.options.autoPlacement) === "boolean" ? autoPlacement() : autoPlacement(this._props.options.autoPlacement));
         }
         // Else, see if we are adding the flip option
         else if (this._props.options?.flip) {
@@ -185,22 +185,22 @@ class _FloatingUI {
 
         // See if we are adding the hide option
         if (this._props.options?.hide) {
-            middleware.push(hide(this._props.options.hide));
+            middleware.push(typeof (this._props.options.hide) === "boolean" ? hide() : hide(this._props.options.hide));
         }
 
         // See if we are adding the inline option
         if (this._props.options?.inline) {
-            middleware.push(inline(this._props.options.inline));
+            middleware.push(typeof (this._props.options.inline) === "boolean" ? inline() : inline(this._props.options.inline));
         }
 
         // See if we are adding the shift option
         if (this._props.options?.shift) {
-            middleware.push(shift(this._props.options?.shift));
+            middleware.push(typeof (this._props.options.shift) === "boolean" ? shift() : shift(this._props.options?.shift));
         }
 
         // See if we are adding the size option
         if (this._props.options?.size) {
-            middleware.push(size(this._props.options?.size));
+            middleware.push(typeof (this._props.options.size) === "boolean" ? size() : size(this._props.options?.size));
         }
 
         // Return the middle ware
@@ -349,7 +349,7 @@ class _FloatingUI {
                     right: 'left',
                     bottom: 'top',
                     left: 'right'
-                }[middlewareData.offset?.placement || this._options.placement.split('-')[0]]
+                }[(middlewareData.offset?.placement || this._options.placement).split('-')[0]]
 
                 // Update the location
                 Object.assign(this._elArrow.style, {

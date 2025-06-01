@@ -161,11 +161,11 @@ export interface IFormProps extends IBaseProps<IForm> {
     controls?: Array<IFormControlProps>;
     groupClassName?: string;
     isFloating?: boolean;
-    rowClassName?: string;
-    rows?: Array<IFormRow>;
     onControlRendering?: (control: IFormControlProps) => void | PromiseLike<IFormControlProps>;
     onControlRendered?: (control: IFormControl) => void | PromiseLike<IFormControl>;
     onRendered?: (controls: Array<IFormControl>) => void;
+    rowClassName?: string;
+    rows?: Array<IFormRow>;
     validationType?: number;
     value?: any;
 }
