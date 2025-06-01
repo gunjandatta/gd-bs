@@ -2,10 +2,9 @@
 
 declare module 'gd-bs' {
     import * as Components from "gd-bs/components/components";
-    var render: (el: HTMLElement) => void;
     
     export {
-        Components, render
+        Components
     }
 }
 

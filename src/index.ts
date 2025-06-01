@@ -8,10 +8,9 @@ import "./ie";
 import * as Components from "./components";
 export { Components }
 
-// Render method
-import { render } from "./render";
-export { render };
-
 // Bootstrap Global library
-const BS = { Components, render }
+const BS = { Components }
 window["GD"] = window["GD"] || BS;
+
+// Custom Elements
+import "./custom-elements.js";

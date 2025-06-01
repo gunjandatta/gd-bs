@@ -65,23 +65,19 @@ export class CustomElement {
                     switch (elChild.nodeName) {
                         // Append the control
                         case "BS-FORM-CONTROL":
-                            //controls.push((new RenderComponents(elChild, true, true)).Props[0]);
+                            controls.push(this.getProps(elChild, "FORM-CONTROL"));
                             break;
 
                         // Append the row
                         case "ROW":
+                            // Get the controls
                             let columns = [];
-                            /*
-                            let rowControls = (new RenderComponents(elChild, true)).Props;
-                            if (rowControls?.length > 0) {
+                            this.getChildItems(elChild, "bs-form-control", "FORM-CONTROL").forEach(control => {
                                 // Append the control
-                                for (let i = 0; i < rowControls.length; i++) {
-                                    columns.push({ control: rowControls[i] });
-                                }
-                            }
-                            */
+                                columns.push({ control });
+                            });
 
-                            // Append the row
+                            // Append the columns to the row
                             rows.push({ columns });
                             break;
 
@@ -110,7 +106,7 @@ export class CustomElement {
                 props.rows = rows.length > 0 ? rows : undefined;
 
                 // Set the controls
-                //props.controls = this.getChildItems(el, "bs-form-control", componentName);
+                props.controls = this.getChildItems(el, "bs-form-control", componentName);
                 props.controls = controls.length > 0 ? controls : undefined;
 
                 // Render the form
@@ -296,8 +292,14 @@ export class CustomElement {
                         case "BS-COL":
                             item.title = (item.title || elItem.innerHTML)?.trim();
                             break;
+                        case "BS-FORM-CONTROL":
+                            item.items = this.getChildItems(elItem, "item", elItem.nodeName);
+                            break;
                         case "CARD-BODY":
                             item.actions = this.getChildItems(elItem, "card-action", elItem.nodeName);
+                            break;
+                        case "ITEM":
+                            item.text = (item.text || elItem.innerHTML)?.trim();
                             break;
                         case "NAVBAR-ITEM":
                             item.items = this.getChildItems(elItem, "navbar-item", componentName);
