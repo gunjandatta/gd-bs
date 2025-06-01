@@ -1,10 +1,10 @@
 import { IDropdown, IDropdownItem, IDropdownProps } from "./types";
 import { ICheckboxGroup, ICheckboxGroupItem } from "../checkboxGroup/types";
-import { IPopover, IPopoverProps } from "../popover/types";
+import { IFloatingUI } from "../floating-ui/types";
 import { Base } from "../base";
 import { ButtonClassNames, ButtonTypes } from "../button";
 import { CheckboxGroup, CheckboxGroupTypes } from "../checkboxGroup"
-import { Popover, PopoverPlacements, PopoverTypes } from "../popover";
+import { FloatingUI, FloatingUIPlacements, FloatingUITypes } from "../floating-ui";
 import { DropdownFormItem } from "./formItem";
 import { DropdownItem } from "./item";
 import { HTML, HTMLForm, HTMLNavItem, HTMLSplit } from "./templates";
@@ -12,7 +12,7 @@ import { HTML, HTMLForm, HTMLNavItem, HTMLSplit } from "./templates";
 /**
  * Dropdown Types
  */
-export const DropdownPlacements = PopoverPlacements;
+export const DropdownPlacements = FloatingUIPlacements;
 export const DropdownTypes = ButtonTypes;
 
 // Gets the template
@@ -38,9 +38,9 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
     private _autoSelect: boolean = null;
     private _cb: ICheckboxGroup = null;
     private _elMenu: HTMLElement;
+    private _floatingUI: IFloatingUI = null;
     private _initFl: boolean = false;
     private _items: Array<DropdownFormItem | DropdownItem> = null;
-    private _popover: IPopover = null;
 
     // Constructor
     constructor(props: IDropdownProps, template: string = GetHTML(props)) {
@@ -213,64 +213,58 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
         let toggle = this.el.querySelector(".dropdown-toggle") as HTMLElement;
         if (toggle && this._elMenu) {
             // Set the type, based on the current dropdown type
-            let popoverType = PopoverTypes.LightBorder;
+            let popoverType = FloatingUITypes.LightBorder;
             switch (this.props.type) {
                 case DropdownTypes.Danger:
                 case DropdownTypes.OutlineDanger:
-                    popoverType = PopoverTypes.Danger;
+                    popoverType = FloatingUITypes.Danger;
                     break;
                 case DropdownTypes.Dark:
                 case DropdownTypes.OutlineDark:
-                    popoverType = PopoverTypes.Dark;
+                    popoverType = FloatingUITypes.Dark;
                     break;
                 case DropdownTypes.Info:
                 case DropdownTypes.OutlineInfo:
-                    popoverType = PopoverTypes.Info;
+                    popoverType = FloatingUITypes.Info;
                     break;
                 case DropdownTypes.Light:
                 case DropdownTypes.OutlineLight:
                 case DropdownTypes.Link:
                 case DropdownTypes.OutlineLink:
-                    popoverType = PopoverTypes.Light;
+                    popoverType = FloatingUITypes.Light;
                     break;
                 case DropdownTypes.Primary:
                 case DropdownTypes.OutlinePrimary:
-                    popoverType = PopoverTypes.Primary;
+                    popoverType = FloatingUITypes.Primary;
                     break;
                 case DropdownTypes.Secondary:
                 case DropdownTypes.OutlineSecondary:
-                    popoverType = PopoverTypes.Secondary;
+                    popoverType = FloatingUITypes.Secondary;
                     break;
                 case DropdownTypes.Success:
                 case DropdownTypes.OutlineSuccess:
-                    popoverType = PopoverTypes.Success;
+                    popoverType = FloatingUITypes.Success;
                     break;
                 case DropdownTypes.Warning:
                 case DropdownTypes.OutlineWarning:
-                    popoverType = PopoverTypes.Warning;
+                    popoverType = FloatingUITypes.Warning;
                     break;
             }
 
-            // Create the props
-            let props: IPopoverProps = {
-                target: toggle,
-                placement: typeof (this.props.placement) === "number" ? this.props.placement : PopoverPlacements.BottomStart,
-                type: popoverType,
+            // Create the menu
+            this._floatingUI = FloatingUI({
+                className: "floating-dropdown",
+                elContent: this._elMenu,
+                elTarget: toggle,
+                placement: typeof (this.props.placement) === "number" ? this.props.placement : FloatingUIPlacements.BottomStart,
+                theme: popoverType,
                 options: {
                     arrow: false,
-                    trigger: "click",
-                    offset: [0, 4]
+                    flip: true,
+                    shift: true,
+                    trigger: "click"
                 }
-            };
-
-            // Call the render event
-            props = this.props.onMenuRendering ? this.props.onMenuRendering(props) : props;
-
-            // Create a popover to display the menu
-            this._popover = Popover(props);
-
-            // Set the popover content
-            this._popover.setContent(this._elMenu);
+            });
         }
     }
 
@@ -610,10 +604,10 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
     get isMulti(): boolean { return this.props.multi; }
 
     // Returns true if the dropdown menu is visible
-    get isVisible(): boolean { return this._popover ? this._popover.tippy.state.isVisible : false; }
+    get isVisible(): boolean { return this._floatingUI ? this._floatingUI.isVisible : false; }
 
-    // The popover menu
-    get popover(): IPopover { return this._popover; }
+    // The floating ui menu
+    get floatingUI(): IFloatingUI { return this._floatingUI; }
 
     // Sets the dropdown items
     setItems(newItems: Array<IDropdownItem> = []) {
@@ -750,7 +744,7 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
         // See if we are updating the label
         if (this.props.updateLabel) {
             // See if a value exists
-            if (value && typeof(value) === "string") {
+            if (value && typeof (value) === "string") {
                 // Set the label
                 this.setLabel(value);
             }
@@ -771,7 +765,7 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
     // Toggles the menu
     toggle() {
         // Toggle the popover
-        this._popover ? this._popover.toggle() : null;
+        this._floatingUI ? this._floatingUI.toggle() : null;
     }
 }
 export const Dropdown = (props: IDropdownProps, template?: string): IDropdown => { return new _Dropdown(props, template); }

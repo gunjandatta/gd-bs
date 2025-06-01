@@ -25,7 +25,7 @@ import { ICheckboxGroup, ICheckboxGroupItem } from "../checkboxGroup/types";
 import { IDropdown, IDropdownItem, IDropdownProps } from "../dropdown/types";
 import { IInputGroup } from "../inputGroup/types";
 import { IListBox } from "../listBox/types";
-import { IPopoverProps } from "../popover/types";
+import { IFloatingUIProps } from "../floating-ui/types";
 
 /**
  * Custom Controls
@@ -115,7 +115,7 @@ export interface IFormControlPropsDropdown extends IFormControlProps {
     onChange?: (item: IDropdownItem, ev?: Event) => void;
     onControlRendering?: (control: IFormControlPropsDropdown) => void | PromiseLike<IFormControlPropsDropdown>;
     onGetValue?: (control: IFormControlPropsDropdown) => any;
-    onMenuRendering?: (props: IPopoverProps) => IPopoverProps;
+    onMenuRendering?: (props: IFloatingUIProps) => IFloatingUIProps;
     onValidate?: (control: IFormControlPropsDropdown, results: IFormControlValidationResult<IDropdownItem>) => boolean | IFormControlValidationResult<IDropdownItem>;
 }
 
@@ -168,7 +168,7 @@ export interface IFormControlPropsMultiDropdown extends IFormControlProps {
     onChange?: (item: Array<IDropdownItem>, ev?: Event) => void;
     onControlRendering?: (control: IFormControlPropsDropdown) => void | PromiseLike<IFormControlPropsDropdown>;
     onGetValue?: (control: IFormControlPropsDropdown) => any;
-    onMenuRendering?: (props: IPopoverProps) => IPopoverProps;
+    onMenuRendering?: (props: IFloatingUIProps) => IFloatingUIProps;
     onValidate?: (control: IFormControlPropsDropdown, results: IFormControlValidationResult<Array<IDropdownItem>>) => boolean | IFormControlValidationResult<Array<IDropdownItem>>;
 }
 

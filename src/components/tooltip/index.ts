@@ -1,5 +1,4 @@
-import tippy, { animateFill, followCursor, inlinePositioning, sticky } from "tippy.js";
-import { ITippyProps } from "../types";
+import { IFloatingUI } from "../floating-ui/types";
 import { ITooltip, ITooltipProps } from "./types";
 import { Base } from "../base";
 import { IButton } from "../button/types";
@@ -7,6 +6,7 @@ import { Button, ButtonTypes } from "../button";
 import { IDropdown } from "../dropdown/types";
 import { Dropdown, DropdownTypes } from "../dropdown";
 import { appendContent } from "../common";
+import { FloatingUI, FloatingUIPlacements } from "../floating-ui";
 
 /**
  * Tooltip Types
@@ -28,23 +28,7 @@ export enum TooltipTypes {
 /**
  * Tooltip Placements
  */
-export enum TooltipPlacements {
-    Auto = 1,
-    AutoStart = 2,
-    AutoEnd = 3,
-    Bottom = 4,
-    BottomStart = 5,
-    BottomEnd = 6,
-    Left = 7,
-    LeftStart = 8,
-    LeftEnd = 9,
-    Right = 10,
-    RightStart = 11,
-    RightEnd = 12,
-    Top = 13,
-    TopStart = 14,
-    TopEnd = 15
-}
+export { FloatingUIPlacements as TooltipPlacements }
 
 /**
  * Tooltip
@@ -53,7 +37,7 @@ class _Tooltip extends Base<ITooltipProps> {
     private _btn: IButton = null;
     private _ddl: IDropdown = null;
     private _elContent: HTMLElement = null;
-    private _tippy = null;
+    private _floatingUI: IFloatingUI = null;
 
     // Constructor
     constructor(props: ITooltipProps, template: string = "") {
@@ -106,65 +90,6 @@ class _Tooltip extends Base<ITooltipProps> {
 
     // Configure the options
     private configureOptions() {
-        // Set the placements
-        let placement = null;
-        switch (this.props.placement) {
-            // Auto
-            case TooltipPlacements.Auto:
-                placement = "auto";
-                break;
-            case TooltipPlacements.AutoEnd:
-                placement = "auto-end";
-                break;
-            case TooltipPlacements.AutoStart:
-                placement = "auto-start";
-                break;
-            // Bottom
-            case TooltipPlacements.Bottom:
-                placement = "bottom";
-                break;
-            case TooltipPlacements.BottomEnd:
-                placement = "bottom-end";
-                break;
-            case TooltipPlacements.BottomStart:
-                placement = "bottom-start";
-                break;
-            // Left
-            case TooltipPlacements.Left:
-                placement = "left";
-                break;
-            case TooltipPlacements.LeftEnd:
-                placement = "left-end";
-                break;
-            case TooltipPlacements.LeftStart:
-                placement = "left-start";
-                break;
-            // Right
-            case TooltipPlacements.Right:
-                placement = "right";
-                break;
-            case TooltipPlacements.RightEnd:
-                placement = "right-end";
-                break;
-            case TooltipPlacements.RightStart:
-                placement = "right-start";
-                break;
-            // Top
-            case TooltipPlacements.Top:
-                placement = "top";
-                break;
-            case TooltipPlacements.TopEnd:
-                placement = "top-end";
-                break;
-            case TooltipPlacements.TopStart:
-                placement = "top-start";
-                break;
-            // Default - Auto
-            default:
-                placement = "top";
-                break;
-        }
-
         // Set the theme
         let theme = null;
         switch (this.props.type) {
@@ -272,30 +197,16 @@ class _Tooltip extends Base<ITooltipProps> {
                 break;
         }
 
-        // Set the options
-        let options: ITippyProps = {
-            ...{
-                allowHTML: false,
-                animation: "scale",
-                arrow: true,
-                content: this.props.content,
-                delay: 100,
-                inertia: true,
-                interactive: false,
-                placement,
-                plugins: [animateFill, followCursor, inlinePositioning, sticky],
-                theme
-            },
-            ...this.props.options
-        };
-
-        // Create the tooltip content element
-        this._elContent = document.createElement("div") as HTMLElement;
-        this._elContent.classList.add("tooltip-content");
-        appendContent(this._elContent, options.content as any);
-        options.content = this._elContent;
+        // Set the tooltip content element
+        if (typeof (this.props.content) === "string") {
+            this._elContent = document.createElement("div") as HTMLElement;
+            this._elContent.innerHTML = this.props.content;
+        } else {
+            this._elContent = this.props.content as any;
+        }
 
         // Set the on create event
+        /*
         options["onCreate"] = (tippyObj) => {
             // Get the content element
             let elContent = tippyObj.popper.querySelector(".tippy-content") as HTMLElement;
@@ -316,9 +227,21 @@ class _Tooltip extends Base<ITooltipProps> {
             // Call the custom event if it's defined
             this.props.options && this.props.options.onCreate ? this.props.options.onCreate(tippyObj) : null;
         }
+            */
 
-        // Create the tippy
-        this._tippy = tippy(this.props.target || this.el, options as any);
+        // Create the floating ui
+        this._floatingUI = FloatingUI({
+            className: "floating-tooltip",
+            elContent: this._elContent,
+            elTarget: this.el,
+            options: {
+                ...{ arrow: true, flip: true, shift: { padding: 5 } },
+                ...this.props.options
+            },
+            show: this.props.show,
+            placement: this.props.placement,
+            theme: this.props.type
+        });
     }
 
     /**
@@ -348,19 +271,19 @@ class _Tooltip extends Base<ITooltipProps> {
     // Hides the tooltip
     hide() {
         // See if it's visible
-        if (this.isVisible) { this._tippy.hide(); }
+        if (this.isVisible) { this._floatingUI.hide(); }
     }
 
     // Determines if the tooltip is visible
-    get isVisible(): boolean { return this._tippy.state.isVisible; }
+    get isVisible(): boolean { return this._floatingUI.isVisible; }
 
-    // The tippy instance
-    get tippy() { return this._tippy; }
+    // The floating ui instance
+    get floatingUI() { return this._floatingUI; }
 
     // Sets the tippy content
     setContent(content: string | Element) {
         // Set the tippy content
-        this.tippy.setContent(content);
+        this._floatingUI.setContent(content);
 
         // See if the content is a string
         if (typeof (content) === "string") {
@@ -373,7 +296,7 @@ class _Tooltip extends Base<ITooltipProps> {
     // Shows the tooltip
     show() {
         // See if it's hidden
-        if (!this.isVisible) { this._tippy.show(); }
+        if (!this.isVisible) { this._floatingUI.show(); }
     }
 
     // Toggles the tooltip

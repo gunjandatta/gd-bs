@@ -11,6 +11,7 @@ export * from "./carousel";
 export * from "./checkboxGroup";
 export * from "./collapse";
 export * from "./dropdown";
+export * from "./floating-ui";
 export * from "./form";
 export * from "./iconLink";
 export * from "./inputGroup";

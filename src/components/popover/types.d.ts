@@ -55,15 +55,16 @@ export const Popover: (props: IPopoverProps, template?: string) => IPopover;
 /**
  * Popover Placements
  */
-export const PopoverPlacements: IPopoverPlacements;
+export const PopoverPlacements: IFloatingUIPlacements;
 
 /**
  * Popover Types
  */
-export const PopoverTypes: IPopoverTypes;
+export const PopoverTypes: IFloatingUITypes;
 
-import { IBaseProps, ITippyProps } from "../types";
+import { IBaseProps } from "../types";
 import { IButtonProps } from "../button/types";
+import { IFloatingUIOptions, IFloatingUIPlacements, IFloatingUITypes } from "../floating-ui/types";
 
 /**
  * Popover
@@ -72,8 +73,8 @@ export interface IPopover {
     /** The element. */
     el: HTMLElement;
 
-    /** The tippy instance. */
-    tippy: any;
+    /** The floating ui instance. */
+    floatingUI: any;
 
     /** Enables the popover. */
     enable: () => void;
@@ -81,13 +82,16 @@ export interface IPopover {
     /** Hides an element’s popover. */
     hide: () => void;
 
+    /** True if the popover is visible, false otherwise. */
+    isVisible: boolean;
+
     /** Toggles an element's popover. */
     toggle: () => void;
 
     /** Sets the body element of the popover. */
     setBody: (content: string | Element) => void;
 
-    /** Sets the tippy content. */
+    /** Sets the floating ui content. */
     setContent: (content: string | Element) => void;
 
     /** Sets the header element of the popover. */
@@ -105,47 +109,10 @@ export interface IPopoverProps extends IBaseProps<IPopover> {
     classNameBody?: string;
     classNameHeader?: string;
     isDismissible?: boolean;
-    options?: ITippyProps;
+    options?: IFloatingUIOptions;
     placement?: number;
+    show?: boolean;
     target?: HTMLElement,
     title?: string;
     type?: number;
-}
-
-/**
- * Popover Types
- */
-export type IPopoverTypes = {
-    Danger: number;
-    Dark: number;
-    Info: number;
-    Light: number;
-    LightBorder: number;
-    Material: number;
-    Primary: number;
-    Secondary: number;
-    Success: number;
-    Translucent: number;
-    Warning: number;
-}
-
-/**
- * Popover Placements
- */
-export type IPopoverPlacements = {
-    Auto: number;
-    AutoStart: number;
-    AutoEnd: number;
-    Bottom: number;
-    BottomStart: number;
-    BottomEnd: number;
-    Left: number;
-    LeftStart: number;
-    LeftEnd: number;
-    Right: number;
-    RightStart: number;
-    RightEnd: number;
-    Top: number;
-    TopStart: number;
-    TopEnd: number;
 }

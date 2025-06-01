@@ -48,12 +48,12 @@ export const Dropdown: (props: IDropdownProps, template?: string) => IDropdown;
 
 import { IBaseProps } from "../types";
 import { IButtonTypes } from "../button/types";
-import { IPopover, IPopoverProps, IPopoverPlacements } from "../popover/types";
+import { IFloatingUI, IFloatingUIProps, IFloatingUIPlacements } from "../floating-ui/types";
 
 /**
  * Dropdown Placements
  */
-export const DropdownPlacements: IPopoverPlacements;
+export const DropdownPlacements: IFloatingUIPlacements;
 
 /**
  * Dropdown Types
@@ -83,7 +83,7 @@ export interface IDropdown {
     isMulti: boolean;
 
     /** The popover menu. */
-    popover: IPopover;
+    floatingUI: IFloatingUI;
 
     /** Updates the dropdown items. */
     setItems: (items: Array<IDropdownItem>) => void;
@@ -152,7 +152,7 @@ export interface IDropdownProps extends IBaseProps<IDropdown> {
     multi?: boolean;
     navFl?: boolean;
     onChange?: (item?: IDropdownItem | Array<IDropdownItem>, ev?: Event) => void;
-    onMenuRendering?: (props: IPopoverProps) => IPopoverProps;
+    onMenuRendering?: (props: IFloatingUIProps) => IFloatingUIProps;
     placement?: number;
     required?: boolean;
     title?: string;

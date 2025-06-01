@@ -1,0 +1,229 @@
+<html>
+
+<head>
+    <script src="dist/gd-bs.js"></script>
+    <!--script src="dist/gd-bs-icons.js"></script-->
+    <!-- script src="../sprest-bs/dist/gd-sprest-bs.js"></script-->
+    <style>
+        #arrow {
+            position: absolute;
+            background: #222;
+            width: 8px;
+            height: 8px;
+            transform: rotate(45deg);
+        }
+
+        #tooltip1,
+        #tooltip2,
+        #tooltip3,
+        #tooltip4,
+        #tooltip5,
+        #tooltip6,
+        #tooltip7,
+        #tooltip8,
+        #tooltip9,
+        #tooltip10 {
+            width: max-content;
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            background: #222;
+            color: white;
+            font-weight: bold;
+            padding: 5px;
+            border-radius: 4px;
+            font-size: 90%;
+        }
+    </style>
+</head>
+
+<body class="bs">
+    <div class="d-flex justify-content-between">
+        <button id="button1" aria-describedby="tooltip1">
+            My button
+        </button>
+        <div id="tooltip1" role="tooltip">
+            My tooltip with more content
+            <div id="arrow"></div>
+        </div>
+
+        <button id="button2" aria-describedby="tooltip2">
+            My button
+        </button>
+        <div id="tooltip2" role="tooltip">
+            My tooltip with more content
+            <div id="arrow"></div>
+        </div>
+    </div>
+
+    <br />
+    <br />
+    <br />
+
+    <div class="d-flex justify-content-between">
+        <button id="button3" aria-describedby="tooltip3">
+            My button
+        </button>
+        <div id="tooltip3" role="tooltip">
+            My tooltip with more content
+            <div id="arrow"></div>
+        </div>
+
+        <button id="button4" aria-describedby="tooltip4">
+            My button
+        </button>
+        <div id="tooltip4" role="tooltip">
+            My tooltip with more content
+            <div id="arrow"></div>
+        </div>
+    </div>
+
+    <br />
+    <br />
+    <br />
+
+    <div class="d-flex justify-content-between">
+        <button id="button5" aria-describedby="tooltip5">
+            My button
+        </button>
+        <div id="tooltip5" role="tooltip">
+            My tooltip with more content
+            <div id="arrow"></div>
+        </div>
+
+        <button id="button6" aria-describedby="tooltip6">
+            My button
+        </button>
+        <div id="tooltip6" role="tooltip">
+            My tooltip with more content
+            <div id="arrow"></div>
+        </div>
+    </div>
+
+    <br />
+    <br />
+    <br />
+
+    <div class="d-flex justify-content-between">
+        <button id="button7" aria-describedby="tooltip7">
+            My button
+        </button>
+        <div id="tooltip7" role="tooltip">
+            My tooltip with more content
+            <div id="arrow"></div>
+        </div>
+
+        <button id="button8" aria-describedby="tooltip8">
+            My button
+        </button>
+        <div id="tooltip8" role="tooltip">
+            My tooltip with more content
+            <div id="arrow"></div>
+        </div>
+    </div>
+
+    <br />
+    <br />
+    <br />
+
+    <button id="button9" aria-describedby="tooltip9">
+        My button
+    </button>
+    <div id="tooltip9" role="tooltip">My tooltip with more content</div>
+
+    <br />
+    <br />
+    <br />
+
+    <button id="button10" aria-describedby="tooltip10">
+        My button
+    </button>
+    <div id="tooltip10" role="tooltip">My tooltip with more content</div>
+
+    <br />
+    <br />
+    <br />
+
+    <bs-tooltip placement="GD.Components.TooltipPlacements.Bottom" type="GD.Components.TooltipTypes.Dark"
+        options='{ "trigger": "click" }'>
+        <btn-props type="GD.Components.ButtonTypes.OutlineDanger">Test Tooltip</btn-props>
+        My tooltip with more content
+    </bs-tooltip>
+
+    <script type="text/javascript" showFl="false">
+        function create(btn, tooltip, placement) {
+            let arrow = tooltip.querySelector("#arrow");
+            GD.Components.FloatingUILib.computePosition(btn, tooltip, {
+                placement,
+                middleware: [
+                    GD.Components.FloatingUILib.offset(6),
+                    GD.Components.FloatingUILib.flip(),
+                    GD.Components.FloatingUILib.shift({ padding: 5 }),
+                    GD.Components.FloatingUILib.arrow({ element: arrow }),
+                ]
+            }).then(({ x, y, middlewareData }) => {
+                console.log(`Element ${btn.id} has coordinates: ${x}, ${y}`, x, y);
+                Object.assign(tooltip.style, {
+                    left: `${x}px`,
+                    top: `${y}px`
+                });
+
+                const arrowX = middlewareData.arrow.x;
+                const arrowY = middlewareData.arrow.y;
+                const staticSide = {
+                    top: 'bottom',
+                    right: 'left',
+                    bottom: 'top',
+                    left: 'right',
+                }[placement.split('-')[0]];
+
+                Object.assign(arrow.style, {
+                    left: arrowX != null ? `${arrowX}px` : '',
+                    top: arrowY != null ? `${arrowY}px` : '',
+                    right: '',
+                    bottom: '',
+                    [staticSide]: '-4px',
+                });
+            });
+        }
+        create(document.querySelector("#button1"), document.querySelector("#tooltip1"), "right");
+        create(document.querySelector("#button2"), document.querySelector("#tooltip2"), "left");
+        create(document.querySelector("#button3"), document.querySelector("#tooltip3"), "top");
+        create(document.querySelector("#button4"), document.querySelector("#tooltip4"), "top-start");
+        create(document.querySelector("#button5"), document.querySelector("#tooltip5"), "top-end");
+        create(document.querySelector("#button6"), document.querySelector("#tooltip6"), "bottom");
+        create(document.querySelector("#button7"), document.querySelector("#tooltip7"), "bottom-start");
+        create(document.querySelector("#button8"), document.querySelector("#tooltip8"), "bottom-end");
+
+        GD.Components.FloatingUI({
+            elContent: document.querySelector("#tooltip9"),
+            elTarget: document.querySelector("#button9"),
+            placement: 4,
+            show: true,
+            theme: 2,
+            options: {
+                arrow: true,
+                flip: true,
+                shift: { padding: 5 },
+                trigger: "click"
+            }
+        });
+
+        GD.Components.FloatingUI({
+            elContent: document.querySelector("#tooltip10"),
+            elTarget: document.querySelector("#button10"),
+            placement: 5,
+            theme: 2,
+            show: true,
+            options: {
+                arrow: true,
+                flip: true,
+                shift: { padding: 5 },
+                trigger: "click"
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -92,7 +92,7 @@ export const NavbarTypes: INavbarTypes;
 
 import { IBaseProps } from "../types";
 import { IDropdownItem } from "../dropdown/types";
-import { IPopoverProps } from "../popover/types";
+import { IFloatingUIProps } from "../floating-ui/types";
 
 /**
  * Navbar
@@ -130,7 +130,7 @@ export interface INavbarItem {
     isDisabled?: boolean;
     items?: Array<IDropdownItem>;
     onClick?: (item?: INavbarItem, ev?: Event) => void;
-    onMenuRendering?: (props: IPopoverProps) => IPopoverProps;
+    onMenuRendering?: (props: IFloatingUIProps) => IFloatingUIProps;
     onRender?: (el?: HTMLElement, item?: INavbarItem) => void;
     target?: string;
     text?: string;

@@ -40,8 +40,9 @@
  */
 export const TooltipGroup: (props: ITooltipGroupProps, template?: string, btnTemplate?: string) => ITooltipGroup;
 
-import { IBaseProps, ITippyProps } from "../types";
+import { IBaseProps } from "../types";
 import { ITooltip, ITooltipProps } from "../tooltip/types";
+import { IFloatingUIOptions } from "../floating-ui/types";
 
 /**
  * Tooltip Group
@@ -74,7 +75,7 @@ export interface ITooltipGroupProps extends IBaseProps<ITooltipGroup> {
     isSmall?: boolean;
     isVertical?: boolean;
     label?: string;
-    tooltipOptions?: ITippyProps;
+    tooltipOptions?: IFloatingUIOptions;
     tooltipPlacement?: number;
     tooltipType?: number;
 }

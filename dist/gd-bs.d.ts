@@ -3,10 +3,9 @@
 declare module 'gd-bs' {
     import * as Components from "gd-bs/components/components";
     var render: (el: HTMLElement) => void;
-    var tippy: Function;
     
     export {
-        Components, render, tippy
+        Components, render
     }
 }
 
@@ -1021,12 +1020,12 @@ declare module 'gd-bs/components/dropdown/types' {
     
     import { IBaseProps } from "gd-bs/components/types";
     import { IButtonTypes } from "gd-bs/components/button/types";
-    import { IPopover, IPopoverProps, IPopoverPlacements } from "gd-bs/components/popover/types";
+    import { IFloatingUI, IFloatingUIProps, IFloatingUIPlacements } from "gd-bs/components/floating-ui/types";
     
     /**
         * Dropdown Placements
         */
-    export const DropdownPlacements: IPopoverPlacements;
+    export const DropdownPlacements: IFloatingUIPlacements;
     
     /**
         * Dropdown Types
@@ -1056,7 +1055,7 @@ declare module 'gd-bs/components/dropdown/types' {
             isMulti: boolean;
     
             /** The popover menu. */
-            popover: IPopover;
+            floatingUI: IFloatingUI;
     
             /** Updates the dropdown items. */
             setItems: (items: Array<IDropdownItem>) => void;
@@ -1125,7 +1124,7 @@ declare module 'gd-bs/components/dropdown/types' {
             multi?: boolean;
             navFl?: boolean;
             onChange?: (item?: IDropdownItem | Array<IDropdownItem>, ev?: Event) => void;
-            onMenuRendering?: (props: IPopoverProps) => IPopoverProps;
+            onMenuRendering?: (props: IFloatingUIProps) => IFloatingUIProps;
             placement?: number;
             required?: boolean;
             title?: string;
@@ -1147,7 +1146,7 @@ declare module 'gd-bs/components/form/controlTypes' {
     import { IDropdown, IDropdownItem, IDropdownProps } from "gd-bs/components/dropdown/types";
     import { IInputGroup } from "gd-bs/components/inputGroup/types";
     import { IListBox } from "gd-bs/components/listBox/types";
-    import { IPopoverProps } from "gd-bs/components/popover/types";
+    import { IFloatingUIProps } from "gd-bs/components/floating-ui/types";
     
     /**
         * Custom Controls
@@ -1237,7 +1236,7 @@ declare module 'gd-bs/components/form/controlTypes' {
             onChange?: (item: IDropdownItem, ev?: Event) => void;
             onControlRendering?: (control: IFormControlPropsDropdown) => void | PromiseLike<IFormControlPropsDropdown>;
             onGetValue?: (control: IFormControlPropsDropdown) => any;
-            onMenuRendering?: (props: IPopoverProps) => IPopoverProps;
+            onMenuRendering?: (props: IFloatingUIProps) => IFloatingUIProps;
             onValidate?: (control: IFormControlPropsDropdown, results: IFormControlValidationResult<IDropdownItem>) => boolean | IFormControlValidationResult<IDropdownItem>;
     }
     
@@ -1290,7 +1289,7 @@ declare module 'gd-bs/components/form/controlTypes' {
             onChange?: (item: Array<IDropdownItem>, ev?: Event) => void;
             onControlRendering?: (control: IFormControlPropsDropdown) => void | PromiseLike<IFormControlPropsDropdown>;
             onGetValue?: (control: IFormControlPropsDropdown) => any;
-            onMenuRendering?: (props: IPopoverProps) => IPopoverProps;
+            onMenuRendering?: (props: IFloatingUIProps) => IFloatingUIProps;
             onValidate?: (control: IFormControlPropsDropdown, results: IFormControlValidationResult<Array<IDropdownItem>>) => boolean | IFormControlValidationResult<Array<IDropdownItem>>;
     }
     
@@ -2206,7 +2205,7 @@ declare module 'gd-bs/components/navbar/types' {
     
     import { IBaseProps } from "gd-bs/components/types";
     import { IDropdownItem } from "gd-bs/components/dropdown/types";
-    import { IPopoverProps } from "gd-bs/components/popover/types";
+    import { IFloatingUIProps } from "gd-bs/components/floating-ui/types";
     
     /**
         * Navbar
@@ -2244,7 +2243,7 @@ declare module 'gd-bs/components/navbar/types' {
             isDisabled?: boolean;
             items?: Array<IDropdownItem>;
             onClick?: (item?: INavbarItem, ev?: Event) => void;
-            onMenuRendering?: (props: IPopoverProps) => IPopoverProps;
+            onMenuRendering?: (props: IFloatingUIProps) => IFloatingUIProps;
             onRender?: (el?: HTMLElement, item?: INavbarItem) => void;
             target?: string;
             text?: string;
@@ -2537,15 +2536,16 @@ declare module 'gd-bs/components/popover/types' {
     /**
         * Popover Placements
         */
-    export const PopoverPlacements: IPopoverPlacements;
+    export const PopoverPlacements: IFloatingUIPlacements;
     
     /**
         * Popover Types
         */
-    export const PopoverTypes: IPopoverTypes;
+    export const PopoverTypes: IFloatingUITypes;
     
-    import { IBaseProps, ITippyProps } from "gd-bs/components/types";
+    import { IBaseProps } from "gd-bs/components/types";
     import { IButtonProps } from "gd-bs/components/button/types";
+    import { IFloatingUIOptions, IFloatingUIPlacements, IFloatingUITypes } from "gd-bs/components/floating-ui/types";
     
     /**
         * Popover
@@ -2554,8 +2554,8 @@ declare module 'gd-bs/components/popover/types' {
             /** The element. */
             el: HTMLElement;
     
-            /** The tippy instance. */
-            tippy: any;
+            /** The floating ui instance. */
+            floatingUI: any;
     
             /** Enables the popover. */
             enable: () => void;
@@ -2563,13 +2563,16 @@ declare module 'gd-bs/components/popover/types' {
             /** Hides an element’s popover. */
             hide: () => void;
     
+            /** True if the popover is visible, false otherwise. */
+            isVisible: boolean;
+    
             /** Toggles an element's popover. */
             toggle: () => void;
     
             /** Sets the body element of the popover. */
             setBody: (content: string | Element) => void;
     
-            /** Sets the tippy content. */
+            /** Sets the floating ui content. */
             setContent: (content: string | Element) => void;
     
             /** Sets the header element of the popover. */
@@ -2587,49 +2590,12 @@ declare module 'gd-bs/components/popover/types' {
             classNameBody?: string;
             classNameHeader?: string;
             isDismissible?: boolean;
-            options?: ITippyProps;
+            options?: IFloatingUIOptions;
             placement?: number;
+            show?: boolean;
             target?: HTMLElement,
             title?: string;
             type?: number;
-    }
-    
-    /**
-        * Popover Types
-        */
-    export type IPopoverTypes = {
-            Danger: number;
-            Dark: number;
-            Info: number;
-            Light: number;
-            LightBorder: number;
-            Material: number;
-            Primary: number;
-            Secondary: number;
-            Success: number;
-            Translucent: number;
-            Warning: number;
-    }
-    
-    /**
-        * Popover Placements
-        */
-    export type IPopoverPlacements = {
-            Auto: number;
-            AutoStart: number;
-            AutoEnd: number;
-            Bottom: number;
-            BottomStart: number;
-            BottomEnd: number;
-            Left: number;
-            LeftStart: number;
-            LeftEnd: number;
-            Right: number;
-            RightStart: number;
-            RightEnd: number;
-            Top: number;
-            TopStart: number;
-            TopEnd: number;
     }
 }
 
@@ -3046,16 +3012,17 @@ declare module 'gd-bs/components/tooltip/types' {
     /**
         * Tooltip Placements
         */
-    export const TooltipPlacements: ITooltipPlacements;
+    export const TooltipPlacements: IFloatingUIPlacements;
     
     /**
         * Tooltip Types
         */
-    export const TooltipTypes: ITooltipTypes;
+    export const TooltipTypes: IFloatingUITypes;
     
-    import { IBaseProps, ITippyProps } from "gd-bs/components/types";
+    import { IBaseProps } from "gd-bs/components/types";
     import { IButtonProps, IButton } from "gd-bs/components/button/types";
     import { IDropdownProps, IDropdown } from "gd-bs/components/dropdown/types";
+    import { IFloatingUIOptions, IFloatingUIPlacements, IFloatingUITypes } from "gd-bs/components/floating-ui/types";
     
     /**
         * Tooltip
@@ -3076,13 +3043,13 @@ declare module 'gd-bs/components/tooltip/types' {
             /** Reference to the dropdown. */
             ddl?: IDropdown;
     
-            /** The tippy instance. */
-            tippy: any;
+            /** The floating ui instance. */
+            floatingUI: any;
     
             /** Toggles an element's tooltip. */
             toggle: () => void;
     
-            /** Sets the tippy content. */
+            /** Sets the floating ui content. */
             setContent: (content: string | Element) => void;
     
             /** Reveals an element’s tooltip. */
@@ -3096,48 +3063,11 @@ declare module 'gd-bs/components/tooltip/types' {
             btnProps?: IButtonProps;
             ddlProps?: IDropdownProps;
             content?: string | Element;
-            options?: ITippyProps;
+            options?: IFloatingUIOptions;
             placement?: number;
+            show?: boolean;
             target?: HTMLElement;
             type?: number;
-    }
-    
-    /**
-        * Tooltip Types
-        */
-    export type ITooltipTypes = {
-            Danger: number;
-            Dark: number;
-            Info: number;
-            Light: number;
-            LightBorder: number;
-            Material: number;
-            Primary: number;
-            Secondary: number;
-            Success: number;
-            Translucent: number;
-            Warning: number;
-    }
-    
-    /**
-        * Tooltip Placements
-        */
-    export type ITooltipPlacements = {
-            Auto: number;
-            AutoStart: number;
-            AutoEnd: number;
-            Bottom: number;
-            BottomStart: number;
-            BottomEnd: number;
-            Left: number;
-            LeftStart: number;
-            LeftEnd: number;
-            Right: number;
-            RightStart: number;
-            RightEnd: number;
-            Top: number;
-            TopStart: number;
-            TopEnd: number;
     }
 }
 
@@ -3164,8 +3094,9 @@ declare module 'gd-bs/components/tooltipGroup/types' {
         */
     export const TooltipGroup: (props: ITooltipGroupProps, template?: string, btnTemplate?: string) => ITooltipGroup;
     
-    import { IBaseProps, ITippyProps } from "gd-bs/components/types";
+    import { IBaseProps } from "gd-bs/components/types";
     import { ITooltip, ITooltipProps } from "gd-bs/components/tooltip/types";
+    import { IFloatingUIOptions } from "gd-bs/components/floating-ui/types";
     
     /**
         * Tooltip Group
@@ -3198,7 +3129,7 @@ declare module 'gd-bs/components/tooltipGroup/types' {
             isSmall?: boolean;
             isVertical?: boolean;
             label?: string;
-            tooltipOptions?: ITippyProps;
+            tooltipOptions?: IFloatingUIOptions;
             tooltipPlacement?: number;
             tooltipType?: number;
     }
@@ -3238,52 +3169,81 @@ declare module 'gd-bs/components/types' {
             /** The element to render the component to. */
             el?: HTMLElement;
     }
+}
+
+declare module 'gd-bs/components/floating-ui/types' {
+    export const FloatingUI: (props: IFloatingUIProps) => IFloatingUI;
     
-    /** Tippy Options */
-    export interface ITippyProps {
-            allowHTML?: boolean;
-            animateFill?: boolean;
-            animation?: string | boolean;
-            appendTo?: HTMLElement;
-            aria?: object;
-            arrow?: boolean | string | SVGElement | DocumentFragment;
-            content?: string | Element;
-            delay?: number | [number | null, number | null];
-            duration?: number | [number | null, number | null];
-            followCursor?: boolean | 'horizontal' | 'vertical' | 'initial';
-            hideOnClick?: boolean | 'toggle';
-            ignoreAttributes?: boolean;
-            inertia?: boolean;
-            inlinePositioning?: boolean;
-            interactive?: boolean;
-            interactiveBorder?: number;
-            interactiveDebounce?: number;
-            maxWidth?: number | string;
-            moveTransition?: string;
-            offset?: number[];
-            onAfterUpdate?: (tippyObj?, props?) => void;
-            onBeforeUpdate?: (tippyObj?, props?) => void;
-            onClickOutside?: (tippyObj?, ev?) => void;
-            onCreate?: (tippyObj?) => void;
-            onDestroy?: (tippyObj?) => void;
-            onHidden?: (tippyObj?) => void;
-            onHide?: (tippyObj?) => void;
-            onMount?: (tippyObj?) => void;
-            onShow?: (tippyObj?) => void;
-            onShown?: (tippyObj?) => void;
-            onTrigger?: (tippyObj?, ev?) => void;
-            onUntrigger?: (tippyObj?, ev?) => void;
-            placement?: string;
-            plugins?: any[];
-            popperOptions?: object;
-            role?: string;
-            showOnCreate?: boolean;
-            sticky?: boolean | 'reference' | 'popper';
-            theme?: string;
-            touch?: boolean | 'hold' | ['hold', number];
-            trigger?: string;
-            triggerTarget?: HTMLElement | HTMLElement[] | null;
-            zIndex?: number;
+    import { IBaseProps } from "gd-bs/components/types";
+    
+    export const FloatingUIPlacements: IFloatingUIPlacements;
+    
+    export interface IFloatingUI {
+            hide: () => void;
+            isVisible: boolean;
+            setContent: (el: string | Element) => void;
+            show: () => void;
+            toggle: () => void;
+    }
+    
+    export interface IFloatingUIOptions {
+            arrow?: boolean;
+            autoPlacement?: boolean | any;
+            className?: string;
+            content?: string;
+            flip?: boolean | any;
+            hide?: boolean | any;
+            inline?: boolean | any;
+            offset?: number | any;
+            shift?: boolean | any;
+            size?: boolean | any;
+            trigger?: 'click' | 'focus' | 'mouse';
+    }
+    
+    export interface IFloatingUIProps extends IBaseProps<IFloatingUI> {
+            elContent: HTMLElement;
+            elTarget: HTMLElement;
+            options?: IFloatingUIOptions;
+            placement?: number;
+            show?: boolean;
+            theme?: number;
+    }
+    
+    /**
+        * Floating UI Placements
+        */
+    export type IFloatingUIPlacements = {
+            Auto: number;
+            AutoStart: number;
+            AutoEnd: number;
+            Bottom: number;
+            BottomStart: number;
+            BottomEnd: number;
+            Left: number;
+            LeftStart: number;
+            LeftEnd: number;
+            Right: number;
+            RightStart: number;
+            RightEnd: number;
+            Top: number;
+            TopStart: number;
+            TopEnd: number;
+    }
+    /**
+        * Floating UI
+        */
+    export type IFloatingUITypes = {
+            Danger: number;
+            Dark: number;
+            Info: number;
+            Light: number;
+            LightBorder: number;
+            Material: number;
+            Primary: number;
+            Secondary: number;
+            Success: number;
+            Translucent: number;
+            Warning: number;
     }
 }
 

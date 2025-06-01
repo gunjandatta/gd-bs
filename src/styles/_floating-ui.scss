@@ -1,0 +1,275 @@
+/** Floating-UI Element */
+.bs.floating-ui {
+    margin: 0px;
+    padding: 5px 9px;
+    inset: 0px auto auto 0px;
+    position: absolute;
+
+    &.floating-tooltip {
+        border-radius: var(--bs-tooltip-border-radius, 5px);
+        max-width: var(--bs-tooltip-max-width);
+        padding: var(--bs-tooltip-padding-y) var (--bs-tooltip-padding-x);
+        text-align: center;
+    }
+
+    /* Add some padding if the Floating UI content is a dropdown */
+    &.floating-dropdown {
+        border-radius: var(--bs-dropdown-border-radius, 5px);
+        min-width: var(--bs-dropdown-min-width, 10rem);
+        padding: var(--bs-dropdown-padding-y, 0.5rem) var (--bs-dropdown-padding-x, 0);
+    }
+
+}
+
+/** Floating-UI */
+.floating-ui {
+
+    /* Style the Floating UI arrow */
+    >.arrow {
+        position: absolute;
+        background: #222;
+        color: var(--sp-primary-text, #333333);
+        width: 8px;
+        height: 8px;
+        transform: rotate(45deg);
+    }
+
+    /* Floating UI primary theme color */
+    &[data-theme~='primary'],
+    &[data-theme~='primary']>div {
+        background-color: var(--sp-theme-primary, #0078d4);
+        color: var(--sp-white, #ffffff);
+    }
+
+    &[data-theme~='primary'][data-placement^='top']>.arrow::before {
+        border-top-color: var(--sp-theme-primary, #0078d4);
+    }
+
+    &[data-theme~='primary'][data-placement^='bottom']>.arrow::before {
+        border-bottom-color: var(--sp-theme-primary, #0078d4);
+    }
+
+    &[data-theme~='primary'][data-placement^='left']>.arrow::before {
+        border-left-color: var(--sp-theme-primary, #0078d4);
+    }
+
+    &[data-theme~='primary'][data-placement^='right']>.arrow::before {
+        border-right-color: var(--sp-theme-primary, #0078d4);
+    }
+
+    /* Floating UI secondary theme color */
+    &[data-theme~='secondary'],
+    &[data-theme~='secondary']>div {
+        background-color: var(--sp-info-icon, #605e5c);
+        color: var(--sp-white, #ffffff);
+    }
+
+    &[data-theme~='secondary'][data-placement^='top']>.arrow::before {
+        border-top-color: var(--sp-info-icon, #605e5c);
+    }
+
+    &[data-theme~='secondary'][data-placement^='bottom']>.arrow::before {
+        border-bottom-color: var(--sp-info-icon, #605e5c);
+    }
+
+    &[data-theme~='secondary'][data-placement^='left']>.arrow::before {
+        border-left-color: var(--sp-info-icon, #605e5c);
+    }
+
+    &[data-theme~='secondary'][data-placement^='right']>.arrow::before {
+        border-right-color: var(--sp-info-icon, #605e5c);
+    }
+
+    /* Floating UI success theme color */
+    &[data-theme~='success'],
+    &[data-theme~='success']>div {
+        background-color: var(--sp-success-icon, #107c10);
+        color: var(--sp-white, #ffffff);
+    }
+
+    &[data-theme~='success'][data-placement^='top']>.arrow::before {
+        border-top-color: var(--sp-success-icon, #107c10);
+    }
+
+    &[data-theme~='success'][data-placement^='bottom']>.arrow::before {
+        border-bottom-color: var(--sp-success-icon, #107c10);
+    }
+
+    &[data-theme~='success'][data-placement^='left']>.arrow::before {
+        border-left-color: var(--sp-success-icon, #107c10);
+    }
+
+    &[data-theme~='success'][data-placement^='right']>.arrow::before {
+        border-right-color: var(--sp-success-icon, #107c10);
+    }
+
+    /* Floating UI info theme color */
+    &[data-theme~='info'],
+    &[data-theme~='info']>div {
+        background-color: var(--sp-accent, #8764b8);
+        color: var(--sp-black, #000000);
+    }
+
+    &[data-theme~='info'][data-placement^='top']>.arrow::before {
+        border-top-color: var(--sp-accent, #8764b8);
+    }
+
+    &[data-theme~='info'][data-placement^='bottom']>.arrow::before {
+        border-bottom-color: var(--sp-accent, #8764b8);
+    }
+
+    &[data-theme~='info'][data-placement^='left']>.arrow::before {
+        border-left-color: var(--sp-accent, #8764b8);
+    }
+
+    &[data-theme~='info'][data-placement^='right']>.arrow::before {
+        border-right-color: var(--sp-accent, #8764b8);
+    }
+
+    /* Floating UI warning theme color */
+    &[data-theme~='warning'],
+    &[data-theme~='warning']>div {
+        background-color: var(--sp-severe-warning-icon, #d83b01);
+        color: var(--sp-white, #ffffff);
+    }
+
+    &[data-theme~='warning'][data-placement^='top']>.arrow::before {
+        border-top-color: var(--sp-severe-warning-icon, #d83b01);
+    }
+
+    &[data-theme~='warning'][data-placement^='bottom']>.arrow::before {
+        border-bottom-color: var(--sp-severe-warning-icon, #d83b01);
+    }
+
+    &[data-theme~='warning'][data-placement^='left']>.arrow::before {
+        border-left-color: var(--sp-severe-warning-icon, #d83b01);
+    }
+
+    &[data-theme~='warning'][data-placement^='right']>.arrow::before {
+        border-right-color: var(--sp-severe-warning-icon, #d83b01);
+    }
+
+    /* Floating UI danger theme color */
+    &[data-theme~='danger'],
+    &[data-theme~='danger']>div {
+        background-color: var(--sp-error-icon, #a80000);
+        color: var(--sp-white, #ffffff);
+    }
+
+    &[data-theme~='danger'][data-placement^='top']>.arrow::before {
+        border-top-color: var(--sp-error-icon, #a80000);
+    }
+
+    &[data-theme~='danger'][data-placement^='bottom']>.arrow::before {
+        border-bottom-color: var(--sp-error-icon, #a80000);
+    }
+
+    &[data-theme~='danger'][data-placement^='left']>.arrow::before {
+        border-left-color: var(--sp-error-icon, #a80000);
+    }
+
+    &[data-theme~='danger'][data-placement^='right']>.arrow::before {
+        border-right-color: var(--sp-error-icon, #a80000);
+    }
+
+    /* Floating UI light theme color - override Tippy default to match Bootstrap */
+    &[data-theme~='light'],
+    &[data-theme~='light']>div {
+        background-color: var(--sp-neutral-lighter, #f3f2f1) !important;
+        color: var(--sp-black, #000000) !important;
+    }
+
+    &[data-theme~='light'][data-placement^='top']>.arrow::before {
+        border-top-color: var(--sp-neutral-lighter, #f3f2f1) !important;
+    }
+
+    &[data-theme~='light'][data-placement^='bottom']>.arrow::before {
+        border-bottom-color: var(--sp-neutral-lighter, #f3f2f1) !important;
+    }
+
+    &[data-theme~='light'][data-placement^='left']>.arrow::before {
+        border-left-color: var(--sp-neutral-lighter, #f3f2f1) !important;
+    }
+
+    &[data-theme~='light'][data-placement^='right']>.arrow::before {
+        border-right-color: var(--sp-neutral-lighter, #f3f2f1) !important;
+    }
+
+    /* Floating UI light-border theme color - override Tippy default to match Bootstrap */
+    &[data-theme~='light-border'],
+    &[data-theme~='light-border']>div {
+        background-color: var(--sp-white, #ffffff) !important;
+        border-color: var(--sp-neutral-quaternary, #d2d0ce) !important;
+        color: var(--sp-primary-text, #333333) !important;
+    }
+
+    &[data-theme~='light-border'][data-placement^='top']>.arrow::before {
+        border-top-color: var(--sp-white, #ffffff) !important;
+    }
+
+    &[data-theme~='light-border'][data-placement^='bottom']>.arrow::before {
+        border-bottom-color: var(--sp-white, #ffffff) !important;
+    }
+
+    &[data-theme~='light-border'][data-placement^='left']>.arrow::before {
+        border-left-color: var(--sp-white, #ffffff) !important;
+    }
+
+    &[data-theme~='light-border'][data-placement^='right']>.arrow::before {
+        border-right-color: var(--sp-white, #ffffff) !important;
+    }
+
+    &[data-theme~='light-border'][data-placement^='bottom']>.arrow::after {
+        border-bottom-color: var(--sp-neutral-quaternary, #d2d0ce) !important;
+    }
+
+    &[data-theme~='light-border'][data-placement^='top']>.arrow::after {
+        border-top-color: var(--sp-neutral-quaternary, #d2d0ce) !important;
+    }
+
+    /* Floating UI dark theme color */
+    &[data-theme~='dark'],
+    &[data-theme~='dark']>div {
+        background-color: var(--sp-neutral-dark, #201f1e);
+        color: var(--sp-white, #ffffff);
+    }
+
+    &[data-theme~='dark'][data-placement^='top']>.arrow::before {
+        border-top-color: var(--sp-neutral-dark, #201f1e);
+    }
+
+    &[data-theme~='dark'][data-placement^='bottom']>.arrow::before {
+        border-bottom-color: var(--sp-neutral-dark, #201f1e);
+    }
+
+    &[data-theme~='dark'][data-placement^='left']>.arrow::before {
+        border-left-color: var(--sp-neutral-dark, #201f1e);
+    }
+
+    &[data-theme~='dark'][data-placement^='right']>.arrow::before {
+        border-right-color: var(--sp-neutral-dark, #201f1e);
+    }
+
+    /* Floating UI SharePoint theme color */
+    &[data-theme~='sharepoint'],
+    &[data-theme~='sharepoint']>div {
+        background-color: var(--sp-theme-dark, #005a9e);
+        color: var(--sp-white, #ffffff);
+    }
+
+    &[data-theme~='sharepoint'][data-placement^='top']>.arrow::before {
+        border-top-color: var(--sp-theme-dark, #005a9e);
+    }
+
+    &[data-theme~='sharepoint'][data-placement^='bottom']>.arrow::before {
+        border-bottom-color: var(--sp-theme-dark, #005a9e);
+    }
+
+    &[data-theme~='sharepoint'][data-placement^='left']>.arrow::before {
+        border-left-color: var(--sp-theme-dark, #005a9e);
+    }
+
+    &[data-theme~='sharepoint'][data-placement^='right']>.arrow::before {
+        border-right-color: var(--sp-theme-dark, #005a9e);
+    }
+}

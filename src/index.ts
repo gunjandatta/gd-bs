@@ -12,10 +12,6 @@ export { Components }
 import { render } from "./render";
 export { render };
 
-// TippyJS library
-import tippy from "tippy.js";
-export { tippy }
-
 // Bootstrap Global library
-const BS = { Components, render, tippy }
+const BS = { Components, render }
 window["GD"] = window["GD"] || BS;

@@ -820,9 +820,9 @@
         padding-right: 0.75rem !important;
     }
 
-    /* Fix for TippyJS Placement */
-    .popover-body>* {
-        position: relative !important;
+    /* Popover */
+    .popover {
+        max-width: 350px;
     }
 
     /* Fix Rich Textbox rounded corners */
@@ -902,11 +902,6 @@
     /* Auto size the toast width */
     .toast {
         width: auto;
-    }
-
-    /* Fix for TippyJS Placement */
-    .tooltip-body>* {
-        position: relative !important;
     }
 
     /* Define a custom width value */

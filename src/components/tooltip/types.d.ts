@@ -44,16 +44,17 @@ export const Tooltip: (props: ITooltipProps, template?: string) => ITooltip;
 /**
  * Tooltip Placements
  */
-export const TooltipPlacements: ITooltipPlacements;
+export const TooltipPlacements: IFloatingUIPlacements;
 
 /**
  * Tooltip Types
  */
-export const TooltipTypes: ITooltipTypes;
+export const TooltipTypes: IFloatingUITypes;
 
-import { IBaseProps, ITippyProps } from "../types";
+import { IBaseProps } from "../types";
 import { IButtonProps, IButton } from "../button/types";
 import { IDropdownProps, IDropdown } from "../dropdown/types";
+import { IFloatingUIOptions, IFloatingUIPlacements, IFloatingUITypes } from "../floating-ui/types";
 
 /**
  * Tooltip
@@ -74,13 +75,13 @@ export interface ITooltip {
     /** Reference to the dropdown. */
     ddl?: IDropdown;
 
-    /** The tippy instance. */
-    tippy: any;
+    /** The floating ui instance. */
+    floatingUI: any;
 
     /** Toggles an element's tooltip. */
     toggle: () => void;
 
-    /** Sets the tippy content. */
+    /** Sets the floating ui content. */
     setContent: (content: string | Element) => void;
 
     /** Reveals an element’s tooltip. */
@@ -94,46 +95,9 @@ export interface ITooltipProps extends IBaseProps<ITooltip> {
     btnProps?: IButtonProps;
     ddlProps?: IDropdownProps;
     content?: string | Element;
-    options?: ITippyProps;
+    options?: IFloatingUIOptions;
     placement?: number;
+    show?: boolean;
     target?: HTMLElement;
     type?: number;
-}
-
-/**
- * Tooltip Types
- */
-export type ITooltipTypes = {
-    Danger: number;
-    Dark: number;
-    Info: number;
-    Light: number;
-    LightBorder: number;
-    Material: number;
-    Primary: number;
-    Secondary: number;
-    Success: number;
-    Translucent: number;
-    Warning: number;
-}
-
-/**
- * Tooltip Placements
- */
-export type ITooltipPlacements = {
-    Auto: number;
-    AutoStart: number;
-    AutoEnd: number;
-    Bottom: number;
-    BottomStart: number;
-    BottomEnd: number;
-    Left: number;
-    LeftStart: number;
-    LeftEnd: number;
-    Right: number;
-    RightStart: number;
-    RightEnd: number;
-    Top: number;
-    TopStart: number;
-    TopEnd: number;
 }
