@@ -23,7 +23,7 @@ export interface IFloatingUIOptions {
     offset?: number | any;
     shift?: boolean | any;
     size?: boolean | any;
-    trigger?: 'click' | 'focus' | 'mouse';
+    trigger?: '' | 'click' | 'focus' | 'mouse';
 }
 
 export interface IFloatingUIProps extends IBaseProps<IFloatingUI> {
