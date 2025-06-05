@@ -3189,7 +3189,7 @@ declare module 'gd-bs/components/floating-ui/types' {
             arrow?: boolean;
             autoPlacement?: boolean | any;
             className?: string;
-            content?: string;
+            content?: string | Element;
             flip?: boolean | any;
             hide?: boolean | any;
             inline?: boolean | any;
