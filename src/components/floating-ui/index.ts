@@ -125,7 +125,7 @@ class _FloatingUI {
             });
 
             // Create the scroll event
-            document.addEventListener("scroll", (ev) => {
+            window.addEventListener("scroll", (ev) => {
                 // Wait for the other events to run
                 setTimeout(() => {
                     // Parse the events
