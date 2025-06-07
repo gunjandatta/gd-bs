@@ -1,3 +1,9 @@
+/** Variables */
+:root {
+    --bs-tooltip-border-radius: 0.375rem;
+    --bs-tooltip-max-width: 200px;
+}
+
 /** Floating-UI Element */
 .bs.floating-ui {
     margin: 0px;
@@ -6,9 +12,8 @@
     position: absolute;
 
     &.floating-tooltip {
-        border-radius: var(--bs-tooltip-border-radius, 5px);
+        border-radius: var(--bs-tooltip-border-radius);
         max-width: var(--bs-tooltip-max-width);
-        padding: var(--bs-tooltip-padding-y) var (--bs-tooltip-padding-x);
         text-align: center;
     }
 

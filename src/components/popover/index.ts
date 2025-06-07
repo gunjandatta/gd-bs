@@ -81,10 +81,10 @@ class _Popover extends Base<IPopoverProps> implements IPopover {
             elContent: this._elContent,
             elTarget: this.el,
             options: {
-                ...{ arrow: true, flip: true, shift: { padding: 5 } },
+                ...{ arrow: true, flip: true, shift: { padding: 5 }, trigger: "mouse" },
                 ...this.props.options
             },
-            placement: this.props.placement,
+            placement: this.props.placement || FloatingUIPlacements.Top,
             show: this.props.show,
             theme: this.props.type
         });

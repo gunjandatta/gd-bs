@@ -235,11 +235,11 @@ class _Tooltip extends Base<ITooltipProps> {
             elContent: this._elContent,
             elTarget: this.el,
             options: {
-                ...{ arrow: true, flip: true, shift: { padding: 5 } },
+                ...{ arrow: true, flip: true, shift: { padding: 5 }, trigger: "mouse" },
                 ...this.props.options
             },
             show: this.props.show,
-            placement: this.props.placement,
+            placement: this.props.placement || FloatingUIPlacements.Top,
             theme: this.props.type
         });
     }
