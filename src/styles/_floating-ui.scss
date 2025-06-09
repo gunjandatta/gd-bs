@@ -10,6 +10,7 @@
     padding: 5px 9px;
     inset: 0px auto auto 0px;
     position: absolute;
+    z-index: 1100;
 
     &.floating-tooltip {
         border-radius: var(--bs-tooltip-border-radius);
