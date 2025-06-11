@@ -1,5 +1,6 @@
 /** Variables */
 :root {
+    --bs-dropdown-item-border-radius: 5px;
     --bs-tooltip-border-radius: 0.375rem;
     --bs-tooltip-max-width: 200px;
 }
@@ -25,6 +26,9 @@
         padding: var(--bs-dropdown-padding-y, 0.5rem) var (--bs-dropdown-padding-x, 0);
     }
 
+    &.floating-dropdown .dropdown-item {
+        border-radius: var(--bs-dropdown-border-radius, 5px);
+    }
 }
 
 /** Floating-UI */
@@ -45,6 +49,12 @@
     &[data-theme~='primary']>div {
         background-color: var(--sp-theme-primary, #0078d4);
         color: var(--sp-white, #ffffff);
+    }
+
+    &[data-theme~='primary'] {
+        border-style: solid;
+        border-width: .8px;
+        border-color: var(--sp-theme-primary, #0078d4);
     }
 
     &[data-theme~='primary'][data-placement^='top']>.arrow::before {
@@ -70,6 +80,12 @@
         color: var(--sp-white, #ffffff);
     }
 
+    &[data-theme~='secondary'] {
+        border-style: solid;
+        border-width: .8px;
+        border-color: var(--sp-theme-primary, #605e5c);
+    }
+
     &[data-theme~='secondary'][data-placement^='top']>.arrow::before {
         border-top-color: var(--sp-info-icon, #605e5c);
     }
@@ -91,6 +107,12 @@
     &[data-theme~='success']>div {
         background-color: var(--sp-success-icon, #107c10);
         color: var(--sp-white, #ffffff);
+    }
+
+    &[data-theme~='secondary'] {
+        border-style: solid;
+        border-width: .8px;
+        border-color: var(--sp-theme-primary, #107c10);
     }
 
     &[data-theme~='success'][data-placement^='top']>.arrow::before {
@@ -116,6 +138,12 @@
         color: var(--sp-black, #000000);
     }
 
+    &[data-theme~='secondary'] {
+        border-style: solid;
+        border-width: .8px;
+        border-color: var(--sp-theme-primary, #8764b8);
+    }
+
     &[data-theme~='info'][data-placement^='top']>.arrow::before {
         border-top-color: var(--sp-accent, #8764b8);
     }
@@ -137,6 +165,12 @@
     &[data-theme~='warning']>div {
         background-color: var(--sp-severe-warning-icon, #d83b01);
         color: var(--sp-white, #ffffff);
+    }
+
+    &[data-theme~='secondary'] {
+        border-style: solid;
+        border-width: .8px;
+        border-color: var(--sp-theme-primary, #d83b01);
     }
 
     &[data-theme~='warning'][data-placement^='top']>.arrow::before {
@@ -162,6 +196,12 @@
         color: var(--sp-white, #ffffff);
     }
 
+    &[data-theme~='secondary'] {
+        border-style: solid;
+        border-width: .8px;
+        border-color: var(--sp-theme-primary, #a80000);
+    }
+
     &[data-theme~='danger'][data-placement^='top']>.arrow::before {
         border-top-color: var(--sp-error-icon, #a80000);
     }
@@ -183,6 +223,12 @@
     &[data-theme~='light']>div {
         background-color: var(--sp-neutral-lighter, #f3f2f1) !important;
         color: var(--sp-black, #000000) !important;
+    }
+
+    &[data-theme~='secondary'] {
+        border-style: solid;
+        border-width: .8px;
+        border-color: var(--sp-theme-primary, #f3f2f1);
     }
 
     &[data-theme~='light'][data-placement^='top']>.arrow::before {
@@ -207,6 +253,12 @@
         background-color: var(--sp-white, #ffffff) !important;
         border-color: var(--sp-neutral-quaternary, #d2d0ce) !important;
         color: var(--sp-primary-text, #333333) !important;
+    }
+
+    &[data-theme~='secondary'] {
+        border-style: solid;
+        border-width: .8px;
+        border-color: var(--sp-theme-primary, #ffffff);
     }
 
     &[data-theme~='light-border'][data-placement^='top']>.arrow::before {
@@ -240,6 +292,12 @@
         color: var(--sp-white, #ffffff);
     }
 
+    &[data-theme~='secondary'] {
+        border-style: solid;
+        border-width: .8px;
+        border-color: var(--sp-theme-primary, #201f1e);
+    }
+
     &[data-theme~='dark'][data-placement^='top']>.arrow::before {
         border-top-color: var(--sp-neutral-dark, #201f1e);
     }
@@ -261,6 +319,12 @@
     &[data-theme~='sharepoint']>div {
         background-color: var(--sp-theme-dark, #005a9e);
         color: var(--sp-white, #ffffff);
+    }
+
+    &[data-theme~='secondary'] {
+        border-style: solid;
+        border-width: .8px;
+        border-color: var(--sp-theme-primary, #005a9e);
     }
 
     &[data-theme~='sharepoint'][data-placement^='top']>.arrow::before {

@@ -309,6 +309,10 @@ class _InputGroup extends Base<IInputGroupProps> implements IInputGroup {
 
     get appendedDropdown() { return this._ddlAppended; }
 
+    disable() { this.elTextbox.disabled = true; }
+
+    enable() { this.elTextbox.disabled = false; }
+
     getFileInfo() { return this._fileValue; }
 
     getValue() {

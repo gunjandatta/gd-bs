@@ -59,6 +59,12 @@ export interface IInputGroup {
     /** Reference to the textbox input/textarea element. */
     elTextbox: HTMLInputElement | HTMLTextAreaElement;
 
+    /** Disables the textbox */
+    disable: () => void;
+
+    /** Enables the textbox */
+    enable: () => void;
+
     /** Method to get the file information. */
     getFileInfo: () => IInputGroupFileValue;
 
