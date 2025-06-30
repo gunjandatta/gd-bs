@@ -54,11 +54,6 @@ class _FloatingUI {
     private _options: ComputePositionConfig = null;
     private _props: IFloatingUIProps = null;
 
-    // Static events
-    private static Events = [];
-    private static EventsCreated = false;
-    private static ScrollEvents = [];
-
     // Constructor
     constructor(props: IFloatingUIProps) {
         this._elTarget = props.elTarget;
@@ -82,6 +77,7 @@ class _FloatingUI {
         this._props.show ? this.show() : this.hide();
     }
 
+    // Add the events to trigger, refresh and hide the element
     private addEvents(trigger: string = "") {
         // Events
         if (trigger.indexOf("mouse") >= 0) {
@@ -99,48 +95,23 @@ class _FloatingUI {
             });
         }
 
-        // Add the events
-        _FloatingUI.Events.push((ev: Event) => {
-            // See if it's outside the target element
-            if (!this._elTarget.contains(ev.target as any)) {
+        // Create the event
+        document.addEventListener("click", (ev) => {
+            // Wait for the other events to run
+            setTimeout(() => {
                 // Hide the element
                 this.hide();
-            }
-        });
-        _FloatingUI.ScrollEvents.push((ev: Event) => {
-            // Refresh the content
-            this.refresh();
+            }, 10);
         });
 
-        // Ensure the click event exists
-        if (!_FloatingUI.EventsCreated) {
-            // Create the event
-            document.addEventListener("click", (ev) => {
-                // Wait for the other events to run
-                setTimeout(() => {
-                    // Parse the events
-                    _FloatingUI.Events.forEach(fnEvent => {
-                        // Call the event
-                        fnEvent(ev);
-                    });
-                }, 10);
-            });
-
-            // Create the scroll event
-            window.addEventListener("scroll", (ev) => {
-                // Wait for the other events to run
-                setTimeout(() => {
-                    // Parse the events
-                    _FloatingUI.ScrollEvents.forEach(fnEvent => {
-                        // Call the event
-                        fnEvent(ev);
-                    });
-                }, 10);
-            });
-
-            // Set the flag
-            _FloatingUI.EventsCreated = true;
-        }
+        // Create the scroll event
+        window.addEventListener("scroll", (ev) => {
+            // Wait for the other events to run
+            setTimeout(() => {
+                // Refresh the content
+                this.refresh();
+            }, 10);
+        });
     }
 
     // Creates the floating ui

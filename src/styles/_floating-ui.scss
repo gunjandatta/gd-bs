@@ -47,7 +47,8 @@
 
     /* Floating UI primary theme color */
     &[data-theme~='primary'],
-    &[data-theme~='primary']>div {
+    &[data-theme~='primary']>div,
+    &[data-theme~='primary'] .dropdown-item {
         background-color: var(--sp-theme-primary, #0078d4);
         color: var(--sp-white, #ffffff);
     }
@@ -76,7 +77,8 @@
 
     /* Floating UI secondary theme color */
     &[data-theme~='secondary'],
-    &[data-theme~='secondary']>div {
+    &[data-theme~='secondary']>div,
+    &[data-theme~='secondary'] .dropdown-item {
         background-color: var(--sp-info-icon, #605e5c);
         color: var(--sp-white, #ffffff);
     }
@@ -105,12 +107,13 @@
 
     /* Floating UI success theme color */
     &[data-theme~='success'],
-    &[data-theme~='success']>div {
+    &[data-theme~='success']>div,
+    &[data-theme~='success'] .dropdown-item {
         background-color: var(--sp-success-icon, #107c10);
         color: var(--sp-white, #ffffff);
     }
 
-    &[data-theme~='secondary'] {
+    &[data-theme~='success'] {
         border-style: solid;
         border-width: .8px;
         border-color: var(--sp-theme-primary, #107c10);
@@ -134,12 +137,13 @@
 
     /* Floating UI info theme color */
     &[data-theme~='info'],
-    &[data-theme~='info']>div {
+    &[data-theme~='info']>div,
+    &[data-theme~='info'] .dropdown-item {
         background-color: var(--sp-accent, #8764b8);
         color: var(--sp-black, #000000);
     }
 
-    &[data-theme~='secondary'] {
+    &[data-theme~='info'] {
         border-style: solid;
         border-width: .8px;
         border-color: var(--sp-theme-primary, #8764b8);
@@ -163,12 +167,13 @@
 
     /* Floating UI warning theme color */
     &[data-theme~='warning'],
-    &[data-theme~='warning']>div {
+    &[data-theme~='warning']>div,
+    &[data-theme~='warning'] .dropdown-item {
         background-color: var(--sp-severe-warning-icon, #d83b01);
         color: var(--sp-white, #ffffff);
     }
 
-    &[data-theme~='secondary'] {
+    &[data-theme~='warning'] {
         border-style: solid;
         border-width: .8px;
         border-color: var(--sp-theme-primary, #d83b01);
@@ -192,12 +197,13 @@
 
     /* Floating UI danger theme color */
     &[data-theme~='danger'],
-    &[data-theme~='danger']>div {
+    &[data-theme~='danger']>div,
+    &[data-theme~='danger'] .dropdown-item {
         background-color: var(--sp-error-icon, #a80000);
         color: var(--sp-white, #ffffff);
     }
 
-    &[data-theme~='secondary'] {
+    &[data-theme~='danger'] {
         border-style: solid;
         border-width: .8px;
         border-color: var(--sp-theme-primary, #a80000);
@@ -221,12 +227,13 @@
 
     /* Floating UI light theme color - override Tippy default to match Bootstrap */
     &[data-theme~='light'],
-    &[data-theme~='light']>div {
+    &[data-theme~='light']>div,
+    &[data-theme~='light'] .dropdown-item {
         background-color: var(--sp-neutral-lighter, #f3f2f1) !important;
         color: var(--sp-black, #000000) !important;
     }
 
-    &[data-theme~='secondary'] {
+    &[data-theme~='light'] {
         border-style: solid;
         border-width: .8px;
         border-color: var(--sp-theme-primary, #f3f2f1);
@@ -250,13 +257,14 @@
 
     /* Floating UI light-border theme color - override Tippy default to match Bootstrap */
     &[data-theme~='light-border'],
-    &[data-theme~='light-border']>div {
+    &[data-theme~='light-border']>div,
+    &[data-theme~='light-border'] .dropdown-item {
         background-color: var(--sp-white, #ffffff) !important;
         border-color: var(--sp-neutral-quaternary, #d2d0ce) !important;
         color: var(--sp-primary-text, #333333) !important;
     }
 
-    &[data-theme~='secondary'] {
+    &[data-theme~='light-border'] {
         border-style: solid;
         border-width: .8px;
         border-color: var(--sp-theme-primary, #ffffff);
@@ -288,12 +296,13 @@
 
     /* Floating UI dark theme color */
     &[data-theme~='dark'],
-    &[data-theme~='dark']>div {
+    &[data-theme~='dark']>div,
+    &[data-theme~='dark'] .dropdown-item {
         background-color: var(--sp-neutral-dark, #201f1e);
         color: var(--sp-white, #ffffff);
     }
 
-    &[data-theme~='secondary'] {
+    &[data-theme~='dark'] {
         border-style: solid;
         border-width: .8px;
         border-color: var(--sp-theme-primary, #201f1e);
@@ -317,12 +326,13 @@
 
     /* Floating UI SharePoint theme color */
     &[data-theme~='sharepoint'],
-    &[data-theme~='sharepoint']>div {
+    &[data-theme~='sharepoint']>div,
+    &[data-theme~='sharepoint'] .dropdown-item {
         background-color: var(--sp-theme-dark, #005a9e);
         color: var(--sp-white, #ffffff);
     }
 
-    &[data-theme~='secondary'] {
+    &[data-theme~='sharepoint'] {
         border-style: solid;
         border-width: .8px;
         border-color: var(--sp-theme-primary, #005a9e);
