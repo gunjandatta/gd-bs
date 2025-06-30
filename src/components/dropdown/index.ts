@@ -622,7 +622,7 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
         }
 
         // Get the menu
-        let menu: HTMLSelectElement = this.el.querySelector(".dropdown-menu") || this.el.querySelector("select") || this.el.classList.contains("dropdown-menu");
+        let menu: HTMLSelectElement = this.el.querySelector(".dropdown-menu") || this.el.querySelector("select") || (this.el.classList.contains("dropdown-menu") ? this.el : null);
         if (menu) {
             // Clear the menu
             while (menu.firstChild) { menu.removeChild(menu.firstChild); }
