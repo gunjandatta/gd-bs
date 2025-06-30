@@ -1,4 +1,6 @@
-import { arrow, autoPlacement, computePosition, flip, hide, inline, offset, shift, size, ComputePositionConfig } from "@floating-ui/dom";
+import {
+    arrow, autoPlacement, computePosition, flip, hide, inline, offset, shift, size, ComputePositionConfig
+} from "@floating-ui/dom";
 import { setClassNames } from "../common";
 import { IFloatingUIProps, IFloatingUI } from "./types";
 export * as FloatingUILib from "@floating-ui/dom";
@@ -367,7 +369,7 @@ class _FloatingUI {
      * Public Methods
      */
 
-    setContent(el) { this._elContent = el; }
+    setContent(el) { this._elContent = el; this.refresh(); }
 
     // Hides the content
     hide() {
