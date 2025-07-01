@@ -49,13 +49,15 @@ export enum FloatingUITypes {
  */
 class _FloatingUI {
     private _elArrow: HTMLElement = null;
-    private _elTarget: HTMLElement = null;
     private _elContent: HTMLElement = null;
+    private _elIgnore: HTMLElement[] = null;
+    private _elTarget: HTMLElement = null;
     private _options: ComputePositionConfig = null;
     private _props: IFloatingUIProps = null;
 
     // Constructor
     constructor(props: IFloatingUIProps) {
+        this._elIgnore = [];
         this._elTarget = props.elTarget;
         this._props = props;
 
@@ -97,11 +99,17 @@ class _FloatingUI {
 
         // Create the event
         document.addEventListener("click", (ev) => {
-            // Wait for the other events to run
-            setTimeout(() => {
-                // Hide the element
-                this.hide();
-            }, 10);
+            // Do nothing if we toggled this component
+            if (this._elTarget.contains(ev.target as HTMLElement)) { return; }
+
+            // Parse the elements to ignore
+            for (let i = 0; i < this._elIgnore.length; i++) {
+                // Do nothing if it triggered the click
+                if (this._elIgnore[i].contains(ev.target as HTMLElement)) { return; }
+            }
+
+            // Hide the element
+            this.hide();
         });
 
         // Create the scroll event
@@ -340,13 +348,33 @@ class _FloatingUI {
      * Public Methods
      */
 
+    addIgnoreElement(el: HTMLElement) { this._elIgnore.push(el); }
+
+    removeIgnoreElement(el: HTMLElement) {
+        // Parse the elements
+        for (let i = 0; i < this._elIgnore.length; i++) {
+            // See if this is the element to remove
+            if (this._elIgnore[i].isEqualNode(el)) {
+                // Remove it
+                this._elIgnore.splice(i, 1);
+                return;
+            }
+        }
+    }
+
     setContent(el) { this._elContent = el; this.refresh(); }
 
     // Hides the content
     hide() {
         // Remove it from the document
         this._elContent.classList.add("d-none");
-        if (document.body.contains(this._elContent)) { document.body.removeChild(this._elContent); }
+        if (document.body.contains(this._elContent)) {
+            // Remove the element from the page
+            document.body.removeChild(this._elContent);
+
+            // Call the event
+            this._props.onHide ? this._props.onHide() : null;
+        }
     }
 
     // Determines if the content is visible
@@ -356,7 +384,16 @@ class _FloatingUI {
     show() {
         // Append it to the document
         this._elContent.classList.remove("d-none");
-        if (!document.body.contains(this._elContent)) { document.body.appendChild(this._elContent); this.refresh(); }
+        if (!document.body.contains(this._elContent)) {
+            // Add the element to the page
+            document.body.appendChild(this._elContent);
+
+            // Refresh the position
+            this.refresh();
+
+            // Call the event
+            this._props.onShow ? this._props.onShow() : null;
+        }
     }
 
     // Toggles the floating ui

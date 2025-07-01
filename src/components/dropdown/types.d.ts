@@ -155,6 +155,7 @@ export interface IDropdownProps extends IBaseProps<IDropdown> {
     onMenuRendering?: (props: IFloatingUIProps) => IFloatingUIProps;
     placement?: number;
     required?: boolean;
+    search?: boolean;
     title?: string;
     type?: number;
     updateLabel?: boolean;

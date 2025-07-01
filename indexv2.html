@@ -177,7 +177,7 @@
 
     <h5>Dropdown</h5>
 
-    <bs-dropdown auto-select="true" is-split="false" label="My Dropdown:" on-change="MyLib.ddlChange">
+    <bs-dropdown auto-select="true" is-split="false" label="My Dropdown:" search="true" on-change="MyLib.ddlChange">
         <item is-header="true">Header 1</item>
         <item is-divider="true"></item>
         <item value="1">Item 1</item>
@@ -545,7 +545,7 @@
             cardRender: (el) => { console.log("Card Render: ", el); },
             cardBodyRender: (el) => { console.log("Card Body Render: ", el); },
             collapseInit: obj => { window["collapseDemo"] = obj; },
-            ddlChange: (item) => { alert("Selected Item: " + (item ? item.text : "No Selection")); },
+            ddlChange: (item) => { debugger; alert("Selected Item: " + (item ? item.text : "No Selection")); },
             fileClicked: (btn) => { alert(btn.text + " clicked."); },
             formCustomControl: (ctrl) => { ctrl.el.innerHTML = "<h3>Custom Control</h3>"; },
             inputGrouponChange: (val) => { console.log("Value changed to: " + val); },

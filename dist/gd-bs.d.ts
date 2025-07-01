@@ -1126,6 +1126,7 @@ declare module 'gd-bs/components/dropdown/types' {
             onMenuRendering?: (props: IFloatingUIProps) => IFloatingUIProps;
             placement?: number;
             required?: boolean;
+            search?: boolean;
             title?: string;
             type?: number;
             updateLabel?: boolean;
@@ -3184,8 +3185,10 @@ declare module 'gd-bs/components/floating-ui/types' {
     export const FloatingUIPlacements: IFloatingUIPlacements;
     
     export interface IFloatingUI {
+            addIgnoreElement: (el: Element) => void;
             hide: () => void;
             isVisible: boolean;
+            removeIgnoreElement: (el: Element) => void;
             setContent: (el: string | Element) => void;
             show: () => void;
             toggle: () => void;
@@ -3208,6 +3211,8 @@ declare module 'gd-bs/components/floating-ui/types' {
     export interface IFloatingUIProps extends IBaseProps<IFloatingUI> {
             elContent: HTMLElement;
             elTarget: HTMLElement;
+            onHide?: (el?: HTMLElement) => void;
+            onShow?: (el?: HTMLElement) => void;
             options?: IFloatingUIOptions;
             placement?: number;
             show?: boolean;

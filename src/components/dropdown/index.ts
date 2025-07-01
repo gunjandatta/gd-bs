@@ -38,6 +38,7 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
     private _autoSelect: boolean = null;
     private _cb: ICheckboxGroup = null;
     private _elMenu: HTMLElement;
+    private _elSearch: HTMLInputElement;
     private _floatingUI: IFloatingUI = null;
     private _initFl: boolean = false;
     private _items: Array<DropdownFormItem | DropdownItem> = null;
@@ -51,6 +52,9 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
 
         // Configure the events
         this.configureEvents();
+
+        // Configure search
+        this.configureSearch();
 
         // Configure the parent
         this.configureParent();
@@ -258,6 +262,16 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
                 elTarget: toggle,
                 placement: typeof (this.props.placement) === "number" ? this.props.placement : FloatingUIPlacements.BottomStart,
                 theme: popoverType,
+                onShow: () => {
+                    // See if the search element exists
+                    if (this._elSearch) {
+                        // Clear the search
+                        this._elSearch.value = "";
+
+                        // Show all the items
+                        for (let i = 0; i < this._items.length; i++) { this._items[i].show(); }
+                    }
+                },
                 options: {
                     arrow: false,
                     flip: true,
@@ -394,6 +408,73 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
                 this.props.id ? menu.setAttribute("aria-labelledby", this.props.id) : null;
             }
         }
+    }
+
+    // Configures the search option for the dropdown
+    private configureSearch() {
+        // See if search is enabled and the menu exists
+        if (this.props.search != true || this._elMenu == null) { return; }
+
+        // Create the search textbox
+        this._elSearch = document.createElement("input");
+        this._elSearch.classList.add("form-control");
+        this._elSearch.type = "search";
+        this._elSearch.placeholder = "Search for item...";
+
+        // Insert the item as the first element
+        this._elMenu.firstChild ? this._elMenu.insertBefore(this._elSearch, this._elMenu.firstChild) : this._elMenu.appendChild(this._elSearch);
+
+        // Create the empty text
+        let elEmptyText = document.createElement("h6")
+        elEmptyText.classList.add("dropdown-header");
+        elEmptyText.classList.add("d-none");
+        elEmptyText.innerHTML = "No items were found...";
+        this._elMenu.appendChild(elEmptyText);
+
+        // Add the element to the ignore list
+        this._floatingUI.addIgnoreElement(this._elSearch);
+
+        // Add the event
+        this._elSearch.addEventListener("input", () => {
+            // Get the value
+            let searchText = (this._elSearch.value || "").toLocaleLowerCase();
+
+            // Set the flags
+            let itemsFound = false;
+            let showAll = searchText == "";
+
+            // Hide the empty text
+            elEmptyText.classList.add("d-none");
+
+            // Parse the items
+            for (let i = 0; i < this._items.length; i++) {
+                let item = this._items[i];
+
+                // See if we are showing all the items
+                if (showAll) {
+                    // Show the item
+                    item.show();
+                } else {
+                    // See if the value contains the text
+                    if ((item.props.text || "").toLowerCase().indexOf(searchText) >= 0) {
+                        // Show the item
+                        item.show();
+
+                        // Set the flag
+                        itemsFound = true;
+                    } else {
+                        // Hide the item
+                        item.hide();
+                    }
+                }
+            }
+
+            // See if no items were found
+            if (!showAll && !itemsFound) {
+                // Show the empty message
+                elEmptyText.classList.remove("d-none");
+            }
+        });
     }
 
     // Generates the checkbox items
@@ -644,6 +725,9 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
                 }
             }
         }
+
+        // Configure search
+        this.configureSearch();
     }
 
     // Sets the label of the dropdown

@@ -87,12 +87,18 @@ export class DropdownFormItem {
     // The component HTML element
     get el(): HTMLElement { return this._el; }
 
+    // Hides the item
+    hide() { this._el.classList.add("d-none"); }
+
     // Returns true if the item is selected
     get isSelected(): boolean { return this._isSelected; }
     set isSelected(value: boolean) { this._isSelected = value; }
 
     // The component properties
     get props(): IDropdownItem { return this._props; }
+
+    // Shows the item
+    show() { this._el.classList.remove("d-none"); }
 
     // Toggles the item selection
     toggle() {
