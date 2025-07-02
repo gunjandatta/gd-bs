@@ -192,6 +192,16 @@
         <item value="8">Item 8</item>
         <item value="9">Item 9</item>
         <item value="10">Item 10</item>
+        <item value="11">Item 11</item>
+        <item value="12">Item 12</item>
+        <item value="13">Item 13</item>
+        <item value="14">Item 14</item>
+        <item value="15">Item 15</item>
+        <item value="16">Item 16</item>
+        <item value="17">Item 17</item>
+        <item value="18">Item 18</item>
+        <item value="19">Item 19</item>
+        <item value="20">Item 20</item>
     </bs-dropdown>
 
     <h5>Form (Rows)</h5>
@@ -218,6 +228,21 @@
                 <item value="3">Item 3</item>
                 <item value="4">Item 4</item>
                 <item value="5">Item 5</item>
+                <item value="6">Item 6</item>
+                <item value="7">Item 7</item>
+                <item value="8">Item 8</item>
+                <item value="9">Item 9</item>
+                <item value="10">Item 10</item>
+                <item value="11">Item 11</item>
+                <item value="12">Item 12</item>
+                <item value="13">Item 13</item>
+                <item value="14">Item 14</item>
+                <item value="15">Item 15</item>
+                <item value="16">Item 16</item>
+                <item value="17">Item 17</item>
+                <item value="18">Item 18</item>
+                <item value="19">Item 19</item>
+                <item value="20">Item 20</item>
             </bs-form-control>
         </row>
         <div>
@@ -545,7 +570,7 @@
             cardRender: (el) => { console.log("Card Render: ", el); },
             cardBodyRender: (el) => { console.log("Card Body Render: ", el); },
             collapseInit: obj => { window["collapseDemo"] = obj; },
-            ddlChange: (item) => { debugger; alert("Selected Item: " + (item ? item.text : "No Selection")); },
+            ddlChange: (item) => { alert("Selected Item: " + (item ? item.text : "No Selection")); },
             fileClicked: (btn) => { alert(btn.text + " clicked."); },
             formCustomControl: (ctrl) => { ctrl.el.innerHTML = "<h3>Custom Control</h3>"; },
             inputGrouponChange: (val) => { console.log("Value changed to: " + val); },

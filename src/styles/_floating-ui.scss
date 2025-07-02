@@ -25,6 +25,8 @@
         border-radius: var(--bs-dropdown-border-radius, 5px);
         min-width: var(--bs-dropdown-min-width, 10rem);
         padding: var(--bs-dropdown-padding-y, 0.5rem) var (--bs-dropdown-padding-x, 0);
+        max-height: var(--bs-dropdown-max-height, 500px);
+        overflow-y: auto;
     }
 
     &.floating-dropdown .dropdown-item {
