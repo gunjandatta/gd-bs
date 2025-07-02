@@ -325,12 +325,16 @@ class _FloatingUI {
             if (this._elArrow) {
                 let arrowX = middlewareData.arrow.x;
                 let arrowY = middlewareData.arrow.y;
+                let placement = (middlewareData.offset?.placement || this._options.placement).split('-')[0];
                 let side = {
                     top: 'bottom',
                     right: 'left',
                     bottom: 'top',
                     left: 'right'
-                }[(middlewareData.offset?.placement || this._options.placement).split('-')[0]]
+                }[placement]
+
+                // Set the placement
+                this._elContent.setAttribute("data-placement", placement);
 
                 // Update the location
                 Object.assign(this._elArrow.style, {
