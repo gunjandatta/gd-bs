@@ -472,6 +472,36 @@
         <appended-button>Run</appended-button>
     </bs-input-group>
 
+    <h5>Tooltip</h5>
+
+    <div class="bs">
+        <div class="d-flex justify-content-between">
+            <bs-tooltip placement="GD.Components.TooltipPlacements.Right" type="GD.Components.TooltipTypes.Dark"
+                options='{ "trigger": "click" }'>
+                <btn-props type="GD.Components.ButtonTypes.OutlineDanger">Test Tooltip</btn-props>
+                This is a tooltip.
+            </bs-tooltip>
+
+            <bs-tooltip placement="GD.Components.TooltipPlacements.Top" type="GD.Components.TooltipTypes.LightBorder"
+                options='{ "trigger": "click" }'>
+                <btn-props type="GD.Components.ButtonTypes.OutlineDanger">Test Tooltip</btn-props>
+                This is a tooltip.
+            </bs-tooltip>
+
+            <bs-tooltip placement="GD.Components.TooltipPlacements.Left" type="GD.Components.TooltipTypes.Dark"
+                options='{ "trigger": "click" }'>
+                <btn-props type="GD.Components.ButtonTypes.OutlineDanger">Test Tooltip</btn-props>
+                This is a tooltip.
+            </bs-tooltip>
+
+            <bs-tooltip placement="GD.Components.TooltipPlacements.Bottom" type="GD.Components.TooltipTypes.Dark"
+                options='{ "trigger": "click" }'>
+                <btn-props type="GD.Components.ButtonTypes.OutlineDanger">Test Tooltip</btn-props>
+                This is a tooltip.
+            </bs-tooltip>
+        </div>
+    </div>
+
     <h5>Toast</h5>
 
     <bs-toast id="toast" header-text="Header Text" muted-text="2 seconds ago" options='{ "autohide": false }'>
@@ -524,36 +554,6 @@
             <bs-button>Button 10</bs-button>
         </toolbar-item>
     </bs-toolbar>
-
-    <h5>Tooltip</h5>
-
-    <div class="bs">
-        <div class="d-flex justify-content-between">
-            <bs-tooltip placement="GD.Components.TooltipPlacements.TopEnd" type="GD.Components.TooltipTypes.Dark"
-                options='{ "trigger": "click" }'>
-                <btn-props type="GD.Components.ButtonTypes.OutlineDanger">Test Tooltip</btn-props>
-                This is a tooltip.
-            </bs-tooltip>
-
-            <bs-tooltip placement="GD.Components.TooltipPlacements.Top" type="GD.Components.TooltipTypes.Dark"
-                options='{ "trigger": "click" }'>
-                <btn-props type="GD.Components.ButtonTypes.OutlineDanger">Test Tooltip</btn-props>
-                This is a tooltip.
-            </bs-tooltip>
-
-            <bs-tooltip placement="GD.Components.TooltipPlacements.Bottom" type="GD.Components.TooltipTypes.Dark"
-                options='{ "trigger": "click" }'>
-                <btn-props type="GD.Components.ButtonTypes.OutlineDanger">Test Tooltip</btn-props>
-                This is a tooltip.
-            </bs-tooltip>
-
-            <bs-tooltip placement="GD.Components.TooltipPlacements.BottomStart" type="GD.Components.TooltipTypes.Dark"
-                options='{ "trigger": "click" }'>
-                <btn-props type="GD.Components.ButtonTypes.OutlineDanger">Test Tooltip</btn-props>
-                This is a tooltip.
-            </bs-tooltip>
-        </div>
-    </div>
 
     <script type="text/javascript" showFl="false">
         window["MyRefs"] = {};

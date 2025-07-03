@@ -5,7 +5,6 @@ import { IButton } from "../button/types";
 import { Button, ButtonTypes } from "../button";
 import { IDropdown } from "../dropdown/types";
 import { Dropdown, DropdownTypes } from "../dropdown";
-import { appendContent } from "../common";
 import { FloatingUI, FloatingUIPlacements } from "../floating-ui";
 
 /**
@@ -204,6 +203,9 @@ class _Tooltip extends Base<ITooltipProps> {
         } else {
             this._elContent = this.props.content as any;
         }
+
+        // Set the padding
+        this._elContent.classList.add("p-2");
 
         // Set the on create event
         /*
