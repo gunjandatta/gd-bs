@@ -25,6 +25,7 @@
         <div id="card"></div>
         <div id="card-group"></div>
         <div id="tooltip"></div>
+        <div id="popover2"></div>
         <div id="toolbar"></div>
         <div id="ddl"></div>
         <div id="button"></div>
@@ -132,9 +133,64 @@
                 btnLoading.setText("Click Me");
             }, 5000);
 
+            var ddlMenu = GD.Components.Dropdown({
+                menuOnly: true,
+                items: [
+                    { text: "Item 1", value: 1 },
+                    { text: "Item 2", value: 2 },
+                    { text: "Item 3", value: 3 },
+                    { text: "Item 4", value: 4 },
+                    { text: "Item 5", value: 5 }
+                ],
+                onChange: (item) => {
+                    alert("Item Selected: " + (item ? item.value : "None"));
+                    tooltip.hide();
+                }
+            });
+            ddlMenu.el.querySelectorAll(".dropdown-item").forEach(item => {
+                item.addEventListener("click", ev => {
+                    console.log(ev.srcElement.innerHTML);
+                })
+            });
+            var btn = GD.Components.Button({
+                text: "Popover",
+            })
+            window["popover"] = GD.Components.Popover({
+                el: document.getElementById("popover2"),
+                btnProps: {
+                    id: "popover-demo2",
+                    text: "Popover Demo",
+                    type: 3
+                },
+                placement: 4,
+                options: {
+                    content: ddlMenu.el,
+                    trigger: "click"
+                }
+            });
+
+            var el = document.createElement("div");
+            el.innerHTML = '<h6 class="dropdown-header">Search Results for "testing"</h6>';
+            el.innerHTML += '<div class="dropdown-divider"></div>';
+            [
+                { text: "Item 1", value: 1 },
+                { text: "Item 2", value: 2 },
+                { text: "Item 3", value: 3 },
+                { text: "Item 4", value: 4 },
+                { text: "Item 5", value: 5 }
+            ].forEach(item => {
+                var elItem = document.createElement("a");
+                elItem.classList.add("dropdown-item");
+                elItem.innerHTML = item.text;
+                elItem.setAttribute("data-user", item.value);
+                elItem.addEventListener("click", ev => {
+                    console.log(ev.srcElement.innerHTML);
+                });
+                el.appendChild(elItem);
+            })
             window["tooltip"] = GD.Components.Tooltip({
                 el: document.getElementById("tooltip"),
-                content: "This is a tooltip.",
+                content: el,
                 placement: 15,
                 type: GD.Components.TooltipTypes.Primary,
                 btnProps: {
@@ -298,7 +354,7 @@
                 placement: 10,
                 options: {
                     content: "This is the content.",
-                    trigger: "click"
+                    trigger: "focus"
                 }
             });
             window["popover2"] = GD.Components.Popover({
@@ -316,7 +372,8 @@
                         onClick: function() {
                             alert("Take Action");
                         }
-                    }).el
+                    }).el,
+                    trigger: "click"
                 }
             });
             window["myForm"] = GD.Components.Form({
@@ -483,9 +540,6 @@
                                     text: "Item 3 > 2",
                                     value: 3
                                 }, ]);
-                            },
-                            onChange: function(item) {
-                                alert("Selected Item: " + item.text);
                             },
                             onValidate: function(props, result) {
                                 return {

@@ -200,8 +200,10 @@ class _Tooltip extends Base<ITooltipProps> {
         if (typeof (this.props.content) === "string") {
             this._elContent = document.createElement("div") as HTMLElement;
             this._elContent.innerHTML = this.props.content;
-        } else {
+        } else if(this.props.content) {
             this._elContent = this.props.content as any;
+        } else {
+            this._elContent = document.createElement("div");
         }
 
         // Set the padding

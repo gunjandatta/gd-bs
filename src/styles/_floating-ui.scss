@@ -33,15 +33,15 @@
 
     &.floating-dropdown .dropdown-item {
         border-radius: var(--bs-dropdown-border-radius, 5px);
-    }
 
-    &.floating-dropdown .dropdown-item.active {
-        background-color: var(--sp-theme-primary, #0078d4);
-    }
+        :active {
+            background-color: var(--sp-theme-primary, #0078d4);
+        }
 
-    &.floating-dropdown .dropdown-item:hover {
-        background-color: var(--bs-dropdown-link-hover-bg, #faf9f8);
-        color: var(--bs-dropdown-link-hover-color, #201f1e);
+        :hover {
+            background-color: var(--bs-dropdown-link-hover-bg, #faf9f8);
+            color: var(--bs-dropdown-link-hover-color, #201f1e);
+        }
     }
 
     /* Style the Floating UI arrow */
@@ -124,6 +124,7 @@
 
         .dropdown-item:hover {
             background-color: var(--sp-neutral-lighter);
+            color: var(--sp-info-icon, #605e5c);
         }
 
         &[data-placement='top']>.arrow {
@@ -173,6 +174,7 @@
 
         .dropdown-item:hover {
             background-color: var(--sp-neutral-lighter);
+            color: var(--sp-success-icon, #107c10);
         }
 
         &[data-placement='top']>.arrow {
@@ -222,6 +224,7 @@
 
         .dropdown-item:hover {
             background-color: var(--sp-neutral-dark);
+            color: var(--sp-accent, #8764b8);
         }
 
         &[data-placement='top']>.arrow {
@@ -271,6 +274,7 @@
 
         .dropdown-item:hover {
             background-color: var(--sp-neutral-lighter);
+            color: var(--sp-severe-warning-icon, #d83b01);
         }
 
         &[data-placement='top']>.arrow {
@@ -320,6 +324,7 @@
 
         .dropdown-item:hover {
             background-color: var(--sp-neutral-lighter);
+            color: var(--sp-error-icon, #a80000);
         }
 
         &[data-placement='top']>.arrow {
@@ -369,6 +374,7 @@
 
         .dropdown-item:hover {
             background-color: var(--sp-white);
+            color: var(--sp-black, #000000);
         }
 
         &[data-placement='top']>.arrow {
@@ -413,6 +419,7 @@
 
         .dropdown-item:hover {
             background-color: var(--sp-black);
+            color: var(--sp-white, #ffffff);
         }
 
         .dropdown-item.active {
@@ -465,6 +472,7 @@
 
         .dropdown-item:hover {
             background-color: var(--sp-neutral-lighter);
+            color: var(--sp-white, #ffffff);
         }
 
         &[data-placement='top']>.arrow {
@@ -514,6 +522,7 @@
 
         .dropdown-item:hover {
             background-color: var(--sp-theme-dark, #005a9e);
+            color: var(--sp-white, #ffffff);
         }
 
         &[data-placement='top']>.arrow {

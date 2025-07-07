@@ -321,6 +321,7 @@
     .dropdown-item:hover,
     .dropdown-item:focus {
         background-color: var(--sp-neutral-quaternary, #d2d0ce);
+        cursor: pointer;
     }
 
     /* Color match dropdown active */
