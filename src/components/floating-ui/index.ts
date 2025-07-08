@@ -384,6 +384,9 @@ class _FloatingUI {
     // Determines if the content is visible
     get isVisible(): boolean { return !this._elContent.classList.contains("d-none"); }
 
+    // Refreshes the position of the floating ui
+    refreshPosition() { this.refresh(); }
+
     // Shows the content
     show() {
         // Append it to the document

@@ -8,6 +8,7 @@ export interface IFloatingUI {
     addIgnoreElement: (el: Element) => void;
     hide: () => void;
     isVisible: boolean;
+    refreshPosition: () => void;
     removeIgnoreElement: (el: Element) => void;
     setContent: (el: string | Element) => void;
     show: () => void;
