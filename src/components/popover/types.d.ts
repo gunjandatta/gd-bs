@@ -64,7 +64,7 @@ export const PopoverTypes: IFloatingUITypes;
 
 import { IBaseProps } from "../types";
 import { IButtonProps } from "../button/types";
-import { IFloatingUIOptions, IFloatingUIPlacements, IFloatingUITypes } from "../floating-ui/types";
+import { IFloatingUI, IFloatingUIOptions, IFloatingUIPlacements, IFloatingUITypes } from "../floating-ui/types";
 
 /**
  * Popover
@@ -74,7 +74,7 @@ export interface IPopover {
     el: HTMLElement;
 
     /** The floating ui instance. */
-    floatingUI: any;
+    floatingUI: IFloatingUI;
 
     /** Enables the popover. */
     enable: () => void;

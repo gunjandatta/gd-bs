@@ -54,7 +54,7 @@ export const TooltipTypes: IFloatingUITypes;
 import { IBaseProps } from "../types";
 import { IButtonProps, IButton } from "../button/types";
 import { IDropdownProps, IDropdown } from "../dropdown/types";
-import { IFloatingUIOptions, IFloatingUIPlacements, IFloatingUITypes } from "../floating-ui/types";
+import { IFloatingUI, IFloatingUIOptions, IFloatingUIPlacements, IFloatingUITypes } from "../floating-ui/types";
 
 /**
  * Tooltip
@@ -76,7 +76,7 @@ export interface ITooltip {
     ddl?: IDropdown;
 
     /** The floating ui instance. */
-    floatingUI: any;
+    floatingUI: IFloatingUI;
 
     /** Toggles an element's tooltip. */
     toggle: () => void;
