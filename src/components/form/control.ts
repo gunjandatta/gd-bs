@@ -712,6 +712,11 @@ export class FormControl implements IFormControl {
                 // Set the flag
                 validation.isValid = value;
             }
+            // Else, see if this is a dropdown and ensure it has a value
+            else if (this._ddl && !this._ddl.isMulti && value) {
+                // Set the flag to ensure a text/value exists
+                validation.isValid = value.text || value.value ? true : false;
+            }
         }
 
         // See if an event exists
