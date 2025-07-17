@@ -99,6 +99,9 @@ class _FloatingUI {
 
         // Create the event
         document.addEventListener("click", (ev) => {
+            // Do nothing if we do not want to hide on click
+            if (this._props.options?.hideOnClick) { return; }
+
             // Do nothing if we toggled this component
             if (this._elTarget.contains(ev.target as HTMLElement)) { return; }
 

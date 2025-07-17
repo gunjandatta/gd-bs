@@ -3202,6 +3202,7 @@ declare module 'gd-bs/components/floating-ui/types' {
             content?: string | Element;
             flip?: boolean | any;
             hide?: boolean | any;
+            hideOnClick?: boolean;
             inline?: boolean | any;
             offset?: number | any;
             shift?: boolean | any;
