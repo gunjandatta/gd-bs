@@ -14,7 +14,9 @@
 <body>
     <h1>Library</h1>
     <form>
-        <div id="dev"></div>
+        <div id="dev">
+            <input id="dev2" />
+        </div>
         <div id="icon-link"></div>
         <div id="alert"></div>
         <div id="btn-loading"></div>
@@ -55,13 +57,7 @@
         <div id="toast"></div>
     </form>
     <script type="text/javascript" showFl="false">
-        window["Test"] = {
-            renderItem: (el, item) => {
-                // Render content for the accordion
-                el.innerHTML = `<b>${item.header}</b><p>was used to create this content.</p>`;
-            }
-        }
-        window.addEventListener("load", function() {
+        window.addEventListener("load", function () {
             // Dev
             let items = [];
             for (var i = 0; i < 10; i++) {
@@ -77,15 +73,28 @@
                     }
                 });
             }
-            window["dev"] = GD.Components.ListGroup({
-                el: document.getElementById("dev"),
-                items: items
+            window["dev"] = GD.Components.Tooltip({
+                target: document.getElementById("dev2"),
+                content: "This is a tooltip.",
+                placement: GD.Components.TooltipPlacements.BottomEnd,
+                type: GD.Components.TooltipTypes.LightBorder
+            });
+
+            window["tooltip"] = GD.Components.Tooltip({
+                el: document.getElementById("tooltip1"),
+                content: el,
+                placement: 15,
+                type: GD.Components.TooltipTypes.Primary,
+                btnProps: {
+                    text: "Test Tooltip",
+                    type: GD.Components.ButtonTypes.OutlineDanger
+                }
             });
 
             // Components
             GD.Components.IconLink({
                 el: document.getElementById("icon-link"),
-                content: "Icon Link",
+                content: "<p>Icon Link</p>",
                 iconType: GD.Icons(GD.IconTypes.Badge3d),
                 type: GD.Components.IconLinkTypes.AfterText
             })
@@ -110,7 +119,7 @@
                 header: "Alert Header",
                 content: "This is an alert.",
                 type: GD.Components.AlertTypes.Danger,
-                onClose: function(props) {
+                onClose: function (props) {
                     console.log("The alert was closed.", props.header);
                 }
             });
@@ -119,7 +128,7 @@
                 el: document.getElementById("btn-loading"),
                 text: "Loading...",
                 iconType: GD.Icons(GD.IconTypes.Badge3d),
-                onClick: function() {
+                onClick: function () {
                     alert("The loading button was clicked...");
                 },
                 spinnerProps: {
@@ -128,7 +137,7 @@
                     type: GD.Components.SpinnerTypes.Light
                 }
             });
-            setTimeout(function() {
+            setTimeout(function () {
                 // Update the text
                 btnLoading.setText("Click Me");
             }, 5000);
@@ -196,9 +205,6 @@
                 btnProps: {
                     text: "Test Tooltip",
                     type: GD.Components.ButtonTypes.OutlineDanger
-                },
-                options: {
-                    trigger: "click"
                 }
             });
 
@@ -212,7 +218,7 @@
                     actions: [{
                         text: "Card Action",
                         buttonType: GD.Components.ButtonTypes.OutlinePrimary,
-                        onClick: function(action, card) {
+                        onClick: function (action, card) {
                             alert(card.title + " was clicked.");
                         }
                     }]
@@ -225,7 +231,7 @@
                 col: 4,
                 onRender: (el) => { console.log("Card Group Render: ", el); },
                 cards: [
-                {
+                    {
                         body: [{
                             title: "Card Title 1",
                             text: "This is the card contents.",
@@ -233,7 +239,7 @@
                             actions: [{
                                 text: "Card Action",
                                 buttonType: GD.Components.ButtonTypes.OutlinePrimary,
-                                onClick: function(action, card) {
+                                onClick: function (action, card) {
                                     alert(card.title + " was clicked.");
                                 }
                             }]
@@ -246,7 +252,7 @@
                             actions: [{
                                 text: "Card Action",
                                 buttonType: GD.Components.ButtonTypes.OutlinePrimary,
-                                onClick: function(action, card) {
+                                onClick: function (action, card) {
                                     alert(card.title + " was clicked.");
                                 }
                             }]
@@ -259,7 +265,7 @@
                             actions: [{
                                 text: "Card Action",
                                 buttonType: GD.Components.ButtonTypes.OutlinePrimary,
-                                onClick: function(action, card) {
+                                onClick: function (action, card) {
                                     alert(card.title + " was clicked.");
                                 }
                             }]
@@ -272,7 +278,7 @@
                             actions: [{
                                 text: "Card Action",
                                 buttonType: GD.Components.ButtonTypes.OutlinePrimary,
-                                onClick: function(action, card) {
+                                onClick: function (action, card) {
                                     alert(card.title + " was clicked.");
                                 }
                             }]
@@ -285,7 +291,7 @@
                             actions: [{
                                 text: "Card Action",
                                 buttonType: GD.Components.ButtonTypes.OutlinePrimary,
-                                onClick: function(action, card) {
+                                onClick: function (action, card) {
                                     alert(card.title + " was clicked.");
                                 }
                             }]
@@ -298,7 +304,7 @@
                             actions: [{
                                 text: "Card Action",
                                 buttonType: GD.Components.ButtonTypes.OutlinePrimary,
-                                onClick: function(action, card) {
+                                onClick: function (action, card) {
                                     alert(card.title + " was clicked.");
                                 }
                             }]
@@ -369,7 +375,7 @@
                 options: {
                     content: GD.Components.Button({
                         text: "Action",
-                        onClick: function() {
+                        onClick: function () {
                             alert("Take Action");
                         }
                     }).el,
@@ -388,13 +394,13 @@
                     LName: "Base",
                     TestDelay: null
                 },
-                onControlRendering: function(ctrlProps) {
+                onControlRendering: function (ctrlProps) {
                     console.log("The control property '" + ctrlProps.name + "' is rendering...");
                 },
-                onControlRendered: function(ctrl) {
+                onControlRendered: function (ctrl) {
                     console.log("The control '" + ctrl.props.name + "' has been rendered...");
                 },
-                onRendered: function() {
+                onRendered: function () {
                     console.log("The form has been rendered...");
                 },
                 rowClassName: "class1 class2",
@@ -413,7 +419,7 @@
                         control: {
                             className: "custom-control",
                             id: "custom-control-exp",
-                            onControlRendered: function(control) {
+                            onControlRendered: function (control) {
                                 // Render a header
                                 control.el.innerHTML = "<h3>Form Header</h3>";
                             }
@@ -448,7 +454,7 @@
                                 value: 5,
                                 isDisabled: true
                             }],
-                            onChange: function(item) {
+                            onChange: function (item) {
                                 item ? alert(item.text + " was selected.") : null;
                             }
                         }
@@ -459,7 +465,7 @@
                             title: "Select a file",
                             type: GD.Components.FormControlTypes.File,
                             description: "This is a file selector",
-                            onChange: function(value) {
+                            onChange: function (value) {
                                 console.log("File selected", value);
                             }
                         }
@@ -522,7 +528,7 @@
                             }, {
                                 text: "Item 2"
                             }],
-                            onControlRendered: function(control) {
+                            onControlRendered: function (control) {
                                 control.dropdown.setItems([{
                                     isHeader: true,
                                     text: "Header 1"
@@ -539,9 +545,9 @@
                                 }, {
                                     text: "Item 3 > 2",
                                     value: 3
-                                }, ]);
+                                },]);
                             },
-                            onValidate: function(props, result) {
+                            onValidate: function (props, result) {
                                 return {
                                     invalidMessage: "This is invalid.",
                                     isValid: result.value ? true : false,
@@ -579,7 +585,7 @@
                             title: "This is a textfield",
                             type: GD.Components.FormControlTypes.TextField,
                             placeholder: "Explain the reason not tested",
-                            onValidate: function(ctrl, result) {
+                            onValidate: function (ctrl, result) {
                                 if (result.value && result.value.length > 0)
                                     return true;
                                 else
@@ -600,7 +606,7 @@
                                 label: "Secondary",
                                 name: "secondary"
                             }],
-                            onValidate: function(ctrl, value) {
+                            onValidate: function (ctrl, value) {
                                 if (value)
                                     return true;
                                 else
@@ -621,7 +627,7 @@
                                 label: "Secondary",
                                 name: "secondary"
                             }],
-                            onValidate: function(ctrl, value) {
+                            onValidate: function (ctrl, value) {
                                 if (value)
                                     return true;
                                 else
@@ -664,10 +670,10 @@
                         title: "This is a textfield",
                         type: GD.Components.FormControlTypes.TextField,
                         loadingMessage: "Loading...",
-                        onControlRendering: function(props) {
+                        onControlRendering: function (props) {
                             return {
-                                then: function(resolve) {
-                                    setTimeout(function() {
+                                then: function (resolve) {
+                                    setTimeout(function () {
                                         console.log("Delayed textbox has been rendered...");
                                         resolve(props);
                                     }, 5000);
@@ -696,11 +702,11 @@
                 }, {
                     size: 2,
                     control: {
-                        onControlRendered: function(control) {
+                        onControlRendered: function (control) {
                             GD.Components.Button({
                                 el: control.el,
                                 text: "Save",
-                                onClick: function() {
+                                onClick: function () {
                                     window.myForm = {
                                         values: myForm.getValues(),
                                         isValid: myForm.isValid()
@@ -710,7 +716,7 @@
                             });
                         }
                     }
-                }, ]
+                },]
             });
             window["panel"] = GD.Components.Modal({
                 el: document.getElementById("panel"),
@@ -721,7 +727,7 @@
                 options: {
                     keyboard: false
                 },
-                onRenderBody: function(el) {
+                onRenderBody: function (el) {
                     // Render a jumbotron
                     GD.Components.Jumbotron({
                         el: el,
@@ -745,7 +751,7 @@
                 data: {
                     title: "My Custom Data"
                 },
-                onClick: function(badge) {
+                onClick: function (badge) {
                     alert(badge.data.title);
                 }
             });
@@ -859,7 +865,7 @@
                 el: document.querySelector("#ddl"),
                 isSplit: false,
                 label: "My Dropdown",
-                onChange: function(item, ev) {
+                onChange: function (item, ev) {
                     alert("Selected Item: " + (item ? item.text : "None"));
                 },
                 setLabelToValue: true,
@@ -871,7 +877,7 @@
                     isDivider: true
                 }, {
                     text: "Item 1",
-                    onClick: function(item) {
+                    onClick: function (item) {
                         alert("Item Clicked: " + item.text);
                     }
                 }, {
@@ -906,34 +912,34 @@
                 buttons: [{
                     text: "File 1.docx",
                     url: "#",
-                    onClick: function() {
+                    onClick: function () {
                         alert("File 1 clicked");
                     }
                 }, {
                     text: "File 2.docx",
                     url: "#",
-                    onClick: function() {
+                    onClick: function () {
                         alert("File 2 clicked");
                     }
                 }, {
                     text: "File 3.docx",
                     url: "#",
-                    onClick: function() {
+                    onClick: function () {
                         alert("File 3 clicked");
                     }
                 }, {
                     text: "File 4.docx",
                     url: "#",
-                    onClick: function() {
+                    onClick: function () {
                         alert("File 4 clicked");
                     }
                 }, {
                     text: "File 5.docx",
                     url: "#",
-                    onClick: function() {
+                    onClick: function () {
                         alert("File 5 clicked");
                     }
-                }, ]
+                },]
             });
             window["modal"] = GD.Components.Modal({
                 el: document.querySelector("#modal"),
@@ -944,21 +950,21 @@
                     keyboard: true,
                     autoClose: false
                 },
-                onClose: function(modal) {
+                onClose: function (modal) {
                     console.log("The modal was closed.", modal);
                 },
-                onRenderFooter: function(el) {
+                onRenderFooter: function (el) {
                     // Render a button
                     GD.Components.Button({
                         el: el,
                         text: "Submit",
-                        onClick: function() {
+                        onClick: function () {
                             // Validate the form
                             console.log(window["modalForm"].isValid());
                         }
                     });
                 },
-                onRenderBody: function(el) {
+                onRenderBody: function (el) {
                     // Render a form
                     window["modalForm"] = GD.Components.Form({
                         el: el,
@@ -975,7 +981,7 @@
                                     label: "First Name",
                                     name: "FName",
                                     type: GD.Components.FormControlTypes.TextField,
-                                    onChange: function(value) {
+                                    onChange: function (value) {
                                         console.log("New First Name: " + value);
                                     }
                                 }
@@ -987,7 +993,7 @@
                                     label: "Last Name",
                                     name: "LName",
                                     type: GD.Components.FormControlTypes.TextField,
-                                    onChange: function(value) {
+                                    onChange: function (value) {
                                         console.log("New Last Name: " + value);
                                     }
                                 }
@@ -1000,7 +1006,7 @@
                                     label: "Comments",
                                     name: "Comments",
                                     type: GD.Components.FormControlTypes.TextArea,
-                                    onValidate: function(ctrl, value) {
+                                    onValidate: function (ctrl, value) {
                                         return {
                                             invalidMessage: "A comment is required.",
                                             validMessage: "Thank you for adding a comment",
@@ -1071,7 +1077,7 @@
                                     label: "Boolean",
                                     name: "Boolean",
                                     type: GD.Components.FormControlTypes.Checkbox,
-                                    onChange: function(item) {
+                                    onChange: function (item) {
                                         alert((item ? item.label : "No item") + " selected.");
                                     },
                                     items: [{
@@ -1095,7 +1101,7 @@
                                         text: "Select...",
                                         isDisabled: true,
                                         isSelected: true
-                                    },{
+                                    }, {
                                         text: "Job 1"
                                     }, {
                                         text: "Job 2"
@@ -1114,7 +1120,7 @@
                                     }, {
                                         text: "Job 9"
                                     }],
-                                    onChange: function(item) {
+                                    onChange: function (item) {
                                         console.log("Selected Item: " + (item ? item.text : ""));
                                     }
                                 }
@@ -1146,7 +1152,7 @@
                                     }, {
                                         text: "Job 9"
                                     }],
-                                    onChange: function(items) {
+                                    onChange: function (items) {
                                         console.log("Selected Items: ", items);
                                     }
                                 }
@@ -1195,10 +1201,10 @@
                     text: "Run"
                 }],
                 value: 0,
-                onClear: function() {
+                onClear: function () {
                     console.log("The value was cleared.");
                 },
-                onChange: function(val) {
+                onChange: function (val) {
                     console.log("Value changed to: " + val);
                 }
             });
@@ -1208,7 +1214,7 @@
                 label: "Address:",
                 type: GD.Components.InputGroupTypes.TextArea,
                 value: "This is a long value. It's supposed to go in a text area.\n\nHopefully this will be on a new line...",
-                onChange: function(val) {
+                onChange: function (val) {
                     console.log("Multi value changed to: " + val);
                 }
             });
@@ -1297,7 +1303,7 @@
                     tabContent: "This is the content for tab 4."
                 }, {
                     title: "NavTab 5",
-                    onRenderTab: function(el) {
+                    onRenderTab: function (el) {
                         el.innerHTML = "This is the content for tab 5."
                     }
                 }]
@@ -1344,7 +1350,7 @@
                 el: document.querySelector("#collapse"),
                 id: "collapseDemo",
                 isHorizontal: true,
-                onRender: function(el) {
+                onRender: function (el) {
                     el.innerHTML = "This is the content to be collapsed.";
                     el.style.width = "300px";
                     el.style.minHeight = "100px";
@@ -1364,7 +1370,7 @@
                 id: "accordionDemo",
                 items: [{
                     header: "Item 1",
-                    onRenderBody: function(el) {
+                    onRenderBody: function (el) {
                         el.innerHTML = "This is the content for item 1.";
                     },
                     showFl: true
@@ -1379,7 +1385,7 @@
             GD.Components.Pagination({
                 el: document.querySelector("#paging"),
                 numberOfPages: 5,
-                onClick: function(pageNumber) {
+                onClick: function (pageNumber) {
                     alert(pageNumber + " was clicked.");
                 }
             });
@@ -1415,15 +1421,15 @@
             window["navbar"] = GD.Components.Navbar({
                 el: document.querySelector("#navbar"),
                 brand: "Test",
-                onClick: function(item) {
+                onClick: function (item) {
                     // Log
                     console.log("Nav Item Clicked: " + item.text);
                 },
                 searchBox: {
-                    onChange: function(val) {
+                    onChange: function (val) {
                         console.log("Searching for: " + val);
                     },
-                    onSearch: function(val) {
+                    onSearch: function (val) {
                         console.log("Search for: " + val);
                     },
                     value: "Default Value"
@@ -1445,7 +1451,7 @@
                         text: "Link 1",
                         href: "#",
                         iconType: GD.Icons(GD.IconTypes.Diagram2, 16, 16),
-                        onChange: function(item) {
+                        onChange: function (item) {
                             console.log("Nav DDL Item Clicked: " + item.text);
                         }
                     }, {
@@ -1462,7 +1468,7 @@
                     }, {
                         text: "Link 5",
                         href: "#"
-                    }, ]
+                    },]
                 }, {
                     text: "Collapse",
                     toggleObj: window["navbarCollapse"],

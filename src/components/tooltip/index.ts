@@ -44,15 +44,19 @@ class _Tooltip extends Base<ITooltipProps> {
 
         // Configure the collapse
         this.configure();
-
-        // Configure the parent
-        this.configureParent();
     }
 
     // Configure the tooltip
     private configure() {
-        // See if the target element was not defined
-        if (this.props.target == null) {
+        // See if the target element was defined
+        if (this.props.target) {
+            // Update the element
+            this.el = this.props.target
+
+            // Configure the options
+            this.configureOptions();
+        }
+        else {
             // See if the dropdown property exists
             if (this.props.ddlProps) {
                 // Set the default properties
@@ -81,10 +85,13 @@ class _Tooltip extends Base<ITooltipProps> {
                 // Update the element
                 this.el = this._btn.el;
             }
-        }
 
-        // Configure the options
-        this.configureOptions();
+            // Configure the options
+            this.configureOptions();
+
+            // Configure the parent
+            this.configureParent();
+        }
     }
 
     // Configure the options
@@ -139,68 +146,68 @@ class _Tooltip extends Base<ITooltipProps> {
             default:
                 // Set the default theme
                 theme = "secondary";
-
-                // See if a button/dropdown exists
-                let objType = this.props.btnProps && this.props.btnProps.type > 0 ? this.props.btnProps.type : null;
-                objType = this.props.ddlProps && this.props.ddlProps.type > 0 ? this.props.ddlProps.type : objType;
-                if (objType > 0) {
-                    // Match the theme to the button/dropdown type
-                    switch (objType) {
-                        // Danger
-                        case ButtonTypes.Danger:
-                        case ButtonTypes.OutlineDanger:
-                            theme = "danger";
-                            break;
-                        // Dark
-                        case ButtonTypes.Dark:
-                        case ButtonTypes.OutlineDark:
-                            theme = "dark";
-                            break;
-                        // Info
-                        case ButtonTypes.Info:
-                        case ButtonTypes.OutlineInfo:
-                            theme = "info";
-                            break;
-                        // Light
-                        case ButtonTypes.Light:
-                        case ButtonTypes.OutlineLight:
-                            theme = "light";
-                            break;
-                        // Link
-                        case ButtonTypes.Link:
-                        case ButtonTypes.OutlineLink:
-                            theme = "light-border";
-                            break;
-                        // Primary
-                        case ButtonTypes.Primary:
-                        case ButtonTypes.OutlinePrimary:
-                            theme = "primary";
-                            break;
-                        // Secondary
-                        case ButtonTypes.Secondary:
-                        case ButtonTypes.OutlineSecondary:
-                            theme = "secondary";
-                            break;
-                        // Success
-                        case ButtonTypes.Success:
-                        case ButtonTypes.OutlineSuccess:
-                            theme = "success";
-                            break;
-                        // Warning
-                        case ButtonTypes.Warning:
-                        case ButtonTypes.OutlineWarning:
-                            theme = "warning";
-                            break;
-                    }
-                }
                 break;
+        }
+
+        // See if a button/dropdown exists
+        let objType = this.props.btnProps && this.props.btnProps.type > 0 ? this.props.btnProps.type : null;
+        objType = this.props.ddlProps && this.props.ddlProps.type > 0 ? this.props.ddlProps.type : objType;
+        if (objType > 0) {
+            // Match the theme to the button/dropdown type
+            switch (objType) {
+                // Danger
+                case ButtonTypes.Danger:
+                case ButtonTypes.OutlineDanger:
+                    theme = "danger";
+                    break;
+                // Dark
+                case ButtonTypes.Dark:
+                case ButtonTypes.OutlineDark:
+                    theme = "dark";
+                    break;
+                // Info
+                case ButtonTypes.Info:
+                case ButtonTypes.OutlineInfo:
+                    theme = "info";
+                    break;
+                // Light
+                case ButtonTypes.Light:
+                case ButtonTypes.OutlineLight:
+                    theme = "light";
+                    break;
+                // Link
+                case ButtonTypes.Link:
+                case ButtonTypes.OutlineLink:
+                    theme = "light-border";
+                    break;
+                // Primary
+                case ButtonTypes.Primary:
+                case ButtonTypes.OutlinePrimary:
+                    theme = "primary";
+                    break;
+                // Secondary
+                case ButtonTypes.Secondary:
+                case ButtonTypes.OutlineSecondary:
+                    theme = "secondary";
+                    break;
+                // Success
+                case ButtonTypes.Success:
+                case ButtonTypes.OutlineSuccess:
+                    theme = "success";
+                    break;
+                // Warning
+                case ButtonTypes.Warning:
+                case ButtonTypes.OutlineWarning:
+                    theme = "warning";
+                    break;
+            }
         }
 
         // Set the tooltip content element
         if (typeof (this.props.content) === "string") {
             this._elContent = document.createElement("div") as HTMLElement;
             this._elContent.innerHTML = this.props.content;
-        } else if(this.props.content) {
+        } else if (this.props.content) {
             this._elContent = this.props.content as any;
         } else {
             this._elContent = document.createElement("div");
@@ -208,30 +215,6 @@ class _Tooltip extends Base<ITooltipProps> {
 
         // Set the padding
         this._elContent.classList.add("p-2");
-
-        // Set the on create event
-        /*
-        options["onCreate"] = (tippyObj) => {
-            // Get the content element
-            let elContent = tippyObj.popper.querySelector(".tippy-content") as HTMLElement;
-            if (elContent) {
-                // Set the class
-                elContent.classList.add("bs");
-
-                // Get the custom class name(s)
-                let custom = (this.props.className || "").trim().split(" ");
-                for (let i = 0; i < custom.length; i++) {
-                    let className = custom[i];
-
-                    // Add the custom class name
-                    className ? elContent.classList.add(custom[i]) : null;
-                }
-            }
-
-            // Call the custom event if it's defined
-            this.props.options && this.props.options.onCreate ? this.props.options.onCreate(tippyObj) : null;
-        }
-            */
 
         // Create the floating ui
         this._floatingUI = FloatingUI({
