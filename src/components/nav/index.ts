@@ -32,10 +32,12 @@ class _Nav extends Base<INavProps> implements INav {
             this.props.id ? nav.id = this.props.id : null;
             this.props.enableFill ? nav.classList.add("nav-fill") : null;
             this.props.isJustified ? nav.classList.add("nav-justified") : null;
-            this.props.isPills ? nav.classList.add("nav-pills") : null;
-            this.props.isTabs ? nav.classList.add("nav-tabs") : null;
-            this.props.isUnderline ? nav.classList.add("nav-underline") : null;
             this.props.isVertical ? nav.classList.add("flex-column") : null;
+
+            // Set the class name based on the properties
+            if (this.props.isTabs) { nav.classList.add("nav-tabs"); }
+            else if (this.props.isPills) { nav.classList.add("nav-pills"); }
+            else if (this.props.isTabs) { nav.classList.add("nav-tabs"); }
         }
 
         // Render the nav links
