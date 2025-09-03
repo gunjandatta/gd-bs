@@ -15,6 +15,7 @@ export enum PaginationAlignment {
  * Pagination
  */
 class _Pagination extends Base<IPaginationProps> implements IPagination {
+    private _elList: HTMLUListElement = null;
     private _items: Array<HTMLLIElement> = null;
 
     // Constructor
@@ -34,25 +35,25 @@ class _Pagination extends Base<IPaginationProps> implements IPagination {
         this.props.label ? this.el.setAttribute("aria-label", this.props.label) : null;
 
         // Update the list
-        let list = this.el.querySelector("ul");
-        if (list) {
-            this.props.isLarge ? list.classList.add("pagination-lg") : null;
-            this.props.isSmall ? list.classList.add("pagination-sm") : null;
+        this._elList = this.el.querySelector("ul");
+        if (this._elList) {
+            this.props.isLarge ? this._elList.classList.add("pagination-lg") : null;
+            this.props.isSmall ? this._elList.classList.add("pagination-sm") : null;
 
             // Read the alignment
             switch (this.props.alignment) {
                 // Danger
                 case PaginationAlignment.Center:
-                    list.classList.add("justify-content-center");
+                    this._elList.classList.add("justify-content-center");
                     break;
                 // Dark
                 case PaginationAlignment.Right:
-                    list.classList.add("justify-content-end");
+                    this._elList.classList.add("justify-content-end");
                     break;
             }
 
             // Render the page numbers
-            this.renderPageNumbers(list, itemTemplate);
+            this.renderPageNumbers(1, itemTemplate);
         }
     }
 
@@ -176,31 +177,42 @@ class _Pagination extends Base<IPaginationProps> implements IPagination {
     }
 
     // Renders the page numbers
-    private renderPageNumbers(list: HTMLUListElement, itemTemplate: string) {
+    private renderPageNumbers(activeItem: number, itemTemplate: string) {
         // Clear the items
         this._items = [];
+
+        // Determine if there are > 10 pages
+        let pages = this.props.numberOfPages || 1;
+        let showFirstLast = pages > 10;
 
         // Create the previous link
         let item = this.createItem("Previous", itemTemplate);
         item.classList.add("disabled");
         item.classList.add("previous");
-        list.appendChild(item);
+        this._elList.appendChild(item);
+
+        // See if we are showing the first/last links
+        if (showFirstLast) {
+            item = this.createItem("1", itemTemplate);
+            activeItem == 1 ? item.classList.add("active") : null;
+            item.classList.add("next");
+            this._elList.appendChild(item);
+        }
 
         // Loop for the number of pages to create
         // Parse the number of pages
-        let pages = this.props.numberOfPages || 1;
-        for (let i = 1; i <= pages; i++) {
+        for (let i = 2; i <= pages; i++) {
             // Create a link
             item = this.createItem(i.toString(), itemTemplate);
-            i == 1 ? item.classList.add("active") : null;
-            list.appendChild(item);
+            i == activeItem ? item.classList.add("active") : null;
+            this._elList.appendChild(item);
         }
 
         // Create the next link
         item = this.createItem("Next", itemTemplate);
         pages > 1 ? null : item.classList.add("disabled");
         item.classList.add("next");
-        list.appendChild(item);
+        this._elList.appendChild(item);
     }
 }
 export const Pagination = (props: IPaginationProps, template?: string, itemTemplate?: string): IPagination => { return new _Pagination(props, template, itemTemplate); }

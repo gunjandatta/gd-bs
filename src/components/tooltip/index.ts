@@ -269,14 +269,15 @@ class _Tooltip extends Base<ITooltipProps> {
 
     // Sets the tippy content
     setContent(content: string | Element) {
-        // Set the tippy content
-        this._floatingUI.setContent(content);
-
         // See if the content is a string
         if (typeof (content) === "string") {
             // Update the content
+            this._elContent.innerHTML = content;
             this._btn ? this._btn.el.setAttribute("aria-description", content) : null;
             this._ddl ? this._ddl.el.setAttribute("aria-description", content) : null;
+        } else {
+            // Set the tippy content
+            this._floatingUI.setContent(content);
         }
     }
 

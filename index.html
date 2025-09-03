@@ -1384,7 +1384,8 @@
             });
             GD.Components.Pagination({
                 el: document.querySelector("#paging"),
-                numberOfPages: 5,
+                numberOfPages: 200,
+                isCompact: true,
                 onClick: function (pageNumber) {
                     alert(pageNumber + " was clicked.");
                 }
