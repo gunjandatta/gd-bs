@@ -82,6 +82,12 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
         // Render the items
         this.renderItems();
 
+        // See if values were defined
+        if (this.props.value) {
+            // Set the values
+            this.setValue(this.props.value);
+        }
+
         // Set the menu element
         this._elMenu = this.el.querySelector(".dropdown-menu");
         if (this._elMenu) {
