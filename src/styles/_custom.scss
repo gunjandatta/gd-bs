@@ -43,6 +43,10 @@
         -webkit-mask-repeat: no-repeat;
     }
 
+    .badge {
+        cursor: pointer;
+    }
+
     .bg-danger {
         background-color: var(--sp-error-icon, #a80000) !important;
     }
