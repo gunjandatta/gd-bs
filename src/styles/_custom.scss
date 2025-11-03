@@ -755,6 +755,10 @@
         height: 100vh;
     }
 
+    .page-item {
+        cursor: pointer;
+    }
+
     /* Color match the pagination link color to 'SharePoint Blue' */
     .page-link {
         border-color: var(--sp-info-icon, #605e5c);

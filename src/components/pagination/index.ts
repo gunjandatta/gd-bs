@@ -15,12 +15,19 @@ export enum PaginationAlignment {
  * Pagination
  */
 class _Pagination extends Base<IPaginationProps> implements IPagination {
+    private _activeIndex: number = null;
     private _elList: HTMLUListElement = null;
     private _items: Array<HTMLLIElement> = null;
+
+    // Buttons
+    private _buttons: { First: HTMLLIElement, Last: HTMLLIElement, Next: HTMLLIElement, Previous: HTMLLIElement } = null;
 
     // Constructor
     constructor(props: IPaginationProps, template: string = HTML, itemTemplate: string = HTMLItem) {
         super(template, props);
+
+        // Create the default buttons
+        this.createButtons(itemTemplate);
 
         // Configure the collapse
         this.configure(itemTemplate);
@@ -57,26 +64,28 @@ class _Pagination extends Base<IPaginationProps> implements IPagination {
         }
     }
 
-    // Configures the next/previous buttons, based on the active index
-    private configureNextPrevButtons(activePage: number) {
+    // Configures the default buttons, based on the active index
+    private configureDefaultButtons() {
         // Update the previous button
-        let prevItem = this._items[0];
-        if (activePage == 1) {
-            // Ensure the previous item is disabled
-            prevItem.classList.add("disabled");
+        if (this._activeIndex == 0) {
+            // Ensure the first/previous item is disabled
+            this._buttons.First.classList.add("disabled");
+            this._buttons.Previous.classList.add("disabled");
         } else {
-            // Ensure the previous item is enabled
-            prevItem.classList.remove("disabled");
+            // Ensure the first/previous item is enabled
+            this._buttons.First.classList.remove("disabled");
+            this._buttons.Previous.classList.remove("disabled");
         }
 
-        // Update the next button
-        let nextItem = this._items[this._items.length - 1];
-        if (activePage == this._items.length - 2) {
-            // Ensure the previous item is disabled
-            nextItem.classList.add("disabled");
+        // Update the next/last button
+        if (this._activeIndex == this._items.length - 1) {
+            // Ensure the next/last item is disabled
+            this._buttons.Next.classList.add("disabled");
+            this._buttons.Last.classList.add("disabled");
         } else {
-            // Ensure the previous item is enabled
-            nextItem.classList.remove("disabled");
+            // Ensure the next/last item is enabled
+            this._buttons.Next.classList.remove("disabled");
+            this._buttons.Last.classList.remove("disabled");
         }
     }
 
@@ -95,24 +104,33 @@ class _Pagination extends Base<IPaginationProps> implements IPagination {
                 // Do nothing if it's disabled
                 if (item.classList.contains("disabled")) { return; }
 
-                // Parse the items, excluding the next/previous items
-                for (let i = 1; i < this._items.length - 1; i++) {
-                    let item = this._items[i];
+                // See if the previous button was clicked
+                if (isPrevious) {
+                    // Click the previous item if it's available
+                    this._items[this._activeIndex - 1]?.click();
+                } else {
+                    // Click the next item if it's available
+                    this._items[this._activeIndex + 1]?.click();
+                }
+            });
+        } else if (link == "First" || link == "Last") {
+            let isLast = link == "Last";
 
-                    // See if this item is active
-                    if (item.classList.contains("active")) {
-                        // See if the previous button was clicked
-                        if (isPrevious) {
-                            // Click the previous item if it's available
-                            i - 1 > 0 ? this._items[i - 1].click() : null;
-                        } else {
-                            // Click the next item if it's available
-                            i < this._items.length - 2 ? this._items[i + 1].click() : null;
-                        }
+            // Add a click event
+            item.addEventListener("click", ev => {
+                // Prevent the page from moving to the top
+                ev.preventDefault();
 
-                        // Break from the loop
-                        break;
-                    }
+                // Do nothing if it's disabled
+                if (item.classList.contains("disabled")) { return; }
+
+                // See if this is the last item
+                if (isLast) {
+                    // Click on the last item
+                    this._items[this._items.length - 1]?.click();
+                } else {
+                    // Click on the first item
+                    this._items[0]?.click();
                 }
             });
         } else {
@@ -124,20 +142,21 @@ class _Pagination extends Base<IPaginationProps> implements IPagination {
                 ev.preventDefault();
 
                 // Parse the active items
-                let activeItems = this.el.querySelectorAll(".page-item.active");
-                for (let i = 0; i < activeItems.length; i++) {
-                    let item = activeItems[i];
-
+                let activeItem = this._items[this._activeIndex];
+                if (activeItem) {
                     // Clear the active class
-                    item.classList.remove("active");
+                    activeItem.classList.remove("active");
 
                     // Remove the active span
-                    let span = item.querySelector("span") as HTMLSpanElement;
+                    let span = activeItem.querySelector("span") as HTMLSpanElement;
                     span ? span.parentNode.removeChild(span) : null;
                 }
 
                 // Make this item active
                 item.classList.add("active");
+
+                // Set the active index
+                this._activeIndex = pageNumber - 1;
 
                 // Add the span
                 let span = document.createElement("span");
@@ -145,22 +164,40 @@ class _Pagination extends Base<IPaginationProps> implements IPagination {
                 span.innerHTML = "(current)";
                 item.appendChild(span);
 
-                // Configure the next/previous buttons
-                this.configureNextPrevButtons(pageNumber);
+                // Configure the default buttons
+                this.configureDefaultButtons();
 
-                // Class the click event
+                // Call the click event
                 this.props.onClick ? this.props.onClick(pageNumber, ev) : null;
             });
         }
     }
 
+    // Creates the default buttons
+    private createButtons(itemTemplate: string) {
+        this._buttons = {
+            First: this.createItem("First", itemTemplate, true),
+            Last: this.createItem("Last", itemTemplate, true),
+            Next: this.createItem("Next", itemTemplate, true),
+            Previous: this.createItem("Previous", itemTemplate, true)
+        };
+
+        // Set the default classes
+        this._buttons.First.classList.add("disabled");
+        this._buttons.First.classList.add("first");
+        this._buttons.Last.classList.add("last");
+        this._buttons.Next.classList.add("next");
+        this._buttons.Previous.classList.add("disabled");
+        this._buttons.Previous.classList.add("previous");
+    }
+
     // Creates an page number item
-    private createItem(text: string, itemTemplate: string): HTMLLIElement {
+    private createItem(text: string, itemTemplate: string, isDefault: boolean = false): HTMLLIElement {
         // Create the item
         let el = document.createElement("div");
         el.innerHTML = itemTemplate;
         let item = el.firstChild as HTMLLIElement;
-        this._items.push(item);
+        isDefault ? null : this._items.push(item);
 
         // Update the link
         let link = item.querySelector("a");
@@ -179,40 +216,37 @@ class _Pagination extends Base<IPaginationProps> implements IPagination {
     // Renders the page numbers
     private renderPageNumbers(activeItem: number, itemTemplate: string) {
         // Clear the items
+        this._activeIndex = 0;
         this._items = [];
 
         // Determine if there are > 10 pages
         let pages = this.props.numberOfPages || 1;
         let showFirstLast = pages > 10;
 
-        // Create the previous link
-        let item = this.createItem("Previous", itemTemplate);
-        item.classList.add("disabled");
-        item.classList.add("previous");
-        this._elList.appendChild(item);
-
         // See if we are showing the first/last links
         if (showFirstLast) {
-            item = this.createItem("1", itemTemplate);
-            activeItem == 1 ? item.classList.add("active") : null;
-            item.classList.add("next");
-            this._elList.appendChild(item);
+            this._elList.appendChild(this._buttons.First);
         }
 
+        // Append the previous link
+        this._elList.appendChild(this._buttons.Previous);
+
         // Loop for the number of pages to create
-        // Parse the number of pages
-        for (let i = 2; i <= pages; i++) {
+        for (let i = 1; i <= pages; i++) {
             // Create a link
-            item = this.createItem(i.toString(), itemTemplate);
+            let item = this.createItem(i.toString(), itemTemplate);
             i == activeItem ? item.classList.add("active") : null;
             this._elList.appendChild(item);
         }
 
-        // Create the next link
-        item = this.createItem("Next", itemTemplate);
-        pages > 1 ? null : item.classList.add("disabled");
-        item.classList.add("next");
-        this._elList.appendChild(item);
+        // Append the next link
+        this._elList.appendChild(this._buttons.Next);
+        pages > 1 ? null : this._buttons.Next.classList.add("disabled");
+
+        // See if we are showing the first/last links
+        if (showFirstLast) {
+            this._elList.appendChild(this._buttons.Last);
+        }
     }
 }
 export const Pagination = (props: IPaginationProps, template?: string, itemTemplate?: string): IPagination => { return new _Pagination(props, template, itemTemplate); }
