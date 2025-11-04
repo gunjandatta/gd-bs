@@ -208,9 +208,6 @@ class _Pagination extends Base<IPaginationProps> implements IPagination {
                 // Prevent the page from moving to the top
                 ev.preventDefault();
 
-                // Set the active index
-                this._activePage = pageNumber;
-
                 // See if we are showing the default
                 if (this._showDefault) {
                     // Clear the active item
@@ -224,6 +221,9 @@ class _Pagination extends Base<IPaginationProps> implements IPagination {
                         span ? span.parentNode.removeChild(span) : null;
                     }
 
+                    // Set the active index
+                    this._activePage = pageNumber;
+
                     // Show the active item
                     this._items[this._activePage - 1].classList.add("active");
 
@@ -236,6 +236,9 @@ class _Pagination extends Base<IPaginationProps> implements IPagination {
                     // Configure the default buttons
                     this.configureDefaultButtons();
                 } else {
+                    // Set the active index
+                    this._activePage = pageNumber;
+
                     // Render the active buttons
                     this.renderActivePageNumbers(itemTemplate);
                 }
