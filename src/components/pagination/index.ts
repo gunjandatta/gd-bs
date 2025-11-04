@@ -118,14 +118,14 @@ class _Pagination extends Base<IPaginationProps> implements IPagination {
                 // Do nothing if it's disabled
                 if (item.classList.contains("disabled")) { return; }
 
-                // Update the active page
-                isPrevious ? this._activePage-- : this._activePage++;
-
                 // See if we are rendering the default
                 if (this._showDefault) {
-                    // Click the item
-                    this._items[this._activePage - 1]?.click();
+                    // Click the previous/next item
+                    this._items[isPrevious ? this._activePage - 2 : this._activePage]?.click();
                 } else {
+                    // Update the active page
+                    isPrevious ? this._activePage-- : this._activePage++;
+
                     // Render the active buttons
                     this.renderActivePageNumbers(itemTemplate);
 
