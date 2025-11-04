@@ -757,6 +757,10 @@
 
     .page-item {
         cursor: pointer;
+
+        .page-link {
+            cursor: pointer;
+        }
     }
 
     /* Color match the pagination link color to 'SharePoint Blue' */

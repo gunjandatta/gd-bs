@@ -62,8 +62,9 @@ export interface IPaginationProps extends IBaseProps<IPagination> {
     isLarge?: boolean;
     isSmall?: boolean;
     label?: string;
+    maxPages?: number;
     numberOfPages?: number;
-    onClick?: (pageNumber?: number, ev?: Event) => void;
+    onClick?: (pageNumber?: number) => void;
 }
 
 /**

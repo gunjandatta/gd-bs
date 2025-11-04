@@ -1,5 +1,9 @@
 import { IPagination, IPaginationProps } from "./types";
 import { Base } from "../base";
+import { skipBackward } from "../../icons/svgs/skipBackward";
+import { skipForward } from "../../icons/svgs/skipForward";
+import { skipEnd } from "../../icons/svgs/skipEnd";
+import { skipStart } from "../../icons/svgs/skipStart";
 import { HTML, HTMLItem } from "./templates";
 
 /**
@@ -15,12 +19,16 @@ export enum PaginationAlignment {
  * Pagination
  */
 class _Pagination extends Base<IPaginationProps> implements IPagination {
-    private _activeIndex: number = null;
+    private _activePage: number = null;
     private _elList: HTMLUListElement = null;
     private _items: Array<HTMLLIElement> = null;
+    private _showDefault: boolean = true;
 
     // Buttons
-    private _buttons: { First: HTMLLIElement, Last: HTMLLIElement, Next: HTMLLIElement, Previous: HTMLLIElement } = null;
+    private _buttons: {
+        First: HTMLLIElement, Last: HTMLLIElement, Next: HTMLLIElement, Previous: HTMLLIElement,
+        SkipBack10: HTMLLIElement, SkipBack5: HTMLLIElement, SkipForward5: HTMLLIElement, SkipForward10: HTMLLIElement
+    } = null;
 
     // Constructor
     constructor(props: IPaginationProps, template: string = HTML, itemTemplate: string = HTMLItem) {
@@ -60,14 +68,14 @@ class _Pagination extends Base<IPaginationProps> implements IPagination {
             }
 
             // Render the page numbers
-            this.renderPageNumbers(1, itemTemplate);
+            this.renderPageNumbers(itemTemplate);
         }
     }
 
     // Configures the default buttons, based on the active index
     private configureDefaultButtons() {
         // Update the previous button
-        if (this._activeIndex == 0) {
+        if (this._activePage == 1) {
             // Ensure the first/previous item is disabled
             this._buttons.First.classList.add("disabled");
             this._buttons.Previous.classList.add("disabled");
@@ -78,7 +86,7 @@ class _Pagination extends Base<IPaginationProps> implements IPagination {
         }
 
         // Update the next/last button
-        if (this._activeIndex == this._items.length - 1) {
+        if (this._activePage == this._items.length) {
             // Ensure the next/last item is disabled
             this._buttons.Next.classList.add("disabled");
             this._buttons.Last.classList.add("disabled");
@@ -90,9 +98,15 @@ class _Pagination extends Base<IPaginationProps> implements IPagination {
     }
 
     // Configure the events
-    private configureEvents(item: HTMLLIElement) {
-        // See if this is the next or previous item and skip it
+    private configureEvents(item: HTMLLIElement, itemTemplate: string) {
+        // See if this is a spacer
         let link = item.querySelector("a").getAttribute("aria-label");
+        if (link == "...") {
+            // Do nothing
+            return;
+        }
+
+        // See if this is the next or previous item and skip it
         if (link == "Previous" || link == "Next") {
             let isPrevious = link == "Previous";
 
@@ -104,13 +118,19 @@ class _Pagination extends Base<IPaginationProps> implements IPagination {
                 // Do nothing if it's disabled
                 if (item.classList.contains("disabled")) { return; }
 
-                // See if the previous button was clicked
-                if (isPrevious) {
-                    // Click the previous item if it's available
-                    this._items[this._activeIndex - 1]?.click();
+                // Update the active page
+                isPrevious ? this._activePage-- : this._activePage++;
+
+                // See if we are rendering the default
+                if (this._showDefault) {
+                    // Click the item
+                    this._items[this._activePage]?.click();
                 } else {
-                    // Click the next item if it's available
-                    this._items[this._activeIndex + 1]?.click();
+                    // Render the active buttons
+                    this.renderActivePageNumbers(itemTemplate);
+
+                    // Call the click event
+                    this.props.onClick ? this.props.onClick(this._activePage) : null;
                 }
             });
         } else if (link == "First" || link == "Last") {
@@ -124,14 +144,61 @@ class _Pagination extends Base<IPaginationProps> implements IPagination {
                 // Do nothing if it's disabled
                 if (item.classList.contains("disabled")) { return; }
 
-                // See if this is the last item
-                if (isLast) {
-                    // Click on the last item
-                    this._items[this._items.length - 1]?.click();
+                // See if we are rendering the default
+                if (this._showDefault) {
+                    // See if this is the last item
+                    if (isLast) {
+                        // Click on the last item
+                        this._items[this._items.length - 1]?.click();
+                    } else {
+                        // Click on the first item
+                        this._items[0]?.click();
+                    }
                 } else {
-                    // Click on the first item
-                    this._items[0]?.click();
+                    // Update the active page
+                    this._activePage = isLast ? this.props.numberOfPages : 1;
+
+                    // Render the active buttons
+                    this.renderActivePageNumbers(itemTemplate);
+
+                    // Call the click event
+                    this.props.onClick ? this.props.onClick(this._activePage) : null;
                 }
+            });
+        } else if (link == "&lt;&lt;" || link == "&lt;" || link == "&gt;" || link == "&gt;&gt;") {
+            // Add a click event
+            item.addEventListener("click", ev => {
+                // Prevent the page from moving to the top
+                ev.preventDefault();
+
+                // Update the active page
+                switch (link) {
+                    case "&lt;&lt;":
+                        this._activePage -= 10;
+                        break;
+                    case "&lt;":
+                        this._activePage -= 5;
+                        break;
+                    case "&gt;":
+                        this._activePage += 5;
+                        break;
+                    case "&gt;&gt;":
+                        this._activePage += 10;
+                        break;
+                }
+
+                // Validate the page number
+                if (this._activePage <= 0) {
+                    this._activePage = 1;
+                } else if (this._activePage > this.props.numberOfPages) {
+                    this._activePage = this.props.numberOfPages;
+                }
+
+                // Render the active buttons
+                this.renderActivePageNumbers(itemTemplate);
+
+                // Call the click event
+                this.props.onClick ? this.props.onClick(this._activePage) : null;
             });
         } else {
             let pageNumber = parseInt(link);
@@ -141,34 +208,40 @@ class _Pagination extends Base<IPaginationProps> implements IPagination {
                 // Prevent the page from moving to the top
                 ev.preventDefault();
 
-                // Parse the active items
-                let activeItem = this._items[this._activeIndex];
-                if (activeItem) {
-                    // Clear the active class
-                    activeItem.classList.remove("active");
+                // Set the active index
+                this._activePage = pageNumber;
 
-                    // Remove the active span
-                    let span = activeItem.querySelector("span") as HTMLSpanElement;
-                    span ? span.parentNode.removeChild(span) : null;
+                // See if we are showing the default
+                if (this._showDefault) {
+                    // Clear the active item
+                    let activeItem = this._items[this._activePage - 1];
+                    if (activeItem) {
+                        // Clear the active class
+                        activeItem.classList.remove("active");
+
+                        // Remove the active span
+                        let span = activeItem.querySelector("span") as HTMLSpanElement;
+                        span ? span.parentNode.removeChild(span) : null;
+                    }
+
+                    // Show the active item
+                    this._items[this._activePage - 1].classList.add("active");
+
+                    // Add the span
+                    let span = document.createElement("span");
+                    span.classList.add("visually-hidden");
+                    span.innerHTML = "(current)";
+                    this._items[this._activePage - 1].appendChild(span);
+
+                    // Configure the default buttons
+                    this.configureDefaultButtons();
+                } else {
+                    // Render the active buttons
+                    this.renderActivePageNumbers(itemTemplate);
                 }
 
-                // Make this item active
-                item.classList.add("active");
-
-                // Set the active index
-                this._activeIndex = pageNumber - 1;
-
-                // Add the span
-                let span = document.createElement("span");
-                span.classList.add("visually-hidden");
-                span.innerHTML = "(current)";
-                item.appendChild(span);
-
-                // Configure the default buttons
-                this.configureDefaultButtons();
-
                 // Call the click event
-                this.props.onClick ? this.props.onClick(pageNumber, ev) : null;
+                this.props.onClick ? this.props.onClick(pageNumber) : null;
             });
         }
     }
@@ -179,16 +252,28 @@ class _Pagination extends Base<IPaginationProps> implements IPagination {
             First: this.createItem("First", itemTemplate, true),
             Last: this.createItem("Last", itemTemplate, true),
             Next: this.createItem("Next", itemTemplate, true),
-            Previous: this.createItem("Previous", itemTemplate, true)
+            Previous: this.createItem("Previous", itemTemplate, true),
+            SkipBack10: this.createItem("<<", itemTemplate, true),
+            SkipBack5: this.createItem("<", itemTemplate, true),
+            SkipForward5: this.createItem(">", itemTemplate, true),
+            SkipForward10: this.createItem(">>", itemTemplate, true)
         };
 
         // Set the default classes
-        this._buttons.First.classList.add("disabled");
         this._buttons.First.classList.add("first");
         this._buttons.Last.classList.add("last");
         this._buttons.Next.classList.add("next");
-        this._buttons.Previous.classList.add("disabled");
         this._buttons.Previous.classList.add("previous");
+
+        // Disable the first and previous buttons by default
+        this._buttons.First.classList.add("disabled");
+        this._buttons.Previous.classList.add("disabled");
+
+        // Set the icons
+        this._buttons.SkipBack10.querySelector("a").innerHTML = skipBackward(15, 15).outerHTML;
+        this._buttons.SkipBack5.querySelector("a").innerHTML = skipStart(15, 15).outerHTML;
+        this._buttons.SkipForward5.querySelector("a").innerHTML = skipEnd(15, 15).outerHTML;
+        this._buttons.SkipForward10.querySelector("a").innerHTML = skipForward(15, 15).outerHTML;
     }
 
     // Creates an page number item
@@ -207,45 +292,142 @@ class _Pagination extends Base<IPaginationProps> implements IPagination {
         }
 
         // Configure the events
-        this.configureEvents(item);
+        this.configureEvents(item, itemTemplate);
 
         // Return the item
         return item;
     }
 
     // Renders the page numbers
-    private renderPageNumbers(activeItem: number, itemTemplate: string) {
+    private renderPageNumbers(itemTemplate: string) {
         // Clear the items
-        this._activeIndex = 0;
+        this._activePage = 1;
         this._items = [];
 
         // Determine if there are > 10 pages
         let pages = this.props.numberOfPages || 1;
-        let showFirstLast = pages > 10;
+        let maxPages = typeof (this.props.maxPages) === "number" ? this.props.maxPages : 10;
+        this._showDefault = pages < maxPages;
 
-        // See if we are showing the first/last links
-        if (showFirstLast) {
+        // See if we are rendering the default
+        if (this._showDefault) {
+            // Append the first/previous link
             this._elList.appendChild(this._buttons.First);
-        }
+            this._elList.appendChild(this._buttons.Previous);
 
-        // Append the previous link
-        this._elList.appendChild(this._buttons.Previous);
+            // Loop for the number of pages to create
+            for (let i = 1; i <= pages; i++) {
+                // Create a link
+                let item = this.createItem(i.toString(), itemTemplate);
+                i == this._activePage ? item.classList.add("active") : null;
+                this._elList.appendChild(item);
+            }
 
-        // Loop for the number of pages to create
-        for (let i = 1; i <= pages; i++) {
-            // Create a link
-            let item = this.createItem(i.toString(), itemTemplate);
-            i == activeItem ? item.classList.add("active") : null;
-            this._elList.appendChild(item);
-        }
-
-        // Append the next link
-        this._elList.appendChild(this._buttons.Next);
-        pages > 1 ? null : this._buttons.Next.classList.add("disabled");
-
-        // See if we are showing the first/last links
-        if (showFirstLast) {
+            // Append the next/last link
+            this._elList.appendChild(this._buttons.Next);
             this._elList.appendChild(this._buttons.Last);
+            if (pages == 1) {
+                this._buttons.Next.classList.add("disabled");
+                this._buttons.Last.classList.add("disabled");
+            }
+        } else {
+            // Render the active page numbers
+            this.renderActivePageNumbers(itemTemplate);
+        }
+    }
+
+    // Renders the active page numbers
+    private renderActivePageNumbers(itemTemplate: string) {
+        // Clear the items and list element
+        this._items = [];
+        while (this._elList.firstChild) { this._elList.removeChild(this._elList.firstChild); }
+
+        // Append the first/previous link
+        this._elList.appendChild(this._buttons.First);
+        this._elList.appendChild(this._buttons.Previous);
+        if (this._activePage == 1) {
+            this._buttons.First.classList.add("disabled");
+            this._buttons.Previous.classList.add("disabled");
+        } else {
+            this._buttons.First.classList.remove("disabled");
+            this._buttons.Previous.classList.remove("disabled");
+        }
+
+        // See if we are at the beginning
+        if (this._activePage < 5) {
+            // Render the first five
+            for (let i = 1; i <= 5; i++) {
+                // Create a link
+                let item = this.createItem(i.toString(), itemTemplate);
+                i == this._activePage ? item.classList.add("active") : null;
+                this._elList.appendChild(item);
+            }
+
+            // Render a spacer
+            let item = this.createItem("...", itemTemplate, true);
+            this._elList.appendChild(item);
+
+            // Render the last 3
+            let diff = Math.round((this.props.numberOfPages - 5) / 3);
+            for (let i = 2; i >= 0; i--) {
+                // Create a link
+                let idx = this.props.numberOfPages - i * diff;
+                let item = this.createItem((idx).toString(), itemTemplate);
+                this._elList.appendChild(item);
+            }
+        }
+        // Else, see if we are at the end
+        else if (this._activePage > this.props.numberOfPages - 5) {
+
+            // Render the first 3
+            let diff = Math.round((this.props.numberOfPages - 5) / 3);
+            for (let i = 0; i <= 2; i++) {
+                // Create a link
+                let idx = i == 0 ? 1 : i * diff;
+                let item = this.createItem((idx).toString(), itemTemplate);
+                this._elList.appendChild(item);
+            }
+
+            // Render a spacer
+            let item = this.createItem("...", itemTemplate, true);
+            this._elList.appendChild(item);
+
+            // Render the last five
+            for (let i = this.props.numberOfPages - 5; i <= this.props.numberOfPages; i++) {
+                // Create a link
+                let item = this.createItem(i.toString(), itemTemplate);
+                i == this._activePage ? item.classList.add("active") : null;
+                this._elList.appendChild(item);
+            }
+        }
+        // Else, render the skip buttons
+        else {
+            // Render the skip buttons
+            this._elList.appendChild(this._buttons.SkipBack10);
+            this._elList.appendChild(this._buttons.SkipBack5);
+
+            // Render +/- 2 from the active index
+            for (let i = this._activePage - 2; i <= this._activePage + 2; i++) {
+                // Create a link
+                let item = this.createItem(i.toString(), itemTemplate);
+                i == this._activePage ? item.classList.add("active") : null;
+                this._elList.appendChild(item);
+            }
+
+            // Render the skip buttons
+            this._elList.appendChild(this._buttons.SkipForward5);
+            this._elList.appendChild(this._buttons.SkipForward10);
+        }
+
+        // Append the next/last link
+        this._elList.appendChild(this._buttons.Next);
+        this._elList.appendChild(this._buttons.Last);
+        if (this._activePage == this.props.numberOfPages) {
+            this._buttons.Next.classList.add("disabled");
+            this._buttons.Last.classList.add("disabled");
+        } else {
+            this._buttons.Next.classList.remove("disabled");
+            this._buttons.Last.classList.remove("disabled");
         }
     }
 }

@@ -2498,8 +2498,9 @@ declare module 'gd-bs/components/pagination/types' {
             isLarge?: boolean;
             isSmall?: boolean;
             label?: string;
+            maxPages?: number;
             numberOfPages?: number;
-            onClick?: (pageNumber?: number, ev?: Event) => void;
+            onClick?: (pageNumber?: number) => void;
     }
     
     /**
