@@ -124,7 +124,7 @@ class _Pagination extends Base<IPaginationProps> implements IPagination {
                 // See if we are rendering the default
                 if (this._showDefault) {
                     // Click the item
-                    this._items[this._activePage]?.click();
+                    this._items[this._activePage - 1]?.click();
                 } else {
                     // Render the active buttons
                     this.renderActivePageNumbers(itemTemplate);
