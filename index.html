@@ -430,8 +430,9 @@
                             id: "DDLExample",
                             name: "DDLExample",
                             title: "This is a dropdown",
-                            type: GD.Components.FormControlTypes.Dropdown,
+                            type: GD.Components.FormControlTypes.MultiDropdownCheckbox,
                             description: "This is a single dropdown option.",
+                            placeholder: "Select an item...",
                             items: [{
                                 text: "Test 1",
                                 title: "This is the first item.",
@@ -455,7 +456,7 @@
                                 isDisabled: true
                             }],
                             onChange: function (item) {
-                                item ? alert(item.text + " was selected.") : null;
+                                //item ? alert(item.text + " was selected.") : null;
                             }
                         }
                     }, {
