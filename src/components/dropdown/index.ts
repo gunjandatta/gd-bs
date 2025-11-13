@@ -578,7 +578,7 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
                     items: this.generateCheckboxItems(),
                     multi: this.props.multi,
                     value: this.generateCheckboxValue(this.props.value),
-                    onChange: this.props.onChange ? (selectedItems, allItems, ev) => {
+                    onChange: (selectedItems, allItems, ev) => {
                         // See if this is a multi checkbox
                         if (this.props.multi) {
                             // Toggle the menu if it's not visible
@@ -588,8 +588,8 @@ class _Dropdown extends Base<IDropdownProps> implements IDropdown {
                         }
 
                         // Pass the current values
-                        this.props.onChange(selectedItems, ev);
-                    } : null
+                        this.props?.onChange(selectedItems, ev);
+                    }
                 });
             } else {
                 let isForm = menu.nodeName == "SELECT";
