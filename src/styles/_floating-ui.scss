@@ -14,7 +14,6 @@
     padding: 0px;
     inset: 0px auto auto 0px;
     position: absolute;
-    z-index: 1100;
 
     &.floating-tooltip {
         border-radius: var(--bs-tooltip-border-radius);
@@ -29,6 +28,7 @@
         padding: var(--bs-dropdown-padding-y, 0.5rem) var (--bs-dropdown-padding-x, 0);
         max-height: var(--bs-dropdown-max-height, 500px);
         overflow-y: auto;
+        z-index: 10000;
     }
 
     &.floating-dropdown .dropdown-item {
