@@ -33,6 +33,7 @@ export interface IFloatingUIOptions {
 export interface IFloatingUIProps extends IBaseProps<IFloatingUI> {
     elContent: HTMLElement;
     elTarget: HTMLElement;
+    id?: string;
     onHide?: (el?: HTMLElement) => void;
     onShow?: (el?: HTMLElement) => void;
     options?: IFloatingUIOptions;

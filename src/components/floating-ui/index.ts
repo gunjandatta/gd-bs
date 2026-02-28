@@ -65,6 +65,7 @@ class _FloatingUI {
         this._elContent = document.createElement("div");
         this._elContent.classList.add("bs");
         this._elContent.classList.add("floating-ui");
+        this._elContent.id = props.id || "fui-" + Date.now();
         this._elContent.appendChild(props.elContent);
         this._elContent.setAttribute("data-theme", this.getTheme(this._props.theme));
         setClassNames(this._elContent, this._props.className);
@@ -375,9 +376,12 @@ class _FloatingUI {
     hide() {
         // Remove it from the document
         this._elContent.classList.add("d-none");
-        if (document.body.contains(this._elContent)) {
+
+        // Get the element
+        let elContent = document.getElementById(this._elContent.id);
+        if (elContent) {
             // Remove the element from the page
-            document.body.removeChild(this._elContent);
+            document.body.removeChild(elContent);
 
             // Call the event
             this._props.onHide ? this._props.onHide() : null;
