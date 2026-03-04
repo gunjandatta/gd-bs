@@ -1,6 +1,6 @@
 {
     "name": "gd-bs",
-    "version": "6.9.12",
+    "version": "6.9.13",
     "description": "Bootstrap JavaScript, TypeScript and Web Components library.",
     "main": "build/index.js",
     "typings": "src/index.d.ts",
@@ -34,7 +34,7 @@
     },
     "homepage": "https://dattabase.com/extras/bs",
     "dependencies": {
-        "@floating-ui/dom": "^1.7.5",
+        "@floating-ui/dom": "^1.7.6",
         "bootstrap": "^5.3.8",
         "bootstrap-icons": "^1.13.1",
         "core-js": "^3.48.0"

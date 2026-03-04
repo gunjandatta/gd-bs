@@ -195,7 +195,7 @@ class _Modal extends Base<IModalProps> implements IModal {
             // Add a click event
             (this.el as HTMLElement).addEventListener("keydown", ev => {
                 // See if the escape key was clicked and the modal is visible
-                if (ev.code === "27" && this.isVisible) {
+                if ((ev.key === "Escape" || ev.keyCode == 27) && this.isVisible) {
                     // Toggle the modal
                     this.toggle();
                 }

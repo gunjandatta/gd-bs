@@ -76,12 +76,12 @@ class _Carousel extends Base<ICarouselProps> implements ICarousel {
                 // Add a keydown event
                 el.addEventListener("keydown", (ev) => {
                     // See if the left arrow was pressed
-                    if (ev.code == "37") {
+                    if (ev.key == "ArrowLeft" || ev.keyCode == 37) {
                         // Move to the previous slide
                         this.previous();
                     }
                     // Else, see if the right arrow was pressed
-                    else if (ev.code == "39") {
+                    else if (ev.key == "ArrowRight" || ev.keyCode == 39) {
                         // Move tot he next slide
                         this.next();
                     }
