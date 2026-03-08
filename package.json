@@ -1,6 +1,6 @@
 {
     "name": "gd-bs",
-    "version": "6.9.14",
+    "version": "6.9.15",
     "description": "Bootstrap JavaScript, TypeScript and Web Components library.",
     "main": "build/index.js",
     "typings": "src/index.d.ts",

@@ -207,24 +207,36 @@ class _Table extends Base<ITableProps> implements ITable {
         }
     }
 
+    // Method to update a column element
+    updateColumn(elCol: HTMLElement, colIdx: number, row: any) {
+        // Get the column
+        let colProps = this.props.columns[colIdx];
+        if (colProps) {
+            // Set the value
+            elCol.innerHTML = row[colProps.name] == null ? "" : row[colProps.name];
+
+            // See if there is an event for this column
+            if (colProps.onRenderCell) {
+                // Call the event
+                colProps.onRenderCell(elCol as HTMLTableCellElement, colProps, row);
+            }
+
+            // See if there is an event for this component
+            if (this.props.onRenderCell) {
+                // Call the event
+                this.props.onRenderCell(elCol as HTMLTableCellElement, colProps, row);
+            }
+        }
+    }
+
     // Method to update a row element
-    updateRow(elRow: HTMLElement, row: any = {}) {
+    updateRow(elRow: HTMLElement, row: any) {
         // Parse the columns
         for (let i = 0; i < this.props.columns.length; i++) {
-            let colProps = this.props.columns[i];
-            let elCol = elRow.children[i] as HTMLTableCellElement;
+            let elCol = elRow.children[i] as HTMLElement;
             if (elCol) {
-                // See if there is an event for this column
-                if (colProps.onRenderCell) {
-                    // Call the event
-                    colProps.onRenderCell(elCol, colProps, row);
-                }
-
-                // See if there is an event for this component
-                if (this.props.onRenderCell) {
-                    // Call the event
-                    this.props.onRenderCell(elCol, colProps, row);
-                }
+                // Update the column
+                this.updateColumn(elCol, i, row);
             }
         }
 
