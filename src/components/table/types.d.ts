@@ -78,6 +78,8 @@ export interface ITable {
 
     /** Shows the table. */
     show: () => void;
+
+    updateRow: (elRow: HTMLElement, row: any) => void;
 }
 
 /**

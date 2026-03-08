@@ -2829,6 +2829,8 @@ declare module 'gd-bs/components/table/types' {
     
             /** Shows the table. */
             show: () => void;
+    
+            updateRow: (elRow: HTMLElement, row: any) => void;
     }
     
     /**

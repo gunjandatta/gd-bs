@@ -174,7 +174,7 @@ class _Table extends Base<ITableProps> implements ITable {
 
     // Renders a row
     private renderRow(row: HTMLTableRowElement, data, rowIdx: number) {
-        // See if columns
+        // Parse the columns
         for (let i = 0; i < this.props.columns.length; i++) {
             // Create the cell
             this.renderCell(row, this.props.columns[i], data, rowIdx);
@@ -204,6 +204,34 @@ class _Table extends Base<ITableProps> implements ITable {
                 // Render the row
                 this.renderRow(row, rows[i], i);
             }
+        }
+    }
+
+    // Method to update a row element
+    updateRow(elRow: HTMLElement, row: any = {}) {
+        // Parse the columns
+        for (let i = 0; i < this.props.columns.length; i++) {
+            let colProps = this.props.columns[i];
+            let elCol = elRow.children[i] as HTMLTableCellElement;
+            if (elCol) {
+                // See if there is an event for this column
+                if (colProps.onRenderCell) {
+                    // Call the event
+                    colProps.onRenderCell(elCol, colProps, row);
+                }
+
+                // See if there is an event for this component
+                if (this.props.onRenderCell) {
+                    // Call the event
+                    this.props.onRenderCell(elCol, colProps, row);
+                }
+            }
+        }
+
+        // See if there is an event
+        if (this.props.onRenderRow) {
+            // Call the event
+            this.props.onRenderRow(elRow as HTMLTableRowElement, row);
         }
     }
 }
