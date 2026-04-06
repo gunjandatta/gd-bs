@@ -1,15 +1,21 @@
 {
     "compilerOptions": {
+        "esModuleInterop": false,
+        "ignoreDeprecations": "6.0",
         "lib": [
             "dom",
             "es2015"
         ],
-        "outDir": "build",
-        "target": "es5"
+        "moduleResolution": "node",
+        "outDir": "./build",
+        "rootDir": "./src",
+        "strict": false,
+        "target": "es2015"
     },
     "include": [
-        "src/**/*.ts"
-, "src/custom-elements.js"    ],
+        "src/**/*.ts",
+        "src/custom-elements.js"
+    ],
     "exclude": [
         "src/tippy.js"
     ]
