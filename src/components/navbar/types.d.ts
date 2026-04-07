@@ -124,7 +124,7 @@ export interface INavbarItem {
     href?: string;
     iconClassName?: string;
     iconSize?: number;
-    iconType?: SVGImageElement | Function;
+    iconType?: SVGImageElement | HTMLElement | Function;
     isActive?: boolean;
     isButton?: boolean;
     isDisabled?: boolean;

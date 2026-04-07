@@ -6,7 +6,7 @@ const dirIcons = path.join(__dirname, "node_modules/bootstrap-icons/icons");
 
 // Get the icon files
 fs.readdir(dirIcons, function (err, files) {
-    var icons = [];
+    var icons = ['/// <reference path="./index.d.ts" />'];
     var iconDefs = [];
     var switches = [];
     var types = [];
@@ -61,6 +61,7 @@ fs.readdir(dirIcons, function (err, files) {
         // Convert the svg to a typescript file
         var stream = fs.createWriteStream("./src/icons/svgs/" + varName + ".ts");
         stream.write([
+            '/// <reference path="./' + varName + '.d.ts" />',
             'import { generateIcon } from "../generate";',
             'export function ' + varName + '(height?:number, width?:number, className?:string) {',
             ('  return generateIcon(`' + fs.readFileSync(dirIcons + "/" + file) + '`, height, width, className);').replace(/\"/g, "'").replace(/\n/g, ' '),
