@@ -1180,6 +1180,7 @@ declare module 'gd-bs/components/form/controlTypes' {
             label?: HTMLElement;
             props: IFormControlProps;
             textbox: IInputGroup;
+            setDescription: (value: string) => void;
             setLabel: (value: string) => void;
             setControl: (control: any) => void;
             setValue: (value: any) => void;
