@@ -97,7 +97,7 @@ export interface IFormControlProps extends IBaseProps<IFormControl> {
  */
 export interface IFormControlPropsCheckbox extends IFormControlProps {
     colSize?: number;
-    el?: HTMLInputElement;
+    el?: HTMLInputElement | HTMLElement;
     hideLabel?: boolean;
     isInline?: boolean;
     items?: Array<ICheckboxGroupItem>;
@@ -149,7 +149,7 @@ export interface IFormControlPropsListBox extends IFormControlProps {
  */
 export interface IFormControlPropsMultiCheckbox extends IFormControlProps {
     colSize?: number;
-    el?: HTMLInputElement;
+    el?: HTMLInputElement | HTMLElement;
     hideLabel?: boolean;
     isInline?: boolean;
     items?: Array<ICheckboxGroupItem>;
@@ -230,7 +230,7 @@ export interface IFormControlPropsSwitch extends IFormControlPropsCheckbox { }
 export interface IFormControlPropsTextField extends IFormControlProps {
     appendedDropdown?: IDropdownProps;
     appendedLabel?: string;
-    el?: HTMLInputElement;
+    el?: HTMLInputElement | HTMLElement;
     onChange?: (value: string, ev?: Event) => void;
     onControlRendering?: (control: IFormControlPropsTextField) => void | PromiseLike<IFormControlPropsTextField>;
     onGetValue?: (control: IFormControlPropsTextField) => any;

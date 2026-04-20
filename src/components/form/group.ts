@@ -85,15 +85,14 @@ export class FormGroup {
         }
 
         // Update the description
-        let elDescription = this._el.querySelector("small");
+        let elDescription = this._el.querySelector("small") as HTMLElement;
         let description = this._props.description || (this._control && this._control.props.description);
         if (description) {
             // Set the text
             elDescription.innerHTML = description;
         } else {
-            // Remove the description
-            this._el.removeChild(elDescription);
-            elDescription = null;
+            // Hide the description
+            elDescription?.classList.add("d-none");
         }
 
         // Set the class name

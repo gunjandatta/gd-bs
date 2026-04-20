@@ -1218,7 +1218,7 @@ declare module 'gd-bs/components/form/controlTypes' {
         */
     export interface IFormControlPropsCheckbox extends IFormControlProps {
             colSize?: number;
-            el?: HTMLInputElement;
+            el?: HTMLInputElement | HTMLElement;
             hideLabel?: boolean;
             isInline?: boolean;
             items?: Array<ICheckboxGroupItem>;
@@ -1270,7 +1270,7 @@ declare module 'gd-bs/components/form/controlTypes' {
         */
     export interface IFormControlPropsMultiCheckbox extends IFormControlProps {
             colSize?: number;
-            el?: HTMLInputElement;
+            el?: HTMLInputElement | HTMLElement;
             hideLabel?: boolean;
             isInline?: boolean;
             items?: Array<ICheckboxGroupItem>;
@@ -1351,7 +1351,7 @@ declare module 'gd-bs/components/form/controlTypes' {
     export interface IFormControlPropsTextField extends IFormControlProps {
             appendedDropdown?: IDropdownProps;
             appendedLabel?: string;
-            el?: HTMLInputElement;
+            el?: HTMLInputElement | HTMLElement;
             onChange?: (value: string, ev?: Event) => void;
             onControlRendering?: (control: IFormControlPropsTextField) => void | PromiseLike<IFormControlPropsTextField>;
             onGetValue?: (control: IFormControlPropsTextField) => any;

@@ -1,5 +1,11 @@
 {
-    "entryPoints": ["./src/components", "./src/icons/svgs"],
+    "entryPoints": [
+        "./src/components",
+        "./src/icons/svgs"
+    ],
     "entryPointStrategy": "expand",
+    "exclude": [
+        "**/node_modules/**"
+    ],
     "out": "docs"
 }

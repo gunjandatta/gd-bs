@@ -9,7 +9,6 @@
         "moduleResolution": "node",
         "outDir": "./build",
         "rootDir": "./src",
-        "strict": false,
         "target": "es2015"
     },
     "include": [

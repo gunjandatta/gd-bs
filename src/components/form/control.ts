@@ -25,6 +25,7 @@ export class FormControl implements IFormControl {
     private _cb: ICheckboxGroup = null;
     private _custom: any = null;
     private _el: HTMLElement = null;
+    private _elDesc: HTMLElement = null;
     private _elLabel: HTMLLabelElement = null;
     private _formProps: IFormProps = null;
     private _ddl: IDropdown = null;
@@ -743,6 +744,16 @@ export class FormControl implements IFormControl {
 
     // The form control properties
     get props(): IFormControlProps { return this._props; }
+
+    // Sets the description of the control
+    setDescription(value: string) {
+        // Get the element
+        let elDesc = this._el?.parentElement?.querySelector(".form-text");
+        if (elDesc) {
+            // Update the description
+            elDesc.innerHTML = value || "";
+        }
+    }
 
     // Sets the form control label
     setLabel(value: string) {
