@@ -14,7 +14,6 @@
         "clean": "node ./clean.js",
         "docs": "typedoc",
         "generate-icons": "node ./generateIcons",
-        "package": "npm run all && npm run docs",
         "prod": "webpack --mode=production",
         "prod-icons": "webpack --mode=production --config webpack.icons.js",
         "typings": "dts-bundle --configJson dts-bundle.json"
