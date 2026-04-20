@@ -1,4 +1,3 @@
-docs
 *.log*
 package-lock.json
 tsconfig.json
