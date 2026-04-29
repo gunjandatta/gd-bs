@@ -119,6 +119,9 @@ export interface IForm {
     /** Appends rows to the form */
     appendRows: (rows: Array<IFormRow>) => void;
 
+    /** Clears the validation on the form. */
+    clearValidation: () => void;
+
     /** The form controls */
     controls: Array<IFormControl>;
 

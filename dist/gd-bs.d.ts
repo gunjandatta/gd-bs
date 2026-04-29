@@ -1473,6 +1473,9 @@ declare module 'gd-bs/components/form/formTypes' {
             /** Appends rows to the form */
             appendRows: (rows: Array<IFormRow>) => void;
     
+            /** Clears the validation on the form. */
+            clearValidation: () => void;
+    
             /** The form controls */
             controls: Array<IFormControl>;
     

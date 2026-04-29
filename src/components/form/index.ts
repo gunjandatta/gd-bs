@@ -110,6 +110,23 @@ class _Form extends Base<IFormProps> implements IForm {
         }
     }
 
+    // Clears the validation on the form
+    clearValidation() {
+        // Find the controls that have been validated
+        let controls = this.el.querySelectorAll(".is-valid");
+        for (let i = 0; i < controls.length; i++) {
+            // Remove the class
+            controls[i].classList.remove("is-valid");
+        }
+
+        // Find the controls that have been validated
+        controls = this.el.querySelectorAll(".is-invalid");
+        for (let i = 0; i < controls.length; i++) {
+            // Remove the class
+            controls[i].classList.remove("is-invalid");
+        }
+    }
+
     // The forms controls
     get controls() {
         let controls: Array<IFormControl> = [];
