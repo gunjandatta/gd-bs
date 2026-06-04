@@ -232,15 +232,16 @@ class _Table extends Base<ITableProps> implements ITable {
     // Method to update a row element
     updateRow(elRow: HTMLElement, row: any, hiddenColIndexes?: number[]) {
         // Parse the columns
+        let colIdx = 0;
         for (let i = 0; i < this.props.columns.length; i++) {
             // See if this column is hidden
             if (hiddenColIndexes && hiddenColIndexes.indexOf(i) >= 0) { continue; }
 
             // Get the column element
-            let elCol = elRow.children[i] as HTMLElement;
+            let elCol = elRow.children[colIdx++] as HTMLElement;
             if (elCol) {
                 // Update the column
-                this.updateColumn(elCol, i, row);
+                this.updateColumn(elCol, colIdx, row);
             }
         }
 
