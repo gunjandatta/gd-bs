@@ -238,14 +238,11 @@ class _Table extends Base<ITableProps> implements ITable {
             if (hiddenColIndexes && hiddenColIndexes.indexOf(i) >= 0) { continue; }
 
             // Get the column element
-            let elCol = elRow.children[colIdx] as HTMLElement;
+            let elCol = elRow.children[colIdx++] as HTMLElement;
             if (elCol) {
                 // Update the column
-                this.updateColumn(elCol, colIdx, row);
+                this.updateColumn(elCol, i, row);
             }
-
-            // Increment the column index
-            colIdx++;
         }
 
         // See if there is an event
