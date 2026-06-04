@@ -2836,7 +2836,7 @@ declare module 'gd-bs/components/table/types' {
     
             updateColumn: (elCol: HTMLElement, colIdx: number, row: any) => void;
     
-            updateRow: (elRow: HTMLElement, row: any) => void;
+            updateRow: (elRow: HTMLElement, row: any, hiddenColIndexes?: number[]) => void;
     }
     
     /**

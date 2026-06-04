@@ -81,7 +81,7 @@ export interface ITable {
 
     updateColumn: (elCol: HTMLElement, colIdx: number, row: any) => void;
 
-    updateRow: (elRow: HTMLElement, row: any) => void;
+    updateRow: (elRow: HTMLElement, row: any, hiddenColIndexes?: number[]) => void;
 }
 
 /**
