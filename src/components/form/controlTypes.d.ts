@@ -56,6 +56,7 @@ export interface IFormControl {
     isLoaded: () => PromiseLike<void>;
     isRendered: boolean;
     isValid: boolean;
+    isVisible: boolean;
     label?: HTMLElement;
     props: IFormControlProps;
     textbox: IInputGroup;

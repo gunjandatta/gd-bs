@@ -742,6 +742,11 @@ export class FormControl implements IFormControl {
         return validation.isValid;
     }
 
+    get isVisible(): boolean {
+        // See if this control is visible
+        return !this._el.parentElement?.classList.contains("d-none") ? true : false;
+    }
+
     // The form control properties
     get props(): IFormControlProps { return this._props; }
 
