@@ -742,6 +742,7 @@ export class FormControl implements IFormControl {
         return validation.isValid;
     }
 
+    // Returns true if the control is visible
     get isVisible(): boolean {
         // See if this control is visible
         return !this._el.parentElement?.classList.contains("d-none") ? true : false;
