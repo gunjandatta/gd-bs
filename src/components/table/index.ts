@@ -37,6 +37,15 @@ class _Table extends Base<ITableProps> implements ITable {
                     let column = document.createElement("th");
                     row.appendChild(column);
 
+                    // See if there are attributes
+                    if (this.props.colAttributes) {
+                        // Parse the attributes
+                        for (let key in this.props.colAttributes) {
+                            // Set the data attribute
+                            column.setAttribute(key, this.props.colAttributes[key]);
+                        }
+                    }
+
                     // See if the footer exists
                     if (colProp.footer || colProp.onRenderFooter) {
                         // Set the flag
@@ -87,6 +96,15 @@ class _Table extends Base<ITableProps> implements ITable {
         cell.className = props.className || "";
         cell.innerHTML = data[props.name] == null ? "" : data[props.name];
         row.appendChild(cell);
+
+        // See if there are attributes
+        if (props.dataAttributes) {
+            // Parse the attributes
+            for (let key in props.dataAttributes) {
+                // Set the data attribute
+                cell.setAttribute(key, props.dataAttributes[key]);
+            }
+        }
 
         // See if there is a scope
         if (props.scope) {

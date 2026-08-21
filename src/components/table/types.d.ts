@@ -89,6 +89,7 @@ export interface ITable {
  */
 export interface ITableProps extends IBaseProps<ITable> {
     columns?: Array<ITableColumn>;
+    colAttributes?: { [key: string]: string };
     onClickCell?: (el: HTMLTableCellElement, column?: ITableColumn, data?: any, rowIdx?: number) => void;
     onClickFooter?: (el: HTMLTableCellElement, column?: ITableColumn) => void;
     onClickHeader?: (el: HTMLTableCellElement, column?: ITableColumn) => void;
@@ -107,6 +108,7 @@ export interface ITableProps extends IBaseProps<ITable> {
 export interface ITableColumn {
     className?: string;
     data?: any;
+    dataAttributes?: { [key: string]: string };
     footer?: string;
     isHidden?: boolean;
     name: string;
