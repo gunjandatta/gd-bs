@@ -109,6 +109,18 @@ export class NavLink extends Base<INavLinkProps> implements INavLink {
     get tabName(): string { return this._elLink.innerHTML.trim(); }
     set tabName(value: string) { this._elLink.innerHTML = (value || "").trim(); }
 
+    // Disables a tab
+    disable() {
+        // Add the class
+        this._elLink.classList.add("disabled");
+    }
+
+    // Enables a tab
+    enable() {
+        // Add the class
+        this._elLink.classList.remove("disabled");
+    }
+
     // Toggles a link
     toggle(fadeTabs?: boolean) {
         // See if this item is currently active

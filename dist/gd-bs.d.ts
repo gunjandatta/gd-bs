@@ -2094,6 +2094,9 @@ declare module 'gd-bs/components/nav/types' {
             /** The element. */
             el: HTMLUListElement;
     
+            /** Returns a tab by id or index */
+            getTab: (tabId: string | number) => INavLink;
+    
             /** Hides the navigation. */
             hide: () => void;
     
@@ -2104,7 +2107,7 @@ declare module 'gd-bs/components/nav/types' {
             show: (selector?: string) => void;
     
             /**
-                * Shows a tab by it's id or index.
+                * Shows a tab by id or index.
                 */
             showTab: (tabId?: string | number) => void;
     }
@@ -2138,6 +2141,8 @@ declare module 'gd-bs/components/nav/types' {
             elTabContent: HTMLDivElement;
             isActive: boolean;
             tabName: string;
+            disable: () => void;
+            enable: () => void;
             toggle: (fadeTabs?: boolean) => void;
     }
     

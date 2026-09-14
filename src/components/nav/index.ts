@@ -152,6 +152,25 @@ class _Nav extends Base<INavProps> implements INav {
         return null;
     }
 
+    // Returns the tab by id
+    getTab(tabId: string | number): INavLink {
+        // Ensure tabs exist
+        if (this.props.isTabs) {
+            // Parse the tabs
+            for (let i = 0; i < this._links.length; i++) {
+                let link = this._links[i];
+
+                // See if this is the target tab
+                if (tabId === i + 1 || link.elTabContent.getAttribute("data-title") == tabId) {
+                    return link;
+                }
+            }
+        }
+
+        // Return the tab
+        return null;
+    }
+
     // Shows a tab
     showTab(tabId?: string | number) {
         // Ensure tabs exist
