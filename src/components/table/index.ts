@@ -230,19 +230,21 @@ class _Table extends Base<ITableProps> implements ITable {
         // Get the column
         let colProps = this.props.columns[colIdx];
         if (colProps) {
+            let rowIdx = (elCol as any)["_DT_CellIndex"]?.row;
+
             // Set the value
             elCol.innerHTML = row[colProps.name] == null ? "" : row[colProps.name];
 
             // See if there is an event for this column
             if (colProps.onRenderCell) {
                 // Call the event
-                colProps.onRenderCell(elCol as HTMLTableCellElement, colProps, row);
+                colProps.onRenderCell(elCol as HTMLTableCellElement, colProps, row, rowIdx);
             }
 
             // See if there is an event for this component
             if (this.props.onRenderCell) {
                 // Call the event
-                this.props.onRenderCell(elCol as HTMLTableCellElement, colProps, row);
+                this.props.onRenderCell(elCol as HTMLTableCellElement, colProps, row, rowIdx);
             }
         }
     }
@@ -265,8 +267,10 @@ class _Table extends Base<ITableProps> implements ITable {
 
         // See if there is an event
         if (this.props.onRenderRow) {
+            let rowIdx = (elRow as any)["_DT_RowIndex"];
+
             // Call the event
-            this.props.onRenderRow(elRow as HTMLTableRowElement, row);
+            this.props.onRenderRow(elRow as HTMLTableRowElement, row, rowIdx);
         }
     }
 }
